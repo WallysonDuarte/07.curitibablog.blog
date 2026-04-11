@@ -1,0 +1,19 @@
+---
+import type { Advertisement } from '../lib/types';
+
+interface Props {
+  ad: Advertisement;
+  position?: 'inline' | 'sidebar' | 'faq-side';
+}
+
+const { ad, position = 'inline' } = Astro.props;
+---
+
+{ad.imageUrl && (
+  <div class={`ad-${position}`} data-ad-id={ad.id}>
+    <a href={ad.destinationUrl} target="_blank" rel="noopener sponsored" aria-label={`Publicidade: ${ad.title}`}>
+      <img src={ad.imageUrl} alt={ad.title} loading="lazy" decoding="async" />
+    </a>
+    <p class="ad-label">Publicidade</p>
+  </div>
+)}

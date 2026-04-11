@@ -1,0 +1,105 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import type { BlogCategory } from '../lib/types';
+
+interface Props {
+  title: string;
+  description: string;
+  categories?: BlogCategory[];
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <slot name="head" />
+</head>
+<body>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- Lightbox global -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">×</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    // ── Lightbox ──────────────────────────────────
+    const lightbox = document.getElementById('lightbox')!;
+    const lbImg    = document.getElementById('lightbox-img') as HTMLImageElement;
+    const lbClose  = document.getElementById('lightbox-close')!;
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const galleryImg = target.closest('[data-lightbox]') as HTMLElement | null;
+      if (galleryImg) {
+        e.preventDefault();
+        lbImg.src = galleryImg.dataset.lightbox!;
+        lbImg.alt = galleryImg.dataset.caption || '';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    // ── Mobile nav ────────────────────────────────
+    const toggle = document.getElementById('menu-toggle');
+    const nav    = document.getElementById('site-nav');
+    toggle?.addEventListener('click', () => nav?.classList.toggle('open'));
+
+    // ── FAQ accordion ─────────────────────────────
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const wasOpen = item?.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item?.classList.add('open');
+      });
+    });
+
+    // ── Share copy link ───────────────────────────
+    document.querySelectorAll('[data-copy-url]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = (btn as HTMLElement).dataset.copyUrl || window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+          btn.textContent = '✓ Copiado!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = '🔗 Copiar link';
+            btn.classList.remove('copied');
+          }, 2500);
+        });
+      });
+    });
+
+    // ── Ad click tracking ─────────────────────────
+    document.querySelectorAll('[data-ad-id]').forEach(el => {
+      el.addEventListener('click', () => {
+        const id = (el as HTMLElement).dataset.adId;
+        if (id) fetch(`https://api.curitibasoftware.com.br/api/advertisement/${id}/click`, { method: 'POST' }).catch(() => {});
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+---
+import { formatDate, toSlug } from '../lib/utils';
+
+interface Props {
+  title: string;
+  summary: string;
+  slug: string;
+  publishedAt?: string;
+  createdAt: string;
+  category: string;
+  categories?: string[];
+  tags: string[];
+  coverImageUrl?: string;
+  views: number;
+  compact?: boolean;
+}
+
+const {
+  title, summary, slug, publishedAt, createdAt, category,
+  categories, tags, coverImageUrl, views, compact = false,
+} = Astro.props;
+
+const displayCat = categories?.length ? categories[0] : category;
+const date = formatDate(publishedAt || createdAt);
+const postUrl = `/${slug}`;
+---
+
+<article class={`post-card ${compact ? 'post-card-compact' : ''}`}>
+  <a href={postUrl} tabindex="-1" aria-hidden="true">
+    {coverImageUrl ? (
+      <div class="post-card-image">
+        <img src={coverImageUrl} alt={title} loading="lazy" decoding="async" />
+        {displayCat && <span class="card-category">{displayCat}</span>}
+      </div>
+    ) : (
+      <div class="post-card-image-placeholder">
+        <span>📍</span>
+        {displayCat && <span class="card-category">{displayCat}</span>}
+      </div>
+    )}
+  </a>
+  <div class="post-card-body">
+    <h2><a href={postUrl}>{title}</a></h2>
+    {!compact && <p>{summary}</p>}
+    <div class="card-meta">
+      <span>📅 {date}</span>
+      {views > 0 && <span>👁 {views.toLocaleString('pt-BR')}</span>}
+    </div>
+    {!compact && tags?.length > 0 && (
+      <div class="card-tags">
+        {tags.slice(0, 3).map(tag => (
+          <a href={`/tag/${toSlug(tag)}`} class="card-tag" onclick="event.stopPropagation()">#{tag}</a>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

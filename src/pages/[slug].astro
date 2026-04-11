@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import PostCard from '../components/PostCard.astro';
+import RichBlock from '../components/RichBlock.astro';
+import AdBanner from '../components/AdBanner.astro';
+import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../lib/api';
+import { formatDate, buildSections, getPostCategories, toSlug } from '../lib/utils';
+
+export async function getStaticPaths() {
+  const posts = await fetchAllPosts();
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post, allPosts: posts },
+  }));
+}
+
+const { post, allPosts } = Astro.props;
+
+const [categories, inlineAds, sidebarAds, faqSideAds, relatedPosts] = await Promise.all([
+  fetchCategories(),
+  fetchAds('inline'),
+  fetchAds('sidebar'),
+  fetchAds('faq-side'),
+  fetchRelatedPosts(post.id),
+]);
+
+const postCats = getPostCategories(post);
+const breadcrumbCats = postCats.map(s => {
+  const found = categories.find(c => c.slug === s || c.name === s);
+  return { name: found?.name ?? s, slug: found?.slug ?? toSlug(s) };
+});
+const primaryCat = breadcrumbCats[0];
+
+// Build sections with blocks
+const blocks = post.blocks ?? [];
+const sections = buildSections(post.content || '', blocks);
+
+// Adjacent posts in same category (sorted by date, including current)
+const sortedInCat = allPosts
+  .filter(p => getPostCategories(p).some(c => postCats.includes(c)))
+  .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
+
+const currentIdx = sortedInCat.findIndex(p => p.id === post.id);
+const prevPost = currentIdx > 0 ? sortedInCat[currentIdx - 1] : null;
+const nextPost = currentIdx >= 0 && currentIdx < sortedInCat.length - 1 ? sortedInCat[currentIdx + 1] : null;
+
+// Suggested posts (related or most recent)
+const suggested = relatedPosts.length >= 3
+  ? relatedPosts.slice(0, 6)
+  : allPosts.filter(p => p.id !== post.id).sort((a, b) => b.views - a.views).slice(0, 6);
+
+const siteUrl = 'https://curitibablog.com.br';
+const shareUrl = `${siteUrl}/${post.slug}`;
+const publishDate = post.publishedAt || post.createdAt;
+const metaTitle = post.metaTitle || post.title;
+const metaDesc  = post.metaDescription || post.summary;
+
+// Pick one inline ad to rotate per section
+const inlineAd = inlineAds[0] ?? null;
+const sidebarAd = sidebarAds[0] ?? null;
+const faqSideAd = faqSideAds[0] ?? null;
+---
+
+<BaseLayout title={`${metaTitle} | CuritibaBlog`} description={metaDesc}>
+  <SEO
+    slot="head"
+    title={metaTitle}
+    description={metaDesc}
+    image={post.coverImageUrl}
+    type="article"
+    publishedAt={new Date(publishDate)}
+    updatedAt={new Date(post.updatedAt)}
+    author={post.authorName}
+    tags={post.tags}
+    slug={post.slug}
+    faqs={post.faqs}
+    categoryName={primaryCat?.name}
+    categorySlug={primaryCat?.slug}
+  />
+
+  <!-- Cover image hero -->
+  {post.coverImageUrl && (
+    <div class="post-cover-hero">
+      <img src={post.coverImageUrl} alt={post.title} decoding="async" />
+      <div class="post-cover-hero-overlay"></div>
+    </div>
+  )}
+
+  <div class="post-layout">
+    <!-- ── MAIN ARTICLE ── -->
+    <article>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Navegação">
+        <a href="/">Início</a>
+        {breadcrumbCats.map(cat => (
+          <>
+            <span aria-hidden="true">›</span>
+            <a href={`/categoria/${cat.slug}`}>{cat.name}</a>
+          </>
+        ))}
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{post.title}</span>
+      </nav>
+
+      <!-- Meta bar -->
+      <div class="article-meta-bar">
+        {postCats.slice(0,1).map(cat => (
+          <a href={`/categoria/${toSlug(cat)}`} class="article-category">{cat}</a>
+        ))}
+        <span>📅 {formatDate(publishDate)}</span>
+        <span>✍️ {post.authorName}</span>
+        {post.views > 0 && <span>👁 {post.views.toLocaleString('pt-BR')} visualizações</span>}
+      </div>
+
+      <!-- Title -->
+      <h1 class="article-title">{post.title}</h1>
+
+      <!-- Summary -->
+      {post.summary && (
+        <p style="font-size:1.05rem;color:var(--text-dark);font-weight:600;margin-bottom:1.5rem;border-left:4px solid var(--primary);padding-left:.8rem;line-height:1.6;">
+          {post.summary}
+        </p>
+      )}
+
+      <!-- Article body with inline blocks -->
+      <div class="article-body">
+        {sections.map((section, si) => (
+          <>
+            {section.content && <Fragment set:html={section.content} />}
+
+            {section.inlineBlocks.map((block, bi) => (
+              <RichBlock block={block} blockIdx={si * 100 + bi} />
+            ))}
+
+            {section.showAd && inlineAd && (
+              <AdBanner ad={inlineAd} position="inline" />
+            )}
+          </>
+        ))}
+      </div>
+
+      <!-- Tags -->
+      {post.tags?.length > 0 && (
+        <div class="article-tags">
+          {post.tags.map(tag => (
+            <a href={`/tag/${toSlug(tag)}`} class="article-tag">#{tag}</a>
+          ))}
+        </div>
+      )}
+
+      <!-- Share -->
+      <div class="share-section">
+        <h4>COMPARTILHE ESTE ARTIGO</h4>
+        <div class="share-buttons">
+          <a
+            href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + shareUrl)}`}
+            target="_blank" rel="noopener" class="share-btn share-whatsapp"
+          >
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+            target="_blank" rel="noopener" class="share-btn share-facebook"
+          >
+            <i class="fa-brands fa-facebook"></i> Facebook
+          </a>
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`}
+            target="_blank" rel="noopener" class="share-btn share-twitter"
+          >
+            <i class="fa-brands fa-x-twitter"></i> X
+          </a>
+          <a
+            href={`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`}
+            target="_blank" rel="noopener" class="share-btn share-telegram"
+          >
+            <i class="fa-brands fa-telegram"></i> Telegram
+          </a>
+          <button class="share-btn share-copy" data-copy-url={shareUrl} type="button">
+            🔗 Copiar link
+          </button>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      {post.faqs && post.faqs.length > 0 && (
+        <section class="faq-section" aria-label="Perguntas frequentes">
+          <h2>Perguntas Frequentes</h2>
+          {faqSideAd && <AdBanner ad={faqSideAd} position="faq-side" />}
+          <div class="faq-list">
+            {post.faqs.map((faq) => (
+              <div class="faq-item">
+                <div class="faq-question" role="button" tabindex="0">{faq.question}</div>
+                <div class="faq-answer">{faq.answer}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Post nav prev/next -->
+      {(prevPost || nextPost) && (
+        <nav class="post-nav" aria-label="Artigos relacionados">
+          {prevPost ? (
+            <a href={`/${prevPost.slug}`} class="post-nav-item">
+              <p class="post-nav-label">← Artigo anterior</p>
+              <p class="post-nav-title">{prevPost.title}</p>
+            </a>
+          ) : <div></div>}
+          {nextPost && (
+            <a href={`/${nextPost.slug}`} class="post-nav-item post-nav-next">
+              <p class="post-nav-label">Próximo artigo →</p>
+              <p class="post-nav-title">{nextPost.title}</p>
+            </a>
+          )}
+        </nav>
+      )}
+
+      <!-- Related / Suggested posts -->
+      {suggested.length > 0 && (
+        <section class="related-section">
+          <h3>Veja Também</h3>
+          <div class="related-grid">
+            {suggested.slice(0, 3).map(p => (
+              <PostCard
+                title={p.title}
+                summary={p.summary}
+                slug={p.slug}
+                publishedAt={p.publishedAt}
+                createdAt={p.createdAt}
+                category={p.category}
+                categories={p.categories}
+                tags={p.tags}
+                coverImageUrl={p.coverImageUrl}
+                views={p.views}
+                compact={true}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="post-sidebar" aria-label="Barra lateral">
+      <!-- Sidebar Ad -->
+      {sidebarAd && (
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-header">Publicidade</div>
+          <div class="sidebar-widget-body" style="padding:.8rem">
+            <a href={sidebarAd.destinationUrl} target="_blank" rel="noopener sponsored" data-ad-id={sidebarAd.id} class="sidebar-ad">
+              <img src={sidebarAd.imageUrl} alt={sidebarAd.title} loading="lazy" />
+            </a>
+          </div>
+        </div>
+      )}
+
+      <!-- Categories -->
+      {categories.length > 0 && (
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-header">Categorias</div>
+          <div class="sidebar-widget-body">
+            <ul class="sidebar-cat-list">
+              {categories.map(cat => (
+                <li>
+                  <a href={`/categoria/${cat.slug}`}>
+                    {cat.name}
+                    {cat.postCount > 0 && <span class="cat-count">{cat.postCount}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      <!-- Suggested posts in sidebar -->
+      {suggested.length > 3 && (
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-header">Mais Lidos</div>
+          <div class="sidebar-widget-body">
+            <ul class="sidebar-post-list">
+              {suggested.slice(3, 8).map(p => (
+                <li>
+                  <a href={`/${p.slug}`}>{p.title}</a>
+                  <p class="sidebar-post-meta">{formatDate(p.publishedAt || p.createdAt)}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </aside>
+  </div>
+</BaseLayout>

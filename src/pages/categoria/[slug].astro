@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PostCard from '../../components/PostCard.astro';
+import { fetchAllPosts, fetchCategories } from '../../lib/api';
+
+export async function getStaticPaths() {
+  const [posts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
+
+  return categories.map(cat => {
+    const catPosts = posts.filter(p => {
+      const cats = p.categories?.length ? p.categories : [p.category];
+      return cats.some(c => c === cat.slug || c === cat.name);
+    }).sort((a, b) =>
+      new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime()
+    );
+
+    return {
+      params: { slug: cat.slug },
+      props: { category: cat, posts: catPosts, allCategories: categories },
+    };
+  });
+}
+
+const { category, posts, allCategories } = Astro.props;
+---
+
+<BaseLayout
+  title={`${category.name} — CuritibaBlog`}
+  description={category.description || `Artigos sobre ${category.name} em Curitiba. Guias, dicas e informações para explorar esta categoria.`}
+>
+  <SEO
+    slot="head"
+    title={`${category.name} — CuritibaBlog`}
+    description={category.description || `Artigos sobre ${category.name} em Curitiba.`}
+    type="website"
+  />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>{category.name}</h1>
+      {category.description && <p>{category.description}</p>}
+      <p style="margin-top:.5rem;opacity:.6;font-size:.85rem">{posts.length} artigo{posts.length !== 1 ? 's' : ''}</p>
+    </div>
+  </section>
+
+  <!-- Category filter pills -->
+  <section style="padding:1.2rem 0;background:var(--bg-light);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="filter-bar">
+        <a href="/" class="filter-pill">Todos</a>
+        {allCategories.map(cat => (
+          <a
+            href={`/categoria/${cat.slug}`}
+            class={`filter-pill ${cat.slug === category.slug ? 'active' : ''}`}
+          >
+            {cat.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container">
+      {posts.length === 0 ? (
+        <div class="empty-state">
+          <i class="fa-solid fa-newspaper"></i>
+          <p>Nenhum artigo nesta categoria ainda.</p>
+          <a href="/" class="btn btn-primary" style="margin-top:1rem">Ver todos os artigos</a>
+        </div>
+      ) : (
+        <div class="posts-grid">
+          {posts.map(post => (
+            <PostCard
+              title={post.title}
+              summary={post.summary}
+              slug={post.slug}
+              publishedAt={post.publishedAt}
+              createdAt={post.createdAt}
+              category={post.category}
+              categories={post.categories}
+              tags={post.tags}
+              coverImageUrl={post.coverImageUrl}
+              views={post.views}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

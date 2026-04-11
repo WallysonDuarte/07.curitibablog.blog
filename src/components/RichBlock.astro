@@ -1,0 +1,219 @@
+---
+import type { PostBlock } from '../lib/types';
+
+interface Props {
+  block: PostBlock;
+  blockIdx: number;
+}
+
+const { block, blockIdx } = Astro.props;
+const d = block.data ?? {};
+
+function fbEmbedUrl(pageUrl: string): string {
+  return `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(pageUrl)}&tabs=posts&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`;
+}
+function fbPostEmbedUrl(postUrl: string): string {
+  const isVideo = postUrl.includes('/videos/') || postUrl.includes('watch/?v=');
+  const plugin = isVideo ? 'video' : 'post';
+  return `https://www.facebook.com/plugins/${plugin}.php?href=${encodeURIComponent(postUrl)}&width=500&show_text=true`;
+}
+---
+
+<div class="block-wrap">
+  {block.label && <p class="block-label">{block.label}</p>}
+
+  {/* ── MAP ───────────────────────────────────── */}
+  {block.type === 'map' && d.embedUrl && (
+    <div class="block-map">
+      <iframe
+        src={d.embedUrl}
+        loading="lazy"
+        allowfullscreen
+        title={d.address || 'Mapa'}
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+      {d.address && <p class="map-address">📍 {d.address}</p>}
+      {d.directionsUrl && (
+        <a href={d.directionsUrl} target="_blank" rel="noopener" class="map-directions">
+          <i class="fa-solid fa-location-dot"></i> Como chegar
+        </a>
+      )}
+    </div>
+  )}
+
+  {/* ── GALLERY ───────────────────────────────── */}
+  {block.type === 'gallery' && d.images?.length > 0 && (
+    <div class="block-gallery">
+      <div class="gallery-grid">
+        {d.images.map((img: { url: string; caption?: string }) => (
+          <div
+            class="gallery-img"
+            data-lightbox={img.url}
+            data-caption={img.caption || ''}
+            role="button"
+            tabindex="0"
+            aria-label={img.caption || 'Ver foto'}
+          >
+            <img src={img.url} alt={img.caption || ''} loading="lazy" decoding="async" />
+            {img.caption && <span class="gallery-img-caption">{img.caption}</span>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── REVIEWS ───────────────────────────────── */}
+  {block.type === 'reviews' && d.reviews?.length > 0 && (
+    <div class="block-reviews">
+      {d.source && <p class="review-source">⭐ Avaliações — {d.source}</p>}
+      <div class="reviews-list">
+        {d.reviews.map((r: { author: string; rating: number; text: string; date?: string }) => (
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">{r.author}</span>
+              <span class="review-stars">{'★'.repeat(Math.min(5, r.rating))}{'☆'.repeat(Math.max(0, 5 - r.rating))}</span>
+            </div>
+            <p class="review-text">{r.text}</p>
+            {r.date && <p class="review-date">{r.date}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── INFO ──────────────────────────────────── */}
+  {block.type === 'info' && d.items?.length > 0 && (
+    <div class="block-info">
+      <div class="info-list">
+        {d.items.map((item: { icon?: string; label: string; value: string }) => (
+          <div class="info-item">
+            {item.icon && (
+              <span class="info-icon"><i class={`fa-solid ${item.icon}`}></i></span>
+            )}
+            <div>
+              <p class="info-label">{item.label}</p>
+              <p class="info-value">{item.value}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── LINKS ─────────────────────────────────── */}
+  {block.type === 'links' && d.links?.length > 0 && (
+    <div class="block-links">
+      <div class="links-list">
+        {d.links.map((link: { label: string; url: string; icon?: string }) => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-item">
+            {link.icon && (
+              <span class="link-icon"><i class={`fa-solid ${link.icon}`}></i></span>
+            )}
+            <span class="link-label">{link.label}</span>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:auto;font-size:.75rem;color:var(--text-light)"></i>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── VIDEO ─────────────────────────────────── */}
+  {block.type === 'video' && d.embedUrl && (
+    <div class="block-video">
+      <div class="video-wrap">
+        <iframe
+          src={d.embedUrl}
+          loading="lazy"
+          allowfullscreen
+          title={d.caption || 'Vídeo'}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        />
+      </div>
+      {d.caption && <p class="video-caption">{d.caption}</p>}
+    </div>
+  )}
+
+  {/* ── YOUTUBE GALLERY ───────────────────────── */}
+  {block.type === 'youtube-gallery' && d.videos?.length > 0 && (
+    <div class="block-yt-gallery">
+      <div class="yt-grid">
+        {d.videos.map((v: { embedUrl: string; title?: string }) => (
+          <div class="yt-item">
+            <div class="yt-wrap">
+              <iframe
+                src={v.embedUrl}
+                loading="lazy"
+                allowfullscreen
+                title={v.title || 'Vídeo'}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              />
+            </div>
+            {v.title && <p class="yt-title">{v.title}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* ── INSTAGRAM ─────────────────────────────── */}
+  {block.type === 'instagram' && (
+    <div class="block-instagram">
+      {d.posts?.length > 0 ? (
+        <div>
+          {d.description && <p style="margin-bottom:.8rem;font-size:.9rem;">{d.description}</p>}
+          {d.posts.map((post: { shortcode: string; caption?: string }) => (
+            <blockquote
+              class="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink={`https://www.instagram.com/p/${post.shortcode}/`}
+              data-instgrm-version="14"
+              style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%"
+            >
+              <a href={`https://www.instagram.com/p/${post.shortcode}/`} target="_blank" rel="noopener">
+                {post.caption || 'Ver no Instagram'}
+              </a>
+            </blockquote>
+          ))}
+          <script async src="https://www.instagram.com/embed.js" />
+        </div>
+      ) : d.tag ? (
+        <div class="instagram-placeholder">
+          <i class="fa-brands fa-instagram"></i>
+          <p style="margin-top:.5rem">#{d.tag}</p>
+          {d.description && <p style="font-size:.85rem;opacity:.8;margin-top:.3rem">{d.description}</p>}
+        </div>
+      ) : null}
+    </div>
+  )}
+
+  {/* ── FACEBOOK ──────────────────────────────── */}
+  {block.type === 'facebook' && (
+    <div class="block-facebook">
+      {d.posts?.length > 0 ? (
+        d.posts.map((post: { postUrl: string; caption?: string }) => (
+          <div class="fb-wrap">
+            {post.caption && <p style="margin-bottom:.6rem;font-size:.9rem;">{post.caption}</p>}
+            <iframe
+              src={fbPostEmbedUrl(post.postUrl)}
+              loading="lazy"
+              title="Post do Facebook"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          </div>
+        ))
+      ) : d.pageUrl ? (
+        <div class="fb-wrap">
+          {d.title && <p style="margin-bottom:.6rem;font-size:.9rem;font-weight:600">{d.title}</p>}
+          <iframe
+            src={fbEmbedUrl(d.pageUrl)}
+            loading="lazy"
+            title="Página do Facebook"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+          />
+        </div>
+      ) : null}
+    </div>
+  )}
+</div>

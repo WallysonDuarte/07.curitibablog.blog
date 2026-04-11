@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PostCard from '../../components/PostCard.astro';
+import { fetchAllPosts } from '../../lib/api';
+import { toSlug } from '../../lib/utils';
+
+export async function getStaticPaths() {
+  const posts = await fetchAllPosts();
+
+  // Map slug → { originalTag, posts[] }
+  const tagMap = new Map<string, { originalTag: string; posts: typeof posts }>();
+
+  posts.forEach(post => {
+    (post.tags ?? []).forEach(originalTag => {
+      const slug = toSlug(originalTag);
+      // Skip empty or single-char slugs
+      if (slug.length < 2) return;
+      if (!tagMap.has(slug)) tagMap.set(slug, { originalTag, posts: [] });
+      tagMap.get(slug)!.posts.push(post);
+    });
+  });
+
+  return Array.from(tagMap.entries()).map(([slug, { originalTag, posts: tagPosts }]) => ({
+    params: { tag: slug },
+    props: {
+      tag: originalTag,
+      tagSlug: slug,
+      posts: tagPosts.sort((a, b) =>
+        new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime()
+      ),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`#${tag} — CuritibaBlog`}
+  description={`Artigos sobre ${tag} em Curitiba. Encontre tudo sobre este tema no CuritibaBlog.`}
+>
+  <SEO
+    slot="head"
+    title={`#${tag} — CuritibaBlog`}
+    description={`Artigos marcados com #${tag}. Encontre guias e dicas sobre ${tag} em Curitiba.`}
+    type="website"
+  />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>#{tag}</h1>
+      <p>{posts.length} artigo{posts.length !== 1 ? 's' : ''} com esta tag</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container">
+      {posts.length === 0 ? (
+        <div class="empty-state">
+          <i class="fa-solid fa-tag"></i>
+          <p>Nenhum artigo com esta tag.</p>
+          <a href="/" class="btn btn-primary" style="margin-top:1rem">Ver todos os artigos</a>
+        </div>
+      ) : (
+        <div class="posts-grid">
+          {posts.map(post => (
+            <PostCard
+              title={post.title}
+              summary={post.summary}
+              slug={post.slug}
+              publishedAt={post.publishedAt}
+              createdAt={post.createdAt}
+              category={post.category}
+              categories={post.categories}
+              tags={post.tags}
+              coverImageUrl={post.coverImageUrl}
+              views={post.views}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import PostCard from '../components/PostCard.astro';
+import { fetchAllPosts, fetchCategories } from '../lib/api';
+
+const [posts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
+const sorted = posts.sort((a, b) =>
+  new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime()
+);
+---
+
+<BaseLayout
+  title="CuritibaBlog — O que fazer em Curitiba: Parques, Turismo e Dicas"
+  description="Guias completos sobre parques, pontos turísticos, restaurantes e tudo o que fazer em Curitiba. Dicas locais, fotos e roteiros para explorar a melhor cidade do Sul."
+>
+  <SEO
+    slot="head"
+    title="CuritibaBlog — O que fazer em Curitiba: Parques, Turismo e Dicas"
+    description="Guias completos sobre parques, pontos turísticos, restaurantes e tudo o que fazer em Curitiba. Dicas locais, fotos e roteiros para explorar a melhor cidade do Sul."
+    type="website"
+  />
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Descubra Curitiba</h1>
+      <p>Parques, turismo, gastronomia e tudo o que fazer na Capital Ecológica do Brasil</p>
+
+      <div class="search-bar" id="search-bar">
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Buscar artigos sobre Curitiba..."
+          aria-label="Buscar artigos"
+          autocomplete="off"
+        />
+        <button type="button" aria-label="Buscar">
+          <i class="fa-solid fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category filter pills -->
+  {categories.length > 0 && (
+    <section style="padding:1.5rem 0 .5rem; background:var(--bg-light); border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div class="filter-bar">
+          <a href="/" class="filter-pill active" data-cat="">Todos</a>
+          {categories.map(cat => (
+            <a href={`/categoria/${cat.slug}`} class="filter-pill" data-cat={cat.slug}>
+              {cat.name}
+              {cat.postCount > 0 && <span style="opacity:.6;font-size:.75em;margin-left:.3rem">({cat.postCount})</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Posts grid -->
+  <section class="posts-section">
+    <div class="container">
+      {sorted.length === 0 ? (
+        <div class="empty-state">
+          <i class="fa-solid fa-newspaper"></i>
+          <p>Nenhum artigo disponível no momento.</p>
+        </div>
+      ) : (
+        <>
+          <div class="section-title">
+            <h2>Artigos Recentes</h2>
+          </div>
+          <div class="posts-grid" id="posts-grid">
+            {sorted.map(post => (
+              <PostCard
+                title={post.title}
+                summary={post.summary}
+                slug={post.slug}
+                publishedAt={post.publishedAt}
+                createdAt={post.createdAt}
+                category={post.category}
+                categories={post.categories}
+                tags={post.tags}
+                coverImageUrl={post.coverImageUrl}
+                views={post.views}
+              />
+            ))}
+          </div>
+          <div id="no-results" style="display:none" class="empty-state">
+            <i class="fa-solid fa-search"></i>
+            <p>Nenhum artigo encontrado para esta busca.</p>
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Client-side search filter
+  const input = document.getElementById('search-input') as HTMLInputElement;
+  const grid  = document.getElementById('posts-grid');
+  const noRes = document.getElementById('no-results');
+
+  if (input && grid) {
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      let visible = 0;
+      grid.querySelectorAll<HTMLElement>('.post-card').forEach(card => {
+        const text = card.textContent?.toLowerCase() || '';
+        const show = !q || text.includes(q);
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (noRes) noRes.style.display = (visible === 0 && q) ? 'block' : 'none';
+      if (grid) grid.style.display = (visible === 0 && q) ? 'none' : '';
+    });
+  }
+</script>
