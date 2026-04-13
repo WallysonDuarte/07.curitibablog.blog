@@ -63,11 +63,11 @@ function fbPostEmbedUrl(postUrl: string): string {
   )}
 
   {/* ── REVIEWS ───────────────────────────────── */}
-  {block.type === 'reviews' && d.reviews?.length > 0 && (
+  {block.type === 'reviews' && (d.reviews?.length > 0 || d.items?.length > 0) && (
     <div class="block-reviews">
       {d.source && <p class="review-source">⭐ Avaliações — {d.source}</p>}
       <div class="reviews-list">
-        {d.reviews.map((r: { author: string; rating: number; text: string; date?: string }) => (
+        {(d.reviews ?? d.items).map((r: { author: string; rating: number; text: string; date?: string; avatar?: string }) => (
           <div class="review-card">
             <div class="review-header">
               <span class="review-author">{r.author}</span>
@@ -101,10 +101,10 @@ function fbPostEmbedUrl(postUrl: string): string {
   )}
 
   {/* ── LINKS ─────────────────────────────────── */}
-  {block.type === 'links' && d.links?.length > 0 && (
+  {block.type === 'links' && (d.links?.length > 0 || d.items?.length > 0) && (
     <div class="block-links">
       <div class="links-list">
-        {d.links.map((link: { label: string; url: string; icon?: string }) => (
+        {(d.links ?? d.items).map((link: { label: string; url: string; icon?: string }) => (
           <a href={link.url} target="_blank" rel="noopener noreferrer" class="link-item">
             {link.icon && (
               <span class="link-icon"><i class={`fa-solid ${link.icon}`}></i></span>
@@ -137,20 +137,23 @@ function fbPostEmbedUrl(postUrl: string): string {
   {block.type === 'youtube-gallery' && d.videos?.length > 0 && (
     <div class="block-yt-gallery">
       <div class="yt-grid">
-        {d.videos.map((v: { embedUrl: string; title?: string }) => (
-          <div class="yt-item">
-            <div class="yt-wrap">
-              <iframe
-                src={v.embedUrl}
-                loading="lazy"
-                allowfullscreen
-                title={v.title || 'Vídeo'}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              />
+        {d.videos.map((v: { embedUrl?: string; videoId?: string; title?: string }) => {
+          const src = v.embedUrl ?? (v.videoId ? `https://www.youtube.com/embed/${v.videoId}` : null);
+          return src ? (
+            <div class="yt-item">
+              <div class="yt-wrap">
+                <iframe
+                  src={src}
+                  loading="lazy"
+                  allowfullscreen
+                  title={v.title || 'Vídeo'}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+              </div>
+              {v.title && <p class="yt-title">{v.title}</p>}
             </div>
-            {v.title && <p class="yt-title">{v.title}</p>}
-          </div>
-        ))}
+          ) : null;
+        })}
       </div>
     </div>
   )}
@@ -181,6 +184,74 @@ function fbPostEmbedUrl(postUrl: string): string {
           <i class="fa-brands fa-instagram"></i>
           <p style="margin-top:.5rem">#{d.tag}</p>
           {d.description && <p style="font-size:.85rem;opacity:.8;margin-top:.3rem">{d.description}</p>}
+        </div>
+      ) : d.username ? (
+        <div class="instagram-placeholder">
+          <i class="fa-brands fa-instagram"></i>
+          <p style="margin-top:.5rem">@{d.username}</p>
+          {d.label && <p style="font-size:.85rem;opacity:.8;margin-top:.3rem">{d.label}</p>}
+          <a href={`https://www.instagram.com/${d.username}/`} target="_blank" rel="noopener" style="margin-top:.6rem;font-size:.85rem;color:var(--accent)">Ver perfil no Instagram →</a>
+        </div>
+      ) : null}
+    </div>
+  )}
+
+  {/* ── X / TWITTER ───────────────────────────── */}
+  {block.type === 'x' && (
+    <div class="block-x">
+      {(d.posts?.length > 0 || d.tweets?.length > 0) ? (
+        <div>
+          {d.description && <p style="margin-bottom:.8rem;font-size:.9rem;">{d.description}</p>}
+          {(d.posts ?? d.tweets).map((post: { tweetId?: string; postId?: string; caption?: string }) => {
+            const id = post.tweetId ?? post.postId;
+            const handle = d.username ?? d.handle ?? 'x';
+            return id ? (
+              <blockquote class="twitter-tweet" data-lang="pt" data-dnt="true" data-theme="light">
+                <a href={`https://x.com/${handle}/status/${id}`} target="_blank" rel="noopener">
+                  {post.caption || 'Ver post no X'}
+                </a>
+              </blockquote>
+            ) : null;
+          })}
+          <script async src="https://platform.twitter.com/widgets.js" />
+        </div>
+      ) : d.username ? (
+        <div class="instagram-placeholder" style="background:var(--bg-alt,#f5f5f5)">
+          <i class="fa-brands fa-x-twitter"></i>
+          <p style="margin-top:.5rem">@{d.username}</p>
+          {d.description && <p style="font-size:.85rem;opacity:.8;margin-top:.3rem">{d.description}</p>}
+          <a href={`https://x.com/${d.username}`} target="_blank" rel="noopener" style="margin-top:.6rem;font-size:.85rem;color:var(--accent)">Ver perfil no X →</a>
+        </div>
+      ) : null}
+    </div>
+  )}
+
+  {/* ── REELS ──────────────────────────────────── */}
+  {block.type === 'reels' && (
+    <div class="block-instagram">
+      {(d.posts?.length > 0 || d.reels?.length > 0) ? (
+        <div>
+          {d.description && <p style="margin-bottom:.8rem;font-size:.9rem;">{d.description}</p>}
+          {(d.posts ?? d.reels).map((post: { shortcode: string; caption?: string }) => (
+            <blockquote
+              class="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink={`https://www.instagram.com/reel/${post.shortcode}/`}
+              data-instgrm-version="14"
+              style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%"
+            >
+              <a href={`https://www.instagram.com/reel/${post.shortcode}/`} target="_blank" rel="noopener">
+                {post.caption || 'Ver Reel no Instagram'}
+              </a>
+            </blockquote>
+          ))}
+          <script async src="https://www.instagram.com/embed.js" />
+        </div>
+      ) : d.username ? (
+        <div class="instagram-placeholder">
+          <i class="fa-brands fa-instagram"></i>
+          <p style="margin-top:.5rem">Reels — @{d.username}</p>
+          <a href={`https://www.instagram.com/${d.username}/reels/`} target="_blank" rel="noopener" style="margin-top:.6rem;font-size:.85rem;color:var(--accent)">Ver Reels no Instagram →</a>
         </div>
       ) : null}
     </div>
