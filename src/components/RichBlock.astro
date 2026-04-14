@@ -172,19 +172,19 @@ function fbPostEmbedUrl(postUrl: string): string {
               @{d.handle ?? d.username}
             </p>
           )}
-          <div class="ig-card-grid">
+          <div class="ig-embed-grid">
             {d.posts.map((post: { shortcode: string; caption?: string }) => (
-              <a
-                class="ig-card"
-                href={`https://www.instagram.com/p/${post.shortcode}/`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={post.caption || 'Ver no Instagram'}
-              >
-                <i class="fa-brands fa-instagram ig-card-icon"></i>
-                {post.caption && <p class="ig-card-caption">{post.caption}</p>}
-                <span class="ig-card-link">Ver no Instagram →</span>
-              </a>
+              <div class="ig-embed-item">
+                <iframe
+                  src={`https://www.instagram.com/p/${post.shortcode}/embed/`}
+                  loading="lazy"
+                  title={post.caption || 'Post Instagram'}
+                  frameborder="0"
+                  scrolling="no"
+                  allowfullscreen
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -258,19 +258,19 @@ function fbPostEmbedUrl(postUrl: string): string {
               @{d.handle ?? d.username}
             </p>
           )}
-          <div class="ig-card-grid">
+          <div class="ig-embed-grid">
             {(d.posts ?? d.reels).map((post: { shortcode: string; caption?: string }) => (
-              <a
-                class="ig-card"
-                href={`https://www.instagram.com/reel/${post.shortcode}/`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={post.caption || 'Ver Reel no Instagram'}
-              >
-                <i class="fa-solid fa-play ig-card-icon"></i>
-                {post.caption && <p class="ig-card-caption">{post.caption}</p>}
-                <span class="ig-card-link">Ver Reel →</span>
-              </a>
+              <div class="ig-embed-item">
+                <iframe
+                  src={`https://www.instagram.com/reel/${post.shortcode}/embed/`}
+                  loading="lazy"
+                  title={post.caption || 'Reel Instagram'}
+                  frameborder="0"
+                  scrolling="no"
+                  allowfullscreen
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                />
+              </div>
             ))}
           </div>
         </div>

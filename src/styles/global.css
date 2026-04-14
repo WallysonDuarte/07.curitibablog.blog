@@ -511,7 +511,14 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 }
 .instagram-placeholder i { font-size: 2rem; margin-bottom: .5rem; }
 
-/* Instagram / Reels Card Grid */
+/* Instagram / Reels Embed Grid */
+.ig-embed-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;
+}
+.ig-embed-item { border-radius: var(--radius); overflow: hidden; }
+.ig-embed-item iframe { border: none; width: 100%; min-height: 480px; display: block; border-radius: var(--radius); }
+
+/* Instagram / Reels Card Grid (fallback legado) */
 .ig-card-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem;
 }
