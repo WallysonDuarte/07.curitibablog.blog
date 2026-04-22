@@ -8,8 +8,8 @@ export async function GET(context) {
   );
 
   return rss({
-    title: 'CuritibaBlog',
-    description: 'Guias sobre parques, turismo, gastronomia e tudo o que fazer em Curitiba.',
+    title: 'DevLevelUp',
+    description: 'Guias de desenvolvimento de software, dicas de carreira e ferramentas de IA para desenvolvedores.',
     site: context.site,
     items: sorted.slice(0, 50).map(post => ({
       title: post.title,
