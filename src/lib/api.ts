@@ -1,6 +1,7 @@
 import type { BlogPost, BlogCategory, Advertisement } from './types';
 
 const API_URL = 'https://api.curitibasoftware.com.br';
+const SITE_ID = 'devlevelup';
 
 function sanitizePost(post: BlogPost): BlogPost {
   return {
@@ -37,7 +38,7 @@ export async function fetchAllPosts(): Promise<BlogPost[]> {
 
   while (true) {
     const data = await apiFetch<{ items: BlogPost[]; total: number }>(
-      '/api/blog/posts', { page, pageSize }
+      '/api/blog/posts', { page, pageSize, site: SITE_ID }
     );
     if (!data?.items?.length) break;
     all.push(...data.items.map(sanitizePost));
