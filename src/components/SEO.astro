@@ -52,7 +52,7 @@ const articleSchema = type === 'article' && publishedAt ? {
         '@type': 'Organization',
         name: 'CuritibaBlog',
         url: siteUrl,
-        logo: { '@type': 'ImageObject', url: `${siteUrl}/favicon.svg` },
+        logo: { '@type': 'ImageObject', url: `${siteUrl}/logo.png` },
       },
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
       ...(tags.length && { keywords: tags.join(', ') }),
