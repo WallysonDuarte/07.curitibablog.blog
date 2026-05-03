@@ -1,6 +1,11 @@
 ---
 import type { FaqItem } from '../lib/types';
 
+interface BreadcrumbItem {
+  name: string;
+  item?: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -14,6 +19,7 @@ interface Props {
   faqs?: FaqItem[];
   categoryName?: string;
   categorySlug?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -29,6 +35,7 @@ const {
   faqs = [],
   categoryName,
   categorySlug,
+  breadcrumbs = [],
 } = Astro.props;
 
 const siteUrl = 'https://devlevelup.com.br';
@@ -44,11 +51,11 @@ const articleSchema = type === 'article' && publishedAt ? {
       headline: title,
       description,
       url: canonicalUrl,
+      inLanguage: 'pt-BR',
       datePublished: publishedAt.toISOString(),
       dateModified: (updatedAt ?? publishedAt).toISOString(),
-      image: image ? { '@type': 'ImageObject', url: ogImage } : undefined,
+      image: image ? [{ '@type': 'ImageObject', url: ogImage }] : undefined,
       author: { '@type': 'Person', name: author },
-      inLanguage: 'pt-BR',
       publisher: {
         '@type': 'Organization',
         name: 'DevLevelUp',
@@ -72,16 +79,41 @@ const articleSchema = type === 'article' && publishedAt ? {
 
 const websiteSchema = type === 'website' ? {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'DevLevelUp',
-  url: siteUrl,
-  description: 'Guias completos de desenvolvimento de software, dicas de carreira, ferramentas de IA e tudo que um dev precisa para evoluir profissionalmente.',
-  publisher: { '@type': 'Organization', name: 'DevLevelUp', url: siteUrl },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${siteUrl}/?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'DevLevelUp',
+      url: siteUrl,
+      description: 'Guias completos de desenvolvimento de software, dicas de carreira, ferramentas de IA e tudo que um dev precisa para evoluir profissionalmente.',
+      inLanguage: 'pt-BR',
+      publisher: { '@type': 'Organization', name: 'DevLevelUp', url: siteUrl },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${siteUrl}/?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'Organization',
+      name: 'DevLevelUp',
+      url: siteUrl,
+      logo: { '@type': 'ImageObject', url: `${siteUrl}/icon.svg`, width: 32, height: 32 },
+      sameAs: [
+        'https://curitibasoftware.com.br',
+      ],
+    },
+  ],
+} : null;
+
+const breadcrumbSchema = breadcrumbs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((crumb, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: crumb.name,
+    ...(crumb.item && { item: crumb.item }),
+  })),
 } : null;
 
 const faqSchema = faqs.length > 0 ? {
@@ -114,11 +146,17 @@ const faqSchema = faqs.length > 0 ? {
 <meta property="og:image:alt" content={fullTitle} />
 <meta property="og:site_name" content="DevLevelUp" />
 <meta property="og:locale" content="pt_BR" />
-{type === 'article' && publishedAt && <>
-  <meta property="article:published_time" content={publishedAt.toISOString()} />
-  <meta property="article:author" content={author} />
-  {updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
-</>}
+{type === 'article' && publishedAt && (
+  <Fragment>
+    <meta property="article:published_time" content={publishedAt.toISOString()} />
+    <meta property="article:author" content={author} />
+    {updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
+    {categoryName && <meta property="article:section" content={categoryName} />}
+    {tags.slice(0, 5).map(tag => (
+      <meta property="article:tag" content={tag} />
+    ))}
+  </Fragment>
+)}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -133,6 +171,9 @@ const faqSchema = faqs.length > 0 ? {
 )}
 {websiteSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+)}
+{breadcrumbSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 )}
 {faqSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
