@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
 
-Sitemap: https://curitibablog.com.br/sitemap-index.xml
+Sitemap: https://blogdudu.com.br/sitemap-index.xml

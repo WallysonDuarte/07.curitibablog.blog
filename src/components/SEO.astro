@@ -23,7 +23,7 @@ const {
   type = 'website',
   publishedAt,
   updatedAt,
-  author = 'CuritibaBlog',
+  author = 'Dudu Dev',
   tags = [],
   slug,
   faqs = [],
@@ -31,28 +31,34 @@ const {
   categorySlug,
 } = Astro.props;
 
-const siteUrl = 'https://curitibablog.com.br';
+const siteUrl = 'https://blogdudu.com.br';
 const canonicalUrl = slug ? `${siteUrl}/${slug}` : new URL(Astro.url.pathname, siteUrl).href;
 const ogImage = image?.startsWith('http') ? image : image ? `${siteUrl}${image}` : `${siteUrl}/og-default.jpg`;
-const fullTitle = title.includes('Curitiba') ? title : `${title} | CuritibaBlog`;
+const fullTitle = title.includes('BlogDudu') ? title : `${title} | BlogDudu`;
 
 const articleSchema = type === 'article' && publishedAt ? {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Article',
+      '@type': 'BlogPosting',
       headline: title,
       description,
       url: canonicalUrl,
+      inLanguage: 'pt-BR',
       datePublished: publishedAt.toISOString(),
       dateModified: (updatedAt ?? publishedAt).toISOString(),
-      image: image ? { '@type': 'ImageObject', url: ogImage } : undefined,
+      image: image ? [{ '@type': 'ImageObject', url: ogImage }] : undefined,
       author: { '@type': 'Person', name: author },
       publisher: {
         '@type': 'Organization',
-        name: 'CuritibaBlog',
+        name: 'BlogDudu',
         url: siteUrl,
-        logo: { '@type': 'ImageObject', url: `${siteUrl}/favicon.svg` },
+        logo: {
+          '@type': 'ImageObject',
+          url: `${siteUrl}/icon.svg`,
+          width: 512,
+          height: 512,
+        },
       },
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
       ...(tags.length && { keywords: tags.join(', ') }),
@@ -72,10 +78,10 @@ const articleSchema = type === 'article' && publishedAt ? {
 const websiteSchema = type === 'website' ? {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'CuritibaBlog',
+  name: 'BlogDudu',
   url: siteUrl,
-  description: 'Guias sobre parques, turismo, gastronomia e tudo o que fazer em Curitiba.',
-  publisher: { '@type': 'Organization', name: 'CuritibaBlog', url: siteUrl },
+  description: 'Artigos sobre inteligência artificial, desenvolvimento de software, ferramentas tech e dicas práticas para desenvolvedores.',
+  publisher: { '@type': 'Organization', name: 'BlogDudu', url: siteUrl },
   potentialAction: {
     '@type': 'SearchAction',
     target: `${siteUrl}/?q={search_term_string}`,
@@ -97,7 +103,7 @@ const faqSchema = faqs.length > 0 ? {
 <!-- Primary Meta -->
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href={canonicalUrl} />
 <meta name="author" content={author} />
 {tags.length > 0 && <meta name="keywords" content={tags.join(', ')} />}
@@ -110,19 +116,25 @@ const faqSchema = faqs.length > 0 ? {
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:site_name" content="CuritibaBlog" />
+<meta property="og:image:alt" content={title} />
+<meta property="og:site_name" content="BlogDudu" />
 <meta property="og:locale" content="pt_BR" />
-{type === 'article' && publishedAt && <>
-  <meta property="article:published_time" content={publishedAt.toISOString()} />
-  <meta property="article:author" content={author} />
-  {updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
-</>}
+{type === 'article' && publishedAt && (
+  <>
+    <meta property="article:published_time" content={publishedAt.toISOString()} />
+    <meta property="article:author" content={author} />
+    {updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
+    {categoryName && <meta property="article:section" content={categoryName} />}
+    {tags.map(tag => <meta property="article:tag" content={tag} />)}
+  </>
+)}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={title} />
 
 <!-- Structured Data -->
 {articleSchema && (

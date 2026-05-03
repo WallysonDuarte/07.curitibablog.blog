@@ -50,7 +50,7 @@ const suggested = relatedPosts.length >= 3
   ? relatedPosts.slice(0, 6)
   : allPosts.filter(p => p.id !== post.id).sort((a, b) => b.views - a.views).slice(0, 6);
 
-const siteUrl = 'https://curitibablog.com.br';
+const siteUrl = 'https://blogdudu.com.br';
 const shareUrl = `${siteUrl}/${post.slug}`;
 const publishDate = post.publishedAt || post.createdAt;
 const metaTitle = post.metaTitle || post.title;
@@ -62,7 +62,7 @@ const sidebarAd = sidebarAds[0] ?? null;
 const faqSideAd = faqSideAds[0] ?? null;
 ---
 
-<BaseLayout title={`${metaTitle} | CuritibaBlog`} description={metaDesc}>
+<BaseLayout title={`${metaTitle} | BlogDudu`} description={metaDesc}>
   <SEO
     slot="head"
     title={metaTitle}
@@ -82,7 +82,7 @@ const faqSideAd = faqSideAds[0] ?? null;
   <!-- Cover image hero -->
   {post.coverImageUrl && (
     <div class="post-cover-hero">
-      <img src={post.coverImageUrl} alt={post.title} decoding="async" />
+      <img src={post.coverImageUrl} alt={post.title} decoding="async" loading="eager" fetchpriority="high" />
       <div class="post-cover-hero-overlay"></div>
     </div>
   )}
