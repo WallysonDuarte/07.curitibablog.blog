@@ -3,9 +3,9 @@
 
 /* ── Variables ─────────────────────────────────── */
 :root {
-  --primary:       #4ecdc4;
-  --primary-dark:  #33b5ac;
-  --primary-light: #a8ede9;
+  --primary:       #e74c3c;
+  --primary-dark:  #c0392b;
+  --primary-light: #f1948a;
   --navy:          #141A2B;
   --text-dark:     #4c4c4c;
   --text-body:     #808080;
