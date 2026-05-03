@@ -45,6 +45,10 @@ const { tag, posts } = Astro.props;
     title={`#${tag} — CuritibaBlog`}
     description={`Artigos marcados com #${tag}. Encontre guias e dicas sobre ${tag} em Curitiba.`}
     type="website"
+    breadcrumbs={[
+      { name: 'Início', item: 'https://curitibablog.com.br' },
+      { name: `#${tag}` },
+    ]}
   />
 
   <section class="page-hero">

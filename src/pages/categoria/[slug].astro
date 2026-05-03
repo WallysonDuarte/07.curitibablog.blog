@@ -34,6 +34,10 @@ const { category, posts, allCategories } = Astro.props;
     title={`${category.name} — CuritibaBlog`}
     description={category.description || `Artigos sobre ${category.name} em Curitiba.`}
     type="website"
+    breadcrumbs={[
+      { name: 'Início', item: 'https://curitibablog.com.br' },
+      { name: category.name },
+    ]}
   />
 
   <section class="page-hero">
