@@ -26,13 +26,13 @@ const { category, posts, allCategories } = Astro.props;
 ---
 
 <BaseLayout
-  title={`${category.name} — CuritibaBlog`}
-  description={category.description || `Artigos sobre ${category.name} em Curitiba. Guias, dicas e informações para explorar esta categoria.`}
+  title={`${category.name} — DevLevelUp`}
+  description={category.description || `Artigos sobre ${category.name}. Guias, tutoriais e dicas para desenvolvedores que querem evoluir profissionalmente.`}
 >
   <SEO
     slot="head"
-    title={`${category.name} — CuritibaBlog`}
-    description={category.description || `Artigos sobre ${category.name} em Curitiba.`}
+    title={`${category.name} — DevLevelUp`}
+    description={category.description || `Artigos sobre ${category.name} no DevLevelUp. Guias e tutoriais para desenvolvedores.`}
     type="website"
   />
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://curitibablog.com.br/sitemap-index.xml
+Sitemap: https://devlevelup.com.br/sitemap-index.xml
