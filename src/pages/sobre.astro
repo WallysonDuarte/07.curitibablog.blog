@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = 'Sobre o LevelUpDev';
+const description = 'Conheça o LevelUpDev — blog de conteúdo avançado sobre arquitetura de software, design patterns e boas práticas para desenvolvedores que querem alcançar o nível sênior.';
+---
+
+<BaseLayout title={title} description={description}>
+  <SEO slot="head" title={title} description={description} type="website" slug="sobre" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Sobre o LevelUpDev</h1>
+      <p>Conteúdo avançado para desenvolvedores que querem chegar ao próximo nível</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container" style="max-width:800px">
+      <div class="about-prose">
+
+        <h2>Nossa Missão</h2>
+        <p>
+          O <strong>LevelUpDev</strong> é um blog de conteúdo técnico avançado para desenvolvedores que
+          já têm base sólida e querem ir além. Nossa missão é explorar os temas que separam um desenvolvedor
+          pleno de um sênior: arquitetura de software, design patterns, decisões técnicas complexas e
+          liderança técnica.
+        </p>
+        <p>
+          Não publicamos tutoriais básicos de "Hello World". Aqui você vai encontrar análises profundas de
+          trade-offs arquiteturais, implementações avançadas, artigos sobre engenharia de software em escala
+          e discussões sobre as melhores ferramentas de IA para times de desenvolvimento.
+        </p>
+
+        <h2>Conteúdo publicado</h2>
+        <ul>
+          <li><strong>Arquitetura de software</strong> — Clean Architecture, DDD, CQRS, Event Sourcing, Microsserviços, Monólitos modulares</li>
+          <li><strong>Design patterns</strong> — GoF patterns, patterns de integração empresarial, anti-patterns e quando usá-los</li>
+          <li><strong>Engenharia de software</strong> — Qualidade de código, métricas, refatoração, testes, débito técnico</li>
+          <li><strong>IA para times dev</strong> — GitHub Copilot, Claude Code, ferramentas de review automatizado e como IA muda o trabalho do desenvolvedor</li>
+          <li><strong>Liderança técnica</strong> — Tech lead, arquitect decisions, comunicação técnica, code review efetivo</li>
+        </ul>
+
+        <h2>Para quem é</h2>
+        <p>
+          O LevelUpDev é voltado para <strong>desenvolvedores plenos e sêniores</strong> que querem aprofundar
+          conhecimentos técnicos, aspirantes a tech lead buscando referências, e equipes de engenharia que
+          querem elevar o nível técnico coletivo.
+        </p>
+
+        <h2>Nossa equipe</h2>
+        <p>
+          Somos engenheiros de software com experiência em sistemas de grande escala, que escrevem sobre
+          desafios reais enfrentados no dia a dia de times de desenvolvimento.
+        </p>
+        <p>
+          Fazemos parte do ecossistema da <a href="https://curitibasoftware.com.br" target="_blank" rel="noopener">Curitiba Software</a>.
+        </p>
+
+        <h2>Transparência</h2>
+        <p>
+          Utilizamos o <strong>Google AdSense</strong> para manter o blog gratuito.
+          Leia nossa <a href="/privacidade">Política de Privacidade</a> para mais informações.
+        </p>
+
+        <h2>Fale conosco</h2>
+        <p>Sugestões técnicas, contribuições ou parcerias? <a href="/contato">Entre em contato</a>.</p>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-prose h2 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.4rem; }
+  .about-prose p { line-height: 1.85; margin-bottom: 1rem; color: var(--text); }
+  .about-prose ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+  .about-prose ul li { line-height: 1.9; margin-bottom: .4rem; }
+  .about-prose a { color: var(--primary); text-decoration: underline; }
+</style>

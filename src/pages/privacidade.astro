@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = 'Política de Privacidade — LevelUpDev';
+const description = 'Política de Privacidade do LevelUpDev. Saiba como coletamos, usamos e protegemos seus dados, incluindo cookies, Google Analytics e Google AdSense.';
+const updated = '04 de maio de 2026';
+---
+
+<BaseLayout title={title} description={description}>
+  <SEO slot="head" title={title} description={description} type="website" slug="privacidade" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Política de Privacidade</h1>
+      <p>Última atualização: {updated}</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container" style="max-width:800px">
+      <div class="about-prose">
+
+        <h2>1. Quem somos</h2>
+        <p>
+          O <strong>LevelUpDev</strong> (<code>levelupdev.com.br</code>) é um blog técnico avançado para
+          desenvolvedores focado em arquitetura de software, design patterns e carreira sênior.
+        </p>
+        <p>Responsável pelo tratamento dos dados: <strong>wallyson.duarte@gmail.com</strong></p>
+
+        <h2>2. Dados que coletamos</h2>
+
+        <h3>2.1 Navegação e Analytics</h3>
+        <p>
+          Utilizamos o <strong>Google Analytics</strong> para análise de tráfego anônima: páginas visitadas,
+          tempo de navegação, localização geográfica aproximada e tipo de dispositivo.
+        </p>
+
+        <h3>2.2 Newsletter</h3>
+        <p>
+          Ao se inscrever, coletamos apenas seu e-mail. Não compartilhamos com terceiros.
+          Cancele via <a href="/contato">contato</a>.
+        </p>
+
+        <h3>2.3 Formulário de contato</h3>
+        <p>Nome e e-mail usados apenas para responder à sua mensagem.</p>
+
+        <h2>3. Cookies e Publicidade</h2>
+        <p>
+          O LevelUpDev exibe anúncios via <strong>Google AdSense</strong>. O Google usa cookies para
+          personalizar anúncios. Desative em
+          <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">google.com/settings/ads</a>.
+        </p>
+        <ul>
+          <li><strong>Cookies de desempenho</strong> — Google Analytics (anônimo)</li>
+          <li><strong>Cookies de publicidade</strong> — Google AdSense</li>
+          <li><strong>Cookies funcionais</strong> — preferências do usuário</li>
+        </ul>
+
+        <h2>4. Seus direitos (LGPD)</h2>
+        <p>Conforme a Lei nº 13.709/2018, você tem direito a acessar, corrigir, excluir e portar seus dados.</p>
+        <p>Entre em <a href="/contato">contato</a>. Respondemos em até 15 dias úteis.</p>
+
+        <h2>5. Compartilhamento</h2>
+        <p>
+          Não vendemos dados. Analytics processado pelo Google conforme sua
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.
+        </p>
+
+        <h2>6. Alterações</h2>
+        <p>Esta política pode ser atualizada. A data no topo indica a versão vigente.</p>
+
+        <h2>7. Contato</h2>
+        <p>Dúvidas? <a href="/contato">Fale conosco</a>.</p>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-prose h2 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.4rem; }
+  .about-prose h3 { margin-top: 1.25rem; margin-bottom: .5rem; font-size: 1.1rem; }
+  .about-prose p { line-height: 1.85; margin-bottom: 1rem; color: var(--text); }
+  .about-prose ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+  .about-prose ul li { line-height: 1.9; margin-bottom: .35rem; }
+  .about-prose a { color: var(--primary); text-decoration: underline; }
+  .about-prose code { background: var(--bg-light); padding: .1em .4em; border-radius: 4px; font-size: .9em; }
+</style>
