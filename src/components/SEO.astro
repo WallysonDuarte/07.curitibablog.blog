@@ -1,6 +1,11 @@
 ---
 import type { FaqItem } from '../lib/types';
 
+interface BreadcrumbItem {
+  name: string;
+  item?: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -14,6 +19,7 @@ interface Props {
   faqs?: FaqItem[];
   categoryName?: string;
   categorySlug?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -29,6 +35,7 @@ const {
   faqs = [],
   categoryName,
   categorySlug,
+  breadcrumbs = [],
 } = Astro.props;
 
 const siteUrl = 'https://levelupdev.com.br';
@@ -48,7 +55,7 @@ const articleSchema = type === 'article' && publishedAt ? {
       inLanguage: 'pt-BR',
       datePublished: publishedAt.toISOString(),
       dateModified: (updatedAt ?? publishedAt).toISOString(),
-      image: image ? { '@type': 'ImageObject', url: ogImage } : undefined,
+      image: image ? [{ '@type': 'ImageObject', url: ogImage }] : undefined,
       author: { '@type': 'Person', name: author },
       publisher: {
         '@type': 'Organization',
@@ -150,6 +157,9 @@ const faqSchema = faqs.length > 0 ? {
 )}
 {websiteSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+)}
+{breadcrumbSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 )}
 {faqSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

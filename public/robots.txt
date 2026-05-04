@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
 
 Sitemap: https://levelupdev.com.br/sitemap-index.xml

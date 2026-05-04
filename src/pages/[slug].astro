@@ -82,7 +82,7 @@ const faqSideAd = faqSideAds[0] ?? null;
   <!-- Cover image hero -->
   {post.coverImageUrl && (
     <div class="post-cover-hero">
-      <img src={post.coverImageUrl} alt={post.title} decoding="async" />
+      <img src={post.coverImageUrl} alt={post.title} loading="eager" fetchpriority="high" decoding="async" />
       <div class="post-cover-hero-overlay"></div>
     </div>
   )}
