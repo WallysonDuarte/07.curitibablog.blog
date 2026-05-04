@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = 'Sobre o CuritibaBlog';
+const description = 'Conheça o CuritibaBlog — blog de tecnologia, inteligência artificial e desenvolvimento de software criado em Curitiba, capital tech do Sul do Brasil.';
+---
+
+<BaseLayout title={title} description={description}>
+  <SEO slot="head" title={title} description={description} type="website" slug="sobre" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Sobre o CuritibaBlog</h1>
+      <p>Tecnologia, IA e Desenvolvimento direto de Curitiba para o Brasil</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container" style="max-width:800px">
+      <div class="about-prose">
+
+        <h2>Nossa Missão</h2>
+        <p>
+          O <strong>CuritibaBlog</strong> é um blog de tecnologia criado em Curitiba, a maior capital tecnológica
+          do Sul do Brasil. Nossa missão é democratizar o acesso ao conhecimento técnico — trazendo guias completos,
+          análises imparciais e conteúdo prático sobre inteligência artificial, desenvolvimento de software e as
+          principais ferramentas tech do mercado.
+        </p>
+        <p>
+          Acreditamos que o conhecimento em tecnologia deve ser acessível a todos: do iniciante que está dando os
+          primeiros passos na programação ao desenvolvedor sênior que busca se manter atualizado com as últimas
+          tendências em IA e arquitetura de software.
+        </p>
+
+        <h2>O que você vai encontrar aqui</h2>
+        <ul>
+          <li><strong>Guias de ferramentas de IA</strong> — Análises detalhadas de ChatGPT, Claude, Google Gemini, Midjourney, ElevenLabs, HeyGen e mais de 100 ferramentas de inteligência artificial</li>
+          <li><strong>Desenvolvimento de software</strong> — Artigos sobre Clean Architecture, Domain-Driven Design, CQRS, Event-Driven Design, design patterns e boas práticas</li>
+          <li><strong>Tecnologia prática</strong> — Reviews de ferramentas, comparativos, tutoriais passo a passo e dicas para o dia a dia do desenvolvedor</li>
+          <li><strong>Notícias tech</strong> — Análises dos principais acontecimentos do mundo da tecnologia com contexto e profundidade</li>
+          <li><strong>Curitiba Tech</strong> — Conteúdo sobre o ecossistema tecnológico de Curitiba e da região Sul do Brasil</li>
+        </ul>
+
+        <h2>Para quem é este blog</h2>
+        <p>
+          Nosso conteúdo é voltado para <strong>desenvolvedores de todos os níveis</strong>, estudantes de TI,
+          profissionais que querem adotar ferramentas de IA no trabalho, empreendedores de tecnologia e qualquer
+          pessoa curiosa sobre o mundo do software e da inteligência artificial.
+        </p>
+        <p>
+          Se você quer entender como usar o ChatGPT de forma profissional, aprender sobre arquitetura de software
+          ou acompanhar as últimas novidades em IA generativa — este é o lugar certo.
+        </p>
+
+        <h2>Quem somos</h2>
+        <p>
+          O CuritibaBlog é desenvolvido por uma equipe de profissionais de tecnologia baseados em Curitiba.
+          Todo o conteúdo publicado é pesquisado, escrito e revisado por pessoas que trabalham no dia a dia
+          com as tecnologias que descrevemos — garantindo precisão técnica e aplicabilidade prática.
+        </p>
+        <p>
+          Fazemos parte do ecossistema da <a href="https://curitibasoftware.com.br" target="_blank" rel="noopener">Curitiba Software</a>,
+          empresa de desenvolvimento de software sediada em Curitiba.
+        </p>
+
+        <h2>Transparência editorial</h2>
+        <p>
+          O CuritibaBlog preza pela transparência. Todos os artigos publicados refletem a opinião honesta da
+          nossa equipe. Quando avaliamos uma ferramenta, testamos antes de escrever sobre ela.
+        </p>
+        <p>
+          Para manter o blog gratuito e a produção de conteúdo de qualidade, utilizamos o <strong>Google AdSense</strong>
+          para exibição de anúncios relevantes. Esses anúncios são selecionados automaticamente pelo Google com
+          base no conteúdo das páginas e podem usar cookies de publicidade — leia nossa
+          <a href="/privacidade">Política de Privacidade</a> para saber mais.
+        </p>
+
+        <h2>Fale conosco</h2>
+        <p>
+          Sugestões de pauta, dúvidas, correções ou parcerias? Acesse nossa
+          <a href="/contato">página de contato</a> — respondemos todos os e-mails.
+        </p>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-prose h2 {
+    margin-top: 2rem;
+    margin-bottom: .75rem;
+    font-size: 1.4rem;
+  }
+  .about-prose p {
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .about-prose ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .about-prose ul li {
+    line-height: 1.9;
+    margin-bottom: .4rem;
+  }
+  .about-prose a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = 'Política de Privacidade — CuritibaBlog';
+const description = 'Política de Privacidade do CuritibaBlog. Saiba como coletamos, usamos e protegemos seus dados, incluindo informações sobre cookies, Google Analytics e Google AdSense.';
+const updated = '04 de maio de 2026';
+---
+
+<BaseLayout title={title} description={description}>
+  <SEO slot="head" title={title} description={description} type="website" slug="privacidade" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Política de Privacidade</h1>
+      <p>Última atualização: {updated}</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container" style="max-width:800px">
+      <div class="about-prose">
+
+        <h2>1. Quem somos</h2>
+        <p>
+          O <strong>CuritibaBlog</strong> (<code>curitibablog.com.br</code>) é um blog de tecnologia independente
+          dedicado a conteúdo sobre inteligência artificial, desenvolvimento de software e ferramentas tech.
+          Estamos comprometidos com a transparência sobre como coletamos e usamos seus dados.
+        </p>
+        <p>Responsável pelo tratamento dos dados: <strong>wallyson.duarte@gmail.com</strong></p>
+
+        <h2>2. Dados que coletamos</h2>
+
+        <h3>2.1 Navegação e Analytics</h3>
+        <p>
+          Utilizamos o <strong>Google Analytics</strong> para analisar o tráfego do site. Isso coleta dados como:
+          páginas visitadas, tempo de navegação, localização geográfica aproximada, tipo de dispositivo e
+          navegador. Esses dados são anônimos e usados exclusivamente para melhorar o conteúdo do blog.
+        </p>
+
+        <h3>2.2 Newsletter</h3>
+        <p>
+          Caso você se inscreva em nossa newsletter, coletamos apenas seu endereço de e-mail. Não
+          compartilhamos sua informação com terceiros. Você pode cancelar a inscrição a qualquer momento
+          clicando no link de descadastro nos e-mails ou entrando em <a href="/contato">contato conosco</a>.
+        </p>
+
+        <h3>2.3 Formulário de contato</h3>
+        <p>
+          Quando você entra em contato, coletamos seu nome e e-mail apenas para responder à sua mensagem.
+          Esses dados não são armazenados em banco de dados nem compartilhados.
+        </p>
+
+        <h2>3. Cookies e Publicidade</h2>
+        <p>
+          O CuritibaBlog exibe anúncios por meio do <strong>Google AdSense</strong>. O Google usa cookies
+          para personalizar os anúncios exibidos com base em suas visitas a este e a outros sites.
+        </p>
+        <p>
+          Você pode desativar os anúncios personalizados acessando as
+          <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Configurações de Anúncios do Google</a>
+          ou através do portal <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer">aboutads.info</a>.
+        </p>
+        <p>Utilizamos os seguintes tipos de cookies:</p>
+        <ul>
+          <li><strong>Cookies de desempenho</strong> — Google Analytics (análise de tráfego anônima)</li>
+          <li><strong>Cookies de publicidade</strong> — Google AdSense (anúncios relevantes)</li>
+          <li><strong>Cookies funcionais</strong> — preferências do usuário (newsletter cooldown)</li>
+        </ul>
+        <p>
+          Ao continuar navegando no site, você consente com o uso desses cookies conforme descrito nesta política.
+        </p>
+
+        <h2>4. Seus direitos (LGPD)</h2>
+        <p>
+          De acordo com a <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018)</strong>, você tem direito a:
+        </p>
+        <ul>
+          <li>Confirmar a existência de tratamento dos seus dados</li>
+          <li>Acessar seus dados pessoais que possuímos</li>
+          <li>Solicitar correção de dados incorretos ou desatualizados</li>
+          <li>Solicitar a exclusão de seus dados</li>
+          <li>Revogar o consentimento a qualquer momento</li>
+          <li>Portabilidade dos dados a outro fornecedor de serviço</li>
+        </ul>
+        <p>
+          Para exercer qualquer desses direitos, entre em <a href="/contato">contato conosco</a>.
+          Responderemos em até 15 dias úteis.
+        </p>
+
+        <h2>5. Compartilhamento de dados</h2>
+        <p>
+          Não vendemos, alugamos nem compartilhamos seus dados pessoais com terceiros para fins comerciais,
+          exceto quando exigido por lei. Os dados de analytics são processados pelo Google conforme sua
+          própria <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.
+        </p>
+
+        <h2>6. Retenção de dados</h2>
+        <p>
+          E-mails de newsletter são mantidos enquanto você estiver inscrito. Dados de contato são descartados
+          após respondermos à sua mensagem. Dados de analytics são retidos pelo período configurado no
+          Google Analytics (padrão: 26 meses).
+        </p>
+
+        <h2>7. Alterações nesta política</h2>
+        <p>
+          Podemos atualizar esta política periodicamente para refletir mudanças em nossas práticas ou na
+          legislação. Recomendamos verificar esta página regularmente. A data da última atualização está
+          indicada no topo desta página.
+        </p>
+
+        <h2>8. Contato</h2>
+        <p>
+          Dúvidas sobre esta política ou sobre o tratamento dos seus dados? Entre em <a href="/contato">contato conosco</a>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-prose h2 {
+    margin-top: 2rem;
+    margin-bottom: .75rem;
+    font-size: 1.4rem;
+  }
+  .about-prose h3 {
+    margin-top: 1.25rem;
+    margin-bottom: .5rem;
+    font-size: 1.1rem;
+  }
+  .about-prose p {
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .about-prose ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .about-prose ul li {
+    line-height: 1.9;
+    margin-bottom: .35rem;
+  }
+  .about-prose a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+  .about-prose code {
+    background: var(--bg-light);
+    padding: .1em .4em;
+    border-radius: 4px;
+    font-size: .9em;
+  }
+</style>

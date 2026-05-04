@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = 'Contato — CuritibaBlog';
+const description = 'Entre em contato com a equipe do CuritibaBlog. Sugestões de pauta, dúvidas, parcerias ou qualquer assunto relacionado ao blog.';
+---
+
+<BaseLayout title={title} description={description}>
+  <SEO slot="head" title={title} description={description} type="website" slug="contato" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Entre em Contato</h1>
+      <p>Sugestões, dúvidas, parcerias ou correções — respondemos todos os e-mails</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container" style="max-width:640px">
+      <div class="about-prose">
+
+        <h2>Como falar conosco</h2>
+        <p>
+          A melhor forma de entrar em contato com a equipe do CuritibaBlog é por e-mail.
+          Respondemos em até 2 dias úteis.
+        </p>
+
+        <div class="contact-box">
+          <i class="fa-solid fa-envelope" style="font-size:1.5rem;color:var(--primary)"></i>
+          <div>
+            <strong>E-mail de contato</strong><br />
+            <a href="mailto:wallyson.duarte@gmail.com">wallyson.duarte@gmail.com</a>
+          </div>
+        </div>
+
+        <h2>Para que você pode escrever</h2>
+        <ul>
+          <li><strong>Sugestão de pauta</strong> — Quer que escrevamos sobre um assunto específico?</li>
+          <li><strong>Correção ou atualização</strong> — Encontrou alguma informação desatualizada?</li>
+          <li><strong>Parceria ou divulgação</strong> — Quer divulgar uma ferramenta ou produto?</li>
+          <li><strong>Dúvida técnica</strong> — Tem uma dúvida sobre algo que publicamos?</li>
+          <li><strong>Privacidade e LGPD</strong> — Quer exercer seus direitos de titular de dados?</li>
+        </ul>
+
+        <h2>Newsletter</h2>
+        <p>
+          Para cancelar sua inscrição na newsletter, envie um e-mail com o assunto
+          <strong>"Cancelar newsletter"</strong> e seu endereço de e-mail cadastrado.
+          Processamos o cancelamento em até 24 horas.
+        </p>
+
+        <p style="margin-top:2rem;font-size:.9rem;color:var(--text-muted)">
+          Leia também nossa <a href="/privacidade">Política de Privacidade</a> para entender como
+          tratamos os dados fornecidos nas comunicações.
+        </p>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-prose h2 {
+    margin-top: 2rem;
+    margin-bottom: .75rem;
+    font-size: 1.4rem;
+  }
+  .about-prose p {
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .about-prose ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .about-prose ul li {
+    line-height: 1.9;
+    margin-bottom: .4rem;
+  }
+  .about-prose a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+  .contact-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .contact-box a {
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+</style>
