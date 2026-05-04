@@ -1,4 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#e74c3c"/>
-  <text x="16" y="22" font-size="18" text-anchor="middle" fill="white" font-family="sans-serif" font-weight="bold">D</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" shape-rendering="crispEdges">
+  <!-- C letter -->
+  <polygon points="10,0 50,0 50,10 10,10" fill="#5b7bc4"/>
+  <polygon points="0,10 10,0 10,20 0,20" fill="#4aac44"/>
+  <polygon points="50,0 50,20 40,10" fill="#e84545"/>
+  <polygon points="0,20 10,20 10,80 0,80" fill="#5b7bc4"/>
+  <polygon points="0,30 10,20 10,40" fill="#e07820"/>
+  <polygon points="0,50 10,40 10,60" fill="#e84545"/>
+  <polygon points="0,70 10,60 10,80" fill="#4aac44"/>
+  <polygon points="10,90 50,90 50,100 10,100" fill="#e84545"/>
+  <polygon points="0,80 10,80 10,100 0,90" fill="#5b7bc4"/>
+  <polygon points="50,80 50,100 40,90" fill="#e07820"/>
+  <!-- B letter -->
+  <polygon points="55,0 65,0 65,100 55,100" fill="#5b7bc4"/>
+  <polygon points="65,0 90,0 90,10 65,10" fill="#4aac44"/>
+  <polygon points="90,0 100,10 90,20" fill="#e84545"/>
+  <polygon points="65,10 90,10 90,25 65,25" fill="#e07820"/>
+  <polygon points="90,20 100,10 100,30 90,30" fill="#5b7bc4"/>
+  <polygon points="65,25 90,25 90,50 65,50" fill="#4aac44"/>
+  <polygon points="90,30 100,30 90,50" fill="#e84545"/>
+  <polygon points="65,50 90,50 90,55 65,55" fill="#e07820"/>
+  <polygon points="90,50 100,50 90,60" fill="#5b7bc4"/>
+  <polygon points="65,55 95,55 95,75 65,75" fill="#e84545"/>
+  <polygon points="95,55 100,50 100,80 95,75" fill="#4aac44"/>
+  <polygon points="65,75 95,75 90,100 65,100" fill="#5b7bc4"/>
+  <polygon points="95,75 100,80 90,100" fill="#e07820"/>
 </svg>
