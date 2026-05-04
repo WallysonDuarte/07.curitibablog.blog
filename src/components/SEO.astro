@@ -23,7 +23,7 @@ const {
   type = 'website',
   publishedAt,
   updatedAt,
-  author = 'CuritibaBlog',
+  author = 'LevelUpDev',
   tags = [],
   slug,
   faqs = [],
@@ -31,28 +31,30 @@ const {
   categorySlug,
 } = Astro.props;
 
-const siteUrl = 'https://curitibablog.com.br';
+const siteUrl = 'https://levelupdev.com.br';
 const canonicalUrl = slug ? `${siteUrl}/${slug}` : new URL(Astro.url.pathname, siteUrl).href;
 const ogImage = image?.startsWith('http') ? image : image ? `${siteUrl}${image}` : `${siteUrl}/og-default.jpg`;
-const fullTitle = title.includes('Curitiba') ? title : `${title} | CuritibaBlog`;
+const fullTitle = title.includes('LevelUpDev') ? title : `${title} | LevelUpDev`;
+const ogImageAlt = `Imagem de capa: ${title}`;
 
 const articleSchema = type === 'article' && publishedAt ? {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Article',
+      '@type': 'BlogPosting',
       headline: title,
       description,
       url: canonicalUrl,
+      inLanguage: 'pt-BR',
       datePublished: publishedAt.toISOString(),
       dateModified: (updatedAt ?? publishedAt).toISOString(),
       image: image ? { '@type': 'ImageObject', url: ogImage } : undefined,
       author: { '@type': 'Person', name: author },
       publisher: {
         '@type': 'Organization',
-        name: 'CuritibaBlog',
+        name: 'LevelUpDev',
         url: siteUrl,
-        logo: { '@type': 'ImageObject', url: `${siteUrl}/favicon.svg` },
+        logo: { '@type': 'ImageObject', url: `${siteUrl}/icon.svg`, width: 512, height: 512 },
       },
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
       ...(tags.length && { keywords: tags.join(', ') }),
@@ -71,16 +73,28 @@ const articleSchema = type === 'article' && publishedAt ? {
 
 const websiteSchema = type === 'website' ? {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'CuritibaBlog',
-  url: siteUrl,
-  description: 'Guias sobre parques, turismo, gastronomia e tudo o que fazer em Curitiba.',
-  publisher: { '@type': 'Organization', name: 'CuritibaBlog', url: siteUrl },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${siteUrl}/?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
+  '@graph': [
+    {
+      '@type': 'Organization',
+      name: 'LevelUpDev',
+      url: siteUrl,
+      logo: { '@type': 'ImageObject', url: `${siteUrl}/icon.svg`, width: 512, height: 512 },
+      sameAs: [],
+    },
+    {
+      '@type': 'WebSite',
+      name: 'LevelUpDev',
+      url: siteUrl,
+      description: 'Conteúdo avançado sobre arquitetura de software, design patterns, boas práticas e como evoluir para os próximos níveis na carreira de desenvolvedor.',
+      inLanguage: 'pt-BR',
+      publisher: { '@type': 'Organization', name: 'LevelUpDev', url: siteUrl },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${siteUrl}/?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ],
 } : null;
 
 const faqSchema = faqs.length > 0 ? {
@@ -97,7 +111,7 @@ const faqSchema = faqs.length > 0 ? {
 <!-- Primary Meta -->
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href={canonicalUrl} />
 <meta name="author" content={author} />
 {tags.length > 0 && <meta name="keywords" content={tags.join(', ')} />}
@@ -110,19 +124,25 @@ const faqSchema = faqs.length > 0 ? {
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:site_name" content="CuritibaBlog" />
+<meta property="og:image:alt" content={ogImageAlt} />
+<meta property="og:site_name" content="LevelUpDev" />
 <meta property="og:locale" content="pt_BR" />
-{type === 'article' && publishedAt && <>
-  <meta property="article:published_time" content={publishedAt.toISOString()} />
-  <meta property="article:author" content={author} />
-  {updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
-</>}
+{type === 'article' && publishedAt && (
+  <Fragment>
+    <meta property="article:published_time" content={publishedAt.toISOString()} />
+    <meta property="article:author" content={author} />
+    {updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
+    {categoryName && <meta property="article:section" content={categoryName} />}
+    {tags.map(tag => <meta property="article:tag" content={tag} />)}
+  </Fragment>
+)}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
 
 <!-- Structured Data -->
 {articleSchema && (
