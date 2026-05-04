@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = 'Sobre o BlogDudu';
+const description = 'Conheça o BlogDudu — blog pessoal de tecnologia, inteligência artificial e desenvolvimento de software com conteúdo prático para profissionais e entusiastas de TI.';
+---
+
+<BaseLayout title={title} description={description}>
+  <SEO slot="head" title={title} description={description} type="website" slug="sobre" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Sobre o BlogDudu</h1>
+      <p>Tecnologia, IA e Desenvolvimento — conteúdo prático para o dia a dia</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container" style="max-width:800px">
+      <div class="about-prose">
+
+        <h2>O que é o BlogDudu</h2>
+        <p>
+          O <strong>BlogDudu</strong> é um blog independente de tecnologia dedicado a compartilhar conhecimento
+          prático sobre inteligência artificial, desenvolvimento de software e as melhores ferramentas tech
+          do mercado. Nosso foco é conteúdo direto ao ponto — sem enrolação, com aplicabilidade real no
+          dia a dia de quem trabalha com tecnologia.
+        </p>
+        <p>
+          Acreditamos que o melhor conteúdo tech é aquele que você pode aplicar imediatamente: um guia que
+          você lê hoje e já usa amanhã no trabalho. Por isso, cada artigo publicado aqui é cuidadosamente
+          pesquisado e escrito com foco em utilidade prática.
+        </p>
+
+        <h2>O que você vai encontrar aqui</h2>
+        <ul>
+          <li><strong>Ferramentas de IA</strong> — Guias detalhados de ChatGPT, Claude, Gemini, Midjourney, ElevenLabs e dezenas de outras ferramentas de inteligência artificial</li>
+          <li><strong>Desenvolvimento de software</strong> — Artigos sobre boas práticas, design patterns, arquitetura e as principais tecnologias do mercado</li>
+          <li><strong>Tutoriais e how-tos</strong> — Passo a passo para resolver problemas reais do cotidiano tech</li>
+          <li><strong>Reviews e comparativos</strong> — Análises honestas de ferramentas e plataformas</li>
+          <li><strong>Notícias tech</strong> — Os acontecimentos mais relevantes do mundo da tecnologia com contexto e análise</li>
+        </ul>
+
+        <h2>Para quem é</h2>
+        <p>
+          Nosso conteúdo é para <strong>desenvolvedores, designers, product managers, empreendedores digitais</strong>
+          e qualquer pessoa que queira aproveitar o melhor da tecnologia moderna. Se você usa ou quer usar
+          ferramentas de IA no trabalho, está aprendendo a programar ou quer se manter atualizado sobre
+          as últimas tendências em tech — você está no lugar certo.
+        </p>
+
+        <h2>Nossa equipe</h2>
+        <p>
+          O BlogDudu é mantido por uma equipe de profissionais da área de tecnologia apaixonados por
+          compartilhar conhecimento. Todo o conteúdo publicado passa por pesquisa cuidadosa e revisão
+          técnica antes de ser publicado.
+        </p>
+        <p>
+          Fazemos parte do ecossistema da <a href="https://curitibasoftware.com.br" target="_blank" rel="noopener">Curitiba Software</a>.
+        </p>
+
+        <h2>Transparência</h2>
+        <p>
+          Para manter o blog gratuito e a produção de conteúdo de qualidade, utilizamos o <strong>Google AdSense</strong>
+          para exibição de anúncios. Esses anúncios são selecionados automaticamente com base no conteúdo
+          das páginas. Leia nossa <a href="/privacidade">Política de Privacidade</a> para saber mais.
+        </p>
+
+        <h2>Contato</h2>
+        <p>
+          Sugestões de pauta, correções ou parcerias? Acesse nossa <a href="/contato">página de contato</a>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-prose h2 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.4rem; }
+  .about-prose p { line-height: 1.85; margin-bottom: 1rem; color: var(--text); }
+  .about-prose ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+  .about-prose ul li { line-height: 1.9; margin-bottom: .4rem; }
+  .about-prose a { color: var(--primary); text-decoration: underline; }
+</style>
