@@ -56,6 +56,11 @@ const publishDate = post.publishedAt || post.createdAt;
 const metaTitle = post.metaTitle || post.title;
 const metaDesc  = post.metaDescription || post.summary;
 
+const spotifyEmbedUrl = post.podcastUrl ? (() => {
+  try { return `https://open.spotify.com/embed${new URL(post.podcastUrl).pathname}`; }
+  catch { return null; }
+})() : null;
+
 // Pick one inline ad to rotate per section
 const inlineAd = inlineAds[0] ?? null;
 const sidebarAd = sidebarAds[0] ?? null;
@@ -121,6 +126,35 @@ const faqSideAd = faqSideAds[0] ?? null;
         <p style="font-size:1.05rem;color:var(--text-dark);font-weight:600;margin-bottom:1.5rem;border-left:4px solid var(--primary);padding-left:.8rem;line-height:1.6;">
           {post.summary}
         </p>
+      )}
+
+      <!-- Spotify podcast player -->
+      {spotifyEmbedUrl && (
+        <div style="margin:1.5rem 0;">
+          <iframe
+            src={spotifyEmbedUrl}
+            width="100%" height="152" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            style="border-radius:12px;"
+          ></iframe>
+        </div>
+      )}
+
+      <!-- YouTube video player -->
+      {post.youtubeVideoId && (
+        <div style="margin:1.5rem 0;aspect-ratio:16/9;border-radius:12px;overflow:hidden;">
+          <iframe
+            width="100%" height="100%"
+            src={`https://www.youtube.com/embed/${post.youtubeVideoId}`}
+            title="YouTube video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            style="display:block;"
+          ></iframe>
+        </div>
       )}
 
       <!-- Article body with inline blocks -->
