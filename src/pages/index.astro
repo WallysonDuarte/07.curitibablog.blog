@@ -176,7 +176,6 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
         }
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
         if (speed > 3) { p.vx = (p.vx / speed) * 3; p.vy = (p.vy / speed) * 3; }
-        p.vx *= 0.99; p.vy *= 0.99;
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0) { p.x = 0; p.vx = Math.abs(p.vx); }
         if (p.x > canvas.width) { p.x = canvas.width; p.vx = -Math.abs(p.vx); }
