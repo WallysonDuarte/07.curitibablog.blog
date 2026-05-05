@@ -35,6 +35,8 @@ export interface BlogPost {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  podcastUrl?: string;
+  youtubeVideoId?: string;
 }
 
 export interface BlogCategory {

@@ -8,6 +8,8 @@ const [posts, categories] = await Promise.all([fetchAllPosts(), fetchCategories(
 const sorted = posts.sort((a, b) =>
   new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime()
 );
+const withCovers = posts.filter(p => p.coverImageUrl);
+const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 10);
 ---
 
 <BaseLayout
@@ -21,9 +23,10 @@ const sorted = posts.sort((a, b) =>
     type="website"
   />
 
-  <!-- Hero -->
-  <section class="page-hero">
-    <div class="container">
+  <!-- Particle Hero -->
+  <section class="page-hero particle-hero" id="hero" style="position:relative;background:#0d1b2a;overflow:hidden;">
+    <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
+    <div class="container" style="position:relative;z-index:1;">
       <h1>Suba de Nível na Sua Carreira Dev</h1>
       <p>Arquitetura, padrões de projeto e soft skills para quem quer ir além do júnior</p>
 
@@ -52,6 +55,22 @@ const sorted = posts.sort((a, b) =>
             <a href={`/categoria/${cat.slug}`} class="filter-pill" data-cat={cat.slug}>
               {cat.name}
               {cat.postCount > 0 && <span style="opacity:.6;font-size:.75em;margin-left:.3rem">({cat.postCount})</span>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Cover carousel -->
+  {carouselItems.length >= 3 && (
+    <section style="padding:1rem 0;background:var(--bg);border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div id="cover-carousel" style="display:flex;gap:0.75rem;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:0.25rem;">
+          {carouselItems.map(post => (
+            <a href={`/${post.slug}`} style="flex:0 0 auto;width:200px;border-radius:10px;overflow:hidden;position:relative;display:block;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.15);background:#111;">
+              <img src={post.coverImageUrl} alt={post.title} loading="lazy" style="width:100%;height:120px;object-fit:cover;display:block;" />
+              <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:.5rem .6rem .4rem;font-size:.7rem;color:#fff;line-height:1.3;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{post.title}</div>
             </a>
           ))}
         </div>
@@ -118,4 +137,92 @@ const sorted = posts.sort((a, b) =>
       if (grid) grid.style.display = (visible === 0 && q) ? 'none' : '';
     });
   }
+
+  // Particle hero
+  (function () {
+    const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const hero = document.getElementById('hero') as HTMLElement;
+    const mouse = { x: -9999, y: -9999 };
+    type Particle = { x: number; y: number; vx: number; vy: number; r: number };
+    let particles: Particle[] = [];
+
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+      const count = Math.min(60, Math.floor(canvas.width * canvas.height / 15000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        r: 1.5 + Math.random() * 3,
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100 && dist > 0) {
+          const force = (100 - dist) / 100;
+          p.vx += (dx / dist) * force * 1.5;
+          p.vy += (dy / dist) * force * 1.5;
+        }
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        if (speed > 3) { p.vx = (p.vx / speed) * 3; p.vy = (p.vy / speed) * 3; }
+        p.vx *= 0.99; p.vy *= 0.99;
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) { p.x = 0; p.vx = Math.abs(p.vx); }
+        if (p.x > canvas.width) { p.x = canvas.width; p.vx = -Math.abs(p.vx); }
+        if (p.y < 0) { p.y = 0; p.vy = Math.abs(p.vy); }
+        if (p.y > canvas.height) { p.y = canvas.height; p.vy = -Math.abs(p.vy); }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.fill();
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const cx = p.x - q.x; const cy = p.y - q.y;
+          const cd = Math.sqrt(cx * cx + cy * cy);
+          if (cd < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(255,255,255,${0.3 * (1 - cd / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    hero.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+  })();
+
+  // Carousel auto-scroll
+  (function () {
+    const carousel = document.getElementById('cover-carousel') as HTMLElement | null;
+    if (!carousel) return;
+    let dir = 1;
+    setInterval(() => {
+      carousel.scrollLeft += dir * 1.5;
+      if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 5) dir = -1;
+      if (carousel.scrollLeft <= 5) dir = 1;
+    }, 30);
+  })();
 </script>
