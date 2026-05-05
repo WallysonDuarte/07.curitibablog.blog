@@ -8,6 +8,11 @@ const [posts, categories] = await Promise.all([fetchAllPosts(), fetchCategories(
 const sorted = posts.sort((a, b) =>
   new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime()
 );
+
+// Coletar todas as tags únicas com contagem
+const tagCountMap: Record<string, number> = {};
+posts.forEach(p => (p.tags || []).forEach(t => { tagCountMap[t] = (tagCountMap[t] || 0) + 1; }));
+const allTags = Object.entries(tagCountMap).sort((a, b) => b[1] - a[1]).map(([tag, count]) => ({ tag, count }));
 const withCovers = posts.filter(p => p.coverImageUrl);
 const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 10);
 ---
@@ -78,7 +83,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     </section>
   )}
 
-  <!-- Posts grid -->
+  <!-- Posts grid + Tags sidebar -->
   <section class="posts-section">
     <div class="container">
       {sorted.length === 0 ? (
@@ -87,56 +92,100 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
           <p>Nenhum artigo disponível no momento.</p>
         </div>
       ) : (
-        <>
-          <div class="section-title">
-            <h2>Artigos Recentes</h2>
+        <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+          <!-- Sidebar: Tags -->
+          {allTags.length > 0 && (
+            <aside id="tags-sidebar" style="width:190px;flex-shrink:0;">
+              <div style="position:sticky;top:1rem;background:var(--bg-light);border:1px solid var(--border);border-radius:10px;padding:1rem;max-height:calc(100vh - 2rem);overflow-y:auto;">
+                <p style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin:0 0 .75rem;">Filtrar por tag</p>
+                <a href="#" class="tag-sidebar-item active" data-tag="" style="display:block;padding:.3rem .5rem;border-radius:6px;font-size:.8rem;color:var(--text);text-decoration:none;margin-bottom:.2rem;transition:background .15s;">
+                  # todos <span style="opacity:.5;font-size:.72em">({sorted.length})</span>
+                </a>
+                {allTags.map(({ tag, count }) => (
+                  <a href="#" class="tag-sidebar-item" data-tag={tag} style="display:block;padding:.3rem .5rem;border-radius:6px;font-size:.8rem;color:var(--text);text-decoration:none;margin-bottom:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .15s;" title={tag}>
+                    #{tag} <span style="opacity:.5;font-size:.72em">({count})</span>
+                  </a>
+                ))}
+              </div>
+            </aside>
+          )}
+
+          <!-- Posts -->
+          <div style="flex:1;min-width:0;">
+            <div class="section-title">
+              <h2>Artigos Recentes</h2>
+            </div>
+            <div class="posts-grid" id="posts-grid">
+              {sorted.map(post => (
+                <PostCard
+                  title={post.title}
+                  summary={post.summary}
+                  slug={post.slug}
+                  publishedAt={post.publishedAt}
+                  createdAt={post.createdAt}
+                  category={post.category}
+                  categories={post.categories}
+                  tags={post.tags}
+                  coverImageUrl={post.coverImageUrl}
+                  views={post.views}
+                />
+              ))}
+            </div>
+            <div id="no-results" style="display:none" class="empty-state">
+              <i class="fa-solid fa-search"></i>
+              <p>Nenhum artigo encontrado para esta busca.</p>
+            </div>
           </div>
-          <div class="posts-grid" id="posts-grid">
-            {sorted.map(post => (
-              <PostCard
-                title={post.title}
-                summary={post.summary}
-                slug={post.slug}
-                publishedAt={post.publishedAt}
-                createdAt={post.createdAt}
-                category={post.category}
-                categories={post.categories}
-                tags={post.tags}
-                coverImageUrl={post.coverImageUrl}
-                views={post.views}
-              />
-            ))}
-          </div>
-          <div id="no-results" style="display:none" class="empty-state">
-            <i class="fa-solid fa-search"></i>
-            <p>Nenhum artigo encontrado para esta busca.</p>
-          </div>
-        </>
+        </div>
       )}
     </div>
   </section>
 </BaseLayout>
 
 <script>
-  // Client-side search filter
   const input = document.getElementById('search-input') as HTMLInputElement;
   const grid  = document.getElementById('posts-grid');
   const noRes = document.getElementById('no-results');
 
-  if (input && grid) {
-    input.addEventListener('input', () => {
-      const q = input.value.toLowerCase().trim();
-      let visible = 0;
-      grid.querySelectorAll<HTMLElement>('.post-card').forEach(card => {
-        const text = card.textContent?.toLowerCase() || '';
-        const show = !q || text.includes(q);
-        card.style.display = show ? '' : 'none';
-        if (show) visible++;
-      });
-      if (noRes) noRes.style.display = (visible === 0 && q) ? 'block' : 'none';
-      if (grid) grid.style.display = (visible === 0 && q) ? 'none' : '';
+  let activeTag = '';
+
+  function applyFilters() {
+    const q = input?.value.toLowerCase().trim() || '';
+    let visible = 0;
+    grid?.querySelectorAll<HTMLElement>('.post-card').forEach(card => {
+      const text = card.textContent?.toLowerCase() || '';
+      const cardTags = (card.dataset.tags || '').split(',');
+      const matchSearch = !q || text.includes(q);
+      const matchTag = !activeTag || cardTags.includes(activeTag);
+      const show = matchSearch && matchTag;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
     });
+    if (noRes) noRes.style.display = (visible === 0) ? 'block' : 'none';
+    if (grid) grid.style.display = (visible === 0) ? 'none' : '';
   }
+
+  if (input) {
+    input.addEventListener('input', applyFilters);
+  }
+
+  document.querySelectorAll<HTMLElement>('.tag-sidebar-item').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      activeTag = btn.dataset.tag || '';
+      document.querySelectorAll<HTMLElement>('.tag-sidebar-item').forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '';
+        b.style.color = '';
+        b.style.fontWeight = '';
+      });
+      btn.classList.add('active');
+      btn.style.background = 'var(--primary, #2d6a4f)';
+      btn.style.color = '#fff';
+      btn.style.fontWeight = '600';
+      applyFilters();
+    });
+  });
 
   // Particle hero
   (function () {
