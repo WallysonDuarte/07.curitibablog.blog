@@ -654,6 +654,40 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   text-align: center; font-size: .82rem; color: rgba(255,255,255,.4);
 }
 
+/* ── Newsletter ────────────────────────────────── */
+.footer-newsletter {
+  max-width: var(--max-width); margin: 2rem auto 0; padding: 2rem 1.5rem 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.footer-newsletter h4 {
+  font-family: var(--font-heading); font-size: .85rem; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--primary); margin-bottom: .5rem;
+}
+.footer-newsletter > p { font-size: .87rem; color: rgba(255,255,255,.6); margin-bottom: 1rem; }
+.nl-form { display: flex; flex-direction: column; gap: .6rem; max-width: 420px; }
+.nl-form input[type="email"],
+.nl-form input[type="number"] {
+  padding: 10px 14px; border: 1px solid rgba(255,255,255,.2); border-radius: var(--radius);
+  background: rgba(255,255,255,.08); color: #fff; font-family: var(--font-body); font-size: .9rem; outline: none;
+}
+.nl-form input[type="email"]::placeholder,
+.nl-form input[type="number"]::placeholder { color: rgba(255,255,255,.35); }
+.nl-form input[type="email"]:focus,
+.nl-form input[type="number"]:focus { border-color: var(--primary); }
+.nl-captcha-row { display: flex; align-items: center; gap: .6rem; }
+.nl-captcha-row label { font-size: .87rem; color: rgba(255,255,255,.6); white-space: nowrap; }
+.nl-captcha-row input { width: 80px; }
+#nl-btn {
+  align-self: flex-start; padding: 10px 24px; background: var(--primary); color: #fff;
+  border: none; border-radius: var(--radius); font-family: var(--font-heading);
+  font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+#nl-btn:hover { background: var(--primary-dark); }
+#nl-btn:disabled { opacity: .6; cursor: default; }
+.nl-cooldown-msg { font-size: .87rem; color: rgba(255,255,255,.7); padding: .5rem 0; }
+.nl-msg { font-size: .85rem; margin-top: .25rem; }
+
 /* ── Pagination ────────────────────────────────── */
 .pagination { display: flex; justify-content: center; gap: .5rem; margin: 2.5rem 0; }
 .pagination a, .pagination span {
