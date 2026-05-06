@@ -22,6 +22,35 @@
   --content-width: 760px;
 }
 
+
+/* ── Dark Mode ─────────────────────────────────── */
+[data-theme="dark"] {
+  --bg:        #0f172a;
+  --bg-light:  #1e293b;
+  --border:    #334155;
+  --text-dark: #f1f5f9;
+  --text-body: #cbd5e1;
+  --text:      #cbd5e1;
+  --text-muted:#94a3b8;
+  --text-light:#94a3b8;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 24px rgba(0,0,0,.6);
+}
+
+/* ── Theme Toggle Button ───────────────────────── */
+.theme-toggle {
+  background: none; border: none; cursor: pointer; flex-shrink: 0;
+  padding: 7px 9px; color: rgba(255,255,255,.75); font-size: .95rem;
+  border-radius: 6px; transition: color .2s, background .2s;
+  line-height: 1; display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { color: var(--primary); background: rgba(255,255,255,.08); }
+
+/* ── Smooth theme transition ───────────────────── */
+body, .post-card, .filter-pill, .search-bar input,
+.card-tag, .site-footer, .article-body {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
 /* ── Reset ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 14px; }
@@ -163,7 +192,7 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 
 /* ── Post Card ─────────────────────────────────── */
 .post-card {
-  background: #fff;
+  background: var(--bg);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -214,7 +243,7 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 .filter-pill {
   font-family: var(--font-heading); font-size: .78rem; text-transform: uppercase; letter-spacing: 1px;
   padding: 6px 16px; border-radius: 20px; border: 2px solid var(--border);
-  color: var(--text-dark); background: #fff; transition: all .2s; cursor: pointer;
+  color: var(--text-dark); background: var(--bg); transition: all .2s; cursor: pointer;
   text-decoration: none;
 }
 .filter-pill:hover, .filter-pill.active {
@@ -224,6 +253,7 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 /* ── Search ────────────────────────────────────── */
 .search-bar { display: flex; max-width: 480px; margin: 1.5rem auto 0; }
 .search-bar input {
+  background: var(--bg);
   flex: 1; padding: 10px 16px; border: 2px solid var(--border); border-right: none;
   border-radius: var(--radius) 0 0 var(--radius); font-family: var(--font-body);
   font-size: .95rem; outline: none; color: var(--text-dark);

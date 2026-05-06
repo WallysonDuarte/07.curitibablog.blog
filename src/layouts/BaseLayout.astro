@@ -32,6 +32,13 @@ const { title, description } = Astro.props;
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" /></noscript>
   <slot name="head" />
+  <script is:inline>
+  (function(){
+    var t = localStorage.getItem('cb-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+  </script>
 </head>
 <body>
   <Header />
@@ -121,6 +128,19 @@ const { title, description } = Astro.props;
         const id = (el as HTMLElement).dataset.adId;
         if (id) fetch(`https://api.curitibasoftware.com.br/api/advertisement/${id}/click`, { method: 'POST' }).catch(() => {});
       });
+    });
+
+    // ── Theme toggle ──────────────────────────────
+    const themeBtn  = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    function setTheme(t: string) {
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('cb-theme', t);
+      if (themeIcon) themeIcon.className = t === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+    setTheme(document.documentElement.getAttribute('data-theme') || 'light');
+    themeBtn?.addEventListener('click', () => {
+      setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
   </script>
 </body>
