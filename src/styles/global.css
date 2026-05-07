@@ -197,24 +197,15 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.8rem;
+  align-items: start;
 }
-/* 1 full + 2 meio: cada 3n+1 ocupa a linha toda com imagem panorâmica */
-.posts-grid .post-card:nth-child(3n+1) {
-  grid-column: 1 / -1;
+@media (max-width: 900px) {
+  .posts-grid { grid-template-columns: repeat(2, 1fr); }
 }
-.posts-grid .post-card:nth-child(3n+1) .post-card-image,
-.posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
-  aspect-ratio: 21/7;
-}
-@media (max-width: 700px) {
+@media (max-width: 560px) {
   .posts-grid { grid-template-columns: 1fr; }
-  .posts-grid .post-card:nth-child(3n+1) { grid-column: auto; }
-  .posts-grid .post-card:nth-child(3n+1) .post-card-image,
-  .posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
-    aspect-ratio: 16/9;
-  }
 }
 
 /* ── Post Card ─────────────────────────────────── */
