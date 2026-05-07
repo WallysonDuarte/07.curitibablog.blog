@@ -200,28 +200,19 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.8rem;
 }
-/* 1 full + 2 meio: cada 3n+1 ocupa a linha toda */
+/* 1 full + 2 meio: cada 3n+1 ocupa a linha toda com imagem panorâmica */
 .posts-grid .post-card:nth-child(3n+1) {
   grid-column: 1 / -1;
-  flex-direction: row;
-  max-height: 240px;
 }
 .posts-grid .post-card:nth-child(3n+1) .post-card-image,
 .posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
-  width: 360px;
-  flex-shrink: 0;
-  aspect-ratio: unset;
+  aspect-ratio: 21/7;
 }
 @media (max-width: 700px) {
   .posts-grid { grid-template-columns: 1fr; }
-  .posts-grid .post-card:nth-child(3n+1) {
-    grid-column: auto;
-    flex-direction: column;
-    max-height: none;
-  }
+  .posts-grid .post-card:nth-child(3n+1) { grid-column: auto; }
   .posts-grid .post-card:nth-child(3n+1) .post-card-image,
   .posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
-    width: 100%;
     aspect-ratio: 16/9;
   }
 }
