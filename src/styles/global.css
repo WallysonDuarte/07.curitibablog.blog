@@ -277,7 +277,11 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 }
 @media (max-width: 900px) {
   .post-layout { grid-template-columns: 1fr; }
-  .post-sidebar { order: -1; }
+  .sidebar-widget:has(.sidebar-ad) {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* ── Article ───────────────────────────────────── */
