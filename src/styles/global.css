@@ -168,6 +168,19 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 }
 .page-hero h1 { color: #fff; margin-bottom: .5rem; }
 .page-hero p { color: rgba(255,255,255,.7); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+.hero-breadcrumb {
+  display: inline-flex; align-items: center; gap: .4rem; margin-bottom: .8rem;
+  font-size: .8rem; color: rgba(255,255,255,.6);
+}
+.hero-breadcrumb a { color: rgba(255,255,255,.85); text-decoration: none; }
+.hero-breadcrumb a:hover { color: #fff; text-decoration: underline; }
+.btn-back {
+  display: inline-block; margin-top: 1rem; padding: 8px 18px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 20px; color: rgba(255,255,255,.9); font-size: .82rem;
+  text-decoration: none; transition: background .2s;
+}
+.btn-back:hover { background: rgba(255,255,255,.22); color: #fff; }
 
 /* ── Post Grid ─────────────────────────────────── */
 .posts-section { padding: 3rem 0; }

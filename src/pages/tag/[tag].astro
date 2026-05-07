@@ -8,13 +8,11 @@ import { toSlug } from '../../lib/utils';
 export async function getStaticPaths() {
   const posts = await fetchAllPosts();
 
-  // Map slug → { originalTag, posts[] }
   const tagMap = new Map<string, { originalTag: string; posts: typeof posts }>();
 
   posts.forEach(post => {
     (post.tags ?? []).forEach(originalTag => {
       const slug = toSlug(originalTag);
-      // Skip empty or single-char slugs
       if (slug.length < 2) return;
       if (!tagMap.has(slug)) tagMap.set(slug, { originalTag, posts: [] });
       tagMap.get(slug)!.posts.push(post);
@@ -37,12 +35,12 @@ const { tag, posts } = Astro.props;
 ---
 
 <BaseLayout
-  title={`#${tag} — BlogDudu`}
+  title={`#${tag} — CuritibaBlog`}
   description={`Artigos marcados com #${tag}. Encontre tutoriais e dicas sobre ${tag} para desenvolvedores.`}
 >
   <SEO
     slot="head"
-    title={`#${tag} — BlogDudu`}
+    title={`#${tag} — CuritibaBlog`}
     description={`Artigos marcados com #${tag}. Tutoriais e dicas para desenvolvedores sobre ${tag}.`}
     type="website"
     breadcrumbs={[
@@ -51,10 +49,19 @@ const { tag, posts } = Astro.props;
     ]}
   />
 
-  <section class="page-hero">
-    <div class="container">
+  <!-- Hero com partículas -->
+  <section class="page-hero particle-hero" id="hero" style="position:relative;background:#0d1b2a;overflow:hidden;">
+    <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
+    <div class="container" style="position:relative;z-index:1;">
+      <!-- Breadcrumb -->
+      <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Início</a>
+        <span aria-hidden="true">›</span>
+        <span>#{tag}</span>
+      </nav>
       <h1>#{tag}</h1>
       <p>{posts.length} artigo{posts.length !== 1 ? 's' : ''} com esta tag</p>
+      <a href="/" class="btn-back">← Voltar para todos os artigos</a>
     </div>
   </section>
 
@@ -87,3 +94,48 @@ const { tag, posts } = Astro.props;
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  (function () {
+    const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx  = canvas.getContext('2d');
+    if (!ctx)  return;
+    const hero = document.getElementById('hero') as HTMLElement;
+    const mouse = { x: -9999, y: -9999 };
+    type Particle = { x: number; y: number; vx: number; vy: number; r: number };
+    let particles: Particle[] = [];
+    function resize() {
+      canvas.width  = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+      const count = Math.min(60, Math.floor(canvas.width * canvas.height / 15000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+        vx: (Math.random()-0.5)*0.8,   vy: (Math.random()-0.5)*0.8,
+        r:  1.5+Math.random()*3,
+      }));
+    }
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for (let i=0;i<particles.length;i++) {
+        const p=particles[i];
+        const dx=p.x-mouse.x, dy=p.y-mouse.y, dist=Math.sqrt(dx*dx+dy*dy);
+        if (dist<100&&dist>0){const f=(100-dist)/100;p.vx+=(dx/dist)*f*1.5;p.vy+=(dy/dist)*f*1.5;}
+        const spd=Math.sqrt(p.vx*p.vx+p.vy*p.vy);
+        if(spd>3){p.vx=(p.vx/spd)*3;p.vy=(p.vy/spd)*3;}
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0){p.x=0;p.vx=Math.abs(p.vx);}if(p.x>canvas.width){p.x=canvas.width;p.vx=-Math.abs(p.vx);}
+        if(p.y<0){p.y=0;p.vy=Math.abs(p.vy);}if(p.y>canvas.height){p.y=canvas.height;p.vy=-Math.abs(p.vy);}
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.7)';ctx.fill();
+        for(let j=i+1;j<particles.length;j++){
+          const q=particles[j],cx=p.x-q.x,cy=p.y-q.y,cd=Math.sqrt(cx*cx+cy*cy);
+          if(cd<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(255,255,255,${0.3*(1-cd/120)})`;ctx.lineWidth=0.5;ctx.stroke();}
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    hero.addEventListener('mousemove',(e:MouseEvent)=>{const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+    hero.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+    window.addEventListener('resize',resize);resize();draw();
+  })();
+</script>
