@@ -25,7 +25,7 @@ const date = formatDate(publishedAt || createdAt);
 const postUrl = `/${slug}`;
 ---
 
-<article class={`post-card ${compact ? 'post-card-compact' : ''}`} data-tags={tags?.join(',') || ''}>
+<article class={`post-card ${compact ? 'post-card-compact' : ''}`} data-tags={tags?.join(',') || ''} data-sort-date={publishedAt || createdAt} data-sort-title={title.toLowerCase()}>
   <a href={postUrl} tabindex="-1" aria-hidden="true">
     {coverImageUrl ? (
       <div class="post-card-image">

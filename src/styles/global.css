@@ -168,6 +168,19 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 }
 .page-hero h1 { color: #fff; margin-bottom: .5rem; }
 .page-hero p { color: rgba(255,255,255,.7); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+.hero-breadcrumb {
+  display: inline-flex; align-items: center; gap: .4rem; margin-bottom: .8rem;
+  font-size: .8rem; color: rgba(255,255,255,.6);
+}
+.hero-breadcrumb a { color: rgba(255,255,255,.85); text-decoration: none; }
+.hero-breadcrumb a:hover { color: #fff; text-decoration: underline; }
+.btn-back {
+  display: inline-block; margin-top: 1rem; padding: 8px 18px;
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 20px; color: rgba(255,255,255,.9); font-size: .82rem;
+  text-decoration: none; transition: background .2s;
+}
+.btn-back:hover { background: rgba(255,255,255,.22); color: #fff; }
 
 /* ── Post Grid ─────────────────────────────────── */
 .posts-section { padding: 3rem 0; }
@@ -184,11 +197,25 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.8rem;
 }
-@media (max-width: 1024px) { .posts-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px)  { .posts-grid { grid-template-columns: 1fr; } }
+/* 1 full + 2 meio: cada 3n+1 ocupa a linha toda com imagem panorâmica */
+.posts-grid .post-card:nth-child(3n+1) {
+  grid-column: 1 / -1;
+}
+.posts-grid .post-card:nth-child(3n+1) .post-card-image,
+.posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
+  aspect-ratio: 21/7;
+}
+@media (max-width: 700px) {
+  .posts-grid { grid-template-columns: 1fr; }
+  .posts-grid .post-card:nth-child(3n+1) { grid-column: auto; }
+  .posts-grid .post-card:nth-child(3n+1) .post-card-image,
+  .posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
+    aspect-ratio: 16/9;
+  }
+}
 
 /* ── Post Card ─────────────────────────────────── */
 .post-card {
@@ -250,6 +277,15 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   background: var(--primary); border-color: var(--primary); color: #fff;
 }
 
+/* ── Sort Buttons ──────────────────────────────── */
+.sort-btn {
+  font-family: var(--font-heading); font-size: .72rem; text-transform: uppercase; letter-spacing: .5px;
+  padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+  color: var(--text-dark); background: var(--bg); cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.sort-btn:hover { border-color: var(--primary); color: var(--primary); }
+.sort-btn-active { background: var(--primary); border-color: var(--primary); color: #fff !important; }
+
 /* ── Search ────────────────────────────────────── */
 .search-bar { display: flex; max-width: 480px; margin: 1.5rem auto 0; }
 .search-bar input {
@@ -277,7 +313,11 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 }
 @media (max-width: 900px) {
   .post-layout { grid-template-columns: 1fr; }
-  .post-sidebar { order: -1; }
+  .sidebar-widget:has(.sidebar-ad) {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* ── Article ───────────────────────────────────── */

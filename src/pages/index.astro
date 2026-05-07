@@ -5,12 +5,17 @@ import PostCard from '../components/PostCard.astro';
 import { fetchAllPosts, fetchCategories } from '../lib/api';
 
 const PAGE_SIZE = 12;
-const [posts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
-const sorted = posts.sort((a, b) =>
+const [allPosts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
+const sorted = allPosts.sort((a, b) =>
   new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime()
 );
 const initialPosts = sorted.slice(0, PAGE_SIZE);
-const withCovers = posts.filter(p => p.coverImageUrl);
+
+const tagCountMap: Record<string, number> = {};
+allPosts.forEach(p => (p.tags || []).forEach(t => { tagCountMap[t] = (tagCountMap[t] || 0) + 1; }));
+const allTags = Object.entries(tagCountMap).sort((a, b) => b[1] - a[1]).map(([tag, count]) => ({ tag, count }));
+
+const withCovers = allPosts.filter(p => p.coverImageUrl);
 const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 10);
 ---
 
@@ -25,6 +30,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     type="website"
   />
 
+  <!-- Particle Hero -->
   <section class="page-hero particle-hero" id="hero" style="position:relative;background:#0d1b2a;overflow:hidden;">
     <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
     <div class="container" style="position:relative;z-index:1;">
@@ -37,6 +43,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     </div>
   </section>
 
+  <!-- Category filter pills -->
   {categories.length > 0 && (
     <section style="padding:1.5rem 0 .5rem;background:var(--bg-light);border-bottom:1px solid var(--border);">
       <div class="container">
@@ -53,6 +60,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     </section>
   )}
 
+  <!-- Cover carousel -->
   {carouselItems.length >= 3 && (
     <section style="padding:1rem 0;background:var(--bg);border-bottom:1px solid var(--border);">
       <div class="container">
@@ -68,6 +76,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     </section>
   )}
 
+  <!-- Posts grid + Tags sidebar -->
   <section class="posts-section">
     <div class="container">
       {initialPosts.length === 0 ? (
@@ -76,39 +85,70 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
           <p>Nenhum artigo disponível no momento.</p>
         </div>
       ) : (
-        <>
-          <div class="section-title"><h2>Artigos Recentes</h2></div>
-          <div class="posts-grid" id="posts-grid" data-site="blogdudu">
-            {initialPosts.map(post => (
-              <PostCard
-                title={post.title}
-                summary={post.summary}
-                slug={post.slug}
-                publishedAt={post.publishedAt}
-                createdAt={post.createdAt}
-                category={post.category}
-                categories={post.categories}
-                tags={post.tags}
-                coverImageUrl={post.coverImageUrl}
-                views={post.views}
-              />
-            ))}
+        <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+
+          <!-- Sidebar de Tags -->
+          {allTags.length > 0 && (
+            <aside id="tags-sidebar" style="width:190px;flex-shrink:0;">
+              <div style="position:sticky;top:1rem;background:var(--bg-light);border:1px solid var(--border);border-radius:10px;padding:1rem;max-height:calc(100vh - 2rem);overflow-y:auto;">
+                <p style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin:0 0 .75rem;">Filtrar por tag</p>
+                <a href="#" class="tag-sidebar-item active" data-tag="" style="display:block;padding:.3rem .5rem;border-radius:6px;font-size:.8rem;color:var(--text);text-decoration:none;margin-bottom:.2rem;transition:background .15s;">
+                  # todos <span style="opacity:.5;font-size:.72em">({sorted.length})</span>
+                </a>
+                {allTags.map(({ tag, count }) => (
+                  <a href="#" class="tag-sidebar-item" data-tag={tag}
+                    style="display:block;padding:.3rem .5rem;border-radius:6px;font-size:.8rem;color:var(--text);text-decoration:none;margin-bottom:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .15s;"
+                    title={tag}>
+                    #{tag} <span style="opacity:.5;font-size:.72em">({count})</span>
+                  </a>
+                ))}
+              </div>
+            </aside>
+          )}
+
+          <!-- Posts + Paginação -->
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;">
+              <div class="section-title" style="margin:0"><h2>Artigos Recentes</h2></div>
+              <div style="display:flex;align-items:center;gap:.4rem;">
+                <span style="font-size:.75rem;color:var(--text-muted);white-space:nowrap;">Ordenar:</span>
+                <button id="sort-chrono" class="sort-btn sort-btn-active" aria-pressed="true">📅 Mais recentes</button>
+                <button id="sort-alpha"  class="sort-btn" aria-pressed="false">🔤 A–Z</button>
+              </div>
+            </div>
+            <div class="posts-grid" id="posts-grid" data-site="blogdudu">
+              {initialPosts.map(post => (
+                <PostCard
+                  title={post.title}
+                  summary={post.summary}
+                  slug={post.slug}
+                  publishedAt={post.publishedAt}
+                  createdAt={post.createdAt}
+                  category={post.category}
+                  categories={post.categories}
+                  tags={post.tags}
+                  coverImageUrl={post.coverImageUrl}
+                  views={post.views}
+                />
+              ))}
+            </div>
+            <div id="load-more-sentinel" style="height:1px;margin-top:2rem;"></div>
+            <div id="load-more-spinner" style="display:none;text-align:center;padding:2rem 0;color:var(--text-muted);font-size:.9rem;">
+              <i class="fa-solid fa-spinner fa-spin" style="margin-right:.5rem;"></i>Carregando mais artigos...
+            </div>
+            <div id="no-results" style="display:none" class="empty-state">
+              <i class="fa-solid fa-search"></i>
+              <p>Nenhum artigo encontrado.</p>
+            </div>
           </div>
-          <div id="load-more-sentinel" style="height:1px;margin-top:2rem;"></div>
-          <div id="load-more-spinner" style="display:none;text-align:center;padding:2rem 0;color:var(--text-muted);font-size:.9rem;">
-            <i class="fa-solid fa-spinner fa-spin" style="margin-right:.5rem;"></i>Carregando mais artigos...
-          </div>
-          <div id="no-results" style="display:none" class="empty-state">
-            <i class="fa-solid fa-search"></i>
-            <p>Nenhum artigo encontrado.</p>
-          </div>
-        </>
+        </div>
       )}
     </div>
   </section>
 </BaseLayout>
 
 <script>
+  // ── Utilitários ──────────────────────────────────────────
   function toSlug(n: string): string {
     return n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
       .replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-');
@@ -119,6 +159,8 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
   function esc(s: unknown): string {
     return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+
+  // ── Renderizar card idêntico ao PostCard.astro ────────────
   function renderCard(p: Record<string,unknown>): string {
     const cat  = esc((p.categories as string[])?.[0] ?? p.category ?? '');
     const date = fmtDate((p.publishedAt || p.createdAt) as string);
@@ -128,7 +170,8 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
       ? `<div class="post-card-image"><img src="${esc(p.coverImageUrl)}" alt="${esc(p.title)}" loading="lazy" decoding="async">${cat?`<span class="card-category">${cat}</span>`:''}</div>`
       : `<div class="post-card-image-placeholder"><span>📍</span>${cat?`<span class="card-category">${cat}</span>`:''}</div>`;
     const tagLinks = tags.slice(0,3).map(t=>`<a href="/tag/${toSlug(t)}" class="card-tag" onclick="event.stopPropagation()">#${esc(t)}</a>`).join('');
-    return `<article class="post-card" data-tags="${esc(tags.join(','))}">
+    const sortDate = String((p.publishedAt || p.createdAt) ?? '');
+    return `<article class="post-card" data-tags="${esc(tags.join(','))}" data-sort-date="${esc(sortDate)}" data-sort-title="${esc(String(p.title??'').toLowerCase())}">
       <a href="/${esc(p.slug)}" tabindex="-1" aria-hidden="true">${img}</a>
       <div class="post-card-body">
         <h2><a href="/${esc(p.slug)}">${esc(p.title)}</a></h2>
@@ -139,17 +182,19 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     </article>`;
   }
 
+  // ── Estado da paginação ──────────────────────────────────
   const API       = 'https://api.curitibasoftware.com.br';
   const SITE      = (document.getElementById('posts-grid') as HTMLElement)?.dataset.site ?? '';
   const PAGE_SIZE = 12;
-  let page    = 1;
-  let loading = false;
-  let hasMore = true;
+  let page      = 1;
+  let loading   = false;
+  let hasMore   = true;
+  let activeTag = '';
 
-  const grid    = document.getElementById('posts-grid')        as HTMLElement;
-  const noRes   = document.getElementById('no-results')        as HTMLElement;
+  const grid    = document.getElementById('posts-grid')       as HTMLElement;
+  const noRes   = document.getElementById('no-results')       as HTMLElement;
   const spinner = document.getElementById('load-more-spinner') as HTMLElement;
-  const input   = document.getElementById('search-input')      as HTMLInputElement;
+  const input   = document.getElementById('search-input')     as HTMLInputElement;
 
   async function loadMore(): Promise<void> {
     if (loading || !hasMore || !grid) return;
@@ -160,6 +205,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
       url.searchParams.set('page', String(page + 1));
       url.searchParams.set('pageSize', String(PAGE_SIZE));
       if (SITE) url.searchParams.set('site', SITE);
+      if (activeTag) url.searchParams.set('tag', activeTag);
       const res  = await fetch(url.toString());
       const json = await res.json();
       const data = json?.data;
@@ -176,6 +222,16 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     if (spinner) spinner.style.display = hasMore ? '' : 'none';
   }
 
+  async function resetAndLoad(): Promise<void> {
+    page    = 0;
+    hasMore = true;
+    loading = false;
+    if (grid) { grid.innerHTML = ''; grid.style.display = ''; }
+    if (noRes) noRes.style.display = 'none';
+    await loadMore();
+  }
+
+  // IntersectionObserver — dispara ao aproximar do fim
   const sentinel = document.getElementById('load-more-sentinel');
   if (sentinel) {
     new IntersectionObserver(
@@ -184,6 +240,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     ).observe(sentinel);
   }
 
+  // ── Busca client-side nos cards carregados ───────────────
   if (input) {
     input.addEventListener('input', () => {
       const q = input.value.toLowerCase().trim();
@@ -198,31 +255,89 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     });
   }
 
+  // ── Ordenação ────────────────────────────────────────────
+  let currentSort: 'chrono' | 'alpha' = 'chrono';
+
+  function sortCards(): void {
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.post-card'));
+    cards.sort((a, b) => {
+      if (currentSort === 'alpha') {
+        return (a.dataset.sortTitle ?? '').localeCompare(b.dataset.sortTitle ?? '', 'pt-BR');
+      }
+      return (b.dataset.sortDate ?? '').localeCompare(a.dataset.sortDate ?? '');
+    });
+    cards.forEach(c => grid.appendChild(c));
+  }
+
+  function setSort(sort: 'chrono' | 'alpha'): void {
+    currentSort = sort;
+    document.getElementById('sort-chrono')?.setAttribute('aria-pressed', sort === 'chrono' ? 'true' : 'false');
+    document.getElementById('sort-alpha')?.setAttribute('aria-pressed', sort === 'alpha'  ? 'true' : 'false');
+    document.getElementById('sort-chrono')?.classList.toggle('sort-btn-active', sort === 'chrono');
+    document.getElementById('sort-alpha')?.classList.toggle('sort-btn-active', sort === 'alpha');
+    sortCards();
+  }
+
+  document.getElementById('sort-chrono')?.addEventListener('click', () => setSort('chrono'));
+  document.getElementById('sort-alpha')?.addEventListener('click',  () => setSort('alpha'));
+
+  // ── Tag sidebar → reset + reload via API ────────────────
+  document.querySelectorAll<HTMLElement>('.tag-sidebar-item').forEach(btn => {
+    btn.addEventListener('click', async e => {
+      e.preventDefault();
+      activeTag = btn.dataset.tag ?? '';
+      document.querySelectorAll<HTMLElement>('.tag-sidebar-item').forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '';
+        b.style.color      = '';
+        b.style.fontWeight = '';
+      });
+      btn.classList.add('active');
+      btn.style.background = 'var(--primary,#2d6a4f)';
+      btn.style.color      = '#fff';
+      btn.style.fontWeight = '600';
+      if (input) input.value = '';
+      await resetAndLoad();
+    });
+  });
+
+  // ── Particle hero ────────────────────────────────────────
   (function () {
     const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d'); if (!ctx) return;
+    const ctx  = canvas.getContext('2d');
+    if (!ctx)  return;
     const hero = document.getElementById('hero') as HTMLElement;
     const mouse = { x: -9999, y: -9999 };
-    type Particle = { x:number;y:number;vx:number;vy:number;r:number };
+    type Particle = { x: number; y: number; vx: number; vy: number; r: number };
     let particles: Particle[] = [];
     function resize() {
-      canvas.width=hero.offsetWidth; canvas.height=hero.offsetHeight;
-      const count=Math.min(60,Math.floor(canvas.width*canvas.height/15000));
-      particles=Array.from({length:count},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.8,vy:(Math.random()-0.5)*0.8,r:1.5+Math.random()*3}));
+      canvas.width  = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+      const count = Math.min(60, Math.floor(canvas.width * canvas.height / 15000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+        vx: (Math.random()-0.5)*0.8,   vy: (Math.random()-0.5)*0.8,
+        r:  1.5+Math.random()*3,
+      }));
     }
     function draw() {
       ctx.clearRect(0,0,canvas.width,canvas.height);
-      for(let i=0;i<particles.length;i++){
-        const p=particles[i];const dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<100&&dist>0){const f=(100-dist)/100;p.vx+=(dx/dist)*f*1.5;p.vy+=(dy/dist)*f*1.5;}
-        const spd=Math.sqrt(p.vx*p.vx+p.vy*p.vy);if(spd>3){p.vx=(p.vx/spd)*3;p.vy=(p.vy/spd)*3;}
+      for (let i=0;i<particles.length;i++) {
+        const p=particles[i];
+        const dx=p.x-mouse.x, dy=p.y-mouse.y, dist=Math.sqrt(dx*dx+dy*dy);
+        if (dist<100&&dist>0){const f=(100-dist)/100;p.vx+=(dx/dist)*f*1.5;p.vy+=(dy/dist)*f*1.5;}
+        const spd=Math.sqrt(p.vx*p.vx+p.vy*p.vy);
+        if(spd>3){p.vx=(p.vx/spd)*3;p.vy=(p.vy/spd)*3;}
         p.x+=p.vx;p.y+=p.vy;
         if(p.x<0){p.x=0;p.vx=Math.abs(p.vx);}if(p.x>canvas.width){p.x=canvas.width;p.vx=-Math.abs(p.vx);}
         if(p.y<0){p.y=0;p.vy=Math.abs(p.vy);}if(p.y>canvas.height){p.y=canvas.height;p.vy=-Math.abs(p.vy);}
         ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.7)';ctx.fill();
-        for(let j=i+1;j<particles.length;j++){const q=particles[j],cx=p.x-q.x,cy=p.y-q.y,cd=Math.sqrt(cx*cx+cy*cy);
-          if(cd<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(255,255,255,${0.3*(1-cd/120)})`;ctx.lineWidth=0.5;ctx.stroke();}}
+        for(let j=i+1;j<particles.length;j++){
+          const q=particles[j],cx=p.x-q.x,cy=p.y-q.y,cd=Math.sqrt(cx*cx+cy*cy);
+          if(cd<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(255,255,255,${0.3*(1-cd/120)})`;ctx.lineWidth=0.5;ctx.stroke();}
+        }
       }
       requestAnimationFrame(draw);
     }
@@ -231,9 +346,15 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     window.addEventListener('resize',resize);resize();draw();
   })();
 
-  (function(){
-    const c=document.getElementById('cover-carousel') as HTMLElement|null; if(!c)return;
+  // ── Carousel auto-scroll ─────────────────────────────────
+  (function () {
+    const c=document.getElementById('cover-carousel') as HTMLElement|null;
+    if(!c) return;
     let dir=1;
-    setInterval(()=>{c.scrollLeft+=dir*1.5;if(c.scrollLeft+c.clientWidth>=c.scrollWidth-5)dir=-1;if(c.scrollLeft<=5)dir=1;},30);
+    setInterval(()=>{
+      c.scrollLeft+=dir*1.5;
+      if(c.scrollLeft+c.clientWidth>=c.scrollWidth-5)dir=-1;
+      if(c.scrollLeft<=5)dir=1;
+    },30);
   })();
 </script>
