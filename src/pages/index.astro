@@ -108,7 +108,14 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
 
           <!-- Posts + Paginação -->
           <div style="flex:1;min-width:0;">
-            <div class="section-title"><h2>Artigos Recentes</h2></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;">
+              <div class="section-title" style="margin:0"><h2>Artigos Recentes</h2></div>
+              <div style="display:flex;align-items:center;gap:.4rem;">
+                <span style="font-size:.75rem;color:var(--text-muted);white-space:nowrap;">Ordenar:</span>
+                <button id="sort-chrono" class="sort-btn sort-btn-active" aria-pressed="true">📅 Mais recentes</button>
+                <button id="sort-alpha"  class="sort-btn" aria-pressed="false">🔤 A–Z</button>
+              </div>
+            </div>
             <div class="posts-grid" id="posts-grid" data-site="">
               {initialPosts.map(post => (
                 <PostCard
@@ -163,7 +170,8 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
       ? `<div class="post-card-image"><img src="${esc(p.coverImageUrl)}" alt="${esc(p.title)}" loading="lazy" decoding="async">${cat?`<span class="card-category">${cat}</span>`:''}</div>`
       : `<div class="post-card-image-placeholder"><span>📍</span>${cat?`<span class="card-category">${cat}</span>`:''}</div>`;
     const tagLinks = tags.slice(0,3).map(t=>`<a href="/tag/${toSlug(t)}" class="card-tag" onclick="event.stopPropagation()">#${esc(t)}</a>`).join('');
-    return `<article class="post-card" data-tags="${esc(tags.join(','))}">
+    const sortDate = String((p.publishedAt || p.createdAt) ?? '');
+    return `<article class="post-card" data-tags="${esc(tags.join(','))}" data-sort-date="${esc(sortDate)}" data-sort-title="${esc(String(p.title??'').toLowerCase())}">
       <a href="/${esc(p.slug)}" tabindex="-1" aria-hidden="true">${img}</a>
       <div class="post-card-body">
         <h2><a href="/${esc(p.slug)}">${esc(p.title)}</a></h2>
@@ -246,6 +254,33 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
       if (grid) grid.style.display = visible === 0 ? 'none' : '';
     });
   }
+
+  // ── Ordenação ────────────────────────────────────────────
+  let currentSort: 'chrono' | 'alpha' = 'chrono';
+
+  function sortCards(): void {
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.post-card'));
+    cards.sort((a, b) => {
+      if (currentSort === 'alpha') {
+        return (a.dataset.sortTitle ?? '').localeCompare(b.dataset.sortTitle ?? '', 'pt-BR');
+      }
+      return (b.dataset.sortDate ?? '').localeCompare(a.dataset.sortDate ?? '');
+    });
+    cards.forEach(c => grid.appendChild(c));
+  }
+
+  function setSort(sort: 'chrono' | 'alpha'): void {
+    currentSort = sort;
+    document.getElementById('sort-chrono')?.setAttribute('aria-pressed', sort === 'chrono' ? 'true' : 'false');
+    document.getElementById('sort-alpha')?.setAttribute('aria-pressed', sort === 'alpha'  ? 'true' : 'false');
+    document.getElementById('sort-chrono')?.classList.toggle('sort-btn-active', sort === 'chrono');
+    document.getElementById('sort-alpha')?.classList.toggle('sort-btn-active', sort === 'alpha');
+    sortCards();
+  }
+
+  document.getElementById('sort-chrono')?.addEventListener('click', () => setSort('chrono'));
+  document.getElementById('sort-alpha')?.addEventListener('click',  () => setSort('alpha'));
 
   // ── Tag sidebar → reset + reload via API ────────────────
   document.querySelectorAll<HTMLElement>('.tag-sidebar-item').forEach(btn => {

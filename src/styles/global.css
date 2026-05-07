@@ -184,11 +184,34 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.8rem;
 }
-@media (max-width: 1024px) { .posts-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px)  { .posts-grid { grid-template-columns: 1fr; } }
+/* 1 full + 2 meio: cada 3n+1 ocupa a linha toda */
+.posts-grid .post-card:nth-child(3n+1) {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  max-height: 240px;
+}
+.posts-grid .post-card:nth-child(3n+1) .post-card-image,
+.posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
+  width: 360px;
+  flex-shrink: 0;
+  aspect-ratio: unset;
+}
+@media (max-width: 700px) {
+  .posts-grid { grid-template-columns: 1fr; }
+  .posts-grid .post-card:nth-child(3n+1) {
+    grid-column: auto;
+    flex-direction: column;
+    max-height: none;
+  }
+  .posts-grid .post-card:nth-child(3n+1) .post-card-image,
+  .posts-grid .post-card:nth-child(3n+1) .post-card-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+}
 
 /* ── Post Card ─────────────────────────────────── */
 .post-card {
@@ -249,6 +272,15 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 .filter-pill:hover, .filter-pill.active {
   background: var(--primary); border-color: var(--primary); color: #fff;
 }
+
+/* ── Sort Buttons ──────────────────────────────── */
+.sort-btn {
+  font-family: var(--font-heading); font-size: .72rem; text-transform: uppercase; letter-spacing: .5px;
+  padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+  color: var(--text-dark); background: var(--bg); cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.sort-btn:hover { border-color: var(--primary); color: var(--primary); }
+.sort-btn-active { background: var(--primary); border-color: var(--primary); color: #fff !important; }
 
 /* ── Search ────────────────────────────────────── */
 .search-bar { display: flex; max-width: 480px; margin: 1.5rem auto 0; }
