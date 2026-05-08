@@ -121,7 +121,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
                 const isHero = i === 0;
                 const posInCycle = (i - 1) % 5;
                 const isWide = !isHero && posInCycle === 2;
-                const wrapClass = isHero ? 'post-wrap hero' : isWide ? 'post-wrap wide' : 'post-wrap';
+                const wrapClass = isHero ? 'post-wrap hero' : isWide ? 'post-wrap hero' : 'post-wrap';
                 return (
                   <div class={wrapClass}>
                     <PostCard
@@ -203,7 +203,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
       const isHero = i === 0;
       const posInCycle = (i - 1) % 5;
       const isWide = !isHero && posInCycle === 2;
-      wrap.className = isHero ? 'post-wrap hero' : isWide ? 'post-wrap wide' : 'post-wrap';
+      wrap.className = isHero ? 'post-wrap hero' : isWide ? 'post-wrap hero' : 'post-wrap';
     });
   }
 
