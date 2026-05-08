@@ -117,20 +117,28 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
               </div>
             </div>
             <div class="posts-grid" id="posts-grid" data-site="">
-              {initialPosts.map(post => (
-                <PostCard
-                  title={post.title}
-                  summary={post.summary}
-                  slug={post.slug}
-                  publishedAt={post.publishedAt}
-                  createdAt={post.createdAt}
-                  category={post.category}
-                  categories={post.categories}
-                  tags={post.tags}
-                  coverImageUrl={post.coverImageUrl}
-                  views={post.views}
-                />
-              ))}
+              {initialPosts.map((post, i) => {
+                const isHero = i === 0;
+                const posInCycle = (i - 1) % 5;
+                const isWide = !isHero && posInCycle === 2;
+                const wrapClass = isHero ? 'post-wrap hero' : isWide ? 'post-wrap wide' : 'post-wrap';
+                return (
+                  <div class={wrapClass}>
+                    <PostCard
+                      title={post.title}
+                      summary={post.summary}
+                      slug={post.slug}
+                      publishedAt={post.publishedAt}
+                      createdAt={post.createdAt}
+                      category={post.category}
+                      categories={post.categories}
+                      tags={post.tags}
+                      coverImageUrl={post.coverImageUrl}
+                      views={post.views}
+                    />
+                  </div>
+                );
+              })}
             </div>
             <div id="load-more-sentinel" style="height:1px;margin-top:2rem;"></div>
             <div id="load-more-spinner" style="display:none;text-align:center;padding:2rem 0;color:var(--text-muted);font-size:.9rem;">
@@ -160,8 +168,8 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  // ── Renderizar card idêntico ao PostCard.astro ────────────
-  function renderCard(p: Record<string,unknown>): string {
+  // ── Card HTML interno (sem wrapper) ──────────────────────
+  function innerCard(p: Record<string,unknown>): string {
     const cat  = esc((p.categories as string[])?.[0] ?? p.category ?? '');
     const date = fmtDate((p.publishedAt || p.createdAt) as string);
     const tags: string[] = Array.isArray(p.tags) ? p.tags as string[] : [];
@@ -180,6 +188,60 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
         ${tags.length?`<div class="card-tags">${tagLinks}</div>`:''}
       </div>
     </article>`;
+  }
+
+  // Wrapper para infinite scroll (classe recalculada depois)
+  function renderCard(p: Record<string,unknown>): string {
+    return `<div class="post-wrap">${innerCard(p)}</div>`;
+  }
+
+  // ── Recalcula hero/wide em todos os .post-wrap ────────────
+  function recalcWrapClasses(): void {
+    if (!grid) return;
+    const wraps = Array.from(grid.querySelectorAll<HTMLElement>('.post-wrap'));
+    wraps.forEach((wrap, i) => {
+      const isHero = i === 0;
+      const posInCycle = (i - 1) % 5;
+      const isWide = !isHero && posInCycle === 2;
+      wrap.className = isHero ? 'post-wrap hero' : isWide ? 'post-wrap wide' : 'post-wrap';
+    });
+  }
+
+  // ── Ad inline-big ─────────────────────────────────────────
+  type Ad = { id: string; title: string; imageUrl?: string; destinationUrl: string; advertiserName?: string };
+
+  function renderAd(ad: Ad): string {
+    const imgHtml = ad.imageUrl
+      ? `<img class="ad-inline-big-img" src="${esc(ad.imageUrl)}" alt="${esc(ad.title)}" loading="lazy">`
+      : `<div class="ad-inline-big-img-placeholder">📢</div>`;
+    return `<div class="ad-inline-big-wrap">
+      <a href="${esc(ad.destinationUrl)}" target="_blank" rel="noopener sponsored" class="ad-inline-big"
+         onclick="fetch('${esc(API)}/api/advertisement/${esc(ad.id)}/click',{method:'POST'}).catch(()=>{})">
+        <span class="ad-label">Publicidade</span>
+        ${imgHtml}
+        <div class="ad-inline-big-body">
+          <h3>${esc(ad.title)}</h3>
+          ${ad.advertiserName?`<p>${esc(ad.advertiserName)}</p>`:''}
+        </div>
+      </a>
+    </div>`;
+  }
+
+  async function loadAndInsertAds(): Promise<void> {
+    try {
+      const res = await fetch(`${API}/api/advertisement/active/inline-big`);
+      if (!res.ok) return;
+      const json = await res.json();
+      const ads: Ad[] = json?.data ?? [];
+      if (!ads.length || !grid) return;
+      const wraps = Array.from(grid.querySelectorAll<HTMLElement>('.post-wrap'));
+      if (wraps.length < 4) return;
+      // Insere anuncios em posicoes aleatorias (a partir do 3o post, espacamento 4-7)
+      let pos = 3 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < ads.length && pos < wraps.length; i++, pos += 4 + Math.floor(Math.random() * 4)) {
+        wraps[pos].insertAdjacentHTML('beforebegin', renderAd(ads[i]));
+      }
+    } catch {}
   }
 
   // ── Estado da paginação ──────────────────────────────────
@@ -212,6 +274,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
       if (data?.items?.length) {
         page++;
         grid.insertAdjacentHTML('beforeend', (data.items as Record<string,unknown>[]).map(renderCard).join(''));
+        recalcWrapClasses();
         const loaded = grid.querySelectorAll('.post-card').length;
         if (loaded >= Number(data.totalCount ?? 0)) hasMore = false;
       } else {
@@ -229,6 +292,8 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     if (grid) { grid.innerHTML = ''; grid.style.display = ''; }
     if (noRes) noRes.style.display = 'none';
     await loadMore();
+    recalcWrapClasses();
+    loadAndInsertAds();
   }
 
   // IntersectionObserver — dispara ao aproximar do fim
@@ -240,14 +305,17 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     ).observe(sentinel);
   }
 
+  // Carrega anuncios na carga inicial
+  loadAndInsertAds();
+
   // ── Busca client-side nos cards carregados ───────────────
   if (input) {
     input.addEventListener('input', () => {
       const q = input.value.toLowerCase().trim();
       let visible = 0;
-      grid?.querySelectorAll<HTMLElement>('.post-card').forEach(card => {
-        const show = !q || Boolean(card.textContent?.toLowerCase().includes(q));
-        card.style.display = show ? '' : 'none';
+      grid?.querySelectorAll<HTMLElement>('.post-wrap').forEach(wrap => {
+        const show = !q || Boolean(wrap.textContent?.toLowerCase().includes(q));
+        wrap.style.display = show ? '' : 'none';
         if (show) visible++;
       });
       if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
@@ -260,14 +328,17 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
 
   function sortCards(): void {
     if (!grid) return;
-    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.post-card'));
-    cards.sort((a, b) => {
+    const wraps = Array.from(grid.querySelectorAll<HTMLElement>('.post-wrap'));
+    wraps.sort((a, b) => {
+      const ca = a.querySelector<HTMLElement>('.post-card');
+      const cb = b.querySelector<HTMLElement>('.post-card');
       if (currentSort === 'alpha') {
-        return (a.dataset.sortTitle ?? '').localeCompare(b.dataset.sortTitle ?? '', 'pt-BR');
+        return (ca?.dataset.sortTitle ?? '').localeCompare(cb?.dataset.sortTitle ?? '', 'pt-BR');
       }
-      return (b.dataset.sortDate ?? '').localeCompare(a.dataset.sortDate ?? '');
+      return (cb?.dataset.sortDate ?? '').localeCompare(ca?.dataset.sortDate ?? '');
     });
-    cards.forEach(c => grid.appendChild(c));
+    wraps.forEach(w => grid.appendChild(w));
+    recalcWrapClasses();
   }
 
   function setSort(sort: 'chrono' | 'alpha'): void {
