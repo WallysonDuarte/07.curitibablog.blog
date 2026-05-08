@@ -210,31 +210,38 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 .post-wrap.wide,
 .ad-inline-big-wrap { grid-column: 1 / -1; }
 
-/* HERO — imagem cobre o card inteiro, texto sobreposto com gradiente */
+/* HERO — imagem 100% height sem corte, texto sobreposto com gradiente */
 .post-wrap.hero .post-card {
   flex-direction: column;
   position: relative;
-  min-height: 460px;
   overflow: hidden;
 }
 .post-wrap.hero .post-card > a {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  display: block;
+  position: relative;
 }
 .post-wrap.hero .post-card-image {
-  position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: unset;
+  width: 100%;
+  aspect-ratio: unset;
+  position: relative;
+  overflow: hidden;
 }
 .post-wrap.hero .post-card-image::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.1) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.45) 55%, rgba(0,0,0,.05) 100%);
+  pointer-events: none;
 }
-.post-wrap.hero .post-card-image img { width: 100%; height: 100%; object-fit: cover; }
+.post-wrap.hero .post-card-image img {
+  width: 100%; height: auto; display: block; object-fit: unset;
+}
 .post-wrap.hero .post-card-image-placeholder {
-  position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: unset;
+  aspect-ratio: 16/9; width: 100%;
 }
 .post-wrap.hero .post-card-body {
-  position: relative; z-index: 1;
-  margin-top: auto; padding: 2rem 2.2rem 1.8rem;
+  position: absolute; bottom: 0; left: 0; right: 0;
+  z-index: 1;
+  padding: 2rem 2.2rem 1.8rem;
   background: transparent;
 }
 .post-wrap.hero .post-card-body h2 {
@@ -258,7 +265,6 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 .post-wrap.wide .post-card-body h2 { font-size: 1.25rem; }
 
 @media (max-width: 768px) {
-  .post-wrap.hero .post-card { min-height: 300px; }
   .post-wrap.hero .post-card-body h2 { font-size: 1.2rem; }
   .post-wrap.hero .post-card-body { padding: 1.2rem 1.2rem 1rem; }
   .post-wrap.wide .post-card { flex-direction: column; }
