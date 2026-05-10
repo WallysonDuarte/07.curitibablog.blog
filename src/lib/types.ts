@@ -37,6 +37,28 @@ export interface BlogPost {
   updatedAt: string;
   podcastUrl?: string;
   youtubeVideoId?: string;
+  ratings?: BlogPostRatings;
+  userRatingsSummary?: BlogPostUserRatingsSummary;
+}
+
+export interface BlogPostRatings {
+  confiabilidade: number;
+  facilidadeDeUso: number;
+  qualidade: number;
+  seguranca: number;
+  acervo: number;
+  custoBeneficio: number;
+  media: number;
+  veredicto: string;
+  ratingsVersion?: number;
+  lastReviewedAt?: string;
+}
+
+export interface BlogPostUserRatingsSummary {
+  average: number;
+  count: number;
+  commentsCount: number;
+  lastUpdatedAt?: string;
 }
 
 export interface BlogCategory {

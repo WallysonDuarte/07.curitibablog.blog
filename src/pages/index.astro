@@ -135,6 +135,7 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
                       tags={post.tags}
                       coverImageUrl={post.coverImageUrl}
                       views={post.views}
+                      ratings={post.ratings}
                     />
                   </div>
                 );
@@ -169,14 +170,25 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
   }
 
   // ── Card HTML interno (sem wrapper) ──────────────────────
+  function ratingColorJs(v: number): string {
+    if (v >= 9.1) return '#16a34a';
+    if (v >= 8.0) return '#22c55e';
+    if (v >= 6.5) return '#eab308';
+    if (v >= 4.0) return '#f59e0b';
+    return '#dc2626';
+  }
   function innerCard(p: Record<string,unknown>): string {
     const cat  = esc((p.categories as string[])?.[0] ?? p.category ?? '');
     const date = fmtDate((p.publishedAt || p.createdAt) as string);
     const tags: string[] = Array.isArray(p.tags) ? p.tags as string[] : [];
     const views = Number(p.views ?? 0);
+    const ratings = (p.ratings as { media: number } | undefined);
+    const ratingBadge = ratings && typeof ratings.media === 'number'
+      ? `<span class="card-rating" style="background:${ratingColorJs(ratings.media)}">${ratings.media.toFixed(1)}</span>`
+      : '';
     const img = p.coverImageUrl
-      ? `<div class="post-card-image"><img src="${esc(p.coverImageUrl)}" alt="${esc(p.title)}" loading="lazy" decoding="async">${cat?`<span class="card-category">${cat}</span>`:''}</div>`
-      : `<div class="post-card-image-placeholder"><span>📍</span>${cat?`<span class="card-category">${cat}</span>`:''}</div>`;
+      ? `<div class="post-card-image"><img src="${esc(p.coverImageUrl)}" alt="${esc(p.title)}" loading="lazy" decoding="async">${cat?`<span class="card-category">${cat}</span>`:''}${ratingBadge}</div>`
+      : `<div class="post-card-image-placeholder"><span>📍</span>${cat?`<span class="card-category">${cat}</span>`:''}${ratingBadge}</div>`;
     const tagLinks = tags.slice(0,3).map(t=>`<a href="/tag/${toSlug(t)}" class="card-tag" onclick="event.stopPropagation()">#${esc(t)}</a>`).join('');
     const sortDate = String((p.publishedAt || p.createdAt) ?? '');
     return `<article class="post-card" data-tags="${esc(tags.join(','))}" data-sort-date="${esc(sortDate)}" data-sort-title="${esc(String(p.title??'').toLowerCase())}">

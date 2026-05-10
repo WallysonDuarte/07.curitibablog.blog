@@ -6,6 +6,22 @@ export function formatDate(date: string): string {
   });
 }
 
+export function ratingColor(value: number): string {
+  if (value >= 9.1) return '#16a34a';
+  if (value >= 8.0) return '#22c55e';
+  if (value >= 6.5) return '#eab308';
+  if (value >= 4.0) return '#f59e0b';
+  return '#dc2626';
+}
+
+export function ratingVerdict(value: number): string {
+  if (value >= 9.1) return 'Excelente';
+  if (value >= 8.0) return 'Bom';
+  if (value >= 6.5) return 'Razoavel';
+  if (value >= 4.0) return 'Com ressalvas';
+  return 'Evite';
+}
+
 export function toSlug(name: string): string {
   return name.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')

@@ -1,0 +1,42 @@
+---
+import type { BlogPostRatings } from '../lib/types';
+import { ratingColor } from '../lib/utils';
+
+interface Props {
+  ratings: BlogPostRatings;
+}
+const { ratings } = Astro.props;
+
+const criterios = [
+  { label: 'Confiabilidade',     value: ratings.confiabilidade  },
+  { label: 'Facilidade de uso',  value: ratings.facilidadeDeUso },
+  { label: 'Qualidade',          value: ratings.qualidade       },
+  { label: 'Seguranca',          value: ratings.seguranca       },
+  { label: 'Acervo / Variedade', value: ratings.acervo          },
+  { label: 'Custo-beneficio',    value: ratings.custoBeneficio  },
+];
+
+const mediaColor = ratingColor(ratings.media);
+---
+
+<aside class="post-ratings" aria-label="Avaliacao da redacao">
+  <div class="post-ratings-header">
+    <span class="post-ratings-score" style={`color:${mediaColor}`}>{ratings.media.toFixed(1)}</span>
+    <div class="post-ratings-meta">
+      <span class="post-ratings-verdict" style={`background:${mediaColor}`}>{ratings.veredicto}</span>
+      <small>Nota da redacao</small>
+    </div>
+  </div>
+  <ul class="post-ratings-list">
+    {criterios.map(c => (
+      <li role="meter" aria-valuemin="0" aria-valuemax="10" aria-valuenow={c.value} aria-label={`${c.label}: ${c.value} de 10`}>
+        <span class="rating-label">{c.label}</span>
+        <div class="rating-bar">
+          <div class="rating-fill" style={`width:${c.value*10}%;background:${ratingColor(c.value)}`}></div>
+        </div>
+        <span class="rating-value">{c.value.toFixed(1)}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="post-ratings-legend">Notas de 0 a 10, atribuidas pela redacao com base em testes e pesquisa publica.</p>
+</aside>
