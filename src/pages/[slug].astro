@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import PostCard from '../components/PostCard.astro';
+import PostRatings from '../components/PostRatings.astro';
 import RichBlock from '../components/RichBlock.astro';
 import AdBanner from '../components/AdBanner.astro';
 import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../lib/api';
@@ -108,14 +109,23 @@ const faqSideAd = faqSideAds[0] ?? null;
         <span aria-current="page">{post.title}</span>
       </nav>
 
-      <!-- Meta bar -->
-      <div class="article-meta-bar">
-        {postCats.slice(0,1).map(cat => (
-          <a href={`/categoria/${toSlug(cat)}`} class="article-category">{cat}</a>
-        ))}
-        <span>📅 {formatDate(publishDate)}</span>
-        <span>✍️ {post.authorName}</span>
-        {post.views > 0 && <span>👁 {post.views.toLocaleString('pt-BR')} visualizações</span>}
+      <!-- Meta bar + Ratings (se houver) -->
+      <div class="article-header-row">
+        <div class="article-header-left">
+          <div class="article-meta-bar">
+            {postCats.slice(0,1).map(cat => (
+              <a href={`/categoria/${toSlug(cat)}`} class="article-category">{cat}</a>
+            ))}
+            <span>📅 {formatDate(publishDate)}</span>
+            <span>✍️ {post.authorName}</span>
+            {post.views > 0 && <span>👁 {post.views.toLocaleString('pt-BR')} visualizações</span>}
+          </div>
+        </div>
+        {post.ratings && (
+          <div class="article-header-right">
+            <PostRatings ratings={post.ratings} />
+          </div>
+        )}
       </div>
 
       <!-- Title -->
