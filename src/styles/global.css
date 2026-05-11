@@ -946,3 +946,27 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   .article-header-row { grid-template-columns: 1fr; }
   .article-header-right { position: static; }
 }
+
+/* ── Dark mode: sidebar categorias / posts ──────── */
+[data-theme="dark"] .sidebar-widget {
+  background: var(--bg-light);
+  box-shadow: var(--shadow-sm);
+}
+[data-theme="dark"] .sidebar-cat-list li { border-bottom-color: var(--border); }
+[data-theme="dark"] .sidebar-cat-list a { color: var(--text-dark); }
+[data-theme="dark"] .sidebar-post-list li { border-bottom-color: var(--border); }
+[data-theme="dark"] .sidebar-post-list a { color: var(--text-dark); }
+[data-theme="dark"] .cat-count { background: #334155; color: var(--text-muted); }
+
+/* ── Dark mode: widgets CTA inline nos posts ────── */
+[data-theme="dark"] .article-body div[style*="background"] {
+  background: #1e2d3a !important;
+  border-color: #334155 !important;
+}
+[data-theme="dark"] .article-body div[style*="background"] p,
+[data-theme="dark"] .article-body div[style*="background"] strong {
+  color: var(--text-dark) !important;
+}
+[data-theme="dark"] .article-body div[style*="background"] a[style] {
+  color: #fff !important;
+}
