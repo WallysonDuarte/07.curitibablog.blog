@@ -4,19 +4,37 @@ import SEO from '../components/SEO.astro';
 import PostCard from '../components/PostCard.astro';
 import { fetchAllPosts, fetchCategories } from '../lib/api';
 
-const PAGE_SIZE = 12;
 const [allPosts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
-const sorted = allPosts.sort((a, b) =>
-  new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime()
-);
-const initialPosts = sorted.slice(0, PAGE_SIZE);
 
-const tagCountMap: Record<string, number> = {};
-allPosts.forEach(p => (p.tags || []).forEach(t => { tagCountMap[t] = (tagCountMap[t] || 0) + 1; }));
-const allTags = Object.entries(tagCountMap).sort((a, b) => a[0].localeCompare(b[0], 'pt-BR', { sensitivity: 'base' })).map(([tag, count]) => ({ tag, count }));
+// Carrossel: posts em destaque com cover, ordenados por sequence
+const featuredWithCover = allPosts.filter(p => p.isFeatured && p.coverImageUrl)
+  .sort((a, b) => (a.sequence ?? 9999) - (b.sequence ?? 9999));
+const fallbackCovers = allPosts.filter(p => !p.isFeatured && p.coverImageUrl)
+  .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
+const carouselSlides = featuredWithCover.length >= 3
+  ? featuredWithCover.slice(0, 8)
+  : [...featuredWithCover, ...fallbackCovers].slice(0, 8);
 
-const withCovers = allPosts.filter(p => p.coverImageUrl);
-const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 10);
+// Blocos por categoria
+function getCatKey(p: typeof allPosts[0]): string[] {
+  return p.categories?.length ? p.categories : (p.category ? [p.category] : []);
+}
+const categoryBlocks = categories.map(cat => {
+  const catPosts = allPosts
+    .filter(p => {
+      const keys = getCatKey(p);
+      return keys.some(k => k === cat.slug || k === cat.name || k === cat.id);
+    })
+    .sort((a, b) => {
+      const sa = a.sequence ?? 9999;
+      const sb = b.sequence ?? 9999;
+      if (sa !== sb) return sa - sb;
+      return new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime();
+    });
+  const catTags = [...new Set(catPosts.flatMap(p => p.tags || []))]
+    .sort((a, b) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' }));
+  return { category: cat, posts: catPosts.slice(0, 6), totalPosts: catPosts.length, tags: catTags };
+}).filter(b => b.posts.length > 0);
 ---
 
 <BaseLayout
@@ -60,267 +78,159 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     </section>
   )}
 
-  <!-- Cover carousel -->
-  {carouselItems.length >= 3 && (
-    <section style="padding:1rem 0;background:var(--bg);border-bottom:1px solid var(--border);">
-      <div class="container">
-        <div id="cover-carousel" style="display:flex;gap:0.75rem;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:0.25rem;">
-          {carouselItems.map(post => (
-            <a href={`/${post.slug}`} style="flex:0 0 auto;width:200px;border-radius:10px;overflow:hidden;position:relative;display:block;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.15);background:#111;">
-              <img src={post.coverImageUrl} alt={post.title} loading="lazy" style="width:100%;height:120px;object-fit:cover;display:block;" />
-              <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:.5rem .6rem .4rem;font-size:.7rem;color:#fff;line-height:1.3;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{post.title}</div>
-            </a>
+  <!-- Carrossel principal (grande) -->
+  {carouselSlides.length > 0 && (
+    <section class="main-carousel-section">
+      <div class="main-carousel" id="main-carousel">
+        <div class="carousel-track" id="carousel-track">
+          {carouselSlides.map((post, i) => (
+            <div class="carousel-slide" data-index={i} aria-hidden={i !== 0 ? 'true' : 'false'}>
+              <img src={post.coverImageUrl} alt={post.title} loading={i === 0 ? 'eager' : 'lazy'} class="carousel-img" />
+              <div class="carousel-overlay">
+                <div class="carousel-content">
+                  {(post.categories?.[0] || post.category) && (
+                    <span class="carousel-cat">{post.categories?.[0] || post.category}</span>
+                  )}
+                  <h2 class="carousel-title">{post.title}</h2>
+                  <p class="carousel-summary">{post.summary}</p>
+                  <a href={`/${post.slug}`} class="carousel-cta">Ler artigo <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Proximo">&#8250;</button>
+        <div class="carousel-dots" id="carousel-dots">
+          {carouselSlides.map((_, i) => (
+            <button class={`carousel-dot${i === 0 ? ' active' : ''}`} data-index={i} aria-label={`Slide ${i + 1}`}></button>
           ))}
         </div>
       </div>
     </section>
   )}
 
-  <!-- Posts grid + Tags sidebar -->
-  <section class="posts-section">
-    <div class="container">
-      {initialPosts.length === 0 ? (
-        <div class="empty-state">
-          <i class="fa-solid fa-newspaper"></i>
-          <p>Nenhum artigo disponível no momento.</p>
-        </div>
-      ) : (
-        <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+  <!-- Blocos por Categoria -->
+  <div id="no-results" style="display:none;text-align:center;padding:3rem 1rem;color:var(--text-muted);">
+    <i class="fa-solid fa-search" style="font-size:2rem;margin-bottom:.75rem;display:block;"></i>
+    <p>Nenhum artigo encontrado.</p>
+  </div>
 
-          <!-- Sidebar de Tags -->
-          {allTags.length > 0 && (
-            <aside id="tags-sidebar" style="width:190px;flex-shrink:0;">
-              <div style="position:sticky;top:1rem;background:var(--bg-light);border:1px solid var(--border);border-radius:10px;padding:1rem;max-height:calc(100vh - 2rem);overflow-y:auto;">
-                <p style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin:0 0 .75rem;">Filtrar por tag</p>
-                <a href="#" class="tag-sidebar-item active" data-tag="" style="display:block;padding:.3rem .5rem;border-radius:6px;font-size:.8rem;color:var(--text);text-decoration:none;margin-bottom:.2rem;transition:background .15s;">
-                  # todos <span style="opacity:.5;font-size:.72em">({sorted.length})</span>
-                </a>
-                {allTags.map(({ tag, count }) => (
-                  <a href="#" class="tag-sidebar-item" data-tag={tag}
-                    style="display:block;padding:.3rem .5rem;border-radius:6px;font-size:.8rem;color:var(--text);text-decoration:none;margin-bottom:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .15s;"
-                    title={tag}>
-                    #{tag} <span style="opacity:.5;font-size:.72em">({count})</span>
-                  </a>
-                ))}
-              </div>
-            </aside>
+  {categoryBlocks.map(({ category, posts, totalPosts, tags }) => (
+    <section class="category-block" data-cat-slug={category.slug} id={`cat-${category.slug}`}>
+      <div class="container">
+        <div class="cat-block-header">
+          <h2 class="cat-block-title">{category.name}</h2>
+          {totalPosts > 6 && (
+            <a href={`/categoria/${category.slug}`} class="cat-view-all">
+              Ver todos ({totalPosts}) <i class="fa-solid fa-arrow-right"></i>
+            </a>
           )}
-
-          <!-- Posts + Paginação -->
-          <div style="flex:1;min-width:0;">
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;">
-              <div class="section-title" style="margin:0"><h2>Artigos Recentes</h2></div>
-              <div style="display:flex;align-items:center;gap:.4rem;">
-                <span style="font-size:.75rem;color:var(--text-muted);white-space:nowrap;">Ordenar:</span>
-                <button id="sort-chrono" class="sort-btn sort-btn-active" aria-pressed="true">📅 Mais recentes</button>
-                <button id="sort-alpha"  class="sort-btn" aria-pressed="false">🔤 A–Z</button>
-              </div>
-            </div>
-            <div class="posts-grid" id="posts-grid" data-site="">
-              {initialPosts.map((post, i) => {
-                const isHero = i === 0;
-                const posInCycle = (i - 1) % 5;
-                const isWide = !isHero && posInCycle === 2;
-                const wrapClass = isHero ? 'post-wrap hero' : isWide ? 'post-wrap hero' : 'post-wrap';
-                return (
-                  <div class={wrapClass}>
-                    <PostCard
-                      title={post.title}
-                      summary={post.summary}
-                      slug={post.slug}
-                      publishedAt={post.publishedAt}
-                      createdAt={post.createdAt}
-                      category={post.category}
-                      categories={post.categories}
-                      tags={post.tags}
-                      coverImageUrl={post.coverImageUrl}
-                      views={post.views}
-                      ratings={post.ratings}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-            <div id="load-more-sentinel" style="height:1px;margin-top:2rem;"></div>
-            <div id="load-more-spinner" style="display:none;text-align:center;padding:2rem 0;color:var(--text-muted);font-size:.9rem;">
-              <i class="fa-solid fa-spinner fa-spin" style="margin-right:.5rem;"></i>Carregando mais artigos...
-            </div>
-            <div id="no-results" style="display:none" class="empty-state">
-              <i class="fa-solid fa-search"></i>
-              <p>Nenhum artigo encontrado.</p>
-            </div>
-          </div>
         </div>
-      )}
-    </div>
-  </section>
+
+        {tags.length > 0 && (
+          <div class="cat-tag-pills" data-cat={category.slug}>
+            <button class="cat-tag-pill active" data-tag="">Todos</button>
+            {tags.slice(0, 18).map(tag => (
+              <button class="cat-tag-pill" data-tag={tag}>#{tag}</button>
+            ))}
+          </div>
+        )}
+
+        <div class="category-posts-grid" data-cat={category.slug}>
+          {posts.map((post, i) => (
+            <div class="post-wrap" data-tags={(post.tags || []).join(',').toLowerCase()}>
+              <PostCard
+                title={post.title}
+                summary={post.summary}
+                slug={post.slug}
+                publishedAt={post.publishedAt}
+                createdAt={post.createdAt}
+                category={post.category}
+                categories={post.categories}
+                tags={post.tags}
+                coverImageUrl={post.coverImageUrl}
+                views={post.views}
+                ratings={post.ratings}
+              />
+            </div>
+          ))}
+        </div>
+
+        {totalPosts > 6 && (
+          <div class="cat-block-footer">
+            <a href={`/categoria/${category.slug}`} class="cat-view-all-btn">
+              Ver todos os {totalPosts} artigos de {category.name} <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+  ))}
 </BaseLayout>
 
 <script>
-  // ── Utilitários ──────────────────────────────────────────
-  function toSlug(n: string): string {
-    return n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
-      .replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-');
-  }
-  function fmtDate(d: string): string {
-    try { return new Date(d).toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'}); } catch { return ''; }
-  }
-  function esc(s: unknown): string {
-    return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+  // ── Carrossel principal ───────────────────────────────────
+  (function () {
+    const track  = document.getElementById('carousel-track') as HTMLElement | null;
+    const dots   = document.querySelectorAll<HTMLElement>('.carousel-dot');
+    const slides = document.querySelectorAll<HTMLElement>('.carousel-slide');
+    if (!track || slides.length === 0) return;
 
-  // ── Card HTML interno (sem wrapper) ──────────────────────
-  function ratingColorJs(v: number): string {
-    if (v >= 9.1) return '#16a34a';
-    if (v >= 8.0) return '#22c55e';
-    if (v >= 6.5) return '#eab308';
-    if (v >= 4.0) return '#f59e0b';
-    return '#dc2626';
-  }
-  function innerCard(p: Record<string,unknown>): string {
-    const cat  = esc((p.categories as string[])?.[0] ?? p.category ?? '');
-    const date = fmtDate((p.publishedAt || p.createdAt) as string);
-    const tags: string[] = Array.isArray(p.tags) ? p.tags as string[] : [];
-    const views = Number(p.views ?? 0);
-    const ratings = (p.ratings as { media: number } | undefined);
-    const ratingBadge = ratings && typeof ratings.media === 'number'
-      ? `<span class="card-rating" style="background:${ratingColorJs(ratings.media)}">${ratings.media.toFixed(1)}</span>`
-      : '';
-    const img = p.coverImageUrl
-      ? `<div class="post-card-image"><img src="${esc(p.coverImageUrl)}" alt="${esc(p.title)}" loading="lazy" decoding="async">${cat?`<span class="card-category">${cat}</span>`:''}${ratingBadge}</div>`
-      : `<div class="post-card-image-placeholder"><span>📍</span>${cat?`<span class="card-category">${cat}</span>`:''}${ratingBadge}</div>`;
-    const tagLinks = tags.slice(0,3).map(t=>`<a href="/tag/${toSlug(t)}" class="card-tag" onclick="event.stopPropagation()">#${esc(t)}</a>`).join('');
-    const sortDate = String((p.publishedAt || p.createdAt) ?? '');
-    return `<article class="post-card" data-tags="${esc(tags.join(','))}" data-sort-date="${esc(sortDate)}" data-sort-title="${esc(String(p.title??'').toLowerCase())}">
-      <a href="/${esc(p.slug)}" tabindex="-1" aria-hidden="true">${img}</a>
-      <div class="post-card-body">
-        <h2><a href="/${esc(p.slug)}">${esc(p.title)}</a></h2>
-        <p>${esc(p.summary)}</p>
-        <div class="card-meta"><span>📅 ${date}</span>${views>0?`<span>👁 ${views.toLocaleString('pt-BR')}</span>`:''}</div>
-        ${tags.length?`<div class="card-tags">${tagLinks}</div>`:''}
-      </div>
-    </article>`;
-  }
+    let current = 0;
+    let timer: ReturnType<typeof setInterval> | undefined;
+    let paused = false;
 
-  // Wrapper para infinite scroll (classe recalculada depois)
-  function renderCard(p: Record<string,unknown>): string {
-    return `<div class="post-wrap">${innerCard(p)}</div>`;
-  }
+    function goTo(idx: number): void {
+      current = (idx + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      slides.forEach((s, i) => s.setAttribute('aria-hidden', i !== current ? 'true' : 'false'));
+    }
 
-  // ── Recalcula hero/wide em todos os .post-wrap ────────────
-  function recalcWrapClasses(): void {
+    function next(): void { goTo(current + 1); }
+    function prev(): void { goTo(current - 1); }
+
+    function startTimer(): void {
+      clearInterval(timer);
+      if (!paused) timer = setInterval(next, 10000);
+    }
+
+    document.getElementById('carousel-next')?.addEventListener('click', () => { next(); startTimer(); });
+    document.getElementById('carousel-prev')?.addEventListener('click', () => { prev(); startTimer(); });
+    dots.forEach(dot => dot.addEventListener('click', () => { goTo(Number(dot.dataset.index)); startTimer(); }));
+
+    const section = document.querySelector('.main-carousel-section');
+    section?.addEventListener('mouseenter', () => { paused = true; clearInterval(timer); });
+    section?.addEventListener('mouseleave', () => { paused = false; startTimer(); });
+
+    startTimer();
+  })();
+
+  // ── Tag pills por bloco de categoria ─────────────────────
+  document.querySelectorAll<HTMLElement>('.cat-tag-pills').forEach(pillGroup => {
+    const catSlug = pillGroup.dataset.cat ?? '';
+    const grid = document.querySelector<HTMLElement>(`.category-posts-grid[data-cat="${catSlug}"]`);
     if (!grid) return;
-    const wraps = Array.from(grid.querySelectorAll<HTMLElement>('.post-wrap'));
-    wraps.forEach((wrap, i) => {
-      const isHero = i === 0;
-      const posInCycle = (i - 1) % 5;
-      const isWide = !isHero && posInCycle === 2;
-      wrap.className = isHero ? 'post-wrap hero' : isWide ? 'post-wrap hero' : 'post-wrap';
+
+    pillGroup.querySelectorAll<HTMLElement>('.cat-tag-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        pillGroup.querySelectorAll('.cat-tag-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const tag = pill.dataset.tag ?? '';
+        grid.querySelectorAll<HTMLElement>('.post-wrap').forEach(wrap => {
+          if (!tag) {
+            wrap.style.display = '';
+          } else {
+            const tags = (wrap.dataset.tags ?? '').toLowerCase().split(',').map(t => t.trim());
+            wrap.style.display = tags.includes(tag.toLowerCase()) ? '' : 'none';
+          }
+        });
+      });
     });
-  }
+  });
 
-  // ── Ad inline-big ─────────────────────────────────────────
-  type Ad = { id: string; title: string; imageUrl?: string; destinationUrl: string; advertiserName?: string };
-
-  function renderAd(ad: Ad): string {
-    const imgHtml = ad.imageUrl
-      ? `<img class="ad-inline-big-img" src="${esc(ad.imageUrl)}" alt="${esc(ad.title)}" loading="lazy">`
-      : `<div class="ad-inline-big-img-placeholder">📢</div>`;
-    return `<div class="ad-inline-big-wrap">
-      <a href="${esc(ad.destinationUrl)}" target="_blank" rel="noopener sponsored" class="ad-inline-big"
-         onclick="fetch('${esc(API)}/api/advertisement/${esc(ad.id)}/click',{method:'POST'}).catch(()=>{})">
-        <span class="ad-label">Publicidade</span>
-        ${imgHtml}
-        <div class="ad-inline-big-body">
-          <h3>${esc(ad.title)}</h3>
-          ${ad.advertiserName?`<p>${esc(ad.advertiserName)}</p>`:''}
-        </div>
-      </a>
-    </div>`;
-  }
-
-  async function loadAndInsertAds(): Promise<void> {
-    try {
-      const res = await fetch(`${API}/api/advertisement/active/inline-big`);
-      if (!res.ok) return;
-      const json = await res.json();
-      const ads: Ad[] = json?.data ?? [];
-      if (!ads.length || !grid) return;
-      const wraps = Array.from(grid.querySelectorAll<HTMLElement>('.post-wrap'));
-      if (wraps.length < 4) return;
-      // Insere anuncios em posicoes aleatorias (a partir do 3o post, espacamento 4-7)
-      let pos = 3 + Math.floor(Math.random() * 3);
-      for (let i = 0; i < ads.length && pos < wraps.length; i++, pos += 4 + Math.floor(Math.random() * 4)) {
-        wraps[pos].insertAdjacentHTML('beforebegin', renderAd(ads[i]));
-      }
-    } catch {}
-  }
-
-  // ── Estado da paginação ──────────────────────────────────
-  const API       = 'https://api.curitibasoftware.com.br';
-  const SITE      = (document.getElementById('posts-grid') as HTMLElement)?.dataset.site ?? '';
-  const PAGE_SIZE = 12;
-  let page      = 1;
-  let loading   = false;
-  let hasMore   = true;
-  let activeTag = '';
-
-  const grid    = document.getElementById('posts-grid')       as HTMLElement;
-  const noRes   = document.getElementById('no-results')       as HTMLElement;
-  const spinner = document.getElementById('load-more-spinner') as HTMLElement;
-  const input   = document.getElementById('search-input')     as HTMLInputElement;
-
-  async function loadMore(): Promise<void> {
-    if (loading || !hasMore || !grid) return;
-    loading = true;
-    if (spinner) spinner.style.display = 'block';
-    try {
-      const url = new URL(`${API}/api/blog/posts`);
-      url.searchParams.set('page', String(page + 1));
-      url.searchParams.set('pageSize', String(PAGE_SIZE));
-      if (SITE) url.searchParams.set('site', SITE);
-      if (activeTag) url.searchParams.set('tag', activeTag);
-      const res  = await fetch(url.toString());
-      const json = await res.json();
-      const data = json?.data;
-      if (data?.items?.length) {
-        page++;
-        grid.insertAdjacentHTML('beforeend', (data.items as Record<string,unknown>[]).map(renderCard).join(''));
-        recalcWrapClasses();
-        const loaded = grid.querySelectorAll('.post-card').length;
-        if (loaded >= Number(data.totalCount ?? 0)) hasMore = false;
-      } else {
-        hasMore = false;
-      }
-    } catch { hasMore = false; }
-    loading = false;
-    if (spinner) spinner.style.display = hasMore ? '' : 'none';
-  }
-
-  async function resetAndLoad(): Promise<void> {
-    page    = 0;
-    hasMore = true;
-    loading = false;
-    if (grid) { grid.innerHTML = ''; grid.style.display = ''; }
-    if (noRes) noRes.style.display = 'none';
-    await loadMore();
-    recalcWrapClasses();
-    loadAndInsertAds();
-  }
-
-  // IntersectionObserver — dispara ao aproximar do fim
-  const sentinel = document.getElementById('load-more-sentinel');
-  if (sentinel) {
-    new IntersectionObserver(
-      entries => { if (entries[0].isIntersecting) loadMore(); },
-      { rootMargin: '600px' }
-    ).observe(sentinel);
-  }
-
-  // Carrega anuncios na carga inicial
-  loadAndInsertAds();
-
-  // ── Busca client-side com fuzzy matching ─────────────────
+  // ── Busca fuzzy global (filtra por blocos) ────────────────
   function norm(s: string): string {
     return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   }
@@ -359,73 +269,32 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
     return parts.every(p => wordMatchesText(p, nt));
   }
 
+  const noRes = document.getElementById('no-results') as HTMLElement;
+  const input = document.getElementById('search-input') as HTMLInputElement;
   let searchTimer: ReturnType<typeof setTimeout> | undefined;
+
   if (input) {
     input.addEventListener('input', () => {
       clearTimeout(searchTimer);
       searchTimer = setTimeout(() => {
         const q = input.value.trim();
-        let visible = 0;
-        grid?.querySelectorAll<HTMLElement>('.post-wrap').forEach(wrap => {
-          const show = !q || fuzzyMatch(q, wrap.textContent ?? '');
-          wrap.style.display = show ? '' : 'none';
-          if (show) visible++;
+        let totalVisible = 0;
+
+        document.querySelectorAll<HTMLElement>('.category-block').forEach(block => {
+          let blockVisible = 0;
+          block.querySelectorAll<HTMLElement>('.post-wrap').forEach(wrap => {
+            const show = !q || fuzzyMatch(q, wrap.textContent ?? '');
+            wrap.style.display = show ? '' : 'none';
+            if (show) blockVisible++;
+          });
+          block.style.display = blockVisible === 0 && q ? 'none' : '';
+          totalVisible += blockVisible;
         });
-        if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
-        if (grid) grid.style.display = visible === 0 ? 'none' : '';
+
+        if (noRes) noRes.style.display = totalVisible === 0 && q ? 'block' : 'none';
       }, 150);
     });
   }
-
-  // ── Ordenação ────────────────────────────────────────────
-  let currentSort: 'chrono' | 'alpha' = 'chrono';
-
-  function sortCards(): void {
-    if (!grid) return;
-    const wraps = Array.from(grid.querySelectorAll<HTMLElement>('.post-wrap'));
-    wraps.sort((a, b) => {
-      const ca = a.querySelector<HTMLElement>('.post-card');
-      const cb = b.querySelector<HTMLElement>('.post-card');
-      if (currentSort === 'alpha') {
-        return (ca?.dataset.sortTitle ?? '').localeCompare(cb?.dataset.sortTitle ?? '', 'pt-BR');
-      }
-      return (cb?.dataset.sortDate ?? '').localeCompare(ca?.dataset.sortDate ?? '');
-    });
-    wraps.forEach(w => grid.appendChild(w));
-    recalcWrapClasses();
-  }
-
-  function setSort(sort: 'chrono' | 'alpha'): void {
-    currentSort = sort;
-    document.getElementById('sort-chrono')?.setAttribute('aria-pressed', sort === 'chrono' ? 'true' : 'false');
-    document.getElementById('sort-alpha')?.setAttribute('aria-pressed', sort === 'alpha'  ? 'true' : 'false');
-    document.getElementById('sort-chrono')?.classList.toggle('sort-btn-active', sort === 'chrono');
-    document.getElementById('sort-alpha')?.classList.toggle('sort-btn-active', sort === 'alpha');
-    sortCards();
-  }
-
-  document.getElementById('sort-chrono')?.addEventListener('click', () => setSort('chrono'));
-  document.getElementById('sort-alpha')?.addEventListener('click',  () => setSort('alpha'));
-
-  // ── Tag sidebar → reset + reload via API ────────────────
-  document.querySelectorAll<HTMLElement>('.tag-sidebar-item').forEach(btn => {
-    btn.addEventListener('click', async e => {
-      e.preventDefault();
-      activeTag = btn.dataset.tag ?? '';
-      document.querySelectorAll<HTMLElement>('.tag-sidebar-item').forEach(b => {
-        b.classList.remove('active');
-        b.style.background = '';
-        b.style.color      = '';
-        b.style.fontWeight = '';
-      });
-      btn.classList.add('active');
-      btn.style.background = 'var(--primary,#2d6a4f)';
-      btn.style.color      = '#fff';
-      btn.style.fontWeight = '600';
-      if (input) input.value = '';
-      await resetAndLoad();
-    });
-  });
 
   // ── Particle hero ────────────────────────────────────────
   (function () {
