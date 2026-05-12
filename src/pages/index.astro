@@ -13,7 +13,7 @@ const initialPosts = sorted.slice(0, PAGE_SIZE);
 
 const tagCountMap: Record<string, number> = {};
 allPosts.forEach(p => (p.tags || []).forEach(t => { tagCountMap[t] = (tagCountMap[t] || 0) + 1; }));
-const allTags = Object.entries(tagCountMap).sort((a, b) => b[1] - a[1]).map(([tag, count]) => ({ tag, count }));
+const allTags = Object.entries(tagCountMap).sort((a, b) => a[0].localeCompare(b[0], 'pt-BR', { sensitivity: 'base' })).map(([tag, count]) => ({ tag, count }));
 
 const withCovers = allPosts.filter(p => p.coverImageUrl);
 const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 10);
@@ -320,18 +320,60 @@ const carouselItems = [...withCovers].sort(() => Math.random() - 0.5).slice(0, 1
   // Carrega anuncios na carga inicial
   loadAndInsertAds();
 
-  // ── Busca client-side nos cards carregados ───────────────
+  // ── Busca client-side com fuzzy matching ─────────────────
+  function norm(s: string): string {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  }
+
+  function lev(a: string, b: string): number {
+    if (a === b) return 0;
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+    const row: number[] = Array.from({ length: b.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= a.length; i++) {
+      let prev = i;
+      for (let j = 1; j <= b.length; j++) {
+        const val = a[i - 1] === b[j - 1] ? row[j - 1] : 1 + Math.min(row[j - 1], row[j], prev);
+        row[j - 1] = prev;
+        prev = val;
+      }
+      row[b.length] = prev;
+    }
+    return row[b.length];
+  }
+
+  function wordMatchesText(word: string, text: string): boolean {
+    const maxDist = word.length <= 3 ? 0 : word.length <= 5 ? 1 : 2;
+    if (text.includes(word)) return true;
+    const words = text.split(/\s+/);
+    for (const w of words) {
+      if (Math.abs(w.length - word.length) <= maxDist && lev(word, w) <= maxDist) return true;
+    }
+    return false;
+  }
+
+  function fuzzyMatch(query: string, text: string): boolean {
+    const nq = norm(query);
+    const nt = norm(text);
+    const parts = nq.split(/\s+/).filter(Boolean);
+    return parts.every(p => wordMatchesText(p, nt));
+  }
+
+  let searchTimer: ReturnType<typeof setTimeout> | undefined;
   if (input) {
     input.addEventListener('input', () => {
-      const q = input.value.toLowerCase().trim();
-      let visible = 0;
-      grid?.querySelectorAll<HTMLElement>('.post-wrap').forEach(wrap => {
-        const show = !q || Boolean(wrap.textContent?.toLowerCase().includes(q));
-        wrap.style.display = show ? '' : 'none';
-        if (show) visible++;
-      });
-      if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
-      if (grid) grid.style.display = visible === 0 ? 'none' : '';
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        const q = input.value.trim();
+        let visible = 0;
+        grid?.querySelectorAll<HTMLElement>('.post-wrap').forEach(wrap => {
+          const show = !q || fuzzyMatch(q, wrap.textContent ?? '');
+          wrap.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
+        if (grid) grid.style.display = visible === 0 ? 'none' : '';
+      }, 150);
     });
   }
 
