@@ -39,6 +39,8 @@ export interface BlogPost {
   youtubeVideoId?: string;
   ratings?: BlogPostRatings;
   userRatingsSummary?: BlogPostUserRatingsSummary;
+  sequence?: number;
+  isFeatured?: boolean;
 }
 
 export interface BlogPostRatings {
