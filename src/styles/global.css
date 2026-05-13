@@ -997,11 +997,16 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   height: 100%;
   position: relative;
   flex-shrink: 0;
+  background: #0d1b2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .carousel-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
   display: block;
 }
 .carousel-overlay {
