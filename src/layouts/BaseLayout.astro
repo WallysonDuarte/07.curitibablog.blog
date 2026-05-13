@@ -18,19 +18,23 @@ const { title, description } = Astro.props;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#e74c3c" />
-  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-  <link rel="alternate icon" type="image/x-icon" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/icon.svg" />
-  <!-- Google Fonts — async -->
+  <meta name="theme-color" content="#2d6a4f" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="alternate icon" type="image/png" href="/favicon.png?v=3" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=3" />
+
+  <!-- Google Fonts — async (não bloqueia renderização) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" /></noscript>
-  <!-- Font Awesome — async -->
+
+  <!-- Font Awesome — async (não bloqueia renderização) -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" /></noscript>
+
   <slot name="head" />
   <script is:inline>
   (function(){
@@ -46,17 +50,6 @@ const { title, description } = Astro.props;
     <slot />
   </main>
   <Footer />
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2081498160751591" crossorigin="anonymous"></script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FE4PES1K"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-45FE4PES1K');
-  </script>
 
   <!-- Lightbox global -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
@@ -142,6 +135,69 @@ const { title, description } = Astro.props;
     themeBtn?.addEventListener('click', () => {
       setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
+  </script>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;color:#e0e0e0;padding:16px 24px;box-shadow:0 -2px 12px rgba(0,0,0,.4);display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;line-height:1.5">
+    <span style="flex:1;min-width:220px">
+      Usamos cookies para analytics e publicidade. Veja nossa
+      <a href="/privacidade" style="color:#7ec8a4;text-decoration:underline">Politica de Privacidade</a>.
+    </span>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button id="cookie-decline" style="padding:8px 18px;border:1px solid #7ec8a4;background:transparent;color:#7ec8a4;border-radius:6px;cursor:pointer;font-size:13px">Recusar</button>
+      <button id="cookie-accept" style="padding:8px 18px;border:none;background:#2d6a4f;color:#fff;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600">Aceitar todos</button>
+    </div>
+  </div>
+
+  <script is:inline>
+  (function() {
+    var GA_ID = 'G-45FE4PES1K';
+    var ADSENSE_ID = 'ca-pub-2081498160751591';
+    var CONSENT_KEY = 'cookie_consent';
+
+    function loadAnalytics() {
+      var s1 = document.createElement('script');
+      s1.async = true;
+      s1.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s1);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+
+      var s2 = document.createElement('script');
+      s2.async = true;
+      s2.crossOrigin = 'anonymous';
+      s2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID;
+      document.head.appendChild(s2);
+    }
+
+    var consent = localStorage.getItem(CONSENT_KEY);
+
+    if (consent === 'accepted') {
+      loadAnalytics();
+      return;
+    }
+
+    if (consent === 'declined') {
+      return;
+    }
+
+    // Sem resposta — exibir banner
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'flex';
+
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      if (banner) banner.style.display = 'none';
+      loadAnalytics();
+    });
+
+    document.getElementById('cookie-decline').addEventListener('click', function() {
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      if (banner) banner.style.display = 'none';
+    });
+  })();
   </script>
 </body>
 </html>
