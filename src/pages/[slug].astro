@@ -62,6 +62,9 @@ const spotifyEmbedUrl = post.podcastUrl ? (() => {
   catch { return null; }
 })() : null;
 
+const API_BASE = 'https://api.curitibasoftware.com.br';
+const postCoverSrc = post.coverImageUrl || (post.coverImageKey ? `${API_BASE}/api/blog/image/${post.coverImageKey}` : null);
+
 // Pick one inline ad to rotate per section
 const inlineAd = inlineAds[0] ?? null;
 const sidebarAd = sidebarAds[0] ?? null;
@@ -73,7 +76,7 @@ const faqSideAd = faqSideAds[0] ?? null;
     slot="head"
     title={metaTitle}
     description={metaDesc}
-    image={post.coverImageUrl}
+    image={postCoverSrc ?? undefined}
     type="article"
     publishedAt={new Date(publishDate)}
     updatedAt={new Date(post.updatedAt)}
@@ -86,9 +89,9 @@ const faqSideAd = faqSideAds[0] ?? null;
   />
 
   <!-- Cover image hero -->
-  {post.coverImageUrl && (
+  {postCoverSrc && (
     <div class="post-cover-hero">
-      <img src={post.coverImageUrl} alt={post.title} decoding="async" loading="eager" fetchpriority="high" />
+      <img src={postCoverSrc} alt={post.title} decoding="async" loading="eager" fetchpriority="high" />
       <div class="post-cover-hero-overlay"></div>
     </div>
   )}
@@ -276,7 +279,7 @@ const faqSideAd = faqSideAds[0] ?? null;
                 category={p.category}
                 categories={p.categories}
                 tags={p.tags}
-                coverImageUrl={p.coverImageUrl}
+                coverImageUrl={p.coverImageUrl} coverImageKey={p.coverImageKey}
                 views={p.views}
                 compact={true}
               />

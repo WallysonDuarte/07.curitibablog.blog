@@ -1,4 +1,5 @@
 ---
+const API_BASE = 'https://api.curitibasoftware.com.br';
 import { formatDate, toSlug, ratingColor } from '../lib/utils';
 import type { BlogPostRatings } from '../lib/types';
 
@@ -12,6 +13,7 @@ interface Props {
   categories?: string[];
   tags: string[];
   coverImageUrl?: string;
+  coverImageKey?: string;
   views: number;
   compact?: boolean;
   ratings?: BlogPostRatings;
@@ -19,8 +21,10 @@ interface Props {
 
 const {
   title, summary, slug, publishedAt, createdAt, category,
-  categories, tags, coverImageUrl, views, compact = false, ratings,
+  categories, tags, coverImageUrl, coverImageKey, views, compact = false, ratings,
 } = Astro.props;
+
+const imgSrc = coverImageUrl || (coverImageKey ? `${API_BASE}/api/blog/image/${coverImageKey}` : null);
 
 const displayCat = categories?.length ? categories[0] : category;
 const date = formatDate(publishedAt || createdAt);
@@ -29,9 +33,9 @@ const postUrl = `/${slug}`;
 
 <article class={`post-card ${compact ? 'post-card-compact' : ''}`} data-tags={tags?.join(',') || ''} data-sort-date={publishedAt || createdAt} data-sort-title={title.toLowerCase()}>
   <a href={postUrl} tabindex="-1" aria-hidden="true">
-    {coverImageUrl ? (
+    {imgSrc ? (
       <div class="post-card-image">
-        <img src={coverImageUrl} alt={title} loading="lazy" decoding="async" />
+        <img src={imgSrc} alt={title} loading="lazy" decoding="async" />
         {displayCat && <span class="card-category">{displayCat}</span>}
         {ratings && <span class="card-rating" style={`background:${ratingColor(ratings.media)}`}>{ratings.media.toFixed(1)}</span>}
       </div>
