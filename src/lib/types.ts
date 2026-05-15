@@ -20,6 +20,7 @@ export interface BlogPost {
   summary: string;
   content: string;
   coverImageUrl?: string;
+  coverImageKey?: string;
   tags: string[];
   category: string;
   categories?: string[];
