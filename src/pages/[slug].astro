@@ -63,7 +63,7 @@ const spotifyEmbedUrl = post.podcastUrl ? (() => {
 })() : null;
 
 const API_BASE = 'https://api.curitibasoftware.com.br';
-const postCoverSrc = post.coverImageUrl || (post.coverImageKey ? `${API_BASE}/api/blog/image/${post.coverImageKey}` : null);
+const postCoverSrc = `${API_BASE}/api/blog/cover/${post.slug}`;
 
 // Pick one inline ad to rotate per section
 const inlineAd = inlineAds[0] ?? null;
@@ -89,12 +89,10 @@ const faqSideAd = faqSideAds[0] ?? null;
   />
 
   <!-- Cover image hero -->
-  {postCoverSrc && (
-    <div class="post-cover-hero">
+  <div class="post-cover-hero">
       <img src={postCoverSrc} alt={post.title} decoding="async" loading="eager" fetchpriority="high" />
       <div class="post-cover-hero-overlay"></div>
     </div>
-  )}
 
   <div class="post-layout">
     <!-- ── MAIN ARTICLE ── -->

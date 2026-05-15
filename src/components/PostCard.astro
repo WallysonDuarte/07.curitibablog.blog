@@ -24,7 +24,7 @@ const {
   categories, tags, coverImageUrl, coverImageKey, views, compact = false, ratings,
 } = Astro.props;
 
-const imgSrc = coverImageUrl || (coverImageKey ? `${API_BASE}/api/blog/image/${coverImageKey}` : null);
+const imgSrc = `${API_BASE}/api/blog/cover/${slug}`;
 
 const displayCat = categories?.length ? categories[0] : category;
 const date = formatDate(publishedAt || createdAt);
@@ -33,19 +33,11 @@ const postUrl = `/${slug}`;
 
 <article class={`post-card ${compact ? 'post-card-compact' : ''}`} data-tags={tags?.join(',') || ''} data-sort-date={publishedAt || createdAt} data-sort-title={title.toLowerCase()}>
   <a href={postUrl} tabindex="-1" aria-hidden="true">
-    {imgSrc ? (
-      <div class="post-card-image">
+    <div class="post-card-image">
         <img src={imgSrc} alt={title} loading="lazy" decoding="async" />
         {displayCat && <span class="card-category">{displayCat}</span>}
         {ratings && <span class="card-rating" style={`background:${ratingColor(ratings.media)}`}>{ratings.media.toFixed(1)}</span>}
       </div>
-    ) : (
-      <div class="post-card-image-placeholder">
-        <span>📍</span>
-        {displayCat && <span class="card-category">{displayCat}</span>}
-        {ratings && <span class="card-rating" style={`background:${ratingColor(ratings.media)}`}>{ratings.media.toFixed(1)}</span>}
-      </div>
-    )}
   </a>
   <div class="post-card-body">
     <h2><a href={postUrl}>{title}</a></h2>
