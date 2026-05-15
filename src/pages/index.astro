@@ -6,14 +6,15 @@ import { fetchAllPosts, fetchCategories } from '../lib/api';
 
 const [allPosts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
 
-// Carrossel: posts em destaque com cover, ordenados por sequence
-const featuredWithCover = allPosts.filter(p => p.isFeatured && p.coverImageUrl)
+const API_BASE = 'https://api.curitibasoftware.com.br';
+// Carrossel: posts em destaque ordenados por sequence
+const featuredPosts = allPosts.filter(p => p.isFeatured)
   .sort((a, b) => (a.sequence ?? 9999) - (b.sequence ?? 9999));
-const fallbackCovers = allPosts.filter(p => !p.isFeatured && p.coverImageUrl)
+const fallbackPosts = allPosts.filter(p => !p.isFeatured)
   .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
-const carouselSlides = featuredWithCover.length >= 3
-  ? featuredWithCover.slice(0, 8)
-  : [...featuredWithCover, ...fallbackCovers].slice(0, 8);
+const carouselSlides = featuredPosts.length >= 3
+  ? featuredPosts.slice(0, 8)
+  : [...featuredPosts, ...fallbackPosts].slice(0, 8);
 
 // Blocos por categoria
 function getCatKey(p: typeof allPosts[0]): string[] {
@@ -85,7 +86,7 @@ const categoryBlocks = categories.map(cat => {
         <div class="carousel-track" id="carousel-track">
           {carouselSlides.map((post, i) => (
             <div class="carousel-slide" data-index={i} aria-hidden={i !== 0 ? 'true' : 'false'}>
-              <img src={post.coverImageUrl} alt={post.title} loading={i === 0 ? 'eager' : 'lazy'} class="carousel-img" />
+              <img src={`${API_BASE}/api/blog/cover/${post.slug}`} alt={post.title} loading={i === 0 ? 'eager' : 'lazy'} class="carousel-img" />
               <div class="carousel-overlay">
                 <div class="carousel-content">
                   {(post.categories?.[0] || post.category) && (
