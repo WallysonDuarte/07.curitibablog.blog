@@ -5,8 +5,15 @@ REMOTE_DIR="/opt/blogdudu"
 SSH="ssh -i ~/.ssh/id_server_nopass -p 2222 ubuntu@31.97.252.45"
 SCP="scp -i ~/.ssh/id_server_nopass -P 2222"
 
-echo "==> Build..."
-npm run build
+# Build separado do deploy para evitar double-build que causa timeout de API
+# Para buildar: npm run build
+# Para deployar sem rebuild: bash deploy.sh --skip-build
+if [[ "$1" != "--skip-build" ]]; then
+  echo "==> Build..."
+  npm run build
+else
+  echo "==> Deploy sem rebuild (usando dist atual)"
+fi
 
 echo "==> Compactando dist..."
 tar -czf /tmp/blogdudu.tar.gz -C dist .
