@@ -53,7 +53,7 @@ def log(msg):
         print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def ollama_generate(system_prompt: str, user_prompt: str) -> str | None:
+def ollama_generate(system_prompt: str, user_prompt: str, retries: int = 3) -> str | None:
     payload = json.dumps({
         "model": MODEL,
         "stream": False,
@@ -63,19 +63,23 @@ def ollama_generate(system_prompt: str, user_prompt: str) -> str | None:
         ]
     }).encode("utf-8")
     req = urllib.request.Request(OLLAMA_URL, data=payload, headers={"Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=300) as resp:
-            data = json.loads(resp.read())
-            return data["message"]["content"].strip()
-    except Exception as e:
-        log(f"[ERRO Ollama] {e}")
-        return None
+    for attempt in range(1, retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=600) as resp:
+                data = json.loads(resp.read())
+                return data["message"]["content"].strip()
+        except Exception as e:
+            log(f"[ERRO Ollama tentativa {attempt}/{retries}] {e}")
+            if attempt < retries:
+                time.sleep(30)
+    return None
 
 
 def process_task(task, col, dry_run, total):
     post_id, slug, field, site_id, site_desc, base_text = task
     system_prompt = FIELD_PROMPTS[field].format(blog_desc=site_desc)
-    user_prompt = f"Artigo original:\n\n{base_text[:8000]}"
+    limit = 4000 if field == "content" else 2000
+    user_prompt = f"Artigo original:\n\n{base_text[:limit]}"
 
     with counter_lock:
         counters["done"] += 1
