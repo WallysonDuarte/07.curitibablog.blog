@@ -1,23 +1,23 @@
 /* ── Variables ─────────────────────────────────── */
 :root {
-  --primary:       #e74c3c;
-  --primary-dark:  #c0392b;
-  --primary-light: #f1948a;
-  --navy:          #141A2B;
-  --text-dark:     #4c4c4c;
-  --text-body:     #808080;
-  --text-light:    #aaa;
-  --text:          #4c4c4c;
-  --text-muted:    #808080;
+  --primary:       #8b5cf6;
+  --primary-dark:  #7c3aed;
+  --primary-light: #ddd6fe;
+  --navy:          #2e1065;
+  --text-dark:     #1e1b4b;
+  --text-body:     #4b5563;
+  --text-light:    #9ca3af;
+  --text:          #374151;
+  --text-muted:    #6b7280;
   --bg:            #ffffff;
-  --bg-light:      #f4f3f4;
-  --border:        #e5e5e5;
-  --shadow-sm:     0 2px 8px rgba(0,0,0,.08);
-  --shadow-md:     0 4px 20px rgba(0,0,0,.12);
-  --radius:        8px;
-  --radius-lg:     16px;
-  --font-heading:  'Oswald', Arial Narrow, Arial, sans-serif;
-  --font-body:     'Open Sans', system-ui, -apple-system, sans-serif;
+  --bg-light:      #faf5ff;
+  --border:        #ede9fe;
+  --shadow-sm:     0 2px 8px rgba(139,92,246,.12);
+  --shadow-md:     0 4px 20px rgba(139,92,246,.20);
+  --radius:        16px;
+  --radius-lg:     24px;
+  --font-heading:  'Nunito', 'Segoe UI', sans-serif;
+  --font-body:     'Nunito Sans', 'Segoe UI', sans-serif;
   --max-width:     1200px;
   --content-width: 760px;
 }
