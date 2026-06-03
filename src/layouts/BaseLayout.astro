@@ -35,6 +35,8 @@ const { title, description } = Astro.props;
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" /></noscript>
 
+  <!-- MGID — carregador (injetado via consent LGPD, nao direto aqui) -->
+
   <slot name="head" />
   <script is:inline>
   (function(){
@@ -49,6 +51,13 @@ const { title, description } = Astro.props;
   <main>
     <slot />
   </main>
+
+  <!-- MGID Widget — site 1097559 / widget 2028008 -->
+  <!-- Renderizado apenas apos consent LGPD (script loader injetado via loadThirdParty) -->
+  <div id="mgid-widget-wrapper" style="display:none">
+    <div data-type="_mgwidget" data-widget-id="2028008"></div>
+  </div>
+
   <Footer />
 
   <!-- Lightbox global -->
@@ -170,6 +179,15 @@ const { title, description } = Astro.props;
       s2.crossOrigin = 'anonymous';
       s2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID;
       document.head.appendChild(s2);
+
+      // MGID — loader + ativacao do widget
+      var smgid = document.createElement('script');
+      smgid.async = true;
+      smgid.src = 'https://jsc.mgid.com/site/1097559.js';
+      document.head.appendChild(smgid);
+      (function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");
+      var wrapper = document.getElementById('mgid-widget-wrapper');
+      if (wrapper) wrapper.style.display = '';
     }
 
     var consent = localStorage.getItem(CONSENT_KEY);
