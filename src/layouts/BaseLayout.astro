@@ -49,6 +49,13 @@ const { title, description } = Astro.props;
   <main>
     <slot />
   </main>
+
+  <!-- MGID Widget — site 1097552 / widget 2028018 -->
+  <!-- Revelado apenas apos consent LGPD (script loader injetado via loadAnalytics) -->
+  <div id="mgid-widget-wrapper" style="display:none">
+    <div data-type="_mgwidget" data-widget-id="2028018"></div>
+  </div>
+
   <Footer />
 
   <!-- Lightbox global -->
@@ -170,6 +177,15 @@ const { title, description } = Astro.props;
       s2.crossOrigin = 'anonymous';
       s2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID;
       document.head.appendChild(s2);
+
+      // MGID — loader + ativacao do widget
+      var smgid = document.createElement('script');
+      smgid.async = true;
+      smgid.src = 'https://jsc.mgid.com/site/1097552.js';
+      document.head.appendChild(smgid);
+      (function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");
+      var wrapper = document.getElementById('mgid-widget-wrapper');
+      if (wrapper) wrapper.style.display = '';
     }
 
     var consent = localStorage.getItem(CONSENT_KEY);
