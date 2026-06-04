@@ -85,8 +85,11 @@ const categoryBlocks = categories.map(cat => {
       <div class="main-carousel" id="main-carousel">
         <div class="carousel-track" id="carousel-track">
           {carouselSlides.map((post, i) => (
-            <div class="carousel-slide" data-index={i} aria-hidden={i !== 0 ? 'true' : 'false'}>
-              <img src={`${API_BASE}/api/blog/cover/${post.slug}`} alt={post.title} loading={i === 0 ? 'eager' : 'lazy'} class="carousel-img" />
+            <div class="carousel-slide" data-index={i} aria-hidden={i !== 0 ? 'true' : undefined} inert={i !== 0 ? true : undefined}>
+              <picture>
+                <source type="image/webp" srcset={`${API_BASE}/api/blog/cover/${post.slug}?format=webp&w=1200`} />
+                <img src={`${API_BASE}/api/blog/cover/${post.slug}?w=1200`} alt={post.title} width="1200" height="630" loading={i === 0 ? 'eager' : 'lazy'} class="carousel-img" />
+              </picture>
               <div class="carousel-overlay">
                 <div class="carousel-content">
                   {(post.categories?.[0] || post.category) && (
@@ -186,7 +189,15 @@ const categoryBlocks = categories.map(cat => {
       current = (idx + slides.length) % slides.length;
       track.style.transform = `translateX(-${current * 100}%)`;
       dots.forEach((d, i) => d.classList.toggle('active', i === current));
-      slides.forEach((s, i) => s.setAttribute('aria-hidden', i !== current ? 'true' : 'false'));
+      slides.forEach((s, i) => {
+        if (i !== current) {
+          s.setAttribute('aria-hidden', 'true');
+          s.setAttribute('inert', '');
+        } else {
+          s.removeAttribute('aria-hidden');
+          s.removeAttribute('inert');
+        }
+      });
     }
 
     function next(): void { goTo(current + 1); }
