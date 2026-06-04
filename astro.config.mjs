@@ -6,4 +6,5 @@ export default defineConfig({
   site: 'https://blogdudu.com.br',
   integrations: [sitemap()],
   output: 'static',
+  build: { inlineStylesheets: 'always' },
 });

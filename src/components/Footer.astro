@@ -22,7 +22,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer-col">
-      <h4>Categorias</h4>
+      <h3>Categorias</h3>
       <ul>
         {categories.slice(0, 8).map(cat => (
           <li><a href={`/categoria/${cat.slug}`}>{cat.name}</a></li>
@@ -32,7 +32,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer-col">
-      <h4>Institucional</h4>
+      <h3>Institucional</h3>
       <ul>
         <li><a href="/sobre">Sobre</a></li>
         <li><a href="/contato">Contato</a></li>
@@ -43,7 +43,7 @@ const year = new Date().getFullYear();
 
     <!-- NEWSLETTER -->
     <div class="footer-newsletter">
-      <h4>Newsletter</h4>
+      <h3>Newsletter</h3>
       <p>Receba novidades sobre tecnologia e IA direto no seu e-mail</p>
       <div id="nl-cooldown" style="display:none" class="nl-cooldown-msg">
         <span>✅ Inscrição realizada! Próximo envio disponível em <strong id="nl-timer"></strong></span>

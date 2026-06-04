@@ -1238,3 +1238,17 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   .category-posts-grid { grid-template-columns: 1fr; }
   .cat-block-header { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
+
+/* ── font-display: swap (override Font Awesome CDN) ─────── */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-display: swap;
+  font-weight: 900;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-display: swap;
+  font-weight: 400;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-brands-400.woff2') format('woff2');
+}

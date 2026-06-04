@@ -34,7 +34,7 @@ const postUrl = `/${slug}`;
 ---
 
 <article class={`post-card ${compact ? 'post-card-compact' : ''}`} data-tags={tags?.join(',') || ''} data-sort-date={publishedAt || createdAt} data-sort-title={title.toLowerCase()}>
-  <a href={postUrl} tabindex="-1">
+  <a href={postUrl} tabindex="-1" aria-hidden="true">
     <div class="post-card-image" aria-hidden="true">
         <picture>
         <source type="image/webp" srcset={imgWebP} />
