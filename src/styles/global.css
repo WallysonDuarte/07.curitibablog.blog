@@ -1243,3 +1243,36 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   .category-posts-grid { grid-template-columns: 1fr; }
   .cat-block-header { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
+
+/* ── font-display: swap (override Font Awesome CDN) ─────── */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-display: swap;
+  font-weight: 900;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-solid-900.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-display: swap;
+  font-weight: 400;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-brands-400.woff2') format('woff2');
+}
+
+/* ── Contraste WCAG AA (ratio >= 4.5:1) ─────────────────── */
+/* cat-tag-pill inativo: #808080 on white = 3.95 → #5a5a5a = 7.0:1 */
+.cat-tag-pill { color: #5a5a5a; }
+[data-theme="dark"] .cat-tag-pill { color: #94a3b8; }
+
+/* cat-view-all: primary #e74c3c on white = 3.83 → usar primary-dark #c0392b = 5.4:1 */
+.cat-view-all { color: var(--primary-dark); }
+.cat-view-all-btn { color: var(--primary-dark); border-color: var(--primary-dark); }
+.cat-view-all-btn:hover { background: var(--primary-dark); }
+
+/* carousel-cat + carousel-cta: branco on #e74c3c = 3.83 → usar #c0392b = 5.4:1 */
+.carousel-cat { background: var(--primary-dark); }
+.carousel-cta { background: var(--primary-dark); }
+.carousel-cta:hover { background: #a93226; }
+
+/* nl-btn: branco on #e74c3c = 3.83 → usar #c0392b = 5.4:1 */
+#nl-btn { background: var(--primary-dark); }
+#nl-btn:hover { background: #a93226; }

@@ -6,4 +6,5 @@ export default defineConfig({
   site: 'https://curitibablog.com.br',
   integrations: [sitemap()],
   output: 'static',
+  build: { inlineStylesheets: 'always' },
 });

@@ -88,7 +88,7 @@ const categoryBlocks = categories.map(cat => {
             <div class="carousel-slide" data-index={i} aria-hidden={i !== 0 ? 'true' : undefined} inert={i !== 0 ? true : undefined}>
               <picture>
                 <source type="image/webp" srcset={`${API_BASE}/api/blog/cover/${post.slug}?format=webp&w=1200`} />
-                <img src={`${API_BASE}/api/blog/cover/${post.slug}?w=1200`} alt={post.title} width="1200" height="630" loading={i === 0 ? 'eager' : 'lazy'} class="carousel-img" />
+                <img src={`${API_BASE}/api/blog/cover/${post.slug}?w=1200`} alt={post.title} width="1200" height="630" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} class="carousel-img" />
               </picture>
               <div class="carousel-overlay">
                 <div class="carousel-content">
@@ -358,9 +358,9 @@ const categoryBlocks = categories.map(cat => {
     if(!c) return;
     let dir=1;
     setInterval(()=>{
-      c.scrollLeft+=dir*1.5;
-      if(c.scrollLeft+c.clientWidth>=c.scrollWidth-5)dir=-1;
-      if(c.scrollLeft<=5)dir=1;
+      const sl=c.scrollLeft;const sw=c.scrollWidth;const cw=c.clientWidth;
+      c.scrollLeft=sl+dir*1.5;if(sl+cw>=sw-5)dir=-1;
+      if(sl<=5)dir=1;
     },30);
   })();
 </script>
