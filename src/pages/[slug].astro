@@ -64,6 +64,7 @@ const spotifyEmbedUrl = post.podcastUrl ? (() => {
 
 const API_BASE = 'https://api.curitibasoftware.com.br';
 const postCoverSrc = `${API_BASE}/api/blog/cover/${post.slug}`;
+const postCoverWebP = `${postCoverSrc}?format=webp&w=1200`;
 
 // Pick one inline ad to rotate per section
 const inlineAd = inlineAds[0] ?? null;

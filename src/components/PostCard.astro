@@ -25,6 +25,8 @@ const {
 } = Astro.props;
 
 const imgSrc = `${API_BASE}/api/blog/cover/${slug}`;
+const imgWebP = `${imgSrc}?format=webp&w=600`;
+const imgFallback = `${imgSrc}?w=600`;
 
 const displayCat = categories?.length ? categories[0] : category;
 const date = formatDate(publishedAt || createdAt);
@@ -32,9 +34,12 @@ const postUrl = `/${slug}`;
 ---
 
 <article class={`post-card ${compact ? 'post-card-compact' : ''}`} data-tags={tags?.join(',') || ''} data-sort-date={publishedAt || createdAt} data-sort-title={title.toLowerCase()}>
-  <a href={postUrl} tabindex="-1" aria-hidden="true">
-    <div class="post-card-image">
-        <img src={imgSrc} alt={title} loading="lazy" decoding="async" />
+  <a href={postUrl} tabindex="-1">
+    <div class="post-card-image" aria-hidden="true">
+        <picture>
+        <source type="image/webp" srcset={imgWebP} />
+        <img src={imgFallback} alt="" width="600" height="315" loading="lazy" decoding="async" />
+      </picture>
         {displayCat && <span class="card-category">{displayCat}</span>}
         {ratings && <span class="card-rating" style={`background:${ratingColor(ratings.media)}`}>{ratings.media.toFixed(1)}</span>}
       </div>
