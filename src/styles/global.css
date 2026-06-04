@@ -641,6 +641,12 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 }
 .yt-item iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 .yt-title { font-size: .82rem; color: var(--text-dark); margin-top: .4rem; font-weight: 600; }
+.yt-facade { cursor: pointer; background: #000; }
+.yt-facade .yt-thumb { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: opacity .2s; }
+.yt-facade:hover .yt-thumb { opacity: .65; }
+.yt-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: none; border: none; cursor: pointer; padding: 0; }
+.yt-play-btn svg { filter: drop-shadow(0 2px 6px rgba(0,0,0,.5)); transition: transform .15s; }
+.yt-facade:hover .yt-play-btn svg { transform: scale(1.1); }
 
 /* Instagram */
 .block-instagram blockquote.instagram-media { margin: 0 auto !important; }
