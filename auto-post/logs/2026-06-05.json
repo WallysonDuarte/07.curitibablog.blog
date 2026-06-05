@@ -1,0 +1,39 @@
+{
+  "data": "2026-06-05",
+  "etapas": {
+    "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-05-cover.jpg",
+    "upload": {
+      "key": "covers/352c702a-a709-42a7-b3f1-8f81f3e5ee34-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/352c702a-a709-42a7-b3f1-8f81f3e5ee34-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a22448ca29327a46b9f8d00",
+      "slug": "voidzero-cloudflare-vite-rolldown-oxc"
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": false,
+        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+      },
+      "blogdudu": {
+        "ok": false,
+        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+      },
+      "devlevelup": {
+        "ok": false,
+        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+      },
+      "dozeroaojunior": {
+        "ok": false,
+        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+      },
+      "levelupdev": {
+        "ok": false,
+        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+      }
+    },
+    "http_check": 404
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/voidzero-cloudflare-vite-rolldown-oxc"
+}

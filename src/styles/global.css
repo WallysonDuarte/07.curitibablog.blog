@@ -348,6 +348,57 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   background: var(--primary); border-color: var(--primary); color: #fff;
 }
 
+/* ── Mobile filter toggle ─────────────────────── */
+.filter-mobile-toggle {
+  display: none;
+  width: 100%;
+  padding: .6rem 1.2rem;
+  border-radius: 24px;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--text-dark);
+  font-family: var(--font-heading);
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  transition: all .2s;
+}
+.filter-mobile-toggle:hover,
+.filter-mobile-toggle.open {
+  background: var(--primary); border-color: var(--primary); color: #fff;
+}
+.filter-mobile-toggle .toggle-arrow {
+  display: inline-block;
+  transition: transform .25s;
+  font-size: .7em;
+}
+.filter-mobile-toggle.open .toggle-arrow {
+  transform: rotate(180deg);
+}
+.filter-mobile-panel {
+  display: none;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: center;
+  padding: .75rem 0 .25rem;
+}
+.filter-mobile-panel.open {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .filter-bar {
+    display: none;
+  }
+  .filter-mobile-toggle {
+    display: flex;
+  }
+}
+
 /* ── Sort Buttons ──────────────────────────────── */
 .sort-btn {
   font-family: var(--font-heading); font-size: .72rem; text-transform: uppercase; letter-spacing: .5px;
