@@ -3,12 +3,12 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-05-cover.jpg",
     "upload": {
-      "key": "covers/281308b2-ed26-4b80-8e7e-acb3de23cedb-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/281308b2-ed26-4b80-8e7e-acb3de23cedb-cover.jpg"
+      "key": "covers/d6334c37-6812-4da3-bbb0-ba2ea3fa51e2-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/d6334c37-6812-4da3-bbb0-ba2ea3fa51e2-cover.jpg"
     },
     "mongo": {
-      "id": "6a2244aede815f7b4c06013a",
-      "slug": "voidzero-cloudflare-vite-rolldown-oxc"
+      "id": "6a22a6e29cf37f640b42ed26",
+      "slug": "windsurf-editor-codigo-ia-codeium"
     },
     "rebuild": {
       "curitibablog": {
@@ -30,5 +30,5 @@
     "http_check": 200
   },
   "status": "CONCLUIDO",
-  "post_url": "https://curitibablog.com.br/voidzero-cloudflare-vite-rolldown-oxc"
+  "post_url": "https://curitibablog.com.br/windsurf-editor-codigo-ia-codeium"
 }

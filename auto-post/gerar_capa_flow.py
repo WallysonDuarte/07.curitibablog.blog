@@ -491,12 +491,14 @@ async def _conectar_chrome(p, forcar_restart: bool = False):
 # Main
 # ---------------------------------------------------------------------------
 
-async def _gerar_async(titulo: str, subtitulo: str, output_path: str) -> str:
+async def _gerar_async(titulo: str, subtitulo: str, output_path: str, prompt_extra: str = "") -> str:
     prompt = PROMPT_TEMPLATE.format(
         titulo=titulo[:200],
         subtitulo=subtitulo[:300] if subtitulo else titulo,
     )
-    print(f"  Prompt: {prompt[:120]}...")
+    if prompt_extra:
+        prompt = prompt + " " + prompt_extra
+    print(f"  Prompt: {prompt[:140]}...")
 
     async with async_playwright() as p:
         browser, page = await _conectar_chrome(p)
@@ -518,7 +520,7 @@ async def _gerar_async(titulo: str, subtitulo: str, output_path: str) -> str:
     return output_path
 
 
-def gerar_capa_flow(titulo: str, subtitulo: str, output_path: str) -> str:
+def gerar_capa_flow(titulo: str, subtitulo: str, output_path: str, prompt_extra: str = "") -> str:
     """
     Gera capa de blog via Google Flow.
 
@@ -526,6 +528,7 @@ def gerar_capa_flow(titulo: str, subtitulo: str, output_path: str) -> str:
         titulo: Titulo do post
         subtitulo: Subtitulo/descricao
         output_path: Caminho de saida (.jpg)
+        prompt_extra: Instrucao adicional para corrigir geracao anterior (ex: "ATENCAO: escreva MIASMA corretamente")
 
     Returns:
         Caminho da imagem gerada
@@ -534,7 +537,7 @@ def gerar_capa_flow(titulo: str, subtitulo: str, output_path: str) -> str:
         RuntimeError: Se nao conseguir gerar
     """
     print(f"\n[Flow] Gerando capa: {titulo[:60]}...")
-    return asyncio.run(_gerar_async(titulo, subtitulo, output_path))
+    return asyncio.run(_gerar_async(titulo, subtitulo, output_path, prompt_extra))
 
 
 # ---------------------------------------------------------------------------
