@@ -3,12 +3,12 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-05-cover.jpg",
     "upload": {
-      "key": "covers/d6334c37-6812-4da3-bbb0-ba2ea3fa51e2-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/d6334c37-6812-4da3-bbb0-ba2ea3fa51e2-cover.jpg"
+      "key": "covers/6a97fba0-be9d-4e33-8175-27ab5f2340f4-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/6a97fba0-be9d-4e33-8175-27ab5f2340f4-cover.jpg"
     },
     "mongo": {
-      "id": "6a22a6e29cf37f640b42ed26",
-      "slug": "windsurf-editor-codigo-ia-codeium"
+      "id": "6a22ade2abefa2cb99e026a2",
+      "slug": "anthropic-framework-ia-vulnerabilidades-codigo-defending-code"
     },
     "rebuild": {
       "curitibablog": {
@@ -30,5 +30,5 @@
     "http_check": 200
   },
   "status": "CONCLUIDO",
-  "post_url": "https://curitibablog.com.br/windsurf-editor-codigo-ia-codeium"
+  "post_url": "https://curitibablog.com.br/anthropic-framework-ia-vulnerabilidades-codigo-defending-code"
 }
