@@ -265,22 +265,28 @@ def main(json_path: str):
         if not post_data.get("categories"):
             post_data["categories"] = [post_data["category"], "tecnologia"]
 
-        # 4. Gerar capa
+        # 4. Gerar capa via Google Flow (Playwright) com fallback Pillow
         sys.path.insert(0, str(THIS_DIR))
-        from gerar_capa import gerar_capa
         capa_path = str(LOGS_DIR / f"{hoje}-cover.jpg")
-        gerar_capa(
-            titulo=titulo,
-            subtitulo=subtitulo,
-            card1_titulo=post_data.get("card1_titulo", "Ponto 1"),
-            card1_texto=post_data.get("card1_texto", ""),
-            card2_titulo=post_data.get("card2_titulo", "Ponto 2"),
-            card2_texto=post_data.get("card2_texto", ""),
-            card3_titulo=post_data.get("card3_titulo", "Ponto 3"),
-            card3_texto=post_data.get("card3_texto", ""),
-            output_path=capa_path,
-        )
-        log(f"Capa gerada: {capa_path}")
+        try:
+            from gerar_capa_flow import gerar_capa_flow
+            gerar_capa_flow(titulo=titulo, subtitulo=subtitulo, output_path=capa_path)
+            log(f"Capa gerada via Flow: {capa_path}")
+        except Exception as e_flow:
+            log(f"Flow falhou ({e_flow}) — usando Pillow como fallback")
+            from gerar_capa import gerar_capa
+            gerar_capa(
+                titulo=titulo,
+                subtitulo=subtitulo,
+                card1_titulo=post_data.get("card1_titulo", "Ponto 1"),
+                card1_texto=post_data.get("card1_texto", ""),
+                card2_titulo=post_data.get("card2_titulo", "Ponto 2"),
+                card2_texto=post_data.get("card2_texto", ""),
+                card3_titulo=post_data.get("card3_titulo", "Ponto 3"),
+                card3_texto=post_data.get("card3_texto", ""),
+                output_path=capa_path,
+            )
+            log(f"Capa gerada via Pillow (fallback): {capa_path}")
         run_log["etapas"]["capa"] = capa_path
 
         # 5. Upload IDrive E2

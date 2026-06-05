@@ -3,36 +3,31 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-05-cover.jpg",
     "upload": {
-      "key": "covers/352c702a-a709-42a7-b3f1-8f81f3e5ee34-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/352c702a-a709-42a7-b3f1-8f81f3e5ee34-cover.jpg"
+      "key": "covers/281308b2-ed26-4b80-8e7e-acb3de23cedb-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/281308b2-ed26-4b80-8e7e-acb3de23cedb-cover.jpg"
     },
     "mongo": {
-      "id": "6a22448ca29327a46b9f8d00",
+      "id": "6a2244aede815f7b4c06013a",
       "slug": "voidzero-cloudflare-vite-rolldown-oxc"
     },
     "rebuild": {
       "curitibablog": {
-        "ok": false,
-        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+        "ok": true
       },
       "blogdudu": {
-        "ok": false,
-        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+        "ok": true
       },
       "devlevelup": {
-        "ok": false,
-        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+        "ok": true
       },
       "dozeroaojunior": {
-        "ok": false,
-        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+        "ok": true
       },
       "levelupdev": {
-        "ok": false,
-        "erro": "[WinError 2] O sistema não pode encontrar o arquivo especificado"
+        "ok": true
       }
     },
-    "http_check": 404
+    "http_check": 200
   },
   "status": "CONCLUIDO",
   "post_url": "https://curitibablog.com.br/voidzero-cloudflare-vite-rolldown-oxc"
