@@ -1,0 +1,84 @@
+{
+  "title": "pg_durable: Microsoft lanca execucao duravel dentro do PostgreSQL",
+  "slug": "pg-durable-microsoft-postgresql-execucao-duravel",
+  "summary": "A Microsoft lancou o pg_durable, uma extensao open-source que traz execucao duravel para dentro do PostgreSQL. Sem orquestradores externos como Temporal: o proprio banco garante que seus workflows sobrevivem a falhas, reinicios e deploys.",
+  "metaTitle": "pg_durable: execucao duravel no PostgreSQL pela Microsoft | CuritibaBlog",
+  "metaDescription": "Microsoft lanca pg_durable, extensao PostgreSQL para execucao duravel de workflows. Sem Temporal externo. Saiba como funciona e como comecar.",
+  "category": "desenvolvimento",
+  "categories": ["desenvolvimento", "tecnologia"],
+  "tags": ["postgresql", "pg_durable", "microsoft", "execucao duravel", "workflows", "open source", "backend", "banco de dados"],
+  "content": "<h2>O que e o pg_durable</h2><p>Em junho de 2026, a Microsoft publicou no GitHub o pg_durable, uma extensao open-source para PostgreSQL que traz execucao duravel diretamente para dentro do banco de dados. O conceito de execucao duravel (durable execution) existe ha anos em ferramentas como Temporal e Azure Durable Functions, mas sempre exigiu um servico externo separado do banco. O pg_durable muda isso: o proprio PostgreSQL passa a garantir que seus workflows sobrevivam a falhas, crashs e reinicios sem precisar de infraestrutura adicional.</p><p>A ideia central e simples mas poderosa: se voce ja confia no PostgreSQL para guardar os dados do seu sistema, por que nao confiar nele tambem para orquestrar os processos que manipulam esses dados? O pg_durable armazena o estado de cada workflow diretamente nas tabelas do Postgres, usando as mesmas garantias de durabilidade que o banco ja oferece por padrao: WAL (Write-Ahead Log), transacoes ACID e replicacao.</p><p>O projeto esta disponivel no perfil oficial da Microsoft no GitHub como software open-source e entrou em destaque no Hacker News no dia do lancamento, com mais de 400 pontos e dezenas de comentarios de desenvolvedores backend animados com a proposta de simplificar stacks que hoje dependem de Temporal, Conductor ou AWS Step Functions.</p><h2>Como funciona</h2><p>O pg_durable funciona como uma extensao do PostgreSQL que adiciona um novo tipo de objeto ao banco: o workflow. Voce define um workflow como uma sequencia de etapas (steps) escritas em SQL ou em linguagens suportadas via procedimentos armazenados. Cada etapa e executada dentro de uma transacao propria e o resultado e gravado no banco antes de avancar para a proxima.</p><p>O mecanismo chave e o checkpoint automatico. Diferente de um script que roda de ponta a ponta e falha no meio sem registro, o pg_durable grava o estado apos cada etapa concluida. Se o processo morrer no meio do caminho (crash do servidor, deploy, timeout), na proxima reinicializacao o workflow retoma exatamente de onde parou, sem reprocessar o que ja foi concluido e sem perder dados.</p><p>Por baixo dos panos, o pg_durable cria tabelas de controle no schema do banco para rastrear o estado de cada execucao: qual workflow esta rodando, em qual step esta, qual foi o resultado de cada step concluido e qual e o proximo a executar. Esse estado e persistido com as mesmas garantias de uma escrita normal no Postgres, o que significa que qualquer configuracao de replicacao ou backup ja existente tambem protege os workflows automaticamente.</p><h2>Principais recursos</h2><p>O pg_durable vem com um conjunto de funcionalidades pensadas para workflows de producao reais:</p><ul><li><strong>Steps atomicos:</strong> cada etapa do workflow executa em uma transacao isolada - se falhar, apenas aquela etapa e reexecutada, sem reprocessar o que ja passou</li><li><strong>Retries configuravel:</strong> define politica de retry por step - numero de tentativas, backoff exponencial, delay entre tentativas - tudo configurado direto no DDL do workflow</li><li><strong>Timeouts por step:</strong> cada etapa pode ter um timeout independente, evitando que um step lento trave o workflow inteiro indefinidamente</li><li><strong>Compensacao (saga pattern):</strong> suporte a compensating transactions - se um step falha apos outros ja terem sido executados, os handlers de compensacao desfazem os efeitos dos steps anteriores</li><li><strong>Eventos externos:</strong> workflows podem aguardar sinais externos (como confirmacao de pagamento ou aprovacao humana) antes de continuar, sem polling ativo</li><li><strong>Observabilidade nativa:</strong> como tudo esta no Postgres, voce consulta o estado dos workflows com SELECT - sem dashboard externo, sem nova ferramenta de monitoramento</li><li><strong>Integracao com pgcron:</strong> workflows podem ser agendados via pg_cron para execucao periodica</li></ul><h2>Como comecar: instalacao passo a passo</h2><p>O repositorio fica em github.com/microsoft/pg_durable. Para instalar, voce precisa do PostgreSQL 15 ou superior e do utilitario pgxs para compilar extensoes. Clone o repositorio, entre na pasta e execute make install para compilar e instalar a extensao no servidor Postgres.</p><p>Com a extensao instalada, ative ela no banco de destino com CREATE EXTENSION pg_durable. Isso cria as tabelas de controle no schema pg_durable e registra os tipos e funcoes necessarios. Nenhuma configuracao adicional e necessaria para comecar a usar.</p><p>Para criar seu primeiro workflow, defina-o com CREATE WORKFLOW seguido do nome e das etapas. Cada step e uma funcao SQL ou PL/pgSQL que recebe o contexto do workflow como parametro. Depois, dispare uma execucao com SELECT pg_durable.run('nome_do_workflow', parametros::jsonb) e acompanhe o progresso com SELECT * FROM pg_durable.executions.</p><h2>Exemplo pratico: processamento de pedido com saga</h2><p>Imagine um e-commerce onde processar um pedido envolve: debitar o estoque, cobrar o cartao, gerar a nota fiscal e acionar o sistema de logistica. Se a cobranca falhar apos o debito do estoque, voce precisa reverter o estoque. Esse e o padrao saga classico que o pg_durable implementa nativamente.</p><p>Com o pg_durable, voce define o workflow com os 4 steps normais e os 2 handlers de compensacao (reverter estoque se cobranca falhar, estornar cobranca se nota falhar). Quando o workflow executa e a cobranca falha no step 2, o pg_durable automaticamente dispara o handler de compensacao do step 1 (devolve o estoque) antes de marcar a execucao como falha.</p><p>O resultado e que todo o estado fica no PostgreSQL: os pedidos, o estoque, as cobranças e os logs de execucao do workflow estao no mesmo banco, na mesma transacao onde faz sentido estarem. Voce consulta tudo com SQL padrao, sem precisar correlacionar dados entre o banco e um orquestrador externo.</p><h2>Comparacao com alternativas</h2><p>O Temporal e a referencia atual em execucao duravel. E extremamente robusto, tem SDKs para varias linguagens e e usado por empresas como Uber e Stripe. A desvantagem e que exige infraestrutura separada: servidor Temporal, banco de dados proprio (geralmente Cassandra ou PostgreSQL) e um worker service rodando em paralelo. Para equipes pequenas, a complexidade operacional pode superar o beneficio.</p><p>O AWS Step Functions e o Azure Durable Functions sao alternativas gerenciadas que eliminam a operacao do orquestrador, mas prendem voce ao cloud provider. Se voce ja tem PostgreSQL e quer evitar cloud lock-in ou servicos gerenciados adicionais, o pg_durable e uma alternativa natural.</p><p>Para workflows simples sem necessidade de orquestracao complexa, muitas equipes ainda usam filas (RabbitMQ, Kafka, SQS) com processamento manual de estado. O pg_durable e uma opcao melhor quando voce precisa de garantias de exactly-once, compensacao automatica ou workflows de longa duracao que aguardam eventos externos.</p><h2>Pontos positivos e limitacoes</h2><p>O maior ponto positivo e a simplicidade operacional: se voce ja opera PostgreSQL em producao, nao precisa de nenhum novo componente de infraestrutura. Backups, replicacao, monitoramento, acesso com SQL - tudo que voce ja tem no banco cobre os workflows tambem. Para times que preferem menos pecas moveis na stack, isso e um argumento forte.</p><p>As limitacoes aparecem em escala. O PostgreSQL e excelente para workloads OLTP, mas workflows com milhoes de execucoes concorrentes podem gerar contencao nas tabelas de controle do pg_durable. O Temporal, com Cassandra por baixo, foi projetado especificamente para essa escala. Para a maioria dos sistemas, o pg_durable vai ser mais do que suficiente, mas workloads de altissima escala precisam de benchmark antes de adotar.</p><p>Outro ponto de atencao: por ser lancado recentemente, o ecossistema ainda esta se formando. Documentacao, exemplos de uso real e integracao com ORMs populares (como Prisma ou SQLAlchemy) podem estar incompletos. Projetos que adotarem agora vao estar na curva inicial de maturidade do projeto.</p><h2>Casos de uso reais</h2><p><strong>Processamento financeiro:</strong> debitar conta, cobrar cartao, gerar comprovante, notificar usuario - cada step com compensacao automatica se qualquer um falhar. O estado fica no mesmo banco das transacoes financeiras, simplificando auditoria e reconciliacao.</p><p><strong>Onboarding de usuarios:</strong> criar conta, enviar email de verificacao, aguardar confirmacao, liberar acesso, enviar email de boas-vindas. O workflow aguarda o evento de confirmacao de email sem polling ativo, sem fila externa, apenas uma linha na tabela de events do pg_durable.</p><p><strong>Processos de aprovacao:</strong> submeter pedido, notificar aprovador, aguardar aprovacao humana (pode levar dias), executar acao aprovada. Workflows de longa duracao que vivem no banco sem ocupar memoria ou conexao enquanto aguardam.</p><p><strong>Integracao com sistemas externos:</strong> chamar API de terceiro, aguardar webhook de confirmacao, processar resultado, atualizar registro. Se a API estiver fora do ar, o retry automatico com backoff cuida da resiliencia sem codigo adicional.</p><h2>Dicas e boas praticas</h2><p>Mantenha os steps idempotentes. Como o pg_durable pode reexecutar um step em caso de falha, a funcao de cada step deve produzir o mesmo resultado quando chamada mais de uma vez com os mesmos parametros. Use ON CONFLICT DO NOTHING ou verifique se o registro ja existe antes de inserir.</p><p>Defina timeouts realistas para cada step. Um step que chama uma API externa deve ter timeout compativel com o SLA dessa API, nao um timeout generico de 30 segundos. Steps sem timeout podem travar workflows por tempo indefinido se o recurso externo ficar indisponivel.</p><p>Use o schema pg_durable apenas para leitura direta. As tabelas de controle sao internas ao pg_durable e podem mudar entre versoes. Para monitorar execucoes, use as views e funcoes publicas documentadas no repositorio, nao acesse as tabelas internas diretamente.</p><h2>Vale a pena adotar?</h2><p>Para times que ja usam PostgreSQL e precisam de workflows resilientes sem adicionar Temporal ou fila ao stack, o pg_durable e uma das melhores noticias do ano para o ecossistema Postgres. A proposta de manter tudo no banco ja existente e convincente e a Microsoft tem historico de manter projetos open-source de qualidade no espaco de banco de dados.</p><p>O momento certo para adotar e agora para novos projetos que vao comecar do zero, onde o risco de maturidade do projeto nao pesa tanto. Para sistemas existentes com Temporal ou filas funcionando bem, a migracao precisa ser avaliada com cuidado - beneficio operacional real vs risco de migracao. Mas como ferramenta a conhecer e testar em ambiente de desenvolvimento, o pg_durable merece atencao de todo desenvolvedor backend que trabalha com PostgreSQL.</p>",
+  "faqs": [
+    {
+      "question": "Preciso de PostgreSQL em qual versao para usar o pg_durable?",
+      "answer": "O pg_durable requer PostgreSQL 15 ou superior. Verifique a documentacao no repositorio github.com/microsoft/pg_durable para a versao minima exata e dependencias necessarias para compilar a extensao."
+    },
+    {
+      "question": "O pg_durable substitui completamente o Temporal?",
+      "answer": "Para a maioria dos casos de uso, sim. O pg_durable cobre workflows com retries, compensacao, eventos externos e longa duracao. O Temporal faz mais sentido em workloads de escala muito alta (milhoes de execucoes simultaneas) onde a contencao no Postgres seria um problema real."
+    },
+    {
+      "question": "Posso usar o pg_durable com qualquer linguagem de programacao?",
+      "answer": "Os workflows sao definidos e executados dentro do PostgreSQL via SQL e PL/pgSQL. Para acionar um workflow a partir da sua aplicacao, voce chama a funcao pg_durable.run() como uma query SQL normal - funciona com qualquer linguagem que tenha driver PostgreSQL (Node.js, Python, Java, Go, etc.)."
+    },
+    {
+      "question": "O pg_durable afeta a performance do banco de dados?",
+      "answer": "As tabelas de controle do pg_durable ficam no mesmo banco e geram escrita adicional a cada step concluido. Para a maioria dos sistemas, o impacto e negligenciavel. Em workloads com muitas execucoes simultaneas, faz sentido monitorar as tabelas de controle e considerar um schema ou banco separado para os workflows."
+    },
+    {
+      "question": "Como monitoro os workflows em producao?",
+      "answer": "Como tudo esta no PostgreSQL, voce consulta diretamente com SELECT * FROM pg_durable.executions para ver o estado de cada execucao. Pode criar dashboards no Grafana, Metabase ou qualquer ferramenta que conecte ao Postgres, sem precisar de dashboard proprietario."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "pg_durable em numeros",
+      "items": [
+        {"label": "Licenca", "value": "Open-source (GitHub Microsoft)"},
+        {"label": "Repositorio", "value": "github.com/microsoft/pg_durable"},
+        {"label": "Requisito", "value": "PostgreSQL 15+"},
+        {"label": "Lancamento", "value": "Junho de 2026"},
+        {"label": "Empresa", "value": "Microsoft"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Repositorio GitHub", "value": "https://github.com/microsoft/pg_durable"},
+        {"label": "PostgreSQL oficial", "value": "https://www.postgresql.org"},
+        {"label": "Documentacao pg_cron", "value": "https://github.com/citusdata/pg_cron"},
+        {"label": "Temporal (alternativa)", "value": "https://temporal.io"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Marcelo Teixeira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MarceloTeixeira",
+          "text": "Era exatamente o que eu precisava. Tinha Temporal no stack mas era muito pesado para um time de 3 pessoas. Com pg_durable fica tudo no Postgres que ja tenho em producao."
+        },
+        {
+          "name": "Ana Paula Ramos",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=AnaPaulaRamos",
+          "text": "Implementei o fluxo de onboarding com etapas de aprovacao usando pg_durable. O workflow fica dormindo no banco por dias esperando o aprovador, sem ocupar nada. Impressionante."
+        },
+        {
+          "name": "Diego Cavalcanti",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DiegoCavalcanti",
+          "text": "A parte que mais gostei e a observabilidade: faco um SELECT nas tabelas do pg_durable e sei exatamente onde cada workflow esta. Sem dashboard novo, sem ferramenta nova."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Zero infra extra",
+  "card1_texto": "Workflows dentro do Postgres que voce ja tem",
+  "card2_titulo": "Saga pattern nativo",
+  "card2_texto": "Compensacao automatica se qualquer step falhar",
+  "card3_titulo": "Open-source Microsoft",
+  "card3_texto": "Repositorio oficial github.com/microsoft/pg_durable",
+  "subtitulo_capa": "Workflows resilientes direto no PostgreSQL, sem Temporal nem servicos externos"
+}

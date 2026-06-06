@@ -1,0 +1,34 @@
+{
+  "data": "2026-06-06",
+  "etapas": {
+    "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-06-cover.jpg",
+    "upload": {
+      "key": "covers/6eeb7e6d-4395-4deb-9a59-8690d87eadbd-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/6eeb7e6d-4395-4deb-9a59-8690d87eadbd-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a23f86486548bcfd96c9ca3",
+      "slug": "pg-durable-microsoft-postgresql-execucao-duravel"
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      }
+    },
+    "http_check": 200
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/pg-durable-microsoft-postgresql-execucao-duravel"
+}
