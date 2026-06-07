@@ -42,13 +42,13 @@ EXCLUIR_SRCS = [
 
 # Prompt PT-BR no padrao "Entendendo na Pratica"
 PROMPT_TEMPLATE = (
-    'Crie um banner com o nome do material "Entendendo na Pratica" '
-    'e titulo grande e chamativo na tela com exatamente o texto: '
-    '"{titulo}" - {subtitulo}. '
-    'Substitua o rapaz da foto pelo da imagem em destaque do lado direito '
+    'Crie um banner com o nome do material "Entendendo na Pratica", '
+    'e titulo grande e chamativo na tela em tela com exatamente o texto: '
+    '{titulo}, {subtitulo}; '
+    'substitua a roupa do rapaz da foto mas mantenha exatamente o mesmo personagem (Duarte) '
     'apontando para o titulo com uma expressao de aprendizado, e abaixo 3 quadros '
-    'com imagens com pouco texto ilustrando o conteudo. '
-    'A pessoa com outra roupa, e use icones relacionados ao tema para ilustrar. '
+    'com imagens com pouco texto ilustrando o conteudo, '
+    'use icones relacionado ao tema para ilustrar, '
     'TODO O TEXTO EM PT-BR!'
 )
 
