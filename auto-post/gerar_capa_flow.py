@@ -40,9 +40,9 @@ EXCLUIR_SRCS = [
     "gstatic.com/images/branding", "lh3.googleusercontent.com/a/",
 ]
 
-# Prompt PT-BR no padrao "Entendendo na Pratica"
+# Prompt PT-BR no padrao "Entendendo na Prática"
 PROMPT_TEMPLATE = (
-    'Crie um banner com o nome do material "Entendendo na Pratica", '
+    'Crie um banner com o nome do material "Entendendo na Prática", '
     'e titulo grande e chamativo na tela em tela com exatamente o texto: '
     '{titulo}, {subtitulo}; '
     'substitua a roupa do rapaz da foto mas mantenha exatamente o mesmo personagem (Duarte) '
