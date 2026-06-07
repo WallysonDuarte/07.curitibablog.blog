@@ -598,23 +598,24 @@ def main(json_path: str):
         with open(json_path, encoding="utf-8") as f:
             post_data = json.load(f)
 
-        titulo    = post_data["title"]
-        subtitulo = post_data.get("subtitulo_capa", "")
-        slug      = slugify(post_data.get("slug", titulo))
+        slug = slugify(post_data.get("slug", post_data.get("title", "")))
         post_data["slug"] = slug
-
-        log(f"Post: {titulo} | slug: {slug}")
 
         # 2. Validar chars proibidos
         check_post(post_data)
         log("checkPost OK")
 
-        # 2b. Corrigir acentuacao PT-BR automaticamente
+        # 2b. Corrigir acentuacao PT-BR automaticamente (ANTES de usar titulo/subtitulo)
         n_correcoes = _corrigir_campos_post(post_data)
         if n_correcoes:
             log(f"AVISO: {n_correcoes} correcao(es) de acentuacao aplicada(s) — revise o JSON gerado")
         else:
             log("Acentuacao PT-BR OK")
+
+        # Extrair titulo/subtitulo APOS correcao de acentos
+        titulo    = post_data["title"]
+        subtitulo = post_data.get("subtitulo_capa", "")
+        log(f"Post: {titulo} | slug: {slug}")
 
         # 3. Garantir category valida
         cats_validas = {"ferramentas-de-ia", "desenvolvimento", "tecnologia", "negocios"}
@@ -623,33 +624,24 @@ def main(json_path: str):
         if not post_data.get("categories"):
             post_data["categories"] = [post_data["category"], "tecnologia"]
 
-        # 4. Gerar capa via Google Flow (Playwright) com fallback Pillow
+        # 4. Gerar capa via Google Flow (Playwright)
+        # Se Flow falhar: publicar sem imagem (sem fallback Pillow — texto sem acento e invalido em producao)
         sys.path.insert(0, str(THIS_DIR))
         capa_path = str(LOGS_DIR / f"{hoje}-cover.jpg")
+        cover_key = None
+        cover_url = None
         try:
             from gerar_capa_flow import gerar_capa_flow
             gerar_capa_flow(titulo=titulo, subtitulo=subtitulo, output_path=capa_path)
             log(f"Capa gerada via Flow: {capa_path}")
-        except Exception as e_flow:
-            log(f"Flow falhou ({e_flow}) — usando Pillow como fallback")
-            from gerar_capa import gerar_capa
-            gerar_capa(
-                titulo=titulo,
-                subtitulo=subtitulo,
-                card1_titulo=post_data.get("card1_titulo", "Ponto 1"),
-                card1_texto=post_data.get("card1_texto", ""),
-                card2_titulo=post_data.get("card2_titulo", "Ponto 2"),
-                card2_texto=post_data.get("card2_texto", ""),
-                card3_titulo=post_data.get("card3_titulo", "Ponto 3"),
-                card3_texto=post_data.get("card3_texto", ""),
-                output_path=capa_path,
-            )
-            log(f"Capa gerada via Pillow (fallback): {capa_path}")
-        run_log["etapas"]["capa"] = capa_path
+            run_log["etapas"]["capa"] = capa_path
 
-        # 5. Upload IDrive E2
-        cover_key, cover_url = upload_capa(capa_path)
-        run_log["etapas"]["upload"] = {"key": cover_key, "url": cover_url}
+            # 5. Upload IDrive E2 (so se capa foi gerada)
+            cover_key, cover_url = upload_capa(capa_path)
+            run_log["etapas"]["upload"] = {"key": cover_key, "url": cover_url}
+        except Exception as e_flow:
+            log(f"AVISO: Flow falhou ({e_flow}) — post sera publicado sem imagem de capa")
+            run_log["etapas"]["capa"] = f"FALHOU: {e_flow}"
 
         # 6. Montar doc MongoDB
         now_utc = datetime.datetime.now(datetime.timezone.utc)
@@ -673,10 +665,12 @@ def main(json_path: str):
             "isFeatured": False,
             "sequence": 0,
             "views": 0,
-            "coverImageKey": cover_key,
-            "coverImageUrl": cover_url,
             "sites": BLOGS,
         }
+        if cover_key:
+            doc["coverImageKey"] = cover_key
+        if cover_url:
+            doc["coverImageUrl"] = cover_url
         _corrigir_campos_post(doc)
         check_post(doc)
 
