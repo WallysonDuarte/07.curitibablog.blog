@@ -40,16 +40,44 @@ EXCLUIR_SRCS = [
     "gstatic.com/images/branding", "lh3.googleusercontent.com/a/",
 ]
 
-# Prompt PT-BR no padrao "Entendendo na Prática"
+# Prompt profissional estilo YouTube thumbnail
 PROMPT_TEMPLATE = (
-    'Crie um banner com o nome do material "Entendendo na Prática", '
-    'e titulo grande e chamativo na tela em tela com exatamente o texto: '
-    '{titulo}, {subtitulo}; '
-    'substitua a roupa do rapaz da foto mas mantenha exatamente o mesmo personagem (Duarte) '
-    'apontando para o titulo com uma expressao de aprendizado, e abaixo 3 quadros '
-    'com imagens com pouco texto ilustrando o conteudo, '
-    'use icones relacionado ao tema para ilustrar, '
-    'TODO O TEXTO EM PT-BR!'
+    'Create a professional minimalist YouTube thumbnail in 16:9 format, '
+    'modern technology blog style, clean and premium visual identity. '
+    'The thumbnail must look human-designed, not AI-generated. '
+    'Use a dark futuristic background with subtle gradients, soft glow, light tech patterns, '
+    'circuit details, AI interface elements, and clean depth, but without visual clutter. '
+    'The main focus must be a large, bold, imposing title occupying most of the image, '
+    'with strong contrast, perfect readability, and professional typography. '
+    'Main title text: "{titulo}". '
+    'At the top, place a smaller header text: "Entendendo na pratica". '
+    'The design must be balanced, with the title as the hero element. '
+    'On one side of the thumbnail, add a strong visual element directly related to the topic '
+    'of the post, such as an abstract AI chip, API dashboard, cloud model interface, neural network, '
+    'robot brain, code screen, or futuristic technology object. '
+    'This image must support the topic without adding too much information. '
+    'Do not use a large character on the side. '
+    'Add only a small avatar/icon in one corner of the cover, subtle and professional, '
+    'not distracting from the title. '
+    'At the bottom, create three small square cards/icons aligned horizontally, '
+    'each with a simple image or symbol only, using very short text if absolutely necessary. '
+    'The cards should represent key points of the content, but must remain minimal, clean, '
+    'and easy to understand at small size. '
+    'Avoid long paragraphs, avoid excessive labels, avoid fake UI text, avoid random unreadable AI text. '
+    'In the footer, add small readable website text: '
+    '"hidra.blog • curitibablog.com.br • curitibasoftware.com.br • devlevelup.com.br • dozeroaojunior.com.br". '
+    'Keep it discreet, aligned, and professional. '
+    'The final thumbnail must be eye-catching, high retention, high click-through-rate, '
+    'clean, modern, premium, sharp, and visually clear even on mobile. '
+    'Negative prompt: '
+    'Avoid overloaded text, avoid long descriptions, avoid paragraphs, avoid too many icons, '
+    'avoid exaggerated neon, avoid messy composition, avoid AI-generated look, '
+    'avoid distorted typography, avoid unreadable letters, avoid random fake words, '
+    'avoid duplicated text, avoid wrong spelling, avoid excessive UI panels, '
+    'avoid cartoon character taking too much space, avoid cheap template look, '
+    'avoid blurry elements, avoid low resolution, avoid watermark, avoid clutter, '
+    'avoid crowded layout, avoid too many colors, avoid realistic person on the side, '
+    'avoid excessive details in the background.'
 )
 
 
@@ -491,11 +519,8 @@ async def _conectar_chrome(p, forcar_restart: bool = False):
 # Main
 # ---------------------------------------------------------------------------
 
-async def _gerar_async(titulo: str, subtitulo: str, output_path: str, prompt_extra: str = "") -> str:
-    prompt = PROMPT_TEMPLATE.format(
-        titulo=titulo[:200],
-        subtitulo=subtitulo[:300] if subtitulo else titulo,
-    )
+async def _gerar_async(titulo: str, output_path: str, prompt_extra: str = "") -> str:
+    prompt = PROMPT_TEMPLATE.format(titulo=titulo[:200])
     if prompt_extra:
         prompt = prompt + " " + prompt_extra
     print(f"  Prompt: {prompt[:140]}...")
@@ -520,15 +545,15 @@ async def _gerar_async(titulo: str, subtitulo: str, output_path: str, prompt_ext
     return output_path
 
 
-def gerar_capa_flow(titulo: str, subtitulo: str, output_path: str, prompt_extra: str = "") -> str:
+def gerar_capa_flow(titulo: str, output_path: str, subtitulo: str = "", prompt_extra: str = "") -> str:
     """
     Gera capa de blog via Google Flow.
 
     Args:
         titulo: Titulo do post
-        subtitulo: Subtitulo/descricao
         output_path: Caminho de saida (.jpg)
-        prompt_extra: Instrucao adicional para corrigir geracao anterior (ex: "ATENCAO: escreva MIASMA corretamente")
+        subtitulo: Ignorado (mantido por compatibilidade)
+        prompt_extra: Instrucao adicional para corrigir geracao anterior
 
     Returns:
         Caminho da imagem gerada
@@ -537,20 +562,19 @@ def gerar_capa_flow(titulo: str, subtitulo: str, output_path: str, prompt_extra:
         RuntimeError: Se nao conseguir gerar
     """
     print(f"\n[Flow] Gerando capa: {titulo[:60]}...")
-    return asyncio.run(_gerar_async(titulo, subtitulo, output_path, prompt_extra))
+    return asyncio.run(_gerar_async(titulo, output_path, prompt_extra))
 
 
 # ---------------------------------------------------------------------------
 # CLI standalone
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Uso: python gerar_capa_flow.py <titulo> <subtitulo> [output.jpg]")
+    if len(sys.argv) < 2:
+        print("Uso: python gerar_capa_flow.py <titulo> [output.jpg]")
         sys.exit(1)
 
-    _titulo    = sys.argv[1]
-    _subtitulo = sys.argv[2]
-    _output    = sys.argv[3] if len(sys.argv) > 3 else "E:/tmp/capa-flow.jpg"
+    _titulo = sys.argv[1]
+    _output = sys.argv[2] if len(sys.argv) > 2 else "E:/tmp/capa-flow.jpg"
 
-    resultado = gerar_capa_flow(_titulo, _subtitulo, _output)
+    resultado = gerar_capa_flow(_titulo, _output)
     print(f"\nCapa gerada: {resultado}")

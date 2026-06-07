@@ -632,7 +632,7 @@ def main(json_path: str):
         cover_url = None
         try:
             from gerar_capa_flow import gerar_capa_flow
-            gerar_capa_flow(titulo=titulo, subtitulo=subtitulo, output_path=capa_path)
+            gerar_capa_flow(titulo=titulo, output_path=capa_path)
             log(f"Capa gerada via Flow: {capa_path}")
             run_log["etapas"]["capa"] = capa_path
 
