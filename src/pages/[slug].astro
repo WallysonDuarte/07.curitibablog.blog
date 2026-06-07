@@ -91,12 +91,18 @@ const faqSideAd = faqSideAds[0] ?? null;
 
   <!-- Cover image hero -->
   <div class="post-cover-hero">
+<<<<<<< HEAD
     <picture>
       <source type="image/webp" srcset={postCoverWebP} />
       <img src={postCoverSrc} alt={post.title} width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" />
     </picture>
     <div class="post-cover-hero-overlay"></div>
   </div>
+=======
+      <img src={postCoverSrc} alt={post.title} decoding="async" loading="eager" fetchpriority="high" />
+      <div class="post-cover-hero-overlay"></div>
+    </div>
+>>>>>>> origin/master
 
   <div class="post-layout">
     <!-- ── MAIN ARTICLE ── -->

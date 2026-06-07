@@ -7,7 +7,11 @@ import { fetchAllPosts, fetchCategories } from '../lib/api';
 const [allPosts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
 
 const API_BASE = 'https://api.curitibasoftware.com.br';
+<<<<<<< HEAD
 // Carrossel: posts em destaque ordenados por sequence
+=======
+// Carrossel: posts em destaque com cover, ordenados por sequence
+>>>>>>> origin/master
 const featuredPosts = allPosts.filter(p => p.isFeatured)
   .sort((a, b) => (a.sequence ?? 9999) - (b.sequence ?? 9999));
 const fallbackPosts = allPosts.filter(p => !p.isFeatured)
@@ -49,6 +53,7 @@ const categoryBlocks = categories.map(cat => {
     type="website"
   />
 
+<<<<<<< HEAD
   <!-- Particle Hero -->
   <section class="page-hero particle-hero" id="hero" style="position:relative;background:#0d1b2a;overflow:hidden;">
     <canvas id="hero-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
@@ -58,8 +63,26 @@ const categoryBlocks = categories.map(cat => {
       <div class="search-bar" id="search-bar">
         <input type="search" id="search-input" placeholder="Buscar artigos de tecnologia..." aria-label="Buscar artigos" autocomplete="off" />
         <button type="button" aria-label="Buscar"><i class="fa-solid fa-search"></i></button>
+=======
+  <!-- Hero Gradiente Fun -->
+  <section id="hero" style="position:relative;background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 45%,#db2777 100%);overflow:hidden;padding:4rem 0 5rem;">
+    <!-- Bolhas decorativas -->
+    <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:rgba(255,255,255,.06);border-radius:50%;pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-80px;left:-40px;width:250px;height:250px;background:rgba(255,255,255,.05);border-radius:50%;pointer-events:none;"></div>
+    <div class="container" style="position:relative;z-index:1;text-align:center;">
+      <div style="display:inline-block;background:rgba(255,255,255,.15);border-radius:999px;padding:.3rem 1.2rem;font-size:.85rem;color:#fde68a;font-weight:700;margin-bottom:1rem;letter-spacing:.03em;">
+        Sem enrolacao. Sem lero-lero. So tecnologia de verdade!
+      </div>
+      <h1 style="font-size:clamp(2rem,5vw,3.2rem);text-transform:none;color:#fff;font-weight:900;line-height:1.15;margin-bottom:.75rem;">Tecnologia sem enrolacao</h1>
+      <p style="color:rgba(255,255,255,.9);font-size:1.1rem;max-width:560px;margin:0 auto 1.8rem;">Os melhores artigos de tech explicados do jeito que seu amigo dev explicaria. Direto, divertido e sem papo corporativo.</p>
+      <div class="search-bar" id="search-bar" style="max-width:500px;margin:0 auto;border-radius:999px;overflow:hidden;">
+        <input type="search" id="search-input" placeholder="Procurar um assunto..." aria-label="Buscar artigos" autocomplete="off" style="border-radius:999px 0 0 999px;" />
+        <button type="button" aria-label="Buscar" style="border-radius:0 999px 999px 0;"><i class="fa-solid fa-search"></i></button>
+>>>>>>> origin/master
       </div>
     </div>
+    <!-- Onda SVG -->
+    <svg style="position:absolute;bottom:0;left:0;width:100%;pointer-events:none;" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="var(--bg)"/></svg>
   </section>
 
   <!-- Category filter pills -->
@@ -379,6 +402,7 @@ const categoryBlocks = categories.map(cat => {
       if(sl<=5)dir=1;
     },30);
   })();
+<<<<<<< HEAD
 
   // ── Mobile filter toggle ─────────────────────────────────
   (function () {
@@ -391,4 +415,6 @@ const categoryBlocks = categories.map(cat => {
       btn.setAttribute('aria-expanded', String(open));
     });
   })();
+=======
+>>>>>>> origin/master
 </script>
