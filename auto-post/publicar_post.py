@@ -53,6 +53,357 @@ BLOG_REMOTE = {
 
 CHARS_PROIBIDOS = ["—", "–", "“", "”", "‘", "’", "…"]
 
+# Correcoes de acentuacao PT-BR — aplicadas antes de publicar
+# Formato: (regex_sem_acento, forma_correta)
+_ACENTO_FIXES = [
+    # Palavras comuns sem acento
+    (r'\bvoce\b', 'você'), (r'\bvoces\b', 'vocês'),
+    (r'\btambem\b', 'também'),
+    (r'\bentao\b', 'então'),
+    (r'\bnao\b', 'não'),
+    (r'\bja\b', 'já'),
+    (r'\bapos\b', 'após'),
+    (r'\bate\b', 'até'),
+    (r'\bso\b', 'só'),
+    (r'\bporem\b', 'porém'),
+    (r'\balguem\b', 'alguém'),
+    (r'\bninguem\b', 'ninguém'),
+    # Terminações -ção/-ções
+    (r'\bacao\b', 'ação'), (r'\bacoes\b', 'ações'),
+    (r'\bintegracao\b', 'integração'), (r'\bintegracoes\b', 'integrações'),
+    (r'\bautomacao\b', 'automação'), (r'\bautomacoes\b', 'automações'),
+    (r'\bexecucao\b', 'execução'), (r'\bexecucoes\b', 'execuções'),
+    (r'\bconfiguracao\b', 'configuração'), (r'\bconfiguracoes\b', 'configurações'),
+    (r'\bcriacao\b', 'criação'), (r'\bcriacoes\b', 'criações'),
+    (r'\bcomunicacao\b', 'comunicação'), (r'\bcomunicacoes\b', 'comunicações'),
+    (r'\bconexao\b', 'conexão'), (r'\bconexoes\b', 'conexões'),
+    (r'\bfuncao\b', 'função'), (r'\bfuncoes\b', 'funções'),
+    (r'\boperacao\b', 'operação'), (r'\boperacoes\b', 'operações'),
+    (r'\binformacao\b', 'informação'), (r'\binformacoes\b', 'informações'),
+    (r'\bvalidacao\b', 'validação'), (r'\bvalidacoes\b', 'validações'),
+    (r'\bimplementacao\b', 'implementação'), (r'\bimplementacoes\b', 'implementações'),
+    (r'\bdocumentacao\b', 'documentação'),
+    (r'\bapresentacao\b', 'apresentação'), (r'\bapresentacoes\b', 'apresentações'),
+    (r'\binstancio\b', 'instância'), (r'\binstancias\b', 'instâncias'), (r'\binstancia\b', 'instância'),
+    (r'\brelacao\b', 'relação'), (r'\brelacoes\b', 'relações'),
+    (r'\bsolucao\b', 'solução'), (r'\bsolucoes\b', 'soluções'),
+    (r'\bgestao\b', 'gestão'), (r'\bgestoes\b', 'gestões'),
+    (r'\binsercao\b', 'inserção'), (r'\binserções\b', 'inserções'),
+    (r'\bexcecao\b', 'exceção'), (r'\bexcecoes\b', 'exceções'),
+    (r'\bdistribuicao\b', 'distribuição'), (r'\bdistribuicoes\b', 'distribuições'),
+    (r'\bintroducao\b', 'introdução'),
+    (r'\bevolucao\b', 'evolução'),
+    (r'\bmigracao\b', 'migração'), (r'\bmigracoes\b', 'migrações'),
+    (r'\bavaliacao\b', 'avaliação'), (r'\bavaliacoes\b', 'avaliações'),
+    (r'\bextensao\b', 'extensão'), (r'\bextensoes\b', 'extensões'),
+    (r'\bversao\b', 'versão'), (r'\bversoes\b', 'versões'),
+    (r'\bpermissao\b', 'permissão'), (r'\bpermissoes\b', 'permissões'),
+    (r'\bdefinicao\b', 'definição'), (r'\bdefinicoes\b', 'definições'),
+    (r'\batencao\b', 'atenção'),
+    (r'\borganizacao\b', 'organização'), (r'\borganizacoes\b', 'organizações'),
+    (r'\bnotificacao\b', 'notificação'), (r'\bnotificacoes\b', 'notificações'),
+    (r'\brepresentacao\b', 'representação'),
+    (r'\breplicacao\b', 'replicação'),
+    (r'\btransacao\b', 'transação'), (r'\btransacoes\b', 'transações'),
+    (r'\bsegurança\b', 'segurança'), (r'\bautorizacao\b', 'autorização'),
+    (r'\bautenticacao\b', 'autenticação'),
+    (r'\bserializacao\b', 'serialização'),
+    (r'\bcompilacao\b', 'compilação'),
+    (r'\bverificacao\b', 'verificação'), (r'\bverificacoes\b', 'verificações'),
+    (r'\bprocessamento\b', 'processamento'),  # sem acento mesmo
+    (r'\blancamento\b', 'lançamento'), (r'\blancamentos\b', 'lançamentos'),
+    (r'\blancou\b', 'lançou'), (r'\blanca\b', 'lança'), (r'\blancam\b', 'lançam'),
+    (r'\bmanutencao\b', 'manutenção'), (r'\bmanutencoes\b', 'manutenções'),
+    (r'\bcompensacao\b', 'compensação'), (r'\bcompensacoes\b', 'compensações'),
+    (r'\borquestracao\b', 'orquestração'),
+    (r'\binspecao\b', 'inspeção'), (r'\binspecoes\b', 'inspeções'),
+    (r'\bcorrecao\b', 'correção'), (r'\bcorrecoes\b', 'correções'),
+    (r'\bprotecao\b', 'proteção'), (r'\bprotecoes\b', 'proteções'),
+    (r'\brestricao\b', 'restrição'), (r'\brestricoes\b', 'restrições'),
+    (r'\bexibicao\b', 'exibição'), (r'\bexibicoes\b', 'exibições'),
+    (r'\bgravacao\b', 'gravação'), (r'\bgravacoes\b', 'gravações'),
+    (r'\bimportacao\b', 'importação'), (r'\bexportacao\b', 'exportação'),
+    (r'\bextracao\b', 'extração'), (r'\bextracoes\b', 'extrações'),
+    (r'\bconversao\b', 'conversão'), (r'\bconversoes\b', 'conversões'),
+    (r'\bpublicacao\b', 'publicação'), (r'\bpublicacoes\b', 'publicações'),
+    (r'\bnavegacao\b', 'navegação'),
+    (r'\binstrucao\b', 'instrução'), (r'\binstrucoes\b', 'instruções'),
+    (r'\bproducao\b', 'produção'), (r'\bproducoes\b', 'produções'),
+    (r'\brepresentar\b', 'representar'),  # ok sem acento
+    (r'\breducao\b', 'redução'), (r'\breducoes\b', 'reduções'),
+    (r'\bcalculacao\b', 'cálculo'),
+    (r'\balteracao\b', 'alteração'), (r'\balteracoes\b', 'alterações'),
+    (r'\bpaginacao\b', 'paginação'),
+    (r'\baplicacao\b', 'aplicação'), (r'\baplicacoes\b', 'aplicações'),
+    (r'\bcontribuicao\b', 'contribuição'), (r'\bcontribuicoes\b', 'contribuições'),
+    (r'\bpolicidade\b', 'publicidade'),
+    (r'\bgravitacao\b', 'gravitação'),
+    (r'\blocalizacao\b', 'localização'),
+    (r'\botimizacao\b', 'otimização'),
+    (r'\btensao\b', 'tensão'),
+    (r'\bterminacao\b', 'terminação'),
+    (r'\bdistincao\b', 'distinção'),
+    (r'\bcomposicao\b', 'composição'),
+    (r'\bposicao\b', 'posição'), (r'\bposicoes\b', 'posições'),
+    (r'\batribuicao\b', 'atribuição'),
+    # Terminações -ão (outros)
+    (r'\bpadrao\b', 'padrão'), (r'\bpadroes\b', 'padrões'),
+    (r'\borgao\b', 'órgão'), (r'\borgaos\b', 'órgãos'),
+    # -ência/-ências
+    (r'\bexperiencia\b', 'experiência'), (r'\bexperiencias\b', 'experiências'),
+    (r'\bciencia\b', 'ciência'), (r'\bciencias\b', 'ciências'),
+    (r'\bfrequencia\b', 'frequência'), (r'\bfrequencias\b', 'frequências'),
+    (r'\baudiencia\b', 'audiência'), (r'\baudiencias\b', 'audiências'),
+    (r'\bgerencia\b', 'gerência'), (r'\bgerencias\b', 'gerências'),
+    (r'\bsequencia\b', 'sequência'), (r'\bsequencias\b', 'sequências'),
+    (r'\bepidencia\b', 'evidência'),
+    (r'\bevidencia\b', 'evidência'), (r'\bevidencias\b', 'evidências'),
+    (r'\bcoerencia\b', 'coerência'),
+    (r'\bcoincidencia\b', 'coincidência'),
+    (r'\bdependencia\b', 'dependência'), (r'\bdependencias\b', 'dependências'),
+    (r'\bindependencia\b', 'independência'),
+    (r'\binteligencia\b', 'inteligência'),
+    (r'\bexcelencia\b', 'excelência'),
+    (r'\bpresenca\b', 'presença'), (r'\bpresencas\b', 'presenças'),
+    (r'\bpotencia\b', 'potência'), (r'\bpotencias\b', 'potências'),
+    (r'\breferencia\b', 'referência'), (r'\breferencias\b', 'referências'),
+    (r'\bdiferenca\b', 'diferença'), (r'\bdiferencas\b', 'diferenças'),
+    (r'\bconveniencia\b', 'conveniência'),
+    (r'\bpatencia\b', 'patência'), (r'\bpotencialmente\b', 'potencialmente'),
+    # Adjetivos proparoxítonos (-ico/-ica)
+    (r'\bunico\b', 'único'), (r'\bunicos\b', 'únicos'), (r'\bunica\b', 'única'), (r'\bunicas\b', 'únicas'),
+    (r'\bpublico\b', 'público'), (r'\bpublicos\b', 'públicos'), (r'\bpublica\b', 'pública'), (r'\bpublicas\b', 'públicas'),
+    (r'\bcodigo\b', 'código'), (r'\bcodigos\b', 'códigos'),
+    (r'\bautomatico\b', 'automático'), (r'\bautomatica\b', 'automática'), (r'\bautomaticos\b', 'automáticos'), (r'\bautomaticas\b', 'automáticas'),
+    (r'\btecnico\b', 'técnico'), (r'\btecnica\b', 'técnica'), (r'\btecnicos\b', 'técnicos'), (r'\btecnicas\b', 'técnicas'),
+    (r'\bpratico\b', 'prático'), (r'\bpratica\b', 'prática'), (r'\bpraticos\b', 'práticos'), (r'\bpraticas\b', 'práticas'),
+    (r'\bespecifico\b', 'específico'), (r'\bespecifica\b', 'específica'), (r'\bespecificos\b', 'específicos'), (r'\bespecificas\b', 'específicas'),
+    (r'\bcritico\b', 'crítico'), (r'\bcritica\b', 'crítica'), (r'\bcriticos\b', 'críticos'), (r'\bcriticas\b', 'críticas'),
+    (r'\bdinamico\b', 'dinâmico'), (r'\bdinamica\b', 'dinâmica'), (r'\bdinamicos\b', 'dinâmicos'), (r'\bdinamicas\b', 'dinâmicas'),
+    (r'\bestatico\b', 'estático'), (r'\bestatica\b', 'estática'), (r'\bestaticos\b', 'estáticos'), (r'\bestaticas\b', 'estáticas'),
+    (r'\bbasico\b', 'básico'), (r'\bbasica\b', 'básica'), (r'\bbasicos\b', 'básicos'), (r'\bbasicas\b', 'básicas'),
+    (r'\bclassico\b', 'clássico'), (r'\bclassica\b', 'clássica'), (r'\bclassicos\b', 'clássicos'), (r'\bclassicas\b', 'clássicas'),
+    (r'\bhistorico\b', 'histórico'), (r'\bhistorica\b', 'histórica'), (r'\bhistoricos\b', 'históricos'), (r'\bhistoricas\b', 'históricas'),
+    (r'\beconomico\b', 'econômico'), (r'\beconomica\b', 'econômica'), (r'\beconomicos\b', 'econômicos'), (r'\beconomicas\b', 'econômicas'),
+    (r'\bcientifico\b', 'científico'), (r'\bcientifica\b', 'científica'), (r'\bcientificos\b', 'científicos'),
+    (r'\bmatematico\b', 'matemático'), (r'\bmatematica\b', 'matemática'), (r'\bmatematicos\b', 'matemáticos'),
+    (r'\bestetico\b', 'estético'), (r'\bestetica\b', 'estética'),
+    (r'\bsimbolico\b', 'simbólico'), (r'\bsimbolica\b', 'simbólica'),
+    (r'\borganico\b', 'orgânico'), (r'\borganica\b', 'orgânica'),
+    (r'\bferramenta\b', 'ferramenta'),  # ok sem acento
+    (r'\baltruistico\b', 'altruístico'),
+    (r'\bideologico\b', 'ideológico'), (r'\bideologica\b', 'ideológica'),
+    (r'\banalogico\b', 'analógico'), (r'\banalogica\b', 'analógica'),
+    (r'\bfisico\b', 'físico'), (r'\bfisica\b', 'física'), (r'\bfisicos\b', 'físicos'), (r'\bfisicas\b', 'físicas'),
+    (r'\bquimico\b', 'químico'), (r'\bquimica\b', 'química'),
+    (r'\bgenerico\b', 'genérico'), (r'\bgenerica\b', 'genérica'),
+    (r'\bproprio\b', 'próprio'), (r'\bpropria\b', 'própria'), (r'\bproprios\b', 'próprios'), (r'\bproprias\b', 'próprias'),
+    (r'\bconcluido\b', 'concluído'), (r'\bconcluida\b', 'concluída'), (r'\bconcluidos\b', 'concluídos'), (r'\bconcluidas\b', 'concluídas'),
+    (r'\bincluido\b', 'incluído'), (r'\bincluida\b', 'incluída'), (r'\bincluidos\b', 'incluídos'), (r'\bincluidas\b', 'incluídas'),
+    # Substantivos proparoxítonos
+    (r'\bminimo\b', 'mínimo'), (r'\bminima\b', 'mínima'), (r'\bminimos\b', 'mínimos'), (r'\bminimas\b', 'mínimas'),
+    (r'\bmaximo\b', 'máximo'), (r'\bmaxima\b', 'máxima'), (r'\bmaaximos\b', 'máximos'), (r'\bmaaximas\b', 'máximas'),
+    (r'\bproximo\b', 'próximo'), (r'\bprojima\b', 'próxima'), (r'\bprojimos\b', 'próximos'), (r'\bprojimas\b', 'próximas'),
+    (r'\bproxima\b', 'próxima'), (r'\bprojimos\b', 'próximos'), (r'\bproximas\b', 'próximas'),
+    (r'\bultimo\b', 'último'), (r'\bultima\b', 'última'), (r'\bultimos\b', 'últimos'), (r'\bultimas\b', 'últimas'),
+    (r'\bnivel\b', 'nível'), (r'\bniveis\b', 'níveis'),
+    (r'\bnumero\b', 'número'), (r'\bnumeros\b', 'números'),
+    (r'\bmodulo\b', 'módulo'), (r'\bmodulos\b', 'módulos'),
+    (r'\bindice\b', 'índice'), (r'\bindices\b', 'índices'),
+    (r'\bpagina\b', 'página'), (r'\bpaginas\b', 'páginas'),
+    (r'\bmaquina\b', 'máquina'), (r'\bmaquinas\b', 'máquinas'),
+    (r'\bdecada\b', 'década'), (r'\bdecadas\b', 'décadas'),
+    (r'\banalise\b', 'análise'), (r'\banalises\b', 'análises'),
+    (r'\bdiagnostico\b', 'diagnóstico'), (r'\bdiagnosticos\b', 'diagnósticos'),
+    (r'\bsintaxe\b', 'sintaxe'),  # ok sem acento
+    (r'\bcaracter\b', 'caráter'), (r'\bcaracteres\b', 'caracteres'),
+    (r'\batomo\b', 'átomo'), (r'\batomos\b', 'átomos'),
+    # Adjetivos -ável/-ível
+    (r'\bdisponivel\b', 'disponível'), (r'\bdisponiveis\b', 'disponíveis'),
+    (r'\bpossivel\b', 'possível'), (r'\bpossiveis\b', 'possíveis'),
+    (r'\bdificil\b', 'difícil'), (r'\bdificeis\b', 'difíceis'),
+    (r'\bfacil\b', 'fácil'), (r'\bfaceis\b', 'fáceis'),
+    (r'\buteis\b', 'úteis'), (r'\butil\b', 'útil'),
+    (r'\bresponsavel\b', 'responsável'), (r'\bresponsaveis\b', 'responsáveis'),
+    (r'\bconfiavel\b', 'confiável'), (r'\bconfiaveis\b', 'confiáveis'),
+    (r'duravel', 'durável'), (r'duraveis', 'duráveis'),
+    (r'\bflexivel\b', 'flexível'), (r'\bflexiveis\b', 'flexíveis'),
+    (r'\bescalavel\b', 'escalável'), (r'\bescalaveis\b', 'escaláveis'),
+    (r'\bsustentavel\b', 'sustentável'), (r'\bsustentaveis\b', 'sustentáveis'),
+    (r'\badaptavel\b', 'adaptável'), (r'\badaptaveis\b', 'adaptáveis'),
+    (r'\bimportante\b', 'importante'),  # ok sem acento
+    (r'\bvulneravel\b', 'vulnerável'), (r'\bvulneraveis\b', 'vulneráveis'),
+    (r'\baplicavel\b', 'aplicável'), (r'\baplicaveis\b', 'aplicáveis'),
+    (r'\bnotavel\b', 'notável'), (r'\bnotaveis\b', 'notáveis'),
+    (r'\bcomparavel\b', 'comparável'), (r'\bcompáráveis\b', 'comparáveis'),
+    # Inglês / Português nomes de tech
+    (r'\bingles\b', 'inglês'),
+    (r'\bportugues\b', 'português'), (r'\bportuguesai\b', 'português'),
+    (r'\bfrances\b', 'francês'),
+    # Substantivos comuns
+    (r'\bservico\b', 'serviço'), (r'\bservicos\b', 'serviços'),
+    (r'\bnegocios\b', 'negócios'), (r'\bnegocio\b', 'negócio'),
+    (r'\bestagio\b', 'estágio'), (r'\bestágios\b', 'estágios'), (r'\bestâgios\b', 'estágios'),
+    (r'\binterface\b', 'interface'),  # ok sem acento
+    (r'\bcomodo\b', 'cômodo'), (r'\bcomodidade\b', 'comodidade'),
+    # Verbos com acento
+    (r'\be\b', 'é'),  # CUIDADO: apenas no contexto de verbo "é", não conjunção "e"
+    # ^^ MUITO ARISCADO — nao incluir "e" → "é"
+    (r'\besta\b', 'está'),  # ARISCADO: "esta" (adj. demonstrativo) vs "está" (verbo) — não incluir
+    # Exceções: nao corrigir "e" (conjunção) e "esta" (pronome)
+    # Outras palavras
+    (r'\bvideo\b', 'vídeo'), (r'\bvideos\b', 'vídeos'),
+    (r'\baudio\b', 'áudio'), (r'\baudios\b', 'áudios'),
+    (r'\bperiodo\b', 'período'), (r'\bperiodos\b', 'períodos'),
+    (r'\bproposito\b', 'propósito'), (r'\bpropositos\b', 'propósitos'),
+    (r'\bexito\b', 'êxito'), (r'\bexitos\b', 'êxitos'),
+    (r'\bancora\b', 'âncora'), (r'\bancoras\b', 'âncoras'),
+    (r'\bsuperficie\b', 'superfície'), (r'\bsuperficies\b', 'superfícies'),
+    (r'\borigem\b', 'origem'),  # ok sem acento
+    (r'\boriginar\b', 'originar'),  # ok
+    (r'\bhabilidade\b', 'habilidade'),  # ok
+    (r'\bhabito\b', 'hábito'), (r'\bhabitos\b', 'hábitos'),
+    (r'\bprazo\b', 'prazo'),  # ok sem acento
+    (r'\bfacilidade\b', 'facilidade'),  # ok sem acento
+    (r'\binterrupao\b', 'interrupção'),  # typo
+    (r'\binterrupcao\b', 'interrupção'), (r'\binterrupcoes\b', 'interrupções'),
+    (r'\bconcorrencia\b', 'concorrência'),
+    (r'\btransparencia\b', 'transparência'),
+    (r'\bcoincidencias\b', 'coincidências'),
+    (r'\bpratica\b', 'prática'), (r'\bpraticas\b', 'práticas'),  # duplicado mas ok
+    (r'\bregistro\b', 'registro'),  # ok
+    (r'\bresumo\b', 'resumo'),  # ok
+    (r'\bcapitulo\b', 'capítulo'), (r'\bcapitulos\b', 'capítulos'),
+    (r'\bgraficos\b', 'gráficos'), (r'\bgrafico\b', 'gráfico'),
+    (r'\btopico\b', 'tópico'), (r'\btopicos\b', 'tópicos'),
+    (r'\bcelula\b', 'célula'), (r'\bcelulas\b', 'células'),
+    (r'\bprologo\b', 'prólogo'),
+    (r'\bepilogo\b', 'epílogo'),
+    (r'\bgenero\b', 'gênero'), (r'\bgeneros\b', 'gêneros'),
+    (r'\brecurso\b', 'recurso'),  # ok
+    (r'\bparametro\b', 'parâmetro'), (r'\bparametros\b', 'parâmetros'),
+    (r'\brepositorio\b', 'repositório'), (r'\brepositórios\b', 'repositórios'), (r'\brepositórios\b', 'repositórios'),
+    (r'\brepositórios\b', 'repositórios'),
+    (r'\bdestaque\b', 'destaque'),  # ok
+    (r'\bresultado\b', 'resultado'),  # ok
+    (r'\bpadrao\b', 'padrão'),  # duplicado mas ok
+    (r'\bmecanismo\b', 'mecanismo'),  # ok
+    (r'\bgrafos\b', 'grafos'),  # ok
+    (r'\bpessoa\b', 'pessoa'),  # ok
+    (r'\bdecisao\b', 'decisão'), (r'\bdecisoes\b', 'decisões'),
+    (r'\bprestacao\b', 'prestação'),
+    (r'\bexecucao\b', 'execução'),  # dup ok
+    (r'\btransferencia\b', 'transferência'), (r'\btransferencias\b', 'transferências'),
+    (r'\bsolucao\b', 'solução'),  # dup ok
+    (r'\bperfomance\b', 'performance'),  # typo fix
+    (r'\bperformace\b', 'performance'),  # typo fix
+    (r'\btrafico\b', 'tráfego'),
+    (r'\blegado\b', 'legado'),  # ok sem acento
+    (r'\bacesso\b', 'acesso'),  # ok
+    (r'\bgarantia\b', 'garantia'),  # ok
+    (r'\bdiretorio\b', 'diretório'), (r'\bdiretorios\b', 'diretórios'),
+    (r'\bsalario\b', 'salário'), (r'\bsalarios\b', 'salários'),
+    (r'\bescritorio\b', 'escritório'), (r'\bescritorios\b', 'escritórios'),
+    (r'\bcenario\b', 'cenário'), (r'\bcenarios\b', 'cenários'),
+    (r'\bterritorio\b', 'território'), (r'\bterritórios\b', 'territórios'),
+    (r'\bpatrimonio\b', 'patrimônio'), (r'\bpatrimonios\b', 'patrimônios'),
+    (r'\bentidades\b', 'entidades'),  # ok
+    (r'\bhierarquia\b', 'hierarquia'),  # ok
+    (r'\borgao\b', 'órgão'), (r'\borgaos\b', 'órgãos'),
+    (r'\borgaos\b', 'órgãos'),
+    (r'\bcongelado\b', 'congelado'),  # ok
+    (r'\bexplicacao\b', 'explicação'), (r'\bexplicacoes\b', 'explicações'),
+    (r'\bpossibilidade\b', 'possibilidade'),  # ok
+    (r'\bcapacidade\b', 'capacidade'),  # ok
+    (r'\brecorrencia\b', 'recorrência'), (r'\brecorrencias\b', 'recorrências'),
+    (r'\bpermanencia\b', 'permanência'),
+    (r'\boriginarios\b', 'originários'), (r'\boriginario\b', 'originário'),
+    (r'\bescopos\b', 'escopos'),  # ok
+    (r'\bescopo\b', 'escopo'),  # ok
+    (r'\bqualidade\b', 'qualidade'),  # ok
+    (r'\bsimulacao\b', 'simulação'), (r'\bsimulacoes\b', 'simulações'),
+    (r'\bstatus\b', 'status'),  # ok (palavra inglesa)
+    (r'\blatencia\b', 'latência'), (r'\blatencias\b', 'latências'),
+    (r'\bresiliencia\b', 'resiliência'),
+    (r'\bobservabilidade\b', 'observabilidade'),  # ok
+    (r'\bpersistencia\b', 'persistência'),
+    (r'\bdurabilidade\b', 'durabilidade'),  # ok
+    (r'\batomicidade\b', 'atomicidade'),  # ok
+    (r'\bcongelamento\b', 'congelamento'),  # ok
+    (r'\bassincrono\b', 'assíncrono'), (r'\bassincrona\b', 'assíncrona'), (r'\bassincronos\b', 'assíncronos'),
+    (r'\bsincrono\b', 'síncrono'), (r'\bsincrona\b', 'síncrona'), (r'\bsincronos\b', 'síncronos'),
+    (r'\bidempotente\b', 'idempotente'),  # ok
+    (r'\bsistematico\b', 'sistemático'), (r'\bsistematica\b', 'sistemática'),
+    (r'\bautossuficiente\b', 'autossuficiente'),  # ok
+    (r'\bautomatizar\b', 'automatizar'),  # ok
+    (r'\borderem\b', 'ordem'),  # ok - "ordem" sem acento
+    (r'\bordernar\b', 'ordenar'),  # ok
+    (r'\breproduzivel\b', 'reproduzível'), (r'\breproduzíveis\b', 'reproduzíveis'),
+    (r'\bkubernetes\b', 'Kubernetes'),  # nome proprio capitalizado
+    (r'\bdocker\b', 'Docker'),  # nome proprio
+    (r'\blinux\b', 'Linux'),
+    (r'\bwindows\b', 'Windows'),
+    (r'\bpython\b', 'Python'),
+    (r'\bgithub\b', 'GitHub'),
+    (r'\byoutube\b', 'YouTube'),
+    (r'\bjavascript\b', 'JavaScript'),
+    (r'\btypescript\b', 'TypeScript'),
+    (r'\bpostgresql\b', 'PostgreSQL'),
+    (r'\bmongodb\b', 'MongoDB'),
+    (r'\bwordpress\b', 'WordPress'),
+    (r'\binstagram\b', 'Instagram'),
+    (r'\bwhatsapp\b', 'WhatsApp'),
+    (r'\blinkedin\b', 'LinkedIn'),
+    (r'\bfacebook\b', 'Facebook'),
+]
+
+def _acento_repl(correct):
+    """Retorna função de substituição que preserva caixa."""
+    def _fn(m):
+        word = m.group(0)
+        if word.isupper():
+            return correct.upper()
+        if word[0].isupper():
+            return correct[0].upper() + correct[1:]
+        return correct
+    return _fn
+
+def corrigir_acentos(text: str) -> tuple[str, int]:
+    """Corrige acentuacao PT-BR no texto. Retorna (texto_corrigido, num_correcoes)."""
+    correcoes = 0
+    for padrao, correto in _ACENTO_FIXES:
+        novo, n = re.subn(padrao, _acento_repl(correto), text, flags=re.IGNORECASE)
+        if n:
+            correcoes += n
+            text = novo
+    return text, correcoes
+
+def _corrigir_campos_post(post: dict) -> int:
+    """Aplica correcao de acentos em todos os campos texto do post. Retorna total de correcoes."""
+    total = 0
+    campos_diretos = ["title", "summary", "metaTitle", "metaDescription", "content",
+                      "card1_titulo", "card1_texto", "card2_titulo", "card2_texto",
+                      "card3_titulo", "card3_texto", "subtitulo_capa"]
+    for campo in campos_diretos:
+        if campo in post and isinstance(post[campo], str):
+            post[campo], n = corrigir_acentos(post[campo])
+            total += n
+    for faq in post.get("faqs", []):
+        for k in ("question", "answer"):
+            if k in faq:
+                faq[k], n = corrigir_acentos(faq[k])
+                total += n
+    for block in post.get("blocks", []):
+        if "title" in block:
+            block["title"], n = corrigir_acentos(block["title"])
+            total += n
+        for item in block.get("items", []):
+            for k in ("label", "value", "text", "name"):
+                if k in item and isinstance(item[k], str):
+                    item[k], n = corrigir_acentos(item[k])
+                    total += n
+    return total
+
 
 def log(msg):
     ts = datetime.datetime.now().strftime("%H:%M:%S")
@@ -258,6 +609,13 @@ def main(json_path: str):
         check_post(post_data)
         log("checkPost OK")
 
+        # 2b. Corrigir acentuacao PT-BR automaticamente
+        n_correcoes = _corrigir_campos_post(post_data)
+        if n_correcoes:
+            log(f"AVISO: {n_correcoes} correcao(es) de acentuacao aplicada(s) — revise o JSON gerado")
+        else:
+            log("Acentuacao PT-BR OK")
+
         # 3. Garantir category valida
         cats_validas = {"ferramentas-de-ia", "desenvolvimento", "tecnologia", "negocios"}
         if post_data.get("category") not in cats_validas:
@@ -319,6 +677,7 @@ def main(json_path: str):
             "coverImageUrl": cover_url,
             "sites": BLOGS,
         }
+        _corrigir_campos_post(doc)
         check_post(doc)
 
         # 7. Inserir MongoDB

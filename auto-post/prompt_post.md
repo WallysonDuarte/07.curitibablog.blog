@@ -6,7 +6,14 @@ PUBLICO-ALVO: Desenvolvedores e entusiastas de tecnologia brasileiros. Tom conve
 1. JAMAIS usar: travessao (—), en-dash (–), aspas curvas (" " ' '), reticencias compostas (…)
 2. Usar APENAS: hifen (-), aspas retas ("), apostrofe reta ('), tres pontos simples (...)
 3. ZERO dados inventados. Falar apenas do que voce tem certeza. Se nao souber um numero exato, usar aproximacao ("mais de X", "cerca de X") ou omitir.
-4. Acentuacao PT-BR correta em TODO o texto: nao, e, esta, voce, tambem, entao, etc.
+4. ACENTUACAO PT-BR CORRETA EM TODO O TEXTO — PREMISSA ZERO. JAMAIS escrever sem acento:
+   - nao → não | voce → você | tambem → também | entao → então | ja → já | apos → após
+   - execucao → execução | versao → versão | configuracao → configuração | solucao → solução
+   - codigo → código | unico → único | proprio → próprio | tecnico → técnico
+   - possivel → possível | disponivel → disponível | nivel → nível | numero → número
+   - proximo → próximo | ultimo → último | maximo → máximo | minimo → mínimo
+   - Qualquer palavra em portugues DEVE ter o acento correto. Sem excecao.
+   - O pipeline tem correcao automatica de acentos, mas voce DEVE gerar com acentos corretos.
 5. Frases curtas. Paragrafos de no maximo 3-4 linhas. Escaneavel.
 6. Cada secao deve ter ao menos 3 paragrafos com conteudo real e util.
 7. Reviews: SEMPRE ficticios. Nomes brasileiros. Avatars dicebear. Tom realista de usuario real.
