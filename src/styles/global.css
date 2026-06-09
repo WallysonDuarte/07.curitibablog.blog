@@ -649,7 +649,7 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 .info-item {
   display: flex; align-items: flex-start; gap: .7rem;
   padding: .8rem 1rem;
-  background: #fff;
+  background: var(--bg-light);
   border-radius: var(--radius);
   border-left: 3px solid var(--primary);
   box-shadow: 0 1px 4px rgba(0,0,0,.07);
@@ -657,7 +657,7 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 }
 .info-item:hover { box-shadow: 0 3px 10px rgba(0,0,0,.11); transform: translateY(-1px); }
 .info-icon { color: var(--primary); font-size: 1rem; width: 1.4rem; text-align: center; flex-shrink: 0; margin-top: .2rem; }
-.info-label { font-size: .88rem; color: #2d2d2d; font-weight: 600; line-height: 1.45; margin: 0; }
+.info-label { font-size: .88rem; color: var(--text); font-weight: 600; line-height: 1.45; margin: 0; }
 .info-value { font-size: .82rem; color: var(--text-light); margin-top: .2rem; line-height: 1.4; }
 
 /* Links */
@@ -1170,7 +1170,7 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 [data-theme="dark"] .carousel-dot.active { background: var(--primary, #3b82f6); }
 
 @media (max-width: 768px) {
-  .main-carousel { height: 280px; border-radius: 10px; }
+  .main-carousel { height: 240px; border-radius: 10px; }
   .carousel-content { padding: 18px 18px; }
   .carousel-title { font-size: 1.15rem; }
   .carousel-summary { display: none; }
