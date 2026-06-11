@@ -53,12 +53,13 @@ const AUTHOR = {
 .author-card {
   margin: 1.5rem 0;
   border-radius: 12px;
-  background: var(--card-bg, #f8f9fa);
-  border: 1px solid var(--border, #e2e8f0);
+  background: #f0f4ff;
+  border: 2px solid var(--primary, #e74c3c);
   padding: 1.2rem 1.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
 }
 
-:global(.dark) .author-card {
+:global([data-theme="dark"]) .author-card {
   background: #1e293b;
   border-color: #334155;
 }
@@ -99,7 +100,7 @@ const AUTHOR = {
   margin: 0 0 .5rem;
 }
 
-:global(.dark) .author-card__name {
+:global([data-theme="dark"]) .author-card__name {
   color: #f1f5f9;
 }
 
@@ -110,7 +111,7 @@ const AUTHOR = {
   margin: 0 0 .8rem;
 }
 
-:global(.dark) .author-card__bio {
+:global([data-theme="dark"]) .author-card__bio {
   color: #94a3b8;
 }
 
