@@ -1,0 +1,175 @@
+---
+interface Props {
+  variant?: 'top' | 'bottom';
+}
+const { variant = 'bottom' } = Astro.props;
+
+const AUTHOR = {
+  name: 'Wallyson Duarte',
+  photo: 'https://api.curitibasoftware.com.br/api/blog/image/authors/wallyson-duarte.jpg',
+  bio: 'Wallyson Duarte é criador de conteúdo, programador a mais de 15 anos, empreendedor digital e desenvolvedor de soluções online. Atua na criação de projetos voltados para tecnologia, automação, marketing digital e sistemas para empresas, sempre buscando transformar ideias em ferramentas práticas para o dia a dia. Em seus conteúdos, compartilha aprendizados, experiências e estratégias sobre negócios digitais, inteligência artificial, desenvolvimento de sistemas, vendas online e inovação, com uma linguagem simples, direta e aplicada à realidade do público brasileiro.',
+  facebook: 'https://www.facebook.com/wallysonduarte',
+  instagram: 'https://www.instagram.com/wallysonduarte',
+  website: 'https://curitibasoftware.com.br',
+};
+---
+
+<div class={`author-card author-card--${variant}`}>
+  <div class="author-card__inner">
+    <img
+      src={AUTHOR.photo}
+      alt={`Foto de ${AUTHOR.name}`}
+      class="author-card__photo"
+      width="80"
+      height="80"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="author-card__info">
+      <p class="author-card__label">Escrito por</p>
+      <p class="author-card__name">{AUTHOR.name}</p>
+      {variant === 'bottom' && (
+        <p class="author-card__bio">{AUTHOR.bio}</p>
+      )}
+      <div class="author-card__links">
+        <a href={AUTHOR.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook de Wallyson Duarte" class="author-card__link author-card__link--facebook">
+          <i class="fa-brands fa-facebook"></i>
+          {variant === 'bottom' && <span>Facebook</span>}
+        </a>
+        <a href={AUTHOR.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram de Wallyson Duarte" class="author-card__link author-card__link--instagram">
+          <i class="fa-brands fa-instagram"></i>
+          {variant === 'bottom' && <span>Instagram</span>}
+        </a>
+        <a href={AUTHOR.website} target="_blank" rel="noopener noreferrer" aria-label="Site CuritibaSoftware" class="author-card__link author-card__link--website">
+          <i class="fa-solid fa-globe"></i>
+          {variant === 'bottom' && <span>curitibasoftware.com.br</span>}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.author-card {
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  background: var(--card-bg, #f8f9fa);
+  border: 1px solid var(--border, #e2e8f0);
+  padding: 1.2rem 1.4rem;
+}
+
+:global(.dark) .author-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.author-card__inner {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+.author-card__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--primary, #0ea5e9);
+}
+
+.author-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.author-card__label {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-muted, #64748b);
+  margin: 0 0 .2rem;
+  font-weight: 600;
+}
+
+.author-card__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text, #1e293b);
+  margin: 0 0 .5rem;
+}
+
+:global(.dark) .author-card__name {
+  color: #f1f5f9;
+}
+
+.author-card__bio {
+  font-size: .88rem;
+  line-height: 1.6;
+  color: var(--text-muted, #475569);
+  margin: 0 0 .8rem;
+}
+
+:global(.dark) .author-card__bio {
+  color: #94a3b8;
+}
+
+.author-card__links {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.author-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: .35rem .7rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+
+.author-card__link:hover { opacity: .8; }
+
+.author-card__link--facebook {
+  background: #1877f2;
+  color: #fff;
+}
+
+.author-card__link--instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);
+  color: #fff;
+}
+
+.author-card__link--website {
+  background: var(--primary, #0ea5e9);
+  color: #fff;
+}
+
+/* Variante top: mais compacta */
+.author-card--top .author-card__photo {
+  width: 52px;
+  height: 52px;
+}
+
+.author-card--top .author-card__name {
+  font-size: .95rem;
+  margin-bottom: .3rem;
+}
+
+.author-card--top .author-card__link {
+  padding: .25rem .55rem;
+  font-size: .78rem;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .author-card__inner { flex-direction: column; align-items: center; text-align: center; }
+  .author-card__links { justify-content: center; }
+  .author-card__label { text-align: center; }
+}
+</style>

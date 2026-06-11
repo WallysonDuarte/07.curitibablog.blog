@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import PostCard from '../components/PostCard.astro';
 import PostRatings from '../components/PostRatings.astro';
+import AuthorCard from '../components/AuthorCard.astro';
 import RichBlock from '../components/RichBlock.astro';
 import AdBanner from '../components/AdBanner.astro';
 import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../lib/api';
@@ -143,6 +144,8 @@ const faqSideAd = faqSideAds[0] ?? null;
         </p>
       )}
 
+      <AuthorCard variant="top" />
+
       <!-- Spotify podcast player -->
       {spotifyEmbedUrl && (
         <div style="margin:1.5rem 0;">
@@ -247,6 +250,8 @@ const faqSideAd = faqSideAds[0] ?? null;
           </div>
         </section>
       )}
+
+      <AuthorCard variant="bottom" />
 
       <!-- Post nav prev/next -->
       {(prevPost || nextPost) && (
