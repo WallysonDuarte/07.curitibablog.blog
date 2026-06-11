@@ -141,6 +141,14 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   color: rgba(255,255,255,.8); transition: color .2s;
 }
 .site-nav a:hover, .site-nav a.active { color: var(--primary); }
+.nav-entrar {
+  border: 1.5px solid var(--primary) !important;
+  color: var(--primary) !important;
+  padding: 6px 16px;
+  border-radius: var(--radius);
+  transition: background .2s, color .2s !important;
+}
+.nav-entrar:hover { background: var(--primary) !important; color: #fff !important; }
 .nav-cta {
   background: var(--primary) !important;
   color: #fff !important;
@@ -872,7 +880,8 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   }
   .site-nav.open { display: flex; }
   .site-nav a { padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.08); width: 100%; }
-  .nav-cta { border-radius: var(--radius); margin-top: .5rem; text-align: center; padding: 10px !important; }
+  .nav-entrar { margin-top: .5rem; text-align: center; padding: 10px !important; }
+  .nav-cta { border-radius: var(--radius); margin-top: .25rem; text-align: center; padding: 10px !important; }
 }
 
 /* ── Post page cover hero ──────────────────────── */

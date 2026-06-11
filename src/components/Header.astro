@@ -21,7 +21,9 @@ const topCats = categories.slice(0, 6);
       {topCats.map(cat => (
         <a href={`/categoria/${cat.slug}`}>{cat.name}</a>
       ))}
-      <a href="/contato" class="nav-cta">Contato</a>
+      <a href="/contato">Contato</a>
+      <a href="https://area.curitibablog.com.br/entrar" class="nav-entrar">Entrar</a>
+      <a href="https://area.curitibablog.com.br/cadastro" class="nav-cta">Cadastrar</a>
     </nav>
 
     <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
