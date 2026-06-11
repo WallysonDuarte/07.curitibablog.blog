@@ -61,6 +61,17 @@ const { title, description } = Astro.props;
 
   <Footer />
 
+  <!-- Scroll to top -->
+  <button id="scroll-top-btn" aria-label="Voltar ao topo" title="Voltar ao topo" style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);font-size:1.1rem;align-items:center;justify-content:center;transition:opacity .2s,transform .2s">↑</button>
+  <script is:inline>
+    (function(){
+      var btn = document.getElementById('scroll-top-btn');
+      if(!btn) return;
+      window.addEventListener('scroll', function(){ btn.style.display = window.scrollY > 300 ? 'flex' : 'none'; }, {passive:true});
+      btn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+    })();
+  </script>
+
   <!-- Lightbox global -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
     <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">×</button>
