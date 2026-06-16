@@ -366,7 +366,7 @@ const searchIndex = JSON.stringify(
             '<a href="/' + esc(p.slug) + '" tabindex="-1" aria-hidden="true">' +
             '<div class="post-card-image" aria-hidden="true">' +
             '<picture><source type="image/webp" srcset="' + API + '/api/blog/cover/' + esc(p.slug) + '?format=webp&w=600">' +
-            '<img src="' + API + '/api/blog/cover/' + esc(p.slug) + '?w=600" alt="" width="600" height="315" loading="lazy" decoding="async"></picture>' +
+            '<img src="' + API + '/api/blog/cover/' + esc(p.slug) + '?w=600" alt="' + esc(p.title) + '" width="600" height="315" loading="lazy" decoding="async"></picture>' +
             (cat ? '<span class="card-category">' + cat + '</span>' : '') +
             '</div></a>' +
             '<div class="post-card-body"><h2><a href="/' + esc(p.slug) + '">' + esc(p.title) + '</a></h2>' +
