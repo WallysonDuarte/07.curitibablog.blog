@@ -5,7 +5,7 @@ Uso: python publicar_post.py <caminho_para_json>
 O JSON deve ter todos os campos do post (title, slug, content, faqs, blocks, etc.)
 Gerado pelo agente Claude Code a partir do prompt_post.md.
 """
-import os, sys, json, uuid, re, datetime
+import os, sys, json, uuid, re, datetime, unicodedata
 from pathlib import Path
 
 import requests
@@ -445,6 +445,178 @@ def log(msg):
     print(f"[{ts}] {msg}")
 
 
+# ── Spell checker PT-BR via pyspellchecker ────────────────────────────────────
+# Palavras técnicas, siglas e nomes próprios que não constam no dicionário PT-BR
+_SPELL_ALLOWLIST = {
+    # Nomes de tecnologias / marcas
+    "api","apis","saas","paas","iaas","sdk","cli","gui","ui","ux","url","urls",
+    "http","https","html","css","xml","json","yaml","sql","nosql","graphql",
+    "rest","grpc","oauth","jwt","cors","csp","csrf","xss",
+    "docker","kubernetes","nginx","linux","ubuntu","debian","macos","windows",
+    "python","javascript","typescript","nodejs","react","angular","vue","astro",
+    "mongodb","postgresql","mysql","redis","kafka","rabbitmq","elasticsearch",
+    "github","gitlab","bitbucket","npm","pip","brew","apt","yarn","pnpm",
+    "aws","gcp","azure","cloudflare","vercel","netlify","heroku","railway",
+    "claude","chatgpt","gemini","ollama","langchain","openai","anthropic",
+    "dotnet","csharp","java","golang","rust","swift","kotlin","php","ruby",
+    "vscode","jetbrains","neovim","vim","git","ci","cd","devops","mlops",
+    "llm","llms","rag","nlp","ia","ml","ai","gpu","cpu","ram","ssd","tpu",
+    "regex","stdin","stdout","stderr","bash","powershell","zsh","ssh","ftp",
+    "webhook","websocket","microservices","monorepo","monolith","backend","frontend",
+    "deploy","deployment","container","containers","cluster","clusters","pod","pods",
+    "token","tokens","payload","cache","hash","hashmap","array","string","boolean",
+    "async","await","callback","promise","stream","pipeline","middleware","proxy",
+    "webhook","endpoint","endpoints","crud","orm","dto","dao","pojo","mvp",
+    "waha","idrive","cnpj","cpf","mei","clt","pj","lgpd","gdpr",
+    "curitiba","parana","brasil","sao","paulo","rio","janeiro",  # nomes proprios
+    "blog","blogs","post","posts","feed","rss","seo","cta","roi","kpi",
+    # Abreviaturas comuns no texto técnico
+    "ex","etc","vs","obs","ps","nb","id","ids","ok","apps","app",
+    # Termos em inglês usados sem tradução
+    "framework","frameworks","plugin","plugins","runtime","build","builds",
+    "commit","commits","branch","merge","pull","push","fork","forks","repo","repos",
+    "issue","issues","release","releases","tag","tags","debug","debugger",
+    "benchmark","benchmarks","snippet","snippets","boilerplate","scaffold",
+    "feature","features","bug","bugs","hotfix","refactor","lint","linter",
+    "log","logs","dashboard","dashboards","template","templates","layout",
+    "sidebar","navbar","footer","header","banner","modal","popup","tooltip",
+    "dark","light","mode","toggle","switch","checkbox","dropdown","slider",
+    "upload","download","streaming","hosted","hosting","server","servers",
+    "client","clients","request","requests","response","responses","payload",
+    "router","routers","route","routes","middleware","handler","handlers",
+    "schema","schemas","migration","migrations","seed","seeds","fixture",
+    "mock","mocks","stub","stubs","spy","test","tests","coverage","suite",
+    "bot","bots","scraper","crawler","parser","worker","workers","cron","job","jobs",
+    "feedback","update","updates","setup","settings","config","configs","flag","flags",
+    "backup","backups","restore","rollback","snapshot","snapshots","revert",
+    "status","health","metrics","trace","traces","span","spans","alert","alerts",
+    "grafana","prometheus","datadog","sentry","newrelic","splunk",
+    # Palavras portuguesas que o dicionário pode não reconhecer
+    "chatbot","chatbots","startup","startups","roadmap","roadmaps","sprint","sprints",
+    "ticket","tickets","backlog","standup","scrum","kanban","agile",
+}
+
+def _strip_html(text: str) -> str:
+    return re.sub(r'<[^>]+>', ' ', text)
+
+def _normalizar(word: str) -> str:
+    """Remove acentos para comparar (NFD decomposition)."""
+    return ''.join(c for c in unicodedata.normalize('NFD', word) if unicodedata.category(c) != 'Mn')
+
+def _e_apenas_acento(original: str, corrigido: str) -> bool:
+    """Verifica se a diferença entre original e corrigido é apenas acentuação."""
+    return _normalizar(original.lower()) == _normalizar(corrigido.lower())
+
+_spell_checker = None
+def _get_spell_checker():
+    global _spell_checker
+    if _spell_checker is None:
+        try:
+            from spellchecker import SpellChecker
+            _spell_checker = SpellChecker(language='pt', distance=1)
+        except ImportError:
+            _spell_checker = False  # não disponível
+    return _spell_checker
+
+def spell_check_post(post: dict) -> tuple[int, list[str]]:
+    """
+    Detecta palavras sem acento usando dicionário PT-BR (pyspellchecker).
+    Corrige automaticamente apenas quando há exatamente 1 candidato e a
+    diferença é SOMENTE de acentuação (sem mudança de letras).
+    Retorna (num_correcoes, lista_de_avisos_para_revisao_manual).
+    """
+    checker = _get_spell_checker()
+    if not checker:
+        return 0, []
+
+    # Campos de texto a verificar (campos de string simples)
+    campos_texto = ["title", "summary", "metaTitle", "metaDescription", "content"]
+
+    # 1. Coletar todo o texto para descobrir vocabulário a verificar
+    texto_completo = " ".join(
+        _strip_html(post.get(c, "") or "") for c in campos_texto
+    )
+    # Tokenizar: apenas palavras com 4+ letras, sem números, em minúsculas
+    palavras_raw = re.findall(r'\b[a-záéíóúàãõêôûüçñ]{4,}\b', texto_completo, re.IGNORECASE)
+    palavras_lower = {w.lower() for w in palavras_raw}
+
+    # 2. Filtrar allowlist e palavras já com acento (reconhecidas)
+    candidatas = palavras_lower - _SPELL_ALLOWLIST
+    desconhecidas = checker.unknown(candidatas)
+
+    # 3. Para cada palavra desconhecida, calcular correção segura
+    correcoes_map: dict[str, str] = {}  # original_lower -> corrigido
+    avisos: list[str] = []
+
+    for palavra in desconhecidas:
+        if palavra in _SPELL_ALLOWLIST:
+            continue
+        candidates = checker.candidates(palavra) or set()
+        candidates_list = list(candidates)
+
+        if len(candidates_list) == 1:
+            corrigido = candidates_list[0]
+            if _e_apenas_acento(palavra, corrigido) and corrigido != palavra:
+                correcoes_map[palavra] = corrigido
+        elif len(candidates_list) > 1:
+            # Filtrar candidatos que são apenas versão acentuada
+            acentuados = [c for c in candidates_list if _e_apenas_acento(palavra, c) and c != palavra]
+            if len(acentuados) == 1:
+                correcoes_map[palavra] = acentuados[0]
+            elif len(candidates_list) <= 4:
+                avisos.append(f"'{palavra}' -> candidatos: {candidates_list}")
+
+    if not correcoes_map:
+        return 0, avisos
+
+    # 4. Aplicar correções nos campos (preservando case)
+    def _make_replacer(corrigido: str):
+        def _fn(m):
+            w = m.group(0)
+            if w.isupper(): return corrigido.upper()
+            if w[0].isupper(): return corrigido[0].upper() + corrigido[1:]
+            return corrigido
+        return _fn
+
+    total = 0
+    for campo in campos_texto:
+        v = post.get(campo, "") or ""
+        if not v:
+            continue
+        for errado, correto in correcoes_map.items():
+            novo, n = re.subn(r'\b' + re.escape(errado) + r'\b', _make_replacer(correto), v, flags=re.IGNORECASE)
+            if n:
+                v = novo
+                total += n
+        post[campo] = v
+
+    # Campos de FAQs e blocks
+    for faq in post.get("faqs", []):
+        for k in ("question", "answer"):
+            v = faq.get(k, "") or ""
+            for errado, correto in correcoes_map.items():
+                novo, n = re.subn(r'\b' + re.escape(errado) + r'\b', _make_replacer(correto), v, flags=re.IGNORECASE)
+                if n: v = novo; total += n
+            faq[k] = v
+
+    for block in post.get("blocks", []):
+        for k in ("title",):
+            v = block.get(k, "") or ""
+            for errado, correto in correcoes_map.items():
+                novo, n = re.subn(r'\b' + re.escape(errado) + r'\b', _make_replacer(correto), v, flags=re.IGNORECASE)
+                if n: v = novo; total += n
+            block[k] = v
+        for item in block.get("items", []):
+            for k in ("label", "value", "text"):
+                v = item.get(k, "") or ""
+                for errado, correto in correcoes_map.items():
+                    novo, n = re.subn(r'\b' + re.escape(errado) + r'\b', _make_replacer(correto), v, flags=re.IGNORECASE)
+                    if n: v = novo; total += n
+                item[k] = v
+
+    return total, avisos
+
+
 def slugify(text: str) -> str:
     text = text.lower()
     for pat, rep in [("[àáâãä]","a"),("[èéêë]","e"),("[ìíîï]","i"),("[òóôõö]","o"),("[ùúûü]","u"),("[ç]","c"),("[ñ]","n")]:
@@ -653,10 +825,17 @@ def main(json_path: str):
 
         # 2b. Corrigir acentuacao PT-BR automaticamente (ANTES de usar titulo/subtitulo)
         n_correcoes = _corrigir_campos_post(post_data)
+        # 2c. Spell checker PT-BR (pyspellchecker) — captura padroes nao cobertos pela lista manual
+        n_spell, avisos_spell = spell_check_post(post_data)
+        n_correcoes += n_spell
         if n_correcoes:
             log(f"AVISO: {n_correcoes} correcao(es) de acentuacao aplicada(s) — revise o JSON gerado")
+            if n_spell:
+                log(f"  spell checker aplicou {n_spell} correcao(es) adicionais")
         else:
             log("Acentuacao PT-BR OK")
+        for aviso in avisos_spell:
+            log(f"  SPELL REVISAO MANUAL: {aviso}")
 
         # Extrair titulo/subtitulo APOS correcao de acentos
         titulo    = post_data["title"]
@@ -718,6 +897,7 @@ def main(json_path: str):
         if cover_url:
             doc["coverImageUrl"] = cover_url
         _corrigir_campos_post(doc)
+        spell_check_post(doc)
         check_post(doc)
 
         # 7. Inserir MongoDB
