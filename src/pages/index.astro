@@ -16,6 +16,11 @@ const carouselSlides = featuredPosts.length >= 3
   ? featuredPosts.slice(0, 8)
   : [...featuredPosts, ...fallbackPosts].slice(0, 8);
 
+// Últimos artigos: ordenados por publishedAt desc (fallback createdAt)
+const latestPosts = [...allPosts]
+  .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime())
+  .slice(0, 6);
+
 // Blocos por categoria
 function getCatKey(p: typeof allPosts[0]): string[] {
   return p.categories?.length ? p.categories : (p.category ? [p.category] : []);
@@ -136,6 +141,38 @@ const searchIndex = JSON.stringify(
         <div class="carousel-dots" id="carousel-dots">
           {carouselSlides.map((_, i) => (
             <button class={`carousel-dot${i === 0 ? ' active' : ''}`} data-index={i} aria-label={`Slide ${i + 1}`}></button>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Últimos Artigos (Novidades) -->
+  {latestPosts.length > 0 && (
+    <section class="category-block latest-posts-block">
+      <div class="container">
+        <div class="cat-block-header">
+          <h2 class="cat-block-title">Novidades</h2>
+        </div>
+        <div class="category-posts-grid">
+          {latestPosts.map(post => (
+            <div class="post-wrap">
+              <PostCard
+                title={post.title}
+                summary={post.summary}
+                slug={post.slug}
+                postId={post.id}
+                publishedAt={post.publishedAt}
+                createdAt={post.createdAt}
+                category={post.category}
+                categories={post.categories}
+                tags={post.tags}
+                coverImageUrl={post.coverImageUrl}
+                coverImageKey={post.coverImageKey}
+                views={post.views}
+                ratings={post.ratings}
+              />
+            </div>
           ))}
         </div>
       </div>
