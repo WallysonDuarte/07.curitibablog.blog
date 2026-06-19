@@ -1,0 +1,217 @@
+{
+  "data": "2026-06-19",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "DuckDB Internals: Why Is DuckDB Fast? (Part 1)",
+      "url": "https://www.greybeam.ai/blog/duckdb-internals-part-1",
+      "score": 154,
+      "comentarios": 56
+    },
+    {
+      "fonte": "HN",
+      "titulo": "To study how chips work, MIT researchers built their own operating system",
+      "url": "https://news.mit.edu/2026/to-study-how-chips-really-work-mit-researchers-built-their-own-operating-system-0610",
+      "score": 173,
+      "comentarios": 24
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28",
+      "url": "https://www.jvm-weekly.com/p/project-valhalla-explained-how-a",
+      "score": 74,
+      "comentarios": 42
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Gribouille 0.3.0: A Grammar of Graphics for Typst",
+      "url": "https://mickael.canouil.fr/posts/2026-06-15-gribouille-0-3/",
+      "score": 75,
+      "comentarios": 19
+    },
+    {
+      "fonte": "HN",
+      "titulo": "I found 10k GitHub repositories distributing Trojan malware",
+      "url": "https://orchidfiles.com/github-repositories-distributing-malware/",
+      "score": 780,
+      "comentarios": 204
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Zero-Touch OAuth for MCP",
+      "url": "https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/",
+      "score": 190,
+      "comentarios": 66
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How Japan's railways stayed one while splitting apart",
+      "url": "https://arun.is/blog/jr-logo/",
+      "score": 89,
+      "comentarios": 73
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Datasette Apps: Host custom HTML applications inside Datasette",
+      "url": "https://simonwillison.net/2026/Jun/18/datasette-apps/",
+      "score": 73,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ubiquiti: Enterprise NAS, Built on ZFS",
+      "url": "https://blog.ui.com/article/introducing-enterprise-nas",
+      "score": 332,
+      "comentarios": 282
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The AirPods Effect",
+      "url": "https://www.theescapenewsletter.com/p/the-airpods-effect",
+      "score": 85,
+      "comentarios": 140
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Building a robotics research setup that lives next to my desk",
+      "url": "https://dfdxlabs.com/research/2026/robotics-setup/",
+      "score": 76,
+      "comentarios": 24
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ice water drowning survival of young patient (2025)",
+      "url": "https://www.jacc.org/doi/10.1016/j.jaccas.2025.104885",
+      "score": 139,
+      "comentarios": 88
+    },
+    {
+      "fonte": "HN",
+      "titulo": "CS 6120: Advanced Compilers: The Self-Guided Online Course (2020)",
+      "url": "https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/",
+      "score": 365,
+      "comentarios": 51
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Talos – Open-source WASM interpreter for Lean",
+      "url": "https://github.com/cajal-technologies/talos",
+      "score": 51,
+      "comentarios": 5
+    },
+    {
+      "fonte": "HN",
+      "titulo": ".gitignore Isn't the only way to ignore files in Git",
+      "url": "https://nelson.cloud/.gitignore-isnt-the-only-way-to-ignore-files-in-git/",
+      "score": 411,
+      "comentarios": 129
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Congrats to the Gemma 4 Challenge Winners!",
+      "tags": [
+        "devchallenge",
+        "gemmachallenge",
+        "gemma"
+      ],
+      "reacoes": 50
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Congrats to the Hermes Agent Challenge Winners!",
+      "tags": [
+        "hermesagentchallenge",
+        "devchallenge",
+        "agents"
+      ],
+      "reacoes": 18
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I'm not a developer, but I built a calendar app to fix my most annoying work task",
+      "tags": [
+        "ai",
+        "productivity",
+        "beginners",
+        "discuss"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Building an agentic PR reviewer with Antigravity SDK",
+      "tags": [
+        "antigravity",
+        "gemini",
+        "ai",
+        "programming"
+      ],
+      "reacoes": 11
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Winner of the AI-Pocalypse? The Full-Stack Generalist (But Probably Later Instead of Sooner)",
+      "tags": [
+        "careerdevelopment",
+        "beginners",
+        "devops",
+        "ai"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Technical Writing Advice",
+      "tags": [
+        "documentation",
+        "technical",
+        "writing"
+      ],
+      "reacoes": 14
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Someone was wrong on the internet, so I built a Temporal Docker extension",
+      "tags": [
+        "temporal",
+        "selfhosted",
+        "codesamples",
+        "durableexecution"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Pointers and Tuning and Loops! Oh My!",
+      "tags": [
+        "c",
+        "cpp"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Codewars did not teach me JavaScript. My job did.",
+      "tags": [
+        "career",
+        "codenewbie",
+        "javascript",
+        "learning"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Reliability Problem That Forced Us to Rethink AI Agents",
+      "tags": [
+        "ai",
+        "googleaichallenge",
+        "opensource",
+        "machinelearning"
+      ],
+      "reacoes": 6
+    }
+  ]
+}

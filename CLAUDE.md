@@ -1,6 +1,7 @@
 <!-- AGENT-INJECTION -->
 # REGRA ZERO — OBRIGATORIO ANTES DE QUALQUER ACAO
 
+0. Ler regras globais OBRIGATORIAS: `C:/Users/Poseidon/.claude/CLAUDE.md` — contem regras de deploy, history, seguranca, commits e qualidade que se aplicam a TODOS os projetos. Ler COMPLETO e APLICAR.
 1. Ler memory do agente COMPLETO: `E:/PROJETOS/00.AGENTES/vigilante/memory.md`
 2. Ler memory do projeto COMPLETO: `E:/PROJETOS/00.documentos/memory/07.curitibablog.blog.memory`
    - Se nao existir esse arquivo exato, listar o diretorio e ler TODOS com `07.curitibablog.blog` no nome
@@ -71,7 +72,7 @@ O HISTORY e o registro permanente de tudo que foi feito. O MEMORY e apenas para 
 **Passo 1 — HISTORY (OBRIGATORIO, ANEXAR, nunca substituir):**
 Arquivo: `E:/PROJETOS/00.documentos/memory/history/07.curitibablog.blog.history`
 ```
-## [07/06/2026] — curitibablog.com.br (vigilante)
+## [19/06/2026] — curitibablog.com.br (vigilante)
 - O que foi feito: <descricao objetiva>
 - Commits: <hashes>
 - Arquivos alterados: <lista>
@@ -89,7 +90,14 @@ NAO colocar historico de sessao aqui — historico vai no Passo 1.
 Arquivo: `E:/PROJETOS/00.AGENTES/vigilante/memory.md`
 Somente: padroes tecnicos novos aplicaveis a qualquer projeto.
 
-**Nao fechar o terminal sem completar os 3 passos. Tarefa sem history = tarefa incompleta.**
+**Passo 4 — COMPACT (OBRIGATORIO, sempre o ultimo passo):**
+Apos concluir os passos 1-3, execute no terminal:
+```
+/compact
+```
+Isso libera contexto e evita erro de limite de tokens. NAO pular este passo.
+
+**Nao fechar o terminal sem completar os 4 passos. Tarefa sem history = tarefa incompleta.**
 
 ---
 
@@ -129,7 +137,7 @@ Violacao = rollback obrigatorio + report ao CTO.
 ---
 
 # Sessao: vigilante > curitibablog.com.br
-Data: 07/06/2026
+Data: 19/06/2026
 
 ---
 

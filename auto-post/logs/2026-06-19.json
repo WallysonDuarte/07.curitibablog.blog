@@ -1,0 +1,34 @@
+{
+  "data": "2026-06-19",
+  "etapas": {
+    "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-19-cover.jpg",
+    "upload": {
+      "key": "covers/f3ecb31d-32c8-40c6-8cf1-9415c8bcbfa9-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/f3ecb31d-32c8-40c6-8cf1-9415c8bcbfa9-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a3506ee020294407cbbfa2a",
+      "slug": "malware-github-repositorios-trojan-seguranca"
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      }
+    },
+    "http_check": 200
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/malware-github-repositorios-trojan-seguranca"
+}
