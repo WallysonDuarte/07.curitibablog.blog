@@ -1,7 +1,34 @@
 {
   "data": "2026-06-19",
-  "etapas": {},
-  "status": "ERRO",
-  "erro": "Invalid control character at: line 10 column 3214 (char 4018)",
-  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 817, in main\n    post_data = json.load(f)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 293, in load\n    return loads(fp.read(),\n        cls=cls, object_hook=object_hook,\n        parse_float=parse_float, parse_int=parse_int,\n        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Python313\\Lib\\json\\decoder.py\", line 345, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Python313\\Lib\\json\\decoder.py\", line 361, in raw_decode\n    obj, end = self.scan_once(s, idx)\n               ~~~~~~~~~~~~~~^^^^^^^^\njson.decoder.JSONDecodeError: Invalid control character at: line 10 column 3214 (char 4018)\n"
+  "etapas": {
+    "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-19-cover.jpg",
+    "upload": {
+      "key": "covers/6338da96-fc3d-43c3-8fdb-2dfd54b1fefe-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/6338da96-fc3d-43c3-8fdb-2dfd54b1fefe-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a358c2e7ef76df2051dbb55",
+      "slug": "duckdb-banco-dados-analitico-rapido-embedded"
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      }
+    },
+    "http_check": 200
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/duckdb-banco-dados-analitico-rapido-embedded"
 }
