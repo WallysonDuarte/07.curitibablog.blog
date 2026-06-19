@@ -516,12 +516,23 @@ def inserir_post(post: dict) -> str:
     col = db[MONGO_COL]
 
     slug = post["slug"]
-    if col.find_one({"slug": slug}):
-        hoje = datetime.date.today().strftime("%Y%m%d")
-        slug = f"{slug}-{hoje}"
-        post["slug"] = slug
-        if col.find_one({"slug": slug}):
-            raise ValueError(f"Slug ja existe: {slug}")
+    existing = col.find_one({"slug": slug}, {"_id": 1, "coverImageKey": 1})
+    if existing:
+        # Post already exists — update cover image if a new one was generated
+        new_key = post.get("coverImageKey")
+        new_url = post.get("coverImageUrl")
+        if new_key and new_key != existing.get("coverImageKey"):
+            col.update_one(
+                {"slug": slug},
+                {"$set": {"coverImageKey": new_key, "coverImageUrl": new_url}},
+            )
+            inserted_id = str(existing["_id"])
+            client.close()
+            server.close()
+            log(f"Post ja existia — coverImageKey atualizado: {new_key}")
+            return inserted_id
+        else:
+            raise ValueError(f"Post ja publicado com slug '{slug}' — nao criar duplicado")
 
     result = col.insert_one(post)
     inserted_id = str(result.inserted_id)
