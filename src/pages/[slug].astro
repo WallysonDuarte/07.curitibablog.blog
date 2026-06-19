@@ -6,6 +6,8 @@ import PostRatings from '../components/PostRatings.astro';
 import AuthorCard from '../components/AuthorCard.astro';
 import RichBlock from '../components/RichBlock.astro';
 import AdBanner from '../components/AdBanner.astro';
+import LikeButton from '../components/LikeButton.astro';
+import CommentSection from '../components/CommentSection.astro';
 import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../lib/api';
 import { formatDate, buildSections, getPostCategories, toSlug } from '../lib/utils';
 
@@ -90,18 +92,62 @@ const faqSideAd = faqSideAds[0] ?? null;
     categorySlug={primaryCat?.slug}
   />
 
-  <!-- Cover image hero -->
-  <div class="post-cover-hero">
-    <picture>
-      <source type="image/webp" srcset={postCoverWebP} />
-      <img src={postCoverSrc} alt={post.title} width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" />
-    </picture>
-    <div class="post-cover-hero-overlay"></div>
-  </div>
-
   <div class="post-layout">
     <!-- ── MAIN ARTICLE ── -->
     <article>
+      <!-- Cover image + side card (desktop) -->
+      <div class="post-cover-row">
+        <div class="post-cover-hero">
+          <picture>
+            <source type="image/webp" srcset={postCoverWebP} />
+            <img src={postCoverSrc} alt={post.title} width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" />
+          </picture>
+        </div>
+
+        <aside class="post-cover-side" aria-label="Informações do artigo">
+          {postCats.slice(0,1).map(cat => (
+            <a href={`/categoria/${toSlug(cat)}`} class="cover-side-cat">
+              <i class="fa-solid fa-folder-open"></i>
+              <span>{cat}</span>
+            </a>
+          ))}
+
+          <div class="cover-side-meta">
+            <div class="meta-row">
+              <i class="fa-regular fa-calendar"></i>
+              <span>{formatDate(publishDate)}</span>
+            </div>
+            <div class="meta-row">
+              <i class="fa-regular fa-user"></i>
+              <span>{post.authorName}</span>
+            </div>
+            {post.views > 0 && (
+              <div class="meta-row">
+                <i class="fa-regular fa-eye"></i>
+                <span>{post.views.toLocaleString('pt-BR')} visualizações</span>
+              </div>
+            )}
+            <div class="meta-row">
+              <i class="fa-regular fa-clock"></i>
+              <span>{Math.max(2, Math.ceil((post.content?.replace(/<[^>]+>/g,'').split(/\s+/).length || 0) / 230))} min de leitura</span>
+            </div>
+          </div>
+
+          {post.tags?.length > 0 && (
+            <div class="cover-side-tags">
+              <div class="cover-side-tags-label">
+                <i class="fa-solid fa-hashtag"></i> Tópicos
+              </div>
+              <div class="cover-side-tags-list">
+                {post.tags.slice(0, 8).map(tag => (
+                  <a href={`/tag/${toSlug(tag)}`} class="cover-side-tag">#{tag}</a>
+                ))}
+              </div>
+            </div>
+          )}
+        </aside>
+      </div>
+
       <!-- Breadcrumb -->
       <nav class="breadcrumb" aria-label="Navegação">
         <a href="/">Início</a>
@@ -115,24 +161,14 @@ const faqSideAd = faqSideAds[0] ?? null;
         <span aria-current="page">{post.title}</span>
       </nav>
 
-      <!-- Meta bar + Ratings (se houver) -->
-      <div class="article-header-row">
-        <div class="article-header-left">
-          <div class="article-meta-bar">
-            {postCats.slice(0,1).map(cat => (
-              <a href={`/categoria/${toSlug(cat)}`} class="article-category">{cat}</a>
-            ))}
-            <span>📅 {formatDate(publishDate)}</span>
-            <span>✍️ {post.authorName}</span>
-            {post.views > 0 && <span>👁 {post.views.toLocaleString('pt-BR')} visualizações</span>}
-          </div>
-        </div>
-        {post.ratings && (
+      <!-- Ratings (se houver) -->
+      {post.ratings && (
+        <div class="article-header-row">
           <div class="article-header-right">
             <PostRatings ratings={post.ratings} />
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       <!-- Title -->
       <h1 class="article-title">{post.title}</h1>
@@ -191,10 +227,6 @@ const faqSideAd = faqSideAds[0] ?? null;
           </>
         ))}
       </div>
-
-      <!-- MGID Widget de artigo -->
-      <div data-type="_mgwidget" data-widget-id="2037405"></div>
-      <script>(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");</script>
 
       <!-- Tags -->
       {post.tags?.length > 0 && (
@@ -257,10 +289,6 @@ const faqSideAd = faqSideAds[0] ?? null;
 
       <AuthorCard variant="bottom" />
 
-      <!-- MGID Widget inteligente -->
-      <div data-type="_mgwidget" data-widget-id="2028024"></div>
-      <script>(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");</script>
-
       <!-- Post nav prev/next -->
       {(prevPost || nextPost) && (
         <nav class="post-nav" aria-label="Artigos relacionados">
@@ -279,6 +307,14 @@ const faqSideAd = faqSideAds[0] ?? null;
         </nav>
       )}
 
+      <!-- Reações: like e dislike -->
+      <div class="article-reactions">
+        <LikeButton postId={post.id} />
+      </div>
+
+      <!-- Comentários -->
+      <CommentSection postId={post.id} postSlug={post.slug} postTitle={post.title} />
+
       <!-- Related / Suggested posts -->
       {suggested.length > 0 && (
         <section class="related-section">
@@ -289,6 +325,7 @@ const faqSideAd = faqSideAds[0] ?? null;
                 title={p.title}
                 summary={p.summary}
                 slug={p.slug}
+                postId={p.id}
                 publishedAt={p.publishedAt}
                 createdAt={p.createdAt}
                 category={p.category}
@@ -305,6 +342,7 @@ const faqSideAd = faqSideAds[0] ?? null;
     </article>
 
     <!-- ── SIDEBAR ── -->
+
     <aside class="post-sidebar" aria-label="Barra lateral">
       <!-- Sidebar Ad -->
       {sidebarAd && (
@@ -356,3 +394,120 @@ const faqSideAd = faqSideAds[0] ?? null;
     </aside>
   </div>
 </BaseLayout>
+
+<script>
+/* ── Terminal blocks + inline code copy ─────────────────────────── */
+(function () {
+  // ── 1. Transformar <pre><code> em terminal blocks ──────────────
+  document.querySelectorAll<HTMLElement>('.article-body pre').forEach(pre => {
+    const codeEl = pre.querySelector('code') ?? pre;
+    const rawText = codeEl.textContent ?? '';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'terminal-block';
+
+    const header = document.createElement('div');
+    header.className = 'terminal-header';
+
+    const dotsHtml = `
+      <div class="terminal-dots">
+        <div class="terminal-dot terminal-dot-red"></div>
+        <div class="terminal-dot terminal-dot-yellow"></div>
+        <div class="terminal-dot terminal-dot-green"></div>
+        <span class="terminal-lang">terminal</span>
+      </div>`;
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'terminal-copy';
+    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
+    copyBtn.setAttribute('aria-label', 'Copiar código');
+
+    header.innerHTML = dotsHtml;
+    header.appendChild(copyBtn);
+
+    const body = document.createElement('div');
+    body.className = 'terminal-body';
+
+    // Highlight simples: linhas com $ ou > viram prompt colorido
+    const highlighted = rawText.split('\n').map(line => {
+      const esc = (s: string) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      const trimmed = line.trimStart();
+      if (trimmed.startsWith('# ') || trimmed.startsWith('// ')) {
+        return `<span class="t-comment">${esc(line)}</span>`;
+      }
+      if (/^\$\s|^>\s/.test(trimmed)) {
+        const prompt = trimmed[0];
+        const rest = line.replace(/^\s*[$>]\s?/, '');
+        const indent = line.length - line.trimStart().length;
+        const spaces = ' '.repeat(indent);
+        return `${spaces}<span class="t-prompt">${prompt} </span>${esc(rest)}`;
+      }
+      return esc(line);
+    }).join('\n');
+
+    const codeOut = document.createElement('code');
+    codeOut.innerHTML = highlighted;
+    body.appendChild(codeOut);
+
+    wrap.appendChild(header);
+    wrap.appendChild(body);
+    pre.replaceWith(wrap);
+
+    // Copy button handler
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(rawText.trim()).then(() => {
+        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
+          copyBtn.classList.remove('copied');
+        }, 2200);
+      }).catch(() => {
+        // fallback clipboard
+        const ta = document.createElement('textarea');
+        ta.value = rawText.trim();
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
+          copyBtn.classList.remove('copied');
+        }, 2200);
+      });
+    });
+  });
+
+  // ── 2. Inline <code>: copiar ao clicar + tooltip ──────────────
+  document.querySelectorAll<HTMLElement>('.article-body code').forEach(code => {
+    if (code.closest('.terminal-block')) return; // já processado
+
+    const text = code.textContent ?? '';
+    if (!text.trim()) return;
+
+    code.setAttribute('title', 'Clique para copiar');
+    code.addEventListener('click', () => {
+      navigator.clipboard.writeText(text.trim()).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = text.trim();
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+      });
+
+      const original = code.innerHTML;
+      code.classList.add('code-copied');
+      code.textContent = '✓ copiado';
+      setTimeout(() => {
+        code.classList.remove('code-copied');
+        code.innerHTML = original;
+      }, 1500);
+    });
+  });
+})();
+</script>

@@ -1,0 +1,215 @@
+---
+/**
+ * CommentSection.astro — Seção de comentários client-side
+ * Props: postId (string), postSlug (string), postTitle (string)
+ */
+interface Props {
+  postId: string;
+  postSlug: string;
+  postTitle: string;
+}
+const { postId, postSlug, postTitle } = Astro.props;
+const AREA_URL = 'https://area.curitibablog.com.br';
+const commentUrl = `${AREA_URL}/comentar/${postSlug}?title=${encodeURIComponent(postTitle)}`;
+---
+
+<section class="comment-section" id="comentarios" data-post-id={postId}>
+  <h2 class="section-title">
+    <i class="fa-regular fa-comments"></i>
+    Comentários <span class="comment-count"></span>
+  </h2>
+
+  <!-- Botão para ir ao formulário de comentário (na área) -->
+  <a class="btn-comment" href={commentUrl} target="_blank" rel="noopener">
+    <i class="fa-solid fa-pen-to-square"></i> Deixar um comentário
+  </a>
+  <p class="comment-hint">Você precisa ter uma conta no <strong>CuritibaBlog</strong> para comentar.</p>
+
+  <!-- Lista de comentários aprovados -->
+  <div class="comments-list">
+    <div class="comments-loading">
+      <i class="fa-solid fa-spinner fa-spin"></i> Carregando comentários...
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const API = 'https://api.curitibasoftware.com.br';
+
+  function timeAgo(dateStr: string): string {
+    const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
+    if (diff < 60) return 'agora mesmo';
+    if (diff < 3600) return `${Math.floor(diff/60)}min atrás`;
+    if (diff < 86400) return `${Math.floor(diff/3600)}h atrás`;
+    if (diff < 2592000) return `${Math.floor(diff/86400)}d atrás`;
+    return new Date(dateStr).toLocaleDateString('pt-BR');
+  }
+
+  function initials(name: string): string {
+    return name.split(' ').slice(0, 2).map(w => w[0]?.toUpperCase() ?? '').join('');
+  }
+
+  function hashColor(name: string): string {
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = name.charCodeAt(i) + ((h << 5) - h);
+    const hue = Math.abs(h) % 360;
+    return `hsl(${hue}, 55%, 45%)`;
+  }
+
+  async function loadComments(el: HTMLElement, postId: string) {
+    const list = el.querySelector('.comments-list');
+    const countEl = el.querySelector('.comment-count');
+    if (!list) return;
+
+    try {
+      const r = await fetch(`${API}/api/blog/posts/${postId}/comments`);
+      if (!r.ok) { list.innerHTML = '<p class="no-comments">Erro ao carregar comentários.</p>'; return; }
+      const data = await r.json();
+      const comments: any[] = data?.data ?? [];
+
+      if (countEl) countEl.textContent = comments.length > 0 ? `(${comments.length})` : '';
+
+      if (comments.length === 0) {
+        list.innerHTML = '<p class="no-comments">Ainda não há comentários. Seja o primeiro!</p>';
+        return;
+      }
+
+      list.innerHTML = comments.map(c => `
+        <div class="comment-item">
+          <div class="comment-avatar" style="background:${hashColor(c.authorName)}">${initials(c.authorName)}</div>
+          <div class="comment-body">
+            <div class="comment-header">
+              <span class="comment-author">${escapeHtml(c.authorName)}</span>
+              <span class="comment-time">${timeAgo(c.createdAt)}</span>
+            </div>
+            <p class="comment-text">${escapeHtml(c.content)}</p>
+          </div>
+        </div>
+      `).join('');
+    } catch {
+      list.innerHTML = '<p class="no-comments">Não foi possível carregar os comentários.</p>';
+    }
+  }
+
+  function escapeHtml(s: string): string {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  document.querySelectorAll<HTMLElement>('.comment-section').forEach(el => {
+    const postId = el.dataset.postId;
+    if (postId) loadComments(el, postId);
+  });
+})();
+</script>
+
+<style>
+.comment-section {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid #eee;
+}
+
+.section-title {
+  font-size: 20px;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  i { color: #4ecdc4; }
+  .comment-count { font-size: 16px; color: #aaa; font-weight: 400; }
+}
+
+.btn-comment {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #4ecdc4;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background .2s;
+  i { font-size: 14px; }
+  &:hover { background: #3ab5ac; }
+}
+
+.comment-hint {
+  font-size: 13px;
+  color: #aaa;
+  margin: 8px 0 28px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.comments-loading {
+  color: #aaa;
+  font-size: 14px;
+  padding: 16px 0;
+  i { margin-right: 6px; }
+}
+
+.no-comments {
+  color: #aaa;
+  font-size: 14px;
+  font-style: italic;
+  padding: 16px 0;
+}
+
+.comment-item {
+  display: flex;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  &:last-child { border-bottom: none; }
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.comment-body { flex: 1; }
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #1a1a2e;
+  font-size: 14px;
+}
+
+.comment-time {
+  font-size: 12px;
+  color: #bbb;
+}
+
+.comment-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+</style>

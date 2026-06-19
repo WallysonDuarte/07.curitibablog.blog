@@ -1,0 +1,150 @@
+---
+/**
+ * LikeButton.astro — Botão de like client-side
+ * Props: postId (string), compact (bool = false)
+ * compact=true → exibe apenas ícone + número (para PostCard)
+ */
+interface Props {
+  postId: string;
+  compact?: boolean;
+}
+const { postId, compact = false } = Astro.props;
+---
+
+<div class={`like-btn-wrap ${compact ? 'compact' : ''}`} data-post-id={postId}>
+  <button class="like-btn" aria-label="Curtir este post" data-type="like">
+    <i class="fa-regular fa-thumbs-up like-icon"></i>
+    <span class="like-count">-</span>
+    {!compact && <span class="like-label">Curtir</span>}
+  </button>
+  {!compact && (
+    <button class="dislike-btn" aria-label="Não curtir este post" data-type="dislike">
+      <i class="fa-regular fa-thumbs-down dislike-icon"></i>
+    </button>
+  )}
+</div>
+
+<script>
+(function() {
+  const API = 'https://api.curitibasoftware.com.br';
+  const SESSION_KEY = 'cb_session_id';
+
+  function getSession(): string {
+    let id = localStorage.getItem(SESSION_KEY);
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem(SESSION_KEY, id);
+    }
+    return id;
+  }
+
+  function reactionKey(postId: string) { return `cb_reaction_${postId}`; }
+
+  async function loadStats(el: HTMLElement, postId: string) {
+    try {
+      const r = await fetch(`${API}/api/blog/posts/${postId}/my-reaction?sessionId=${getSession()}`);
+      if (!r.ok) return;
+      const reaction = await r.json();
+      updateUI(el, reaction?.likeCount ?? 0, reaction?.currentReaction ?? null);
+    } catch {}
+  }
+
+  async function doReact(el: HTMLElement, postId: string, type: 'like' | 'dislike') {
+    const sessionId = getSession();
+    try {
+      const r = await fetch(`${API}/api/blog/posts/${postId}/react`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type, sessionId })
+      });
+      if (!r.ok) return;
+      const reaction = await r.json();
+      updateUI(el, reaction?.likeCount ?? 0, reaction?.currentReaction ?? null);
+      // Persistir localmente
+      localStorage.setItem(reactionKey(postId), reaction?.currentReaction ?? '');
+    } catch {}
+  }
+
+  function updateUI(el: HTMLElement, likeCount: number, current: string | null) {
+    const likeBtn = el.querySelector('.like-btn') as HTMLElement | null;
+    const dislikeBtn = el.querySelector('.dislike-btn') as HTMLElement | null;
+    const likeIcon = el.querySelector('.like-icon') as HTMLElement | null;
+    const dislikeIcon = el.querySelector('.dislike-icon') as HTMLElement | null;
+    const countEl = el.querySelector('.like-count');
+
+    if (countEl) countEl.textContent = String(likeCount);
+
+    if (likeIcon) {
+      likeIcon.className = current === 'like' ? 'fa-solid fa-thumbs-up like-icon active' : 'fa-regular fa-thumbs-up like-icon';
+    }
+    if (dislikeIcon) {
+      dislikeIcon.className = current === 'dislike' ? 'fa-solid fa-thumbs-down dislike-icon active' : 'fa-regular fa-thumbs-down dislike-icon';
+    }
+    if (likeBtn) likeBtn.classList.toggle('reacted', current === 'like');
+    if (dislikeBtn) dislikeBtn.classList.toggle('reacted', current === 'dislike');
+  }
+
+  document.querySelectorAll<HTMLElement>('.like-btn-wrap').forEach(el => {
+    const postId = el.dataset.postId;
+    if (!postId) return;
+
+    loadStats(el, postId);
+
+    el.querySelectorAll<HTMLButtonElement>('[data-type]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.dataset.type as 'like' | 'dislike';
+        doReact(el, postId, type);
+      });
+    });
+  });
+})();
+</script>
+
+<style>
+.like-btn-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.like-btn, .dislike-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 24px;
+  background: #fff;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .2s;
+
+  .like-icon, .dislike-icon { font-size: 16px; transition: color .2s; }
+  .like-count { font-weight: 600; min-width: 20px; text-align: center; }
+
+  &:hover {
+    border-color: #4ecdc4;
+    color: #4ecdc4;
+  }
+
+  &.reacted {
+    background: rgba(78,205,196,.1);
+    border-color: #4ecdc4;
+    color: #4ecdc4;
+    .like-icon.active, .dislike-icon.active { color: #4ecdc4; }
+  }
+}
+
+.dislike-btn {
+  padding: 8px 12px;
+  &:hover, &.reacted { border-color: #e74c3c; color: #e74c3c;
+    background: rgba(231,76,60,.08); }
+}
+
+.compact .like-btn {
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 16px;
+}
+</style>

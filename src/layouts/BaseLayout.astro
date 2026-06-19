@@ -24,13 +24,11 @@ const { title, description } = Astro.props;
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png?v=3" />
 
   <!-- Google Fonts — async (não bloqueia renderização) -->
-  <link rel="preconnect" href="https://api.curitibasoftware.com.br" crossorigin />
-  <link rel="dns-prefetch" href="https://api.curitibasoftware.com.br" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Open+Sans:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" /></noscript>
 
   <!-- Font Awesome -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -46,7 +44,6 @@ const { title, description } = Astro.props;
     document.documentElement.setAttribute('data-theme', t);
   })();
   </script>
-  <!-- MGID: carregado via loadAnalytics (consent-gated) -->
 </head>
 <body>
   <Header />
@@ -54,10 +51,10 @@ const { title, description } = Astro.props;
     <slot />
   </main>
 
-  <!-- MGID Widget — site 1097556 / widget 2028024 -->
+  <!-- MGID Widget — site 1097552 / widget 2028018 -->
   <!-- Revelado apenas apos consent LGPD (script loader injetado via loadAnalytics) -->
   <div id="mgid-widget-wrapper" style="display:none">
-    <div data-type="_mgwidget" data-widget-id="2028024"></div>
+    <div data-type="_mgwidget" data-widget-id="2028018"></div>
   </div>
 
   <Footer />
@@ -209,7 +206,7 @@ const { title, description } = Astro.props;
       // MGID — loader + ativacao do widget
       var smgid = document.createElement('script');
       smgid.async = true;
-      smgid.src = 'https://jsc.mgid.com/site/1097556.js';
+      smgid.src = 'https://jsc.mgid.com/site/1097552.js';
       document.head.appendChild(smgid);
       (function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");
       var wrapper = document.getElementById('mgid-widget-wrapper');
@@ -243,8 +240,5 @@ const { title, description } = Astro.props;
     });
   })();
   </script>
-  <!-- MGID Deslize para Cima -->
-  <div data-type="_mgwidget" data-widget-id="2037406"></div>
-  <script>(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");</script>
 </body>
 </html>

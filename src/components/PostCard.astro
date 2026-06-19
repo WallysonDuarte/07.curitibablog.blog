@@ -1,6 +1,7 @@
 ---
 import { formatDate, toSlug, ratingColor } from '../lib/utils';
 import type { BlogPostRatings } from '../lib/types';
+import LikeButton from './LikeButton.astro';
 
 const API_BASE = 'https://api.curitibasoftware.com.br';
 
@@ -8,6 +9,7 @@ interface Props {
   title: string;
   summary: string;
   slug: string;
+  postId: string;
   publishedAt?: string;
   createdAt: string;
   category: string;
@@ -21,7 +23,7 @@ interface Props {
 }
 
 const {
-  title, summary, slug, publishedAt, createdAt, category,
+  title, summary, slug, postId, publishedAt, createdAt, category,
   categories, tags, coverImageUrl, coverImageKey, views, compact = false, ratings,
 } = Astro.props;
 
@@ -59,5 +61,8 @@ const postUrl = `/${slug}`;
         ))}
       </div>
     )}
+    <div class="card-reactions">
+      <LikeButton postId={postId} compact={true} />
+    </div>
   </div>
 </article>

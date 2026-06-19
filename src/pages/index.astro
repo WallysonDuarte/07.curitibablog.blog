@@ -45,7 +45,7 @@ const searchIndex = JSON.stringify(
     tags: p.tags || [],
     categories: p.categories || [],
   }))
-).replace(/</g, '\u003c').replace(/>/g, '\u003e');
+).replace(/</g, '\\u003c').replace(/>/g, '\\u003e');
 ---
 
 <BaseLayout
@@ -179,6 +179,7 @@ const searchIndex = JSON.stringify(
                 title={post.title}
                 summary={post.summary}
                 slug={post.slug}
+                postId={post.id}
                 publishedAt={post.publishedAt}
                 createdAt={post.createdAt}
                 category={post.category}
@@ -366,7 +367,7 @@ const searchIndex = JSON.stringify(
             '<a href="/' + esc(p.slug) + '" tabindex="-1" aria-hidden="true">' +
             '<div class="post-card-image" aria-hidden="true">' +
             '<picture><source type="image/webp" srcset="' + API + '/api/blog/cover/' + esc(p.slug) + '?format=webp&w=600">' +
-            '<img src="' + API + '/api/blog/cover/' + esc(p.slug) + '?w=600" alt="' + esc(p.title) + '" width="600" height="315" loading="lazy" decoding="async"></picture>' +
+            '<img src="' + API + '/api/blog/cover/' + esc(p.slug) + '?w=600" alt="" width="600" height="315" loading="lazy" decoding="async"></picture>' +
             (cat ? '<span class="card-category">' + cat + '</span>' : '') +
             '</div></a>' +
             '<div class="post-card-body"><h2><a href="/' + esc(p.slug) + '">' + esc(p.title) + '</a></h2>' +

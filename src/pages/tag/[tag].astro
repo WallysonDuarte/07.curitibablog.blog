@@ -43,6 +43,7 @@ const { tag, posts } = Astro.props;
     title={`#${tag} — CuritibaBlog`}
     description={`Artigos marcados com #${tag}. Tutoriais e dicas para desenvolvedores sobre ${tag}.`}
     type="website"
+    noIndex={true}
     breadcrumbs={[
       { name: 'Início', item: 'https://curitibablog.com.br' },
       { name: `#${tag}` },
@@ -80,6 +81,7 @@ const { tag, posts } = Astro.props;
               title={post.title}
               summary={post.summary}
               slug={post.slug}
+              postId={post.id}
               publishedAt={post.publishedAt}
               createdAt={post.createdAt}
               category={post.category}
