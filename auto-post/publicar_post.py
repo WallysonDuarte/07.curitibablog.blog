@@ -282,8 +282,7 @@ _ACENTO_FIXES = [
     (r'\bgenero\b', 'gênero'), (r'\bgeneros\b', 'gêneros'),
     (r'\brecurso\b', 'recurso'),  # ok
     (r'\bparametro\b', 'parâmetro'), (r'\bparametros\b', 'parâmetros'),
-    (r'\brepositorio\b', 'repositório'), (r'\brepositórios\b', 'repositórios'), (r'\brepositórios\b', 'repositórios'),
-    (r'\brepositórios\b', 'repositórios'),
+    (r'\brepositorio\b', 'repositório'), (r'\brepositorios\b', 'repositórios'),
     (r'\bdestaque\b', 'destaque'),  # ok
     (r'\bresultado\b', 'resultado'),  # ok
     (r'\bpadrao\b', 'padrão'),  # duplicado mas ok
@@ -355,6 +354,42 @@ _ACENTO_FIXES = [
     (r'\bwhatsapp\b', 'WhatsApp'),
     (r'\blinkedin\b', 'LinkedIn'),
     (r'\bfacebook\b', 'Facebook'),
+    # Padroes frequentemente gerados por IA sem acento (adicionados v3 19/06/2026)
+    (r'\bsao\b', 'são'),
+    (r'\bseguranca\b', 'segurança'),
+    (r'\busuario\b', 'usuário'), (r'\busuarios\b', 'usuários'),
+    (r'\bbinario\b', 'binário'), (r'\bbinarios\b', 'binários'),
+    (r'\bdeteccao\b', 'detecção'), (r'\bdeteccoes\b', 'detecções'),
+    (r'\blegitimo\b', 'legítimo'), (r'\blegitima\b', 'legítima'), (r'\blegitimos\b', 'legítimos'), (r'\blegitimas\b', 'legítimas'),
+    (r'\bobrigatorio\b', 'obrigatório'), (r'\bobrigatoria\b', 'obrigatória'), (r'\bobrigatorios\b', 'obrigatórios'), (r'\bobrigatorias\b', 'obrigatórias'),
+    (r'\bcriterio\b', 'critério'), (r'\bcriterios\b', 'critérios'),
+    (r'\barbitrario\b', 'arbitrário'), (r'\barbitraria\b', 'arbitrária'),
+    (r'\btemporario\b', 'temporário'), (r'\btemporaria\b', 'temporária'),
+    (r'\bnecessario\b', 'necessário'), (r'\bnecessaria\b', 'necessária'),
+    (r'\binedito\b', 'inédito'), (r'\binedita\b', 'inédita'),
+    (r'\bhibrido\b', 'híbrido'), (r'\bhibrida\b', 'híbrida'),
+    (r'\bvigilancia\b', 'vigilância'),
+    (r'\blicenca\b', 'licença'), (r'\blicencas\b', 'licenças'),
+    (r'\bheranca\b', 'herança'),
+    (r'\bcomecar\b', 'começar'), (r'\bcomecou\b', 'começou'), (r'\bcomecam\b', 'começam'), (r'\bcomecando\b', 'começando'),
+    (r'\bcomeca\b', 'começa'), (r'\bcomecara\b', 'começará'),
+    (r'\blancar\b', 'lançar'), (r'\blancando\b', 'lançando'),
+    (r'\balcancar\b', 'alcançar'), (r'\balcancou\b', 'alcançou'), (r'\balcanca\b', 'alcança'),
+    (r'\bavancar\b', 'avançar'), (r'\bavancou\b', 'avançou'), (r'\bavanca\b', 'avança'), (r'\bavancam\b', 'avançam'),
+    (r'\bforcar\b', 'forçar'), (r'\bforcou\b', 'forçou'), (r'\bforca\b', 'força'), (r'\bforcam\b', 'forçam'),
+    (r'\binfeccao\b', 'infecção'), (r'\binfeccoes\b', 'infecções'),
+    (r'\bexcecao\b', 'exceção'), (r'\bexcecoes\b', 'exceções'),
+    (r'\bpresenca\b', 'presença'),
+    (r'\bevidencia\b', 'evidência'), (r'\bevidencias\b', 'evidências'),
+    (r'\blaboratorio\b', 'laboratório'), (r'\blaboratorios\b', 'laboratórios'),
+    (r'\bacessorio\b', 'acessório'), (r'\bacessorios\b', 'acessórios'),
+    (r'\bpremio\b', 'prêmio'), (r'\bpremios\b', 'prêmios'),
+    (r'\btrafego\b', 'tráfego'),
+    (r'\balem\b', 'além'),
+    (r'\btambem\b', 'também'),
+    (r'\bentao\b', 'então'),
+    (r'\bnao\b', 'não'),
+    (r'\bvoce\b', 'você'), (r'\bvoces\b', 'vocês'),
 ]
 
 def _acento_repl(correct):
