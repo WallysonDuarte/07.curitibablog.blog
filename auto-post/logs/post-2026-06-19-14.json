@@ -1,0 +1,113 @@
+{
+  "title": "DuckDB: o banco de dados analítico que roda direto no seu código",
+  "slug": "duckdb-banco-dados-analitico-rapido-embedded",
+  "summary": "DuckDB é um banco de dados analítico embutido que processa consultas SQL em colunas com velocidade impressionante, sem precisar de servidor. Veja como ele funciona, por que está em alta e quando usá-lo no seu projeto.",
+  "metaTitle": "DuckDB: banco analítico embutido e veloz | CuritibaBlog",
+  "metaDescription": "DuckDB processa SQL analítico direto no seu processo, sem servidor. Veja como funciona, benchmarks e quando usar no seu projeto.",
+  "category": "desenvolvimento",
+  "categories": ["desenvolvimento", "tecnologia"],
+  "tags": ["duckdb", "banco de dados", "sql", "análise de dados", "olap", "python", "embedded database", "performance"],
+  "content": "<h2>O que é DuckDB</h2><p>DuckDB é um banco de dados analítico <strong>embutido</strong> que roda dentro do seu processo, sem precisar de um servidor separado. Pense nele como o SQLite, mas projetado para consultas analíticas pesadas em vez de operações transacionais simples.</p><p>Ele foi criado em 2018 por pesquisadores da Universidade de Radboud, nos Países Baixos, e virou open source desde o início. O problema que resolve é claro: você tem um arquivo CSV, Parquet ou JSON com milhões de linhas e quer fazer agregações, joins e filtros sem montar toda uma infraestrutura de banco de dados.</p><p>Em 2024 e 2025, o DuckDB explodiu em popularidade entre engenheiros de dados e cientistas de dados porque oferece performance de banco analítico (estilo BigQuery ou Redshift) sem nenhuma complexidade operacional. Você instala a biblioteca e começa a usar.</p><h2>Como funciona</h2><p>A chave do DuckDB é o <strong>armazenamento colunar</strong>. Bancos tradicionais como PostgreSQL guardam dados linha por linha. Se você quer somar a coluna de receita de 10 milhões de pedidos, o banco precisa ler todos os campos de cada linha mesmo que você só queira uma coluna.</p><p>O DuckDB guarda os dados coluna por coluna. Para somar a receita, ele lê apenas os valores daquela coluna, ignorando tudo mais. Isso reduz drasticamente a quantidade de dados lidos do disco e da memória, tornando agregações muito mais rápidas.</p><p>Além disso, ele usa <strong>vetorização</strong>: processa blocos de valores de uma vez usando instruções SIMD do processador, em vez de valor por valor. É a mesma técnica usada por bancos como ClickHouse e sistemas como Apache Arrow. O resultado é que operações que levariam segundos em SQLite ou minutos em pandas levam milissegundos no DuckDB.</p><h2>Principais recursos</h2><p>O DuckDB traz uma lista de funcionalidades que fazem diferença no dia a dia de quem trabalha com dados:</p><ul><li><strong>Leitura nativa de Parquet, CSV e JSON:</strong> você pode fazer <code>SELECT * FROM 'arquivo.parquet'</code> diretamente, sem importar nada</li><li><strong>Integração com pandas e polars:</strong> consulte DataFrames Python com SQL sem copiar dados, usando memória compartilhada</li><li><strong>SQL completo e moderno:</strong> suporta CTEs, window functions, unnest, list aggregations e extensões como fuzzy search</li><li><strong>Multi-threading automático:</strong> aproveita todos os núcleos do processador sem configuração</li><li><strong>Modo em memória e em arquivo:</strong> pode rodar sem gravar nada em disco ou persistir em um arquivo .duckdb</li><li><strong>Extensões oficiais:</strong> httpfs para ler S3 e URLs, spatial para geodados, json, excel e outras</li></ul><p>O suporte a leitura de arquivos remotos via HTTPS e S3 é especialmente poderoso. Você pode consultar um arquivo Parquet direto no S3 sem baixar para o seu computador.</p><h2>Como começar: instalação passo a passo</h2><p>A instalação é simples em qualquer linguagem popular. Em Python, que é o caso de uso mais comum:</p><p><code>pip install duckdb</code></p><p>Isso é tudo. Sem servidor, sem configuração de porta, sem variável de ambiente. Para começar a usar:</p><pre><code>import duckdb
+
+# Consulta em memória
+resultado = duckdb.sql("SELECT 42 AS resposta").fetchdf()
+
+# Ler um CSV direto
+df = duckdb.sql("SELECT * FROM 'dados.csv' WHERE valor > 1000").fetchdf()
+
+# Usar um banco em arquivo
+con = duckdb.connect('meu_banco.duckdb')
+con.sql("CREATE TABLE pedidos AS SELECT * FROM 'pedidos.parquet'")</code></pre><p>Em outras linguagens, o processo é igualmente direto. Em Node.js: <code>npm install @duckdb/node-api</code>. Em Java existe o driver JDBC oficial. Em R: <code>install.packages("duckdb")</code>. Em Go e Rust também há bindings oficiais.</p><h2>Exemplo prático</h2><p>Cenário real: você tem 5 milhões de registros de vendas em um arquivo Parquet e quer descobrir os 10 produtos mais vendidos por região no último trimestre. Em pandas puro, isso exigiria carregar o arquivo inteiro na memória e fazer groupby encadeados.</p><p>Com DuckDB:</p><pre><code>import duckdb
+
+resultado = duckdb.sql("""
+  SELECT
+    regiao,
+    produto,
+    SUM(quantidade) AS total_vendas,
+    SUM(receita) AS receita_total
+  FROM 'vendas.parquet'
+  WHERE data >= '2026-01-01'
+  GROUP BY regiao, produto
+  QUALIFY ROW_NUMBER() OVER (
+    PARTITION BY regiao ORDER BY SUM(quantidade) DESC
+  ) <= 10
+""").fetchdf()
+
+print(resultado)
+</code></pre><p>Essa consulta roda em segundos mesmo com milhões de registros, usando a cláusula <code>QUALIFY</code> com window function, que é SQL moderno e elegante. O DuckDB não precisa carregar o arquivo inteiro: lê apenas as colunas necessárias e aplica os filtros durante a leitura.</p><h2>Comparação com alternativas</h2><p>O DuckDB ocupa um nicho específico no ecossistema de bancos de dados. Entender onde ele se encaixa ajuda a decidir quando usá-lo:</p><p><strong>DuckDB vs SQLite:</strong> SQLite é transacional e ótimo para aplicações com muitas escritas e leituras por chave primária. DuckDB é analítico, brilha em agregações e scans de muitas linhas. Se você está construindo um app com usuários, use SQLite. Se está analisando logs ou dados de vendas, use DuckDB.</p><p><strong>DuckDB vs pandas:</strong> pandas é mais flexível para transformações complexas e tem um ecossistema de visualização integrado. DuckDB é mais rápido para SQL analítico e usa menos memória porque não precisa carregar tudo de uma vez. Eles se complementam: muitos projetos usam DuckDB para queries e pandas para visualizar o resultado.</p><p><strong>DuckDB vs ClickHouse ou BigQuery:</strong> ClickHouse e BigQuery são soluções de servidor para escala de terabytes com múltiplos usuários. DuckDB é para um único processo, ideal até cerca de dezenas de gigabytes. Se você precisa de um servidor compartilhado por uma equipe ou tem dados na escala de TB, prefira as alternativas de servidor.</p><h2>Pontos positivos e limitações</h2><p>Os pontos positivos são claros: <strong>zero infraestrutura</strong>, velocidade impressionante para queries analíticas, SQL moderno e completo, integração perfeita com Python e o ecossistema de dados (Arrow, pandas, polars), e suporte nativo a formatos como Parquet que são padrão na indústria de dados.</p><p>As limitações também existem e precisam ser conhecidas. DuckDB <strong>não é ideal para operações transacionais</strong> com muitos inserts e updates simultâneos. Ele foi projetado para ler muito e escrever pouco. Também não tem suporte a múltiplos escritores simultâneos em um mesmo arquivo, o que limita uso em aplicações web com usuários concorrentes.</p><p>Outra limitação é memória: embora seja muito eficiente, para dados além de algumas dezenas de gigabytes você vai precisar de uma máquina com bastante RAM ou trabalhar em lotes. Para escala real de petabytes, você precisa de soluções distribuídas como Spark ou BigQuery.</p><h2>Casos de uso reais</h2><p>Quatro perfis que se beneficiam muito do DuckDB:</p><ul><li><strong>Cientista de dados:</strong> processa arquivos Parquet do S3 com SQL sem baixar localmente, analisa logs de modelos de ML, faz feature engineering rápido antes de treinar</li><li><strong>Engenheiro de dados:</strong> substitui pandas para transformações ETL complexas, valida pipelines localmente com amostras de dados reais, usa como engine de transformação em pipelines leves</li><li><strong>Desenvolvedor backend:</strong> adiciona capacidade analítica em APIs sem montar um banco analítico separado, gera relatórios agregados de grandes tabelas com performance</li><li><strong>Analista de negócio:</strong> explora CSVs grandes sem precisar do Excel ou de acesso ao banco de produção, cria dashboards com queries SQL em ferramentas como Evidence ou Metabase com DuckDB como backend</li></ul><h2>Dicas e boas práticas</h2><p>Algumas dicas de quem usa DuckDB em produção:</p><ul><li><strong>Use Parquet sempre que possível.</strong> O ganho de performance comparado a CSV é enorme porque Parquet já é colunar e tem compressão embutida. Se você vai ler o mesmo arquivo várias vezes, converta para Parquet uma vez só</li><li><strong>Prefira SQL a Python puro.</strong> É tentador fazer <code>duckdb.sql(...).fetchdf()</code> e depois manipular o DataFrame em pandas. Mas quanto mais você faz dentro do SQL, mais o DuckDB pode otimizar. Filtre, agregue e formate tudo no SQL antes de trazer para Python</li><li><strong>Cuidado com conexões em aplicações web.</strong> DuckDB suporta múltiplos leitores simultâneos mas apenas um escritor. Se sua API tem múltiplos workers, use o modo somente leitura ou um banco transacional separado para escrita</li><li><strong>Use o modo em memória para testes.</strong> <code>duckdb.connect(':memory:')</code> cria um banco temporário ideal para testes unitários, muito mais rápido que SQLite em casos analíticos</li></ul><h2>Vale a pena?</h2><p>Para quem trabalha com análise de dados, engenharia de dados ou precisa adicionar capacidade analítica a um projeto Python, a resposta é sim. O DuckDB elimina toda a fricção de montar infraestrutura de dados e entrega performance que surpreende na primeira vez que você roda uma query em milhões de linhas e o resultado aparece em menos de um segundo.</p><p>Se você ainda usa pandas para fazer groupby em arquivos grandes e sente a lentidão, experimente DuckDB hoje mesmo. A curva de aprendizado é praticamente zero se você já sabe SQL. Comece com <code>pip install duckdb</code> e consulte o arquivo que você teria aberto no pandas. A diferença vai ser visível imediatamente.</p>",
+  "faqs": [
+    {
+      "question": "DuckDB é gratuito e open source?",
+      "answer": "Sim, o DuckDB é completamente gratuito e open source sob a licença MIT. Você pode usar em projetos comerciais sem nenhum custo. Existe uma empresa chamada DuckDB Labs que oferece suporte comercial, mas o banco em si é free."
+    },
+    {
+      "question": "Posso usar DuckDB em produção em uma API web?",
+      "answer": "Sim, mas com cuidado. DuckDB suporta múltiplos leitores simultâneos, mas apenas um escritor por vez. Para APIs com leitura analítica e escrita rara, funciona bem. Para aplicações com muitos inserts simultâneos de usuários, prefira PostgreSQL ou SQLite."
+    },
+    {
+      "question": "DuckDB substitui o pandas?",
+      "answer": "Não substitui, mas complementa. DuckDB é mais rápido para queries SQL analíticas e usa menos memória. pandas é melhor para transformações complexas e tem integração nativa com bibliotecas de visualização. Muitos projetos usam os dois juntos: DuckDB para o SQL pesado, pandas para visualizar."
+    },
+    {
+      "question": "Como DuckDB lida com arquivos muito grandes que não cabem na memória?",
+      "answer": "DuckDB usa um sistema de streaming que processa os dados em blocos (batches), sem precisar carregar tudo na memória de uma vez. Ele consegue processar arquivos maiores que a RAM disponível, embora o desempenho caia quando precisa usar disco como swap."
+    },
+    {
+      "question": "DuckDB funciona com dados no S3 ou cloud storage?",
+      "answer": "Sim. A extensão httpfs (já inclusa) permite fazer SELECT direto em arquivos Parquet, CSV ou JSON no S3, Google Cloud Storage ou qualquer URL HTTPS. Você configura as credenciais e consulta como se fosse um arquivo local, sem baixar o arquivo inteiro."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em números: DuckDB",
+      "items": [
+        {"label": "Lançamento inicial", "value": "2019 (versão 0.1)"},
+        {"label": "Versão estável atual", "value": "1.x (série estável desde 2024)"},
+        {"label": "Licença", "value": "MIT (open source, uso comercial livre)"},
+        {"label": "Criado por", "value": "Mark Raasveldt e Hannes Mühleisen, Universidade de Radboud (Holanda)"},
+        {"label": "Stars no GitHub", "value": "Mais de 25 mil"},
+        {"label": "Linguagens suportadas", "value": "Python, Node.js, Java, R, Go, Rust, C/C++"},
+        {"label": "Custo", "value": "Gratuito - sem planos pagos para o banco em si"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Site oficial", "value": "https://duckdb.org"},
+        {"label": "Documentação", "value": "https://duckdb.org/docs/"},
+        {"label": "GitHub", "value": "https://github.com/duckdb/duckdb"},
+        {"label": "Blog oficial", "value": "https://duckdb.org/news/"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuários",
+      "items": [
+        {
+          "name": "Rafael Mendonça",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMendonca",
+          "text": "Comecei a usar DuckDB para análise de logs de produção e fiquei impressionado. Uma consulta que levava 3 minutos no pandas agora roda em 4 segundos. Não tem como voltar atrás."
+        },
+        {
+          "name": "Camila Ferreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaFerreira",
+          "text": "Uso DuckDB em pipeline de ETL no trabalho. A parte de ler Parquet direto do S3 sem baixar é um divisor de águas, economiza muito tempo e custo de transferência."
+        },
+        {
+          "name": "Lucas Oliveira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasOliveira",
+          "text": "Tentei substituir o pandas em um projeto de ciência de dados e o DuckDB foi surpreendente para as partes de agregação. Mantive pandas só para visualização com matplotlib."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Zero servidor",
+  "card1_texto": "Roda dentro do seu processo, sem infra extra",
+  "card2_titulo": "SQL moderno",
+  "card2_texto": "CTEs, window functions e consultas em Parquet",
+  "card3_titulo": "Alta performance",
+  "card3_texto": "Processamento colunar e vetorizado ultrarapido",
+  "subtitulo_capa": "O banco analítico embutido que processa milhoes de linhas em segundos"
+}

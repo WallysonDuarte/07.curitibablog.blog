@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": "Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28",
+      "url": "https://www.jvm-weekly.com/p/project-valhalla-explained-how-a",
+      "score": 417,
+      "comentarios": 238
+    },
+    {
+      "fonte": "HN",
       "titulo": "DuckDB Internals: Why Is DuckDB Fast? (Part 1)",
       "url": "https://www.greybeam.ai/blog/duckdb-internals-part-1",
-      "score": 154,
-      "comentarios": 56
+      "score": 347,
+      "comentarios": 107
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Zen and the Art of Machine Learning Research",
+      "url": "https://blog.jxmo.io/p/zen-and-the-art-of-machine-learning",
+      "score": 174,
+      "comentarios": 55
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ten years of ClickHouse in open source",
+      "url": "https://clickhouse.com/blog/open-source-10",
+      "score": 193,
+      "comentarios": 61
     },
     {
       "fonte": "HN",
       "titulo": "To study how chips work, MIT researchers built their own operating system",
       "url": "https://news.mit.edu/2026/to-study-how-chips-really-work-mit-researchers-built-their-own-operating-system-0610",
-      "score": 173,
-      "comentarios": 24
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28",
-      "url": "https://www.jvm-weekly.com/p/project-valhalla-explained-how-a",
-      "score": 74,
-      "comentarios": 42
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Gribouille 0.3.0: A Grammar of Graphics for Typst",
-      "url": "https://mickael.canouil.fr/posts/2026-06-15-gribouille-0-3/",
-      "score": 75,
-      "comentarios": 19
+      "score": 301,
+      "comentarios": 44
     },
     {
       "fonte": "HN",
       "titulo": "I found 10k GitHub repositories distributing Trojan malware",
       "url": "https://orchidfiles.com/github-repositories-distributing-malware/",
-      "score": 780,
-      "comentarios": 204
+      "score": 895,
+      "comentarios": 236
     },
     {
       "fonte": "HN",
-      "titulo": "Zero-Touch OAuth for MCP",
-      "url": "https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/",
-      "score": 190,
-      "comentarios": 66
-    },
-    {
-      "fonte": "HN",
-      "titulo": "How Japan's railways stayed one while splitting apart",
-      "url": "https://arun.is/blog/jr-logo/",
-      "score": 89,
-      "comentarios": 73
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Datasette Apps: Host custom HTML applications inside Datasette",
-      "url": "https://simonwillison.net/2026/Jun/18/datasette-apps/",
-      "score": 73,
-      "comentarios": 25
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Ubiquiti: Enterprise NAS, Built on ZFS",
-      "url": "https://blog.ui.com/article/introducing-enterprise-nas",
-      "score": 332,
-      "comentarios": 282
+      "titulo": "Gribouille 0.3.0: A Grammar of Graphics for Typst",
+      "url": "https://mickael.canouil.fr/posts/2026-06-15-gribouille-0-3/",
+      "score": 168,
+      "comentarios": 61
     },
     {
       "fonte": "HN",
       "titulo": "The AirPods Effect",
       "url": "https://www.theescapenewsletter.com/p/the-airpods-effect",
-      "score": 85,
-      "comentarios": 140
+      "score": 283,
+      "comentarios": 499
     },
     {
       "fonte": "HN",
-      "titulo": "Building a robotics research setup that lives next to my desk",
-      "url": "https://dfdxlabs.com/research/2026/robotics-setup/",
-      "score": 76,
-      "comentarios": 24
+      "titulo": "Akse3D – open-source 3D modelling anyone can master",
+      "url": "https://akse3d-en.skaperiet.no",
+      "score": 103,
+      "comentarios": 28
     },
     {
       "fonte": "HN",
-      "titulo": "Ice water drowning survival of young patient (2025)",
-      "url": "https://www.jacc.org/doi/10.1016/j.jaccas.2025.104885",
-      "score": 139,
-      "comentarios": 88
+      "titulo": "Zero-Touch OAuth for MCP",
+      "url": "https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/",
+      "score": 233,
+      "comentarios": 89
     },
     {
       "fonte": "HN",
-      "titulo": "CS 6120: Advanced Compilers: The Self-Guided Online Course (2020)",
-      "url": "https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/",
-      "score": 365,
-      "comentarios": 51
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: Talos – Open-source WASM interpreter for Lean",
-      "url": "https://github.com/cajal-technologies/talos",
-      "score": 51,
-      "comentarios": 5
+      "titulo": "How Japan's railways stayed one while splitting apart",
+      "url": "https://arun.is/blog/jr-logo/",
+      "score": 144,
+      "comentarios": 120
     },
     {
       "fonte": "HN",
       "titulo": ".gitignore Isn't the only way to ignore files in Git",
       "url": "https://nelson.cloud/.gitignore-isnt-the-only-way-to-ignore-files-in-git/",
+      "score": 504,
+      "comentarios": 156
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ubiquiti: Enterprise NAS, Built on ZFS",
+      "url": "https://blog.ui.com/article/introducing-enterprise-nas",
+      "score": 388,
+      "comentarios": 320
+    },
+    {
+      "fonte": "HN",
+      "titulo": "CS 6120: Advanced Compilers: The Self-Guided Online Course (2020)",
+      "url": "https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/",
       "score": 411,
-      "comentarios": 129
+      "comentarios": 58
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Norway greenlights first full-scale ship tunnel",
+      "url": "https://eandt.theiet.org/2026/06/18/norway-greenlights-world-s-first-full-scale-ship-tunnel",
+      "score": 109,
+      "comentarios": 63
     }
   ],
   "devto": [
@@ -116,7 +116,7 @@
         "gemmachallenge",
         "gemma"
       ],
-      "reacoes": 50
+      "reacoes": 74
     },
     {
       "fonte": "Dev.to",
@@ -126,7 +126,7 @@
         "devchallenge",
         "agents"
       ],
-      "reacoes": 18
+      "reacoes": 27
     },
     {
       "fonte": "Dev.to",
@@ -137,50 +137,49 @@
         "beginners",
         "discuss"
       ],
-      "reacoes": 10
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Building an agentic PR reviewer with Antigravity SDK",
-      "tags": [
-        "antigravity",
-        "gemini",
-        "ai",
-        "programming"
-      ],
-      "reacoes": 11
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "The Winner of the AI-Pocalypse? The Full-Stack Generalist (But Probably Later Instead of Sooner)",
-      "tags": [
-        "careerdevelopment",
-        "beginners",
-        "devops",
-        "ai"
-      ],
-      "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Technical Writing Advice",
-      "tags": [
-        "documentation",
-        "technical",
-        "writing"
-      ],
       "reacoes": 14
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Someone was wrong on the internet, so I built a Temporal Docker extension",
+      "titulo": "Skills over System Prompts: Building an Anki Tutor with the Antigravity SDK",
       "tags": [
-        "temporal",
-        "selfhosted",
-        "codesamples",
-        "durableexecution"
+        "ai",
+        "antigravity",
+        "agents",
+        "gemini"
       ],
-      "reacoes": 0
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What was your win this week??",
+      "tags": [
+        "discuss",
+        "weeklyretro"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI summaries need receipts: how I built evidence-bound reports from comments",
+      "tags": [
+        "ai",
+        "webdev",
+        "productivity",
+        "data"
+      ],
+      "reacoes": 13
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What Does the Windows REFRESH button really do?",
+      "tags": [
+        "webdev",
+        "programming",
+        "discuss",
+        "productivity"
+      ],
+      "reacoes": 17
     },
     {
       "fonte": "Dev.to",
@@ -193,23 +192,22 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Codewars did not teach me JavaScript. My job did.",
+      "titulo": "Compile Zod (30x faster Zod validation)",
       "tags": [
-        "career",
-        "codenewbie",
-        "javascript",
-        "learning"
+        "zod",
+        "webperf",
+        "performance"
       ],
-      "reacoes": 10
+      "reacoes": 1
     },
     {
       "fonte": "Dev.to",
-      "titulo": "The Reliability Problem That Forced Us to Rethink AI Agents",
+      "titulo": "AI makes writing code easier. It doesn't make engineering easier.",
       "tags": [
+        "programming",
         "ai",
-        "googleaichallenge",
-        "opensource",
-        "machinelearning"
+        "discuss",
+        "webdev"
       ],
       "reacoes": 6
     }
