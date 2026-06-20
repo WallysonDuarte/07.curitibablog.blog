@@ -1,0 +1,221 @@
+{
+  "data": "2026-06-20",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "I Stored a Website in a Favicon",
+      "url": "https://www.timwehrle.de/blog/i-stored-a-website-in-a-favicon/",
+      "score": 103,
+      "comentarios": 33
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Data Compression Explained (2012)",
+      "url": "https://mattmahoney.net/dc/dce.html",
+      "score": 111,
+      "comentarios": 13
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Where to Find the Colors Your Screen Can't Show You",
+      "url": "https://moultano.wordpress.com/2026/06/19/where-to-find-the-colors-your-screen-cant-show-you/",
+      "score": 88,
+      "comentarios": 20
+    },
+    {
+      "fonte": "HN",
+      "titulo": "There are no instances in ATProto",
+      "url": "https://overreacted.io/there-are-no-instances-in-atproto/",
+      "score": 435,
+      "comentarios": 225
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Can you see three trees?",
+      "url": "https://www.not-ship.com/can-you-see-three-trees/",
+      "score": 99,
+      "comentarios": 37
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Surprising economics of load-balanced systems",
+      "url": "https://brooker.co.za/blog/2020/08/06/erlang.html",
+      "score": 106,
+      "comentarios": 24
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Hyundai buys Boston Dynamics",
+      "url": "https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/",
+      "score": 809,
+      "comentarios": 359
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How many of the 170k English words do you know?",
+      "url": "https://vocabowl-870366514258.us-west1.run.app/",
+      "score": 360,
+      "comentarios": 445
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Norway imposes near ban on AI in elementary school",
+      "url": "https://www.reuters.com/technology/norway-imposes-near-ban-ai-elementary-school-2026-06-19/",
+      "score": 647,
+      "comentarios": 444
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28",
+      "url": "https://www.jvm-weekly.com/p/project-valhalla-explained-how-a",
+      "score": 590,
+      "comentarios": 364
+    },
+    {
+      "fonte": "HN",
+      "titulo": "GPT-5.5 hallucinates 3x more than MIT-licensed GLM-5.2",
+      "url": "https://arrowtsx.dev/bigger-models/",
+      "score": 126,
+      "comentarios": 32
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Satellite reveals immense scale of GPS signal tampering",
+      "url": "https://www.space.com/space-exploration/satellites/its-quite-a-bit-more-than-we-expected-satellite-reveals-immense-scale-of-gps-signal-tampering",
+      "score": 70,
+      "comentarios": 21
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Bobby Prince, composer for Doom, Wolfenstein 3D, and Duke Nukem 3D, has died",
+      "url": "https://www.legacy.com/legacy/robert-bobby-prince-lll",
+      "score": 360,
+      "comentarios": 39
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A Perceptron in Age of Empires II",
+      "url": "https://adewynter.github.io/notes/aoe2-circuits",
+      "score": 72,
+      "comentarios": 31
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Egyptian Fractions (2006)",
+      "url": "https://blog.plover.com/math/egyptian-fractions.html",
+      "score": 94,
+      "comentarios": 7
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Skills over System Prompts: Building an Anki Tutor with the Antigravity SDK",
+      "tags": [
+        "ai",
+        "antigravity",
+        "agents",
+        "gemini"
+      ],
+      "reacoes": 8
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Internmaxxing vs. Old Man Shakes Fist at Cloud",
+      "tags": [
+        "ai",
+        "programming",
+        "beginners",
+        "career"
+      ],
+      "reacoes": 22
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What Does the Windows REFRESH button really do?",
+      "tags": [
+        "webdev",
+        "programming",
+        "discuss",
+        "productivity"
+      ],
+      "reacoes": 19
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI makes writing code easier. It doesn't make engineering easier.",
+      "tags": [
+        "programming",
+        "ai",
+        "discuss",
+        "webdev"
+      ],
+      "reacoes": 15
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Rebuilding a Divi Blog with Custom Shortcodes: A Field Report",
+      "tags": [
+        "wordpress",
+        "php",
+        "css",
+        "webdev"
+      ],
+      "reacoes": 1
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Breaking Build: Kiro and Claude delivered exactly what I asked, and it wasn't what I wanted",
+      "tags": [
+        "buildinpublic",
+        "ai",
+        "aws",
+        "webdev"
+      ],
+      "reacoes": 9
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "My API Responded in 4 ms, but Navigation Still Felt Slow",
+      "tags": [
+        "performance",
+        "webdev",
+        "svelte",
+        "backend"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Compile Zod (30x faster Zod validation)",
+      "tags": [
+        "zod",
+        "webperf",
+        "performance"
+      ],
+      "reacoes": 1
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I automated everything except the code, and that's where Claude Code actually paid off",
+      "tags": [
+        "ai",
+        "productivity",
+        "claudcode",
+        "webdev"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Benchmarked 17 Image Conversions on My Production Server. Some Results Were Not What I Expected.",
+      "tags": [
+        "webdev",
+        "img",
+        "performance",
+        "webperf"
+      ],
+      "reacoes": 6
+    }
+  ]
+}
