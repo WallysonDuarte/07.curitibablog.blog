@@ -35,6 +35,16 @@ SSH_KEY  = str(Path.home() / ".ssh" / "id_server_nopass")
 
 BLOGS = ["curitibablog", "blogdudu", "devlevelup", "dozeroaojunior", "levelupdev"]
 
+# IndexNow — chave de verificacao (arquivo <chave>.txt em cada blog)
+INDEXNOW_KEY = "6363e67916a04a8586c27e7c3aea3a8a"
+BLOG_DOMAIN = {
+    "curitibablog":   "curitibablog.com.br",
+    "blogdudu":       "blogdudu.com.br",
+    "devlevelup":     "devlevelup.com.br",
+    "dozeroaojunior": "dozeroaojunior.com.br",
+    "levelupdev":     "levelupdev.com.br",
+}
+
 # Paths locais (source Astro) e remotos (deploy no VPS)
 BLOG_LOCAL = {
     "curitibablog":   "E:/PROJETOS/curitibablog.com.br/07.curitibablog.blog",
@@ -805,6 +815,159 @@ def rebuild_blogs() -> dict:
     return results
 
 
+def notificar_indexnow(slug: str) -> dict:
+    """Notifica IndexNow (Bing/Yandex) com as URLs do novo post em todos os blogs."""
+    import threading
+
+    resultados = {}
+    lock = threading.Lock()
+
+    def _notificar_blog(blog: str):
+        domain = BLOG_DOMAIN[blog]
+        url_post = f"https://{domain}/{slug}"
+        payload = {
+            "host": domain,
+            "key": INDEXNOW_KEY,
+            "keyLocation": f"https://{domain}/{INDEXNOW_KEY}.txt",
+            "urlList": [url_post],
+        }
+        try:
+            r = requests.post(
+                "https://api.indexnow.org/indexnow",
+                json=payload,
+                timeout=10,
+                headers={"Content-Type": "application/json; charset=utf-8"},
+            )
+            status = r.status_code
+            ok = status in (200, 202)
+            with lock:
+                resultados[blog] = {"ok": ok, "status": status}
+            log(f"  IndexNow {blog}: HTTP {status} {'OK' if ok else 'FALHOU'}")
+        except Exception as e:
+            with lock:
+                resultados[blog] = {"ok": False, "erro": str(e)}
+            log(f"  IndexNow {blog}: ERRO - {e}")
+
+    threads = [threading.Thread(target=_notificar_blog, args=(b,)) for b in BLOGS]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(timeout=15)
+
+    sucessos = sum(1 for v in resultados.values() if v.get("ok"))
+    log(f"IndexNow: {sucessos}/{len(BLOGS)} blogs notificados")
+    return resultados
+
+
+# ---------------------------------------------------------------------------
+# Redes Sociais — Facebook Graph API + Instagram Business API
+# Credenciais em: E:/PROJETOS/00.documentos/secrets/curitibablog.com.br/social.json
+# {
+#   "fb_page_id": "103132212436476",
+#   "fb_page_token": "<PAGE_ACCESS_TOKEN_LONGA_DURACAO>",
+#   "ig_user_id": "17841453558088350"
+# }
+_SOCIAL_SECRETS_PATH = Path("E:/PROJETOS/00.documentos/secrets/curitibablog.com.br/social.json")
+
+
+def _load_social_config() -> dict | None:
+    try:
+        if _SOCIAL_SECRETS_PATH.exists():
+            return json.loads(_SOCIAL_SECRETS_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        pass
+    return None
+
+
+def _truncar(texto: str, max_chars: int) -> str:
+    if len(texto) <= max_chars:
+        return texto
+    return texto[:max_chars - 3].rstrip() + "..."
+
+
+def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | None) -> dict:
+    """
+    Passo 11 do pipeline: publica no Facebook Page e no Instagram Business.
+    Requer social.json com fb_page_id, fb_page_token, ig_user_id.
+    Falha silenciosa: erros sao logados mas NAO bloqueiam a publicacao.
+    """
+    config = _load_social_config()
+    if not config:
+        log("AVISO: social.json nao encontrado — pulando autopost em redes sociais")
+        return {"facebook": "sem_config", "instagram": "sem_config"}
+
+    fb_page_id    = config.get("fb_page_id", "")
+    fb_page_token = config.get("fb_page_token", "")
+    ig_user_id    = config.get("ig_user_id", "")
+    post_url      = f"https://curitibablog.com.br/{slug}"
+    resultados    = {}
+
+    legenda = (
+        f"{titulo}\n\n"
+        f"{_truncar(summary, 200)}\n\n"
+        f"Leia o artigo completo: {post_url}\n\n"
+        "#tecnologia #ia #desenvolvedores #programacao #curitibablog"
+    )
+
+    # Facebook Page
+    if fb_page_id and fb_page_token:
+        try:
+            graph_url = f"https://graph.facebook.com/v19.0/{fb_page_id}/feed"
+            payload_fb = {
+                "message": legenda,
+                "link": post_url,
+                "access_token": fb_page_token,
+            }
+            r = requests.post(graph_url, data=payload_fb, timeout=20)
+            if r.ok:
+                post_id = r.json().get("id", "")
+                log(f"Facebook: post publicado ({post_id})")
+                resultados["facebook"] = {"ok": True, "id": post_id}
+            else:
+                log(f"Facebook: ERRO HTTP {r.status_code} — {r.text[:200]}")
+                resultados["facebook"] = {"ok": False, "erro": r.text[:200]}
+        except Exception as e:
+            log(f"Facebook: EXCECAO — {e}")
+            resultados["facebook"] = {"ok": False, "erro": str(e)}
+    else:
+        log("Facebook: fb_page_id ou fb_page_token nao configurados — pulando")
+        resultados["facebook"] = "sem_config"
+
+    # Instagram Business
+    if ig_user_id and fb_page_token and cover_url:
+        try:
+            media_url = f"https://graph.facebook.com/v19.0/{ig_user_id}/media"
+            payload_media = {
+                "image_url": cover_url,
+                "caption": legenda,
+                "access_token": fb_page_token,
+            }
+            r1 = requests.post(media_url, data=payload_media, timeout=20)
+            if not r1.ok:
+                raise RuntimeError(f"Criar container falhou: HTTP {r1.status_code} {r1.text[:200]}")
+            container_id = r1.json().get("id", "")
+
+            publish_url = f"https://graph.facebook.com/v19.0/{ig_user_id}/media_publish"
+            r2 = requests.post(publish_url, data={"creation_id": container_id, "access_token": fb_page_token}, timeout=20)
+            if r2.ok:
+                ig_post_id = r2.json().get("id", "")
+                log(f"Instagram: post publicado ({ig_post_id})")
+                resultados["instagram"] = {"ok": True, "id": ig_post_id}
+            else:
+                raise RuntimeError(f"Publicar container falhou: HTTP {r2.status_code} {r2.text[:200]}")
+        except Exception as e:
+            log(f"Instagram: EXCECAO — {e}")
+            resultados["instagram"] = {"ok": False, "erro": str(e)}
+    elif not cover_url:
+        log("Instagram: sem cover_url disponivel — pulando (Instagram requer imagem)")
+        resultados["instagram"] = "sem_imagem"
+    else:
+        log("Instagram: ig_user_id nao configurado — pulando")
+        resultados["instagram"] = "sem_config"
+
+    return resultados
+
+
 def main(json_path: str):
     hoje = datetime.date.today().isoformat()
     log_path = LOGS_DIR / f"{hoje}.json"
@@ -917,6 +1080,21 @@ def main(json_path: str):
             http_status = 0
         log(f"HTTP curitibablog/{slug}: {http_status}")
         run_log["etapas"]["http_check"] = http_status
+
+        # 10. Notificar IndexNow (Bing/Yandex) — paralelo por blog
+        log("Notificando IndexNow...")
+        indexnow_results = notificar_indexnow(slug)
+        run_log["etapas"]["indexnow"] = indexnow_results
+
+        # 11. Autopost Facebook e Instagram
+        log("Postando em redes sociais...")
+        social_results = postar_redes_sociais(
+            titulo=doc["title"],
+            summary=doc["summary"],
+            slug=slug,
+            cover_url=cover_url,
+        )
+        run_log["etapas"]["social"] = social_results
 
         run_log["status"] = "CONCLUIDO"
         run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
