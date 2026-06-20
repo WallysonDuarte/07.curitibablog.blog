@@ -3,142 +3,111 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": "Norway imposes near ban on AI in elementary school",
+      "url": "https://www.reuters.com/technology/norway-imposes-near-ban-ai-elementary-school-2026-06-19/",
+      "score": 395,
+      "comentarios": 258
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Bobby Prince, composer for Doom, Wolfenstein 3D, and Duke Nukem 3D, has died",
+      "url": "https://www.legacy.com/legacy/robert-bobby-prince-lll",
+      "score": 173,
+      "comentarios": 22
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Think of the Children: How to Force Real ID for All Internet Traffic (2023)",
+      "url": "https://nochan.net/b/Internet-Crap/20230829-Think-Of-The-Children/",
+      "score": 74,
+      "comentarios": 32
+    },
+    {
+      "fonte": "HN",
+      "titulo": "There are no instances in ATProto",
+      "url": "https://overreacted.io/there-are-no-instances-in-atproto/",
+      "score": 325,
+      "comentarios": 191
+    },
+    {
+      "fonte": "HN",
+      "titulo": "I used sound waves to make espresso. It could cut coffee‑brewing energy use by ¾",
+      "url": "https://theconversation.com/i-used-sound-waves-to-make-espresso-it-could-cut-coffee-brewing-energy-use-by-75-284929",
+      "score": 183,
+      "comentarios": 118
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Hyundai buys Boston Dynamics",
+      "url": "https://startupfortune.com/hyundai-takes-full-control-of-boston-dynamics-as-softbank-exits-for-325-million/",
+      "score": 626,
+      "comentarios": 299
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Iran requires insurance on ships using Strait of Hormuz, fees likely to follow",
+      "url": "https://www.lloydslist.com/LL1157571/Iran-imposes-mandatory-insurance-on-ships-transiting-Strait-of-Hormuz-with-fees-likely-to-follow",
+      "score": 63,
+      "comentarios": 33
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Americans express unease over SpaceX's influence on retirement savings",
+      "url": "https://www.theguardian.com/science/2026/jun/19/spacex-retirement-savings-elon-musk",
+      "score": 124,
+      "comentarios": 56
+    },
+    {
+      "fonte": "HN",
       "titulo": "Project Valhalla, Explained: How a Decade of Work Arrives in JDK 28",
       "url": "https://www.jvm-weekly.com/p/project-valhalla-explained-how-a",
-      "score": 417,
-      "comentarios": 238
+      "score": 536,
+      "comentarios": 332
     },
     {
       "fonte": "HN",
-      "titulo": "DuckDB Internals: Why Is DuckDB Fast? (Part 1)",
+      "titulo": "Egyptian Fractions",
+      "url": "https://blog.plover.com/math/egyptian-fractions.html",
+      "score": 60,
+      "comentarios": 0
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How many of the 170k English words do you know?",
+      "url": "https://vocabowl-870366514258.us-west1.run.app/",
+      "score": 220,
+      "comentarios": 343
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Zenzizenzizenzic",
+      "url": "https://en.wikipedia.org/wiki/Zenzizenzizenzic",
+      "score": 60,
+      "comentarios": 19
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A 1976 university experiment spun up the U.S. wind industry",
+      "url": "https://spectrum.ieee.org/william-heronemus-wind-energy",
+      "score": 67,
+      "comentarios": 5
+    },
+    {
+      "fonte": "HN",
+      "titulo": "DuckDB Internals Part 1",
       "url": "https://www.greybeam.ai/blog/duckdb-internals-part-1",
-      "score": 347,
-      "comentarios": 107
+      "score": 431,
+      "comentarios": 128
     },
     {
       "fonte": "HN",
-      "titulo": "Zen and the Art of Machine Learning Research",
-      "url": "https://blog.jxmo.io/p/zen-and-the-art-of-machine-learning",
-      "score": 174,
-      "comentarios": 55
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Ten years of ClickHouse in open source",
-      "url": "https://clickhouse.com/blog/open-source-10",
-      "score": 193,
-      "comentarios": 61
-    },
-    {
-      "fonte": "HN",
-      "titulo": "To study how chips work, MIT researchers built their own operating system",
-      "url": "https://news.mit.edu/2026/to-study-how-chips-really-work-mit-researchers-built-their-own-operating-system-0610",
-      "score": 301,
-      "comentarios": 44
-    },
-    {
-      "fonte": "HN",
-      "titulo": "I found 10k GitHub repositories distributing Trojan malware",
-      "url": "https://orchidfiles.com/github-repositories-distributing-malware/",
-      "score": 895,
-      "comentarios": 236
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Gribouille 0.3.0: A Grammar of Graphics for Typst",
-      "url": "https://mickael.canouil.fr/posts/2026-06-15-gribouille-0-3/",
-      "score": 168,
-      "comentarios": 61
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The AirPods Effect",
-      "url": "https://www.theescapenewsletter.com/p/the-airpods-effect",
-      "score": 283,
-      "comentarios": 499
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Akse3D – open-source 3D modelling anyone can master",
-      "url": "https://akse3d-en.skaperiet.no",
-      "score": 103,
-      "comentarios": 28
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Zero-Touch OAuth for MCP",
-      "url": "https://blog.modelcontextprotocol.io/posts/enterprise-managed-auth/",
-      "score": 233,
-      "comentarios": 89
-    },
-    {
-      "fonte": "HN",
-      "titulo": "How Japan's railways stayed one while splitting apart",
-      "url": "https://arun.is/blog/jr-logo/",
-      "score": 144,
-      "comentarios": 120
-    },
-    {
-      "fonte": "HN",
-      "titulo": ".gitignore Isn't the only way to ignore files in Git",
-      "url": "https://nelson.cloud/.gitignore-isnt-the-only-way-to-ignore-files-in-git/",
-      "score": 504,
-      "comentarios": 156
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Ubiquiti: Enterprise NAS, Built on ZFS",
-      "url": "https://blog.ui.com/article/introducing-enterprise-nas",
-      "score": 388,
-      "comentarios": 320
-    },
-    {
-      "fonte": "HN",
-      "titulo": "CS 6120: Advanced Compilers: The Self-Guided Online Course (2020)",
-      "url": "https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/",
-      "score": 411,
-      "comentarios": 58
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Norway greenlights first full-scale ship tunnel",
-      "url": "https://eandt.theiet.org/2026/06/18/norway-greenlights-world-s-first-full-scale-ship-tunnel",
-      "score": 109,
-      "comentarios": 63
+      "titulo": "Telescope Ranchers",
+      "url": "https://kottke.org/26/06/telescope-ranchers",
+      "score": 97,
+      "comentarios": 39
     }
   ],
   "devto": [
-    {
-      "fonte": "Dev.to",
-      "titulo": "Congrats to the Gemma 4 Challenge Winners!",
-      "tags": [
-        "devchallenge",
-        "gemmachallenge",
-        "gemma"
-      ],
-      "reacoes": 74
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Congrats to the Hermes Agent Challenge Winners!",
-      "tags": [
-        "hermesagentchallenge",
-        "devchallenge",
-        "agents"
-      ],
-      "reacoes": 27
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "I'm not a developer, but I built a calendar app to fix my most annoying work task",
-      "tags": [
-        "ai",
-        "productivity",
-        "beginners",
-        "discuss"
-      ],
-      "reacoes": 14
-    },
     {
       "fonte": "Dev.to",
       "titulo": "Skills over System Prompts: Building an Anki Tutor with the Antigravity SDK",
@@ -148,16 +117,7 @@
         "agents",
         "gemini"
       ],
-      "reacoes": 6
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "What was your win this week??",
-      "tags": [
-        "discuss",
-        "weeklyretro"
-      ],
-      "reacoes": 10
+      "reacoes": 7
     },
     {
       "fonte": "Dev.to",
@@ -168,7 +128,7 @@
         "productivity",
         "data"
       ],
-      "reacoes": 13
+      "reacoes": 14
     },
     {
       "fonte": "Dev.to",
@@ -179,16 +139,18 @@
         "discuss",
         "productivity"
       ],
-      "reacoes": 17
+      "reacoes": 19
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Pointers and Tuning and Loops! Oh My!",
+      "titulo": "AI makes writing code easier. It doesn't make engineering easier.",
       "tags": [
-        "c",
-        "cpp"
+        "programming",
+        "ai",
+        "discuss",
+        "webdev"
       ],
-      "reacoes": 0
+      "reacoes": 15
     },
     {
       "fonte": "Dev.to",
@@ -202,14 +164,58 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "AI makes writing code easier. It doesn't make engineering easier.",
+      "titulo": "Breaking Build: Kiro and Claude delivered exactly what I asked, and it wasn't what I wanted",
       "tags": [
-        "programming",
+        "buildinpublic",
         "ai",
-        "discuss",
+        "aws",
         "webdev"
       ],
       "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "My API Responded in 4 ms, but Navigation Still Felt Slow",
+      "tags": [
+        "performance",
+        "webdev",
+        "svelte",
+        "backend"
+      ],
+      "reacoes": 4
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I built a Claude Code skill that finds customers, not competitors, on Reddit & LinkedIn",
+      "tags": [
+        "claudecode",
+        "ai",
+        "opensource",
+        "productivity"
+      ],
+      "reacoes": 3
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Hotwire Marten: Less JavaScript, More Interactivity",
+      "tags": [
+        "webdev",
+        "tutorial",
+        "hotwire",
+        "crystal"
+      ],
+      "reacoes": 4
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Stop paying for the same tokens twice",
+      "tags": [
+        "ai",
+        "multiagent",
+        "promptcaching",
+        "codereview"
+      ],
+      "reacoes": 2
     }
   ]
 }

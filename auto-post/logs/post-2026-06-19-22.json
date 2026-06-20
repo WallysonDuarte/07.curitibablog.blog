@@ -1,0 +1,84 @@
+{
+  "title": "IA escreve o código, mas a engenharia é sua: o que os modelos ainda não conseguem fazer",
+  "slug": "ia-escreve-codigo-mas-engenharia-e-sua",
+  "summary": "GitHub Copilot, Cursor e Claude Code aceleram a escrita de código, mas arquitetura, decisões de design e debugging complexo ainda dependem do engenheiro. Entenda onde a IA ajuda de verdade e onde você ainda precisa pensar.",
+  "metaTitle": "IA escreve código mas não substitui engenharia | CuritibaBlog",
+  "metaDescription": "Copilot e Claude Code aceleram o código, mas arquitetura e decisões técnicas ainda são do engenheiro. Veja onde a IA ajuda e onde não.",
+  "category": "ferramentas-de-ia",
+  "categories": ["ferramentas-de-ia", "desenvolvimento"],
+  "tags": ["ia-para-devs", "github-copilot", "cursor-ai", "claude-code", "engenharia-de-software", "vibe-coding", "produtividade-dev"],
+  "content": "<h2>O que mudou com a IA para desenvolvedores</h2><p>Desde que o GitHub Copilot foi lançado em 2021, a forma como muitos desenvolvedores escrevem código mudou bastante. Ferramentas como Cursor, Claude Code e o próprio Copilot conseguem autocompletar funções, sugerir implementações inteiras e até refatorar blocos de código em segundos.</p><p>Um estudo da GitHub com mais de 95 desenvolvedores mostrou que quem usa o Copilot conclui tarefas de codificação cerca de 55% mais rápido do que quem não usa. Isso é real, mensurável e já está impactando o mercado.</p><p>Mas existe uma confusão perigosa se espalhando: a de que escrever código mais rápido é o mesmo que fazer engenharia de software. Não é. E entender essa diferença pode ser o que vai separar os profissionais que crescem na carreira dos que ficam presos rodando prompts.</p><h2>Como as ferramentas de IA para código funcionam</h2><p>Os modelos de linguagem como GPT-4, Claude 3.5 e Gemini são treinados em bilhões de linhas de código público. Eles aprenderam padrões: como escrever um endpoint REST, como estruturar um componente React, como montar uma query SQL para um caso comum.</p><p>Na prática, quando você digita um comentário ou começa uma função, a IA prevê qual é a continuação mais provável com base naquele padrão. É estatística aplicada ao código, não compreensão real do problema que você está resolvendo.</p><p>O resultado é impressionante para tarefas com padrão claro: CRUD, testes unitários, conversão de formatos, boilerplate, scripts simples. Para essas tarefas repetitivas, a IA entrega em segundos o que levaria minutos ou horas.</p><h2>O que a IA ainda não consegue fazer</h2><p>O problema começa quando a tarefa exige julgamento, contexto de negócio ou raciocínio sobre tradeoffs. A IA não sabe qual é a regra de negócio da sua empresa. Ela não sabe que aquele campo "status" tem significado diferente no sistema de pagamentos e no sistema de envio. Ela não sabe que o cliente pediu uma coisa mas precisa de outra.</p><p>Algumas áreas onde a IA ainda tropeça com frequência:</p><ul><li><strong>Arquitetura de sistemas:</strong> escolher entre microsserviços ou monolito, decidir qual serviço deve ser dono de um dado, definir limites de contexto em DDD</li><li><strong>Debugging de sistemas distribuídos:</strong> race conditions entre serviços, inconsistências de estado em sistemas eventualmente consistentes, latências intermitentes</li><li><strong>Decisões com restrições reais:</strong> custo de infraestrutura, limitações de equipe, legado que não pode ser reescrito agora</li><li><strong>Segurança e compliance:</strong> o modelo sugere a implementação, mas não sabe quais dados são sensíveis no contexto da sua empresa</li><li><strong>Estimativas e comunicação com stakeholders:</strong> traduzir requisitos vagos em tarefas técnicas concretas é habilidade humana</li></ul><h2>Como começar a usar IA de forma produtiva no seu dia a dia</h2><p>Se você ainda não usa nenhuma dessas ferramentas, o passo mais simples é ativar o GitHub Copilot no VS Code ou instalar o Cursor. Ambos têm plano gratuito com limite de usos mensais suficiente para experimentar.</p><p>Passo 1: instale o Copilot pelo marketplace do VS Code (busque "GitHub Copilot") e conecte com sua conta GitHub. Passo 2: abra um arquivo de código qualquer e comece a digitar um comentário descrevendo o que quer. Passo 3: observe a sugestão aparecer em cinza e pressione Tab para aceitar.</p><p>Para Claude Code, é um CLI que você instala via npm: <code>npm install -g @anthropic-ai/claude-code</code>. Ele roda no terminal, tem acesso ao seu sistema de arquivos e consegue executar comandos. É mais poderoso para tarefas que envolvem múltiplos arquivos e contexto maior.</p><h2>Exemplo prático: onde a IA brilha e onde falha</h2><p>Imagine que você precisa criar um endpoint para listar pedidos de um usuário com paginação. A IA vai gerar isso em segundos, com o código correto, tipado, com tratamento de erro básico. Ótimo.</p><p>Agora imagine que o negócio decidiu que pedidos cancelados há mais de 90 dias não devem aparecer, exceto para usuários do plano premium, e que o filtro de data deve respeitar o fuso horário do cliente. A IA vai gerar algo. Vai parecer certo. Mas ela não sabe dessas regras a menos que você as explique com precisão cirúrgica no prompt.</p><p>E se você não souber formular o prompt com precisão, o código vai parecer correto, vai passar nos testes unitários que a própria IA escreveu, e vai falhar em produção. Esse é o risco real do "vibe coding": confiar no output sem entender o que está sendo gerado.</p><h2>Comparação: ferramentas de IA para desenvolvedores</h2><p>Hoje existem várias opções no mercado, cada uma com um perfil diferente:</p><p><strong>GitHub Copilot:</strong> integrado ao VS Code e JetBrains, muito forte em autocomplete inline. É o mais maduro e tem a maior base de usuários. O plano gratuito oferece 2.000 completions por mês.</p><p><strong>Cursor:</strong> editor fork do VS Code com IA mais integrada ao contexto do projeto inteiro. Tem modo "Composer" que edita múltiplos arquivos de uma vez. Plano gratuito com 50 usos premium por mês.</p><p><strong>Claude Code:</strong> CLI da Anthropic, corre no terminal, tem acesso ao sistema de arquivos. Mais indicado para tarefas longas de refatoração ou para quem prefere trabalhar pelo terminal. Cobrado por uso via API.</p><p>Nenhum substitui os outros completamente. Muitos devs usam dois em paralelo dependendo da tarefa.</p><h2>Pontos positivos e limitações</h2><p>O ganho real é na velocidade de tarefas repetitivas e na redução de contexto para lembrar de APIs e sintaxes. Você não precisa mais abrir a documentação do Axios para lembrar como cancelar uma requisição. A IA sabe.</p><p>A limitação mais importante não é técnica: é a ilusão de compreensão. O código gerado parece certo, compila, roda nos testes. Mas pode estar errado na lógica de negócio, inseguro em borda de casos não testados, ou difícil de manter porque usa um padrão inadequado para o contexto.</p><p>Outra limitação real: contexto de janela. Modelos têm limite de tokens. Em projetos grandes, a IA não enxerga o projeto inteiro de uma vez, o que limita a utilidade para decisões arquiteturais.</p><h2>Casos de uso reais</h2><p><strong>Dev solo com projeto próprio:</strong> usa Cursor ou Copilot para acelerar o boilerplate e se concentrar na lógica única do produto. Ganha semanas de trabalho.</p><p><strong>Dev em equipe com codebase legado:</strong> usa Claude Code para entender código antigo, gerar documentação automática de funções sem comentário, e criar testes para código sem cobertura.</p><p><strong>Dev júnior aprendendo:</strong> usa Copilot como par de programação, aprende padrões novos vendo as sugestões. Atenção: precisa entender o que aceita, não apenas aceitar tudo.</p><p><strong>Dev sênior tomando decisões de arquitetura:</strong> usa a IA como "segundo par de olhos" para listar prós e contras de uma abordagem. Mas a decisão final é sua, com base no contexto que só você tem.</p><h2>Dicas e boas práticas</h2><p>Revise tudo que a IA gera antes de commitar. Não porque a IA erra muito, mas porque você precisa entender o código que entra no seu projeto. Code review de IA é tão importante quanto code review de colega.</p><p>Use a IA para tarefas com contexto limitado: uma função, um teste, um script. Quanto maior o escopo, mais provável que o output precise de ajuste significativo.</p><p>Aprenda a escrever prompts precisos. "Cria um endpoint de pedidos" gera algo genérico. "Cria um endpoint GET /pedidos que recebe query param página e tamanho, retorna lista paginada de objetos PedidoDto, usa o repositório IPedidoRepository já injetado, e trata o caso em que a página está vazia com 204 No Content" gera algo útil.</p><h2>Vale a pena usar IA para escrever código?</h2><p>Sim, sem dúvida. Para qualquer desenvolvedor que ainda não usa nenhuma dessas ferramentas, há um ganho real de produtividade esperando. O ponto de partida é instalar o Copilot e usá-lo por uma semana em tarefas reais.</p><p>O que não vale é delegar a engenharia para a IA. Arquitetura, decisões de design, entendimento do negócio, debugging de sistemas complexos e comunicação com stakeholders continuam sendo responsabilidade do engenheiro. A IA acelera a implementação. O pensamento ainda é seu.</p><p>O próximo passo: escolha uma ferramenta (Copilot para começar, Cursor se quiser mais integração, Claude Code se preferir terminal), ative o plano gratuito e use por uma semana. Você vai notar a diferença nas tarefas repetitivas logo no primeiro dia.</p>",
+  "faqs": [
+    {
+      "question": "GitHub Copilot realmente aumenta a produtividade?",
+      "answer": "Sim, um estudo da GitHub com desenvolvedores mostrou aumento de cerca de 55% na velocidade de conclusão de tarefas de codificação. O ganho é maior em tarefas repetitivas como boilerplate, testes e CRUD. Para tarefas que exigem decisão arquitetural, o ganho é menor."
+    },
+    {
+      "question": "Qual a diferença entre Copilot, Cursor e Claude Code?",
+      "answer": "Copilot é um plugin que funciona dentro do VS Code e JetBrains, focado em autocomplete inline. Cursor é um editor completo (fork do VS Code) com IA mais integrada ao contexto do projeto. Claude Code é um CLI que roda no terminal e tem acesso ao sistema de arquivos para tarefas mais longas e complexas."
+    },
+    {
+      "question": "Usar IA para código vai me deixar dependente e me fazer esquecer como programar?",
+      "answer": "Esse é um risco real se você aceitar o código gerado sem entender. A recomendação é sempre revisar e entender o que foi gerado antes de commitar. Use a IA como assistente, não como substituto do raciocínio. Devs que apenas aceitam sugestões sem entender tendem a ter dificuldade em debugging e manutenção."
+    },
+    {
+      "question": "A IA consegue fazer arquitetura de software?",
+      "answer": "Ela pode sugerir padrões e listar prós e contras de abordagens, mas não tem contexto do seu negócio, da sua equipe, do seu legado e das suas restrições reais. Decisões arquiteturais envolvem tradeoffs que dependem de informações que só você tem. Use a IA como input, não como oráculo."
+    },
+    {
+      "question": "Para quem vale a pena começar a usar ferramentas de IA para código agora?",
+      "answer": "Para praticamente todos os desenvolvedores. O GitHub Copilot tem plano gratuito com 2.000 completions por mês, suficiente para experimentar em projetos reais. O melhor momento para começar é agora, mesmo que seja só para entender como a ferramenta se comporta com seu stack."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Ferramentas de IA para código: em números",
+      "items": [
+        {"label": "GitHub Copilot lançado", "value": "2021 (preview) / 2022 (geral)"},
+        {"label": "Ganho de velocidade (estudo GitHub)", "value": "Cerca de 55% em tarefas de codificação"},
+        {"label": "Copilot: plano gratuito", "value": "2.000 completions por mês"},
+        {"label": "Cursor: plano gratuito", "value": "50 usos premium por mês"},
+        {"label": "Claude Code: instalação", "value": "npm install -g @anthropic-ai/claude-code"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "GitHub Copilot", "value": "https://github.com/features/copilot"},
+        {"label": "Cursor", "value": "https://www.cursor.com"},
+        {"label": "Claude Code (Anthropic)", "value": "https://docs.anthropic.com/pt/docs/claude-code"},
+        {"label": "GitHub Copilot Docs", "value": "https://docs.github.com/pt/copilot"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os devs",
+      "items": [
+        {
+          "name": "Rafael Mendonca",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMendonca",
+          "text": "Uso Copilot faz uns 8 meses e não consigo mais imaginar escrever testes unitários sem ele. O que levava 30 minutos agora leva 5. Mas para arquitetura de microsserviços ainda preciso pensar eu mesmo."
+        },
+        {
+          "name": "Camila Ferreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaFerreira",
+          "text": "Comecei a usar Cursor no meu projeto solo e a velocidade de prototipação triplicou. O ponto é que quando algo dá errado, você precisa entender o código para debugar. Se você só colou o que a IA sugeriu, fica perdido."
+        },
+        {
+          "name": "Lucas Souza",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasSouza",
+          "text": "Tentei usar Claude Code para refatorar um módulo legado grande e surpreendeu. Ele leu os arquivos, entendeu o contexto e propôs uma abordagem coerente. Mas eu tive que guiar e revisar cada passo."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "55% mais rapido",
+  "card1_texto": "Ganho de velocidade em codificacao com Copilot",
+  "card2_titulo": "Engenharia e sua",
+  "card2_texto": "Arquitetura e decisoes tecnicas ainda sao do dev",
+  "card3_titulo": "Gratis para comecar",
+  "card3_texto": "Copilot e Cursor tem planos gratuitos para testar",
+  "subtitulo_capa": "Copilot e Claude Code aceleram o código. Arquitetura e decisões técnicas ainda são suas."
+}
