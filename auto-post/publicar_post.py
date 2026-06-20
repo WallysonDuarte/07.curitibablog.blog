@@ -866,6 +866,12 @@ def notificar_indexnow(slug: str) -> dict:
 # }
 _SOCIAL_SECRETS_PATH = Path("E:/PROJETOS/00.documentos/secrets/curitibablog.com.br/social.json")
 
+WHATSAPP_GROUP_ID   = "120363409507724098@g.us"
+WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/FXw6emOLBtIHOusvzzz1pS"
+WAHA_URL            = "http://127.0.0.1:3000"
+WAHA_API_KEY        = "CuritibaShopping2025SecretKey"
+WAHA_SESSION        = "default"
+
 
 def _load_social_config() -> dict | None:
     try:
@@ -880,6 +886,33 @@ def _truncar(texto: str, max_chars: int) -> str:
     if len(texto) <= max_chars:
         return texto
     return texto[:max_chars - 3].rstrip() + "..."
+
+
+def postar_whatsapp_grupo(titulo: str, summary: str, slug: str) -> dict:
+    """Envia mensagem sobre novo post no grupo WhatsApp via WAHA."""
+    post_url = f"https://curitibablog.com.br/{slug}"
+    mensagem = (
+        f"📰 *{titulo}*\n\n"
+        f"{_truncar(summary, 200)}\n\n"
+        f"🔗 Leia agora: {post_url}\n\n"
+        f"💬 Compartilhe com quem pode se interessar!"
+    )
+    try:
+        r = requests.post(
+            f"{WAHA_URL}/api/sendText",
+            headers={"X-Api-Key": WAHA_API_KEY, "Content-Type": "application/json"},
+            json={"session": WAHA_SESSION, "chatId": WHATSAPP_GROUP_ID, "text": mensagem},
+            timeout=20,
+        )
+        if r.ok:
+            log(f"WhatsApp grupo: mensagem enviada")
+            return {"ok": True}
+        else:
+            log(f"WhatsApp grupo: ERRO HTTP {r.status_code} — {r.text[:200]}")
+            return {"ok": False, "erro": r.text[:200]}
+    except Exception as e:
+        log(f"WhatsApp grupo: EXCECAO — {e}")
+        return {"ok": False, "erro": str(e)}
 
 
 def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | None) -> dict:
@@ -902,7 +935,8 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
     legenda = (
         f"{titulo}\n\n"
         f"{_truncar(summary, 200)}\n\n"
-        f"Leia o artigo completo: {post_url}\n\n"
+        f"🔗 Leia o artigo completo: {post_url}\n\n"
+        f"💬 Quer ficar informado? Entre no nosso grupo do WhatsApp:\n{WHATSAPP_GROUP_LINK}\n\n"
         "#tecnologia #ia #desenvolvedores #programacao #curitibablog"
     )
 
@@ -1092,6 +1126,15 @@ def main(json_path: str):
             cover_url=cover_url,
         )
         run_log["etapas"]["social"] = social_results
+
+        # 12. Enviar no grupo WhatsApp Curitiba Blog
+        log("Enviando no grupo WhatsApp...")
+        wpp_result = postar_whatsapp_grupo(
+            titulo=doc["title"],
+            summary=doc["summary"],
+            slug=slug,
+        )
+        run_log["etapas"]["whatsapp"] = wpp_result
 
         run_log["status"] = "CONCLUIDO"
         run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
