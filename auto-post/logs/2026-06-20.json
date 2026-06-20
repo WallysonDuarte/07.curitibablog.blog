@@ -3,25 +3,27 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-20-cover.jpg",
     "upload": {
-      "key": "covers/2f9315fe-4ebd-4e2f-812d-d2ff176770e1-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/2f9315fe-4ebd-4e2f-812d-d2ff176770e1-cover.jpg"
+      "key": "covers/d13a4b78-67d6-4aea-bb3e-ed72b4480aab-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/d13a4b78-67d6-4aea-bb3e-ed72b4480aab-cover.jpg"
     },
     "mongo": {
-      "id": "6a365824fc39df9bf43c2a25",
-      "slug": "project-valhalla-jdk-28-value-types-java"
+      "id": "6a36c8ee2d2aee13198d5ea7",
+      "slug": "alucinacoes-llm-modelos-open-source-vs-gpt-2026"
     },
     "rebuild": {
       "curitibablog": {
         "ok": true
       },
       "blogdudu": {
-        "ok": true
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
       },
       "devlevelup": {
         "ok": true
       },
       "dozeroaojunior": {
-        "ok": true
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
       },
       "levelupdev": {
         "ok": true
@@ -29,7 +31,7 @@
     },
     "http_check": 200,
     "indexnow": {
-      "levelupdev": {
+      "blogdudu": {
         "ok": true,
         "status": 200
       },
@@ -41,7 +43,7 @@
         "ok": true,
         "status": 200
       },
-      "blogdudu": {
+      "levelupdev": {
         "ok": true,
         "status": 200
       },
@@ -56,5 +58,5 @@
     }
   },
   "status": "CONCLUIDO",
-  "post_url": "https://curitibablog.com.br/project-valhalla-jdk-28-value-types-java"
+  "post_url": "https://curitibablog.com.br/alucinacoes-llm-modelos-open-source-vs-gpt-2026"
 }
