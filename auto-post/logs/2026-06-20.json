@@ -1,0 +1,7 @@
+{
+  "data": "2026-06-20",
+  "etapas": {},
+  "status": "ERRO",
+  "erro": "[Errno 2] No such file or directory: '--rebuild-only'",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 976, in main\n    with open(json_path, encoding=\"utf-8\") as f:\n         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '--rebuild-only'\n"
+}

@@ -256,11 +256,8 @@ _ACENTO_FIXES = [
     (r'\bestagio\b', 'estágio'), (r'\bestágios\b', 'estágios'), (r'\bestâgios\b', 'estágios'),
     (r'\binterface\b', 'interface'),  # ok sem acento
     (r'\bcomodo\b', 'cômodo'), (r'\bcomodidade\b', 'comodidade'),
-    # Verbos com acento
-    (r'\be\b', 'é'),  # CUIDADO: apenas no contexto de verbo "é", não conjunção "e"
-    # ^^ MUITO ARISCADO — nao incluir "e" → "é"
-    (r'\besta\b', 'está'),  # ARISCADO: "esta" (adj. demonstrativo) vs "está" (verbo) — não incluir
-    # Exceções: nao corrigir "e" (conjunção) e "esta" (pronome)
+    # Verbos com acento — "e"→"é" e "esta"→"está" REMOVIDOS: ambiguidade conjuncao/verbo
+    # nao corrigir "e" (conjuncao "e" vs verbo "e") nem "esta" (pronome vs verbo "esta")
     # Outras palavras
     (r'\bvideo\b', 'vídeo'), (r'\bvideos\b', 'vídeos'),
     (r'\baudio\b', 'áudio'), (r'\baudios\b', 'áudios'),
