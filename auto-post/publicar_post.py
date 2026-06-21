@@ -1117,6 +1117,87 @@ def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
         return {"ok": False, "erro": str(e)}
 
 
+def postar_reddit(titulo: str, summary: str, slug: str) -> dict:
+    """
+    Passo 14 do pipeline: submete link post no Reddit via API OAuth2 (script app).
+    Requer social.json com reddit_client_id, reddit_client_secret,
+    reddit_username, reddit_password, reddit_subreddit.
+    Falha silenciosa — erros sao logados mas NAO bloqueiam a publicacao.
+    """
+    config = _load_social_config()
+    if not config:
+        log("Reddit: social.json nao encontrado — pulando")
+        return {"ok": False, "erro": "sem_config"}
+
+    client_id     = config.get("reddit_client_id", "")
+    client_secret = config.get("reddit_client_secret", "")
+    username      = config.get("reddit_username", "")
+    password      = config.get("reddit_password", "")
+    subreddit     = config.get("reddit_subreddit", "")
+
+    if not all([client_id, client_secret, username, password, subreddit]):
+        log("Reddit: credenciais incompletas em social.json — pulando")
+        return {"ok": False, "erro": "credenciais_incompletas"}
+
+    post_url = f"https://curitibablog.com.br/{slug}"
+
+    try:
+        # OAuth2 token via password grant (script app)
+        token_r = requests.post(
+            "https://www.reddit.com/api/v1/access_token",
+            auth=(client_id, client_secret),
+            data={"grant_type": "password", "username": username, "password": password},
+            headers={"User-Agent": "curitibablog-autopost/1.0"},
+            timeout=15,
+        )
+        if not token_r.ok:
+            log(f"Reddit: falha ao obter token — {token_r.status_code} {token_r.text[:200]}")
+            return {"ok": False, "erro": f"token_{token_r.status_code}"}
+
+        access_token = token_r.json().get("access_token", "")
+        if not access_token:
+            log(f"Reddit: token vazio — {token_r.text[:200]}")
+            return {"ok": False, "erro": "token_vazio"}
+
+        # Submeter link post
+        submit_r = requests.post(
+            "https://oauth.reddit.com/api/submit",
+            headers={
+                "Authorization": f"Bearer {access_token}",
+                "User-Agent": "curitibablog-autopost/1.0",
+            },
+            data={
+                "kind": "link",
+                "sr": subreddit,
+                "title": titulo[:300],
+                "url": post_url,
+                "resubmit": True,
+                "nsfw": False,
+                "spoiler": False,
+            },
+            timeout=20,
+        )
+        if not submit_r.ok:
+            log(f"Reddit: ERRO submit {submit_r.status_code} — {submit_r.text[:200]}")
+            return {"ok": False, "erro": submit_r.text[:200]}
+
+        data = submit_r.json()
+        # Reddit retorna erros dentro do JSON com status 200
+        errors = data.get("json", {}).get("errors", [])
+        if errors:
+            log(f"Reddit: ERRO na resposta — {errors}")
+            return {"ok": False, "erro": str(errors)}
+
+        post_id = data.get("json", {}).get("data", {}).get("id", "")
+        permalink = data.get("json", {}).get("data", {}).get("url", "")
+        log(f"Reddit: post publicado ({post_id}) — {permalink}")
+        return {"ok": True, "id": post_id, "url": permalink}
+
+    except Exception as e:
+        log(f"Reddit: EXCECAO — {e}")
+        return {"ok": False, "erro": str(e)}
+
+
 def main(json_path: str):
     hoje = datetime.date.today().isoformat()
     log_path = LOGS_DIR / f"{hoje}.json"
@@ -1262,6 +1343,15 @@ def main(json_path: str):
             slug=slug,
         )
         run_log["etapas"]["x_twitter"] = x_result
+
+        # 14. Postar no Reddit
+        log("Postando no Reddit...")
+        reddit_result = postar_reddit(
+            titulo=doc["title"],
+            summary=doc["summary"],
+            slug=slug,
+        )
+        run_log["etapas"]["reddit"] = reddit_result
 
         run_log["status"] = "CONCLUIDO"
         run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
