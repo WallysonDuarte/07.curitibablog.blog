@@ -1119,10 +1119,10 @@ def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
 
 def postar_reddit(titulo: str, summary: str, slug: str) -> dict:
     """
-    Passo 14 do pipeline: submete link post no Reddit via API OAuth2 (script app).
+    Passo 14 do pipeline: submete link post em multiplos subreddits via OAuth2 (script app).
     Requer social.json com reddit_client_id, reddit_client_secret,
-    reddit_username, reddit_password, reddit_subreddit.
-    Falha silenciosa — erros sao logados mas NAO bloqueiam a publicacao.
+    reddit_username, reddit_password, reddit_subreddits (lista).
+    Falha silenciosa por subreddit — erros sao logados mas NAO bloqueiam a publicacao.
     """
     config = _load_social_config()
     if not config:
@@ -1133,16 +1133,16 @@ def postar_reddit(titulo: str, summary: str, slug: str) -> dict:
     client_secret = config.get("reddit_client_secret", "")
     username      = config.get("reddit_username", "")
     password      = config.get("reddit_password", "")
-    subreddit     = config.get("reddit_subreddit", "")
+    subreddits    = config.get("reddit_subreddits", [])
 
-    if not all([client_id, client_secret, username, password, subreddit]):
+    if not all([client_id, client_secret, username, password]) or not subreddits:
         log("Reddit: credenciais incompletas em social.json — pulando")
         return {"ok": False, "erro": "credenciais_incompletas"}
 
     post_url = f"https://curitibablog.com.br/{slug}"
 
     try:
-        # OAuth2 token via password grant (script app)
+        # OAuth2 token — obtido uma vez, reutilizado para todos os subreddits
         token_r = requests.post(
             "https://www.reddit.com/api/v1/access_token",
             auth=(client_id, client_secret),
@@ -1159,39 +1159,56 @@ def postar_reddit(titulo: str, summary: str, slug: str) -> dict:
             log(f"Reddit: token vazio — {token_r.text[:200]}")
             return {"ok": False, "erro": "token_vazio"}
 
-        # Submeter link post
-        submit_r = requests.post(
-            "https://oauth.reddit.com/api/submit",
-            headers={
-                "Authorization": f"Bearer {access_token}",
-                "User-Agent": "curitibablog-autopost/1.0",
-            },
-            data={
-                "kind": "link",
-                "sr": subreddit,
-                "title": titulo[:300],
-                "url": post_url,
-                "resubmit": True,
-                "nsfw": False,
-                "spoiler": False,
-            },
-            timeout=20,
-        )
-        if not submit_r.ok:
-            log(f"Reddit: ERRO submit {submit_r.status_code} — {submit_r.text[:200]}")
-            return {"ok": False, "erro": submit_r.text[:200]}
+        resultados = {}
+        headers = {
+            "Authorization": f"Bearer {access_token}",
+            "User-Agent": "curitibablog-autopost/1.0",
+        }
 
-        data = submit_r.json()
-        # Reddit retorna erros dentro do JSON com status 200
-        errors = data.get("json", {}).get("errors", [])
-        if errors:
-            log(f"Reddit: ERRO na resposta — {errors}")
-            return {"ok": False, "erro": str(errors)}
+        for i, sr in enumerate(subreddits):
+            # Delay entre posts: evita rate limit e filtro anti-spam para mesma URL
+            if i > 0:
+                import time as _time
+                _time.sleep(3)
 
-        post_id = data.get("json", {}).get("data", {}).get("id", "")
-        permalink = data.get("json", {}).get("data", {}).get("url", "")
-        log(f"Reddit: post publicado ({post_id}) — {permalink}")
-        return {"ok": True, "id": post_id, "url": permalink}
+            try:
+                submit_r = requests.post(
+                    "https://oauth.reddit.com/api/submit",
+                    headers=headers,
+                    data={
+                        "kind": "link",
+                        "sr": sr,
+                        "title": titulo[:300],
+                        "url": post_url,
+                        "resubmit": True,
+                        "nsfw": False,
+                        "spoiler": False,
+                    },
+                    timeout=20,
+                )
+                if not submit_r.ok:
+                    log(f"Reddit r/{sr}: ERRO HTTP {submit_r.status_code} — {submit_r.text[:150]}")
+                    resultados[sr] = {"ok": False, "erro": f"http_{submit_r.status_code}"}
+                    continue
+
+                data = submit_r.json()
+                errors = data.get("json", {}).get("errors", [])
+                if errors:
+                    log(f"Reddit r/{sr}: ERRO — {errors}")
+                    resultados[sr] = {"ok": False, "erro": str(errors)}
+                    continue
+
+                post_id   = data.get("json", {}).get("data", {}).get("id", "")
+                permalink = data.get("json", {}).get("data", {}).get("url", "")
+                log(f"Reddit r/{sr}: publicado ({post_id})")
+                resultados[sr] = {"ok": True, "id": post_id, "url": permalink}
+
+            except Exception as e_sub:
+                log(f"Reddit r/{sr}: EXCECAO — {e_sub}")
+                resultados[sr] = {"ok": False, "erro": str(e_sub)}
+
+        ok_count = sum(1 for v in resultados.values() if v.get("ok"))
+        return {"ok": ok_count > 0, "subreddits": resultados, "ok_count": ok_count}
 
     except Exception as e:
         log(f"Reddit: EXCECAO — {e}")
