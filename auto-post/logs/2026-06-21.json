@@ -3,12 +3,12 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-21-cover.jpg",
     "upload": {
-      "key": "covers/debb3924-d4fd-4e10-9f7f-fb36137917cc-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/debb3924-d4fd-4e10-9f7f-fb36137917cc-cover.jpg"
+      "key": "covers/2ac3abe3-29b8-4616-87a9-5c7890aedf87-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/2ac3abe3-29b8-4616-87a9-5c7890aedf87-cover.jpg"
     },
     "mongo": {
-      "id": "6a37a95f6f518a1419386286",
-      "slug": "cors-cross-origin-resource-sharing-guia-completo"
+      "id": "6a38197ca29262891a3b94e9",
+      "slug": "google-50-porcento-ipv6-o-que-muda-para-desenvolvedores"
     },
     "rebuild": {
       "curitibablog": {
@@ -29,15 +29,15 @@
     },
     "http_check": 200,
     "indexnow": {
-      "levelupdev": {
-        "ok": true,
-        "status": 200
-      },
-      "curitibablog": {
-        "ok": true,
-        "status": 200
-      },
       "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
         "ok": true,
         "status": 200
       },
@@ -45,7 +45,7 @@
         "ok": true,
         "status": 200
       },
-      "blogdudu": {
+      "curitibablog": {
         "ok": true,
         "status": 200
       }
@@ -53,11 +53,11 @@
     "social": {
       "facebook": {
         "ok": true,
-        "id": "103132212436476_1004569685660513"
+        "id": "103132212436476_1004895585627923"
       },
       "instagram": {
         "ok": false,
-        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"type\":\"OAuthException\",\"code\":10,\"fbtrace_id\":\"A6ZvsZsqTLeloQ3n7VEQFgh\"}}"
+        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"type\":\"OAuthException\",\"code\":10,\"fbtrace_id\":\"A9CyzqhtydcT7eWrFO65AaA\"}}"
       }
     },
     "whatsapp": {
@@ -65,5 +65,5 @@
     }
   },
   "status": "CONCLUIDO",
-  "post_url": "https://curitibablog.com.br/cors-cross-origin-resource-sharing-guia-completo"
+  "post_url": "https://curitibablog.com.br/google-50-porcento-ipv6-o-que-muda-para-desenvolvedores"
 }

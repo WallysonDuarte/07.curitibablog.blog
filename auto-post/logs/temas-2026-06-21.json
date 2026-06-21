@@ -3,121 +3,121 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "Developers don't understand CORS (2019)",
-      "url": "https://fosterelli.co/developers-dont-understand-cors",
-      "score": 182,
-      "comentarios": 88
+      "titulo": "Code duplication is far cheaper than the wrong abstraction",
+      "url": "https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction",
+      "score": 60,
+      "comentarios": 28
     },
     {
       "fonte": "HN",
-      "titulo": "Zigzag Decoding with AVX-512",
-      "url": "https://zeux.io/2026/06/17/zigzag-decoding-avx512/",
-      "score": 66,
-      "comentarios": 5
+      "titulo": "Beyond All Reason (Free Total Annihilation Inspired RTS)",
+      "url": "https://www.beyondallreason.info",
+      "score": 267,
+      "comentarios": 134
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Who Owns Your ATProto Identity? Hint: It's Probably Not You",
+      "url": "https://kevinak.se/blog/who-actually-owns-your-atproto-identity-hint-its-probably-not-you",
+      "score": 97,
+      "comentarios": 87
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Commodore Made a Digital Detox Phone That Isn't Dumb",
+      "url": "https://www.wired.me/story/commodore-made-a-digital-detox-phone-that-isnt-dumb",
+      "score": 63,
+      "comentarios": 35
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Google Hits 50% IPv6",
+      "url": "https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/",
+      "score": 332,
+      "comentarios": 315
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A 3D voxel game engine written in APL",
+      "url": "https://github.com/namgyaaal/avoxelgame",
+      "score": 113,
+      "comentarios": 10
     },
     {
       "fonte": "HN",
       "titulo": "Loupe – A iOS app that raises awareness about what native apps can see",
       "url": "https://github.com/mysk-research/loupe",
-      "score": 267,
+      "score": 441,
+      "comentarios": 176
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Running MicroVMs in Proxmox VE, the Easy Way",
+      "url": "https://taoofmac.com/space/blog/2026/06/18/1845",
+      "score": 157,
+      "comentarios": 20
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Two Qwen3 models on one DGX Spark: the residency math",
+      "url": "https://www.devashish.me/p/two-qwen3-models-on-one-dgx-spark",
+      "score": 50,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Slow breathing modulates brain function and risk behavior",
+      "url": "https://www.cell.com/neuron/fulltext/S0896-6273(26)00339-9",
+      "score": 320,
       "comentarios": 93
     },
     {
       "fonte": "HN",
       "titulo": "Renting a sewing machine from the library",
       "url": "https://www.bbc.com/future/article/20260618-the-weird-and-wonderful-libraries-of-finland",
-      "score": 220,
-      "comentarios": 112
+      "score": 298,
+      "comentarios": 171
     },
     {
       "fonte": "HN",
-      "titulo": "Building reliable agentic AI systems",
-      "url": "https://martinfowler.com/articles/reliable-llm-bayer.html",
-      "score": 93,
-      "comentarios": 19
+      "titulo": "Zigzag Decoding with AVX-512",
+      "url": "https://zeux.io/2026/06/17/zigzag-decoding-avx512/",
+      "score": 112,
+      "comentarios": 21
     },
     {
       "fonte": "HN",
       "titulo": "Epoll vs. io_uring in Linux",
       "url": "https://sibexi.co/posts/epoll-vs-io_uring/",
-      "score": 149,
-      "comentarios": 37
+      "score": 224,
+      "comentarios": 52
     },
     {
       "fonte": "HN",
-      "titulo": "Slow breathing modulates brain function and risk behavior",
-      "url": "https://www.cell.com/neuron/fulltext/S0896-6273(26)00339-9",
-      "score": 188,
-      "comentarios": 39
+      "titulo": "The case against geometric algebra (2024)",
+      "url": "https://alexkritchevsky.com/2024/02/28/geometric-algebra.html",
+      "score": 97,
+      "comentarios": 85
     },
     {
       "fonte": "HN",
-      "titulo": "Show HN: TownSquare, a tiny presence layer for websites",
-      "url": "https://townsquare.cauenapier.com/",
-      "score": 165,
-      "comentarios": 84
-    },
-    {
-      "fonte": "HN",
-      "titulo": "15-minute at-home Lyme disease tick test",
-      "url": "https://www.bostonglobe.com/2026/06/17/business/lyme-disease-tick-test/",
-      "score": 107,
-      "comentarios": 51
-    },
-    {
-      "fonte": "HN",
-      "titulo": "SMPTE Makes Its Standards Freely Accessible",
-      "url": "https://www.smpte.org/blog/smpte-makes-its-standards-freely-accessible-openingstandards-library-to-the-global-media-technology-community",
-      "score": 257,
-      "comentarios": 77
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Your brain was never designed for this much bad news",
-      "url": "https://www.sciencedaily.com/releases/2026/06/260614012006.htm",
-      "score": 167,
-      "comentarios": 107
-    },
-    {
-      "fonte": "HN",
-      "titulo": "UHF X11: X11 Built for VisionOS and Apple Vision Pro",
-      "url": "https://www.lispm.net/apps/uhf-x11/",
-      "score": 202,
-      "comentarios": 38
-    },
-    {
-      "fonte": "HN",
-      "titulo": "DOS Game \"F-15 Strike Eagle II\" reversing project needs DOS test pilots",
-      "url": "https://neuviemeporte.github.io/f15-se2/2026/06/20/needyou.html",
-      "score": 249,
-      "comentarios": 64
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The 100k Whys of AI",
-      "url": "https://lcamtuf.substack.com/p/the-100000-whys-of-ai",
-      "score": 99,
-      "comentarios": 50
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Unauthorized alert sent to cell phones across Brazil",
-      "url": "https://www.cnn.com/2026/06/20/americas/brazil-hackers-unauthorized-alert-latam",
-      "score": 128,
-      "comentarios": 91
+      "titulo": "A tale of two path separators",
+      "url": "https://alexwlchan.net/2021/slashes/",
+      "score": 52,
+      "comentarios": 22
     }
   ],
   "devto": [
     {
       "fonte": "Dev.to",
-      "titulo": "Fruit Dash: A Solstice Platformer with Binary Code Gates",
+      "titulo": "15 AI Stories Later, Some Honest Words",
       "tags": [
-        "devchallenge",
-        "gamechallenge",
-        "gamedev",
-        "unity3d"
+        "ai",
+        "discuss",
+        "programming",
+        "career"
       ],
-      "reacoes": 24
+      "reacoes": 21
     },
     {
       "fonte": "Dev.to",
@@ -139,6 +139,17 @@
         "webdev",
         "ai"
       ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What Is an Array, Really? I'm Writing a Book to Find Out",
+      "tags": [
+        "opensource",
+        "computerscience",
+        "beginners",
+        "architecture"
+      ],
       "reacoes": 5
     },
     {
@@ -154,22 +165,44 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "Turing's Mirror - A Game About the Question We Still Haven't Answered",
+      "tags": [
+        "devchallenge",
+        "gamechallenge",
+        "gamedev",
+        "ai"
+      ],
+      "reacoes": 25
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "When Judgment Becomes the Bottleneck",
+      "tags": [
+        "discuss",
+        "ai",
+        "watercooler",
+        "productivity"
+      ],
+      "reacoes": 13
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Playwright Playbook — Part 7: The CI/CD Setup Nobody Shows You",
+      "tags": [
+        "playwright",
+        "testing",
+        "typescript",
+        "automation"
+      ],
+      "reacoes": 8
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "ECHO PROTOCOL — I Built a Game Where You Play as Alan Turing's Last AI, Interrogated by a Live Gemini Model",
       "tags": [
         "devchallenge",
         "gamechallenge",
         "gamedev"
-      ],
-      "reacoes": 3
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "AI memory should be a product state, not a prompt trick",
-      "tags": [
-        "ai",
-        "webdev",
-        "architecture",
-        "privacy"
       ],
       "reacoes": 3
     },
@@ -182,39 +215,7 @@
         "anchor",
         "100daysofsolana"
       ],
-      "reacoes": 0
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Among Liars -> The 7th Player Isn't Human",
-      "tags": [
-        "devchallenge",
-        "gamechallenge",
-        "gamedev",
-        "amongliars"
-      ],
-      "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Connecting an MCP server gives your agent hands. It also gives a stranger a way in.",
-      "tags": [
-        "ai",
-        "security",
-        "claudecode",
-        "mcp"
-      ],
       "reacoes": 1
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Solstice Signal (Tuning into the Dark)",
-      "tags": [
-        "devchallenge",
-        "gamechallenge",
-        "gamedev"
-      ],
-      "reacoes": 0
     }
   ]
 }

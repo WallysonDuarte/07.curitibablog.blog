@@ -1,0 +1,84 @@
+{
+  "title": "Google atinge 50% de tráfego IPv6: o que isso significa para devs",
+  "slug": "google-50-porcento-ipv6-o-que-muda-para-desenvolvedores",
+  "summary": "O Google anunciou que mais da metade do seu tráfego já usa IPv6. Entenda o que é IPv6, por que esse marco importa e como isso afeta quem desenvolve sistemas e APIs hoje.",
+  "metaTitle": "Google 50% IPv6: o que muda para devs | CuritibaBlog",
+  "metaDescription": "Google atingiu 50% de tráfego IPv6. Saiba o que é IPv6, por que esse marco histórico importa e como preparar seus sistemas para o novo protocolo.",
+  "category": "tecnologia",
+  "categories": ["tecnologia", "desenvolvimento"],
+  "tags": ["ipv6", "ipv4", "redes", "internet", "google", "protocolo de internet", "infraestrutura"],
+  "content": "<h2>O que é IPv6</h2><p>IPv6 é a versão mais recente do Protocolo de Internet, o sistema de endereçamento que identifica cada dispositivo conectado à rede. Ele foi criado para resolver um problema crítico: o esgotamento dos endereços IPv4.</p><p>O IPv4, lançado em 1981, suporta cerca de 4,3 bilhões de endereços únicos. Parecia muito no início, mas com a explosão de dispositivos conectados, esse número foi se esgotando ao longo das décadas. O IPv6 chega com um espaço de endereçamento absurdamente maior: 340 undecilhões de endereços (um número de 39 dígitos).</p><p>Na prática, o IPv6 usa endereços de 128 bits, contra os 32 bits do IPv4. Um endereço IPv4 parece com <code>192.168.1.1</code>. Um endereço IPv6 parece com <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>, muito mais longo e expresso em hexadecimal.</p><h2>Como o IPv6 funciona</h2><p>O funcionamento é similar ao IPv4 em essência: cada pacote de dados carrega o endereço de origem e destino. A diferença está no tamanho desses endereços e em melhorias no protocolo em si.</p><p>O IPv6 elimina a necessidade de NAT (Network Address Translation), que era o mecanismo usado para compartilhar um único IP público entre vários dispositivos numa rede. Com IPv6, cada dispositivo pode ter seu próprio endereço global único, o que simplifica a arquitetura de redes e melhora a conectividade ponta a ponta.</p><p>Além do espaço de endereçamento, o IPv6 trouxe melhorias como autoconfiguração de endereços (SLAAC), cabeçalhos mais simples para processamento mais rápido, suporte nativo a IPsec e multicast mais eficiente.</p><h2>O marco: Google ultrapassa 50% de tráfego IPv6</h2><p>Em abril de 2026, o blog da APNIC publicou uma análise mostrando que o Google atingiu a marca histórica de 50% do seu tráfego usando IPv6. Isso significa que mais da metade de todas as requisições feitas aos serviços do Google vêm de conexões IPv6.</p><p>Para ter contexto, o Google começou a medir adoção de IPv6 publicamente em 2008. Demorou mais de 15 anos para chegar nesse ponto. A curva de adoção foi lenta no início e acelerou a partir de 2016, quando provedores de internet e fabricantes de dispositivos passaram a ativar IPv6 por padrão.</p><p>Estados Unidos, Alemanha, Índia e Brasil estão entre os países com maior adoção. No Brasil, operadoras como Claro, Vivo e TIM já distribuem IPv6 para usuários de fibra e 4G/5G há alguns anos.</p><h2>Como começar a usar IPv6 nos seus projetos</h2><p>Se você desenvolve aplicações web ou APIs, o passo inicial é garantir que seu servidor escute em IPv6. Na maioria dos sistemas Linux modernos, isso já vem habilitado por padrão.</p><p>Passo 1: Verifique se sua VPS ou servidor tem um endereço IPv6 atribuído com <code>ip addr show</code> ou <code>ifconfig</code>. Provedores como AWS, Google Cloud, DigitalOcean e Hostinger já oferecem IPv6 por padrão em novas instâncias.</p><p>Passo 2: Configure seu servidor web (NGINX ou Apache) para escutar em IPv6. No NGINX, adicione <code>listen [::]:443 ssl;</code> junto ao <code>listen 443 ssl;</code> já existente. O mesmo vale para a porta 80.</p><p>Passo 3: Configure o DNS. Além do registro A (IPv4), adicione um registro AAAA com seu endereço IPv6. Isso permite que clientes IPv6 se conectem diretamente sem conversão.</p><h2>Exemplo prático: NGINX com dual-stack IPv4 e IPv6</h2><p>A configuração abaixo faz seu servidor responder tanto em IPv4 quanto em IPv6, o que chamamos de <strong>dual-stack</strong>. É a abordagem recomendada durante a transição.</p><p>No arquivo de configuração do NGINX (<code>/etc/nginx/sites-available/seu-site</code>), ajuste o bloco server:</p><p><code>listen 80;</code><br><code>listen [::]:80;</code><br><code>listen 443 ssl;</code><br><code>listen [::]:443 ssl;</code></p><p>Após reiniciar o NGINX, teste com <code>curl -6 https://seudominio.com</code>. O <code>-6</code> força o uso de IPv6. Se retornar a página corretamente, a configuração está funcionando. Você também pode usar ferramentas online como o <strong>test-ipv6.com</strong> para verificar a conectividade.</p><h2>Comparação: IPv4 vs IPv6 para desenvolvedores</h2><p>Do ponto de vista de desenvolvimento, a maioria das aplicações não precisa de grandes mudanças. Sockets TCP e UDP funcionam da mesma forma. Bibliotecas modernas como o módulo <code>net</code> do Node.js, o <code>socket</code> do Python e o <code>HttpClient</code> do .NET já suportam IPv6 transparentemente.</p><p>A principal diferença prática é no tratamento de endereços como strings. Endereços IPv6 contêm dois-pontos (<code>:</code>), então se você parseia ou valida IPs manualmente no código, precisa atualizar suas expressões regulares e validações. Além disso, na URL de uma requisição HTTP, endereços IPv6 precisam ser envolvidos em colchetes: <code>http://[::1]:8080/api</code>.</p><p>Outra diferença: logs e monitoramento. Seu sistema de logs vai registrar endereços IPv6 dos clientes. Ferramentas de análise de logs como o GoAccess e o ELK Stack já suportam IPv6, mas configs personalizadas de parsing podem precisar de ajuste.</p><h2>Pontos positivos e limitações</h2><p>Do lado positivo, IPv6 melhora conectividade direta entre dispositivos (importante para IoT e P2P), elimina complexidade de NAT em redes grandes, tem roteamento potencialmente mais eficiente e é o futuro garantido da internet.</p><p>Do lado das limitações, a adoção ainda não é universal. Alguns provedores de hosting legados, firewalls corporativos e redes empresariais antigas ainda não suportam IPv6 adequadamente. Por isso, dual-stack (IPv4 + IPv6 simultâneos) ainda é a abordagem mais segura para garantir acesso a todos os usuários.</p><p>Outra limitação: ferramentas de segurança e monitoramento podem ter comportamento diferente. Alguns firewalls e WAFs têm regras IPv4 e IPv6 separadas. É fácil proteger o IPv4 e esquecer de aplicar as mesmas regras no IPv6, criando uma brecha.</p><h2>Casos de uso reais de IPv6</h2><p><strong>Desenvolvedor de APIs públicas:</strong> habilitar IPv6 no servidor garante que clientes em redes apenas-IPv6 (cada vez mais comuns em mobile) consigam acessar a API sem problemas de conectividade.</p><p><strong>Engenheiro de infraestrutura:</strong> migrar a rede interna para IPv6 elimina a necessidade de NAT complexo em ambientes com dezenas de servidores, simplificando firewalls e troubleshooting de rede.</p><p><strong>Desenvolvedor de IoT:</strong> dispositivos como sensores e câmeras podem ter endereços globais únicos, simplificando a comunicação direta sem precisar de servidor relay.</p><p><strong>Time de segurança:</strong> monitorar tráfego IPv6 separadamente do IPv4 ajuda a detectar ataques que tentam explorar gaps de visibilidade em ambientes dual-stack mal configurados.</p><h2>Dicas e boas práticas</h2><p>Ao configurar IPv6, sempre use dual-stack durante a transição. Desativar IPv4 prematuramente pode deixar usuários fora. O mecanismo <strong>Happy Eyeballs</strong> (RFC 8305) que os sistemas operacionais modernos implementam prefere IPv6 automaticamente quando disponível, com fallback transparente para IPv4.</p><p>Para testes locais, <code>::1</code> é o equivalente IPv6 do <code>127.0.0.1</code>. Você pode usar <code>curl -6 http://[::1]:3000</code> para testar sua aplicação via IPv6 localmente.</p><p>No Cloudflare, IPv6 é ativado por padrão em novos domínios. Se você usa Cloudflare como proxy, seus visitantes já se beneficiam de IPv6 mesmo que seu servidor de origem só fale IPv4 - o Cloudflare faz a tradução automaticamente. Mas o ideal é habilitar IPv6 na origem também para latência menor.</p><h2>Vale a pena migrar para IPv6 agora?</h2><p>Para novos projetos: sim, configure dual-stack desde o início. O custo é mínimo (uns minutos de configuração) e você garante compatibilidade futura e acesso a usuários em redes apenas-IPv6.</p><p>Para projetos existentes: a migração é gradual e sem pressa urgente, mas o momento ideal é durante o próximo redesenho de infraestrutura ou migração de servidor. Não espere por uma crise - esgotamento de IPs IPv4 já é realidade em algumas regiões.</p><p>O marco do Google em 50% de IPv6 é um sinal claro: a internet está definitivamente migrando. Devs que entenderem e adotarem IPv6 hoje vão ter menos dor de cabeça nos próximos anos.</p>",
+  "faqs": [
+    {
+      "question": "Preciso migrar minha aplicação para suportar IPv6 urgentemente?",
+      "answer": "Não é urgente, mas é recomendado configurar dual-stack (IPv4 + IPv6) no próximo ciclo de manutenção. A configuração leva minutos no NGINX ou Apache e garante compatibilidade com redes modernas sem quebrar nada."
+    },
+    {
+      "question": "Minha aplicação Node.js/Python/.NET funciona com IPv6 sem alterações?",
+      "answer": "Na maioria dos casos, sim. Frameworks e bibliotecas modernas suportam IPv6 transparentemente. O que pode precisar de ajuste são validações de endereço IP feitas manualmente no código (regex, parsers customizados)."
+    },
+    {
+      "question": "IPv6 é mais rápido que IPv4?",
+      "answer": "Potencialmente sim, pois elimina o overhead do NAT e tem cabeçalhos mais simples. Na prática, a diferença de latência é pequena para usuários finais. O ganho real está em arquiteturas de rede complexas e conectividade direta entre dispositivos."
+    },
+    {
+      "question": "Como verificar se meu servidor já suporta IPv6?",
+      "answer": "Execute 'ip addr show' no servidor Linux e procure um endereço iniciando com '2' ou 'fe80'. Para testar conectividade externa, use 'curl -6 https://google.com'. Se retornar resposta, IPv6 está funcionando."
+    },
+    {
+      "question": "O Cloudflare já resolve o IPv6 para meu site automaticamente?",
+      "answer": "Sim, o Cloudflare proxy adiciona suporte a IPv6 automaticamente para domínios que passam pelo proxy laranja. Visitantes IPv6 conseguem acessar mesmo que seu servidor de origem use apenas IPv4. Ainda assim, habilitar IPv6 na origem melhora a latência."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "IPv6 em números",
+      "items": [
+        {"label": "Endereços possíveis", "value": "340 undecilhões (2^128)"},
+        {"label": "Tamanho do endereço", "value": "128 bits (vs 32 bits do IPv4)"},
+        {"label": "Lançamento do IPv6", "value": "1998 (RFC 2460)"},
+        {"label": "Adoção Google (abr/2026)", "value": "50% do tráfego total"},
+        {"label": "Brasil - adoção estimada", "value": "Cerca de 35% dos usuários"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Análise APNIC - Google 50% IPv6", "value": "https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/"},
+        {"label": "Estatísticas IPv6 Google", "value": "https://www.google.com/intl/en/ipv6/statistics.html"},
+        {"label": "RFC 8200 - IPv6 Specification", "value": "https://datatracker.ietf.org/doc/html/rfc8200"},
+        {"label": "Teste de conectividade IPv6", "value": "https://test-ipv6.com"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Rafael Mendonça",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMendonca",
+          "text": "Habilitei IPv6 no meu servidor NGINX em 10 minutos seguindo a documentação. Sem nenhum problema, só adicionei as linhas com [::] e reiniciei. Simples demais."
+        },
+        {
+          "name": "Camila Ferreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaFerreira",
+          "text": "O que me pegou foi que o Cloudflare já habilitava IPv6 pros visitantes, mas meu servidor de origem não suportava. Quando configurei dual-stack na origem, a latência caiu visivelmente para alguns usuários."
+        },
+        {
+          "name": "Bruno Takahashi",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=BrunoTakahashi",
+          "text": "Cuidado com logs! Depois que ativei IPv6, meus dashboards de monitoramento ficaram cheios de endereços longos que meus parsers não reconheciam. Tive que atualizar as regex de validação de IP."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "4,3 bi de IPs esgotados",
+  "card1_texto": "IPv4 chegou ao limite, IPv6 resolve definitivamente",
+  "card2_titulo": "Google: 50% IPv6",
+  "card2_texto": "Marco histórico: metade do tráfego Google já é IPv6",
+  "card3_titulo": "Dual-stack: a solução",
+  "card3_texto": "IPv4 + IPv6 juntos para máxima compatibilidade",
+  "subtitulo_capa": "Google atingiu 50% de tráfego IPv6: o que muda para quem desenvolve sistemas hoje"
+}
