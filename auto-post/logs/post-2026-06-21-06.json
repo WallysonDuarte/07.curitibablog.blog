@@ -1,0 +1,122 @@
+{
+  "title": "CORS: o que é e por que todo dev web já sofreu com isso",
+  "slug": "cors-cross-origin-resource-sharing-guia-completo",
+  "summary": "CORS é uma das fontes de frustração mais comuns entre desenvolvedores web. Neste guia, você vai entender de vez o que é, como funciona e como resolver os erros mais chatos de Cross-Origin no browser.",
+  "metaTitle": "CORS: guia completo para devs | CuritibaBlog",
+  "metaDescription": "Entenda CORS de uma vez: o que é, como funciona, como resolver erros de Cross-Origin e configurar corretamente no seu backend.",
+  "category": "desenvolvimento",
+  "categories": [
+    "desenvolvimento",
+    "tecnologia"
+  ],
+  "tags": [
+    "cors",
+    "cross-origin",
+    "segurança web",
+    "api rest",
+    "javascript",
+    "backend",
+    "http headers"
+  ],
+  "content": "<h2>O que é CORS</h2><p>CORS significa <strong>Cross-Origin Resource Sharing</strong>, ou Compartilhamento de Recursos de Origem Cruzada. É uma política de segurança implementada pelos navegadores que controla como páginas web podem fazer requisições para domínios diferentes do próprio site.</p><p>A história começa com a <strong>Same-Origin Policy</strong>, criada nos anos 90 para proteger usuários. Essa política impede que um script rodando em \"site-a.com\" acesse dados de \"site-b.com\" sem permissão explícita. CORS é o mecanismo que permite flexibilizar essa regra de forma controlada e segura.</p><p>Por que está tão em pauta agora? Porque a arquitetura moderna separou frontend e backend em domínios diferentes. É raro hoje ter frontend e API no mesmo domínio. Resultado: todo projeto web moderno precisa entender e configurar CORS corretamente.</p><h2>Como funciona</h2><p>Quando seu JavaScript faz uma requisição para um domínio diferente, o navegador adiciona automaticamente um header chamado <strong>Origin</strong> com o domínio atual. O servidor precisa responder com o header <strong>Access-Control-Allow-Origin</strong> informando quais origens são permitidas.</p><p>Para requisições simples (GET ou POST com Content-Type texto), o fluxo é direto. Para requisições complexas (DELETE, PUT, ou POST com JSON), o navegador faz primeiro uma requisição <strong>preflight</strong> usando o método OPTIONS para verificar se a operação é permitida antes de enviar a requisição de verdade.</p><p>É fundamental entender: CORS é implementado pelo <strong>navegador</strong>, não pelo servidor. Se você fizer a mesma requisição via curl ou Postman, ela vai funcionar sem CORS. O bloqueio acontece apenas quando o código roda no browser.</p><h2>Principais headers CORS</h2><p>Os headers mais importantes que você precisa conhecer são:</p><ul><li><strong>Access-Control-Allow-Origin</strong>: define qual origem pode acessar. Pode ser \"*\" (todos) ou um domínio específico como \"https://meusite.com.br\".</li><li><strong>Access-Control-Allow-Methods</strong>: lista os métodos HTTP permitidos (GET, POST, PUT, DELETE, OPTIONS).</li><li><strong>Access-Control-Allow-Headers</strong>: define quais headers o cliente pode enviar, como Authorization e Content-Type.</li><li><strong>Access-Control-Allow-Credentials</strong>: define se cookies e tokens de autenticação podem ser incluídos. Se for true, o Allow-Origin não pode ser \"*\".</li><li><strong>Access-Control-Max-Age</strong>: por quantos segundos o resultado do preflight pode ser cacheado pelo browser.</li></ul><p>Entender cada header evita horas de debugging. O erro mais comum é usar \"*\" com credentials, combinação que o browser bloqueia por segurança.</p><h2>Como configurar CORS passo a passo</h2><p>CORS é configurado no servidor (backend), nunca no frontend. Aqui estão as situações mais comuns:</p><p><strong>No .NET Core (ASP.NET):</strong> em Program.cs, adicione <code>builder.Services.AddCors()</code> com a política desejada e depois <code>app.UseCors(\"NomeDaPolitica\")</code>. Defina quais origens são permitidas com <code>.WithOrigins(\"https://meusite.com.br\")</code> combinado com <code>.AllowAnyHeader().AllowAnyMethod()</code>.</p><p><strong>No Node.js com Express:</strong> instale o pacote <code>cors</code> com npm e adicione <code>app.use(cors({ origin: 'https://meusite.com.br' }))</code>. Para múltiplas origens, passe um array ou uma função de validação.</p><p><strong>No NGINX:</strong> adicione os headers diretamente na configuração com <code>add_header Access-Control-Allow-Origin</code> e trate requisições OPTIONS retornando status 204 sem body.</p><h2>Exemplo prático: Angular consumindo API .NET</h2><p>Imagine um frontend em \"https://app.meusite.com.br\" consumindo uma API em \"https://api.meusite.com.br\". Subdomínios diferentes contam como origens diferentes, então CORS é necessário mesmo sendo o mesmo domínio raiz.</p><p>No backend .NET, a configuração correta seria algo como:</p><pre><code>builder.Services.AddCors(options => {   options.AddPolicy(\"Frontend\", policy => {     policy.WithOrigins(\"https://app.meusite.com.br\")           .AllowAnyHeader()           .AllowAnyMethod()           .AllowCredentials();   }); }); // depois do builder.Build(): app.UseCors(\"Frontend\");</code></pre><p>No frontend Angular, você não precisa de configuração especial. O browser cuida de tudo automaticamente. Se aparecer o erro \"has been blocked by CORS policy\" no console, o problema está sempre no backend, nunca no Angular.</p><h2>Comparação com outras abordagens</h2><p>Antes do CORS existir como padrão, desenvolvedores usavam <strong>JSONP</strong> (JSON with Padding) para burlar a Same-Origin Policy. A técnica explorava o fato de que tags <code>script</code> não têm restrição de origem. Era uma gambiarra, só funcionava com GET e abria vulnerabilidades. Hoje é considerado legado e deve ser evitado.</p><p>Outra abordagem válida é usar um <strong>proxy reverso</strong> para servir frontend e backend sob o mesmo domínio. Com NGINX, você roteia \"/api/*\" para o backend e o restante para o frontend. Isso elimina o CORS completamente, mas adiciona complexidade de infraestrutura.</p><p>CORS é o padrão correto para arquiteturas modernas com domínios separados. É seguro, bem documentado e suportado por todos os navegadores atuais.</p><h2>Pontos positivos e limitações</h2><p><strong>Pontos positivos:</strong> CORS é uma camada de segurança real. Impede que sites maliciosos façam requisições autenticadas em nome do usuário em outras APIs sem permissão. É padronizado pelo W3C, implementado nativamente nos browsers e não requer bibliotecas extras no frontend.</p><p><strong>Limitações:</strong> A configuração pode ser confusa, especialmente quando envolve credentials e múltiplas origens. As mensagens de erro no console são genéricas e nem sempre indicam o problema exato. A requisição preflight adiciona uma chamada HTTP extra antes de cada requisição complexa.</p><p>Um erro muito comum é tentar resolver CORS no frontend com extensões de browser ou flags de desenvolvimento. Isso pode funcionar localmente mas nunca resolve em produção. A solução correta é sempre configurar o backend adequadamente.</p><h2>Casos de uso reais</h2><p><strong>SPA com API separada:</strong> todo projeto com React, Angular ou Vue consumindo uma API REST em outro domínio precisa de CORS. É o cenário mais comum no desenvolvimento web moderno.</p><p><strong>Microsserviços:</strong> quando o frontend chama diretamente serviços diferentes em subdomínios distintos, como um serviço de autenticação, um de produtos e outro de pagamentos, cada um precisa ter CORS configurado para a origem do frontend.</p><p><strong>CDN e assets externos:</strong> quando fontes, imagens ou scripts são servidos de um domínio diferente, CORS é necessário. As fontes do Google Fonts, por exemplo, já têm CORS configurado nos servidores do Google.</p><p><strong>APIs públicas:</strong> serviços como Google Maps, Stripe e Firebase configuram CORS para permitir chamadas do browser de qualquer origem, com restrições de chave de API no lado do servidor.</p><h2>Dicas e boas práticas</h2><p>Nunca use <code>Access-Control-Allow-Origin: *</code> combinado com <code>Access-Control-Allow-Credentials: true</code>. O browser rejeita essa combinação por segurança e você vai perder tempo tentando entender o erro. Se precisar de credentials, especifique a origem exata.</p><p>Em produção, sempre liste as origens exatas que podem acessar sua API. Use uma variável de ambiente com as origens permitidas e carregue no startup da aplicação. Isso facilita configurar origens diferentes para desenvolvimento e produção.</p><p>Durante o desenvolvimento local, use um proxy configurado no bundler para evitar problemas de CORS. O Angular CLI tem a opção <code>proxy.conf.json</code> para isso. O Vite tem a opção <code>proxy</code> no vite.config.ts. Isso mantém a configuração de produção correta e simplifica o desenvolvimento.</p><h2>Vale a pena entender CORS?</h2><p>Sim, absolutamente. CORS não é opcional para quem trabalha com desenvolvimento web moderno. Vai aparecer em todo projeto que separa frontend de backend, e não entender como funciona vai gerar horas de debugging desnecessário ao longo da carreira.</p><p>O investimento para entender é pequeno. Leia a documentação do MDN sobre CORS (é excelente e tem versão em português), experimente configurar no seu framework e você vai resolver qualquer problema em minutos da próxima vez que aparecer.</p><p>O próximo passo prático: se você tem um projeto com erro de CORS agora, aplique o que aprendeu aqui e configure os headers corretos no backend. Se não tem, crie um projeto simples com frontend e backend em portas diferentes e experimente configurar do zero.</p>",
+  "faqs": [
+    {
+      "question": "Por que o Postman funciona mas o browser dá erro de CORS?",
+      "answer": "CORS é implementado pelo navegador, não pelo servidor. O Postman faz requisições diretas sem seguir a Same-Origin Policy. O erro de CORS só aparece quando o código JavaScript roda no browser, que aplica a política de segurança automaticamente."
+    },
+    {
+      "question": "Posso resolver o erro de CORS instalando uma extensão no Chrome?",
+      "answer": "Durante o desenvolvimento local pode servir como solução temporária, mas em produção não resolve. A solução correta e definitiva é configurar os headers CORS no backend (servidor). Extensões só afetam o browser de quem as instalou."
+    },
+    {
+      "question": "Qual a diferença entre usar '*' e especificar a origem exata?",
+      "answer": "'*' permite qualquer origem acessar sua API, o que é inseguro para rotas autenticadas. Especificar a origem exata (como 'https://meusite.com.br') é mais seguro e obrigatório quando você usa 'Access-Control-Allow-Credentials: true'."
+    },
+    {
+      "question": "O que é uma requisição preflight e quando ela acontece?",
+      "answer": "É uma requisição OPTIONS que o browser envia automaticamente antes de requisições complexas (PUT, DELETE, ou POST com JSON) para verificar se o servidor permite a operação. O servidor precisa responder com os headers CORS corretos para a requisição real ser enviada."
+    },
+    {
+      "question": "Como configurar CORS no .NET Core?",
+      "answer": "Em Program.cs, use builder.Services.AddCors() para definir uma política com .WithOrigins(), .AllowAnyHeader() e .AllowAnyMethod(). Depois chame app.UseCors('NomeDaPolitica') antes de app.UseAuthorization(). Para credentials, adicione .AllowCredentials() e especifique origens exatas, nunca '*'."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em números: CORS",
+      "items": [
+        {
+          "label": "Padronizado por",
+          "value": "W3C e WHATWG (Fetch Living Standard)"
+        },
+        {
+          "label": "Suporte em browsers",
+          "value": "Todos os navegadores modernos desde 2014"
+        },
+        {
+          "label": "Tipos de requisição",
+          "value": "Simples (sem preflight) e Preflight (OPTIONS)"
+        },
+        {
+          "label": "Documentação em PT-BR",
+          "value": "MDN Web Docs (developer.mozilla.org/pt-BR)"
+        },
+        {
+          "label": "Alternativa legada",
+          "value": "JSONP (obsoleto, não usar em projetos novos)"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "MDN: CORS em português",
+          "value": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS"
+        },
+        {
+          "label": "Fetch Living Standard (WHATWG)",
+          "value": "https://fetch.spec.whatwg.org/#http-cors-protocol"
+        },
+        {
+          "label": "CORS no ASP.NET Core",
+          "value": "https://learn.microsoft.com/aspnet/core/security/cors"
+        },
+        {
+          "label": "Pacote cors para Node.js",
+          "value": "https://www.npmjs.com/package/cors"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Lucas Ferreira Alves",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasAlvesBR",
+          "text": "Passei dois dias tentando resolver um erro de CORS até entender que o problema era no backend, não no frontend. Depois que entendi o mecanismo, ficou simples de resolver."
+        },
+        {
+          "name": "Camila Souza Mendes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaMendesDev",
+          "text": "A explicação sobre preflight foi a que faltava para eu entender por que algumas requisições dão problema e outras não. Muito útil na prática."
+        },
+        {
+          "name": "Rafael Costa Junior",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelCostaJr",
+          "text": "A dica sobre não misturar '*' com credentials me salvou de um bug que demoraria horas para achar. Recomendo para quem está começando com APIs REST."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Segurança nativa",
+  "card1_texto": "CORS protege usuários de ataques cross-site",
+  "card2_titulo": "Erro 'blocked'",
+  "card2_texto": "Aprenda por que o browser bloqueia e como resolver",
+  "card3_titulo": "Config no backend",
+  "card3_texto": "Headers corretos para liberar origens permitidas",
+  "subtitulo_capa": "Entenda CORS de vez e nunca mais sofra com esse erro no navegador"
+}

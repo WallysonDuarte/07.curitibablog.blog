@@ -1,0 +1,69 @@
+{
+  "data": "2026-06-21",
+  "etapas": {
+    "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-21-cover.jpg",
+    "upload": {
+      "key": "covers/debb3924-d4fd-4e10-9f7f-fb36137917cc-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/debb3924-d4fd-4e10-9f7f-fb36137917cc-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a37a95f6f518a1419386286",
+      "slug": "cors-cross-origin-resource-sharing-guia-completo"
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1004569685660513"
+      },
+      "instagram": {
+        "ok": false,
+        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"type\":\"OAuthException\",\"code\":10,\"fbtrace_id\":\"A6ZvsZsqTLeloQ3n7VEQFgh\"}}"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/cors-cross-origin-resource-sharing-guia-completo"
+}
