@@ -1077,9 +1077,9 @@ def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
         log("X: social.json nao encontrado — pulando")
         return {"ok": False, "erro": "sem_config"}
 
-    webhook_url = config.get("zapier_x_webhook", "")
+    webhook_url = config.get("x_webhook_url", "")
     if not webhook_url:
-        log("X: zapier_x_webhook nao configurado em social.json — pulando")
+        log("X: x_webhook_url nao configurado em social.json — pulando")
         return {"ok": False, "erro": "webhook_nao_configurado"}
 
     post_url = f"https://curitibablog.com.br/{slug}"
