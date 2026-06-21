@@ -897,7 +897,8 @@ def postar_whatsapp_grupo(titulo: str, summary: str, slug: str) -> dict:
         f"📰 *{titulo}*\n\n"
         f"{_truncar(summary, 200)}\n\n"
         f"🔗 Leia agora: {post_url}\n\n"
-        f"💬 Compartilhe com quem pode se interessar!"
+        f"💬 Gostou? Compartilhe com quem pode se interessar!\n"
+        f"👥 Entre no grupo para receber novidades:\n{WHATSAPP_GROUP_LINK}"
     )
 
     # SSH tunnel: encaminha 127.0.0.1:3001 (local) -> 127.0.0.1:3000 (VPS)
