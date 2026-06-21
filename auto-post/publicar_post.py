@@ -1066,6 +1066,100 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
     return resultados
 
 
+def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
+    """
+    Passo 13 do pipeline: publica tweet no X (Twitter) via API v2 OAuth 1.0a.
+    Requer social.json com x_consumer_key, x_consumer_secret,
+    x_access_token, x_access_token_secret.
+    Falha silenciosa — erros sao logados mas NAO bloqueiam a publicacao.
+    """
+    config = _load_social_config()
+    if not config:
+        log("X: social.json nao encontrado — pulando")
+        return {"ok": False, "erro": "sem_config"}
+
+    consumer_key    = config.get("x_consumer_key", "")
+    consumer_secret = config.get("x_consumer_secret", "")
+    access_token    = config.get("x_access_token", "")
+    access_secret   = config.get("x_access_token_secret", "")
+
+    if not all([consumer_key, consumer_secret, access_token, access_secret]):
+        log("X: credenciais incompletas (falta access_token/secret) — pulando")
+        return {"ok": False, "erro": "credenciais_incompletas"}
+
+    post_url = f"https://curitibablog.com.br/{slug}"
+    # Tweet: max 280 chars — titulo + link + hashtags
+    hashtags = "#tecnologia #IA #programacao #webdev"
+    tweet_base = f"{titulo}\n\n{post_url}\n\n{hashtags}"
+    # Se ultrapassar 280 chars, trunca o titulo
+    if len(tweet_base) > 280:
+        max_titulo = 280 - len(f"\n\n{post_url}\n\n{hashtags}") - 3
+        tweet_text = f"{titulo[:max_titulo]}...\n\n{post_url}\n\n{hashtags}"
+    else:
+        tweet_text = tweet_base
+
+    try:
+        import hmac, hashlib, base64, time, uuid
+        from urllib.parse import quote
+
+        # OAuth 1.0a signature
+        oauth_timestamp = str(int(time.time()))
+        oauth_nonce = uuid.uuid4().hex
+
+        oauth_params = {
+            "oauth_consumer_key": consumer_key,
+            "oauth_nonce": oauth_nonce,
+            "oauth_signature_method": "HMAC-SHA1",
+            "oauth_timestamp": oauth_timestamp,
+            "oauth_token": access_token,
+            "oauth_version": "1.0",
+        }
+
+        url = "https://api.twitter.com/2/tweets"
+        body_params = {}  # JSON body, not form — não entra na assinatura OAuth
+
+        # Signature base string usa apenas oauth_params (sem body JSON)
+        param_str = "&".join(
+            f"{quote(k, safe='')}={quote(v, safe='')}"
+            for k, v in sorted(oauth_params.items())
+        )
+        base_str = "&".join([
+            "POST",
+            quote(url, safe=""),
+            quote(param_str, safe=""),
+        ])
+        signing_key = f"{quote(consumer_secret, safe='')}&{quote(access_secret, safe='')}"
+        sig = base64.b64encode(
+            hmac.new(signing_key.encode(), base_str.encode(), hashlib.sha1).digest()
+        ).decode()
+
+        oauth_params["oauth_signature"] = sig
+        auth_header = "OAuth " + ", ".join(
+            f'{quote(k, safe="")}="{quote(v, safe="")}"'
+            for k, v in sorted(oauth_params.items())
+        )
+
+        r = requests.post(
+            url,
+            headers={
+                "Authorization": auth_header,
+                "Content-Type": "application/json",
+            },
+            json={"text": tweet_text},
+            timeout=20,
+        )
+        if r.ok:
+            tweet_id = r.json().get("data", {}).get("id", "")
+            log(f"X: tweet publicado ({tweet_id})")
+            return {"ok": True, "id": tweet_id}
+        else:
+            log(f"X: ERRO HTTP {r.status_code} — {r.text[:200]}")
+            return {"ok": False, "erro": r.text[:200]}
+    except Exception as e:
+        log(f"X: EXCECAO — {e}")
+        return {"ok": False, "erro": str(e)}
+
+
 def main(json_path: str):
     hoje = datetime.date.today().isoformat()
     log_path = LOGS_DIR / f"{hoje}.json"
@@ -1202,6 +1296,15 @@ def main(json_path: str):
             slug=slug,
         )
         run_log["etapas"]["whatsapp"] = wpp_result
+
+        # 13. Postar no X (Twitter)
+        log("Postando no X (Twitter)...")
+        x_result = postar_x_twitter(
+            titulo=doc["title"],
+            summary=doc["summary"],
+            slug=slug,
+        )
+        run_log["etapas"]["x_twitter"] = x_result
 
         run_log["status"] = "CONCLUIDO"
         run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
