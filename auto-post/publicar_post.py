@@ -1068,9 +1068,8 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
 
 def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
     """
-    Passo 13 do pipeline: publica tweet no X (Twitter) via API v2 OAuth 1.0a.
-    Requer social.json com x_consumer_key, x_consumer_secret,
-    x_access_token, x_access_token_secret.
+    Passo 13 do pipeline: publica tweet no X via Zapier Webhook.
+    Requer social.json com zapier_x_webhook (URL do Zap Webhooks by Zapier → Post tweet).
     Falha silenciosa — erros sao logados mas NAO bloqueiam a publicacao.
     """
     config = _load_social_config()
@@ -1078,20 +1077,14 @@ def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
         log("X: social.json nao encontrado — pulando")
         return {"ok": False, "erro": "sem_config"}
 
-    consumer_key    = config.get("x_consumer_key", "")
-    consumer_secret = config.get("x_consumer_secret", "")
-    access_token    = config.get("x_access_token", "")
-    access_secret   = config.get("x_access_token_secret", "")
-
-    if not all([consumer_key, consumer_secret, access_token, access_secret]):
-        log("X: credenciais incompletas (falta access_token/secret) — pulando")
-        return {"ok": False, "erro": "credenciais_incompletas"}
+    webhook_url = config.get("zapier_x_webhook", "")
+    if not webhook_url:
+        log("X: zapier_x_webhook nao configurado em social.json — pulando")
+        return {"ok": False, "erro": "webhook_nao_configurado"}
 
     post_url = f"https://curitibablog.com.br/{slug}"
-    # Tweet: max 280 chars — titulo + link + hashtags
     hashtags = "#tecnologia #IA #programacao #webdev"
     tweet_base = f"{titulo}\n\n{post_url}\n\n{hashtags}"
-    # Se ultrapassar 280 chars, trunca o titulo
     if len(tweet_base) > 280:
         max_titulo = 280 - len(f"\n\n{post_url}\n\n{hashtags}") - 3
         tweet_text = f"{titulo[:max_titulo]}...\n\n{post_url}\n\n{hashtags}"
@@ -1099,61 +1092,16 @@ def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
         tweet_text = tweet_base
 
     try:
-        import hmac, hashlib, base64, time, uuid
-        from urllib.parse import quote
-
-        # OAuth 1.0a signature
-        oauth_timestamp = str(int(time.time()))
-        oauth_nonce = uuid.uuid4().hex
-
-        oauth_params = {
-            "oauth_consumer_key": consumer_key,
-            "oauth_nonce": oauth_nonce,
-            "oauth_signature_method": "HMAC-SHA1",
-            "oauth_timestamp": oauth_timestamp,
-            "oauth_token": access_token,
-            "oauth_version": "1.0",
-        }
-
-        url = "https://api.twitter.com/2/tweets"
-        body_params = {}  # JSON body, not form — não entra na assinatura OAuth
-
-        # Signature base string usa apenas oauth_params (sem body JSON)
-        param_str = "&".join(
-            f"{quote(k, safe='')}={quote(v, safe='')}"
-            for k, v in sorted(oauth_params.items())
-        )
-        base_str = "&".join([
-            "POST",
-            quote(url, safe=""),
-            quote(param_str, safe=""),
-        ])
-        signing_key = f"{quote(consumer_secret, safe='')}&{quote(access_secret, safe='')}"
-        sig = base64.b64encode(
-            hmac.new(signing_key.encode(), base_str.encode(), hashlib.sha1).digest()
-        ).decode()
-
-        oauth_params["oauth_signature"] = sig
-        auth_header = "OAuth " + ", ".join(
-            f'{quote(k, safe="")}="{quote(v, safe="")}"'
-            for k, v in sorted(oauth_params.items())
-        )
-
         r = requests.post(
-            url,
-            headers={
-                "Authorization": auth_header,
-                "Content-Type": "application/json",
-            },
+            webhook_url,
             json={"text": tweet_text},
             timeout=20,
         )
         if r.ok:
-            tweet_id = r.json().get("data", {}).get("id", "")
-            log(f"X: tweet publicado ({tweet_id})")
-            return {"ok": True, "id": tweet_id}
+            log(f"X: webhook Zapier acionado OK ({r.status_code})")
+            return {"ok": True, "status": r.status_code}
         else:
-            log(f"X: ERRO HTTP {r.status_code} — {r.text[:200]}")
+            log(f"X: ERRO webhook {r.status_code} — {r.text[:200]}")
             return {"ok": False, "erro": r.text[:200]}
     except Exception as e:
         log(f"X: EXCECAO — {e}")
