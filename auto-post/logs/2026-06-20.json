@@ -3,27 +3,25 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-20-cover.jpg",
     "upload": {
-      "key": "covers/d13a4b78-67d6-4aea-bb3e-ed72b4480aab-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/d13a4b78-67d6-4aea-bb3e-ed72b4480aab-cover.jpg"
+      "key": "covers/cd2d82d7-df94-4490-88cb-3adaca0ce067-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/cd2d82d7-df94-4490-88cb-3adaca0ce067-cover.jpg"
     },
     "mongo": {
-      "id": "6a36c8ee2d2aee13198d5ea7",
-      "slug": "alucinacoes-llm-modelos-open-source-vs-gpt-2026"
+      "id": "6a37393d4a117aa4f86082c3",
+      "slug": "cssquake-quake-classico-css-puro-sem-javascript"
     },
     "rebuild": {
       "curitibablog": {
         "ok": true
       },
       "blogdudu": {
-        "ok": false,
-        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+        "ok": true
       },
       "devlevelup": {
         "ok": true
       },
       "dozeroaojunior": {
-        "ok": false,
-        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+        "ok": true
       },
       "levelupdev": {
         "ok": true
@@ -31,18 +29,6 @@
     },
     "http_check": 200,
     "indexnow": {
-      "blogdudu": {
-        "ok": true,
-        "status": 200
-      },
-      "devlevelup": {
-        "ok": true,
-        "status": 200
-      },
-      "dozeroaojunior": {
-        "ok": true,
-        "status": 200
-      },
       "levelupdev": {
         "ok": true,
         "status": 200
@@ -50,13 +36,35 @@
       "curitibablog": {
         "ok": true,
         "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
       }
     },
     "social": {
-      "facebook": "sem_config",
-      "instagram": "sem_config"
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1004281899022625"
+      },
+      "instagram": {
+        "ok": false,
+        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"(#10) Application does not have permission for this action\",\"type\":\"OAuthException\",\"code\":10,\"fbtrace_id\":\"ANdVVsjpOgeJa_n95RuJ25h\"}}"
+      }
+    },
+    "whatsapp": {
+      "ok": false,
+      "erro": "HTTPConnectionPool(host='127.0.0.1', port=3000): Max retries exceeded with url: /api/sendText (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=3000): Failed to establish a new connection: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente\"))"
     }
   },
   "status": "CONCLUIDO",
-  "post_url": "https://curitibablog.com.br/alucinacoes-llm-modelos-open-source-vs-gpt-2026"
+  "post_url": "https://curitibablog.com.br/cssquake-quake-classico-css-puro-sem-javascript"
 }
