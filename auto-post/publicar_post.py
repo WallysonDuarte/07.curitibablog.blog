@@ -1068,8 +1068,9 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
 
 def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
     """
-    Passo 13 do pipeline: publica tweet no X via Zapier Webhook.
-    Requer social.json com zapier_x_webhook (URL do Zap Webhooks by Zapier → Post tweet).
+    Passo 13 do pipeline: publica tweet no X via API v2 OAuth 1.0a.
+    Requer social.json com x_consumer_key, x_consumer_secret,
+    x_access_token, x_access_token_secret.
     Falha silenciosa — erros sao logados mas NAO bloqueiam a publicacao.
     """
     config = _load_social_config()
@@ -1077,10 +1078,14 @@ def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
         log("X: social.json nao encontrado — pulando")
         return {"ok": False, "erro": "sem_config"}
 
-    webhook_url = config.get("x_webhook_url", "")
-    if not webhook_url:
-        log("X: x_webhook_url nao configurado em social.json — pulando")
-        return {"ok": False, "erro": "webhook_nao_configurado"}
+    consumer_key    = config.get("x_consumer_key", "")
+    consumer_secret = config.get("x_consumer_secret", "")
+    access_token    = config.get("x_access_token", "")
+    access_secret   = config.get("x_access_token_secret", "")
+
+    if not all([consumer_key, consumer_secret, access_token, access_secret]):
+        log("X: credenciais incompletas em social.json — pulando")
+        return {"ok": False, "erro": "credenciais_incompletas"}
 
     post_url = f"https://curitibablog.com.br/{slug}"
     hashtags = "#tecnologia #IA #programacao #webdev"
@@ -1092,16 +1097,20 @@ def postar_x_twitter(titulo: str, summary: str, slug: str) -> dict:
         tweet_text = tweet_base
 
     try:
+        from requests_oauthlib import OAuth1
+        auth = OAuth1(consumer_key, consumer_secret, access_token, access_secret)
         r = requests.post(
-            webhook_url,
+            "https://api.twitter.com/2/tweets",
+            auth=auth,
             json={"text": tweet_text},
             timeout=20,
         )
         if r.ok:
-            log(f"X: webhook Zapier acionado OK ({r.status_code})")
-            return {"ok": True, "status": r.status_code}
+            tweet_id = r.json().get("data", {}).get("id", "")
+            log(f"X: tweet publicado ({tweet_id})")
+            return {"ok": True, "id": tweet_id}
         else:
-            log(f"X: ERRO webhook {r.status_code} — {r.text[:200]}")
+            log(f"X: ERRO HTTP {r.status_code} — {r.text[:200]}")
             return {"ok": False, "erro": r.text[:200]}
     except Exception as e:
         log(f"X: EXCECAO — {e}")
