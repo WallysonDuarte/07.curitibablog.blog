@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const title = 'Termos de Uso — CuritibaBlog';
+const description = 'Termos de Uso do CuritibaBlog. Leia as condições para utilização do site, conteúdo, direitos autorais e responsabilidades.';
+const updated = '20 de junho de 2026';
+---
+
+<BaseLayout title={title} description={description}>
+  <SEO slot="head" title={title} description={description} type="website" slug="termos" />
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Termos de Uso</h1>
+      <p>Última atualização: {updated}</p>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container" style="max-width:800px">
+      <div class="about-prose">
+
+        <h2>1. Aceitação dos Termos</h2>
+        <p>
+          Ao acessar e utilizar o <strong>CuritibaBlog</strong> (<code>curitibablog.com.br</code>), você concorda
+          com estes Termos de Uso. Se não concordar com qualquer parte destes termos, por favor não utilize o site.
+        </p>
+
+        <h2>2. Sobre o CuritibaBlog</h2>
+        <p>
+          O CuritibaBlog é um blog independente de tecnologia, inteligência artificial e desenvolvimento de software,
+          criado e mantido por profissionais de tecnologia baseados em Curitiba, Paraná, Brasil.
+          Responsável: <strong>wallyson.duarte@gmail.com</strong>
+        </p>
+
+        <h2>3. Propriedade Intelectual</h2>
+        <p>
+          Todo o conteúdo publicado no CuritibaBlog — incluindo textos, imagens, gráficos, logotipos e código —
+          é de propriedade do CuritibaBlog ou de seus respectivos autores e está protegido pelas leis brasileiras
+          de direitos autorais (Lei nº 9.610/1998).
+        </p>
+        <p>É permitido:</p>
+        <ul>
+          <li>Compartilhar links para os artigos em redes sociais e outros meios</li>
+          <li>Citar trechos dos artigos com atribuição ao CuritibaBlog e link para a fonte</li>
+          <li>Usar o conteúdo para fins educacionais não comerciais com devida atribuição</li>
+        </ul>
+        <p>É proibido:</p>
+        <ul>
+          <li>Reproduzir artigos completos em outros sites sem autorização prévia e expressa</li>
+          <li>Usar o conteúdo com fins comerciais sem autorização</li>
+          <li>Remover ou alterar avisos de direitos autorais</li>
+        </ul>
+
+        <h2>4. Uso Aceitável</h2>
+        <p>Ao utilizar o CuritibaBlog, você concorda em não:</p>
+        <ul>
+          <li>Utilizar o site para qualquer finalidade ilegal ou não autorizada</li>
+          <li>Tentar acessar áreas restritas do sistema sem autorização</li>
+          <li>Transmitir vírus, malware ou qualquer código malicioso</li>
+          <li>Realizar scraping ou coleta automatizada de dados sem autorização</li>
+          <li>Interferir no funcionamento normal do site</li>
+        </ul>
+
+        <h2>5. Comentários e Interações</h2>
+        <p>
+          O CuritibaBlog pode oferecer funcionalidades de comentários e interação. Ao utilizar esses recursos,
+          você é o único responsável pelo conteúdo que publica. Reservamo-nos o direito de remover conteúdos
+          que violem estes termos, sejam ofensivos, discriminatórios ou ilegais.
+        </p>
+
+        <h2>6. Links Externos</h2>
+        <p>
+          O CuritibaBlog pode conter links para sites de terceiros. Esses links são fornecidos apenas para
+          conveniência e não implicam endosso do conteúdo desses sites. Não nos responsabilizamos pelo
+          conteúdo, políticas de privacidade ou práticas de sites de terceiros.
+        </p>
+
+        <h2>7. Isenção de Responsabilidade</h2>
+        <p>
+          O conteúdo do CuritibaBlog é fornecido "como está", para fins informativos e educacionais.
+          Embora nos esforcemos para garantir a precisão das informações, não garantimos que o conteúdo
+          esteja sempre atualizado, completo ou livre de erros.
+        </p>
+        <p>
+          O CuritibaBlog não se responsabiliza por decisões tomadas com base no conteúdo publicado.
+          Para questões técnicas críticas ou decisões de negócio, consulte profissionais especializados.
+        </p>
+
+        <h2>8. Publicidade</h2>
+        <p>
+          O CuritibaBlog exibe anúncios do <strong>Google AdSense</strong> para cobrir os custos de manutenção
+          do site. Os anúncios são gerenciados pelo Google e seguem as políticas da plataforma. Para mais
+          informações sobre como o Google usa seus dados, consulte nossa
+          <a href="/privacidade">Política de Privacidade</a>.
+        </p>
+
+        <h2>9. Conta de Usuário</h2>
+        <p>
+          Algumas funcionalidades do CuritibaBlog requerem cadastro. Você é responsável por manter a
+          confidencialidade de suas credenciais e por todas as atividades realizadas com sua conta.
+          Notifique-nos imediatamente em caso de uso não autorizado.
+        </p>
+
+        <h2>10. Alterações nos Termos</h2>
+        <p>
+          Reservamo-nos o direito de modificar estes Termos de Uso a qualquer momento. As alterações
+          entram em vigor imediatamente após a publicação no site. O uso continuado do CuritibaBlog após
+          qualquer alteração constitui sua aceitação dos novos termos.
+        </p>
+
+        <h2>11. Lei Aplicável</h2>
+        <p>
+          Estes Termos de Uso são regidos pelas leis brasileiras. Qualquer disputa será submetida ao
+          foro da Comarca de Curitiba, Paraná, Brasil.
+        </p>
+
+        <h2>12. Contato</h2>
+        <p>
+          Dúvidas sobre estes Termos de Uso? Entre em <a href="/contato">contato conosco</a> ou envie
+          um e-mail para <strong>wallyson.duarte@gmail.com</strong>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

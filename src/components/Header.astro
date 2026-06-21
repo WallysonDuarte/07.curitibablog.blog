@@ -23,6 +23,13 @@ const topCats = categories.slice(0, 6);
         <a href={`/categoria/${cat.slug}`}>{cat.name}</a>
       ))}
       <a href="/contato">Contato</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" aria-expanded="false">Legal <i class="fa-solid fa-chevron-down" style="font-size:.6rem"></i></button>
+        <div class="nav-dropdown-menu">
+          <a href="/privacidade">Política de Privacidade</a>
+          <a href="/termos">Termos de Uso</a>
+        </div>
+      </div>
       <a href="https://area.curitibablog.com.br/entrar" class="nav-entrar">Entrar</a>
       <a href="https://area.curitibablog.com.br/cadastro" class="nav-cta">Cadastrar</a>
     </nav>
@@ -32,3 +39,20 @@ const topCats = categories.slice(0, 6);
     </button>
   </div>
 </header>
+
+<script>
+  // Dropdown Legal
+  const dropdownWrapper = document.querySelector('.nav-dropdown');
+  const dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+  if (dropdownToggle && dropdownWrapper) {
+    dropdownToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = dropdownWrapper.classList.toggle('open');
+      dropdownToggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', () => {
+      dropdownWrapper.classList.remove('open');
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+</script>

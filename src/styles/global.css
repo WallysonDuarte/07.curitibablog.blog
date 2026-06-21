@@ -157,6 +157,33 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   border-radius: var(--radius);
 }
 .nav-cta:hover { background: var(--primary-dark) !important; }
+
+/* Dropdown Legal no nav */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  background: none; border: none; cursor: pointer; padding: 0;
+  font-family: var(--font-heading); font-size: .85rem;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: rgba(255,255,255,.8); transition: color .2s;
+  display: flex; align-items: center; gap: .3rem;
+}
+.nav-dropdown-toggle:hover { color: #fff; }
+.nav-dropdown-menu {
+  display: none; position: absolute; top: calc(100% + 10px); right: 0;
+  background: var(--navy); border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius); min-width: 200px;
+  box-shadow: var(--shadow-md); z-index: 200;
+  padding: .4rem 0;
+}
+.nav-dropdown-menu a {
+  display: block; padding: .6rem 1rem;
+  color: rgba(255,255,255,.8) !important; font-size: .8rem;
+  text-transform: none; letter-spacing: 0; border-bottom: none !important;
+  width: auto !important;
+}
+.nav-dropdown-menu a:hover { color: #fff !important; background: rgba(255,255,255,.08); }
+.nav-dropdown.open .nav-dropdown-menu { display: block; }
+
 .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .menu-toggle span {
   display: block; width: 24px; height: 2px;
@@ -883,6 +910,12 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   .site-nav a { padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.08); width: 100%; }
   .nav-entrar { margin-top: .5rem; text-align: center; padding: 10px !important; }
   .nav-cta { border-radius: var(--radius); margin-top: .25rem; text-align: center; padding: 10px !important; }
+  /* Dropdown mobile — vira links diretos */
+  .nav-dropdown { width: 100%; }
+  .nav-dropdown-toggle { display: none; }
+  .nav-dropdown-menu { display: block; position: static; background: none; border: none;
+    box-shadow: none; padding: 0; min-width: auto; }
+  .nav-dropdown-menu a { padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.08) !important; width: 100% !important; }
 }
 
 /* ── Post page cover row (imagem + card lateral) ─────────── */
