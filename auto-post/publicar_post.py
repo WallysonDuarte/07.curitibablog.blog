@@ -1215,6 +1215,73 @@ def postar_reddit(titulo: str, summary: str, slug: str) -> dict:
         return {"ok": False, "erro": str(e)}
 
 
+def postar_linkedin(titulo: str, summary: str, slug: str) -> dict:
+    """
+    Passo 15 do pipeline: publica artigo no LinkedIn via UGC Posts API.
+    Requer social.json com linkedin_access_token e linkedin_person_urn.
+    Access token expira em 60 dias — renovar manualmente via OAuth flow.
+    Falha silenciosa — erros sao logados mas NAO bloqueiam a publicacao.
+    """
+    config = _load_social_config()
+    if not config:
+        log("LinkedIn: social.json nao encontrado — pulando")
+        return {"ok": False, "erro": "sem_config"}
+
+    access_token = config.get("linkedin_access_token", "")
+    person_urn   = config.get("linkedin_person_urn", "")
+
+    if not all([access_token, person_urn]):
+        log("LinkedIn: linkedin_access_token ou linkedin_person_urn ausentes — pulando")
+        return {"ok": False, "erro": "credenciais_incompletas"}
+
+    post_url = f"https://curitibablog.com.br/{slug}"
+    # Texto do post: titulo + resumo curto + link + hashtags
+    hashtags = "#tecnologia #programacao #IA #dev #webdev"
+    texto = f"{titulo}\n\n{_truncar(summary, 200)}\n\n🔗 {post_url}\n\n{hashtags}"
+
+    payload = {
+        "author": person_urn,
+        "lifecycleState": "PUBLISHED",
+        "specificContent": {
+            "com.linkedin.ugc.ShareContent": {
+                "shareCommentary": {"text": texto},
+                "shareMediaCategory": "ARTICLE",
+                "media": [{
+                    "status": "READY",
+                    "description": {"text": _truncar(summary, 256)},
+                    "originalUrl": post_url,
+                    "title": {"text": titulo[:200]},
+                }],
+            }
+        },
+        "visibility": {
+            "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+        },
+    }
+
+    try:
+        r = requests.post(
+            "https://api.linkedin.com/v2/ugcPosts",
+            headers={
+                "Authorization": f"Bearer {access_token}",
+                "Content-Type": "application/json",
+                "X-Restli-Protocol-Version": "2.0.0",
+            },
+            json=payload,
+            timeout=20,
+        )
+        if r.ok:
+            post_id = r.headers.get("x-restli-id", r.json().get("id", ""))
+            log(f"LinkedIn: post publicado ({post_id})")
+            return {"ok": True, "id": post_id}
+        else:
+            log(f"LinkedIn: ERRO HTTP {r.status_code} — {r.text[:200]}")
+            return {"ok": False, "erro": r.text[:200]}
+    except Exception as e:
+        log(f"LinkedIn: EXCECAO — {e}")
+        return {"ok": False, "erro": str(e)}
+
+
 def main(json_path: str):
     hoje = datetime.date.today().isoformat()
     log_path = LOGS_DIR / f"{hoje}.json"
@@ -1369,6 +1436,15 @@ def main(json_path: str):
             slug=slug,
         )
         run_log["etapas"]["reddit"] = reddit_result
+
+        # 15. Postar no LinkedIn
+        log("Postando no LinkedIn...")
+        linkedin_result = postar_linkedin(
+            titulo=doc["title"],
+            summary=doc["summary"],
+            slug=slug,
+        )
+        run_log["etapas"]["linkedin"] = linkedin_result
 
         run_log["status"] = "CONCLUIDO"
         run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
