@@ -889,7 +889,9 @@ def _truncar(texto: str, max_chars: int) -> str:
 
 
 def postar_whatsapp_grupo(titulo: str, summary: str, slug: str) -> dict:
-    """Envia mensagem sobre novo post no grupo WhatsApp via WAHA."""
+    """Envia mensagem sobre novo post no grupo WhatsApp via WAHA (SSH tunnel para VPS:3000)."""
+    import paramiko, threading, socket, time
+
     post_url = f"https://curitibablog.com.br/{slug}"
     mensagem = (
         f"📰 *{titulo}*\n\n"
@@ -897,9 +899,62 @@ def postar_whatsapp_grupo(titulo: str, summary: str, slug: str) -> dict:
         f"🔗 Leia agora: {post_url}\n\n"
         f"💬 Compartilhe com quem pode se interessar!"
     )
+
+    # SSH tunnel: encaminha 127.0.0.1:3001 (local) -> 127.0.0.1:3000 (VPS)
+    local_waha_port = 3001
+    ssh = None
+    server_sock = None
     try:
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(VPS_HOST, port=VPS_PORT, username=VPS_USER, key_filename=SSH_KEY, timeout=30)
+        transport = ssh.get_transport()
+
+        def _forward(local_conn):
+            try:
+                chan = transport.open_channel("direct-tcpip", ("127.0.0.1", 3000), ("127.0.0.1", local_waha_port))
+                while True:
+                    r, _, _ = __import__("select").select([local_conn, chan], [], [], 1)
+                    if local_conn in r:
+                        data = local_conn.recv(4096)
+                        if not data:
+                            break
+                        chan.send(data)
+                    if chan in r:
+                        data = chan.recv(4096)
+                        if not data:
+                            break
+                        local_conn.send(data)
+            except Exception:
+                pass
+            finally:
+                local_conn.close()
+
+        server_sock = socket.socket()
+        server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server_sock.bind(("127.0.0.1", local_waha_port))
+        server_sock.listen(5)
+        server_sock.settimeout(5)
+
+        def _accept_loop():
+            try:
+                while True:
+                    try:
+                        conn, _ = server_sock.accept()
+                        t = threading.Thread(target=_forward, args=(conn,), daemon=True)
+                        t.start()
+                    except socket.timeout:
+                        if not transport.is_active():
+                            break
+            except Exception:
+                pass
+
+        threading.Thread(target=_accept_loop, daemon=True).start()
+        time.sleep(0.5)
+
+        waha_url_tunnel = f"http://127.0.0.1:{local_waha_port}"
         r = requests.post(
-            f"{WAHA_URL}/api/sendText",
+            f"{waha_url_tunnel}/api/sendText",
             headers={"X-Api-Key": WAHA_API_KEY, "Content-Type": "application/json"},
             json={"session": WAHA_SESSION, "chatId": WHATSAPP_GROUP_ID, "text": mensagem},
             timeout=20,
@@ -913,6 +968,17 @@ def postar_whatsapp_grupo(titulo: str, summary: str, slug: str) -> dict:
     except Exception as e:
         log(f"WhatsApp grupo: EXCECAO — {e}")
         return {"ok": False, "erro": str(e)}
+    finally:
+        if server_sock:
+            try:
+                server_sock.close()
+            except Exception:
+                pass
+        if ssh:
+            try:
+                ssh.close()
+            except Exception:
+                pass
 
 
 def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | None) -> dict:
@@ -943,7 +1009,7 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
     # Facebook Page
     if fb_page_id and fb_page_token:
         try:
-            graph_url = f"https://graph.facebook.com/v19.0/{fb_page_id}/feed"
+            graph_url = f"https://graph.facebook.com/v25.0/{fb_page_id}/feed"
             payload_fb = {
                 "message": legenda,
                 "link": post_url,
@@ -967,7 +1033,7 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
     # Instagram Business
     if ig_user_id and fb_page_token and cover_url:
         try:
-            media_url = f"https://graph.facebook.com/v19.0/{ig_user_id}/media"
+            media_url = f"https://graph.facebook.com/v25.0/{ig_user_id}/media"
             payload_media = {
                 "image_url": cover_url,
                 "caption": legenda,
@@ -978,7 +1044,7 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
                 raise RuntimeError(f"Criar container falhou: HTTP {r1.status_code} {r1.text[:200]}")
             container_id = r1.json().get("id", "")
 
-            publish_url = f"https://graph.facebook.com/v19.0/{ig_user_id}/media_publish"
+            publish_url = f"https://graph.facebook.com/v25.0/{ig_user_id}/media_publish"
             r2 = requests.post(publish_url, data={"creation_id": container_id, "access_token": fb_page_token}, timeout=20)
             if r2.ok:
                 ig_post_id = r2.json().get("id", "")
