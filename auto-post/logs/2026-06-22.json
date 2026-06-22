@@ -3,8 +3,8 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-22-cover.jpg",
     "upload": {
-      "key": "covers/a3955940-0112-46f3-8596-3672c663fe2d-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/a3955940-0112-46f3-8596-3672c663fe2d-cover.jpg"
+      "key": "covers/797a05be-eb80-4595-baf6-c8cd1718487f-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/797a05be-eb80-4595-baf6-c8cd1718487f-cover.jpg"
     },
     "mongo": {
       "id": "6a396b2bb23a942eb5fb5821",
@@ -21,8 +21,7 @@
         "ok": true
       },
       "dozeroaojunior": {
-        "ok": false,
-        "erro": "npm build falhou: :11)\n    at defaultResolve (node:internal/modules/esm/resolve:1056:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:603:25)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:242:38)\n    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)\u001b[22m\n"
+        "ok": true
       },
       "levelupdev": {
         "ok": true
@@ -30,10 +29,6 @@
     },
     "http_check": 200,
     "indexnow": {
-      "dozeroaojunior": {
-        "ok": true,
-        "status": 200
-      },
       "devlevelup": {
         "ok": true,
         "status": 200
@@ -42,11 +37,15 @@
         "ok": true,
         "status": 200
       },
-      "blogdudu": {
+      "dozeroaojunior": {
         "ok": true,
         "status": 200
       },
       "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
         "ok": true,
         "status": 200
       }
@@ -54,19 +53,19 @@
     "social": {
       "facebook": {
         "ok": false,
-        "erro": "{\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 10:17:00 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
+        "erro": "{\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 10:55:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
       },
       "instagram": {
         "ok": false,
-        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 10:17:00 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
+        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 10:55:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
       }
     },
     "whatsapp": {
       "ok": true
     },
     "x_twitter": {
-      "ok": true,
-      "id": "2069107431519494198"
+      "ok": false,
+      "erro": "{\"detail\":\"You are not allowed to create a Tweet with duplicate content.\",\"type\":\"about:blank\",\"title\":\"Forbidden\",\"status\":403}"
     },
     "reddit": {
       "ok": false,
@@ -74,7 +73,7 @@
     },
     "linkedin": {
       "ok": true,
-      "id": "urn:li:share:7474873123805237248"
+      "id": "urn:li:share:7474882713234235392"
     }
   },
   "status": "CONCLUIDO",
