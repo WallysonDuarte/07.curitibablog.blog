@@ -1,0 +1,81 @@
+{
+  "data": "2026-06-22",
+  "etapas": {
+    "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-22-cover.jpg",
+    "upload": {
+      "key": "covers/13bc123b-0b25-468a-8520-07e905b2390d-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/13bc123b-0b25-468a-8520-07e905b2390d-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a38fb9cb3a024fd8baebd4b",
+      "slug": "fine-tuning-llm-local-qwen3-categorizar-perguntas"
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": false,
+        "erro": "{\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 02:17:39 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
+      },
+      "instagram": {
+        "ok": false,
+        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 02:17:39 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": true,
+      "id": "2068986797342769175"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7474752488898818048"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/fine-tuning-llm-local-qwen3-categorizar-perguntas"
+}

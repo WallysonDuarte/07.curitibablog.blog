@@ -1,0 +1,220 @@
+{
+  "data": "2026-06-22",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "Deno Desktop",
+      "url": "https://docs.deno.com/runtime/desktop/",
+      "score": 301,
+      "comentarios": 108
+    },
+    {
+      "fonte": "HN",
+      "titulo": "GLM 5.2 vs. Opus",
+      "url": "https://techstackups.com/comparisons/glm-5.2-vs-opus/",
+      "score": 95,
+      "comentarios": 58
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Help I accidentally a wigglegram",
+      "url": "https://lmao.center/blog/wiggle-accidents/",
+      "score": 207,
+      "comentarios": 35
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Did my old job only exist because of fraud?",
+      "url": "https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/",
+      "score": 525,
+      "comentarios": 228
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Apertus – Open Foundation Model for Sovereign AI",
+      "url": "https://apertvs.ai/",
+      "score": 365,
+      "comentarios": 124
+    },
+    {
+      "fonte": "HN",
+      "titulo": "There is minimal downside to switching to open models",
+      "url": "https://www.marble.onl/posts/cancel_claude.html",
+      "score": 216,
+      "comentarios": 167
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Memory Safe Inline Assembly",
+      "url": "https://fil-c.org/inlineasm",
+      "score": 102,
+      "comentarios": 20
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Everything is logarithms",
+      "url": "https://alexkritchevsky.com/2026/05/25/everything-is-logarithms.html",
+      "score": 216,
+      "comentarios": 46
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Good results fine tuning a local LLM like Qwen 3:0.6B to categorize questions",
+      "url": "https://www.teachmecoolstuff.com/viewarticle/fine-tuning-a-local-llm-to-categorize-questions",
+      "score": 124,
+      "comentarios": 29
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Lisp in the Rust Type System",
+      "url": "https://github.com/playX18/lisp-in-types/",
+      "score": 58,
+      "comentarios": 0
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Identity verification on Claude",
+      "url": "https://support.claude.com/en/articles/14328960-identity-verification-on-claude",
+      "score": 738,
+      "comentarios": 616
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Sakana Fugu",
+      "url": "https://sakana.ai/fugu/",
+      "score": 118,
+      "comentarios": 72
+    },
+    {
+      "fonte": "HN",
+      "titulo": "JSON-LD explained for personal websites",
+      "url": "https://hawksley.dev/blog/json-ld-explained-for-personal-websites/",
+      "score": 212,
+      "comentarios": 63
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How I play video games with spinal muscular atrophy",
+      "url": "https://www.openassistivetech.org/how-i-actually-play-video-games-with-sma-the-tools-i-use-every-day/",
+      "score": 105,
+      "comentarios": 15
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Beyond All Reason (Free Total Annihilation Inspired RTS)",
+      "url": "https://www.beyondallreason.info",
+      "score": 478,
+      "comentarios": 283
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Some friends wanted to see how I use DigitalOcean. So I built them the smallest real app I could.",
+      "tags": [
+        "python",
+        "cloud",
+        "devops",
+        "digitalocean"
+      ],
+      "reacoes": 9
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "15 AI Stories Later, Some Honest Words",
+      "tags": [
+        "ai",
+        "discuss",
+        "programming",
+        "career"
+      ],
+      "reacoes": 27
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Memory Drift: How I Gamified LLM Context Decay in Next.js",
+      "tags": [
+        "devchallenge",
+        "gamechallenge",
+        "gamedev",
+        "webdev"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What Is an Array, Really? I'm Writing a Book to Find Out",
+      "tags": [
+        "opensource",
+        "computerscience",
+        "beginners",
+        "architecture"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Less Noise, More Labs: How I Actually Learned RF Hacking This Year",
+      "tags": [
+        "programming",
+        "opensource",
+        "security",
+        "software"
+      ],
+      "reacoes": 1
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Building a 3D Game in the Browser Humbled Me. Here's Everything That Fought Back.",
+      "tags": [
+        "devchallenge",
+        "gamechallenge",
+        "gamedev"
+      ],
+      "reacoes": 3
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Receipts Are Not Outcomes: What Happened When I Pointed My AI Gate at Trading",
+      "tags": [
+        "ai",
+        "agents",
+        "machinelearning",
+        "devjournal"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Dawn or Eclipse — a code-breaking ode to Turing you can't outsource to the machine",
+      "tags": [
+        "devchallenge",
+        "gamechallenge",
+        "gamedev"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Kinde Is Missing from Mastra's Auth Lineup, So I Built the Provider",
+      "tags": [
+        "ai",
+        "kinde",
+        "mastra",
+        "webdev"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Building Margin: A Privacy-First News Reader Inside Chrome's Side Panel",
+      "tags": [
+        "chromeextension",
+        "webdev",
+        "javascript",
+        "showdev"
+      ],
+      "reacoes": 6
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "title": "Fine-tuning de LLM local: como treinar o Qwen 3 para categorizar perguntas",
+  "slug": "fine-tuning-llm-local-qwen3-categorizar-perguntas",
+  "summary": "Aprenda como fazer fine-tuning de um modelo de linguagem pequeno (Qwen 3 0.6B) rodando 100% na sua maquina para classificar perguntas com alta precisao. Sem GPU cara, sem API paga, sem dados saindo do seu servidor.",
+  "metaTitle": "Fine-tuning LLM local com Qwen 3 | CuritibaBlog",
+  "metaDescription": "Como treinar o modelo Qwen 3 0.6B localmente com LoRA para categorizar perguntas. Pratico, sem GPU cara, com Python e Hugging Face.",
+  "category": "desenvolvimento",
+  "categories": [
+    "desenvolvimento",
+    "ferramentas-de-ia"
+  ],
+  "tags": [
+    "fine-tuning",
+    "llm",
+    "qwen3",
+    "ia local",
+    "machine learning",
+    "python",
+    "hugging face",
+    "LoRA"
+  ],
+  "content": "<h2>O que e fine-tuning de LLM?</h2><p>Fine-tuning e o processo de pegar um modelo de linguagem ja treinado e ajusta-lo para uma tarefa especifica usando seus proprios dados. Em vez de treinar um modelo do zero (o que exige milhares de horas de computacao e bilhoes de parametros), voce parte de um modelo pre-treinado e o especializa.</p><p>A analogia e simples: e como contratar alguem que ja sabe falar portugues e ingles (modelo base) e ensina-lo especificamente sobre o seu produto ou dominio (fine-tuning). O resultado e um modelo muito mais preciso para aquela tarefa do que o modelo generico.</p><p>Com modelos pequenos como o <strong>Qwen 3 0.6B</strong>, esse processo ficou acessivel a qualquer desenvolvedor com um computador moderno. Sem GPU de ultima geracao, sem custo de API, sem dados saindo da sua maquina.</p><h2>Por que o Qwen 3 0.6B?</h2><p>O <strong>Qwen 3</strong> e a familia de modelos lancada pela Alibaba Cloud em 2025. O menor deles, o <strong>0.6B</strong> (600 milhoes de parametros), roda tranquilamente em CPU e ocupa menos de 1 GB de RAM com quantizacao. Mesmo assim, entrega resultados impressionantes para tarefas de classificacao e categorizacao.</p><p>A familia Qwen 3 esta disponivel sob licenca MIT, o que significa que voce pode usar, modificar e distribuir comercialmente sem restricoes. Os modelos suportam 119 idiomas, incluindo portugues, o que e uma vantagem enorme para aplicacoes brasileiras.</p><p>Comparado a alternativas como o Phi-3 Mini da Microsoft ou o Llama 3.2 da Meta, o Qwen 3 0.6B se destaca pelo equilibrio entre tamanho e desempenho em tarefas de classificacao, especialmente em idiomas alem do ingles.</p><h2>Principais recursos para fine-tuning</h2><p>Para especializar o Qwen 3 em categorizar perguntas, voce vai usar um conjunto de tecnicas e ferramentas consolidadas no ecossistema Python:</p><ul><li><strong>LoRA (Low-Rank Adaptation):</strong> tecnica que congela os pesos originais do modelo e adiciona matrizes de baixo rank treinaveis. Reduz drasticamente a memoria e o tempo de treinamento.</li><li><strong>QLoRA:</strong> variacao do LoRA que quantiza o modelo base para 4 bits, permitindo fine-tuning de modelos maiores com menos GPU (ou ate em CPU).</li><li><strong>Hugging Face Transformers:</strong> biblioteca Python que carrega e gerencia modelos de forma padronizada.</li><li><strong>PEFT (Parameter-Efficient Fine-Tuning):</strong> biblioteca da Hugging Face que implementa LoRA, QLoRA e outras tecnicas de treinamento eficiente.</li><li><strong>TRL (Transformer Reinforcement Learning):</strong> biblioteca para treinar modelos com SFT (Supervised Fine-Tuning) e RLHF.</li></ul><p>Com essas ferramentas, o processo de fine-tuning fica estruturado e reproduzivel, com checkpoints e logs para acompanhar o treinamento.</p><h2>Como comecar: passo a passo</h2><p>Antes de comecar, instale as dependencias necessarias. Voce precisa de Python 3.10 ou superior e recomenda-se criar um ambiente virtual para isolar as bibliotecas.</p><pre><code>pip install transformers peft trl datasets accelerate bitsandbytes</code></pre><p>O <strong>bitsandbytes</strong> e necessario para quantizacao em 4 bits no QLoRA. No Windows, use a versao pre-compilada disponivel no repositorio oficial. No Linux, a instalacao padrao funciona diretamente.</p><p>Para baixar o modelo Qwen 3 0.6B, use a Hugging Face CLI ou carregue diretamente no codigo Python com <code>AutoModelForCausalLM.from_pretrained(\"Qwen/Qwen3-0.6B\")</code>. O download ocorre uma unica vez e o modelo fica em cache local (cerca de 1.2 GB). A partir dai, tudo roda offline.</p><h2>Exemplo pratico: categorizar perguntas de suporte</h2><p>Imagine que voce tem um sistema de suporte e quer classificar automaticamente as perguntas dos usuarios em categorias como \"financeiro\", \"tecnico\", \"comercial\" ou \"outros\". O fine-tuning do Qwen 3 resolve isso com alta precisao usando poucos exemplos rotulados.</p><p>O dataset de treinamento precisa estar no formato de instrucao (instruction tuning). Cada exemplo tem um campo \"instruction\" com a instrucao de classificacao, um campo \"input\" com a pergunta real e um campo \"output\" com a categoria esperada.</p><p>Com 200 a 500 exemplos bem rotulados, o modelo ja apresenta acuracia acima de 90% nessa tarefa. Usando LoRA com rank 8 e alpha 16, o treinamento em CPU leva entre 20 e 60 minutos dependendo do tamanho do dataset.</p><h2>Comparacao com alternativas</h2><p>Existem varias abordagens para classificacao de texto. Cada uma tem seu lugar:</p><ul><li><strong>BERT e variantes (BERTimbau para portugues):</strong> excelentes para classificacao pura, muito mais leves que LLMs. Boa escolha se voce so precisa classificar e nao gerar texto.</li><li><strong>APIs de LLM (OpenAI, Anthropic, Google):</strong> simples de usar, mas seus dados passam por servidores externos e ha custo por token. Inadequado para dados sensiveis ou alto volume.</li><li><strong>Regras e keywords:</strong> rapido de implementar, mas fragil. Uma variacao na pergunta quebra a regra.</li><li><strong>Fine-tuning local com Qwen 3:</strong> melhor opcao quando voce precisa de privacidade dos dados, sem custo recorrente de API, e quer um modelo customizado para seu dominio especifico.</li></ul><p>Para categorizar perguntas em portugues com dados privados, o fine-tuning local e claramente a melhor escolha.</p><h2>Pontos positivos e limitacoes</h2><p>O principal ponto positivo do fine-tuning local e a <strong>privacidade total</strong>. Seus dados de treinamento e suas perguntas nunca saem da sua maquina. Para empresas com dados de clientes, isso e fundamental para conformidade com a LGPD.</p><p>Outro beneficio e o <strong>custo zero por inferencia</strong>. Depois de treinado, o modelo roda gratuitamente quantas vezes voce precisar. Com APIs, cada chamada tem custo, o que pode se tornar proibitivo em alto volume.</p><p>As limitacoes existem: o Qwen 3 0.6B nao vai substituir um modelo maior para tarefas complexas de geracao de texto. Para classificacao simples, funciona muito bem. Para responder perguntas abertas com qualidade, use o 7B ou maior. Alem disso, o processo de fine-tuning exige um dataset de qualidade, curado manualmente, o que demanda tempo inicial.</p><h2>Casos de uso reais</h2><p><strong>Suporte ao cliente automatizado:</strong> Classifique tickets de suporte antes de rotearem para o time correto. Com fine-tuning, o modelo aprende as categorias exatas do seu negocio, incluindo jargoes internos.</p><p><strong>FAQ inteligente:</strong> Identifique qual resposta pre-pronta responde melhor a pergunta do usuario. O modelo aprende o mapeamento pergunta-resposta do seu contexto especifico.</p><p><strong>Moderacao de conteudo:</strong> Classifique mensagens de usuarios como adequadas, inapropriadas ou spam usando seus proprios criterios e exemplos.</p><p><strong>Analise de sentimento customizada:</strong> Ao inves de usar um modelo generico, fine-tune para identificar sentimentos especificos do seu dominio, como satisfacao com produto, frustracao com entrega ou elogio ao atendimento.</p><h2>Dicas e boas praticas</h2><p>A qualidade do dataset e mais importante que a quantidade. 300 exemplos bem rotulados superam 3.000 exemplos com ruido. Revise manualmente pelo menos uma amostra de 10% do seu dataset antes de treinar.</p><p>Use <strong>validacao por k-fold</strong> para avaliar o modelo com dados que ele nunca viu. Isso evita overfitting e da uma medida real de performance em producao. A biblioteca scikit-learn tem implementacao pronta para isso.</p><p>Salve checkpoints durante o treinamento com o parametro <code>save_steps</code> do Trainer. Se o treinamento travar ou os resultados piorarem (overfitting), voce volta ao melhor checkpoint sem perder todo o trabalho. Para producao, converta o modelo para o formato <strong>GGUF com quantizacao Q4_K_M</strong> usando o llama.cpp, o que reduz o tamanho pela metade e melhora a velocidade de inferencia em CPU.</p><h2>Vale a pena?</h2><p>Para qualquer desenvolvedor que lida com classificacao de texto em escala ou com dados sensiveis, o fine-tuning local com Qwen 3 0.6B vale muito a pena. O esforco inicial de curar o dataset e configurar o treinamento se paga rapidamente com a economia em custos de API e a garantia de privacidade.</p><p>Se voce so precisa classificar 10 perguntas por dia, provavelmente uma API generica resolve. Mas se voce tem volume, dados privados ou quer um modelo especializado no seu dominio, o caminho e este. Comece com um dataset pequeno, valide a acuracia e expanda conforme a necessidade.</p><p>O repositorio do Qwen 3 no GitHub tem exemplos de fine-tuning prontos para adaptar. Com Python, Hugging Face e LoRA, o caminho do zero ao modelo em producao e mais curto do que parece.</p>",
+  "faqs": [
+    {
+      "question": "Preciso de GPU para fazer fine-tuning do Qwen 3 0.6B?",
+      "answer": "Nao. O Qwen 3 0.6B pode ser treinado em CPU com QLoRA (quantizacao 4 bits). O treinamento fica mais lento, entre 20 e 60 minutos para datasets pequenos, mas e totalmente viavel. Com uma GPU com 4 GB de VRAM ou mais, o processo acelera bastante."
+    },
+    {
+      "question": "Quantos exemplos preciso para treinar o modelo?",
+      "answer": "Para tarefas de classificacao simples, entre 200 e 500 exemplos bem rotulados ja dao bons resultados. Qualidade importa mais que quantidade. Com exemplos ruins ou inconsistentes, mesmo 5.000 exemplos nao ajudam."
+    },
+    {
+      "question": "O modelo fine-tunado funciona em portugues?",
+      "answer": "Sim. O Qwen 3 ja tem suporte nativo a portugues (entre 119 idiomas). O fine-tuning com exemplos em portugues reforca esse suporte para o seu dominio especifico. A performance em PT-BR e muito boa para tarefas de classificacao."
+    },
+    {
+      "question": "Como uso o modelo treinado em producao?",
+      "answer": "Voce pode servir o modelo via API local usando o Ollama (apos converter para GGUF) ou diretamente via Python com a biblioteca transformers. Para alto volume, use o vLLM que otimiza throughput em GPU. Para uso interno com privacidade, o Ollama e a opcao mais simples."
+    },
+    {
+      "question": "Fine-tuning substitui RAG (Retrieval-Augmented Generation)?",
+      "answer": "Nao, sao tecnicas complementares. Fine-tuning ensina o modelo a se comportar de uma certa forma (ex: classificar em categorias especificas). RAG da ao modelo acesso a conhecimento externo e atualizado. Para categorizar perguntas, fine-tuning e suficiente. Para responder perguntas com base em documentos, RAG e mais indicado."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Qwen 3 0.6B em numeros",
+      "items": [
+        {
+          "label": "Parametros",
+          "value": "600 milhoes (0.6B)"
+        },
+        {
+          "label": "Empresa criadora",
+          "value": "Alibaba Cloud"
+        },
+        {
+          "label": "Licenca",
+          "value": "MIT (uso comercial permitido)"
+        },
+        {
+          "label": "Idiomas suportados",
+          "value": "119 idiomas, incluindo portugues"
+        },
+        {
+          "label": "Tamanho em disco (GGUF Q4)",
+          "value": "Cerca de 400 MB"
+        },
+        {
+          "label": "RAM necessaria",
+          "value": "Menos de 1 GB com quantizacao 4 bits"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "Qwen 3 no Hugging Face",
+          "value": "https://huggingface.co/Qwen/Qwen3-0.6B"
+        },
+        {
+          "label": "Repositorio oficial Qwen no GitHub",
+          "value": "https://github.com/QwenLM/Qwen3"
+        },
+        {
+          "label": "Documentacao PEFT (LoRA)",
+          "value": "https://huggingface.co/docs/peft"
+        },
+        {
+          "label": "Documentacao TRL (SFT Trainer)",
+          "value": "https://huggingface.co/docs/trl"
+        },
+        {
+          "label": "Ollama (servir modelos localmente)",
+          "value": "https://ollama.com"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Rafael Monteiro",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMonteiro",
+          "text": "Fiz fine-tuning do Qwen 3 0.6B em um dataset de 350 perguntas de suporte e a acuracia ficou em 94%. Tudo rodando no meu notebook sem GPU, incrivel."
+        },
+        {
+          "name": "Priscila Tavares",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=PriscilaTavares",
+          "text": "Antes eu usava a API do OpenAI para classificar perguntas e pagava caro por isso. Com o Qwen local fine-tunado, zeramos o custo e os dados ficam 100% na nossa infra."
+        },
+        {
+          "name": "Diego Fernandes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DiegoFernandes",
+          "text": "O LoRA fez toda a diferenca. Treina em menos de uma hora no CPU e o modelo resultante e leve o suficiente para servir em um VPS de R$ 60 por mes."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "100% local e privado",
+  "card1_texto": "Seus dados nunca saem da sua maquina",
+  "card2_titulo": "Sem custo de API",
+  "card2_texto": "Treine uma vez, use infinitamente sem pagar",
+  "card3_titulo": "Roda em CPU",
+  "card3_texto": "Nao precisa de GPU cara para comecar",
+  "subtitulo_capa": "Treine o Qwen 3 local com LoRA e classifique perguntas sem GPU e sem custo de API"
+}
