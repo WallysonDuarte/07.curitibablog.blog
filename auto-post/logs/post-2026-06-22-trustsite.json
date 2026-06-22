@@ -1,0 +1,110 @@
+{
+  "title": "TrustSiteMonitor: 26 verificacoes de seguranca automaticas para seu site e API",
+  "slug": "trustsitemonitor-scanner-seguranca-vulnerabilidades",
+  "summary": "O TrustSiteMonitor escaneia seu site em 26 fases automaticas, detectando desde credentials expostos no bundle JS ate RLS bypassado no Supabase. Veja o que cada fase verifica e por que isso importa para qualquer projeto web.",
+  "metaTitle": "TrustSiteMonitor: scanner de seguranca 26 fases | CuritibaBlog",
+  "metaDescription": "TrustSiteMonitor detecta vulnerabilidades em 26 categorias: XSS, SQLi, IDOR, Supabase RLS, credenciais em JS e muito mais. Veja como funciona.",
+  "category": "tecnologia",
+  "categories": [
+    "tecnologia",
+    "desenvolvimento"
+  ],
+  "tags": [
+    "seguranca",
+    "vulnerabilidades",
+    "scanner",
+    "supabase",
+    "api",
+    "pentest",
+    "devops"
+  ],
+  "content": "<h2>O que e o TrustSiteMonitor</h2><p>O TrustSiteMonitor (trustsitemonitor.com) e uma ferramenta de auditoria de seguranca voltada para desenvolvedores e times de produto que querem identificar vulnerabilidades em seus sites e APIs antes que alguem mal-intencionado o faca. Voce informa a URL e o scanner roda uma bateria de 26 verificacoes automaticas, cobrindo desde headers HTTP ate credenciais expostas em bundles JavaScript.</p><p>A ferramenta foi construida com .NET no core de analise e Python no scanner avancado, e oferece dois modos: o scanner padrao, que roda automaticamente a cada analise solicitada, e o deep scanner, que usa um browser real (Playwright) para capturar requests dinamicos que o scanner estatico nao consegue ver.</p><p>O diferencial em relacao a outras ferramentas de seguranca e o foco especifico em <strong>stacks modernas de SaaS</strong>: Supabase, Firebase, Next.js, APIs GraphQL e configuracoes de IA/LLM sao verificadas com checagens especificas, cobrindo vulnerabilidades que scanners genericos costumam deixar passar.</p><h2>Como funciona a analise</h2><p>Ao submeter uma URL, o TrustSiteMonitor dispara o <strong>AnaliseService.cs</strong>, que executa 26 fases em sequencia. Cada fase e independente e gera seus proprios alertas - uma falha em uma fase nao impede as demais de rodar.</p><p>O scanner faz requisicoes HTTP reais para o site analisado, verifica headers de resposta, tenta acessar caminhos sensiveis conhecidos, analisa o conteudo do bundle JavaScript em busca de credenciais, e testa endpoints de API com payloads de vulnerabilidades comuns como XSS e SQL Injection.</p><p>Ao final, o resultado e consolidado em um relatorio com nivel de severidade para cada achado (critico, alto, medio, baixo, informativo). O <strong>deep scanner</strong> complementa essa analise com navegacao real no browser, interceptando todos os requests XHR e Fetch que o site faz ao carregar, descobrindo endpoints de API que nao aparecem em analise estatica.</p><h2>As 26 fases do scanner padrao</h2><p>O scanner padrao cobre um espectro amplo de vulnerabilidades organizadas em fases progressivas. As primeiras fases sao de reconhecimento e configuracao; as seguintes testam vulnerabilidades ativas.</p><p>As fases 1 a 10 cobrem a base de seguranca:</p><ul><li><strong>Fase 1 - Reconhecimento:</strong> identifica tecnologias do stack (framework, servidor web, CMS) pelos headers e respostas HTTP.</li><li><strong>Fase 2 - Headers de seguranca:</strong> verifica ausencia de X-Frame-Options, CSP (Content Security Policy), HSTS, X-Content-Type-Options e CORS mal configurado.</li><li><strong>Fase 3 - Arquivos sensiveis:</strong> tenta acessar .env, .git, config.json, wp-config.php e arquivos de backup expostos.</li><li><strong>Fase 3.5 - Rotas do robots.txt:</strong> analisa paths internos listados no robots.txt que estejam sem protecao adequada.</li><li><strong>Fase 4 - Paineis admin e APIs:</strong> verifica se /admin, /phpmyadmin, /debug, /_debug e logs estao expostos.</li><li><strong>Fase 4.5 - APIs abertas:</strong> detecta Swagger/OpenAPI publico e schema GraphQL introspectavel sem autenticacao.</li><li><strong>Fase 5 - Credenciais no bundle JS:</strong> escaneia o JavaScript em busca de Firebase key, Supabase anon key, OpenAI key, Stripe live key, AWS credentials e Anthropic API key.</li><li><strong>Fase 6 - Source maps:</strong> verifica se arquivos .map estao sendo servidos em producao, o que permite reconstruir o codigo-fonte original.</li><li><strong>Fase 7 - Protecao brute force:</strong> testa se o endpoint de login aplica rate limit ou bloqueia tentativas repetidas.</li><li><strong>Fase 8 - Directory listing:</strong> verifica se o servidor esta servindo listagem de arquivos em diretorios.</li></ul><p>As fases 9 a 18 cobrem vulnerabilidades em APIs e dados:</p><ul><li><strong>Fase 9 - Exposicao de erros:</strong> detecta stack trace e detalhes de excecao retornados em producao.</li><li><strong>Fase 10 - Portas de infraestrutura:</strong> verifica se MongoDB, Redis, Elasticsearch e bancos de dados estao acessiveis externamente.</li><li><strong>Fase 11 - Supabase:</strong> quando detectado, testa schema completo, RLS bypassado por tabela, IDOR em storage publico e RPCs de risco.</li><li><strong>Fase 12 - XSS refletido:</strong> testa parametros de URL que refletem input sem sanitizacao.</li><li><strong>Fase 13 - SQL Injection:</strong> testa parametros de busca com payloads SQLi classicos e baseados em erro.</li><li><strong>Fase 14 - SSRF:</strong> identifica endpoints que fazem fetch de URL controlavel pelo usuario.</li><li><strong>Fase 15 - IDOR generico:</strong> detecta endpoints com IDs na URL acessiveis sem autenticacao.</li><li><strong>Fase 16 - IDs sequenciais:</strong> verifica se IDs numericos incrementais permitem enumeracao facil de dados.</li><li><strong>Fase 17 - IDs em responses publicas:</strong> detecta userId, emails e dados internos vazando em respostas publicas.</li><li><strong>Fase 18 - Limites de paginacao:</strong> testa endpoints sem limit obrigatorio que permitem dump de dados via ?page=1&amp;limit=99999.</li></ul><p>As fases 19 a 26 cobrem riscos avancados e de negocio:</p><ul><li><strong>Fase 19 - Upload inseguro:</strong> verifica se endpoints aceitam tipos de arquivo perigosos.</li><li><strong>Fase 20 - Monitoramento exposto:</strong> detecta /metrics (Prometheus) e /health com dados de infraestrutura sensiveis.</li><li><strong>Fase 21 - Config de negocio exposta:</strong> identifica feature flags, precos e configuracoes internas publicas.</li><li><strong>Fase 22 - Data dump sem auth:</strong> detecta arrays com muitos registros retornados sem autenticacao.</li><li><strong>Fase 23 - Mecanismo de autenticacao:</strong> verifica token em query param, JWT sem expiracao e cookies sem flags Secure/HttpOnly.</li><li><strong>Fase 24 - Config de IA/LLM exposta:</strong> detecta system prompts e configuracoes de modelo expostos publicamente.</li><li><strong>Fase 25 - OAuth/SSO credentials:</strong> identifica Client ID/Secret expostos em redirects e ausencia de PKCE.</li><li><strong>Fase 26 - Acesso direto ao banco:</strong> detecta endpoints que expoe queries diretas, MongoDB admin ou SQL raw.</li></ul><h2>O deep scanner: analise dinamica com browser real</h2><p>O deep scanner (<strong>deep_scanner.py</strong>) e o modo avancado do TrustSiteMonitor, rodando sob demanda para analises mais profundas. Ele usa Playwright para navegar o site como um usuario real e interceptar todos os requests XHR e Fetch que acontecem durante o carregamento, descobrindo endpoints de API que a analise estatica simplesmente nao consegue ver.</p><p>Alem da descoberta dinamica de endpoints, o deep scanner adiciona checagens especificas:</p><ul><li>Captura de <strong>base URLs de API</strong> via regex em variaveis baseUrl, apiUrl, API_URL nos bundles JS.</li><li>Deteccao de <strong>Prometheus /metrics exposto</strong> com enumeracao de rotas internas reais via labels.</li><li>Teste de <strong>data dump sem auth massivo</strong>: cada endpoint descoberto e testado sem token.</li><li>Varredura de <strong>credenciais em JS</strong> com 11 padroes: Supabase, Firebase, OpenAI, Anthropic, Stripe, AWS, Sentry, Discord e outros.</li><li>Deteccao de <strong>auth fraco</strong>: token em query params (?token= em URLs reais).</li><li>Captura de <strong>OAuth Client ID</strong> exposto em redirects 301/302.</li><li>Deteccao de <strong>system prompts de IA</strong> em responses publicas.</li><li>Identificacao de <strong>IP interno vazando</strong>: faixas RFC1918 em responses JSON.</li><li>Confirmacao de <strong>endpoint admin existente</strong>: 401/403 em /admin, /mongo, /models confirmam que o path existe.</li></ul><p>O deep scanner e especialmente util para aplicacoes SPA (React, Vue, Angular, Next.js) onde a maior parte dos endpoints de API so e descoberta apos interacao com o frontend.</p><h2>Cobertura especifica para Supabase</h2><p>Um dos diferenciais mais relevantes do TrustSiteMonitor e a cobertura especifica para o Supabase, o backend-as-a-service mais popular entre startups SaaS. A fase 11 do scanner padrao e dedicada inteiramente a ele, e o deep scanner complementa com analise dinamica.</p><p>As verificacoes especificas para Supabase incluem:</p><ul><li><strong>Schema exposto:</strong> verifica se o schema completo do banco e acessivel via API publica.</li><li><strong>RLS bypassado:</strong> testa tabela por tabela se as politicas de Row Level Security estao funcionando corretamente.</li><li><strong>IDOR em storage:</strong> verifica se objetos em buckets publicos podem ser acessados por qualquer usuario.</li><li><strong>RPCs de risco:</strong> identifica funcoes de banco de dados (RPCs) chamadas sem autenticacao adequada.</li></ul><p>Esses vetores sao especialmente criticos porque o Supabase entrega a anon key diretamente no frontend, e muitos times configuram RLS incorretamente - ou nao configuram - deixando dados abertos para qualquer um que saiba fazer uma chamada REST para o endpoint do Supabase.</p><h2>Comparacao com alternativas</h2><p>As ferramentas mais conhecidas para auditoria de seguranca web sao o <strong>OWASP ZAP</strong>, o <strong>Burp Suite</strong> e o <strong>Nikto</strong>. Todas sao poderosas, mas exigem configuracao e conhecimento tecnico significativo para usar corretamente.</p><p>O TrustSiteMonitor se diferencia pelo foco em <strong>simplicidade de uso e cobertura de stacks modernas</strong>. Enquanto o ZAP e o Burp Suite sao ferramentas genericas para pentesters experientes, o TrustSiteMonitor foi projetado para desenvolvedores que querem uma resposta rapida sobre o estado de seguranca da sua aplicacao sem precisar configurar um ambiente de pentest completo.</p><p>A cobertura especifica para Supabase, Firebase, GraphQL introspection e credenciais em bundles JS tambem e mais profunda do que scanners genericos oferecem, pois essas ferramentas geralmente nao foram atualizadas para cobrir os vetores especificos de stacks SaaS modernas.</p><h2>Pontos positivos e limitacoes</h2><p>Os pontos fortes do TrustSiteMonitor sao a amplitude de cobertura (26 fases), a facilidade de uso (uma URL e o suficiente para comecar), e o foco em stacks modernas. O deep scanner com Playwright e particularmente valioso para SPAs onde a descoberta dinamica de endpoints faz diferenca real.</p><p>As limitacoes naturais de qualquer scanner automatico tambem se aplicam aqui: falsos positivos podem ocorrer, e vulnerabilidades que exigem autenticacao nao sao testadas no modo padrao. O scanner nao substitui um pentest manual para aplicacoes criticas, mas e uma primeira camada de defesa eficiente para identificar problemas obvios antes de uma auditoria mais profunda.</p><p>Outro ponto de atencao: o scanner faz requisicoes reais ao site analisado. Em sites com rate limit muito agressivo, algumas fases podem retornar falsos negativos por terem sido bloqueadas antes de concluir a verificacao.</p><h2>Casos de uso reais</h2><p>O TrustSiteMonitor e especialmente util em alguns cenarios praticos:</p><ul><li><strong>Pre-launch de produto:</strong> auditar o site e a API antes de lancar para o publico, identificando problemas como Swagger aberto ou credenciais no bundle JS antes que usuarios reais os encontrem.</li><li><strong>Revisao pos-deploy:</strong> rodar o scanner apos cada deploy significativo para garantir que novas funcionalidades nao introduziram regressoes de seguranca.</li><li><strong>Auditoria de terceiros:</strong> verificar o estado de seguranca de um site de parceiro ou fornecedor antes de uma integracao.</li><li><strong>Startups SaaS com Supabase:</strong> verificar especificamente se RLS esta configurado corretamente e se a anon key nao esta sendo usada para acessar dados que deveriam ser protegidos.</li></ul><h2>Dicas para interpretar os resultados</h2><p>Ao receber o relatorio do TrustSiteMonitor, priorize por severidade. Achados criticos como credenciais expostas no bundle JS ou arquivos .env acessiveis devem ser corrigidos imediatamente antes de qualquer outra coisa.</p><p>Para achados de severidade media como headers de seguranca ausentes, o impacto real depende do contexto da aplicacao. Um site estatico sem dados de usuario pode operar sem CSP sem risco significativo; uma aplicacao de saude ou financeira nao pode.</p><p>O relatorio de source maps expostos merece atencao especial: arquivos .map em producao permitem que qualquer pessoa reconstrua o codigo-fonte original do frontend, incluindo logica de negocio, chaves embarcadas e comentarios que nao deveriam estar publicos. A correcao e simples - basta configurar o bundler para nao gerar .map em producao.</p><h2>Vale a pena usar o TrustSiteMonitor?</h2><p>Para desenvolvedores e times de produto que nao tem um especialista em seguranca dedicado, sim. O TrustSiteMonitor oferece em minutos uma visao abrangente do estado de seguranca de um site, cobrindo as vulnerabilidades mais comuns que aparecem em projetos reais - muitas vezes por descuido, nao por falta de conhecimento.</p><p>O custo de nao fazer essa verificacao pode ser alto: uma chave de API do Stripe exposta no bundle JS pode resultar em fraude; um .env acessivel publicamente expoe toda a infraestrutura; um Supabase com RLS desabilitado entrega o banco de dados de todos os clientes para qualquer requisicao anonima.</p><p>O proximo passo e acessar trustsitemonitor.com, informar a URL do seu site e rodar a analise. Se o relatorio voltar limpo, voce tem evidencia de que os vetores mais comuns estao cobertos. Se voltar com alertas criticos, voce descobriu o problema antes que alguem mal-intencionado descobrisse.</p>",
+  "faqs": [
+    {
+      "question": "O TrustSiteMonitor precisa de acesso especial ou credenciais para escanear meu site?",
+      "answer": "Nao. O scanner padrao roda sem autenticacao, testando apenas o que qualquer usuario anonimo consegue acessar. E justamente esse o ponto: identificar o que um atacante sem credenciais conseguiria explorar. O deep scanner tambem nao requer credenciais - ele navega o site como um usuario nao autenticado."
+    },
+    {
+      "question": "Quanto tempo leva uma analise completa?",
+      "answer": "O scanner padrao com 26 fases roda em alguns minutos dependendo da velocidade de resposta do site analisado. O deep scanner demora mais por usar um browser real que navega o site, mas entrega resultados mais completos para SPAs e aplicacoes com muitas rotas dinamicas."
+    },
+    {
+      "question": "O scanner pode derrubar meu site ou causar problemas?",
+      "answer": "O TrustSiteMonitor faz requisicoes HTTP reais ao site, o que pode ser interpretado como trafego suspeito por sistemas de rate limit ou WAF. Em sites com protecao agressiva, algumas fases podem ser bloqueadas. O scanner nao envia payloads destrutivos nem tenta escalar privilegios - o objetivo e deteccao, nao exploracao."
+    },
+    {
+      "question": "A fase 11 do Supabase funciona em qualquer projeto que use Supabase?",
+      "answer": "A fase 11 e ativada automaticamente quando o scanner detecta que o site usa Supabase (pela presenca da URL do projeto Supabase nos requests ou no bundle JS). As verificacoes testam o que e acessivel via anon key, que e a chave publica que todo frontend Supabase usa. Se o RLS estiver configurado corretamente, as tabelas protegidas nao vao retornar dados."
+    },
+    {
+      "question": "O que devo fazer primeiro se o scanner encontrar credenciais expostas no bundle JS?",
+      "answer": "Invalidar a credencial imediatamente no provedor (revogar a chave no OpenAI, Stripe, Firebase etc.) - considere que ela ja foi comprometida. Em seguida, remover a credencial do codigo, mover para variavel de ambiente no servidor (nao no frontend), e fazer novo deploy. Auditar os logs para ver se alguem ja usou a chave exposta."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: TrustSiteMonitor",
+      "items": [
+        {
+          "label": "Fases no scanner padrao",
+          "value": "26 categorias de vulnerabilidade"
+        },
+        {
+          "label": "Checagens especificas Supabase",
+          "value": "Schema, RLS por tabela, Storage, RPCs"
+        },
+        {
+          "label": "Padroes de credenciais no deep scanner",
+          "value": "11 (OpenAI, Stripe, AWS, Firebase, Anthropic...)"
+        },
+        {
+          "label": "Modo de navegacao avancada",
+          "value": "Deep scanner com Playwright (browser real)"
+        },
+        {
+          "label": "Acesso necessario",
+          "value": "Apenas a URL - sem credenciais"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "Site oficial",
+          "value": "https://trustsitemonitor.com"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Fernanda Azevedo",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=FernandaAzevedo",
+          "text": "Rodei no meu SaaS antes do lancamento e o scanner encontrou o Swagger aberto e um .env acessivel que eu tinha esquecido de bloquear no nginx. Economia de uma dor de cabeca enorme."
+        },
+        {
+          "name": "Rodrigo Santana",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RodrigoSantana",
+          "text": "A parte do Supabase e o que mais me impressionou. Descobriu que eu tinha uma tabela sem RLS que estava retornando dados de todos os usuarios para qualquer request anonimo."
+        },
+        {
+          "name": "Marina Oliveira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MarinaOliveira",
+          "text": "Uso o deep scanner para auditar projetos de clientes antes de entregar. O fato de usar um browser real para capturar endpoints dinamicos faz uma diferenca enorme em aplicacoes React."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "26 fases automaticas",
+  "card1_texto": "Do reconhecimento ao SQL Injection em uma analise",
+  "card2_titulo": "Supabase especifico",
+  "card2_texto": "RLS bypass, IDOR e Storage testados em profundidade",
+  "card3_titulo": "Deep scanner",
+  "card3_texto": "Browser real captura endpoints que analise estatica nao ve",
+  "subtitulo_capa": "TrustSiteMonitor: 26 fases de seguranca automaticas para seu site e API"
+}

@@ -3,111 +3,205 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": "Never Give Them Your Face",
+      "url": "https://nevergivethemyourface.com/",
+      "score": 548,
+      "comentarios": 286
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Pledging Another $400k to the Zig Software Foundation",
+      "url": "https://mitchellh.com/writing/zig-donation-2026",
+      "score": 475,
+      "comentarios": 148
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Claude Code's \"extended thinking\" is a summary- not authentic thinking",
+      "url": "https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/",
+      "score": 138,
+      "comentarios": 107
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Moebius: 0.2B image inpainting model with 10B-level performance",
+      "url": "https://hustvl.github.io/Moebius/",
+      "score": 85,
+      "comentarios": 15
+    },
+    {
+      "fonte": "HN",
       "titulo": "Deno Desktop",
       "url": "https://docs.deno.com/runtime/desktop/",
-      "score": 301,
-      "comentarios": 108
+      "score": 830,
+      "comentarios": 323
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Codex logging bug may write TBs to local SSDs",
+      "url": "https://github.com/openai/codex/issues/28224",
+      "score": 336,
+      "comentarios": 182
     },
     {
       "fonte": "HN",
       "titulo": "GLM 5.2 vs. Opus",
       "url": "https://techstackups.com/comparisons/glm-5.2-vs-opus/",
-      "score": 95,
-      "comentarios": 58
+      "score": 366,
+      "comentarios": 260
     },
     {
       "fonte": "HN",
       "titulo": "Help I accidentally a wigglegram",
       "url": "https://lmao.center/blog/wiggle-accidents/",
-      "score": 207,
-      "comentarios": 35
+      "score": 418,
+      "comentarios": 96
     },
     {
       "fonte": "HN",
       "titulo": "Did my old job only exist because of fraud?",
       "url": "https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/",
-      "score": 525,
-      "comentarios": 228
+      "score": 758,
+      "comentarios": 341
+    },
+    {
+      "fonte": "HN",
+      "titulo": "DHL Set to Transport Goods on New Wind-Powered Cargo Ships",
+      "url": "https://www.wsj.com/pro/sustainable-business/dhl-set-to-transport-goods-on-new-wind-powered-cargo-ships-eca5d5a0",
+      "score": 65,
+      "comentarios": 24
     },
     {
       "fonte": "HN",
       "titulo": "Apertus – Open Foundation Model for Sovereign AI",
       "url": "https://apertvs.ai/",
-      "score": 365,
-      "comentarios": 124
+      "score": 496,
+      "comentarios": 167
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Munich 1991: The Roots of the Current AI Boom",
+      "url": "https://people.idsia.ch/~juergen/ai-boom-roots-munich-1991.html",
+      "score": 175,
+      "comentarios": 77
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Why Drawing Tablet Brands Won't Collaborate on Linux Floss Drivers",
+      "url": "https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers",
+      "score": 148,
+      "comentarios": 65
     },
     {
       "fonte": "HN",
       "titulo": "There is minimal downside to switching to open models",
       "url": "https://www.marble.onl/posts/cancel_claude.html",
-      "score": 216,
-      "comentarios": 167
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Memory Safe Inline Assembly",
-      "url": "https://fil-c.org/inlineasm",
-      "score": 102,
-      "comentarios": 20
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Everything is logarithms",
-      "url": "https://alexkritchevsky.com/2026/05/25/everything-is-logarithms.html",
-      "score": 216,
-      "comentarios": 46
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Good results fine tuning a local LLM like Qwen 3:0.6B to categorize questions",
-      "url": "https://www.teachmecoolstuff.com/viewarticle/fine-tuning-a-local-llm-to-categorize-questions",
-      "score": 124,
-      "comentarios": 29
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Lisp in the Rust Type System",
-      "url": "https://github.com/playX18/lisp-in-types/",
-      "score": 58,
-      "comentarios": 0
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Identity verification on Claude",
-      "url": "https://support.claude.com/en/articles/14328960-identity-verification-on-claude",
-      "score": 738,
-      "comentarios": 616
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Sakana Fugu",
-      "url": "https://sakana.ai/fugu/",
-      "score": 118,
-      "comentarios": 72
-    },
-    {
-      "fonte": "HN",
-      "titulo": "JSON-LD explained for personal websites",
-      "url": "https://hawksley.dev/blog/json-ld-explained-for-personal-websites/",
-      "score": 212,
-      "comentarios": 63
-    },
-    {
-      "fonte": "HN",
-      "titulo": "How I play video games with spinal muscular atrophy",
-      "url": "https://www.openassistivetech.org/how-i-actually-play-video-games-with-sma-the-tools-i-use-every-day/",
-      "score": 105,
-      "comentarios": 15
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Beyond All Reason (Free Total Annihilation Inspired RTS)",
-      "url": "https://www.beyondallreason.info",
-      "score": 478,
+      "score": 343,
       "comentarios": 283
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Nvidia Halos",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/autonomous-vehicles/",
+      "score": 67,
+      "comentarios": 38
     }
   ],
   "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Principle of Least AI",
+      "tags": [
+        "ai",
+        "productivity",
+        "watercooler"
+      ],
+      "reacoes": 30
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Wish I Had Started Documenting My Tech Journey Earlier",
+      "tags": [
+        "community",
+        "beginners",
+        "discuss",
+        "career"
+      ],
+      "reacoes": 20
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What Kind of AI-Assisted Developer Are You? Take the quiz.",
+      "tags": [
+        "ai",
+        "productivity",
+        "softwareengineering",
+        "learning"
+      ],
+      "reacoes": 27
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "When Software Started Writing Software: A Developer’s History of AI",
+      "tags": [
+        "ai",
+        "machinelearning",
+        "programming",
+        "productivity"
+      ],
+      "reacoes": 29
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What are your Goals for the week? #184",
+      "tags": [
+        "discuss",
+        "motivation"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Undefended Industry: How the IT Sector Grew Powerful Without Growing Resilient",
+      "tags": [
+        "aws",
+        "discuss",
+        "news",
+        "opensource"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Working on a silly project - share your favorite AI buzzwords/phrases and general key terms with me please!!",
+      "tags": [
+        "ai",
+        "discuss"
+      ],
+      "reacoes": 11
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Stale Feature Flag We Deleted That Turned a Feature Back On",
+      "tags": [
+        "softwareengineering",
+        "devops",
+        "programming",
+        "featureflags"
+      ],
+      "reacoes": 4
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "👾 Server Access Logs with GoAccess",
+      "tags": [
+        "security",
+        "webdev",
+        "learning",
+        "linux"
+      ],
+      "reacoes": 7
+    },
     {
       "fonte": "Dev.to",
       "titulo": "Some friends wanted to see how I use DigitalOcean. So I built them the smallest real app I could.",
@@ -118,103 +212,6 @@
         "digitalocean"
       ],
       "reacoes": 9
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "15 AI Stories Later, Some Honest Words",
-      "tags": [
-        "ai",
-        "discuss",
-        "programming",
-        "career"
-      ],
-      "reacoes": 27
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Memory Drift: How I Gamified LLM Context Decay in Next.js",
-      "tags": [
-        "devchallenge",
-        "gamechallenge",
-        "gamedev",
-        "webdev"
-      ],
-      "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "What Is an Array, Really? I'm Writing a Book to Find Out",
-      "tags": [
-        "opensource",
-        "computerscience",
-        "beginners",
-        "architecture"
-      ],
-      "reacoes": 6
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Less Noise, More Labs: How I Actually Learned RF Hacking This Year",
-      "tags": [
-        "programming",
-        "opensource",
-        "security",
-        "software"
-      ],
-      "reacoes": 1
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Building a 3D Game in the Browser Humbled Me. Here's Everything That Fought Back.",
-      "tags": [
-        "devchallenge",
-        "gamechallenge",
-        "gamedev"
-      ],
-      "reacoes": 3
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Receipts Are Not Outcomes: What Happened When I Pointed My AI Gate at Trading",
-      "tags": [
-        "ai",
-        "agents",
-        "machinelearning",
-        "devjournal"
-      ],
-      "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Dawn or Eclipse — a code-breaking ode to Turing you can't outsource to the machine",
-      "tags": [
-        "devchallenge",
-        "gamechallenge",
-        "gamedev"
-      ],
-      "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Kinde Is Missing from Mastra's Auth Lineup, So I Built the Provider",
-      "tags": [
-        "ai",
-        "kinde",
-        "mastra",
-        "webdev"
-      ],
-      "reacoes": 6
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Building Margin: A Privacy-First News Reader Inside Chrome's Side Panel",
-      "tags": [
-        "chromeextension",
-        "webdev",
-        "javascript",
-        "showdev"
-      ],
-      "reacoes": 6
     }
   ]
 }
