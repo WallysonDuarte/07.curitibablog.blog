@@ -1,0 +1,122 @@
+{
+  "title": "Pagamento recorrente com Asaas e webhook no .NET: guia completo",
+  "slug": "pagamento-recorrente-asaas-webhook-dotnet",
+  "summary": "Aprenda a criar assinaturas com cobranca recorrente no Asaas e processar os eventos de webhook no ASP.NET Core. Do POST /v3/subscriptions ao controller com idempotencia, tudo que voce precisa para ter recorrencia em producao.",
+  "metaTitle": "Asaas recorrente + Webhook .NET: guia pratico | CuritibaBlog",
+  "metaDescription": "Como criar assinaturas recorrentes no Asaas e processar webhooks no ASP.NET Core. Inclui DTOs, idempotencia e pontos criticos de producao.",
+  "category": "desenvolvimento",
+  "categories": [
+    "desenvolvimento",
+    "tecnologia"
+  ],
+  "tags": [
+    "asaas",
+    "pagamento-recorrente",
+    "webhook",
+    "dotnet",
+    "api",
+    "saas",
+    "subscription"
+  ],
+  "content": "<h2>O que e o Asaas</h2><p>O Asaas e uma plataforma brasileira de gestao financeira e cobrancas voltada para pequenas e medias empresas. Ela permite criar clientes, gerar boletos, cobrar via Pix, cartao de credito e realizar cobrancas recorrentes (assinaturas) tudo via API REST, sem precisar de contrato com adquirente ou gateway separado.</p><p>O grande diferencial para desenvolvedores e a API bem documentada com ambiente sandbox gratuito, suporte a webhooks e um sistema de assinaturas nativo. Voce cria a assinatura uma vez e o Asaas gera automaticamente as proximas cobrancas no ciclo configurado.</p><p>Para projetos SaaS no Brasil, o Asaas e uma das escolhas mais populares justamente por dispensar integracao com multiplos servicos: uma unica API cuida do cartao, boleto, Pix e da logica de recorrencia.</p><h2>Como funciona a recorrencia no Asaas</h2><p>Quando voce cria uma assinatura via POST /v3/subscriptions, o Asaas assume o controle do ciclo de cobranca. Ele gera automaticamente uma nova cobranca em cada ciclo (semanal, mensal, anual etc.) e dispara eventos de webhook para o seu backend a cada mudanca de status.</p><p>O seu sistema nao precisa se preocupar em criar cobrancas manualmente. A responsabilidade do seu backend e reagir aos eventos: ativar o plano quando o pagamento e confirmado, suspender quando vencer, cancelar quando a assinatura for deletada.</p><p>Esse modelo e chamado de <strong>cobranca orientada a eventos</strong>. O Asaas e a fonte de verdade sobre o status financeiro; o seu sistema apenas ouve os webhooks e atualiza o banco de dados local conforme recebe os eventos.</p><h2>Ciclos disponiveis e campos da assinatura</h2><p>O campo <strong>cycle</strong> define com que frequencia o Asaas gera novas cobrancas. Os valores aceitos sao:</p><ul><li><strong>WEEKLY:</strong> cobranca toda semana.</li><li><strong>BIWEEKLY:</strong> a cada duas semanas.</li><li><strong>MONTHLY:</strong> mensal - o mais comum para SaaS.</li><li><strong>QUARTERLY:</strong> trimestral.</li><li><strong>SEMIANNUALLY:</strong> semestral.</li><li><strong>YEARLY:</strong> anual.</li></ul><p>Alem do cycle, os campos obrigatorios sao: customer (ID do cliente no Asaas), billingType (CREDIT_CARD, BOLETO ou PIX), value (valor da cobranca) e nextDueDate (data da primeira cobranca).</p><p>Para cobrancas no cartao de credito, voce tambem precisa enviar o objeto creditCard com os dados do cartao e creditCardHolderInfo com nome, email, CPF/CNPJ, CEP e telefone do titular.</p><h2>Como criar uma assinatura: passo a passo</h2><p>Antes de criar a assinatura, voce precisa ter um customer cadastrado no Asaas. Faca um POST em /v3/customers com nome, email e CPF/CNPJ do cliente. O retorno traz o ID no formato cus_XXXXXXXXXXXX, que voce usa na assinatura.</p><p>Com o customer em maos, faca um POST em /v3/subscriptions. No header, inclua access_token com sua chave de API (ou a do ambiente sandbox para testes). No body, passe customer, billingType, value, nextDueDate, cycle e description. Para cartao de credito, adicione os objetos creditCard e creditCardHolderInfo.</p><p>A resposta traz o ID da assinatura (sub_XXXXXXXXXXXX) e o status ACTIVE. O Asaas ja agenda a proxima cobranca automaticamente. Salve o ID da assinatura no seu banco para conseguir associar os eventos de webhook a assinatura correta.</p><h2>Configurando o webhook no Asaas</h2><p>No painel do Asaas, va em Configuracoes > Integracoes > Webhook e cadastre a URL do seu endpoint. O Asaas vai enviar um POST para essa URL sempre que um evento relevante acontecer. Configure tambem um token de autenticacao que o Asaas vai incluir no header asaas-access-token de cada requisicao - use isso para validar que a requisicao veio realmente do Asaas.</p><p>Os eventos mais importantes para gerenciar assinaturas sao:</p><ul><li><strong>PAYMENT_CONFIRMED:</strong> pagamento de cartao confirmado - ativar ou renovar o plano.</li><li><strong>PAYMENT_RECEIVED:</strong> pagamento de boleto ou Pix recebido - mesmo efeito do CONFIRMED.</li><li><strong>PAYMENT_OVERDUE:</strong> cobranca vencida - suspender acesso ou notificar o cliente.</li><li><strong>PAYMENT_REFUNDED:</strong> estorno realizado - reverter ativacao se necessario.</li><li><strong>SUBSCRIPTION_DELETED:</strong> assinatura cancelada - cancelar acesso imediatamente.</li></ul><p>Os eventos PAYMENT_CREATED e SUBSCRIPTION_CREATED sao uteis para logs e auditoria, mas normalmente nao mudam o status do plano no seu sistema.</p><h2>Endpoint de webhook no .NET</h2><p>No seu backend ASP.NET Core, crie um controller com rota /webhook/asaas decorado com [HttpPost]. A primeira coisa a fazer e validar o header asaas-access-token: se nao bater com o token configurado, retorne 401. Nunca processe um webhook sem validar o token.</p><p>O payload do webhook traz um campo Event com o nome do evento e objetos Payment e/ou Subscription. Use um switch no Event para chamar o servico correto. Para PAYMENT_CONFIRMED e PAYMENT_RECEIVED, ative ou renove o plano. Para PAYMENT_OVERDUE, suspenda ou notifique. Para SUBSCRIPTION_DELETED, cancele.</p><p>Uma regra critica: <strong>sempre retorne HTTP 200</strong>, mesmo que voce ignore o evento. Se o Asaas nao receber 200, ele retenta o webhook ate 5 vezes com intervalos crescentes. Retornar 500 ou 4xx faz o Asaas re-enviar o mesmo evento multiplas vezes, o que pode causar ativacoes ou cancelamentos duplicados.</p><h2>DTOs e logica de ativacao</h2><p>Para deserializar o payload do webhook, crie uma classe AsaasWebhookDto com as propriedades Event (string), Payment (AsaasPaymentDto nullable) e Subscription (AsaasSubscriptionDto nullable). O AsaasPaymentDto precisa de pelo menos: Id, Customer, Subscription (ID da assinatura), Status, Value, DueDate e PaymentDate.</p><p>Na logica de ativacao, busque a assinatura no seu banco usando o AsaasSubscriptionId (o campo Subscription do payload). Atualize o status para Active, registre a data do ultimo pagamento e calcule a proxima renovacao com base no ciclo. Para planos mensais, use DueDate.AddMonths(1).</p><p>Um ponto importante: <strong>idempotencia</strong>. O mesmo evento pode chegar mais de uma vez (falha de rede, timeout, retry do Asaas). Sempre verifique se o payment.Id ja foi processado antes de ativar ou renovar. Salve os IDs de pagamentos ja processados em uma tabela de controle e ignore eventos duplicados.</p><h2>Comparacao com alternativas</h2><p>As principais alternativas ao Asaas para recorrencia no Brasil sao o <strong>Stripe</strong> (internacional, excelente API mas cobra em USD), o <strong>PagSeguro</strong> (nacional, API mais complexa) e o <strong>Iugu</strong> (similar ao Asaas, tambem brasileiro).</p><p>O Stripe tem a melhor API do mercado e documentacao impecavel, mas trabalhar com conversao USD/BRL e tributacao pode complicar para produtos vendidos exclusivamente no Brasil. O Iugu e muito similar ao Asaas em features e taxa.</p><p>O Asaas se destaca pela facilidade de abertura de conta, sandbox gratuito sem burocracia e pelo suporte a Pix nativo, o que e essencial para o mercado brasileiro. Para SaaS com clientes brasileiros que preferem Pix ou boleto, o Asaas e a escolha mais pratica.</p><h2>Pontos positivos e limitacoes</h2><p>Os pontos fortes do Asaas para recorrencia sao claros: API bem documentada, sandbox gratuito, suporte a Pix/boleto/cartao no mesmo contrato, webhooks confiáveis e um painel completo para acompanhar assinaturas sem precisar de ferramentas externas.</p><p>As limitacoes existem e vale conhecer. A taxa por transacao pode ser maior do que gateways puros dependendo do volume. O suporte tecnico via chat nao e instantaneo fora do horario comercial. E a personalizacao das emails de cobranca enviadas ao cliente e limitada.</p><p>Um ponto de atencao para devs: o Asaas nao garante a ordem de entrega dos webhooks. Um PAYMENT_CONFIRMED pode chegar antes de um PAYMENT_CREATED para a mesma cobranca. Projete o seu sistema para ser tolerante a eventos fora de ordem.</p><h2>Casos de uso reais</h2><p>O Asaas com recorrencia e usado em varios tipos de produto SaaS brasileiro:</p><ul><li><strong>Plataformas de cursos:</strong> cobram mensalmente e liberam acesso ao conteudo apos PAYMENT_CONFIRMED.</li><li><strong>Ferramentas B2B:</strong> planos mensais/anuais com suspensao automatica em PAYMENT_OVERDUE.</li><li><strong>Aplicativos de gestao:</strong> trial gratuito que converte para plano pago na primeira cobranca confirmada.</li><li><strong>Clubes de assinatura:</strong> cobranca recorrente com envio de produto fisico vinculado ao evento de pagamento.</li></ul><h2>Dicas e boas praticas</h2><p>Use sempre o ambiente <strong>sandbox</strong> do Asaas durante o desenvolvimento. O sandbox tem URL propria (sandbox.asaas.com) e tokens separados. Nunca use credenciais de producao no codigo de desenvolvimento.</p><p>Implemente uma tabela de <strong>idempotency keys</strong> (payment_id processados) para evitar ativacoes duplicadas. Guarde o payment.Id de cada evento PAYMENT_CONFIRMED ou PAYMENT_RECEIVED ja processado e ignore se receber o mesmo ID novamente.</p><p>Configure um <strong>retry com backoff</strong> no seu servico de ativacao para lidar com falhas temporarias de banco de dados sem lancar excecao para o Asaas. Erros internos devem ser tratados antes de retornar 200 - use try/catch e log de erros, mas sempre retorne 200 para o Asaas. Use filas (RabbitMQ, Azure Service Bus) se precisar de maior confiabilidade na entrega.</p><h2>Vale a pena usar o Asaas para recorrencia?</h2><p>Para produtos SaaS com clientes brasileiros, sim. O Asaas resolve em uma unica integracao o que antes exigia contrato com adquirente, gateway e logica de recorrencia manual. A API e estavel, o sandbox funciona bem e o suporte a Pix e boleto e nativo.</p><p>Se voce esta construindo um SaaS com planos mensais e precisa comecar rapido, o fluxo descrito neste post (criar assinatura + endpoint de webhook) e tudo que voce precisa para ter recorrencia funcionando em producao em poucas horas.</p><p>O proximo passo e criar o cliente no Asaas, subir o endpoint de webhook em producao com HTTPS (obrigatorio), configurar o webhook no painel e testar com o simulador de eventos que o proprio Asaas oferece no sandbox.</p>",
+  "faqs": [
+    {
+      "question": "O Asaas cobra alguma taxa para usar a API de recorrencia?",
+      "answer": "O Asaas nao cobra pela API em si, mas cobra uma taxa por transacao processada (percentual sobre o valor cobrado + taxa fixa, que varia por tipo de pagamento). O sandbox e totalmente gratuito. Consulte a tabela de tarifas atualizada no site oficial do Asaas antes de fechar a conta."
+    },
+    {
+      "question": "O que acontece se meu endpoint de webhook retornar 500?",
+      "answer": "O Asaas tenta reenviar o evento ate 5 vezes com intervalos crescentes. Se nenhuma tentativa receber HTTP 200, o evento e marcado como falho no painel do Asaas. Por isso e critico: trate erros internos com try/catch, logue o problema, mas sempre retorne 200. Use filas para processar em segundo plano se a logica for demorada."
+    },
+    {
+      "question": "Como testar os webhooks localmente durante o desenvolvimento?",
+      "answer": "Use uma ferramenta de tunnel como ngrok ou Cloudflare Tunnel para expor seu localhost com HTTPS. Com o ngrok instalado, rode 'ngrok http 5000' e use a URL gerada no painel do Asaas sandbox. O simulador de eventos do Asaas tambem permite disparar eventos manualmente sem precisar de um pagamento real."
+    },
+    {
+      "question": "Como cancelar uma assinatura pelo .NET?",
+      "answer": "Faca um DELETE para /v3/subscriptions/{id} na API do Asaas. O Asaas vai cancelar as cobrancas futuras e disparar o evento SUBSCRIPTION_DELETED no webhook. Trate esse evento para cancelar o acesso no seu sistema. Nao cancele direto no banco sem chamar a API, pois o Asaas continuaria gerando cobrancas."
+    },
+    {
+      "question": "E possivel alterar o valor ou o ciclo de uma assinatura existente?",
+      "answer": "Sim. Faca um PUT para /v3/subscriptions/{id} com os campos que deseja alterar (value, cycle, nextDueDate). O Asaas dispara o evento SUBSCRIPTION_UPDATED no webhook. A mudanca vale para as proximas cobrancas; cobrancas ja geradas nao sao afetadas retroativamente."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: Asaas Recorrencia",
+      "items": [
+        {
+          "label": "Ciclos disponiveis",
+          "value": "WEEKLY, BIWEEKLY, MONTHLY, QUARTERLY, SEMIANNUALLY, YEARLY"
+        },
+        {
+          "label": "Formas de pagamento",
+          "value": "Cartao de credito, Boleto, Pix"
+        },
+        {
+          "label": "Tentativas de webhook",
+          "value": "Ate 5 retries em caso de falha"
+        },
+        {
+          "label": "Endpoint de assinatura",
+          "value": "POST /v3/subscriptions"
+        },
+        {
+          "label": "Ambiente sandbox",
+          "value": "Gratuito em sandbox.asaas.com"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "Site oficial",
+          "value": "https://www.asaas.com"
+        },
+        {
+          "label": "Documentacao da API",
+          "value": "https://docs.asaas.com"
+        },
+        {
+          "label": "Referencia de subscriptions",
+          "value": "https://docs.asaas.com/reference/criar-nova-assinatura"
+        },
+        {
+          "label": "Referencia de webhooks",
+          "value": "https://docs.asaas.com/docs/notificacoes-webhooks"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Thiago Cavalcanti",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ThiagoCavalcanti",
+          "text": "Migrei de uma logica manual de cobranca para o Asaas e economizei semanas de trabalho. O webhook de PAYMENT_CONFIRMED e tudo que precisei para ativar os planos automaticamente."
+        },
+        {
+          "name": "Beatriz Nascimento",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=BeatrizNascimento",
+          "text": "A parte de idempotencia pegou minha equipe no comeco. O mesmo evento chegou duas vezes e ativamos o plano em duplicata. Depois que implementamos o controle por payment.Id, nunca mais aconteceu."
+        },
+        {
+          "name": "Andre Moreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=AndreMoreira",
+          "text": "O sandbox funciona muito bem para testar todos os cenarios: pagamento confirmado, vencido, estorno, cancelamento. Consegui validar o fluxo completo antes de subir para producao."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Recorrencia nativa",
+  "card1_texto": "Asaas gera as cobrancas automaticamente a cada ciclo",
+  "card2_titulo": "Webhook confiavel",
+  "card2_texto": "Eventos em tempo real para cada mudanca de status",
+  "card3_titulo": "Pix, boleto e cartao",
+  "card3_texto": "Tres formas de pagamento em uma unica integracao",
+  "subtitulo_capa": "Assinaturas recorrentes no Asaas com webhook no .NET: do zero a producao"
+}
