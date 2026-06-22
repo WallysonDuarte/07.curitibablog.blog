@@ -1,0 +1,190 @@
+---
+const WPP_GROUP_URL = 'https://chat.whatsapp.com/FXw6emOLBtIHOusvzzz1pS';
+---
+
+<!-- WhatsApp Group Popup -->
+<div id="wpp-popup" class="wpp-popup" role="dialog" aria-label="Grupo WhatsApp" aria-modal="true" hidden>
+  <button id="wpp-popup-close" class="wpp-popup-close" aria-label="Fechar">&times;</button>
+  <div class="wpp-popup-icon">
+    <i class="fa-brands fa-whatsapp"></i>
+  </div>
+  <p class="wpp-popup-title">💬 Gostou? Compartilhe com quem pode se interessar!</p>
+  <p class="wpp-popup-body">👥 Entre no grupo para receber novidades:</p>
+  <a
+    href={WPP_GROUP_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="wpp-popup-btn"
+    id="wpp-popup-cta"
+  >
+    <i class="fa-brands fa-whatsapp"></i> Entrar no grupo
+  </a>
+  <button id="wpp-popup-dismiss" class="wpp-popup-skip" type="button">Não, obrigado</button>
+</div>
+
+<div id="wpp-popup-overlay" class="wpp-popup-overlay" hidden></div>
+
+<style>
+  .wpp-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 9998;
+    animation: wppFadeIn .25s ease;
+  }
+
+  .wpp-popup {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    background: var(--bg);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.25);
+    padding: 1.5rem 1.5rem 1.2rem;
+    max-width: 320px;
+    width: calc(100vw - 2rem);
+    animation: wppSlideIn .3s cubic-bezier(.34,1.56,.64,1);
+    border: 1px solid rgba(37,211,102,.3);
+  }
+
+  @keyframes wppSlideIn {
+    from { opacity: 0; transform: translateY(24px) scale(.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes wppFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .wpp-popup-close {
+    position: absolute;
+    top: .6rem;
+    right: .75rem;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: .2rem .4rem;
+    border-radius: 4px;
+    transition: color .15s, background .15s;
+  }
+  .wpp-popup-close:hover { color: var(--text-dark); background: var(--bg-light); }
+
+  .wpp-popup-icon {
+    font-size: 2.4rem;
+    color: #25D366;
+    margin-bottom: .6rem;
+    line-height: 1;
+  }
+
+  .wpp-popup-title {
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--text-dark);
+    margin: 0 0 .4rem;
+    line-height: 1.4;
+  }
+
+  .wpp-popup-body {
+    font-size: .85rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+  }
+
+  .wpp-popup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    width: 100%;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: .7rem 1rem;
+    font-size: .95rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    margin-bottom: .6rem;
+  }
+  .wpp-popup-btn:hover { background: #1ebe59; transform: translateY(-1px); }
+  .wpp-popup-btn i { font-size: 1.1rem; }
+
+  .wpp-popup-skip {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: .78rem;
+    cursor: pointer;
+    padding: .3rem;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color .15s;
+  }
+  .wpp-popup-skip:hover { color: var(--text-dark); }
+
+  @media (max-width: 480px) {
+    .wpp-popup { bottom: 1rem; right: .75rem; left: .75rem; max-width: none; width: auto; }
+  }
+</style>
+
+<script>
+(function () {
+  const STORAGE_KEY = 'wpp_popup_dismissed';
+  const DELAY_MS    = 8000; // 8s após carregar a página
+
+  function isDismissed() {
+    try { return localStorage.getItem(STORAGE_KEY) === '1'; } catch { return false; }
+  }
+
+  function dismiss() {
+    try { localStorage.setItem(STORAGE_KEY, '1'); } catch {}
+    hide();
+  }
+
+  function hide() {
+    const popup   = document.getElementById('wpp-popup');
+    const overlay = document.getElementById('wpp-popup-overlay');
+    if (popup)   { popup.hidden = true; popup.setAttribute('aria-hidden', 'true'); }
+    if (overlay) { overlay.hidden = true; }
+  }
+
+  function show() {
+    const popup   = document.getElementById('wpp-popup');
+    const overlay = document.getElementById('wpp-popup-overlay');
+    if (!popup) return;
+    popup.hidden   = false;
+    if (overlay) overlay.hidden = false;
+    popup.removeAttribute('aria-hidden');
+    // focus close button for a11y
+    const closeBtn = document.getElementById('wpp-popup-close');
+    closeBtn?.focus();
+  }
+
+  if (isDismissed()) return;
+
+  // Show after DELAY_MS
+  const timer = setTimeout(show, DELAY_MS);
+
+  // Wire close + dismiss buttons
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('wpp-popup-close')?.addEventListener('click', dismiss);
+    document.getElementById('wpp-popup-dismiss')?.addEventListener('click', dismiss);
+    // Clicking CTA counts as interacted — also dismiss so popup doesn't reappear
+    document.getElementById('wpp-popup-cta')?.addEventListener('click', dismiss);
+    // ESC key closes
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { clearTimeout(timer); dismiss(); }
+    });
+  });
+})();
+</script>

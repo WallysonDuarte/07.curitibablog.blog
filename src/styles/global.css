@@ -142,6 +142,20 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   color: rgba(255,255,255,.8); transition: color .2s;
 }
 .site-nav a:hover, .site-nav a.active { color: var(--primary); }
+.nav-wpp {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  background: #25D366 !important;
+  color: #fff !important;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  transition: background .15s !important;
+}
+.nav-wpp:hover { background: #1ebe59 !important; color: #fff !important; }
+.nav-wpp i { font-size: .95rem; }
+
 .nav-entrar {
   border: 1.5px solid var(--primary) !important;
   color: var(--primary) !important;
@@ -522,6 +536,62 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   color: var(--text-dark); font-size: .8rem; padding: 4px 12px; border-radius: 20px;
 }
 .article-tag:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* ── WhatsApp CTA Block ──────────────────────── */
+.wpp-cta-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: linear-gradient(135deg, #e7faf0 0%, #d4f5e4 100%);
+  border: 1.5px solid #25D366;
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+  margin: 2rem 0;
+}
+[data-theme="dark"] .wpp-cta-block {
+  background: linear-gradient(135deg, #0d2e1a 0%, #0a2416 100%);
+  border-color: #25D366;
+}
+.wpp-cta-icon {
+  font-size: 2.2rem;
+  color: #25D366;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+.wpp-cta-content { flex: 1; }
+.wpp-cta-title {
+  font-weight: 700;
+  font-size: .98rem;
+  color: var(--text-dark);
+  margin: 0 0 .3rem;
+  line-height: 1.4;
+}
+.wpp-cta-body {
+  font-size: .88rem;
+  color: var(--text-dark);
+  margin: 0 0 .9rem;
+  opacity: .85;
+}
+.wpp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: #25D366;
+  color: #fff;
+  border-radius: 8px;
+  padding: .55rem 1.2rem;
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .15s, transform .1s;
+}
+.wpp-cta-btn:hover { background: #1ebe59; transform: translateY(-1px); color: #fff; }
+.wpp-cta-btn i { font-size: 1rem; }
+@media (max-width: 600px) {
+  .wpp-cta-block { flex-direction: column; gap: .6rem; }
+  .wpp-cta-icon { font-size: 1.8rem; }
+}
 
 /* ── Share ─────────────────────────────────────── */
 .share-section { margin: 2rem 0; padding: 1.5rem; background: var(--bg-light); border-radius: var(--radius-lg); }
@@ -908,7 +978,8 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
   }
   .site-nav.open { display: flex; }
   .site-nav a { padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.08); width: 100%; }
-  .nav-entrar { margin-top: .5rem; text-align: center; padding: 10px !important; }
+  .nav-wpp { margin-top: .5rem; justify-content: center; padding: 10px !important; }
+  .nav-entrar { margin-top: .25rem; text-align: center; padding: 10px !important; }
   .nav-cta { border-radius: var(--radius); margin-top: .25rem; text-align: center; padding: 10px !important; }
   /* Dropdown mobile — vira links diretos */
   .nav-dropdown { width: 100%; }

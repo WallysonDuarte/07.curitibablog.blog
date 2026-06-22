@@ -1,0 +1,122 @@
+{
+  "title": "WAHA Community agora e gratuito: WhatsApp HTTP API sem pagar nada",
+  "slug": "waha-community-gratuito-whatsapp-http-api",
+  "summary": "O WAHA Community acaba de incorporar todos os recursos do plano pago, sem custo nenhum. Entenda o que mudou, como migrar e por que isso e grande noticia para quem automatiza WhatsApp com Docker.",
+  "metaTitle": "WAHA Community gratis: WhatsApp HTTP API | CuritibaBlog",
+  "metaDescription": "WAHA Community agora inclui sessoes ilimitadas, armazenamento e autenticacao por API key. Saiba como usar e migrar do waha-plus.",
+  "category": "desenvolvimento",
+  "categories": [
+    "desenvolvimento",
+    "tecnologia"
+  ],
+  "tags": [
+    "waha",
+    "whatsapp-api",
+    "automacao",
+    "docker",
+    "self-hosted",
+    "webhook",
+    "n8n"
+  ],
+  "content": "<h2>O que e o WAHA</h2><p>WAHA significa <strong>WhatsApp HTTP API</strong>. E um projeto open source que transforma o WhatsApp em uma API REST, permitindo que desenvolvedores enviem e recebam mensagens programaticamente, sem depender da API oficial do Meta.</p><p>A ideia central e rodar um container Docker que emula o WhatsApp Web por baixo dos panos e expoe uma interface HTTP com documentacao Swagger. Voce faz um POST e a mensagem vai. Faz um GET e pega as mensagens recebidas. Simples assim.</p><p>O projeto e mantido pela <strong>devlikeapro</strong> e existe ha alguns anos em duas versoes: Community (gratuita) e Plus (paga). Ate o lancamento da versao 2026.6.1, a versao gratuita tinha limitacoes serias que empurravam muita gente para o plano pago.</p><h2>O que mudou na versao 2026.6.1</h2><p>A grande novidade e que a <strong>devlikeapro fundiu o WAHA Plus com o Community</strong>. A partir da versao 2026.6.1, todos os recursos que antes eram exclusivos do plano pago estao disponiveis gratuitamente para qualquer pessoa que rode o container.</p><p>Entre os recursos que deixaram de ser pagos estao: sessoes ilimitadas, envio de mensagens de midia (imagem, audio, video, documento), suporte a multiplos motores de conexao com o WhatsApp, armazenamento em PostgreSQL, MongoDB e S3, autenticacao por API key, Swagger com autenticacao, health checks e metricas.</p><p>A migracao tambem foi simplificada: a imagem Docker agora se chama <strong>devlikeapro/waha</strong> em vez de <strong>devlikeapro/waha-plus</strong>. Quem ja usava o Plus precisa apenas trocar o nome da imagem no compose e reiniciar.</p><h2>Principais recursos disponiveis</h2><p>Com o WAHA Community gratuito, voce tem acesso a um conjunto robusto de funcionalidades para automacao de WhatsApp:</p><ul><li><strong>Sessoes ilimitadas:</strong> conecte multiplos numeros no mesmo container.</li><li><strong>Motores de conexao:</strong> WEBJS, WPP, GOWS, NOWEB e VENOM - cada um com caracteristicas diferentes de estabilidade e compatibilidade.</li><li><strong>API REST completa:</strong> envio de texto, imagens, audio, video, documentos, stickers e mensagens de localizacao.</li><li><strong>Webhooks:</strong> receba eventos em tempo real quando chegar mensagem, quando o status mudar ou quando uma sessao cair.</li><li><strong>Armazenamento externo:</strong> salve sessoes e midias no PostgreSQL, MongoDB ou S3 em vez de depender do sistema de arquivos local.</li><li><strong>Dashboard:</strong> interface web em /dashboard para monitorar sessoes sem precisar de comandos.</li><li><strong>Swagger UI:</strong> documentacao interativa em /swagger para testar endpoints direto no navegador.</li><li><strong>Integracao MCP:</strong> suporte ao protocolo MCP para conectar com agentes de IA.</li></ul><h2>Como comecar: instalacao em menos de 5 minutos</h2><p>O jeito mais rapido de subir o WAHA e com Docker Compose. Crie um arquivo docker-compose.yml e defina o servico com a imagem devlikeapro/waha, mapeie a porta 3000, configure a variavel WHATSAPP_API_KEY com uma chave secreta e monte um volume para persistir as sessoes em ./waha-data.</p><p>Rode <code>docker compose up -d</code>, aguarde o container iniciar e acesse <code>http://localhost:3000/dashboard</code>. Clique em Start session, escaneie o QR code com o WhatsApp do celular e pronto - sua sessao esta ativa. A partir dai voce ja pode enviar mensagens via POST em /api/sendText.</p><p>O processo inteiro leva menos de 5 minutos em qualquer maquina com Docker instalado. O container e leve e funciona tanto em Linux quanto em Windows e macOS.</p><h2>Exemplo pratico: enviando uma mensagem</h2><p>Com a sessao ativa, enviar uma mensagem e um simples POST autenticado. Voce envia para /api/sendText com header X-Api-Key contendo sua chave, e no body passa o chatId no formato 5541999999999@c.us, o texto da mensagem e o nome da sessao (geralmente default).</p><p>O campo chatId segue o formato numero@c.us para contatos individuais ou grupoid@g.us para grupos. A resposta da API inclui o ID da mensagem para rastreamento e confirmacao de entrega.</p><p>Para receber mensagens, configure um webhook no momento de criar a sessao, apontando para uma URL publica ou tunnel (ngrok, Cloudflare Tunnel) que receba os eventos via POST. Cada mensagem recebida gera um evento com o conteudo, remetente e timestamp.</p><h2>Comparacao com alternativas</h2><p>O WAHA nao e o unico projeto que tenta expor o WhatsApp como API. As alternativas mais conhecidas sao o <strong>Evolution API</strong> e o <strong>Baileys</strong> (biblioteca Node.js que o Evolution usa por baixo).</p><p>O Evolution API tem uma comunidade grande no Brasil e integracao nativa com muitas ferramentas de atendimento. O Baileys e a biblioteca mais popular para quem quer controle total e nao precisa de uma API REST pronta. Ja o WAHA se destaca pelo foco em simplicidade de deploy, documentacao Swagger bem cuidada e suporte a multiplos motores de conexao.</p><p>Quando escolher o WAHA: quando voce precisa de algo pronto para rodar em minutos, quer Swagger para testar, precisa de multiplos motores ou ja usa o ecossistema devlikeapro. Quando considerar Evolution API: quando precisar de integracoes com plataformas de atendimento ja prontas ou quiser uma comunidade maior em portugues.</p><h2>Pontos positivos e limitacoes</h2><p>Os pontos fortes do WAHA sao claros: gratuito, self-hosted, Docker-first, documentacao de qualidade, multiplos motores e agora sem restricoes de plano. E uma solucao solida para automacao de WhatsApp sem depender de terceiros.</p><p>As limitacoes existem e sao importantes de conhecer. O maior risco e o <strong>banimento de conta</strong>: o WhatsApp nao autoriza o uso de APIs nao oficiais, e contas que enviam muitas mensagens automatizadas ou tem comportamento suspeito podem ser bloqueadas permanentemente. Isso vale para qualquer solucao nao oficial, nao so o WAHA.</p><p>Outros pontos de atencao: o suporte oficial e limitado na versao gratuita, a estabilidade depende do motor escolhido e de atualizacoes do WhatsApp Web, e a escalabilidade para volumes muito altos exige infraestrutura e configuracao cuidadosa.</p><h2>Casos de uso reais</h2><p>O WAHA e usado em cenarios bem variados por times de tecnologia:</p><ul><li><strong>Notificacoes internas:</strong> sistemas que avisam a equipe sobre deploys, alertas de monitoramento ou tickets urgentes via WhatsApp.</li><li><strong>Atendimento automatizado:</strong> chatbots que respondem duvidas frequentes, coletam dados de clientes ou encaminham para atendentes humanos.</li><li><strong>Integracao com n8n:</strong> fluxos de automacao no n8n que disparam mensagens baseadas em eventos de outros sistemas (CRM, e-commerce, planilhas).</li><li><strong>Confirmacoes de agendamento:</strong> clinicas, saloes e prestadores de servico que enviam lembretes e confirmacoes automaticamente.</li></ul><h2>Dicas e boas praticas</h2><p>Quem ja usa o WAHA em producao compartilha algumas licoes importantes. A primeira e usar <strong>sempre a variavel WHATSAPP_API_KEY</strong> - nunca deixe a API aberta sem autenticacao, mesmo em rede interna.</p><p>Escolha o motor com cuidado: <strong>NOWEB</strong> e mais leve e nao depende de Chromium, mas tem menos compatibilidade com recursos avancados. <strong>WEBJS</strong> e mais estavel para a maioria dos casos mas consome mais memoria. Faca testes antes de ir para producao.</p><p>Configure <strong>armazenamento externo</strong> desde o inicio se for usar em producao. Sessoes salvas so em arquivo local se perdem se o container for recriado. Use PostgreSQL ou MongoDB para persistencia real. E sempre mantenha a imagem atualizada - o WhatsApp Web muda com frequencia e versoes desatualizadas param de funcionar.</p><h2>Vale a pena usar o WAHA?</h2><p>Para desenvolvedores que precisam de automacao de WhatsApp em ambiente controlado, self-hosted e sem custo de licenca, o WAHA Community na versao 2026.6.1 e uma das melhores opcoes disponiveis agora. A fusao com o Plus eliminou a principal razao para nao usa-lo.</p><p>Se voce ja usa o waha-plus pago, a migracao e trivial: troque o nome da imagem Docker e reinicie. Se esta comecando agora, comece direto com devlikeapro/waha e ignore a versao antiga.</p><p>O aviso importante fica: avalie o risco de banimento para o numero que vai usar. Para numeros descartaveis ou contas dedicadas a automacao, o risco e aceitavel. Para o numero principal de atendimento da empresa, pense duas vezes e estude as politicas do WhatsApp antes de colocar em producao.</p>",
+  "faqs": [
+    {
+      "question": "O WAHA Community e realmente gratuito ou tem alguma limitacao oculta?",
+      "answer": "Desde a versao 2026.6.1, o Community inclui todos os recursos do antigo plano Plus sem custo. Nao ha limite de sessoes, motores ou funcionalidades. O projeto e open source e voce pode inspecionar o codigo. O unico custo e a infraestrutura (servidor, VPS) onde voce roda o container."
+    },
+    {
+      "question": "Posso usar o WAHA com o numero principal da minha empresa?",
+      "answer": "Tecnicamente sim, mas com risco. O WhatsApp nao autoriza APIs nao oficiais e pode banir contas que identifica com comportamento automatizado fora do padrao. Para contas importantes, o recomendado e usar a API oficial do Meta (WhatsApp Business API) ou testar em numero separado antes."
+    },
+    {
+      "question": "Quem ja usava o waha-plus precisa pagar alguma coisa para continuar?",
+      "answer": "Nao. A devlikeapro anunciou que os recursos do Plus foram incorporados ao Community. Quem usava o Plus precisa apenas trocar o nome da imagem Docker de devlikeapro/waha-plus para devlikeapro/waha e reiniciar o container. As configuracoes existentes continuam funcionando."
+    },
+    {
+      "question": "Qual motor de conexao devo escolher: WEBJS, NOWEB ou outro?",
+      "answer": "Para a maioria dos casos, comece com NOWEB - e mais leve, nao exige Chromium e funciona bem para envio e recebimento de mensagens basicas. Se precisar de recursos como stickers, reacoes ou grupos avancados, teste WEBJS. Os outros motores (WPP, GOWS, VENOM) tem casos de uso mais especificos documentados no site oficial."
+    },
+    {
+      "question": "O WAHA funciona com n8n e Typebot?",
+      "answer": "Sim. O WAHA tem integracao nativa documentada com n8n (via no HTTP Request ou nos especificos da comunidade) e com Typebot para chatbots. Tambem suporta Chatwoot para atendimento humano e Uptime Kuma para monitoramento. A documentacao oficial lista todos os integradores compativeis."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: WAHA Community",
+      "items": [
+        {
+          "label": "Versao que liberou os recursos",
+          "value": "2026.6.1"
+        },
+        {
+          "label": "Imagem Docker atual",
+          "value": "devlikeapro/waha"
+        },
+        {
+          "label": "Preco do Community",
+          "value": "Gratuito (open source)"
+        },
+        {
+          "label": "Motores disponiveis",
+          "value": "WEBJS, WPP, GOWS, NOWEB, VENOM"
+        },
+        {
+          "label": "Requisito minimo",
+          "value": "Docker (qualquer SO compativel)"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "Site oficial",
+          "value": "https://waha.devlike.pro"
+        },
+        {
+          "label": "Documentacao oficial",
+          "value": "https://waha.devlike.pro/docs/"
+        },
+        {
+          "label": "GitHub",
+          "value": "https://github.com/devlikeapro/waha"
+        },
+        {
+          "label": "Docker Hub",
+          "value": "https://hub.docker.com/r/devlikeapro/waha"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Rafael Mendonca",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMendonca",
+          "text": "Migrei do waha-plus em 10 minutos. So troquei o nome da imagem no compose e tudo continuou funcionando. Muito bom nao ter mais que pagar pelo Plus."
+        },
+        {
+          "name": "Camila Resende",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaResende",
+          "text": "Uso o WAHA integrado com n8n para notificacoes do nosso sistema de pedidos. Com o motor NOWEB ficou mais estavel e o consumo de memoria caiu bastante."
+        },
+        {
+          "name": "Lucas Figueiredo",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasFigueiredo",
+          "text": "O Swagger embutido facilita muito os testes. Consigo mostrar para o cliente como a API funciona sem precisar de Postman ou configuracao extra."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "100% gratuito",
+  "card1_texto": "Todos os recursos do Plus agora sem custo",
+  "card2_titulo": "Self-hosted",
+  "card2_texto": "Rode no seu servidor com Docker em minutos",
+  "card3_titulo": "API REST + Swagger",
+  "card3_texto": "Documentacao interativa pronta para usar",
+  "subtitulo_capa": "WAHA Community gratuito: sessoes ilimitadas, midia e armazenamento sem pagar"
+}

@@ -8,6 +8,7 @@ import RichBlock from '../components/RichBlock.astro';
 import AdBanner from '../components/AdBanner.astro';
 import LikeButton from '../components/LikeButton.astro';
 import CommentSection from '../components/CommentSection.astro';
+import WhatsAppPopup from '../components/WhatsAppPopup.astro';
 import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../lib/api';
 import { formatDate, buildSections, getPostCategories, toSlug } from '../lib/utils';
 
@@ -228,6 +229,23 @@ const faqSideAd = faqSideAds[0] ?? null;
         ))}
       </div>
 
+      <!-- WhatsApp Group CTA block -->
+      <div class="wpp-cta-block">
+        <div class="wpp-cta-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="wpp-cta-content">
+          <p class="wpp-cta-title">💬 Gostou? Compartilhe com quem pode se interessar!</p>
+          <p class="wpp-cta-body">👥 Entre no grupo para receber novidades em primeira mão:</p>
+          <a
+            href="https://chat.whatsapp.com/FXw6emOLBtIHOusvzzz1pS"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="wpp-cta-btn"
+          >
+            <i class="fa-brands fa-whatsapp"></i> Entrar no Grupo WhatsApp
+          </a>
+        </div>
+      </div>
+
       <!-- Tags -->
       {post.tags?.length > 0 && (
         <div class="article-tags">
@@ -393,6 +411,8 @@ const faqSideAd = faqSideAds[0] ?? null;
       )}
     </aside>
   </div>
+
+  <WhatsAppPopup />
 </BaseLayout>
 
 <script>
