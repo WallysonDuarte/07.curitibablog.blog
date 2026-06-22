@@ -35,16 +35,45 @@ def log(msg):
 # ETAPA 1 - Busca tendencias
 # ---------------------------------------------------------------------------
 
+def _notificar_admin(mensagem: str):
+    """Envia alerta WhatsApp para o admin via publicar_post.notificar_whatsapp_pessoal."""
+    try:
+        sys.path.insert(0, str(THIS_DIR))
+        from publicar_post import notificar_whatsapp_pessoal
+        notificar_whatsapp_pessoal(mensagem)
+    except Exception as e:
+        log(f"Falha ao notificar WhatsApp admin: {e}")
+
+
 def buscar_temas() -> dict:
     """Busca HN + Dev.to e salva em logs/temas-HOJE.json"""
     from buscar_temas import fetch_hn_top, fetch_devto_trending
     log("Buscando tendencias HN + Dev.to...")
     hn    = fetch_hn_top()
     devto = fetch_devto_trending()
+
+    # Detectar falha: listas vazias ou contendo apenas erros
+    hn_ok    = [x for x in hn    if "erro" not in x and x.get("titulo")]
+    devto_ok = [x for x in devto if "erro" not in x and x.get("titulo")]
+
+    if not hn_ok and not devto_ok:
+        hora = datetime.datetime.now().strftime("%H:%M")
+        log(f"AVISO: busca de temas falhou completamente ({hora}) — notificando admin")
+        _notificar_admin(
+            f"⚠️ *curitibablog — busca de temas FALHOU* ({hora})\n\n"
+            f"HN: {hn}\n\nDev.to: {devto}\n\n"
+            f"Post das {hora} NAO sera gerado automaticamente.\n"
+            f"Verifique conexao com internet e rode manualmente se necessario."
+        )
+    elif not hn_ok:
+        log("AVISO: HN retornou vazio — usando apenas Dev.to")
+    elif not devto_ok:
+        log("AVISO: Dev.to retornou vazio — usando apenas HN")
+
     resultado = {"data": HOJE, "hn": hn, "devto": devto}
     TEMAS_PATH.write_text(json.dumps(resultado, ensure_ascii=False, indent=2), encoding="utf-8")
     log(f"Tendencias salvas: {TEMAS_PATH}")
-    log(f"  HN: {len(hn)} stories | Dev.to: {len(devto)} artigos")
+    log(f"  HN: {len(hn_ok)} stories validas | Dev.to: {len(devto_ok)} artigos validos")
     print("\n=== TEMAS DO DIA ===")
     print(TEMAS_PATH.read_text(encoding="utf-8"))
     print("\n=== PROXIMO PASSO ===")

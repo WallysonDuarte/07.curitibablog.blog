@@ -982,6 +982,92 @@ def postar_whatsapp_grupo(titulo: str, summary: str, slug: str) -> dict:
                 pass
 
 
+WHATSAPP_ADMIN_ID = "5541996617954@c.us"
+
+
+def notificar_whatsapp_pessoal(mensagem: str) -> dict:
+    """Envia mensagem de alerta para o numero pessoal do admin via WAHA (SSH tunnel VPS:3000)."""
+    import paramiko, threading, socket, time
+
+    local_waha_port = 3002  # porta diferente do grupo (3001) para evitar conflito
+    ssh = None
+    server_sock = None
+    try:
+        ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(VPS_HOST, port=VPS_PORT, username=VPS_USER, key_filename=SSH_KEY, timeout=30)
+        transport = ssh.get_transport()
+
+        def _forward(local_conn):
+            try:
+                chan = transport.open_channel("direct-tcpip", ("127.0.0.1", 3000), ("127.0.0.1", local_waha_port))
+                while True:
+                    r, _, _ = __import__("select").select([local_conn, chan], [], [], 1)
+                    if local_conn in r:
+                        data = local_conn.recv(4096)
+                        if not data:
+                            break
+                        chan.send(data)
+                    if chan in r:
+                        data = chan.recv(4096)
+                        if not data:
+                            break
+                        local_conn.send(data)
+            except Exception:
+                pass
+            finally:
+                local_conn.close()
+
+        server_sock = socket.socket()
+        server_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        server_sock.bind(("127.0.0.1", local_waha_port))
+        server_sock.listen(5)
+        server_sock.settimeout(5)
+
+        def _accept_loop():
+            try:
+                while True:
+                    try:
+                        conn, _ = server_sock.accept()
+                        t = threading.Thread(target=_forward, args=(conn,), daemon=True)
+                        t.start()
+                    except socket.timeout:
+                        if not transport.is_active():
+                            break
+            except Exception:
+                pass
+
+        threading.Thread(target=_accept_loop, daemon=True).start()
+        time.sleep(0.5)
+
+        r = requests.post(
+            f"http://127.0.0.1:{local_waha_port}/api/sendText",
+            headers={"X-Api-Key": WAHA_API_KEY, "Content-Type": "application/json"},
+            json={"session": WAHA_SESSION, "chatId": WHATSAPP_ADMIN_ID, "text": mensagem},
+            timeout=20,
+        )
+        if r.ok:
+            log("WhatsApp admin: alerta enviado")
+            return {"ok": True}
+        else:
+            log(f"WhatsApp admin: ERRO HTTP {r.status_code} — {r.text[:200]}")
+            return {"ok": False, "erro": r.text[:200]}
+    except Exception as e:
+        log(f"WhatsApp admin: EXCECAO — {e}")
+        return {"ok": False, "erro": str(e)}
+    finally:
+        if server_sock:
+            try:
+                server_sock.close()
+            except Exception:
+                pass
+        if ssh:
+            try:
+                ssh.close()
+            except Exception:
+                pass
+
+
 def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | None) -> dict:
     """
     Passo 11 do pipeline: publica no Facebook Page e no Instagram Business.
@@ -1456,6 +1542,16 @@ def main(json_path: str):
         run_log["erro"] = str(e)
         run_log["traceback"] = traceback.format_exc()
         log(f"ERRO: {e}")
+        try:
+            import datetime as _dt
+            hora = _dt.datetime.now().strftime("%H:%M")
+            notificar_whatsapp_pessoal(
+                f"⚠️ *curitibablog autopost FALHOU* ({hora})\n\n"
+                f"Erro: {str(e)[:300]}\n\n"
+                f"Verifique os logs em:\n`auto-post/logs/{_dt.date.today().isoformat()}.json`"
+            )
+        except Exception as _we:
+            log(f"Falha ao notificar WhatsApp admin: {_we}")
         sys.exit(1)
     finally:
         with open(log_path, "w", encoding="utf-8") as f:
