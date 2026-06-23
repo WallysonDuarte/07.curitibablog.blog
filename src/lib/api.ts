@@ -1,7 +1,7 @@
 import type { BlogPost, BlogCategory, Advertisement } from './types';
 
 const API_URL = 'https://api.curitibasoftware.com.br';
-const SITE_ID = 'curitibablog';
+const SITE_ID = import.meta.env.PUBLIC_SITE_ID || 'curitibablog';
 
 function sanitizePost(post: BlogPost): BlogPost {
   return {
