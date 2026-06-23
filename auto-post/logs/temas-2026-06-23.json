@@ -5,29 +5,36 @@
       "fonte": "HN",
       "titulo": "F3",
       "url": "https://github.com/future-file-format/f3",
-      "score": 318,
-      "comentarios": 81
+      "score": 346,
+      "comentarios": 95
     },
     {
       "fonte": "HN",
       "titulo": "San Diego photologs from the 1970s",
       "url": "https://www.beautifulpublicdata.com/san-diego-photologs-from-the-1970s/",
-      "score": 64,
-      "comentarios": 10
+      "score": 76,
+      "comentarios": 12
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: TikZ Editor – WYSIWYG editor for figures in LaTeX",
       "url": "https://tikz.dev/editor/",
-      "score": 235,
-      "comentarios": 46
+      "score": 241,
+      "comentarios": 47
     },
     {
       "fonte": "HN",
       "titulo": "Unlimited OCR: One-Shot Long-Horizon Parsing",
       "url": "https://github.com/baidu/Unlimited-OCR",
-      "score": 350,
+      "score": 352,
       "comentarios": 87
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Five monitors on a Commodore 128 [video]",
+      "url": "https://www.youtube.com/watch?v=ul5hC3PY1Yg",
+      "score": 52,
+      "comentarios": 10
     },
     {
       "fonte": "HN",
@@ -38,72 +45,65 @@
     },
     {
       "fonte": "HN",
-      "titulo": "Five monitors on a Commodore 128 [video]",
-      "url": "https://www.youtube.com/watch?v=ul5hC3PY1Yg",
-      "score": 50,
-      "comentarios": 10
-    },
-    {
-      "fonte": "HN",
       "titulo": "The Coming Loop",
       "url": "https://lucumr.pocoo.org/2026/6/23/the-coming-loop/",
-      "score": 185,
-      "comentarios": 150
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Claude Tag",
-      "url": "https://www.anthropic.com/news/introducing-claude-tag",
-      "score": 85,
-      "comentarios": 39
+      "score": 191,
+      "comentarios": 152
     },
     {
       "fonte": "HN",
       "titulo": "Mistral OCR 4",
       "url": "https://mistral.ai/news/ocr-4/",
-      "score": 297,
-      "comentarios": 78
+      "score": 308,
+      "comentarios": 81
     },
     {
       "fonte": "HN",
       "titulo": "Elevated error rate across multiple models",
       "url": "https://status.claude.com/incidents/jbhf20wjmzrf",
       "score": 179,
-      "comentarios": 222
+      "comentarios": 225
     },
     {
       "fonte": "HN",
       "titulo": "Plotnine",
       "url": "https://plotnine.org/",
-      "score": 215,
-      "comentarios": 65
+      "score": 217,
+      "comentarios": 66
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Claude Tag",
+      "url": "https://www.anthropic.com/news/introducing-claude-tag",
+      "score": 96,
+      "comentarios": 43
     },
     {
       "fonte": "HN",
       "titulo": "MSG Made Dossier on Activists Who Opposed Facial Recognition",
       "url": "https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/",
-      "score": 225,
-      "comentarios": 61
+      "score": 227,
+      "comentarios": 63
     },
     {
       "fonte": "HN",
       "titulo": "The deadly rise of giant trucks and SUVs",
       "url": "https://www.nytimes.com/interactive/2026/06/21/us/trucks-suv-pedestrian-crashes.html",
-      "score": 54,
-      "comentarios": 210
+      "score": 67,
+      "comentarios": 225
     },
     {
       "fonte": "HN",
       "titulo": "GLM-5.2 – How to Run Locally",
       "url": "https://unsloth.ai/docs/models/glm-5.2",
-      "score": 557,
+      "score": 560,
       "comentarios": 266
     },
     {
       "fonte": "HN",
       "titulo": "The Low-Tech AI of Elden Ring",
       "url": "https://nega.tv/posts/low-tech-ai-of-elden-ring.html",
-      "score": 50,
+      "score": 52,
       "comentarios": 31
     }
   ],

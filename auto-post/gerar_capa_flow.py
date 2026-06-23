@@ -60,7 +60,7 @@ PROMPT_TEMPLATE = (
     'The title must have a modern editorial composition, with selected keywords larger, bolder, or colored differently. '
     'Use subtle text shadows, soft glow, or outline only when needed for readability. '
     'The title must remain clean, sharp, and readable on mobile. '
-    'At the top, place a smaller header text: "Entendendo na pratica". '
+    'At the top, place a smaller header text: "Entendendo na prática". '
     'This header can be white, light gray, or cyan, but must not compete with the main title. '
     'On one side of the thumbnail, add a strong visual element directly related to the topic '
     'of the post, such as an abstract AI chip, API dashboard, cloud model interface, neural network, '
@@ -88,7 +88,10 @@ PROMPT_TEMPLATE = (
     'avoid cartoon character taking too much space, avoid cheap template look, '
     'avoid blurry elements, avoid low resolution, avoid watermark, avoid clutter, '
     'avoid crowded layout, avoid too many colors, avoid realistic person on the side, '
-    'avoid excessive details in the background.'
+    'avoid excessive details in the background, '
+    'avoid typos, avoid doubled letters, avoid misspelled words, avoid extra consonants, '
+    'avoid wrong accents, avoid missing accents in Portuguese words, '
+    'CRITICAL: spell every word in the title EXACTLY as given, character by character.'
 )
 
 
