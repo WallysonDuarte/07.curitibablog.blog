@@ -1131,6 +1131,12 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
         "#tecnologia #ia #desenvolvedores #programacao #curitibablog"
     )
 
+    _token_expirado_alerta_enviado = False
+
+    def _checar_token_expirado(resp_text: str) -> bool:
+        """Retorna True se o erro for OAuthException code 190 (token expirado/inválido)."""
+        return '"code":190' in resp_text or '"code": 190' in resp_text
+
     # Facebook Page
     if fb_page_id and fb_page_token:
         try:
@@ -1148,6 +1154,21 @@ def postar_redes_sociais(titulo: str, summary: str, slug: str, cover_url: str | 
             else:
                 log(f"Facebook: ERRO HTTP {r.status_code} — {r.text[:200]}")
                 resultados["facebook"] = {"ok": False, "erro": r.text[:200]}
+                if _checar_token_expirado(r.text) and not _token_expirado_alerta_enviado:
+                    _token_expirado_alerta_enviado = True
+                    try:
+                        notificar_whatsapp_pessoal(
+                            "🚨 *ALERTA: Token Facebook/Instagram EXPIRADO*\n\n"
+                            "O autopost nao esta publicando no Facebook e Instagram.\n\n"
+                            "Para renovar:\n"
+                            "1. Acesse https://developers.facebook.com/tools/explorer/\n"
+                            "2. Gere novo User Token com: pages_manage_posts, pages_read_engagement, instagram_basic, instagram_content_publish\n"
+                            "3. Peca ao Claude Code para trocar pelo Page Token permanente\n\n"
+                            "Arquivo a atualizar: secrets/curitibablog.com.br/social.json"
+                        )
+                        log("ALERTA: token expirado — notificacao WhatsApp enviada")
+                    except Exception as e_wpp:
+                        log(f"ALERTA: token expirado (falha ao notificar WPP: {e_wpp})")
         except Exception as e:
             log(f"Facebook: EXCECAO — {e}")
             resultados["facebook"] = {"ok": False, "erro": str(e)}
