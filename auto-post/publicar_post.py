@@ -413,6 +413,53 @@ def _acento_repl(correct):
 def corrigir_acentos(text: str) -> tuple[str, int]:
     """Corrige acentuacao PT-BR no texto. Retorna (texto_corrigido, num_correcoes)."""
     correcoes = 0
+
+    # ── Regra genérica: -cao → -ção / -coes → -ções ──────────────────────────
+    # Cobre TODOS os substantivos/verbos com esse sufixo sem precisar listá-los um a um.
+    # Prefixo mínimo de 3 letras evita falsos positivos em palavras muito curtas.
+    def _sufixo_cao(m):
+        prefix = m.group(1)
+        if prefix.isupper(): return prefix + 'ÇÃO'
+        if prefix[0].isupper(): return prefix[0].upper() + prefix[1:] + 'ção'
+        return prefix + 'ção'
+
+    def _sufixo_coes(m):
+        prefix = m.group(1)
+        if prefix.isupper(): return prefix + 'ÇÕES'
+        if prefix[0].isupper(): return prefix[0].upper() + prefix[1:] + 'ções'
+        return prefix + 'ções'
+
+    novo, n = re.subn(r'\b([a-záéíóúàãõêôûüçA-ZÁÉÍÓÚÀÃÕÊÔÛÜÇ]{3,})cao\b', _sufixo_cao, text)
+    if n: correcoes += n; text = novo
+    novo, n = re.subn(r'\b([a-záéíóúàãõêôûüçA-ZÁÉÍÓÚÀÃÕÊÔÛÜÇ]{3,})coes\b', _sufixo_coes, text)
+    if n: correcoes += n; text = novo
+
+    # ── Substituições contextuais: "e" como verbo (sem ambiguidade) ──────────
+    # NUNCA usar \be\b genérico (conjunção "e" ≠ verbo "é" — falso positivo garantido)
+    _E_VERB_FIXES = [
+        (r'\bO que e\b', 'O que é'),
+        (r'\bo que e\b', 'o que é'),
+        (r'\bQue e\b', 'Que é'),
+        (r'\bque e\b', 'que é'),
+        (r'\bisso e\b', 'isso é'),
+        (r'\bEla e\b', 'Ela é'),
+        (r'\bela e\b', 'ela é'),
+        (r'\bEle e\b', 'Ele é'),
+        (r'\bele e\b', 'ele é'),
+        (r'\bIsto e\b', 'Isto é'),
+        (r'\bisto e\b', 'isto é'),
+        (r'\bAqui e\b', 'Aqui é'),
+        (r'\baqui e\b', 'aqui é'),
+        (r'\bAli e\b', 'Ali é'),
+        (r'\bali e\b', 'ali é'),
+        (r'\btambem e\b', 'também é'),
+        (r'\bTambem e\b', 'Também é'),
+    ]
+    for padrao, correto in _E_VERB_FIXES:
+        novo, n = re.subn(padrao, correto, text)
+        if n: correcoes += n; text = novo
+
+    # ── Lista manual (casos especiais, nomes próprios, proparoxítonos) ────────
     for padrao, correto in _ACENTO_FIXES:
         novo, n = re.subn(padrao, _acento_repl(correto), text, flags=re.IGNORECASE)
         if n:
