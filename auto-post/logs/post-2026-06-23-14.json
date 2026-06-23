@@ -1,0 +1,84 @@
+{
+  "title": "Steam Machine: o PC gamer da Valve para a sala de estar chegou",
+  "slug": "steam-machine-valve-pc-gamer-sala-de-estar-2026",
+  "summary": "A Valve lançou o Steam Machine em junho de 2026, um PC compacto rodando SteamOS para jogar a biblioteca do Steam na TV ou na mesa. Entenda o que é, como funciona e se vale a pena para você.",
+  "metaTitle": "Steam Machine 2026: o PC gamer da Valve | CuritibaBlog",
+  "metaDescription": "A Valve lançou o Steam Machine em 2026. Descubra o que é, como roda SteamOS, compatibilidade com jogos via Proton e se vale a pena comprar.",
+  "category": "tecnologia",
+  "categories": ["tecnologia"],
+  "tags": ["steam machine", "valve", "steamos", "pc gamer", "linux gaming", "proton", "gaming"],
+  "content": "<h2>O que é o Steam Machine</h2><p>O Steam Machine é um PC compacto criado pela Valve, a mesma empresa por trás da plataforma Steam e do Steam Deck. Lançado em junho de 2026, ele foi projetado para levar a biblioteca de jogos do Steam para a sala de estar, funcionando conectado à TV como um console, mas com toda a flexibilidade de um PC.</p><p>A ideia não é nova: a Valve já tinha tentado algo parecido em 2015 com parceiros de hardware, mas o projeto não decolou. Dessa vez a empresa tomou o controle do hardware e do software diretamente, assim como fez com o Steam Deck em 2022. O resultado é um dispositivo mais coeso, com melhor suporte e integração com o ecossistema Steam.</p><p>A proposta é simples: você tem uma biblioteca enorme de jogos no PC, mas não quer ficar preso à mesa. O Steam Machine resolve isso ao transformar a TV da sala em uma estação de games de alta qualidade, sem abrir mão dos jogos que você já tem na conta.</p><h2>Como funciona</h2><p>O Steam Machine roda o SteamOS, sistema operacional baseado em Linux desenvolvido pela própria Valve. O grande segredo da compatibilidade com jogos Windows é o <strong>Proton</strong>, uma camada de tradução que permite rodar jogos nativos de Windows no Linux sem que o usuário precise fazer nada manualmente.</p><p>Na prática, você liga o dispositivo na TV via HDMI, conecta um controle (o Steam Controller ou qualquer controle Bluetooth compatível) e acessa a interface Big Picture Mode diretamente na tela. Tudo foi otimizado para uso com controle, sem precisar de teclado e mouse para navegar na interface principal.</p><p>Por baixo dos panos, o SteamOS gerencia automaticamente as atualizações do sistema, do Proton e dos jogos. A Valve mantém uma lista de jogos com certificação Steam Deck/Steam Machine que foram testados e funcionam sem problemas. O banco de dados <strong>ProtonDB</strong>, mantido pela comunidade, complementa essa lista com relatos de compatibilidade de títulos não verificados oficialmente.</p><h2>Principais recursos</h2><p>O Steam Machine traz uma combinação de hardware e software pensada para quem já está no ecossistema Steam:</p><ul><li><strong>Biblioteca Steam completa:</strong> acesso a todos os jogos da sua conta, incluindo compras antigas</li><li><strong>Proton integrado:</strong> compatibilidade com jogos Windows sem configuração manual</li><li><strong>Interface Big Picture:</strong> navegação 100% otimizada para controle na TV</li><li><strong>Remote Play:</strong> possibilidade de transmitir jogos do PC principal para o Steam Machine via rede local</li><li><strong>Modo desktop:</strong> acesso ao Linux completo para quem quiser usar como PC convencional</li><li><strong>Atualizações automáticas:</strong> sistema operacional sempre atualizado via Steam</li></ul><p>Outro diferencial é a integração com a loja Steam para compras diretas no dispositivo, sem precisar de um segundo dispositivo para isso.</p><h2>Como começar: como comprar e configurar</h2><p>O Steam Machine está disponível diretamente pela loja da Steam em store.steampowered.com. O processo de configuração é simples:</p><p><strong>Passo 1:</strong> Conecte o Steam Machine à TV via HDMI e ligue o cabo de força. Na primeira inicialização, o sistema guia você pela configuração de rede Wi-Fi ou cabo de rede.</p><p><strong>Passo 2:</strong> Faça login com sua conta Steam existente. Todo o histórico de compras, amigos e conquistas já aparecem automaticamente.</p><p><strong>Passo 3:</strong> Instale os jogos que deseja. O Steam mostra uma categoria especial com os títulos já verificados para o dispositivo, mas você pode instalar qualquer jogo da biblioteca e verificar a compatibilidade individualmente.</p><p>Não há necessidade de formatação, instalação de drivers ou configuração avançada. O SteamOS cuida de tudo nos bastidores.</p><h2>Exemplo prático</h2><p>Imagine que você tem 200 jogos na conta Steam, a maioria comprada para Windows. Com o Steam Machine na sala, você abre a TV, liga o dispositivo e vê sua biblioteca inteira disponível. Clica em um jogo como <strong>Cyberpunk 2077</strong>, ele baixa e instala, e ao rodar o Proton traduz as chamadas DirectX 12 para Vulkan em tempo real. O jogo funciona sem que você precise saber nada sobre Linux.</p><p>Para jogos mais antigos ou independentes, a compatibilidade tende a ser ainda melhor. Títulos como Stardew Valley, Hollow Knight, Celeste e outros jogos indie rodam nativamente no Linux sem precisar do Proton, com desempenho máximo.</p><p>No modo Remote Play, você pode também instalar um jogo pesado apenas no PC principal e transmitir a imagem para o Steam Machine via rede local, economizando espaço em disco no dispositivo da sala.</p><h2>Comparação com alternativas</h2><p>O Steam Machine compete diretamente com consoles como PlayStation 5 e Xbox Series X, mas também com soluções de streaming como o NVIDIA GeForce Now ou o Xbox Cloud Gaming.</p><p>Em relação aos consoles tradicionais, a principal vantagem é o acesso à biblioteca Steam que você já possui. Consoles exigem comprar os jogos novamente nas suas lojas específicas. A desvantagem é que alguns exclusivos de console não estarão disponíveis no Steam Machine.</p><p>Frente ao streaming em nuvem (GeForce Now, Xbox Cloud), o Steam Machine tem a vantagem de rodar os jogos localmente, sem depender de internet rápida e sem latência de rede. A desvantagem é o custo do hardware em si e a necessidade de espaço em disco para instalar os jogos.</p><p>O Steam Deck é o irmão portátil do Steam Machine. A diferença é que o Deck tem tela própria e bateria, sendo voltado para uso em movimento. O Steam Machine mira no uso doméstico, com componentes mais potentes para jogos em alta resolução na TV.</p><h2>Pontos positivos e limitações</h2><p><strong>Pontos positivos:</strong></p><ul><li>Aproveita a biblioteca Steam que você já tem, sem custo adicional de jogos</li><li>SteamOS é estável, recebe atualizações regulares da Valve</li><li>Proton tem melhorado consistentemente ao longo dos anos</li><li>Interface intuitiva, sem necessidade de conhecimento técnico de Linux</li><li>Modo desktop disponível para quem quiser usar como PC Linux completo</li></ul><p><strong>Limitações reais:</strong></p><ul><li>Nem todos os jogos funcionam perfeitamente via Proton, especialmente títulos com anti-cheat agressivo (como alguns jogos online competitivos)</li><li>Jogos com Easy Anti-Cheat ou BattlEye podem não funcionar dependendo da implementação do desenvolvedor</li><li>Exclusivos de console (PlayStation, Nintendo) não estão disponíveis</li><li>Requer conexão com a internet para login na Steam e para downloads</li></ul><h2>Casos de uso reais</h2><p><strong>Gamer casual com biblioteca Steam:</strong> tem dezenas de jogos comprados na Steam ao longo dos anos, quer jogar na TV sem montar um PC inteiro na sala. O Steam Machine resolve com um dispositivo compacto e plug-and-play.</p><p><strong>Desenvolvedor que usa Linux:</strong> já usa Linux no trabalho e quer um sistema de gaming que não exija dual boot. O Steam Machine com modo desktop serve como workstation leve e console ao mesmo tempo.</p><p><strong>Família com múltiplos perfis:</strong> cada membro da família pode ter seu perfil Steam no mesmo dispositivo. A biblioteca compartilhada do Steam Family permite acesso aos jogos de outros membros da família.</p><p><strong>Remote Play na casa:</strong> tem um PC potente no escritório, mas quer jogar no quarto ou na sala. O Steam Machine age como cliente de streaming, transmitindo a imagem do PC principal via rede local sem comprar um segundo hardware completo.</p><h2>Dicas e boas práticas</h2><p>Antes de instalar um jogo, verifique a certificação no ProtonDB (protondb.com). O site tem relatos detalhados de outros usuários sobre desempenho e configurações necessárias para cada título.</p><p>Se um jogo não funcionar corretamente via Proton padrão, tente trocar a versão do Proton nas configurações do jogo dentro do Steam. Versões experimentais do Proton muitas vezes resolvem problemas que a versão estável ainda não corrigiu.</p><p>Para jogos multiplayer online, verifique especificamente se o anti-cheat do jogo tem suporte a Linux antes de instalar. Alguns títulos como <strong>Apex Legends</strong> e <strong>Fortnite</strong> têm suporte a Linux via EAC/BattlEye habilitado, enquanto outros ainda bloqueiam.</p><p>Use um SSD externo via USB para expandir o armazenamento. O Steam Machine detecta automaticamente drives externos e permite instalar jogos neles, o que é especialmente útil para quem tem biblioteca grande.</p><h2>Vale a pena?</h2><p>O Steam Machine vale a pena para quem já tem uma biblioteca Steam razoável e quer jogar na TV sem as restrições de um console fechado. A proposta de valor é direta: você paga pelo hardware uma vez e acessa tudo que já comprou na Steam.</p><p>Para quem está começando do zero e não tem jogos na Steam, a equação é diferente. Nesse caso, um console tradicional pode ser mais vantajoso pela garantia de compatibilidade e pelos exclusivos da plataforma.</p><p>O maior risco é a compatibilidade de jogos específicos que você quer jogar. Antes de comprar, vale verificar no ProtonDB se seus títulos favoritos funcionam bem. Se a maioria estiver marcada como Platinum ou Gold no ProtonDB, a experiência vai ser excelente.</p>",
+  "faqs": [
+    {
+      "question": "Todos os jogos do Steam funcionam no Steam Machine?",
+      "answer": "A maioria funciona via Proton, mas alguns títulos com anti-cheat agressivo podem ter problemas. O site ProtonDB (protondb.com) tem relatos da comunidade sobre compatibilidade de cada jogo. Jogos marcados como Platinum ou Gold no ProtonDB funcionam muito bem."
+    },
+    {
+      "question": "Preciso saber usar Linux para usar o Steam Machine?",
+      "answer": "Não. A interface padrão é o Big Picture Mode do Steam, 100% controlada via controle. Você não precisa abrir um terminal ou configurar nada manualmente. O SteamOS cuida de tudo automaticamente, incluindo atualizações."
+    },
+    {
+      "question": "Posso usar minha biblioteca Steam existente no Steam Machine?",
+      "answer": "Sim, é essa a proposta principal. Ao fazer login com sua conta Steam, todos os jogos que você comprou ao longo dos anos ficam disponíveis para instalar. Não é necessário comprar os jogos novamente."
+    },
+    {
+      "question": "Qual a diferença entre o Steam Machine e o Steam Deck?",
+      "answer": "O Steam Deck é portátil, com tela própria e bateria, ideal para jogar em movimento. O Steam Machine é um PC compacto para conectar à TV em casa, com componentes mais voltados para uso estacionário e desempenho em tela grande."
+    },
+    {
+      "question": "O Steam Machine roda jogos de outras plataformas além do Steam?",
+      "answer": "O SteamOS tem modo desktop com acesso ao Linux completo. No modo desktop é possível instalar outros launchers como o Heroic Games Launcher para jogar jogos da Epic Games ou GOG. Mas isso requer algum conhecimento técnico e não é o foco do dispositivo."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em números: Steam Machine",
+      "items": [
+        {"label": "Desenvolvedor", "value": "Valve Corporation"},
+        {"label": "Sistema operacional", "value": "SteamOS (baseado em Arch Linux)"},
+        {"label": "Lançamento", "value": "Junho de 2026"},
+        {"label": "Camada de compatibilidade", "value": "Proton (tradução DirectX para Vulkan/OpenGL)"},
+        {"label": "Onde comprar", "value": "store.steampowered.com"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Loja Steam", "value": "https://store.steampowered.com"},
+        {"label": "SteamOS", "value": "https://store.steampowered.com/steamos"},
+        {"label": "ProtonDB (compatibilidade de jogos)", "value": "https://www.protondb.com"},
+        {"label": "Proton no GitHub", "value": "https://github.com/ValveSoftware/Proton"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuários",
+      "items": [
+        {
+          "name": "Ricardo Ferreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RicardoFerreira",
+          "text": "Comprei o Steam Machine para jogar na TV da sala e foi a melhor decisão. Tenho mais de 300 jogos na conta Steam e quase todos rodam perfeito. Configurar foi moleza, pluguei e em 10 minutos já estava jogando."
+        },
+        {
+          "name": "Camila Souza",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaSouza",
+          "text": "Uso Linux no trabalho e adorei ter um sistema de gaming nativo. Sem dual boot, sem Windows. O modo desktop ainda serve para tarefas leves quando precisei. O Proton melhorou muito nos últimos anos."
+        },
+        {
+          "name": "André Matos",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=AndreMatos",
+          "text": "Testei antes de comprar consultando o ProtonDB nos jogos que jogo. Tudo estava como Platinum. Valeu muito a pena para mim. Só senti falta de alguns jogos com anti-cheat que ainda não têm suporte a Linux."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Biblioteca Steam",
+  "card1_texto": "Acesse todos os jogos que você já comprou na Steam",
+  "card2_titulo": "Plug and play",
+  "card2_texto": "Conecte na TV e jogue sem configurar nada",
+  "card3_titulo": "Proton integrado",
+  "card3_texto": "Jogos Windows rodando no Linux automaticamente",
+  "subtitulo_capa": "O PC gamer da Valve para a sala de estar: SteamOS, Proton e toda a sua biblioteca Steam na TV"
+}
