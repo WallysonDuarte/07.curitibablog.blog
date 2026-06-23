@@ -1406,6 +1406,96 @@ def postar_linkedin(titulo: str, summary: str, slug: str) -> dict:
         return {"ok": False, "erro": str(e)}
 
 
+_CLAUDE_CREDENTIALS_PATH = Path("C:/Users/Poseidon/.claude/.credentials.json")
+
+def validar_capa_claude(capa_path: str, titulo_esperado: str) -> tuple:
+    """
+    Valida capa usando Claude Haiku via API Anthropic (Bearer OAuth token).
+    Retorna (is_valid: bool, texto_encontrado: str, problemas: list[str]).
+    is_valid=True se o titulo aparece corretamente na imagem (sem typos nem acentos faltando).
+    """
+    import base64, unicodedata as _ud
+
+    def _norm(s):
+        return re.sub(r'\s+', ' ', ''.join(
+            c for c in _ud.normalize('NFD', s.lower()) if _ud.category(c) != 'Mn'
+        ).strip())
+
+    try:
+        creds = json.loads(_CLAUDE_CREDENTIALS_PATH.read_text(encoding="utf-8"))
+        token = creds.get("claudeAiOauth", {}).get("accessToken", "")
+        if not token:
+            log("AVISO validar_capa: token OAuth nao encontrado em .credentials.json")
+            return True, "", []  # nao bloquear pipeline se token ausente
+
+        with open(capa_path, "rb") as f:
+            img_b64 = base64.b64encode(f.read()).decode()
+
+        prompt = (
+            f'Analise esta imagem de capa de blog. '
+            f'Leia EXATAMENTE o texto que aparece na imagem, incluindo todos os acentos. '
+            f'O titulo esperado e: "{titulo_esperado}". '
+            f'Responda em JSON com campos: '
+            f'"titulo_na_imagem" (texto exato lido), '
+            f'"subtitulo_na_imagem" (texto menor se houver, ou null), '
+            f'"problemas" (lista de strings descrevendo erros encontrados: palavras com acento errado, '
+            f'letras duplicadas, typos). Se tudo estiver correto, "problemas" deve ser lista vazia. '
+            f'Responda APENAS o JSON, sem markdown.'
+        )
+
+        resp = requests.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "Authorization": f"Bearer {token}",
+                "anthropic-version": "2023-06-01",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "claude-haiku-4-5-20251001",
+                "max_tokens": 300,
+                "messages": [{
+                    "role": "user",
+                    "content": [
+                        {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": img_b64}},
+                        {"type": "text", "text": prompt},
+                    ],
+                }],
+            },
+            timeout=30,
+        )
+
+        if resp.status_code != 200:
+            log(f"AVISO validar_capa: API retornou HTTP {resp.status_code} — pulando validacao")
+            return True, "", []
+
+        content = resp.json().get("content", [{}])[0].get("text", "{}")
+        content = re.sub(r'^```(?:json)?\s*', '', content.strip())
+        content = re.sub(r'\s*```$', '', content.strip())
+        data = json.loads(content)
+
+        titulo_lido = data.get("titulo_na_imagem", "")
+        problemas = data.get("problemas", [])
+
+        # Verificar se titulo esperado esta presente (normalizando acentos para comparar)
+        titulo_norm = _norm(titulo_esperado)
+        lido_norm = _norm(titulo_lido)
+
+        titulo_ok = titulo_norm in lido_norm or lido_norm in titulo_norm
+
+        if not titulo_ok:
+            problemas.append(f'Titulo esperado "{titulo_esperado}" nao encontrado; lido: "{titulo_lido}"')
+
+        is_valid = len(problemas) == 0
+        return is_valid, titulo_lido, problemas
+
+    except json.JSONDecodeError as e:
+        log(f"AVISO validar_capa: resposta Claude nao e JSON valido ({e}) — pulando validacao")
+        return True, "", []
+    except Exception as e:
+        log(f"AVISO validar_capa: excecao ({e}) — pulando validacao")
+        return True, "", []
+
+
 def main(json_path: str):
     hoje = datetime.date.today().isoformat()
     # Derive slot from json_path stem (e.g. "post-2026-06-23-06" -> "06")
@@ -1455,17 +1545,34 @@ def main(json_path: str):
         if not post_data.get("categories"):
             post_data["categories"] = [post_data["category"], "tecnologia"]
 
-        # 4. Gerar capa via Google Flow (Playwright)
+        # 4. Gerar capa via Google Flow (Playwright) — com validacao OCR via Claude Haiku
         # Se Flow falhar: publicar sem imagem (sem fallback Pillow — texto sem acento e invalido em producao)
         sys.path.insert(0, str(THIS_DIR))
-        capa_path = str(LOGS_DIR / f"{hoje}-cover.jpg")
+        capa_path = str(LOGS_DIR / f"{hoje}{_slot_suffix}-cover.jpg")
         cover_key = None
         cover_url = None
         try:
             from gerar_capa_flow import gerar_capa_flow
-            gerar_capa_flow(titulo=titulo, output_path=capa_path)
-            log(f"Capa gerada via Flow: {capa_path}")
-            run_log["etapas"]["capa"] = capa_path
+            _MAX_TENTATIVAS_CAPA = 3
+            _capa_ok = False
+            _problemas_finais = []
+            for _tentativa in range(1, _MAX_TENTATIVAS_CAPA + 1):
+                gerar_capa_flow(titulo=titulo, output_path=capa_path)
+                log(f"Capa gerada via Flow (tentativa {_tentativa}): {capa_path}")
+                _is_valid, _titulo_lido, _problemas = validar_capa_claude(capa_path, titulo)
+                if _is_valid:
+                    log(f"Capa validada via Claude OCR OK — titulo lido: {_titulo_lido!r}")
+                    _capa_ok = True
+                    _problemas_finais = []
+                    break
+                else:
+                    _problemas_finais = _problemas
+                    log(f"CAPA INVALIDA tentativa {_tentativa}: {_problemas}")
+                    if _tentativa < _MAX_TENTATIVAS_CAPA:
+                        log(f"Regenerando capa (tentativa {_tentativa + 1})...")
+            if not _capa_ok and _problemas_finais:
+                log(f"AVISO: capa gerada com problemas apos {_MAX_TENTATIVAS_CAPA} tentativas — usando melhor disponivel: {_problemas_finais}")
+            run_log["etapas"]["capa"] = {"path": capa_path, "problemas": _problemas_finais}
 
             # 5. Upload IDrive E2 (so se capa foi gerada)
             cover_key, cover_url = upload_capa(capa_path)
