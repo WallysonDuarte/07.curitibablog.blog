@@ -730,25 +730,13 @@ def inserir_post(post: dict) -> str:
     col = db[MONGO_COL]
 
     slug = post["slug"]
-    existing = col.find_one({"slug": slug}, {"_id": 1, "coverImageKey": 1})
+    existing = col.find_one({"slug": slug}, {"_id": 1})
     if existing:
-        # Post already exists — update cover image if a new one was generated, but signal caller to skip social posting
-        new_key = post.get("coverImageKey")
-        new_url = post.get("coverImageUrl")
-        if new_key and new_key != existing.get("coverImageKey"):
-            col.update_one(
-                {"slug": slug},
-                {"$set": {"coverImageKey": new_key, "coverImageUrl": new_url}},
-            )
-            log(f"Post ja existia — coverImageKey atualizado: {new_key}")
-        else:
-            log(f"Post ja existia — slug '{slug}' sem alteracoes")
-        inserted_id = str(existing["_id"])
         client.close()
         server.close()
         ssh.close()
-        # Return tuple: (id, is_new=False) to signal pipeline to skip social posting
-        return (inserted_id, False)
+        # Signal pipeline: post already exists, caller must pick a different theme
+        return (str(existing["_id"]), False)
 
     result = col.insert_one(post)
     inserted_id = str(result.inserted_id)
@@ -1475,9 +1463,19 @@ def main(json_path: str):
         run_log["etapas"]["mongo"] = {"id": inserted_id, "slug": slug, "is_new": is_new_post}
 
         if not is_new_post:
-            run_log["status"] = "JA_PUBLICADO"
+            run_log["status"] = "SLUG_JA_EXISTE"
             run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
-            log(f"JA_PUBLICADO: https://curitibablog.com.br/{slug}")
+            log(f"SLUG_JA_EXISTE: '{slug}' ja esta no MongoDB — deletando JSON e escolha outro tema")
+            # Delete JSON so next run starts fresh with a new theme
+            try:
+                import os as _os
+                _os.remove(json_path)
+                log(f"JSON deletado: {json_path}")
+            except Exception as _e:
+                log(f"AVISO: nao foi possivel deletar JSON: {_e}")
+            with open(log_path, "w", encoding="utf-8") as f:
+                json.dump(run_log, f, ensure_ascii=False, indent=2, default=str)
+            sys.exit(2)  # exit code 2 = slug already exists, pick different theme
         else:
             # 8. Rebuild blogs
             rebuild_results = rebuild_blogs()
