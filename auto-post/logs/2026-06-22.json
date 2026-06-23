@@ -3,12 +3,12 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-22-cover.jpg",
     "upload": {
-      "key": "covers/797a05be-eb80-4595-baf6-c8cd1718487f-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/797a05be-eb80-4595-baf6-c8cd1718487f-cover.jpg"
+      "key": "covers/c124a2a6-2736-45a7-8ff2-cb335720506d-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/c124a2a6-2736-45a7-8ff2-cb335720506d-cover.jpg"
     },
     "mongo": {
-      "id": "6a396b2bb23a942eb5fb5821",
-      "slug": "apertus-modelo-ia-open-source-soberania-digital"
+      "id": "6a39dbae694568574a82ea5b",
+      "slug": "steam-machine-valve-linux-gaming-2026-lancamento"
     },
     "rebuild": {
       "curitibablog": {
@@ -29,15 +29,15 @@
     },
     "http_check": 200,
     "indexnow": {
-      "devlevelup": {
-        "ok": true,
-        "status": 200
-      },
       "levelupdev": {
         "ok": true,
         "status": 200
       },
       "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
         "ok": true,
         "status": 200
       },
@@ -53,19 +53,19 @@
     "social": {
       "facebook": {
         "ok": false,
-        "erro": "{\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 10:55:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
+        "erro": "{\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 18:17:37 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
       },
       "instagram": {
         "ok": false,
-        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 10:55:12 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
+        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Monday, 22-Jun-26 18:17:37 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"erro"
       }
     },
     "whatsapp": {
       "ok": true
     },
     "x_twitter": {
-      "ok": false,
-      "erro": "{\"detail\":\"You are not allowed to create a Tweet with duplicate content.\",\"type\":\"about:blank\",\"title\":\"Forbidden\",\"status\":403}"
+      "ok": true,
+      "id": "2069228378805121357"
     },
     "reddit": {
       "ok": false,
@@ -73,9 +73,9 @@
     },
     "linkedin": {
       "ok": true,
-      "id": "urn:li:share:7474882713234235392"
+      "id": "urn:li:share:7474994071057522689"
     }
   },
   "status": "CONCLUIDO",
-  "post_url": "https://curitibablog.com.br/apertus-modelo-ia-open-source-soberania-digital"
+  "post_url": "https://curitibablog.com.br/steam-machine-valve-linux-gaming-2026-lancamento"
 }

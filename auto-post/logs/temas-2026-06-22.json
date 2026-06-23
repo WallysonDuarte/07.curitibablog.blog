@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "Never Give Them Your Face",
-      "url": "https://nevergivethemyourface.com/",
-      "score": 548,
-      "comentarios": 286
+      "titulo": "Steam Machine launches today",
+      "url": "https://store.steampowered.com/news/group/45479024/view/685257114654870245",
+      "score": 1162,
+      "comentarios": 1049
     },
     {
       "fonte": "HN",
-      "titulo": "Pledging Another $400k to the Zig Software Foundation",
-      "url": "https://mitchellh.com/writing/zig-donation-2026",
-      "score": 475,
-      "comentarios": 148
+      "titulo": "Runing GLM-5.2 on local hardware",
+      "url": "https://unsloth.ai/docs/models/glm-5.2",
+      "score": 146,
+      "comentarios": 63
     },
     {
       "fonte": "HN",
-      "titulo": "Claude Code's \"extended thinking\" is a summary- not authentic thinking",
-      "url": "https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/",
-      "score": 138,
-      "comentarios": 107
+      "titulo": "Optocam Zero: a Pi Zero based digital camera made using off the shelf components",
+      "url": "https://github.com/dorukkumkumoglu/optocamzero",
+      "score": 94,
+      "comentarios": 22
+    },
+    {
+      "fonte": "HN",
+      "titulo": "My Mathematical Regression",
+      "url": "https://blog.dahl.dev/posts/my-mathematical-regression/",
+      "score": 195,
+      "comentarios": 68
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Japanese symbols that speak without words",
+      "url": "https://arun.is/blog/japan-symbols/",
+      "score": 93,
+      "comentarios": 33
+    },
+    {
+      "fonte": "HN",
+      "titulo": "British Columbia, Time Zones, and Postgres",
+      "url": "https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes",
+      "score": 98,
+      "comentarios": 63
     },
     {
       "fonte": "HN",
       "titulo": "Moebius: 0.2B image inpainting model with 10B-level performance",
       "url": "https://hustvl.github.io/Moebius/",
-      "score": 85,
-      "comentarios": 15
+      "score": 222,
+      "comentarios": 64
     },
     {
       "fonte": "HN",
-      "titulo": "Deno Desktop",
-      "url": "https://docs.deno.com/runtime/desktop/",
-      "score": 830,
-      "comentarios": 323
+      "titulo": "Canada plans 'nuclear renaissance' with up to 10 reactors built by 2040",
+      "url": "https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509",
+      "score": 261,
+      "comentarios": 127
     },
     {
       "fonte": "HN",
-      "titulo": "Codex logging bug may write TBs to local SSDs",
-      "url": "https://github.com/openai/codex/issues/28224",
-      "score": 336,
-      "comentarios": 182
+      "titulo": "Show HN: Oak – Git alternative designed for agents",
+      "url": "https://oak.space/oak/oak",
+      "score": 142,
+      "comentarios": 136
     },
     {
       "fonte": "HN",
-      "titulo": "GLM 5.2 vs. Opus",
-      "url": "https://techstackups.com/comparisons/glm-5.2-vs-opus/",
-      "score": 366,
-      "comentarios": 260
+      "titulo": "Canyon HUD helmet for road riding",
+      "url": "https://media-centre.canyon.com/en-INT/266866-new-canyon-heads-up-display-helmet-could-be-a-safety-gamechanger-for-road-riding/",
+      "score": 59,
+      "comentarios": 69
     },
     {
       "fonte": "HN",
-      "titulo": "Help I accidentally a wigglegram",
-      "url": "https://lmao.center/blog/wiggle-accidents/",
-      "score": 418,
-      "comentarios": 96
+      "titulo": "Flock-Powered Police Chiefs Stalking Women Shows Why Warrants Are Needed",
+      "url": "https://ipvm.com/reports/police-chiefs-track",
+      "score": 309,
+      "comentarios": 117
     },
     {
       "fonte": "HN",
-      "titulo": "Did my old job only exist because of fraud?",
-      "url": "https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/",
-      "score": 758,
-      "comentarios": 341
+      "titulo": "Prompt Injection as Role Confusion",
+      "url": "https://role-confusion.github.io",
+      "score": 145,
+      "comentarios": 78
     },
     {
       "fonte": "HN",
-      "titulo": "DHL Set to Transport Goods on New Wind-Powered Cargo Ships",
-      "url": "https://www.wsj.com/pro/sustainable-business/dhl-set-to-transport-goods-on-new-wind-powered-cargo-ships-eca5d5a0",
-      "score": 65,
-      "comentarios": 24
+      "titulo": "Job application asked for my SAT scores",
+      "url": "https://mrmarket.lol/job-application-asked-for-my-sat-scores/",
+      "score": 62,
+      "comentarios": 157
     },
     {
       "fonte": "HN",
-      "titulo": "Apertus – Open Foundation Model for Sovereign AI",
-      "url": "https://apertvs.ai/",
-      "score": 496,
-      "comentarios": 167
+      "titulo": "DisplayMate",
+      "url": "https://www.displaymate.com/",
+      "score": 90,
+      "comentarios": 27
     },
     {
       "fonte": "HN",
-      "titulo": "Munich 1991: The Roots of the Current AI Boom",
-      "url": "https://people.idsia.ch/~juergen/ai-boom-roots-munich-1991.html",
-      "score": 175,
-      "comentarios": 77
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Why Drawing Tablet Brands Won't Collaborate on Linux Floss Drivers",
-      "url": "https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers",
-      "score": 148,
-      "comentarios": 65
-    },
-    {
-      "fonte": "HN",
-      "titulo": "There is minimal downside to switching to open models",
-      "url": "https://www.marble.onl/posts/cancel_claude.html",
-      "score": 343,
-      "comentarios": 283
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Nvidia Halos",
-      "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/autonomous-vehicles/",
-      "score": 67,
-      "comentarios": 38
+      "titulo": "Finding the Best Dog Treat with Statistics",
+      "url": "https://www.wespiser.com/posts/2026-06-19-best-dog-treat.html",
+      "score": 76,
+      "comentarios": 20
     }
   ],
   "devto": [
@@ -116,7 +116,7 @@
         "productivity",
         "watercooler"
       ],
-      "reacoes": 30
+      "reacoes": 34
     },
     {
       "fonte": "Dev.to",
@@ -127,29 +127,18 @@
         "discuss",
         "career"
       ],
-      "reacoes": 20
+      "reacoes": 47
     },
     {
       "fonte": "Dev.to",
-      "titulo": "What Kind of AI-Assisted Developer Are You? Take the quiz.",
+      "titulo": "I am behind, and I can't prove it but does it matter?",
       "tags": [
-        "ai",
-        "productivity",
-        "softwareengineering",
-        "learning"
+        "discuss",
+        "community",
+        "mentalhealth",
+        "career"
       ],
-      "reacoes": 27
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "When Software Started Writing Software: A Developer’s History of AI",
-      "tags": [
-        "ai",
-        "machinelearning",
-        "programming",
-        "productivity"
-      ],
-      "reacoes": 29
+      "reacoes": 21
     },
     {
       "fonte": "Dev.to",
@@ -158,27 +147,18 @@
         "discuss",
         "motivation"
       ],
-      "reacoes": 5
+      "reacoes": 8
     },
     {
       "fonte": "Dev.to",
-      "titulo": "The Undefended Industry: How the IT Sector Grew Powerful Without Growing Resilient",
+      "titulo": "Do localhost para o mundo",
       "tags": [
-        "aws",
-        "discuss",
-        "news",
-        "opensource"
+        "braziliandevs",
+        "career",
+        "programming",
+        "softwaredevelopment"
       ],
-      "reacoes": 6
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Working on a silly project - share your favorite AI buzzwords/phrases and general key terms with me please!!",
-      "tags": [
-        "ai",
-        "discuss"
-      ],
-      "reacoes": 11
+      "reacoes": 32
     },
     {
       "fonte": "Dev.to",
@@ -193,25 +173,47 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "👾 Server Access Logs with GoAccess",
+      "titulo": "What it takes to build docs worth reading",
       "tags": [
-        "security",
-        "webdev",
-        "learning",
-        "linux"
+        "documentation",
+        "developer",
+        "devrel",
+        "product"
       ],
-      "reacoes": 7
+      "reacoes": 8
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Some friends wanted to see how I use DigitalOcean. So I built them the smallest real app I could.",
+      "titulo": "Link or Button, that is the question.",
       "tags": [
-        "python",
-        "cloud",
-        "devops",
-        "digitalocean"
+        "a11y",
+        "webdev",
+        "frontend",
+        "html"
       ],
-      "reacoes": 9
+      "reacoes": 15
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What Prime Day Taught Me About Prompt Engineering",
+      "tags": [
+        "ai",
+        "promptengineering",
+        "llm",
+        "shopping"
+      ],
+      "reacoes": 4
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What I Learned Switching Between Swift and AI Studio in the Same Week",
+      "tags": [
+        "discuss",
+        "watercooler",
+        "ai",
+        "swift"
+      ],
+      "reacoes": 16
     }
   ]
 }
