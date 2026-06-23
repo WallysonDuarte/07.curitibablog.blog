@@ -732,7 +732,7 @@ def inserir_post(post: dict) -> str:
     slug = post["slug"]
     existing = col.find_one({"slug": slug}, {"_id": 1, "coverImageKey": 1})
     if existing:
-        # Post already exists — update cover image if a new one was generated
+        # Post already exists — update cover image if a new one was generated, but signal caller to skip social posting
         new_key = post.get("coverImageKey")
         new_url = post.get("coverImageUrl")
         if new_key and new_key != existing.get("coverImageKey"):
@@ -740,20 +740,23 @@ def inserir_post(post: dict) -> str:
                 {"slug": slug},
                 {"$set": {"coverImageKey": new_key, "coverImageUrl": new_url}},
             )
-            inserted_id = str(existing["_id"])
-            client.close()
-            server.close()
             log(f"Post ja existia — coverImageKey atualizado: {new_key}")
-            return inserted_id
         else:
-            raise ValueError(f"Post ja publicado com slug '{slug}' — nao criar duplicado")
+            log(f"Post ja existia — slug '{slug}' sem alteracoes")
+        inserted_id = str(existing["_id"])
+        client.close()
+        server.close()
+        ssh.close()
+        # Return tuple: (id, is_new=False) to signal pipeline to skip social posting
+        return (inserted_id, False)
 
     result = col.insert_one(post)
     inserted_id = str(result.inserted_id)
     client.close()
     server.close()
     ssh.close()
-    return inserted_id
+    # Return tuple: (id, is_new=True)
+    return (inserted_id, True)
 
 
 def rebuild_blogs() -> dict:
@@ -1464,77 +1467,85 @@ def main(json_path: str):
         check_post(doc)
 
         # 7. Inserir MongoDB
-        inserted_id = inserir_post(doc)
-        log(f"Post inserido: {inserted_id}")
-        run_log["etapas"]["mongo"] = {"id": inserted_id, "slug": slug}
+        inserted_id, is_new_post = inserir_post(doc)
+        if is_new_post:
+            log(f"Post inserido: {inserted_id}")
+        else:
+            log(f"Post ja existia (slug={slug}) — pulando rebuild e redes sociais")
+        run_log["etapas"]["mongo"] = {"id": inserted_id, "slug": slug, "is_new": is_new_post}
 
-        # 8. Rebuild blogs
-        rebuild_results = rebuild_blogs()
-        run_log["etapas"]["rebuild"] = rebuild_results
+        if not is_new_post:
+            run_log["status"] = "JA_PUBLICADO"
+            run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
+            log(f"JA_PUBLICADO: https://curitibablog.com.br/{slug}")
+        else:
+            # 8. Rebuild blogs
+            rebuild_results = rebuild_blogs()
+            run_log["etapas"]["rebuild"] = rebuild_results
 
-        # 9. Verificar HTTP
-        try:
-            r = requests.get(f"https://curitibablog.com.br/{slug}", timeout=15)
-            http_status = r.status_code
-        except:
-            http_status = 0
-        log(f"HTTP curitibablog/{slug}: {http_status}")
-        run_log["etapas"]["http_check"] = http_status
+            # 9. Verificar HTTP
+            try:
+                r = requests.get(f"https://curitibablog.com.br/{slug}", timeout=15)
+                http_status = r.status_code
+            except:
+                http_status = 0
+            log(f"HTTP curitibablog/{slug}: {http_status}")
+            run_log["etapas"]["http_check"] = http_status
 
-        # 10. Notificar IndexNow (Bing/Yandex) — paralelo por blog
-        log("Notificando IndexNow...")
-        indexnow_results = notificar_indexnow(slug)
-        run_log["etapas"]["indexnow"] = indexnow_results
+            # 10. Notificar IndexNow (Bing/Yandex) — paralelo por blog
+            log("Notificando IndexNow...")
+            indexnow_results = notificar_indexnow(slug)
+            run_log["etapas"]["indexnow"] = indexnow_results
 
-        # 11. Autopost Facebook e Instagram
-        log("Postando em redes sociais...")
-        social_results = postar_redes_sociais(
-            titulo=doc["title"],
-            summary=doc["summary"],
-            slug=slug,
-            cover_url=cover_url,
-        )
-        run_log["etapas"]["social"] = social_results
+            # 11. Autopost Facebook e Instagram
+            log("Postando em redes sociais...")
+            social_results = postar_redes_sociais(
+                titulo=doc["title"],
+                summary=doc["summary"],
+                slug=slug,
+                cover_url=cover_url,
+            )
+            run_log["etapas"]["social"] = social_results
 
-        # 12. Enviar no grupo WhatsApp Curitiba Blog
-        log("Enviando no grupo WhatsApp...")
-        wpp_result = postar_whatsapp_grupo(
-            titulo=doc["title"],
-            summary=doc["summary"],
-            slug=slug,
-        )
-        run_log["etapas"]["whatsapp"] = wpp_result
+            # 12. Enviar no grupo WhatsApp Curitiba Blog
+            log("Enviando no grupo WhatsApp...")
+            wpp_result = postar_whatsapp_grupo(
+                titulo=doc["title"],
+                summary=doc["summary"],
+                slug=slug,
+            )
+            run_log["etapas"]["whatsapp"] = wpp_result
 
-        # 13. Postar no X (Twitter)
-        log("Postando no X (Twitter)...")
-        x_result = postar_x_twitter(
-            titulo=doc["title"],
-            summary=doc["summary"],
-            slug=slug,
-        )
-        run_log["etapas"]["x_twitter"] = x_result
+            # 13. Postar no X (Twitter)
+            log("Postando no X (Twitter)...")
+            x_result = postar_x_twitter(
+                titulo=doc["title"],
+                summary=doc["summary"],
+                slug=slug,
+            )
+            run_log["etapas"]["x_twitter"] = x_result
 
-        # 14. Postar no Reddit
-        log("Postando no Reddit...")
-        reddit_result = postar_reddit(
-            titulo=doc["title"],
-            summary=doc["summary"],
-            slug=slug,
-        )
-        run_log["etapas"]["reddit"] = reddit_result
+            # 14. Postar no Reddit
+            log("Postando no Reddit...")
+            reddit_result = postar_reddit(
+                titulo=doc["title"],
+                summary=doc["summary"],
+                slug=slug,
+            )
+            run_log["etapas"]["reddit"] = reddit_result
 
-        # 15. Postar no LinkedIn
-        log("Postando no LinkedIn...")
-        linkedin_result = postar_linkedin(
-            titulo=doc["title"],
-            summary=doc["summary"],
-            slug=slug,
-        )
-        run_log["etapas"]["linkedin"] = linkedin_result
+            # 15. Postar no LinkedIn
+            log("Postando no LinkedIn...")
+            linkedin_result = postar_linkedin(
+                titulo=doc["title"],
+                summary=doc["summary"],
+                slug=slug,
+            )
+            run_log["etapas"]["linkedin"] = linkedin_result
 
-        run_log["status"] = "CONCLUIDO"
-        run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
-        log(f"CONCLUIDO: https://curitibablog.com.br/{slug}")
+            run_log["status"] = "CONCLUIDO"
+            run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
+            log(f"CONCLUIDO: https://curitibablog.com.br/{slug}")
 
     except Exception as e:
         import traceback
