@@ -1408,7 +1408,12 @@ def postar_linkedin(titulo: str, summary: str, slug: str) -> dict:
 
 def main(json_path: str):
     hoje = datetime.date.today().isoformat()
-    log_path = LOGS_DIR / f"{hoje}.json"
+    # Derive slot from json_path stem (e.g. "post-2026-06-23-06" -> "06")
+    import pathlib as _pathlib
+    _stem = _pathlib.Path(json_path).stem  # e.g. "post-2026-06-23-06"
+    _parts = _stem.rsplit("-", 1)
+    _slot_suffix = f"-{_parts[-1]}" if len(_parts) == 2 and _parts[-1].isdigit() else ""
+    log_path = LOGS_DIR / f"{hoje}{_slot_suffix}.json"
     run_log = {"data": hoje, "etapas": {}}
 
     try:
