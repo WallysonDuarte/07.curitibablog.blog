@@ -3,8 +3,8 @@
   "etapas": {
     "capa": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-23-cover.jpg",
     "upload": {
-      "key": "covers/56ef27f2-c522-4752-945f-08275a539e51-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/56ef27f2-c522-4752-945f-08275a539e51-cover.jpg"
+      "key": "covers/846569dd-08dc-4c14-bb23-eaf1049c3a0f-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/846569dd-08dc-4c14-bb23-eaf1049c3a0f-cover.jpg"
     },
     "mongo": {
       "id": "6a3a4c9545e5e90aa356dec0",
@@ -29,15 +29,15 @@
     },
     "http_check": 200,
     "indexnow": {
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
       "levelupdev": {
         "ok": true,
         "status": 200
       },
       "blogdudu": {
-        "ok": true,
-        "status": 200
-      },
-      "devlevelup": {
         "ok": true,
         "status": 200
       },
@@ -53,19 +53,19 @@
     "social": {
       "facebook": {
         "ok": false,
-        "erro": "{\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Tuesday, 23-Jun-26 02:21:09 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"err"
+        "erro": "{\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Tuesday, 23-Jun-26 07:47:35 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"err"
       },
       "instagram": {
         "ok": false,
-        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Tuesday, 23-Jun-26 02:21:09 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"err"
+        "erro": "Criar container falhou: HTTP 400 {\"error\":{\"message\":\"Error validating access token: Session has expired on Sunday, 21-Jun-26 23:00:00 PDT. The current time is Tuesday, 23-Jun-26 07:47:35 PDT.\",\"type\":\"OAuthException\",\"code\":190,\"err"
       }
     },
     "whatsapp": {
       "ok": true
     },
     "x_twitter": {
-      "ok": true,
-      "id": "2069350064900718668"
+      "ok": false,
+      "erro": "{\"detail\":\"You are not allowed to create a Tweet with duplicate content.\",\"type\":\"about:blank\",\"title\":\"Forbidden\",\"status\":403}"
     },
     "reddit": {
       "ok": false,
@@ -73,7 +73,7 @@
     },
     "linkedin": {
       "ok": true,
-      "id": "urn:li:share:7475115758176485376"
+      "id": "urn:li:share:7475197888361467904"
     }
   },
   "status": "CONCLUIDO",
