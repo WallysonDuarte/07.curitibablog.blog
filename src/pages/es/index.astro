@@ -1,0 +1,56 @@
+---
+// Spanish home — same content as PT-BR but with ES language selector active
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PostCard from '../../components/PostCard.astro';
+import { fetchAllPosts, fetchCategories } from '../../lib/api';
+
+const [allPosts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
+
+const latestPosts = [...allPosts]
+  .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime())
+  .slice(0, 6);
+---
+
+<BaseLayout
+  title="CuritibaBlog — Tecnología, IA e Innovación"
+  description="Artículos sobre tecnología, inteligencia artificial, innovación y cultura digital. Disponible en español."
+  lang="es"
+>
+  <SEO
+    slot="head"
+    title="CuritibaBlog — Tecnología, IA e Innovación"
+    description="Artículos sobre tecnología, inteligencia artificial, innovación y cultura digital. Disponible en español."
+    type="website"
+  />
+
+  <!-- Latest articles -->
+  <section style="max-width:1200px;margin:2rem auto;padding:0 1rem;">
+    <h1 style="font-size:1.6rem;font-weight:700;margin-bottom:1.5rem;color:var(--text-primary);">
+      Últimos Artículos
+    </h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;">
+      {latestPosts.map(p => (
+        <PostCard
+          title={p.translations?.es?.title || p.title}
+          summary={p.translations?.es?.summary || p.summary}
+          slug={`es/${p.slug}`}
+          postId={p.id}
+          publishedAt={p.publishedAt}
+          createdAt={p.createdAt}
+          category={p.category}
+          categories={p.categories}
+          tags={p.tags}
+          coverImageUrl={p.coverImageUrl}
+          coverImageKey={p.coverImageKey}
+          views={p.views}
+        />
+      ))}
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="/" style="color:var(--primary);font-weight:600;text-decoration:none;">
+        ← Volver a la versión PT-BR
+      </a>
+    </div>
+  </section>
+</BaseLayout>

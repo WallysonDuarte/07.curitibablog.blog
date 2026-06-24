@@ -8,13 +8,18 @@ interface Props {
   title: string;
   description: string;
   categories?: BlogCategory[];
+  slug?: string;
+  lang?: string;
+  canonicalSlug?: string; // slug base PT-BR para hreflang
 }
 
-const { title, description } = Astro.props;
+const { title, description, slug, lang = 'pt', canonicalSlug } = Astro.props;
+const siteUrl = 'https://curitibablog.com.br';
+const hreflangSlug = canonicalSlug || slug;
 ---
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang={lang === 'en' ? 'en' : lang === 'es' ? 'es' : 'pt-BR'}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,6 +41,16 @@ const { title, description } = Astro.props;
   <link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/webfonts/fa-brands-400.woff2" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
+  <!-- hreflang i18n -->
+  {hreflangSlug && (
+    <>
+      <link rel="alternate" hreflang="pt-BR" href={`${siteUrl}/${hreflangSlug}`} />
+      <link rel="alternate" hreflang="en" href={`${siteUrl}/en/${hreflangSlug}`} />
+      <link rel="alternate" hreflang="es" href={`${siteUrl}/es/${hreflangSlug}`} />
+      <link rel="alternate" hreflang="x-default" href={`${siteUrl}/${hreflangSlug}`} />
+    </>
+  )}
+
   <slot name="head" />
   <script is:inline>
   (function(){
@@ -46,7 +61,7 @@ const { title, description } = Astro.props;
   </script>
 </head>
 <body>
-  <Header />
+  <Header slug={slug} lang={lang} />
   <main>
     <slot />
   </main>

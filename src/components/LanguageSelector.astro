@@ -1,0 +1,79 @@
+---
+/**
+ * LanguageSelector — exibe seletor PT | EN | ES no header.
+ * Recebe o slug atual e o idioma atual para gerar links corretos.
+ */
+interface Props {
+  slug?: string;   // slug do post atual (se em página de post)
+  lang?: string;   // idioma atual: 'pt' | 'en' | 'es'
+}
+
+const { slug, lang = 'pt' } = Astro.props;
+
+const langs = [
+  { code: 'pt', label: 'PT', flag: '🇧🇷', title: 'Português' },
+  { code: 'en', label: 'EN', flag: '🇺🇸', title: 'English' },
+  { code: 'es', label: 'ES', flag: '🇪🇸', title: 'Español' },
+];
+
+function getUrl(code: string) {
+  if (slug) {
+    if (code === 'pt') return `/${slug}`;
+    return `/${code}/${slug}`;
+  }
+  if (code === 'pt') return '/';
+  return `/${code}/`;
+}
+---
+
+<div class="lang-selector" role="navigation" aria-label="Seleção de idioma">
+  {langs.map(l => (
+    <a
+      href={getUrl(l.code)}
+      class={`lang-btn${lang === l.code ? ' lang-active' : ''}`}
+      title={l.title}
+      aria-current={lang === l.code ? 'true' : undefined}
+    >
+      <span class="lang-flag">{l.flag}</span>
+      <span class="lang-code">{l.label}</span>
+    </a>
+  ))}
+</div>
+
+<style>
+.lang-selector {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: .72rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-secondary, #555);
+  border: 1px solid transparent;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.lang-btn:hover {
+  background: var(--bg-card, #f5f5f5);
+  border-color: var(--border, #ddd);
+  color: var(--text-primary, #111);
+}
+.lang-active {
+  background: var(--primary, #cc0000);
+  border-color: var(--primary, #cc0000);
+  color: #fff !important;
+}
+.lang-flag { font-size: .85rem; line-height: 1; }
+.lang-code { letter-spacing: .03em; }
+
+@media (max-width: 600px) {
+  .lang-code { display: none; }
+  .lang-btn { padding: 3px 5px; }
+}
+</style>

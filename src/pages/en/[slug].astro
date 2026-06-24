@@ -1,16 +1,16 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SEO from '../components/SEO.astro';
-import PostCard from '../components/PostCard.astro';
-import PostRatings from '../components/PostRatings.astro';
-import AuthorCard from '../components/AuthorCard.astro';
-import RichBlock from '../components/RichBlock.astro';
-import AdBanner from '../components/AdBanner.astro';
-import LikeButton from '../components/LikeButton.astro';
-import CommentSection from '../components/CommentSection.astro';
-import WhatsAppPopup from '../components/WhatsAppPopup.astro';
-import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../lib/api';
-import { formatDate, buildSections, getPostCategories, toSlug } from '../lib/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import PostCard from '../../components/PostCard.astro';
+import PostRatings from '../../components/PostRatings.astro';
+import AuthorCard from '../../components/AuthorCard.astro';
+import RichBlock from '../../components/RichBlock.astro';
+import AdBanner from '../../components/AdBanner.astro';
+import LikeButton from '../../components/LikeButton.astro';
+import CommentSection from '../../components/CommentSection.astro';
+import WhatsAppPopup from '../../components/WhatsAppPopup.astro';
+import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../../lib/api';
+import { formatDate, buildSections, getPostCategories, toSlug } from '../../lib/utils';
 
 export async function getStaticPaths() {
   const posts = await fetchAllPosts();
@@ -21,6 +21,16 @@ export async function getStaticPaths() {
 }
 
 const { post, allPosts } = Astro.props;
+
+// EN translation with PT-BR fallback
+const tr = post.translations?.en;
+const title = tr?.title || post.title;
+const summary = tr?.summary || post.summary;
+const content = tr?.content || post.content;
+const metaTitle = tr?.metaTitle || post.metaTitle || title;
+const metaDesc  = tr?.metaDescription || post.metaDescription || summary;
+const faqs = tr?.faqs || post.faqs;
+const tags = tr?.tags || post.tags;
 
 const [categories, inlineAds, sidebarAds, faqSideAds, relatedPosts] = await Promise.all([
   fetchCategories(),
@@ -37,11 +47,9 @@ const breadcrumbCats = postCats.map(s => {
 });
 const primaryCat = breadcrumbCats[0];
 
-// Build sections with blocks
 const blocks = post.blocks ?? [];
-const sections = buildSections(post.content || '', blocks);
+const sections = buildSections(content || '', blocks);
 
-// Adjacent posts in same category (sorted by date, including current)
 const sortedInCat = allPosts
   .filter(p => getPostCategories(p).some(c => postCats.includes(c)))
   .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
@@ -50,16 +58,13 @@ const currentIdx = sortedInCat.findIndex(p => p.id === post.id);
 const prevPost = currentIdx > 0 ? sortedInCat[currentIdx - 1] : null;
 const nextPost = currentIdx >= 0 && currentIdx < sortedInCat.length - 1 ? sortedInCat[currentIdx + 1] : null;
 
-// Suggested posts (related or most recent)
 const suggested = relatedPosts.length >= 3
   ? relatedPosts.slice(0, 6)
   : allPosts.filter(p => p.id !== post.id).sort((a, b) => b.views - a.views).slice(0, 6);
 
 const siteUrl = 'https://curitibablog.com.br';
-const shareUrl = `${siteUrl}/${post.slug}`;
+const shareUrl = `${siteUrl}/en/${post.slug}`;
 const publishDate = post.publishedAt || post.createdAt;
-const metaTitle = post.metaTitle || post.title;
-const metaDesc  = post.metaDescription || post.summary;
 
 const spotifyEmbedUrl = post.podcastUrl ? (() => {
   try { return `https://open.spotify.com/embed${new URL(post.podcastUrl).pathname}`; }
@@ -67,16 +72,18 @@ const spotifyEmbedUrl = post.podcastUrl ? (() => {
 })() : null;
 
 const API_BASE = 'https://api.curitibasoftware.com.br';
-const postCoverSrc = `${API_BASE}/api/blog/cover/${post.slug}`;
-const postCoverWebP = `${postCoverSrc}?format=webp&w=1200`;
+// Use EN cover if available, otherwise default cover
+const postCoverSrc = tr?.coverImageUrl || `${API_BASE}/api/blog/cover/${post.slug}`;
+const postCoverWebP = tr?.coverImageKey
+  ? `${API_BASE}/api/blog/cover/${post.slug}?lang=en&format=webp&w=1200`
+  : `${postCoverSrc}${postCoverSrc.includes('?') ? '&' : '?'}format=webp&w=1200`;
 
-// Pick one inline ad to rotate per section
 const inlineAd = inlineAds[0] ?? null;
 const sidebarAd = sidebarAds[0] ?? null;
 const faqSideAd = faqSideAds[0] ?? null;
 ---
 
-<BaseLayout title={`${metaTitle} | CuritibaBlog`} description={metaDesc} slug={post.slug} lang="pt" canonicalSlug={post.slug}>
+<BaseLayout title={`${metaTitle} | CuritibaBlog`} description={metaDesc} slug={post.slug} lang="en" canonicalSlug={post.slug}>
   <SEO
     slot="head"
     title={metaTitle}
@@ -86,9 +93,9 @@ const faqSideAd = faqSideAds[0] ?? null;
     publishedAt={new Date(publishDate)}
     updatedAt={new Date(post.updatedAt)}
     author={post.authorName}
-    tags={post.tags}
-    slug={post.slug}
-    faqs={post.faqs}
+    tags={tags}
+    slug={`en/${post.slug}`}
+    faqs={faqs}
     categoryName={primaryCat?.name}
     categorySlug={primaryCat?.slug}
   />
@@ -101,11 +108,11 @@ const faqSideAd = faqSideAds[0] ?? null;
         <div class="post-cover-hero">
           <picture>
             <source type="image/webp" srcset={postCoverWebP} />
-            <img src={postCoverSrc} alt={post.title} width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" />
+            <img src={postCoverSrc} alt={title} width="1200" height="630" loading="eager" fetchpriority="high" decoding="async" />
           </picture>
         </div>
 
-        <aside class="post-cover-side" aria-label="Informações do artigo">
+        <aside class="post-cover-side" aria-label="Article information">
           {postCats.slice(0,1).map(cat => (
             <a href={`/categoria/${toSlug(cat)}`} class="cover-side-cat">
               <i class="fa-solid fa-folder-open"></i>
@@ -125,22 +132,22 @@ const faqSideAd = faqSideAds[0] ?? null;
             {post.views > 0 && (
               <div class="meta-row">
                 <i class="fa-regular fa-eye"></i>
-                <span>{post.views.toLocaleString('pt-BR')} visualizações</span>
+                <span>{post.views.toLocaleString('en-US')} views</span>
               </div>
             )}
             <div class="meta-row">
               <i class="fa-regular fa-clock"></i>
-              <span>{Math.max(2, Math.ceil((post.content?.replace(/<[^>]+>/g,'').split(/\s+/).length || 0) / 230))} min de leitura</span>
+              <span>{Math.max(2, Math.ceil((content?.replace(/<[^>]+>/g,'').split(/\s+/).length || 0) / 230))} min read</span>
             </div>
           </div>
 
-          {post.tags?.length > 0 && (
+          {tags?.length > 0 && (
             <div class="cover-side-tags">
               <div class="cover-side-tags-label">
-                <i class="fa-solid fa-hashtag"></i> Tópicos
+                <i class="fa-solid fa-hashtag"></i> Topics
               </div>
               <div class="cover-side-tags-list">
-                {post.tags.slice(0, 8).map(tag => (
+                {tags.slice(0, 8).map(tag => (
                   <a href={`/tag/${toSlug(tag)}`} class="cover-side-tag">#{tag}</a>
                 ))}
               </div>
@@ -150,8 +157,8 @@ const faqSideAd = faqSideAds[0] ?? null;
       </div>
 
       <!-- Breadcrumb -->
-      <nav class="breadcrumb" aria-label="Navegação">
-        <a href="/">Início</a>
+      <nav class="breadcrumb" aria-label="Navigation">
+        <a href="/en/">Home</a>
         {breadcrumbCats.map(cat => (
           <>
             <span aria-hidden="true">›</span>
@@ -159,10 +166,10 @@ const faqSideAd = faqSideAds[0] ?? null;
           </>
         ))}
         <span aria-hidden="true">›</span>
-        <span aria-current="page">{post.title}</span>
+        <span aria-current="page">{title}</span>
       </nav>
 
-      <!-- Ratings (se houver) -->
+      <!-- Ratings -->
       {post.ratings && (
         <div class="article-header-row">
           <div class="article-header-right">
@@ -172,12 +179,12 @@ const faqSideAd = faqSideAds[0] ?? null;
       )}
 
       <!-- Title -->
-      <h1 class="article-title">{post.title}</h1>
+      <h1 class="article-title">{title}</h1>
 
       <!-- Summary -->
-      {post.summary && (
+      {summary && (
         <p style="font-size:1.05rem;color:var(--text-dark);font-weight:600;margin-bottom:1.5rem;border-left:4px solid var(--primary);padding-left:.8rem;line-height:1.6;">
-          {post.summary}
+          {summary}
         </p>
       )}
 
@@ -212,7 +219,7 @@ const faqSideAd = faqSideAds[0] ?? null;
         </div>
       )}
 
-      <!-- Article body with inline blocks -->
+      <!-- Article body -->
       <div class="article-body">
         {sections.map((section, si) => (
           <>
@@ -229,38 +236,12 @@ const faqSideAd = faqSideAds[0] ?? null;
         ))}
       </div>
 
-      <!-- WhatsApp Group CTA block -->
-      <div class="wpp-cta-block">
-        <div class="wpp-cta-icon"><i class="fa-brands fa-whatsapp"></i></div>
-        <div class="wpp-cta-content">
-          <p class="wpp-cta-title">💬 Gostou? Compartilhe com quem pode se interessar!</p>
-          <p class="wpp-cta-body">👥 Entre no grupo para receber novidades em primeira mão:</p>
-          <a
-            href="https://chat.whatsapp.com/FXw6emOLBtIHOusvzzz1pS"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="wpp-cta-btn"
-          >
-            <i class="fa-brands fa-whatsapp"></i> Entrar no Grupo WhatsApp
-          </a>
-        </div>
-      </div>
-
-      <!-- Tags -->
-      {post.tags?.length > 0 && (
-        <div class="article-tags">
-          {post.tags.map(tag => (
-            <a href={`/tag/${toSlug(tag)}`} class="article-tag">#{tag}</a>
-          ))}
-        </div>
-      )}
-
       <!-- Share -->
       <div class="share-section">
-        <h4>COMPARTILHE ESTE ARTIGO</h4>
+        <h4>SHARE THIS ARTICLE</h4>
         <div class="share-buttons">
           <a
-            href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + shareUrl)}`}
+            href={`https://wa.me/?text=${encodeURIComponent(title + ' ' + shareUrl)}`}
             target="_blank" rel="noopener" class="share-btn share-whatsapp"
           >
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
@@ -272,30 +253,30 @@ const faqSideAd = faqSideAds[0] ?? null;
             <i class="fa-brands fa-facebook"></i> Facebook
           </a>
           <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`}
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(shareUrl)}`}
             target="_blank" rel="noopener" class="share-btn share-twitter"
           >
             <i class="fa-brands fa-x-twitter"></i> X
           </a>
           <a
-            href={`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`}
+            href={`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`}
             target="_blank" rel="noopener" class="share-btn share-telegram"
           >
             <i class="fa-brands fa-telegram"></i> Telegram
           </a>
           <button class="share-btn share-copy" data-copy-url={shareUrl} type="button">
-            🔗 Copiar link
+            🔗 Copy link
           </button>
         </div>
       </div>
 
       <!-- FAQ -->
-      {post.faqs && post.faqs.length > 0 && (
-        <section class="faq-section" aria-label="Perguntas frequentes">
-          <h2>Perguntas Frequentes</h2>
+      {faqs && faqs.length > 0 && (
+        <section class="faq-section" aria-label="Frequently asked questions">
+          <h2>Frequently Asked Questions</h2>
           {faqSideAd && <AdBanner ad={faqSideAd} position="faq-side" />}
           <div class="faq-list">
-            {post.faqs.map((faq) => (
+            {faqs.map((faq) => (
               <div class="faq-item">
                 <div class="faq-question" role="button" tabindex="0">{faq.question}</div>
                 <div class="faq-answer">{faq.answer}</div>
@@ -305,38 +286,47 @@ const faqSideAd = faqSideAds[0] ?? null;
         </section>
       )}
 
+      <!-- Tags -->
+      {tags?.length > 0 && (
+        <div class="article-tags">
+          {tags.map(tag => (
+            <a href={`/tag/${toSlug(tag)}`} class="article-tag">#{tag}</a>
+          ))}
+        </div>
+      )}
+
       <AuthorCard variant="bottom" />
 
       <!-- Post nav prev/next -->
       {(prevPost || nextPost) && (
-        <nav class="post-nav" aria-label="Artigos relacionados">
+        <nav class="post-nav" aria-label="Related articles">
           {prevPost ? (
-            <a href={`/${prevPost.slug}`} class="post-nav-item">
-              <p class="post-nav-label">← Artigo anterior</p>
+            <a href={`/en/${prevPost.slug}`} class="post-nav-item">
+              <p class="post-nav-label">← Previous article</p>
               <p class="post-nav-title">{prevPost.title}</p>
             </a>
           ) : <div></div>}
           {nextPost && (
-            <a href={`/${nextPost.slug}`} class="post-nav-item post-nav-next">
-              <p class="post-nav-label">Próximo artigo →</p>
+            <a href={`/en/${nextPost.slug}`} class="post-nav-item post-nav-next">
+              <p class="post-nav-label">Next article →</p>
               <p class="post-nav-title">{nextPost.title}</p>
             </a>
           )}
         </nav>
       )}
 
-      <!-- Reações: like e dislike -->
+      <!-- Like/Dislike -->
       <div class="article-reactions">
         <LikeButton postId={post.id} />
       </div>
 
-      <!-- Comentários -->
-      <CommentSection postId={post.id} postSlug={post.slug} postTitle={post.title} />
+      <!-- Comments -->
+      <CommentSection postId={post.id} postSlug={post.slug} postTitle={title} />
 
       <!-- Related / Suggested posts -->
       {suggested.length > 0 && (
         <section class="related-section">
-          <h3>Veja Também</h3>
+          <h3>See Also</h3>
           <div class="related-grid">
             {suggested.slice(0, 3).map(p => (
               <PostCard
@@ -360,12 +350,10 @@ const faqSideAd = faqSideAds[0] ?? null;
     </article>
 
     <!-- ── SIDEBAR ── -->
-
-    <aside class="post-sidebar" aria-label="Barra lateral">
-      <!-- Sidebar Ad -->
+    <aside class="post-sidebar" aria-label="Sidebar">
       {sidebarAd && (
         <div class="sidebar-widget">
-          <div class="sidebar-widget-header">Publicidade</div>
+          <div class="sidebar-widget-header">Advertisement</div>
           <div class="sidebar-widget-body" style="padding:.8rem">
             <a href={sidebarAd.destinationUrl} target="_blank" rel="noopener sponsored" data-ad-id={sidebarAd.id} class="sidebar-ad">
               <img src={sidebarAd.imageUrl} alt={sidebarAd.title} loading="lazy" />
@@ -374,10 +362,9 @@ const faqSideAd = faqSideAds[0] ?? null;
         </div>
       )}
 
-      <!-- Categories -->
       {categories.length > 0 && (
         <div class="sidebar-widget">
-          <div class="sidebar-widget-header">Categorias</div>
+          <div class="sidebar-widget-header">Categories</div>
           <div class="sidebar-widget-body">
             <ul class="sidebar-cat-list">
               {categories.map(cat => (
@@ -393,15 +380,14 @@ const faqSideAd = faqSideAds[0] ?? null;
         </div>
       )}
 
-      <!-- Suggested posts in sidebar -->
       {suggested.length > 3 && (
         <div class="sidebar-widget">
-          <div class="sidebar-widget-header">Mais Lidos</div>
+          <div class="sidebar-widget-header">Most Read</div>
           <div class="sidebar-widget-body">
             <ul class="sidebar-post-list">
               {suggested.slice(3, 8).map(p => (
                 <li>
-                  <a href={`/${p.slug}`}>{p.title}</a>
+                  <a href={`/en/${p.slug}`}>{p.title}</a>
                   <p class="sidebar-post-meta">{formatDate(p.publishedAt || p.createdAt)}</p>
                 </li>
               ))}
@@ -418,7 +404,6 @@ const faqSideAd = faqSideAds[0] ?? null;
 <script>
 /* ── Terminal blocks + inline code copy ─────────────────────────── */
 (function () {
-  // ── 1. Transformar <pre><code> em terminal blocks ──────────────
   document.querySelectorAll<HTMLElement>('.article-body pre').forEach(pre => {
     const codeEl = pre.querySelector('code') ?? pre;
     const rawText = codeEl.textContent ?? '';
@@ -439,8 +424,8 @@ const faqSideAd = faqSideAds[0] ?? null;
 
     const copyBtn = document.createElement('button');
     copyBtn.className = 'terminal-copy';
-    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
-    copyBtn.setAttribute('aria-label', 'Copiar código');
+    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+    copyBtn.setAttribute('aria-label', 'Copy code');
 
     header.innerHTML = dotsHtml;
     header.appendChild(copyBtn);
@@ -448,7 +433,6 @@ const faqSideAd = faqSideAds[0] ?? null;
     const body = document.createElement('div');
     body.className = 'terminal-body';
 
-    // Highlight simples: linhas com $ ou > viram prompt colorido
     const highlighted = rawText.split('\n').map(line => {
       const esc = (s: string) => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       const trimmed = line.trimStart();
@@ -473,56 +457,28 @@ const faqSideAd = faqSideAds[0] ?? null;
     wrap.appendChild(body);
     pre.replaceWith(wrap);
 
-    // Copy button handler
     copyBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(rawText.trim()).then(() => {
-        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
+        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
         copyBtn.classList.add('copied');
         setTimeout(() => {
-          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
-          copyBtn.classList.remove('copied');
-        }, 2200);
-      }).catch(() => {
-        // fallback clipboard
-        const ta = document.createElement('textarea');
-        ta.value = rawText.trim();
-        ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
-        copyBtn.classList.add('copied');
-        setTimeout(() => {
-          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar';
+          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
           copyBtn.classList.remove('copied');
         }, 2200);
       });
     });
   });
 
-  // ── 2. Inline <code>: copiar ao clicar + tooltip ──────────────
   document.querySelectorAll<HTMLElement>('.article-body code').forEach(code => {
-    if (code.closest('.terminal-block')) return; // já processado
-
+    if (code.closest('.terminal-block')) return;
     const text = code.textContent ?? '';
     if (!text.trim()) return;
-
-    code.setAttribute('title', 'Clique para copiar');
+    code.setAttribute('title', 'Click to copy');
     code.addEventListener('click', () => {
-      navigator.clipboard.writeText(text.trim()).catch(() => {
-        const ta = document.createElement('textarea');
-        ta.value = text.trim();
-        ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-      });
-
+      navigator.clipboard.writeText(text.trim()).catch(() => {});
       const original = code.innerHTML;
       code.classList.add('code-copied');
-      code.textContent = '✓ copiado';
+      code.textContent = '✓ copied';
       setTimeout(() => {
         code.classList.remove('code-copied');
         code.innerHTML = original;

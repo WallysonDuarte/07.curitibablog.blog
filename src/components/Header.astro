@@ -1,5 +1,12 @@
 ---
 import { fetchCategories } from '../lib/api';
+import LanguageSelector from './LanguageSelector.astro';
+
+interface Props {
+  slug?: string;
+  lang?: string;
+}
+const { slug, lang = 'pt' } = Astro.props;
 
 const categories = await fetchCategories();
 const topCats = categories.slice(0, 6);
@@ -36,6 +43,8 @@ const topCats = categories.slice(0, 6);
       <a href="https://area.curitibablog.com.br/entrar" class="nav-entrar">Entrar</a>
       <a href="https://area.curitibablog.com.br/cadastro" class="nav-cta">Cadastrar</a>
     </nav>
+
+    <LanguageSelector slug={slug} lang={lang} />
 
     <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
       <i id="theme-icon" class="fa-solid fa-moon"></i>

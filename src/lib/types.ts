@@ -42,6 +42,27 @@ export interface BlogPost {
   userRatingsSummary?: BlogPostUserRatingsSummary;
   sequence?: number;
   isFeatured?: boolean;
+  siteOverrides?: Record<string, BlogPostSiteOverride>;
+  translations?: Record<string, BlogPostTranslation>;
+}
+
+export interface BlogPostSiteOverride {
+  title?: string;
+  summary?: string;
+  content?: string;
+  tags?: string[];
+}
+
+export interface BlogPostTranslation {
+  title?: string;
+  summary?: string;
+  content?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  faqs?: FaqItem[];
+  coverImageKey?: string;
+  coverImageUrl?: string;
+  tags?: string[];
 }
 
 export interface BlogPostRatings {
