@@ -1,0 +1,85 @@
+{
+  "data": "2026-06-24",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-24-06-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/2926c931-8e52-4002-9f66-c24107368335-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/2926c931-8e52-4002-9f66-c24107368335-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a3be43a1e0686e208773d01",
+      "slug": "bunny-dns-gratis-alta-performance-cdn",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1007277582056390"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18107630692957495"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": true,
+      "id": "2069787090934485321"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7475552782540832768"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/bunny-dns-gratis-alta-performance-cdn"
+}

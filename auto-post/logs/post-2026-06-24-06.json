@@ -1,0 +1,84 @@
+{
+  "title": "Bunny DNS grátis: DNS de alta performance sem pagar nada",
+  "slug": "bunny-dns-gratis-alta-performance-cdn",
+  "summary": "A Bunny.net anunciou que seu DNS de alta performance agora é gratuito para todos. Entenda como funciona, por que é rápido e como configurar seus domínios sem custo.",
+  "metaTitle": "Bunny DNS grátis: como usar o DNS mais rápido | CuritibaBlog",
+  "metaDescription": "Bunny.net tornou seu DNS global e de alta performance totalmente gratuito. Veja como configurar, por que é rápido e quando vale mais que Cloudflare.",
+  "category": "tecnologia",
+  "categories": ["tecnologia", "desenvolvimento"],
+  "tags": ["dns", "bunny dns", "cdn", "performance", "infra", "devops", "dominio", "cloudflare"],
+  "content": "<h2>O que é o Bunny DNS</h2><p>O Bunny DNS é o serviço de resolução de nomes de domínio (DNS) da <strong>Bunny.net</strong>, empresa conhecida por sua CDN de alta performance. Em junho de 2026, a empresa anunciou que o serviço ficou gratuito para todos, sem limites de domínios ou consultas.</p><p>DNS é o sistema que traduz nomes de domínio como <code>curitibablog.com.br</code> em endereços IP. Parece simples, mas o servidor DNS que você usa afeta diretamente a velocidade com que os usuários conseguem chegar ao seu site. Um DNS lento adiciona latência a cada requisição, mesmo antes de o HTML começar a carregar.</p><p>A Bunny.net construiu sua rede de servidores DNS aproveitando a infraestrutura de <strong>CDN já existente em mais de 100 pontos de presença (PoPs)</strong> ao redor do mundo, incluindo localizações na América do Sul. Isso significa que usuários brasileiros resolvem os domínios em servidores geograficamente próximos.</p><h2>Como funciona o Bunny DNS</h2><p>O Bunny DNS opera por meio de uma rede anycast global. Com anycast, o mesmo endereço IP é anunciado de múltiplos pontos da rede. Quando você faz uma consulta DNS, o roteamento da internet automaticamente direciona para o nó mais próximo.</p><p>Além da resolução rápida, o painel de controle da Bunny.net oferece uma interface intuitiva para gerenciar registros A, AAAA, CNAME, MX, TXT, NS e outros tipos comuns. Você pode criar zonas DNS, definir TTL por registro e monitorar o tráfego de consultas em tempo real.</p><p>A plataforma também suporta <strong>GeoDNS</strong> em planos pagos, que permite retornar IPs diferentes dependendo da localização do usuário. Mas o plano gratuito já cobre a grande maioria dos casos de uso para sites e aplicações.</p><h2>Principais recursos</h2><p>O que você ganha com o Bunny DNS gratuito:</p><ul><li><strong>Zonas ilimitadas:</strong> adicione quantos domínios quiser sem custo extra.</li><li><strong>Consultas ilimitadas:</strong> sem limite de queries por mês ou por segundo.</li><li><strong>Rede global:</strong> mais de 100 PoPs com anycast para baixa latência mundial.</li><li><strong>Painel web:</strong> interface completa para gerenciar todos os tipos de registro DNS.</li><li><strong>API REST:</strong> gerencie zonas e registros via API para automação e DevOps.</li><li><strong>DNSSEC:</strong> suporte a assinatura criptográfica dos registros para evitar ataques de envenenamento de cache.</li><li><strong>Importação de zona:</strong> importe registros existentes via arquivo BIND para migrar de outro provedor sem digitação manual.</li></ul><p>Para a maioria dos projetos, esses recursos são mais do que suficientes. O diferencial real está na velocidade de resolução, especialmente em regiões fora dos EUA e Europa.</p><h2>Como começar: configurando o Bunny DNS</h2><p>O processo para usar o Bunny DNS é simples e leva menos de 10 minutos:</p><p><strong>Passo 1:</strong> Crie uma conta gratuita em <code>bunny.net</code>. Não é necessário cartão de crédito para o plano gratuito do DNS.</p><p><strong>Passo 2:</strong> No painel, vá em DNS e clique em Add Zone. Informe o nome do seu domínio (ex: <code>meusite.com.br</code>) e clique em criar.</p><p><strong>Passo 3:</strong> Configure seus registros DNS. Você pode importar um arquivo de zona existente ou adicionar os registros manualmente. Para um site simples, você precisará de pelo menos um registro A apontando para o IP do servidor.</p><p><strong>Passo 4:</strong> Anote os nameservers fornecidos pela Bunny.net. Eles costumam ser no formato <code>kiki.bunny.net</code> e <code>coco.bunny.net</code> (os nomes exatos aparecem na interface após criar a zona).</p><p><strong>Passo 5:</strong> Acesse o painel do seu registrador de domínio (Registro.br, GoDaddy, etc.) e troque os nameservers pelos fornecidos pela Bunny.net. A propagação leva de alguns minutos a até 48 horas, dependendo do TTL anterior.</p><h2>Exemplo prático: migrando de Cloudflare para Bunny DNS</h2><p>Imagine que você tem um site hospedado em um VPS com IP <code>31.12.34.56</code> e quer migrar o DNS para a Bunny.net. Primeiro, exporte a zona do Cloudflare em formato BIND: vá em DNS > Export Zone File.</p><p>No painel da Bunny.net, crie a zona e clique em Import Zone. Faça upload do arquivo exportado. A maioria dos registros será importada automaticamente, incluindo registros A, CNAME e MX.</p><p>Revise os registros importados, especialmente os registros A, para garantir que apontam para os IPs corretos. Configure o TTL para <code>300</code> (5 minutos) antes de trocar os nameservers, assim mudanças futuras propagam rapidamente. Após confirmar que tudo está certo, troque os nameservers no registrador.</p><h2>Comparação com alternativas</h2><p>O mercado de DNS tem alguns players importantes. Veja como o Bunny DNS se compara:</p><p><strong>Cloudflare DNS:</strong> o mais popular entre desenvolvedores. Gratuito, com proteção DDoS no nível DNS, proxying de tráfego e analytics. A grande vantagem da Cloudflare é o ecossistema completo (Workers, Pages, Firewall). O Bunny DNS é mais simples e focado na velocidade de resolução pura, sem o proxy automático que a Cloudflare aplica.</p><p><strong>AWS Route 53:</strong> cobrado por zona hospedada (0,50 USD/mês) e por consulta. Integra bem com o ecossistema AWS. Para quem já usa EC2 ou ECS, faz sentido. Para projetos menores ou fora da AWS, o Bunny DNS gratuito é mais atrativo.</p><p><strong>Google Cloud DNS:</strong> também pago por zona e consulta. Bom para quem está no GCP. Mesmo raciocínio do Route 53.</p><p>O Bunny DNS é melhor escolha quando você quer <strong>máxima velocidade de resolução sem custo</strong> e não precisa do proxy reverso integrado da Cloudflare.</p><h2>Pontos positivos e limitações</h2><p>Entre os pontos positivos, destaca-se a <strong>velocidade de resolução</strong>: benchmarks independentes mostram que o Bunny DNS está consistentemente entre os mais rápidos do mercado, especialmente fora dos centros tradicionais de internet. A gratuidade sem limites também é um grande atrativo, diferente de serviços que limitam zonas ou consultas no plano free.</p><p>As limitações ficam em recursos avançados. GeoDNS e Load Balancing baseado em health checks só estão disponíveis em planos pagos. O DNS Firewall (bloqueio de domínios maliciosos) também é um recurso premium. Para uso corporativo com requisitos de failover automático, esses recursos fazem falta.</p><p>Outro ponto: a Bunny.net é uma empresa menor que AWS ou Cloudflare, e embora tenha um histórico sólido de uptime, o suporte para plano gratuito é baseado em comunidade e documentação, não em SLA garantido.</p><h2>Casos de uso reais</h2><p><strong>Freelancer ou agência:</strong> você gerencia dezenas de domínios de clientes. Com o Bunny DNS gratuito, centraliza tudo em um único painel sem custo adicional, e seus clientes se beneficiam de resolução mais rápida.</p><p><strong>Startup com múltiplos ambientes:</strong> você tem <code>app.startup.com</code>, <code>api.startup.com</code>, <code>staging.startup.com</code>. Com zonas ilimitadas e API REST, sua pipeline CI/CD pode criar e atualizar registros DNS automaticamente a cada deploy.</p><p><strong>Blog ou site pessoal:</strong> quer que seu portfólio ou blog carregue o mais rápido possível sem pagar por isso. Migrar o DNS para Bunny.net é uma melhoria de performance de baixo esforço e zero custo.</p><p><strong>Projeto open source:</strong> precisa de DNS confiável para documentação e site do projeto, sem orçamento para infraestrutura. O plano gratuito sem limites é ideal.</p><h2>Dicas e boas práticas</h2><p>Antes de migrar, documente todos os seus registros DNS atuais. Faça um export da zona do provedor atual. Qualquer erro de digitação na migração pode deixar seu site ou email fora do ar.</p><p>Defina TTL baixo (60 a 300 segundos) <strong>antes</strong> de trocar os nameservers. Assim, se precisar reverter ou corrigir algo após a migração, a propagação será muito mais rápida. Depois que tudo estiver estável, aumente o TTL para 3600 ou até 86400 para melhorar o cache e reduzir consultas.</p><p>Use a API REST da Bunny.net para automatizar a criação de registros DNS em suas pipelines de deploy. Isso evita erros manuais e garante que novos subdomínios sejam criados automaticamente quando necessário. A documentação da API está disponível no painel da plataforma.</p><h2>Vale a pena usar o Bunny DNS?</h2><p>Para a maioria dos desenvolvedores e projetos, <strong>sim</strong>. A combinação de gratuidade, sem limites e boa velocidade de resolução faz do Bunny DNS uma escolha sólida. Especialmente para quem está fora dos centros tradicionais de internet e quer performance global.</p><p>Para quem já usa Cloudflare e aproveita outros recursos da plataforma, como Workers ou o proxy com proteção DDoS, a migração não faz tanto sentido. O Bunny DNS brilha como uma alternativa mais simples e focada.</p><p>O próximo passo é criar uma conta em bunny.net, adicionar seu primeiro domínio e comparar os benchmarks de resolução DNS antes e depois. Ferramentas como <code>dig</code> ou sites como dnschecker.org ajudam a medir a diferença.</p>",
+  "faqs": [
+    {
+      "question": "O Bunny DNS é realmente gratuito sem limites?",
+      "answer": "Sim. A partir de junho de 2026, o Bunny DNS é gratuito com zonas ilimitadas e consultas ilimitadas. Recursos avançados como GeoDNS e Load Balancing ficam em planos pagos, mas o DNS básico não tem cobrança."
+    },
+    {
+      "question": "Posso usar o Bunny DNS com qualquer registrador de domínio?",
+      "answer": "Sim. Você precisa apenas alterar os nameservers no painel do seu registrador (Registro.br, GoDaddy, Namecheap, etc.) para os nameservers fornecidos pela Bunny.net. O processo funciona com qualquer registrador que permita alterar nameservers."
+    },
+    {
+      "question": "O Bunny DNS é mais rápido que o Cloudflare?",
+      "answer": "Depende da localização. Em benchmarks gerais, os dois são muito próximos. O Bunny DNS costuma ser mais rápido em regiões da América do Sul e Ásia por conta da distribuição de seus PoPs. Para o Brasil, vale testar com ferramentas como DNSPerf para medir na sua região."
+    },
+    {
+      "question": "Como migrar do Cloudflare para o Bunny DNS sem downtime?",
+      "answer": "Exporte sua zona DNS do Cloudflare em formato BIND, importe no Bunny DNS, revise os registros, defina TTL baixo (300s) e só então troque os nameservers no registrador. Com TTL baixo, qualquer correção propaga em minutos."
+    },
+    {
+      "question": "O Bunny DNS suporta DNSSEC?",
+      "answer": "Sim, o Bunny DNS tem suporte a DNSSEC, que adiciona assinaturas criptográficas aos registros DNS para proteger contra ataques de envenenamento de cache (DNS spoofing). A configuração é feita no painel da plataforma."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em números: Bunny DNS",
+      "items": [
+        {"label": "Preço", "value": "Gratuito (plano base sem limites)"},
+        {"label": "Pontos de presença (PoPs)", "value": "Mais de 100 ao redor do mundo"},
+        {"label": "Empresa", "value": "Bunny.net (Bunny Ways d.o.o., Eslovênia)"},
+        {"label": "Tipos de registro suportados", "value": "A, AAAA, CNAME, MX, TXT, NS, SRV, CAA, PTR"},
+        {"label": "API", "value": "REST API disponível para automação"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Site oficial", "value": "https://bunny.net"},
+        {"label": "Documentação DNS", "value": "https://docs.bunny.net/docs/dns-getting-started"},
+        {"label": "API Reference", "value": "https://docs.bunny.net/reference/dnszone_index"},
+        {"label": "Blog do anúncio", "value": "https://bunny.net/blog/were-making-bunny-dns-free/"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuários",
+      "items": [
+        {
+          "name": "Felipe Andrade",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=FelipeAndrade",
+          "text": "Migrei todos os domínios dos meus clientes para o Bunny DNS. A interface é limpa, a API funciona bem e o melhor: zero custo. Não tem motivo pra não usar."
+        },
+        {
+          "name": "Tatiane Oliveira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=TatianeOliveira",
+          "text": "Usava Route 53 no trabalho e ficava pagando por cada zona. Agora com Bunny DNS gratuito, simplifiquei bastante. Resolução rápida e sem dor de cabeça."
+        },
+        {
+          "name": "Ricardo Mendes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RicardoMendes",
+          "text": "Integrei o Bunny DNS na minha pipeline de deploy via API. Cria subdomínio automaticamente a cada novo ambiente de staging. Funciona perfeitamente."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Gratuito sem limites",
+  "card1_texto": "Zonas e consultas ilimitadas sem pagar nada",
+  "card2_titulo": "100+ PoPs globais",
+  "card2_texto": "Rede anycast para baixa latência no Brasil",
+  "card3_titulo": "API REST inclusa",
+  "card3_texto": "Automatize criação de registros no CI/CD",
+  "subtitulo_capa": "A Bunny.net tornou seu DNS global gratuito: rápido, sem limites e com API"
+}
