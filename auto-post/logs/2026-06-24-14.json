@@ -1,7 +1,85 @@
 {
   "data": "2026-06-24",
-  "etapas": {},
-  "status": "ERRO",
-  "erro": "Char proibido U+2014 em: '<h2>O que mudou no JavaScript em 2025</h2><p>O JavaScript é uma das linguagens m'",
-  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1580, in main\n    check_post(post_data)\n    ~~~~~~~~~~^^^^^^^^^^^\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 734, in check_post\n    raise ValueError(f\"Char proibido U+{ord(c):04X} em: {f[:80]!r}\")\nValueError: Char proibido U+2014 em: '<h2>O que mudou no JavaScript em 2025</h2><p>O JavaScript é uma das linguagens m'\n"
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-24-14-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/4ffae8c5-f21f-4ab5-b128-1eb9b48a194f-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/4ffae8c5-f21f-4ab5-b128-1eb9b48a194f-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a3c0e39abe1580de8c06293",
+      "slug": "novidades-javascript-2025",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1007396982044450"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "17927379981125941"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": true,
+      "id": "2069832232361972088"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7475597924320661504"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/novidades-javascript-2025"
 }
