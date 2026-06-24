@@ -399,6 +399,42 @@ _ACENTO_FIXES = [
     (r'\bvoce\b', 'você'), (r'\bvoces\b', 'vocês'),
 ]
 
+# Acentos PT-EU → PT-BR (substituição direta, sem regex)
+_PTEU_TO_PTBR = [
+    ('autónomo', 'autônomo'), ('autónoma', 'autônoma'),
+    ('autónomos', 'autônomos'), ('autónomas', 'autônomas'),
+    ('Autónomo', 'Autônomo'), ('Autónoma', 'Autônoma'),
+    ('Autónomos', 'Autônomos'), ('Autónomas', 'Autônomas'),
+    ('fenómeno', 'fenômeno'), ('fenómenos', 'fenômenos'),
+    ('Fenómeno', 'Fenômeno'), ('Fenómenos', 'Fenômenos'),
+    ('económico', 'econômico'), ('económica', 'econômica'),
+    ('económicos', 'econômicos'), ('económicas', 'econômicas'),
+    ('Económico', 'Econômico'), ('Económica', 'Econômica'),
+    ('anónimo', 'anônimo'), ('anónima', 'anônima'),
+    ('anónimos', 'anônimos'), ('Anónimo', 'Anônimo'),
+    ('académico', 'acadêmico'), ('académica', 'acadêmica'),
+    ('académicos', 'acadêmicos'), ('Académico', 'Acadêmico'),
+    ('bónus', 'bônus'), ('Bónus', 'Bônus'),
+    ('ténis', 'tênis'), ('Ténis', 'Tênis'),
+    ('género', 'gênero'), ('géneros', 'gêneros'),
+    ('Género', 'Gênero'), ('Géneros', 'Gêneros'),
+    ('sinónimo', 'sinônimo'), ('sinónimos', 'sinônimos'),
+    ('Sinónimo', 'Sinônimo'),
+    ('topónimo', 'topônimo'), ('Topónimo', 'Topônimo'),
+    ('sénior', 'sênior'), ('séniores', 'sêniores'),
+    ('Sénior', 'Sênior'), ('Séniores', 'Sêniores'),
+]
+
+def _corrigir_pteu(text: str) -> tuple[str, int]:
+    """Converte acentos PT-EU → PT-BR. Retorna (texto_corrigido, num_correcoes)."""
+    total = 0
+    for errado, correto in _PTEU_TO_PTBR:
+        count = text.count(errado)
+        if count:
+            text = text.replace(errado, correto)
+            total += count
+    return text, total
+
 def _acento_repl(correct):
     """Retorna função de substituição que preserva caixa."""
     def _fn(m):
@@ -413,6 +449,10 @@ def _acento_repl(correct):
 def corrigir_acentos(text: str) -> tuple[str, int]:
     """Corrige acentuacao PT-BR no texto. Retorna (texto_corrigido, num_correcoes)."""
     correcoes = 0
+
+    # ── PT-EU → PT-BR (autónomo→autônomo, sénior→sênior, etc.) ──────────────
+    text, n = _corrigir_pteu(text)
+    correcoes += n
 
     # ── Regra genérica: -cao → -ção / -coes → -ções ──────────────────────────
     # Cobre TODOS os substantivos/verbos com esse sufixo sem precisar listá-los um a um.
