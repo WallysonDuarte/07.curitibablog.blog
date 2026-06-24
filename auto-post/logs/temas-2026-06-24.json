@@ -1,0 +1,222 @@
+{
+  "data": "2026-06-24",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "We're making Bunny DNS free: because a faster internet won't build itself",
+      "url": "https://bunny.net/blog/were-making-bunny-dns-free/",
+      "score": 435,
+      "comentarios": 146
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Krea 2 Technical Report",
+      "url": "https://www.krea.ai/blog/krea-2-technical-report",
+      "score": 68,
+      "comentarios": 4
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Minimus container images are now free",
+      "url": "https://images.minimus.io/",
+      "score": 51,
+      "comentarios": 28
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Founding a company in Germany: €9600, 152 days and I still can't send an invoice",
+      "url": "https://paolino.me/founding-a-company-in-germany/",
+      "score": 186,
+      "comentarios": 197
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Slate EV truck starts at $24,950",
+      "url": "https://www.slate.auto/en",
+      "score": 93,
+      "comentarios": 84
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Statistics that live in your SQL",
+      "url": "https://kolistat.com/blog/the-stats-duck-v0-6-0/",
+      "score": 76,
+      "comentarios": 12
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Reid Hoffman says SpaceX 'not an AI company', xAI 'complete train wreck'",
+      "url": "https://fortune.com/2026/06/24/reid-hoffman-spacex-musk-openai-anthropic-gen-z-mistake/",
+      "score": 94,
+      "comentarios": 84
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Vulnerability reports are not special anymore",
+      "url": "https://words.filippo.io/vuln-reports/",
+      "score": 337,
+      "comentarios": 190
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Raspberry Pi Pico W as USB Wi-Fi Adapter",
+      "url": "https://gitlab.com/baiyibai/pico-usb-wifi",
+      "score": 191,
+      "comentarios": 87
+    },
+    {
+      "fonte": "HN",
+      "titulo": "In memory of the man who put red and green squiggles under words",
+      "url": "https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451",
+      "score": 495,
+      "comentarios": 79
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Jerry's Map",
+      "url": "http://www.jerrysmap.com/the-map",
+      "score": 531,
+      "comentarios": 56
+    },
+    {
+      "fonte": "HN",
+      "titulo": "FUTO Swipe – A new swipe typing model",
+      "url": "https://swipe.futo.tech/",
+      "score": 613,
+      "comentarios": 221
+    },
+    {
+      "fonte": "HN",
+      "titulo": "\"Fix\" MacBook Neo Cursor Lag: Record 1 Pixel of the Screen Every 10 Seconds",
+      "url": "https://gist.github.com/retroplasma/ec21767d0a8380c7ea9c2fbee1c7d6bf",
+      "score": 152,
+      "comentarios": 64
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Qwen-AgentWorld: Language World Models for General Agents",
+      "url": "https://arxiv.org/abs/2606.24597",
+      "score": 146,
+      "comentarios": 44
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A deadly fungus that can infect cats and people is spreading",
+      "url": "https://www.sciencenews.org/article/deadly-fungus-cats-people-spreading",
+      "score": 107,
+      "comentarios": 78
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Too cheap to be good? Think again.",
+      "tags": [
+        "ai",
+        "benchmark",
+        "devops",
+        "webdev"
+      ],
+      "reacoes": 33
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "7 New JavaScript Features (And 2 I'm Still Waiting For)",
+      "tags": [
+        "javascript",
+        "typescript",
+        "node",
+        "webdev"
+      ],
+      "reacoes": 29
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Conduit: The Gateway I Built to Forget About",
+      "tags": [
+        "programming",
+        "architecture",
+        "typescript",
+        "go"
+      ],
+      "reacoes": 15
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How My AI Agent Hacked Its Own Permissions (And What It Taught Me)",
+      "tags": [
+        "ai",
+        "security",
+        "agents",
+        "automation"
+      ],
+      "reacoes": 13
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Dev log #7 Reviving DevNotion: 10,000 Lines, Multi-LLM Support, and the Road to v2.1",
+      "tags": [
+        "devjournal",
+        "llm",
+        "opensource",
+        "showdev"
+      ],
+      "reacoes": 20
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Ways Devs Are Plugging LLMs Into Anomaly Detection",
+      "tags": [
+        "ai",
+        "programming",
+        "beginners",
+        "machinelearning"
+      ],
+      "reacoes": 11
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Maybe It Is Not Yet Time To Bring Every AI Demo To Production",
+      "tags": [
+        "ai",
+        "programming",
+        "productivity",
+        "tutorial"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Something Changed After the Sloan Articles. I Can't Prove It.",
+      "tags": [
+        "ai",
+        "meta",
+        "devto",
+        "discuss"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Series Teaser — 6 People, 36 Stratagems, and an AI Rabbit Hole That Keeps Getting Deeper",
+      "tags": [
+        "ai",
+        "discuss",
+        "career",
+        "programming"
+      ],
+      "reacoes": 27
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Every Alarm Is a Crime Scene: Meet Poirot, the Read-Only Incident Detective",
+      "tags": [
+        "ai",
+        "aws",
+        "typescript",
+        "cdk"
+      ],
+      "reacoes": 3
+    }
+  ]
+}
