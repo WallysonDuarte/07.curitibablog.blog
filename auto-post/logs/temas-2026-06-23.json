@@ -3,133 +3,111 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "F3",
-      "url": "https://github.com/future-file-format/f3",
-      "score": 346,
-      "comentarios": 95
+      "titulo": "Jerry's Map",
+      "url": "http://www.jerrysmap.com/the-map",
+      "score": 318,
+      "comentarios": 47
     },
     {
       "fonte": "HN",
-      "titulo": "San Diego photologs from the 1970s",
-      "url": "https://www.beautifulpublicdata.com/san-diego-photologs-from-the-1970s/",
-      "score": 76,
-      "comentarios": 12
+      "titulo": "FUTO Swipe – A new swipe typing model",
+      "url": "https://swipe.futo.tech/",
+      "score": 245,
+      "comentarios": 82
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Swift Package Index joins Apple",
+      "url": "https://swiftpackageindex.com/blog/swift-package-index-joins-apple",
+      "score": 166,
+      "comentarios": 50
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Printing Gaussian Splats",
+      "url": "https://www.patreon.com/DanyBittel/posts/printing-splats-161333338",
+      "score": 157,
+      "comentarios": 13
+    },
+    {
+      "fonte": "HN",
+      "titulo": "In memory of the man who put red and green squiggles under words",
+      "url": "https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451",
+      "score": 127,
+      "comentarios": 10
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Extreme Heat conference cancelled due to extreme heat warning",
+      "url": "https://www.lse.ac.uk/granthaminstitute/events/extreme-heat-improving-governance-and-strengthening-action-around-the-world/",
+      "score": 95,
+      "comentarios": 24
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Usbliter8: an A12/A13 SecureROM Exploit",
+      "url": "https://ps.tc/pages/blog-usbliter8.html",
+      "score": 54,
+      "comentarios": 14
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: TikZ Editor – WYSIWYG editor for figures in LaTeX",
       "url": "https://tikz.dev/editor/",
-      "score": 241,
-      "comentarios": 47
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Unlimited OCR: One-Shot Long-Horizon Parsing",
-      "url": "https://github.com/baidu/Unlimited-OCR",
-      "score": 352,
-      "comentarios": 87
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Five monitors on a Commodore 128 [video]",
-      "url": "https://www.youtube.com/watch?v=ul5hC3PY1Yg",
-      "score": 52,
-      "comentarios": 10
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Lift4D: Harmonizing Single-View 3D Estimation for 4D Reconstruction In-the-Wild",
-      "url": "https://lift4d.github.io/",
-      "score": 75,
-      "comentarios": 6
+      "score": 321,
+      "comentarios": 61
     },
     {
       "fonte": "HN",
       "titulo": "The Coming Loop",
       "url": "https://lucumr.pocoo.org/2026/6/23/the-coming-loop/",
-      "score": 191,
-      "comentarios": 152
+      "score": 316,
+      "comentarios": 222
     },
     {
       "fonte": "HN",
-      "titulo": "Mistral OCR 4",
-      "url": "https://mistral.ai/news/ocr-4/",
-      "score": 308,
-      "comentarios": 81
+      "titulo": "Inventing the Future, One Lisp Machine at a Time",
+      "url": "https://www.patrickdomanico.com/bpm/2026/06/16/inventing-the-future-one-lisp-machine-at-a-time/",
+      "score": 68,
+      "comentarios": 3
     },
     {
       "fonte": "HN",
-      "titulo": "Elevated error rate across multiple models",
-      "url": "https://status.claude.com/incidents/jbhf20wjmzrf",
-      "score": 179,
-      "comentarios": 225
+      "titulo": "The worthlessness of Vitamin D is mildly exaggerated",
+      "url": "https://dynomight.net/vitamin-d/",
+      "score": 192,
+      "comentarios": 144
     },
     {
       "fonte": "HN",
-      "titulo": "Plotnine",
-      "url": "https://plotnine.org/",
-      "score": 217,
-      "comentarios": 66
+      "titulo": "Rhombus Language 1.0",
+      "url": "https://blog.racket-lang.org/2026/06/rhombus-v1.0.html",
+      "score": 62,
+      "comentarios": 7
     },
     {
       "fonte": "HN",
-      "titulo": "Claude Tag",
-      "url": "https://www.anthropic.com/news/introducing-claude-tag",
-      "score": 96,
-      "comentarios": 43
+      "titulo": "Unlimited OCR: One-shot long-horizon parsing",
+      "url": "https://github.com/baidu/Unlimited-OCR",
+      "score": 435,
+      "comentarios": 100
     },
     {
       "fonte": "HN",
-      "titulo": "MSG Made Dossier on Activists Who Opposed Facial Recognition",
-      "url": "https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/",
-      "score": 227,
-      "comentarios": 63
+      "titulo": "Trains halted across Germany because of communication system problem",
+      "url": "https://apnews.com/article/germany-trains-halted-communications-radio-problem-deutsche-bahn-e8fd970b2d889f3ae7ce03322d5c726b",
+      "score": 139,
+      "comentarios": 137
     },
     {
       "fonte": "HN",
-      "titulo": "The deadly rise of giant trucks and SUVs",
-      "url": "https://www.nytimes.com/interactive/2026/06/21/us/trucks-suv-pedestrian-crashes.html",
-      "score": 67,
-      "comentarios": 225
-    },
-    {
-      "fonte": "HN",
-      "titulo": "GLM-5.2 – How to Run Locally",
-      "url": "https://unsloth.ai/docs/models/glm-5.2",
-      "score": 560,
-      "comentarios": 266
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The Low-Tech AI of Elden Ring",
-      "url": "https://nega.tv/posts/low-tech-ai-of-elden-ring.html",
-      "score": 52,
-      "comentarios": 31
+      "titulo": "Don't verify email addresses by sending spam to them",
+      "url": "https://milek7.pl/mailverifyspam/",
+      "score": 135,
+      "comentarios": 40
     }
   ],
   "devto": [
-    {
-      "fonte": "Dev.to",
-      "titulo": "I am behind, and I can't prove it but does it matter?",
-      "tags": [
-        "discuss",
-        "community",
-        "mentalhealth",
-        "career"
-      ],
-      "reacoes": 62
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": ". .. . ... . .... . .... . ... .",
-      "tags": [
-        "ai",
-        "webdev",
-        "programming",
-        "beginners"
-      ],
-      "reacoes": 37
-    },
     {
       "fonte": "Dev.to",
       "titulo": "I'm moving house🏡 - What gadgets, furniture and whatnot do I need for The Ultimate Setup™? 🚀",
@@ -143,17 +121,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "AI found 300 WordPress plugin zero-days in 72 hours. I build plugins. Here's what changed for me.",
-      "tags": [
-        "wordpress",
-        "security",
-        "webdev",
-        "ai"
-      ],
-      "reacoes": 15
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "Agents write code, but they don't remember",
       "tags": [
         "ai",
@@ -161,38 +128,51 @@
         "llms",
         "agents"
       ],
-      "reacoes": 7
+      "reacoes": 11
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Você não precisa ser especialista para contribuir em uma comunidade",
-      "tags": [
-        "beginners",
-        "braziliandevs",
-        "discuss"
-      ],
-      "reacoes": 32
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "What Prime Day Taught Me About Prompt Engineering",
+      "titulo": "Too cheap to be good? Think again.",
       "tags": [
         "ai",
-        "promptengineering",
-        "llm",
-        "shopping"
+        "benchmark",
+        "devops",
+        "webdev"
       ],
-      "reacoes": 5
+      "reacoes": 9
     },
     {
       "fonte": "Dev.to",
-      "titulo": "The Team Already Knows",
+      "titulo": "Solstice Protocol: A Puzzle Adventure to Save the Longest Day",
       "tags": [
-        "leadership",
-        "webdev",
-        "management"
+        "devchallenge",
+        "gamechallenge",
+        "gamedev",
+        "programming"
       ],
-      "reacoes": 2
+      "reacoes": 14
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How My AI Agent Hacked Its Own Permissions (And What It Taught Me)",
+      "tags": [
+        "ai",
+        "security",
+        "agents",
+        "automation"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "An AI Feature Has No \"Tests Pass\" Moment. So I Write the Eval First.",
+      "tags": [
+        "ai",
+        "dotnet",
+        "csharp",
+        "machinelearning"
+      ],
+      "reacoes": 10
     },
     {
       "fonte": "Dev.to",
@@ -203,7 +183,7 @@
         "productivity",
         "softwareengineering"
       ],
-      "reacoes": 18
+      "reacoes": 23
     },
     {
       "fonte": "Dev.to",
@@ -214,7 +194,29 @@
         "productivity",
         "tutorial"
       ],
-      "reacoes": 4
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The LLM Visibility Tools Cost $79/Month. Mine is Open Source.",
+      "tags": [
+        "ai",
+        "seo",
+        "python",
+        "opensource"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Node.js Mistake That Cost My Client $3,000 in AWS Bills",
+      "tags": [
+        "node",
+        "javascript",
+        "aws",
+        "webdev"
+      ],
+      "reacoes": 16
     }
   ]
 }
