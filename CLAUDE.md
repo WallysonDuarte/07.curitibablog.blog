@@ -72,7 +72,7 @@ O HISTORY e o registro permanente de tudo que foi feito. O MEMORY e apenas para 
 **Passo 1 — HISTORY (OBRIGATORIO, ANEXAR, nunca substituir):**
 Arquivo: `E:/PROJETOS/00.documentos/memory/history/07.curitibablog.blog.history`
 ```
-## [23/06/2026] — curitibablog.com.br (vigilante)
+## [24/06/2026] — curitibablog.com.br-repost (vigilante)
 - O que foi feito: <descricao objetiva>
 - Commits: <hashes>
 - Arquivos alterados: <lista>
@@ -136,8 +136,8 @@ Violacao = rollback obrigatorio + report ao CTO.
 
 ---
 
-# Sessao: vigilante > curitibablog.com.br
-Data: 23/06/2026
+# Sessao: vigilante > curitibablog.com.br-repost
+Data: 24/06/2026
 
 ---
 
