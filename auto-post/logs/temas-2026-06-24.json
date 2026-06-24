@@ -3,121 +3,121 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "We're making Bunny DNS free: because a faster internet won't build itself",
+      "titulo": "John Carmack on the mistakes around Quake that ruined id software",
+      "url": "https://twitter.com/ID_AA_Carmack/status/2069799283369345247",
+      "score": 183,
+      "comentarios": 70
+    },
+    {
+      "fonte": "HN",
+      "titulo": "RubyLLM: A Ruby framework for all major AI providers",
+      "url": "https://rubyllm.com/",
+      "score": 163,
+      "comentarios": 21
+    },
+    {
+      "fonte": "HN",
+      "titulo": "We’re making Bunny DNS free",
       "url": "https://bunny.net/blog/were-making-bunny-dns-free/",
-      "score": 435,
-      "comentarios": 146
+      "score": 627,
+      "comentarios": 208
     },
     {
       "fonte": "HN",
-      "titulo": "Krea 2 Technical Report",
+      "titulo": "Show HN: Nub – A Bun-like all-in-one toolkit for Node.js",
+      "url": "https://github.com/nubjs/nub",
+      "score": 100,
+      "comentarios": 21
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Krea 2: SOTA open-weights 12B image model",
       "url": "https://www.krea.ai/blog/krea-2-technical-report",
-      "score": 68,
-      "comentarios": 4
+      "score": 162,
+      "comentarios": 19
     },
     {
       "fonte": "HN",
-      "titulo": "Minimus container images are now free",
-      "url": "https://images.minimus.io/",
-      "score": 51,
-      "comentarios": 28
+      "titulo": "A Practical Guide to SSH Tunnels: Local and Remote Port Forwarding",
+      "url": "https://labs.iximiuz.com/tutorials/ssh-tunnels",
+      "score": 145,
+      "comentarios": 30
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Boffin claims Microsoft's \"quantum leap\" is invalid due to \"basic Python errors\"",
+      "url": "https://www.theregister.com/research/2026/06/24/boffin-claims-microsofts-supposed-quantum-leap-does-not-compute-due-to-basic-python-errors/5260489",
+      "score": 58,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Monolisa v3 – a typeface for developers and creatives",
+      "url": "https://www.monolisa.dev/",
+      "score": 81,
+      "comentarios": 18
     },
     {
       "fonte": "HN",
       "titulo": "Founding a company in Germany: €9600, 152 days and I still can't send an invoice",
       "url": "https://paolino.me/founding-a-company-in-germany/",
-      "score": 186,
-      "comentarios": 197
+      "score": 425,
+      "comentarios": 487
     },
     {
       "fonte": "HN",
-      "titulo": "Slate EV truck starts at $24,950",
-      "url": "https://www.slate.auto/en",
-      "score": 93,
-      "comentarios": 84
+      "titulo": "Haystack: Open-Source AI Framework for Production Ready Agents, RAG",
+      "url": "https://haystack.deepset.ai/",
+      "score": 58,
+      "comentarios": 19
     },
     {
       "fonte": "HN",
-      "titulo": "Statistics that live in your SQL",
-      "url": "https://kolistat.com/blog/the-stats-duck-v0-6-0/",
-      "score": 76,
-      "comentarios": 12
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Reid Hoffman says SpaceX 'not an AI company', xAI 'complete train wreck'",
-      "url": "https://fortune.com/2026/06/24/reid-hoffman-spacex-musk-openai-anthropic-gen-z-mistake/",
-      "score": 94,
-      "comentarios": 84
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Vulnerability reports are not special anymore",
-      "url": "https://words.filippo.io/vuln-reports/",
-      "score": 337,
-      "comentarios": 190
+      "titulo": "Quebec town recognizes trees as living beings with rights",
+      "url": "https://www.cbc.ca/news/canada/montreal/terrasse-vaudreil-quebec-tree-rights-9.7243634",
+      "score": 62,
+      "comentarios": 51
     },
     {
       "fonte": "HN",
       "titulo": "Raspberry Pi Pico W as USB Wi-Fi Adapter",
       "url": "https://gitlab.com/baiyibai/pico-usb-wifi",
-      "score": 191,
-      "comentarios": 87
+      "score": 228,
+      "comentarios": 108
     },
     {
       "fonte": "HN",
-      "titulo": "In memory of the man who put red and green squiggles under words",
-      "url": "https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451",
-      "score": 495,
-      "comentarios": 79
+      "titulo": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "score": 106,
+      "comentarios": 36
     },
     {
       "fonte": "HN",
-      "titulo": "Jerry's Map",
-      "url": "http://www.jerrysmap.com/the-map",
-      "score": 531,
-      "comentarios": 56
+      "titulo": "Statistics that live in your SQL",
+      "url": "https://kolistat.com/blog/the-stats-duck-v0-6-0/",
+      "score": 110,
+      "comentarios": 15
     },
     {
       "fonte": "HN",
-      "titulo": "FUTO Swipe – A new swipe typing model",
-      "url": "https://swipe.futo.tech/",
-      "score": 613,
-      "comentarios": 221
-    },
-    {
-      "fonte": "HN",
-      "titulo": "\"Fix\" MacBook Neo Cursor Lag: Record 1 Pixel of the Screen Every 10 Seconds",
-      "url": "https://gist.github.com/retroplasma/ec21767d0a8380c7ea9c2fbee1c7d6bf",
-      "score": 152,
-      "comentarios": 64
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Qwen-AgentWorld: Language World Models for General Agents",
-      "url": "https://arxiv.org/abs/2606.24597",
-      "score": 146,
-      "comentarios": 44
-    },
-    {
-      "fonte": "HN",
-      "titulo": "A deadly fungus that can infect cats and people is spreading",
-      "url": "https://www.sciencenews.org/article/deadly-fungus-cats-people-spreading",
-      "score": 107,
-      "comentarios": 78
+      "titulo": "Stealing Is a Skill",
+      "url": "https://ben-mini.com/2026/stealing-is-a-skill",
+      "score": 101,
+      "comentarios": 76
     }
   ],
   "devto": [
     {
       "fonte": "Dev.to",
-      "titulo": "Too cheap to be good? Think again.",
+      "titulo": "To The People Who Read My Weird Little Blogs",
       "tags": [
-        "ai",
-        "benchmark",
-        "devops",
-        "webdev"
+        "writing",
+        "community",
+        "discuss",
+        "learning"
       ],
-      "reacoes": 33
+      "reacoes": 36
     },
     {
       "fonte": "Dev.to",
@@ -128,18 +128,18 @@
         "node",
         "webdev"
       ],
-      "reacoes": 29
+      "reacoes": 38
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Conduit: The Gateway I Built to Forget About",
+      "titulo": "Too cheap to be good? Think again.",
       "tags": [
-        "programming",
-        "architecture",
-        "typescript",
-        "go"
+        "ai",
+        "benchmark",
+        "devops",
+        "webdev"
       ],
-      "reacoes": 15
+      "reacoes": 38
     },
     {
       "fonte": "Dev.to",
@@ -154,14 +154,22 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Dev log #7 Reviving DevNotion: 10,000 Lines, Multi-LLM Support, and the Road to v2.1",
+      "titulo": "Everyone's Excited About Claude Tag. Nobody's Built the Trust Layer.",
       "tags": [
-        "devjournal",
-        "llm",
-        "opensource",
-        "showdev"
+        "ai",
+        "claude",
+        "agents",
+        "opensource"
       ],
-      "reacoes": 20
+      "reacoes": 18
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Welcome Thread - v381",
+      "tags": [
+        "welcome"
+      ],
+      "reacoes": 7
     },
     {
       "fonte": "Dev.to",
@@ -176,17 +184,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Maybe It Is Not Yet Time To Bring Every AI Demo To Production",
-      "tags": [
-        "ai",
-        "programming",
-        "productivity",
-        "tutorial"
-      ],
-      "reacoes": 6
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "Something Changed After the Sloan Articles. I Can't Prove It.",
       "tags": [
         "ai",
@@ -194,7 +191,7 @@
         "devto",
         "discuss"
       ],
-      "reacoes": 6
+      "reacoes": 17
     },
     {
       "fonte": "Dev.to",
@@ -205,18 +202,18 @@
         "career",
         "programming"
       ],
-      "reacoes": 27
+      "reacoes": 30
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Every Alarm Is a Crime Scene: Meet Poirot, the Read-Only Incident Detective",
+      "titulo": "# Arc 9 Catch-Up: Writing Your First Solana Program",
       "tags": [
-        "ai",
-        "aws",
-        "typescript",
-        "cdk"
+        "100daysofsolana",
+        "blockchain",
+        "web3",
+        "learning"
       ],
-      "reacoes": 3
+      "reacoes": 2
     }
   ]
 }

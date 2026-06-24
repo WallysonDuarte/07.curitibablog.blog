@@ -1,0 +1,122 @@
+{
+  "title": "7 Novidades do JavaScript em 2025 que Todo Dev Deve Conhecer",
+  "slug": "novidades-javascript-2025",
+  "summary": "O JavaScript continua evoluindo rápido. Veja as 7 funcionalidades mais importantes lançadas recentemente na linguagem, como usar cada uma no dia a dia e quais ainda estão por vir.",
+  "metaTitle": "Novidades do JavaScript 2025 | CuritibaBlog",
+  "metaDescription": "Conheça as 7 novas funcionalidades do JavaScript em 2025: Promise.try, groupBy, Set methods e mais. Exemplos práticos para devs brasileiros.",
+  "category": "desenvolvimento",
+  "categories": [
+    "desenvolvimento",
+    "tecnologia"
+  ],
+  "tags": [
+    "javascript",
+    "es2025",
+    "nodejs",
+    "frontend",
+    "typescript",
+    "webdev",
+    "programacao"
+  ],
+  "content": "<h2>O que mudou no JavaScript em 2025</h2><p>O JavaScript é uma das linguagens mais usadas do mundo e não para de crescer. A cada ano o <strong>TC39</strong> - comitê responsável pela evolução da linguagem - aprova novas propostas que chegam aos navegadores e ao Node.js. Em 2025 chegaram funcionalidades que os devs pediam há anos.</p><p>Diferente de outras linguagens, o JavaScript evolui de forma incremental. Cada proposta passa por estágios antes de ser oficialmente aprovada: do estágio 0 (ideia) até o estágio 4 (pronto para o padrão). Quando chega ao estágio 4, entra na especificação do ECMAScript daquele ano.</p><p>Neste post você vai ver as 7 funcionalidades mais relevantes aprovadas recentemente, com exemplos práticos de como usar cada uma no seu código hoje.</p><h2>Como funciona a evolução do JavaScript</h2><p>O <strong>TC39</strong> é um grupo de engenheiros de empresas como Google, Mozilla, Apple, Microsoft e Meta que se reúne regularmente para discutir e aprovar mudanças na linguagem. Cada proposta passa por 5 estágios numerados de 0 a 4.</p><p>Estágio 4 significa que a proposta foi implementada em pelo menos dois navegadores ou ambientes e que os testes de conformidade passaram. A partir daí ela entra oficialmente no ECMAScript - por exemplo, ES2025 ou ES2026.</p><p>Você pode acompanhar o status de todas as propostas no repositório oficial do TC39 no GitHub. É uma leitura interessante para entender o futuro da linguagem antes que chegue ao seu compilador.</p><h2>As 7 novas funcionalidades</h2><p><strong>1. Promise.try()</strong> - Permite iniciar uma cadeia de Promises a partir de uma função síncrona ou assíncrona sem precisar de um wrapper manual. Se a função lançar um erro síncrono, ele é convertido em uma Promise rejeitada automaticamente. Muito útil para evitar blocos try/catch misturados com .catch().</p><p><strong>2. Array.fromAsync()</strong> - Cria um array a partir de um iterável ou iterável assíncrono. Antes você precisava de um loop for await...of para isso. Agora é uma linha: <code>const items = await Array.fromAsync(asyncIterable)</code>.</p><p><strong>3. Object.groupBy() e Map.groupBy()</strong> - Agrupa elementos de um iterável por uma chave retornada pelo callback. Substitui o clássico reduce que todo dev escrevia para agrupar arrays de objetos. <code>Object.groupBy(users, u => u.role)</code> retorna um objeto com chaves por papel.</p><p><strong>4. Set com operações matemáticas</strong> - O objeto Set agora tem métodos como .union(), .intersection(), .difference() e .symmetricDifference(). Operações que você fazia manualmente com filter e has agora têm uma API nativa clara e legível.</p><p><strong>5. Iterator Helpers</strong> - Métodos como .map(), .filter(), .take() e .drop() diretamente em iteradores, sem precisar converter para array primeiro. Útil para processar grandes datasets sem alocar memória desnecessária.</p><p><strong>6. Regex com flag /v (unicodeSets)</strong> - A nova flag /v para expressões regulares permite classes de caracteres mais expressivas, propriedades de strings Unicode e operações de conjunto dentro de []. Melhora muito o trabalho com texto multilíngue.</p><p><strong>7. Promise.withResolvers()</strong> - Retorna um objeto com a Promise e suas funções resolve e reject separadas. Substitui o padrão verbose de criar uma Promise e guardar referência às funções externas. <code>const { promise, resolve, reject } = Promise.withResolvers()</code>.</p><h2>Como começar a usar hoje</h2><p>A maioria dessas funcionalidades já está disponível nos navegadores modernos (Chrome 124+, Firefox 127+, Safari 17.4+) e no Node.js 22+. Se você usa TypeScript, verifique se seu <code>tsconfig.json</code> aponta para <code>lib: ES2025</code> ou superior.</p><p>Para verificar o suporte de cada feature, o site <strong>caniuse.com</strong> e o <strong>MDN Web Docs</strong> têm tabelas de compatibilidade atualizadas. Para Node.js, a tabela de compatibilidade em <strong>node.green</strong> mostra quais versões suportam cada proposta.</p><p>Se você ainda não pode atualizar o ambiente, o <strong>Babel</strong> com os plugins corretos consegue transpilar a maioria dessas funcionalidades para versões mais antigas do JavaScript. Adicione os presets do Babel no seu projeto e configure o target de ambiente desejado.</p><h2>Exemplo prático com as novas features</h2><p>Imagine que você tem uma lista de pedidos e precisa agrupá-los por status. Antes você usaria um reduce com muito boilerplate. Com as novas features:</p><p><code>const pedidosPorStatus = Object.groupBy(pedidos, p => p.status);</code></p><p>Pronto. Um objeto com chaves pendente, aprovado, cancelado contendo arrays de pedidos. Sem reduce, sem acumuladores manuais, sem bugs de chave inexistente.</p><p>Para trabalhar com múltiplos usuários ativos e inativos como Sets: <code>const ativos = new Set(usuariosAtivos); const inativos = new Set(usuariosInativos); const todos = ativos.union(inativos);</code>. Muito mais legível do que o código anterior com filter e includes.</p><h2>Comparação com alternativas e polyfills</h2><p>Antes dessas funcionalidades nativas, a comunidade usava bibliotecas como <strong>Lodash</strong> para groupBy, <strong>Ramda</strong> para operações funcionais e implementações manuais de Set operations. Agora você tem essas coisas no JavaScript puro.</p><p>A vantagem do nativo é óbvia: sem dependência externa, sem bundle maior, sem risco de quebrar com atualizações de pacotes. O código fica mais legível para quem entra no projeto depois, pois são APIs padrão documentadas no MDN.</p><p>O Lodash ainda faz sentido para projetos legados ou quando você precisa de funcionalidades que ainda não têm equivalente nativo. Mas para novos projetos, vale a pena usar as APIs nativas sempre que possível.</p><h2>Pontos positivos e limitações</h2><p>O grande ponto positivo é que essas funcionalidades chegaram de forma retrocompatível. Nenhum código antigo quebra. Você simplesmente começa a usar as novas APIs onde fizer sentido.</p><p>A limitação principal é o suporte em ambientes mais antigos. Se você precisa suportar Node.js 18 ou navegadores de 2023, algumas dessas features não estarão disponíveis. Mas com Babel ou com polyfills pontuais do MDN, você consegue cobrir esses casos.</p><p>Outra limitação é a curva de aprendizado coletiva. Em times grandes, parte dos devs pode não conhecer as novas APIs, o que pode gerar inconsistências no código. Vale a pena fazer uma sessão rápida de onboarding mostrando as novidades para o time.</p><h2>Casos de uso reais</h2><p><strong>Dev backend com Node.js 22+:</strong> usa Promise.try() para encapsular funções síncronas que podem lançar erros e mantém toda a cadeia de erros em Promises, sem misturar try/catch com .catch().</p><p><strong>Dev frontend com React ou Vue:</strong> usa Object.groupBy() para agrupar itens de uma lista por categoria antes de renderizar, substituindo reducers verbosos em componentes de listagem.</p><p><strong>Dev que trabalha com dados:</strong> usa Iterator Helpers para processar grandes arrays sem criar cópias intermediárias, reduzindo uso de memória em operações de filter + map encadeadas.</p><p><strong>Dev que trabalha com permissões:</strong> usa Set.intersection() e Set.difference() para calcular quais permissões um usuário tem, quais faltam e quais são exclusivas de um grupo.</p><h2>Dicas e boas práticas</h2><p>Sempre verifique o suporte antes de usar em produção. O MDN tem uma tabela de compatibilidade no final de cada página de documentação - olhe antes de commitar.</p><p>Ao migrar código com Lodash para nativo, faça uma migration incremental. Não troque tudo de uma vez. Comece pelos arquivos mais simples e vá testando. Isso evita regressões inesperadas.</p><p>Configure o ESLint com as regras corretas para ES2025 no seu projeto. Sem isso, o linter pode reclamar das novas sintaxes ou você pode acabar usando versões de polyfill quando o nativo já está disponível.</p><h2>Vale a pena aprender agora?</h2><p>Sim, sem dúvida. O JavaScript de 2025 é mais expressivo, mais seguro e mais fácil de ler do que o de 5 anos atrás. Aprender essas funcionalidades coloca você na frente em revisões de código e em entrevistas técnicas.</p><p>O melhor caminho é ler a documentação no MDN de cada uma das features, experimentar no console do navegador e depois encontrar um lugar no seu projeto atual para aplicar. Aprendizado prático é sempre mais rápido do que só ler.</p><p>Se quiser ir mais fundo, o repositório do TC39 no GitHub tem todas as propostas com exemplos detalhados. Vale marcar como favorito e visitar de tempos em tempos para ver o que está chegando nos próximos ciclos.</p>",
+  "faqs": [
+    {
+      "question": "Posso usar as novas funcionalidades do JavaScript 2025 no Node.js hoje?",
+      "answer": "Sim. O Node.js 22+ já suporta a maioria das funcionalidades do ES2025 nativamente. Verifique a tabela de compatibilidade em node.green para confirmar cada feature antes de usar em produção."
+    },
+    {
+      "question": "Preciso do Babel para usar Promise.try() e Object.groupBy()?",
+      "answer": "Só se precisar suportar ambientes mais antigos. Em navegadores modernos (Chrome 124+, Firefox 127+, Safari 17.4+) e Node.js 22+, essas features estão disponíveis nativamente sem transpilação."
+    },
+    {
+      "question": "O Object.groupBy() substitui completamente o Lodash groupBy?",
+      "answer": "Para a maioria dos casos, sim. A API nativa funciona da mesma forma para groupBy básico. O Lodash ainda tem outras utilidades, mas para agrupamento simples o nativo é suficiente e não adiciona dependência."
+    },
+    {
+      "question": "Como configuro o TypeScript para reconhecer as novas features?",
+      "answer": "No tsconfig.json, defina 'lib': ['ES2025'] ou 'ESNext' para ter os tipos das novas APIs. Também garanta que o 'target' esteja compatível com seu ambiente de execução."
+    },
+    {
+      "question": "Vale a pena migrar projetos antigos para usar essas features?",
+      "answer": "Depende. Para código crítico e legado, a migração tem risco. Para código novo ou refatorações planejadas, sim - o código fica mais limpo e legível. Faça de forma incremental, sempre com testes."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em números: JavaScript ES2025",
+      "items": [
+        {
+          "label": "Ano da especificação",
+          "value": "ES2025 (ECMAScript 2025)"
+        },
+        {
+          "label": "Comitê responsável",
+          "value": "TC39 (Ecma International)"
+        },
+        {
+          "label": "Node.js com suporte nativo",
+          "value": "Node.js 22+"
+        },
+        {
+          "label": "Chrome com suporte nativo",
+          "value": "Chrome 124+"
+        },
+        {
+          "label": "Licença da especificação",
+          "value": "Ecma International (open standard)"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "TC39 Proposals (GitHub)",
+          "value": "https://github.com/tc39/proposals"
+        },
+        {
+          "label": "MDN Web Docs - JavaScript",
+          "value": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
+        },
+        {
+          "label": "Node.js Compatibility Table",
+          "value": "https://node.green/"
+        },
+        {
+          "label": "Can I Use - JavaScript APIs",
+          "value": "https://caniuse.com/"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os devs",
+      "items": [
+        {
+          "name": "Lucas Ferreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasFerreira",
+          "text": "Finalmente o Object.groupBy() nativo! Tirei o Lodash de dois projetos só por causa disso. O código ficou muito mais limpo."
+        },
+        {
+          "name": "Mariana Costa",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MarianaCosta",
+          "text": "O Promise.withResolvers() resolveu aquele padrão feio de guardar resolve e reject em variáveis externas. Uso em todo projeto agora."
+        },
+        {
+          "name": "Rafael Souza",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelSouza",
+          "text": "Os Set methods foram uma surpresa. Nunca imaginei que operações matemáticas de conjuntos virariam nativas. Perfeito para lógica de permissões."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Nativo no browser",
+  "card1_texto": "Sem polyfills em Chrome 124+ e Node.js 22+",
+  "card2_titulo": "Menos dependencias",
+  "card2_texto": "Substitui Lodash em casos comuns sem instalar nada",
+  "card3_titulo": "Codigo mais limpo",
+  "card3_texto": "APIs expressivas que reduzem boilerplate no dia a dia",
+  "subtitulo_capa": "As 7 funcionalidades do JavaScript 2025 que vao mudar como voce escreve codigo"
+}
