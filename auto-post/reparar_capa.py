@@ -55,8 +55,12 @@ def gerar_capa(slug, titulo, subtitulo):
 
     # Fallback Pillow
     try:
-        from gerar_capa import gerar_capa_pillow
-        result = gerar_capa_pillow(titulo, subtitulo, output_path)
+        from gerar_capa import gerar_capa as gerar_capa_pillow
+        result = gerar_capa_pillow(titulo, subtitulo,
+                                   "Saiba mais", "Leia o artigo completo",
+                                   "Tecnologia", "Ferramentas de IA",
+                                   "CuritibaBlog", "blog.curitibablog.com.br",
+                                   output_path)
         if result and Path(result).exists():
             log(f"Pillow OK: {result}")
             return result
@@ -87,57 +91,35 @@ def upload_capa(local_path):
 
 
 def atualizar_mongodb(slug, cover_key, cover_url):
-    import paramiko, threading, socket, time
-    import pymongo
-
-    LOCAL_PORT = 27020
-
-    client_ssh = paramiko.SSHClient()
-    client_ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client_ssh.connect(VPS_HOST, port=VPS_PORT, username=VPS_USER, key_filename=SSH_KEY)
-
-    transport = client_ssh.get_transport()
-    channel = transport.open_channel("direct-tcpip", ("127.0.0.1", 27017), ("127.0.0.1", LOCAL_PORT))
-
-    class TunnelServer(threading.Thread):
-        def __init__(self):
-            super().__init__(daemon=True)
-            self.server = socket.socket()
-            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            self.server.bind(("127.0.0.1", LOCAL_PORT))
-            self.server.listen(1)
-
-        def run(self):
-            try:
-                conn, _ = self.server.accept()
-                while True:
-                    data = conn.recv(1024)
-                    if not data:
-                        break
-                    channel.send(data)
-                    resp = channel.recv(1024)
-                    conn.send(resp)
-            except Exception:
-                pass
-
-    tunnel = TunnelServer()
-    tunnel.start()
-    time.sleep(0.5)
-
+    import subprocess, time, pymongo
     from urllib.parse import quote_plus
-    mongo = pymongo.MongoClient(
-        f"mongodb://{quote_plus(MONGO_USER)}:{quote_plus(MONGO_PASS)}@127.0.0.1:{LOCAL_PORT}/admin?authSource=admin&authMechanism=SCRAM-SHA-1",
-        serverSelectionTimeoutMS=10000,
-    )
-    db = mongo[MONGO_DB]
-    result = db[MONGO_COL].update_one(
-        {"slug": slug},
-        {"$set": {"coverImageKey": cover_key, "coverImageUrl": cover_url}}
-    )
-    mongo.close()
-    client_ssh.close()
-    log(f"MongoDB atualizado: matched={result.matched_count} modified={result.modified_count}")
-    return result.modified_count > 0
+
+    LOCAL_PORT = 27032
+
+    proc = subprocess.Popen([
+        "ssh", "-i", SSH_KEY,
+        "-p", str(VPS_PORT),
+        "-L", f"{LOCAL_PORT}:127.0.0.1:27017",
+        "-N", "-o", "StrictHostKeyChecking=no", "-o", "BatchMode=yes",
+        f"{VPS_USER}@{VPS_HOST}",
+    ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    time.sleep(3)
+
+    try:
+        mongo = pymongo.MongoClient(
+            f"mongodb://{quote_plus(MONGO_USER)}:{quote_plus(MONGO_PASS)}@127.0.0.1:{LOCAL_PORT}/admin?authSource=admin",
+            serverSelectionTimeoutMS=10000,
+        )
+        db = mongo[MONGO_DB]
+        result = db[MONGO_COL].update_one(
+            {"slug": slug},
+            {"$set": {"coverImageKey": cover_key, "coverImageUrl": cover_url}}
+        )
+        mongo.close()
+        log(f"MongoDB atualizado: matched={result.matched_count} modified={result.modified_count}")
+        return result.modified_count > 0
+    finally:
+        proc.terminate()
 
 
 def main():
