@@ -1701,14 +1701,45 @@ def main(json_path: str):
             rebuild_results = rebuild_blogs()
             run_log["etapas"]["rebuild"] = rebuild_results
 
-            # 9. Verificar HTTP
-            try:
-                r = requests.get(f"https://curitibablog.com.br/{slug}", timeout=15)
-                http_status = r.status_code
-            except:
-                http_status = 0
-            log(f"HTTP curitibablog/{slug}: {http_status}")
+            # 9. Verificar HTTP — com retry para aguardar rebuild do VPS
+            import time as _time
+            _HTTP_RETRIES = 5
+            _HTTP_DELAY   = 30  # segundos entre tentativas
+            http_status = 0
+            for _tentativa_http in range(1, _HTTP_RETRIES + 1):
+                try:
+                    r = requests.get(f"https://curitibablog.com.br/{slug}", timeout=15)
+                    http_status = r.status_code
+                except Exception:
+                    http_status = 0
+                log(f"HTTP curitibablog/{slug}: {http_status} (tentativa {_tentativa_http}/{_HTTP_RETRIES})")
+                if http_status == 200:
+                    break
+                if _tentativa_http < _HTTP_RETRIES:
+                    log(f"  Post ainda nao acessivel — aguardando {_HTTP_DELAY}s para rebuild do VPS...")
+                    _time.sleep(_HTTP_DELAY)
             run_log["etapas"]["http_check"] = http_status
+
+            # GUARD: so postar nas redes sociais se o post estiver acessivel (HTTP 200)
+            if http_status != 200:
+                log(f"AVISO: post NAO acessivel apos {_HTTP_RETRIES} tentativas (HTTP {http_status}) — redes sociais PULADAS")
+                run_log["status"] = "PUBLICADO_SEM_SOCIAL"
+                run_log["post_url"] = f"https://curitibablog.com.br/{slug}"
+                log(f"Post inserido no MongoDB mas nao deployado: https://curitibablog.com.br/{slug}")
+                try:
+                    notificar_whatsapp_pessoal(
+                        f"⚠️ *curitibablog: post publicado mas NAO deployado*\n\n"
+                        f"Slug: {slug}\n"
+                        f"HTTP check: {http_status}\n\n"
+                        f"Redes sociais NAO foram notificadas.\n"
+                        f"Rode o rebuild manualmente: bash /opt/rebuild-all-blogs.sh"
+                    )
+                except Exception as _e_wpp:
+                    log(f"Falha ao notificar WhatsApp admin sobre deploy falho: {_e_wpp}")
+                with open(log_path, "w", encoding="utf-8") as f:
+                    json.dump(run_log, f, ensure_ascii=False, indent=2, default=str)
+                log(f"Log: {log_path}")
+                sys.exit(3)  # exit code 3 = post inserted but not deployed
 
             # 10. Notificar IndexNow (Bing/Yandex) — paralelo por blog
             log("Notificando IndexNow...")
