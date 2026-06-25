@@ -1,0 +1,95 @@
+{
+  "data": "2026-06-25",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-25-00-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/a6fc6c32-0bf8-4e23-ad6a-a7fffb4d77aa-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/a6fc6c32-0bf8-4e23-ad6a-a7fffb4d77aa-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a3cbed2d457b2167e34a5ce",
+      "slug": "openai-chip-customizado-broadcom-2026",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": false,
+        "erro": "Socket is closed"
+      },
+      "levelupdev": {
+        "ok": false,
+        "erro": "Socket is closed"
+      },
+      "cafecomdevpai": {
+        "ok": false,
+        "erro": "Socket is closed"
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 202
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1007808338669981"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18025017500665779"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": true,
+      "id": "2070023281483161874"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7475788973492121601"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/openai-chip-customizado-broadcom-2026"
+}

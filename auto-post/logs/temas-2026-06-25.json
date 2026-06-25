@@ -1,0 +1,222 @@
+{
+  "data": "2026-06-25",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "Anthropic says Alibaba illicitly extracted Claude AI model capabilities",
+      "url": "https://www.reuters.com/world/china/anthropic-says-alibaba-illicitly-extracted-claude-ai-model-capabilities-2026-06-24/",
+      "score": 265,
+      "comentarios": 455
+    },
+    {
+      "fonte": "HN",
+      "titulo": "OpenAI unveils its first custom chip, built by Broadcom",
+      "url": "https://techcrunch.com/2026/06/24/openai-unveils-its-first-custom-chip-built-by-broadcom/",
+      "score": 640,
+      "comentarios": 363
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Cloudflare launched self-managed OAuth for all",
+      "url": "https://blog.cloudflare.com/oauth-for-all/",
+      "score": 90,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "LuaJIT 3.0 proposed syntax extensions",
+      "url": "https://github.com/LuaJIT/LuaJIT/issues/1475",
+      "score": 116,
+      "comentarios": 63
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Blogging can just be stating the obvious",
+      "url": "https://blog.jim-nielsen.com/2026/blogging-stating-the-obvious/",
+      "score": 158,
+      "comentarios": 52
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Dostoyevsky isn't difficult",
+      "url": "https://www.autodidacts.io/dostoyevsky-isnt-difficult/",
+      "score": 110,
+      "comentarios": 88
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Zombie unicorns are haunting Silicon Valley",
+      "url": "https://www.economist.com/business/2026/06/21/zombie-unicorns-are-haunting-silicon-valley",
+      "score": 57,
+      "comentarios": 20
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Qualcomm to Acquire Modular",
+      "url": "https://www.reuters.com/business/qualcomm-buy-ai-startup-modular-2026-06-24/",
+      "score": 181,
+      "comentarios": 48
+    },
+    {
+      "fonte": "HN",
+      "titulo": "45°C cooling design cuts data center water use to near zero",
+      "url": "https://blogs.nvidia.com/blog/liquid-cooling-ai-factories/",
+      "score": 269,
+      "comentarios": 175
+    },
+    {
+      "fonte": "HN",
+      "titulo": "RubyLLM: A Ruby framework for all major AI providers",
+      "url": "https://rubyllm.com/",
+      "score": 372,
+      "comentarios": 60
+    },
+    {
+      "fonte": "HN",
+      "titulo": "GLM-5.2 is a step change for open agents",
+      "url": "https://www.interconnects.ai/p/glm-52-is-the-step-change-for-open",
+      "score": 185,
+      "comentarios": 103
+    },
+    {
+      "fonte": "HN",
+      "titulo": "PR spam today looks like email spam in the early 2000s",
+      "url": "https://www.greptile.com/blog/prs-on-openclaw",
+      "score": 205,
+      "comentarios": 120
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Computer use in Gemini 3.5 Flash",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/",
+      "score": 197,
+      "comentarios": 128
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The Xteink X4 E-Ink Reader",
+      "url": "https://blog.omgmog.net/post/xteink-x4-e-ink-reader/",
+      "score": 211,
+      "comentarios": 122
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ending respiratory infections",
+      "url": "https://blog.interceptfund.com/p/ending-respiratory-infections",
+      "score": 123,
+      "comentarios": 55
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "7 New JavaScript Features (And 2 I'm Still Waiting For)",
+      "tags": [
+        "javascript",
+        "typescript",
+        "node",
+        "webdev"
+      ],
+      "reacoes": 61
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "To The People Who Read My Weird Little Blogs",
+      "tags": [
+        "writing",
+        "community",
+        "discuss",
+        "learning"
+      ],
+      "reacoes": 45
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Everyone's Excited About Claude Tag. Nobody's Built the Trust Layer.",
+      "tags": [
+        "ai",
+        "claude",
+        "agents",
+        "opensource"
+      ],
+      "reacoes": 18
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Next.js 16 Server Actions Security: The Auth Check Most Developers Miss",
+      "tags": [
+        "nextjs",
+        "security",
+        "webdev",
+        "javascript"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "TypeScript Tips That Actually Matter in Real Projects (including the satisfies operator)",
+      "tags": [
+        "typescript",
+        "javascript",
+        "webdev",
+        "beginners"
+      ],
+      "reacoes": 22
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Choosing a Vector Database in 2026: pgvector vs. Pinecone vs. Qdrant vs. Weaviate vs. Milvus",
+      "tags": [
+        "ai",
+        "programming",
+        "database",
+        "machinelearning"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Something Changed After the Sloan Articles. I Can't Prove It.",
+      "tags": [
+        "ai",
+        "meta",
+        "devto",
+        "discuss"
+      ],
+      "reacoes": 23
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "# Arc 9 Catch-Up: Writing Your First Solana Program",
+      "tags": [
+        "100daysofsolana",
+        "blockchain",
+        "web3",
+        "learning"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Conduit: The Gateway I Built to Forget About",
+      "tags": [
+        "programming",
+        "architecture",
+        "typescript",
+        "go"
+      ],
+      "reacoes": 16
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How I Used Automated Red Teaming To Take My AI Agent from 6/9 Breaches to Zero",
+      "tags": [
+        "agents",
+        "ai",
+        "security",
+        "aws"
+      ],
+      "reacoes": 10
+    }
+  ]
+}

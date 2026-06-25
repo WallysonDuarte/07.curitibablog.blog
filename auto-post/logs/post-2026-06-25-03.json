@@ -1,0 +1,84 @@
+{
+  "title": "7 Novos Recursos do JavaScript em 2026 que Você Precisa Conhecer",
+  "slug": "novos-recursos-javascript-2026",
+  "summary": "O JavaScript continua evoluindo em 2026 com recursos que simplificam código e aumentam produtividade. Veja quais são as novas funcionalidades já disponíveis nos navegadores modernos e no Node.js e como usá-las no dia a dia.",
+  "metaTitle": "7 Novos Recursos do JavaScript 2026 | CuritibaBlog",
+  "metaDescription": "Conheça os 7 novos recursos do JavaScript em 2026 já disponíveis nos navegadores. Exemplos práticos para usar no seu projeto hoje.",
+  "category": "desenvolvimento",
+  "categories": ["desenvolvimento", "tecnologia"],
+  "tags": ["javascript", "typescript", "webdev", "frontend", "nodejs", "ecmascript", "programacao"],
+  "content": "<h2>O que são os novos recursos do JavaScript em 2026</h2><p>O JavaScript é uma linguagem que nunca para. A cada ano, o TC39, comitê responsável pelo padrão ECMAScript, aprova novas funcionalidades que chegam primeiro como propostas e depois são implementadas nos navegadores e no Node.js.</p><p>Em 2026, algumas dessas propostas finalmente saíram do papel e estão disponíveis para uso em produção sem <em>polyfill</em>. São recursos que os devs vinham pedindo há anos e que mudam a forma de escrever código cotidiano.</p><p>Neste post, você vai ver os 7 recursos mais relevantes, com exemplos reais de como aplicá-los hoje nos seus projetos.</p><h2>Como funciona o processo de evolução do JavaScript</h2><p>O TC39 usa um sistema de estágios numerados de 0 a 4. Um recurso só vira padrão oficial quando atinge o estágio 4, o que exige duas implementações independentes nos navegadores e testes de conformidade aprovados.</p><p>Os navegadores modernos como Chrome, Firefox e Safari costumam implementar recursos ainda no estágio 3, então muita coisa fica disponível antes mesmo de ser oficialmente aprovada. O Node.js segue o motor V8 do Chrome, então o suporte costuma chegar junto.</p><p>Isso significa que você pode começar a usar vários dos recursos listados aqui hoje mesmo, apenas verificando a compatibilidade no <strong>MDN Web Docs</strong> ou no <strong>Can I Use</strong>.</p><h2>Principais recursos novos do JavaScript em 2026</h2><p>Veja os 7 recursos que mais impactam o desenvolvimento do dia a dia:</p><ul><li><strong>Iterator Helpers:</strong> métodos como <code>.map()</code>, <code>.filter()</code> e <code>.take()</code> diretamente em iteradores, sem precisar converter para array primeiro. Economiza memória em listas grandes.</li><li><strong>Promise.try():</strong> envolve uma função síncrona ou assíncrona em uma Promise de forma segura. Substitui o padrão <code>new Promise((resolve) => resolve(fn()))</code>.</li><li><strong>Object.groupBy() e Map.groupBy():</strong> agrupa itens de uma lista por critério sem precisar de <code>reduce</code> manual. Muito mais legível.</li><li><strong>Array.fromAsync():</strong> cria um array a partir de um iterador assíncrono. Útil para ler streams e geradores assíncronos.</li><li><strong>RegExp.escape():</strong> escapa caracteres especiais em strings para uso seguro em expressões regulares, sem precisar de biblioteca.</li><li><strong>Explicit Resource Management (using):</strong> gerenciamento explícito de recursos com a palavra-chave <code>using</code>, parecido com <code>using</code> do C#. Fecha conexões e arquivos automaticamente.</li><li><strong>Decorator Metadata:</strong> extensão dos decoradores (já disponíveis no TypeScript) com suporte nativo a metadados no JavaScript puro.</li></ul><h2>Como começar: usando esses recursos hoje</h2><p>A maioria desses recursos já está disponível no Chrome 125+, Firefox 127+ e Node.js 22+. Para verificar o suporte, consulte o MDN ou o Can I Use antes de usar em produção.</p><p>Se você usa TypeScript, adicione <code>target: ES2025</code> no seu <code>tsconfig.json</code> para habilitar a tipagem dos novos recursos. O compilador vai alertar quando você tentar usar algo não suportado pelo seu <em>target</em>.</p><p>Para projetos com suporte a navegadores mais antigos, configure o Babel ou o esbuild com os plugins adequados. O preset <code>@babel/preset-env</code> já tem suporte à maioria desses recursos quando você define o <code>targets</code> corretamente no seu <code>.browserslistrc</code>.</p><h2>Exemplo prático: Iterator Helpers e Object.groupBy()</h2><p>Imagine que você tem uma lista de pedidos e quer agrupar apenas os concluídos por cliente. Antes, você precisaria de um <code>filter</code>, depois um <code>reduce</code> manual. Agora:</p><p><code>const pedidosPorCliente = Object.groupBy(pedidos.filter(p => p.status === 'concluido'), p => p.clienteId);</code></p><p>Com Iterator Helpers, se a lista vier de um gerador ou de um stream, você processa sem converter tudo para array primeiro: <code>iterator.filter(p => p.status === 'ativo').take(10).toArray()</code>. Isso evita carregar mil registros na memória só para pegar os dez primeiros.</p><h2>Comparação com alternativas e bibliotecas</h2><p>Muita gente usa <strong>Lodash</strong> para agrupamentos e manipulações de lista. Com <code>Object.groupBy()</code> e Iterator Helpers nativos, parte do Lodash se torna desnecessária no dia a dia. Menos dependência, bundle menor.</p><p>O <strong>Promise.try()</strong> substitui um padrão que muitos projetos implementavam com uma função utilitária própria ou com a biblioteca <code>p-try</code>. Agora é nativo.</p><p>Para o <strong>using</strong> (Explicit Resource Management), quem veio do C# ou Python vai se sentir em casa. É mais explícito que o padrão <code>finally</code> e evita vazamento de recursos em código assíncrono complexo.</p><h2>Pontos positivos e limitações</h2><p>Os pontos positivos são claros: menos código <em>boilerplate</em>, menos dependências externas e performance melhor em casos como Iterator Helpers, que evitam alocação de arrays intermediários.</p><p>As limitações existem: suporte em navegadores legados ainda requer transpilação. O recurso <code>using</code> só funciona com TypeScript 5.2+ ou com Babel configurado. E <strong>Decorator Metadata</strong> ainda está em implementação parcial em alguns ambientes.</p><p>Outro ponto a considerar: atualizar o <code>target</code> do TypeScript ou do Babel pode introduzir incompatibilidades em projetos antigos. Sempre teste em ambiente de homologação antes.</p><h2>Casos de uso reais</h2><p><strong>Dev de e-commerce:</strong> usa <code>Object.groupBy()</code> para agrupar produtos por categoria em tempo de renderização, eliminando uma chamada extra de <code>reduce</code> em cada página.</p><p><strong>Dev de APIs Node.js:</strong> usa <code>Array.fromAsync()</code> para consumir o resultado de um cursor MongoDB sem carregar todos os documentos na memória de uma vez.</p><p><strong>Dev frontend com formulários complexos:</strong> usa <code>Promise.try()</code> para encapsular validações que podem ser síncronas ou assíncronas dependendo do campo, sem duplicar a lógica de tratamento de erro.</p><p><strong>Dev de bibliotecas open source:</strong> adota <code>using</code> para garantir que conexões com banco ou handles de arquivo sejam sempre fechados, mesmo quando o consumidor esquecer de chamar o <code>dispose</code> manualmente.</p><h2>Dicas e boas práticas</h2><p>Antes de usar qualquer recurso novo em produção, confirme o suporte no MDN e defina o <code>targets</code> do seu bundler de forma explícita. Não confie no padrão do bundler, que pode estar desatualizado.</p><p>Adote os recursos novos de forma incremental. Não precisa reescrever o projeto todo. Comece pelos pontos onde você já usa padrões manuais: se tem um <code>reduce</code> de agrupamento, troque por <code>Object.groupBy()</code>. Se tem um <code>try/catch</code> verboso em torno de uma Promise, experimente <code>Promise.try()</code>.</p><p>Para equipes, atualize as regras do ESLint para habilitar ou proibir certos padrões antigos. O plugin <code>eslint-plugin-unicorn</code> já tem regras que sugerem o uso dos novos métodos nativos no lugar de soluções manuais.</p><h2>Vale a pena adotar esses novos recursos?</h2><p>Sim, especialmente se você trabalha com Node.js 22+ ou mira em Chrome e Firefox recentes. O ganho de legibilidade em <code>Object.groupBy()</code> e <code>Promise.try()</code> é imediato e o custo de adoção é baixo.</p><p>Se você precisa suportar navegadores mais antigos ou ambientes restritos, avalie caso a caso com o Can I Use. Mas não deixe de aprender esses recursos agora, porque eles já são o padrão do mercado e vão estar em todo projeto novo a partir de 2026.</p><p>O próximo passo é abrir o MDN, escolher um dos recursos desta lista e substituir um trecho do seu código atual por ele. Você vai perceber a diferença na hora.</p>",
+  "faqs": [
+    {
+      "question": "Preciso de alguma configuração especial para usar esses recursos no Node.js?",
+      "answer": "No Node.js 22 ou superior, a maioria dos recursos já está disponível sem configuração. Verifique a compatibilidade de cada recurso no MDN e atualize o campo 'target' do seu tsconfig.json para ES2025 se usar TypeScript."
+    },
+    {
+      "question": "O Object.groupBy() substitui completamente o Lodash?",
+      "answer": "Para casos simples de agrupamento, sim. Mas o Lodash tem dezenas de outras funções utilitárias. A tendência é usar menos do Lodash conforme o JavaScript nativo absorve as funcionalidades mais comuns."
+    },
+    {
+      "question": "O que é o Explicit Resource Management e quando devo usar?",
+      "answer": "É o recurso 'using' que garante que um recurso (conexão, arquivo, handle) seja fechado automaticamente ao sair do escopo. Use quando você tem código que abre e fecha recursos e quer evitar vazamentos mesmo em caso de erro."
+    },
+    {
+      "question": "Posso usar Iterator Helpers com arrays normais?",
+      "answer": "Sim. Arrays têm um método 'values()' que retorna um iterador. Então você pode fazer 'minhaLista.values().filter(...).take(10).toArray()'. Mas para arrays, o ganho de memória só aparece em listas muito grandes."
+    },
+    {
+      "question": "Esses recursos funcionam com React, Vue e Angular?",
+      "answer": "Sim, são recursos da linguagem JavaScript e funcionam independente do framework. O que importa é o ambiente de execução (navegador ou Node.js) e o bundler/transpilador configurado no projeto."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em números: ECMAScript 2025/2026",
+      "items": [
+        {"label": "Comitê responsável", "value": "TC39 (Ecma International)"},
+        {"label": "Ciclo de lançamento", "value": "Anual (aprovação em junho)"},
+        {"label": "Suporte Chrome", "value": "Chrome 125+ para maioria dos recursos"},
+        {"label": "Suporte Node.js", "value": "Node.js 22+ (usa V8 atualizado)"},
+        {"label": "TypeScript mínimo (using)", "value": "TypeScript 5.2+"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "MDN Web Docs - JavaScript", "value": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"},
+        {"label": "Propostas TC39", "value": "https://github.com/tc39/proposals"},
+        {"label": "Can I Use - compatibilidade", "value": "https://caniuse.com"},
+        {"label": "Node.js - changelog", "value": "https://nodejs.org/en/blog/release/"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Lucas Fernandes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasFernandes",
+          "text": "O Object.groupBy() me salvou de um reduce enorme que eu tinha num relatório de vendas. Três linhas virou uma. Não tem como voltar atrás."
+        },
+        {
+          "name": "Camila Rocha",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaRocha",
+          "text": "Comecei a usar Iterator Helpers num projeto de processamento de logs em Node.js e o uso de memória caiu visivelmente. Recomendo estudar antes de precisar."
+        },
+        {
+          "name": "Rafael Duarte",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelDuarte",
+          "text": "O Promise.try() parece pequeno mas resolve um problema que eu resolvia com função utilitária em todo projeto. Agora é nativo e eu nem preciso importar nada."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Menos dependências",
+  "card1_texto": "Recursos nativos reduzem uso de Lodash e libs externas",
+  "card2_titulo": "Mais performance",
+  "card2_texto": "Iterator Helpers evitam arrays intermediários na memória",
+  "card3_titulo": "Código mais legível",
+  "card3_texto": "groupBy e Promise.try() eliminam boilerplate repetitivo",
+  "subtitulo_capa": "Conheça os recursos que já estão disponíveis no Node.js 22 e Chrome 125"
+}
