@@ -1,0 +1,80 @@
+{
+  "data": "2026-06-24",
+  "etapas": {
+    "capa": "FALHOU: cannot unpack non-iterable bool object",
+    "mongo": {
+      "id": "6a3c7f275dff05bd3faba2cc",
+      "slug": "krea-2-modelo-imagens-open-weights-ia",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": false,
+        "erro": "npm build falhou: '\"node\"' nÆo ‚ reconhecido como um comando interno\nou externo, um programa oper vel ou um arquivo em lotes.\n"
+      },
+      "blogdudu": {
+        "ok": false,
+        "erro": "npm build falhou: '\"node\"' nÆo ‚ reconhecido como um comando interno\nou externo, um programa oper vel ou um arquivo em lotes.\n"
+      },
+      "devlevelup": {
+        "ok": false,
+        "erro": "npm build falhou: '\"node\"' nÆo ‚ reconhecido como um comando interno\nou externo, um programa oper vel ou um arquivo em lotes.\n"
+      },
+      "dozeroaojunior": {
+        "ok": false,
+        "erro": "npm build falhou: '\"node\"' nÆo ‚ reconhecido como um comando interno\nou externo, um programa oper vel ou um arquivo em lotes.\n"
+      },
+      "levelupdev": {
+        "ok": false,
+        "erro": "npm build falhou: '\"node\"' nÆo ‚ reconhecido como um comando interno\nou externo, um programa oper vel ou um arquivo em lotes.\n"
+      }
+    },
+    "http_check": 404,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1007644645353017"
+      },
+      "instagram": "sem_imagem"
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": true,
+      "id": "2069950451324166375"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7475716144331460608"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/krea-2-modelo-imagens-open-weights-ia"
+}

@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "John Carmack on the mistakes around Quake that ruined id software",
-      "url": "https://twitter.com/ID_AA_Carmack/status/2069799283369345247",
-      "score": 183,
-      "comentarios": 70
+      "titulo": "OpenAI unveils its first custom chip, built by Broadcom",
+      "url": "https://techcrunch.com/2026/06/24/openai-unveils-its-first-custom-chip-built-by-broadcom/",
+      "score": 497,
+      "comentarios": 313
     },
     {
       "fonte": "HN",
-      "titulo": "RubyLLM: A Ruby framework for all major AI providers",
-      "url": "https://rubyllm.com/",
-      "score": 163,
-      "comentarios": 21
+      "titulo": "Qualcomm to Acquire Modular",
+      "url": "https://www.reuters.com/business/qualcomm-buy-ai-startup-modular-2026-06-24/",
+      "score": 130,
+      "comentarios": 34
     },
     {
       "fonte": "HN",
       "titulo": "We’re making Bunny DNS free",
       "url": "https://bunny.net/blog/were-making-bunny-dns-free/",
-      "score": 627,
-      "comentarios": 208
+      "score": 840,
+      "comentarios": 255
+    },
+    {
+      "fonte": "HN",
+      "titulo": "RubyLLM: A Ruby framework for all major AI providers",
+      "url": "https://rubyllm.com/",
+      "score": 339,
+      "comentarios": 53
+    },
+    {
+      "fonte": "HN",
+      "titulo": "PR spam today looks like email spam in the early 2000s",
+      "url": "https://www.greptile.com/blog/prs-on-openclaw",
+      "score": 174,
+      "comentarios": 99
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Computer use in Gemini 3.5 Flash",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/",
+      "score": 164,
+      "comentarios": 101
+    },
+    {
+      "fonte": "HN",
+      "titulo": "45°C cooling design cuts data center water use to near zero",
+      "url": "https://blogs.nvidia.com/blog/liquid-cooling-ai-factories/",
+      "score": 178,
+      "comentarios": 131
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Elastic lays off 7% of employees",
+      "url": "https://www.elastic.co/blog/ceo-ash-kulkarni-announcement-to-elastic-employees",
+      "score": 104,
+      "comentarios": 103
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The Xteink X4 E-Ink Reader",
+      "url": "https://blog.omgmog.net/post/xteink-x4-e-ink-reader/",
+      "score": 164,
+      "comentarios": 105
+    },
+    {
+      "fonte": "HN",
+      "titulo": "GLM-5.2 is a step change for open agents",
+      "url": "https://www.interconnects.ai/p/glm-52-is-the-step-change-for-open",
+      "score": 116,
+      "comentarios": 63
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Crawling BitTorrent DHTs for Fun and Profit [pdf]",
+      "url": "https://www.usenix.org/legacy/event/woot10/tech/full_papers/Wolchok.pdf",
+      "score": 57,
+      "comentarios": 24
+    },
+    {
+      "fonte": "HN",
+      "titulo": "There are a few things that I look back on as my mistakes in the early days",
+      "url": "https://twitter.com/ID_AA_Carmack/status/2069799283369345247",
+      "score": 485,
+      "comentarios": 241
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Nub – A Bun-like all-in-one toolkit for Node.js",
       "url": "https://github.com/nubjs/nub",
-      "score": 100,
-      "comentarios": 21
+      "score": 196,
+      "comentarios": 55
     },
     {
       "fonte": "HN",
       "titulo": "Krea 2: SOTA open-weights 12B image model",
       "url": "https://www.krea.ai/blog/krea-2-technical-report",
-      "score": 162,
-      "comentarios": 19
-    },
-    {
-      "fonte": "HN",
-      "titulo": "A Practical Guide to SSH Tunnels: Local and Remote Port Forwarding",
-      "url": "https://labs.iximiuz.com/tutorials/ssh-tunnels",
-      "score": 145,
-      "comentarios": 30
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Boffin claims Microsoft's \"quantum leap\" is invalid due to \"basic Python errors\"",
-      "url": "https://www.theregister.com/research/2026/06/24/boffin-claims-microsofts-supposed-quantum-leap-does-not-compute-due-to-basic-python-errors/5260489",
-      "score": 58,
-      "comentarios": 25
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: Monolisa v3 – a typeface for developers and creatives",
-      "url": "https://www.monolisa.dev/",
-      "score": 81,
-      "comentarios": 18
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Founding a company in Germany: €9600, 152 days and I still can't send an invoice",
-      "url": "https://paolino.me/founding-a-company-in-germany/",
-      "score": 425,
-      "comentarios": 487
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Haystack: Open-Source AI Framework for Production Ready Agents, RAG",
-      "url": "https://haystack.deepset.ai/",
-      "score": 58,
-      "comentarios": 19
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Quebec town recognizes trees as living beings with rights",
-      "url": "https://www.cbc.ca/news/canada/montreal/terrasse-vaudreil-quebec-tree-rights-9.7243634",
-      "score": 62,
-      "comentarios": 51
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Raspberry Pi Pico W as USB Wi-Fi Adapter",
-      "url": "https://gitlab.com/baiyibai/pico-usb-wifi",
-      "score": 228,
-      "comentarios": 108
-    },
-    {
-      "fonte": "HN",
-      "titulo": "OpenAI and Broadcom unveil LLM-optimized inference chip",
-      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
-      "score": 106,
+      "score": 333,
       "comentarios": 36
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Statistics that live in your SQL",
-      "url": "https://kolistat.com/blog/the-stats-duck-v0-6-0/",
-      "score": 110,
-      "comentarios": 15
     },
     {
       "fonte": "HN",
       "titulo": "Stealing Is a Skill",
       "url": "https://ben-mini.com/2026/stealing-is-a-skill",
-      "score": 101,
-      "comentarios": 76
+      "score": 208,
+      "comentarios": 123
     }
   ],
   "devto": [
@@ -117,7 +117,7 @@
         "discuss",
         "learning"
       ],
-      "reacoes": 36
+      "reacoes": 44
     },
     {
       "fonte": "Dev.to",
@@ -128,29 +128,7 @@
         "node",
         "webdev"
       ],
-      "reacoes": 38
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Too cheap to be good? Think again.",
-      "tags": [
-        "ai",
-        "benchmark",
-        "devops",
-        "webdev"
-      ],
-      "reacoes": 38
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "How My AI Agent Hacked Its Own Permissions (And What It Taught Me)",
-      "tags": [
-        "ai",
-        "security",
-        "agents",
-        "automation"
-      ],
-      "reacoes": 13
+      "reacoes": 53
     },
     {
       "fonte": "Dev.to",
@@ -165,22 +143,36 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Welcome Thread - v381",
+      "titulo": "Next.js 16 Server Actions Security: The Auth Check Most Developers Miss",
       "tags": [
-        "welcome"
+        "nextjs",
+        "security",
+        "webdev",
+        "javascript"
       ],
-      "reacoes": 7
+      "reacoes": 10
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Ways Devs Are Plugging LLMs Into Anomaly Detection",
+      "titulo": "TypeScript Tips That Actually Matter in Real Projects (including the satisfies operator)",
+      "tags": [
+        "typescript",
+        "javascript",
+        "webdev",
+        "beginners"
+      ],
+      "reacoes": 22
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Choosing a Vector Database in 2026: pgvector vs. Pinecone vs. Qdrant vs. Weaviate vs. Milvus",
       "tags": [
         "ai",
         "programming",
-        "beginners",
+        "database",
         "machinelearning"
       ],
-      "reacoes": 11
+      "reacoes": 1
     },
     {
       "fonte": "Dev.to",
@@ -191,18 +183,7 @@
         "devto",
         "discuss"
       ],
-      "reacoes": 17
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Series Teaser — 6 People, 36 Stratagems, and an AI Rabbit Hole That Keeps Getting Deeper",
-      "tags": [
-        "ai",
-        "discuss",
-        "career",
-        "programming"
-      ],
-      "reacoes": 30
+      "reacoes": 23
     },
     {
       "fonte": "Dev.to",
@@ -213,7 +194,29 @@
         "web3",
         "learning"
       ],
-      "reacoes": 2
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Conduit: The Gateway I Built to Forget About",
+      "tags": [
+        "programming",
+        "architecture",
+        "typescript",
+        "go"
+      ],
+      "reacoes": 16
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How I Used Automated Red Teaming To Take My AI Agent from 6/9 Breaches to Zero",
+      "tags": [
+        "agents",
+        "ai",
+        "security",
+        "aws"
+      ],
+      "reacoes": 10
     }
   ]
 }
