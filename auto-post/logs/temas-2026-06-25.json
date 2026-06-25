@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "A Herculaneum scroll has been read for the first time",
+      "titulo": "An entire Herculaneum scroll has been read for the first time",
       "url": "https://scrollprize.org/firstscroll",
-      "score": 142,
-      "comentarios": 41
+      "score": 611,
+      "comentarios": 148
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Oxide computer 3D rack guided tour",
+      "url": "https://explorer.oxide.computer/",
+      "score": 185,
+      "comentarios": 81
     },
     {
       "fonte": "HN",
       "titulo": "IBM debuts sub-1 nanometer chip technology",
       "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
-      "score": 73,
-      "comentarios": 29
+      "score": 194,
+      "comentarios": 111
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: OpenKnowledge – open source AI-first alternative to Obsidian/Notion",
+      "url": "https://github.com/inkeep/open-knowledge",
+      "score": 90,
+      "comentarios": 42
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Chess-Inspired Roguelike",
+      "url": "https://princechazz.com",
+      "score": 125,
+      "comentarios": 40
     },
     {
       "fonte": "HN",
       "titulo": "Zig's new bitCast semantics and LLVM back end improvements",
       "url": "https://ziglang.org/devlog/2026/#2026-06-25",
-      "score": 130,
-      "comentarios": 35
-    },
-    {
-      "fonte": "HN",
-      "titulo": "You can't unit test for taste",
-      "url": "https://dev.karltryggvason.com/you-cant-unit-test-for-taste/",
-      "score": 187,
+      "score": 181,
       "comentarios": 71
-    },
-    {
-      "fonte": "HN",
-      "titulo": "OS9Map",
-      "url": "https://yllan.org/software/OS9Map/",
-      "score": 53,
-      "comentarios": 4
     },
     {
       "fonte": "HN",
       "titulo": "Apple raises prices of MacBooks, iPads",
       "url": "https://www.reuters.com/world/asia-pacific/apple-raises-prices-macbooks-ipads-memory-costs-skyrocket-2026-06-25/",
-      "score": 303,
-      "comentarios": 509
+      "score": 489,
+      "comentarios": 721
     },
     {
       "fonte": "HN",
-      "titulo": "Show HN: I made Google Trends for Hacker News by indexing 18 years of comments",
-      "url": "https://hackernewstrends.com",
-      "score": 434,
-      "comentarios": 120
+      "titulo": "OS9Map",
+      "url": "https://yllan.org/software/OS9Map/",
+      "score": 122,
+      "comentarios": 18
     },
     {
       "fonte": "HN",
       "titulo": "Half-Life 2 in a Browser",
       "url": "https://hl2.slqnt.dev/",
-      "score": 568,
-      "comentarios": 225
+      "score": 613,
+      "comentarios": 245
     },
     {
       "fonte": "HN",
-      "titulo": "Windows 10 quietly gets one more year of support and updates",
-      "url": "https://www.neowin.net/news/windows-10-quietly-gets-one-more-year-of-support-and-updates/",
-      "score": 82,
-      "comentarios": 47
+      "titulo": "Early adversity leaves lasting molecular imprint across the body: primate study",
+      "url": "https://medicalxpress.com/news/2026-06-early-life-adversity-molecular-imprint.html",
+      "score": 59,
+      "comentarios": 24
     },
     {
       "fonte": "HN",
-      "titulo": "Anthropic says Alibaba illicitly extracted Claude AI model capabilities",
-      "url": "https://www.reuters.com/world/china/anthropic-says-alibaba-illicitly-extracted-claude-ai-model-capabilities-2026-06-24/",
-      "score": 706,
-      "comentarios": 1147
+      "titulo": "You can't unit test for taste",
+      "url": "https://dev.karltryggvason.com/you-cant-unit-test-for-taste/",
+      "score": 217,
+      "comentarios": 95
     },
     {
       "fonte": "HN",
-      "titulo": "The disappearance of Japan's animators",
-      "url": "https://economist.com/interactive/1843/2026/06/19/the-strange-disappearance-of-japans-animators",
-      "score": 63,
-      "comentarios": 56
+      "titulo": "I built a GPU back end for Emacs",
+      "url": "https://en.andros.dev/blog/4b707a03/how-i-built-a-gpu-backend-for-emacs/",
+      "score": 142,
+      "comentarios": 74
     },
     {
       "fonte": "HN",
-      "titulo": "Show HN: Turn native language audio into flashcards and shadowing practice",
-      "url": "https://lingochunk.com/try",
-      "score": 52,
-      "comentarios": 25
+      "titulo": "Show HN: I made Google Trends for Hacker News by indexing 18 years of comments",
+      "url": "https://hackernewstrends.com",
+      "score": 554,
+      "comentarios": 137
     },
     {
       "fonte": "HN",
-      "titulo": "LastPass notifies users of yet another data breach",
-      "url": "https://9to5mac.com/2026/06/23/lastpass-notifies-users-of-yet-another-data-breach/",
-      "score": 364,
-      "comentarios": 160
+      "titulo": "Advanced Nintendo Entertainment System (ANES) – NES Modded to Use 2 PPUs",
+      "url": "https://github.com/decrazyo/anes",
+      "score": 65,
+      "comentarios": 20
     },
     {
       "fonte": "HN",
-      "titulo": "Deno 2.9",
-      "url": "https://deno.com/blog/v2.9",
-      "score": 97,
-      "comentarios": 34
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: MiniPCs.zip – Charting the Pareto frontier of Mini PCs",
-      "url": "https://minipcs.zip",
-      "score": 63,
-      "comentarios": 26
+      "titulo": "Political bias in AI: Where the AI models stand",
+      "url": "https://trakkr.ai/bias",
+      "score": 74,
+      "comentarios": 151
     }
   ],
   "devto": [
@@ -118,28 +118,6 @@
         "productivity"
       ],
       "reacoes": 26
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Next.js 16 Server Actions Security: The Auth Check Most Developers Miss",
-      "tags": [
-        "nextjs",
-        "security",
-        "webdev",
-        "javascript"
-      ],
-      "reacoes": 15
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Choosing a Vector Database in 2026: pgvector vs. Pinecone vs. Qdrant vs. Weaviate vs. Milvus",
-      "tags": [
-        "ai",
-        "programming",
-        "database",
-        "machinelearning"
-      ],
-      "reacoes": 3
     },
     {
       "fonte": "Dev.to",
@@ -203,12 +181,34 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "I sent 419 cold B2B emails. 41% opens. 0 clicks.",
+      "tags": [
+        "agents",
+        "ai",
+        "buildinpublic",
+        "showdev"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "We're making the Dreamweaver mistake again, on purpose this time",
       "tags": [
         "ai",
         "design",
         "frontend",
         "webdev"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Your Evals Are Flaky Too: Stop Trusting a Pass Rate You Can't Reproduce",
+      "tags": [
+        "ai",
+        "evaluation",
+        "testing",
+        "typescript"
       ],
       "reacoes": 2
     }
