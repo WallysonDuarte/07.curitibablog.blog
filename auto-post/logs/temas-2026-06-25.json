@@ -3,122 +3,111 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": "Dolphin Emulator Progress Release 2606",
+      "url": "https://dolphin-emu.org/blog/2026/06/25/dolphin-progress-report-release-2606/",
+      "score": 74,
+      "comentarios": 9
+    },
+    {
+      "fonte": "HN",
       "titulo": "Half-Life 2 in a Browser",
       "url": "https://hl2.slqnt.dev/",
-      "score": 186,
-      "comentarios": 61
+      "score": 321,
+      "comentarios": 117
     },
     {
       "fonte": "HN",
       "titulo": "Anthropic says Alibaba illicitly extracted Claude AI model capabilities",
       "url": "https://www.reuters.com/world/china/anthropic-says-alibaba-illicitly-extracted-claude-ai-model-capabilities-2026-06-24/",
-      "score": 394,
-      "comentarios": 678
+      "score": 486,
+      "comentarios": 843
     },
     {
       "fonte": "HN",
       "titulo": "OpenAI unveils its first custom chip, built by Broadcom",
       "url": "https://techcrunch.com/2026/06/24/openai-unveils-its-first-custom-chip-built-by-broadcom/",
-      "score": 692,
-      "comentarios": 385
+      "score": 720,
+      "comentarios": 411
     },
     {
       "fonte": "HN",
       "titulo": "Cloudflare launched self-managed OAuth for all",
       "url": "https://blog.cloudflare.com/oauth-for-all/",
-      "score": 149,
-      "comentarios": 64
-    },
-    {
-      "fonte": "HN",
-      "titulo": "LuaJIT 3.0 proposed syntax extensions",
-      "url": "https://github.com/LuaJIT/LuaJIT/issues/1475",
-      "score": 151,
-      "comentarios": 85
+      "score": 202,
+      "comentarios": 90
     },
     {
       "fonte": "HN",
       "titulo": "Bohemia Interactive: Cold War Assault Remastered Source Code on GitHub",
       "url": "https://github.com/BohemiaInteractive/CWR",
-      "score": 52,
-      "comentarios": 5
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Markdy: Like Mermaid Diagrams, but for Motion",
-      "url": "https://markdy.com",
-      "score": 56,
-      "comentarios": 10
+      "score": 97,
+      "comentarios": 19
     },
     {
       "fonte": "HN",
       "titulo": "Blogging can just be stating the obvious",
       "url": "https://blog.jim-nielsen.com/2026/blogging-stating-the-obvious/",
-      "score": 221,
-      "comentarios": 73
+      "score": 261,
+      "comentarios": 93
     },
     {
       "fonte": "HN",
-      "titulo": "Medical students are using popular research tool to pump out misleading studies",
-      "url": "https://www.science.org/content/article/medical-students-are-using-popular-research-tool-pump-out-misleading-studies",
-      "score": 50,
-      "comentarios": 24
+      "titulo": "LuaJIT 3.0 proposed syntax extensions",
+      "url": "https://github.com/LuaJIT/LuaJIT/issues/1475",
+      "score": 169,
+      "comentarios": 100
     },
     {
       "fonte": "HN",
-      "titulo": "Dostoyevsky isn't difficult",
-      "url": "https://www.autodidacts.io/dostoyevsky-isnt-difficult/",
-      "score": 147,
-      "comentarios": 146
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Zombie unicorns are haunting Silicon Valley",
-      "url": "https://www.economist.com/business/2026/06/21/zombie-unicorns-are-haunting-silicon-valley",
-      "score": 95,
-      "comentarios": 46
+      "titulo": "Markdy: Like Mermaid Diagrams, but for Motion",
+      "url": "https://markdy.com",
+      "score": 86,
+      "comentarios": 43
     },
     {
       "fonte": "HN",
       "titulo": "45°C cooling design cuts data center water use to near zero",
       "url": "https://blogs.nvidia.com/blog/liquid-cooling-ai-factories/",
-      "score": 326,
-      "comentarios": 217
+      "score": 362,
+      "comentarios": 260
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Wikipedia Workers in Britain set global first by seeking union recognition",
+      "url": "https://utaw.tech/news/wikipedia-recognition",
+      "score": 104,
+      "comentarios": 114
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Dostoyevsky isn't difficult",
+      "url": "https://www.autodidacts.io/dostoyevsky-isnt-difficult/",
+      "score": 164,
+      "comentarios": 193
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Medical students are using popular research tool to pump out misleading studies",
+      "url": "https://www.science.org/content/article/medical-students-are-using-popular-research-tool-pump-out-misleading-studies",
+      "score": 70,
+      "comentarios": 35
     },
     {
       "fonte": "HN",
       "titulo": "GLM-5.2 is a step change for open agents",
       "url": "https://www.interconnects.ai/p/glm-52-is-the-step-change-for-open",
-      "score": 227,
-      "comentarios": 127
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Qualcomm to Acquire Modular",
-      "url": "https://www.reuters.com/business/qualcomm-buy-ai-startup-modular-2026-06-24/",
-      "score": 196,
-      "comentarios": 63
+      "score": 257,
+      "comentarios": 153
     },
     {
       "fonte": "HN",
       "titulo": "RubyLLM: A Ruby framework for all major AI providers",
       "url": "https://rubyllm.com/",
-      "score": 385,
-      "comentarios": 68
+      "score": 396,
+      "comentarios": 69
     }
   ],
   "devto": [
-    {
-      "fonte": "Dev.to",
-      "titulo": "7 New JavaScript Features (And 2 I'm Still Waiting For)",
-      "tags": [
-        "javascript",
-        "typescript",
-        "node",
-        "webdev"
-      ],
-      "reacoes": 68
-    },
     {
       "fonte": "Dev.to",
       "titulo": "To The People Who Read My Weird Little Blogs",
@@ -150,7 +139,7 @@
         "webdev",
         "javascript"
       ],
-      "reacoes": 13
+      "reacoes": 15
     },
     {
       "fonte": "Dev.to",
@@ -176,6 +165,17 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "On programming languages, targets, and platforms",
+      "tags": [
+        "java",
+        "futurism",
+        "python",
+        "coding"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "# Arc 9 Catch-Up: Writing Your First Solana Program",
       "tags": [
         "100daysofsolana",
@@ -187,23 +187,23 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "How I Used Automated Red Teaming to Evaluate My AI Agent's Safety",
+      "tags": [
+        "agents",
+        "ai",
+        "security",
+        "aws"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "My app didn't go \"viral\". My AWS bill did.",
       "tags": [
         "aws",
         "ai",
         "learning",
         "infrastructure"
-      ],
-      "reacoes": 10
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "How I Used Automated Red Teaming To Take My AI Agent from 6/9 Breaches to Zero",
-      "tags": [
-        "agents",
-        "ai",
-        "security",
-        "aws"
       ],
       "reacoes": 10
     },

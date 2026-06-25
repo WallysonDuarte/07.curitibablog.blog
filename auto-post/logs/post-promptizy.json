@@ -1,0 +1,98 @@
+{
+  "title": "Promptizy: gere prompts profissionais para ChatGPT, Claude e Gemini em segundos",
+  "slug": "promptizy-gerador-prompts-ia-chatgpt-claude-gemini",
+  "summary": "Promptizy é um gerador de prompts com IA que transforma sua ideia em instruções otimizadas para 11 ferramentas de IA. Com 44 personas profissionais, Arena Mode e extensão Chrome, você para de desperdiçar tokens em prompts ruins e começa a extrair resultados de verdade.",
+  "metaTitle": "Promptizy: gerador de prompts IA para ChatGPT e Claude",
+  "metaDescription": "Promptizy gera prompts otimizados para ChatGPT, Claude, Gemini e mais 8 ferramentas com 44 personas profissionais. Plano gratuito disponível.",
+  "category": "ferramentas-de-ia",
+  "categories": ["ferramentas-de-ia", "tecnologia"],
+  "tags": ["promptizy", "prompt engineering", "gerador de prompts", "chatgpt", "claude", "gemini", "ferramentas de ia", "produtividade"],
+  "content": "<h2>O que é Promptizy</h2><p>Promptizy é uma ferramenta de geração de prompts com inteligência artificial. A proposta é simples: você descreve o que quer fazer, e ela entrega um prompt otimizado, estruturado e pronto para usar em ChatGPT, Claude, Gemini ou outras 8 ferramentas de IA.</p><p>O problema que o Promptizy resolve é real. A maioria das pessoas usa IA com prompts genéricos do tipo <strong>\"me ajude a escrever um e-mail\"</strong> e recebe respostas medianas. Um prompt bem construído muda completamente a qualidade da resposta, mas exige conhecimento de <strong>prompt engineering</strong> que a maioria não tem.</p><p>É aí que entra o Promptizy: ele aplica frameworks profissionais automaticamente, sem você precisar estudar a fundo o assunto. A ferramenta está listada no <strong>There's An AI For That</strong>, um dos principais diretórios de ferramentas de IA do mundo, e já tem mais de 400 usuários na extensão Chrome desde o lançamento em abril de 2026.</p><h2>Como funciona</h2><p>O funcionamento é direto. Você acessa a plataforma, escolhe uma <strong>persona profissional</strong> (ou deixa no modo automático), descreve sua tarefa e o Promptizy gera um prompt estruturado baseado em frameworks reais de cada área.</p><p>A lógica por trás é interessante: cada persona aplica uma metodologia específica. A persona de advogado usa o framework <strong>IRAC</strong> (Issue, Rule, Application, Conclusion), enquanto a de estrategista aplica o <strong>Porter's Five Forces</strong>. Não é só escolher um \"papel\" para a IA assumir, é aplicar uma metodologia real de cada profissão.</p><p>Além de gerar prompts do zero, você pode colar um prompt existente e pedir uma avaliação. O sistema atribui uma <strong>pontuação de 1 a 10</strong> e sugere reescritas especializadas. De acordo com os dados da própria empresa, a média sobe de 4 para 9 na pontuação, com 68% menos tokens utilizados. Menos custo, resultado melhor.</p><h2>Principais recursos</h2><p>O Promptizy não é só um campo de texto com um botão. A plataforma tem vários recursos que valem conhecer antes de decidir se é para você:</p><ul><li><strong>44 personas profissionais</strong>: advogado (IRAC), CMO, cientista de dados, CFO, desenvolvedor, estrategista e mais. Cada uma aplica o raciocínio da profissão ao gerar o prompt.</li><li><strong>Score e melhoria de prompts</strong>: avalia qualquer prompt com nota de 1 a 10 e reescreve seguindo os frameworks da persona escolhida.</li><li><strong>Biblioteca de prompts</strong>: mais de 250 prompts curados e 130 templates prontos para usar imediatamente.</li><li><strong>Arena Mode</strong>: compara respostas de diferentes IAs lado a lado para o mesmo prompt. Útil para decidir qual ferramenta entrega mais para cada tipo de tarefa.</li><li><strong>Smart Tool Router</strong>: recomenda qual IA usar para cada tipo de tarefa antes de você sequer escrever o prompt.</li><li><strong>Entrada por voz</strong>: fale o que você quer fazer, o Promptizy transcreve e já gera o prompt otimizado.</li><li><strong>Extensão Chrome</strong>: otimiza prompts direto no ChatGPT, Claude ou qualquer outra ferramenta sem sair da aba.</li><li><strong>AI Workflows</strong>: encadeia prompts em sequência para tarefas mais complexas.</li></ul><h2>Como começar</h2><p>O acesso ao Promptizy não precisa de instalação. Você entra em <strong>promptizy.ai</strong>, cria uma conta gratuita (sem precisar colocar cartão de crédito) e já pode usar. O plano gratuito inclui 5 prompts por dia, o que é suficiente para testar e ver se faz sentido para o seu caso.</p><p>Para quem prefere usar direto no navegador, a extensão Chrome está disponível na Chrome Web Store. Depois de instalar, ela aparece como ícone na barra do navegador. Você abre qualquer ferramenta de IA, clica na extensão e o Promptizy já está disponível para gerar ou melhorar prompts sem sair da página.</p><p>O fluxo básico na plataforma é: (1) escolha uma persona ou deixe no modo automático; (2) descreva o que você quer fazer em linguagem natural; (3) o Promptizy gera o prompt otimizado; (4) copie e cole na ferramenta de IA que preferir, ou use o auto-insert da extensão Chrome para inserir automaticamente.</p><h2>Exemplo prático</h2><p>Imagine que você precisa de ajuda para analisar se vale a pena lançar um produto novo. Um prompt comum seria: <strong>\"Analise se devo lançar esse produto\"</strong>. Vago, sem contexto, resposta genérica garantida.</p><p>Com o Promptizy usando a persona de estrategista, o prompt gerado aplica o <strong>Porter's Five Forces</strong> automaticamente. O resultado seria algo como: <em>\"Atue como um estrategista sênior especializado em análise competitiva. Analise o seguinte produto usando o framework Porter's Five Forces: [produto]. Para cada força, identifique os fatores principais, avalie o nível de ameaça (alto/médio/baixo) com justificativa, e conclua com uma recomendação clara de entrada ou não entrada no mercado.\"</em></p><p>A diferença na qualidade da resposta da IA é imediata. O mesmo modelo de IA, o mesmo tema, mas um prompt estruturado extrai muito mais profundidade do que um texto solto. É isso que o Promptizy automatiza para você.</p><h2>Comparação com alternativas</h2><p>O mercado de otimizadores de prompt tem crescido junto com o uso de IA no dia a dia. As alternativas mais diretas ao Promptizy são o <strong>PromptPal</strong>, focado em biblioteca de prompts prontos, e ferramentas como o <strong>AIPRM</strong>, que é uma extensão Chrome popular para o ChatGPT com templates específicos por caso de uso.</p><p>A diferença principal do Promptizy está nas personas com frameworks profissionais reais. Enquanto outros otimizadores geralmente pedem para você escolher um tom ou um formato, o Promptizy aplica metodologias de trabalho específicas de cada área, o que tende a gerar prompts mais precisos para tarefas profissionais.</p><p>O Arena Mode também é um diferencial. Poucos concorrentes oferecem a comparação lado a lado entre diferentes IAs para o mesmo prompt, o que ajuda a entender qual ferramenta entrega mais para cada tipo de tarefa específica.</p><h2>Pontos positivos e limitações</h2><p>Os pontos positivos do Promptizy são claros: <strong>não exige conhecimento prévio de prompt engineering</strong>, funciona com 11 ferramentas de IA diferentes, tem plano gratuito sem cartão de crédito e a extensão Chrome torna o uso muito mais fluido no dia a dia.</p><p>Nas limitações, vale mencionar que o plano gratuito limita a 5 prompts por dia, o que pode ser restritivo para quem usa IA com frequência. A ferramenta está disponível apenas em inglês, então os prompts gerados saem em inglês por padrão. Dependendo do caso, você vai precisar adaptar ou pedir para o próprio Promptizy gerar em português.</p><p>Outro ponto: como a extensão foi lançada em abril de 2026 e ainda tem poucos usuários e avaliações, há menos histórico de feedback da comunidade em comparação com ferramentas mais antigas. Para quem prefere adotar ferramentas já testadas por muita gente, isso pode ser um fator de cautela.</p><h2>Casos de uso reais</h2><p>O Promptizy funciona bem para perfis bastante diferentes. <strong>Profissionais de marketing</strong> que usam IA para criar copies, briefings e estratégias se beneficiam das personas de CMO e Sales Leader, que estruturam os prompts com frameworks de negócio.</p><p><strong>Desenvolvedores</strong> que pedem ajuda ao ChatGPT ou Claude para revisar código, escrever documentação ou depurar problemas ganham muito com prompts mais estruturados. A persona de desenvolvedor aplica um raciocínio técnico que resulta em respostas mais precisas e acionáveis.</p><p><strong>Empreendedores e gestores</strong> que usam IA para análises, relatórios ou decisões estratégicas encontram nas personas de CFO, estrategista e analista de dados uma forma de extrair insights mais fundamentados das ferramentas de IA.</p><p><strong>Estudantes e profissionais em transição</strong> que ainda estão aprendendo a usar IA de forma eficiente conseguem encurtar a curva de aprendizado e produzir resultados de nível profissional sem precisar estudar prompt engineering do zero.</p><h2>Dicas e boas práticas</h2><p>A primeira dica é não tentar acertar na primeira vez. Use o recurso de <strong>Score e melhoria</strong> para avaliar seu prompt antes de enviar para a IA. Se a nota estiver abaixo de 7, peça a reescrita. É um passo a mais, mas o resultado compensa.</p><p>O <strong>Arena Mode</strong> é mais útil do que parece à primeira vista. Antes de escolher qual IA usar para uma tarefa repetitiva, faça um teste rápido comparando as respostas. Para análises financeiras, uma pode entregar mais que outra. Para código, o mesmo. Descobrir isso antes de virar um hábito economiza tempo.</p><p>Se você usa o Promptizy com frequência, vale criar <strong>personas customizadas</strong> (recurso do plano Pro) com o contexto específico do seu negócio ou área de atuação. Um prompt que já sabe o que você faz, qual é o seu público e quais são seus objetivos recorrentes entrega resultados muito mais alinhados sem precisar repetir o contexto a cada conversa.</p><h2>Vale a pena?</h2><p>Para quem usa ferramentas de IA mais de uma vez por semana em trabalho, <strong>sim, vale testar</strong>. O plano gratuito não exige cartão e já dá uma ideia real do diferencial. Se 5 prompts por dia forem suficientes para o seu uso, você nem precisa pagar nada.</p><p>Para quem usa IA de forma intensa no trabalho, o plano Pro a <strong>9 dólares por mês</strong> (ou 79 por ano) é um custo baixo frente ao tempo e tokens economizados. A promessa de 68% menos tokens usados pode significar uma economia relevante para quem paga por uso em APIs como a da OpenAI ou Anthropic.</p><p>Para quem usa IA esporadicamente ou só para curiosidade, o plano gratuito já resolve. O próximo passo natural é instalar a extensão Chrome, experimentar com um prompt do seu trabalho atual e comparar a resposta com o que você costumava obter.</p>",
+  "faqs": [
+    {
+      "question": "O Promptizy funciona em português?",
+      "answer": "A interface do Promptizy está em inglês e os prompts gerados também saem em inglês por padrão. Você pode pedir para o Promptizy gerar o prompt em português adicionando essa instrução na descrição da tarefa, mas a plataforma em si não tem versão em PT-BR ainda."
+    },
+    {
+      "question": "Quantas ferramentas de IA o Promptizy suporta?",
+      "answer": "O Promptizy gera e otimiza prompts para 11 ferramentas de IA, incluindo ChatGPT, Claude, Gemini, Grok e Perplexity. A extensão Chrome também insere os prompts automaticamente nessas plataformas sem precisar copiar e colar."
+    },
+    {
+      "question": "Qual a diferença entre o plano gratuito e o Pro?",
+      "answer": "O plano gratuito oferece 5 prompts por dia com acesso às funcionalidades básicas sem precisar colocar cartão de crédito. O plano Pro custa 9 dólares por mês (ou 79 por ano) e inclui prompts ilimitados, sincronização na nuvem, personas customizadas e Arena Mode completo."
+    },
+    {
+      "question": "Preciso entender de prompt engineering para usar o Promptizy?",
+      "answer": "Não. Essa é exatamente a proposta da ferramenta. Você descreve o que quer fazer em linguagem normal e o Promptizy aplica os frameworks de prompt engineering automaticamente, incluindo as metodologias específicas de cada persona profissional escolhida."
+    },
+    {
+      "question": "O Promptizy vale para quem usa IA no trabalho?",
+      "answer": "Sim, especialmente para profissionais que usam IA com frequência em tarefas como análise, redação, código ou estratégia. As personas baseadas em frameworks profissionais reais tornam os prompts muito mais precisos para contextos de trabalho do que os prompts genéricos que a maioria usa."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "youtube-gallery",
+      "title": "Aprenda prompt engineering na prática",
+      "items": [
+        {"videoId": "OX9GnrbC3iw", "title": "Prompt Engineering Full Course 2026 — Simplilearn"},
+        {"videoId": "dG2iFVKdyhs", "title": "Claude AI: Guia Definitivo de Prompt Engineering"},
+        {"videoId": "qBlX6FhDm2E", "title": "Guia Avançado de Prompt Engineering 2026"},
+        {"videoId": "oSdLvnJEY1w", "title": "O único tutorial de Prompt Engineering que você precisa"},
+        {"videoId": "_ZvnD73m40o", "title": "Prompt Engineering Tutorial — ChatGPT e LLMs"},
+        {"videoId": "eKuFqQKYRrA", "title": "O que funciona em prompt engineering em 2025"}
+      ]
+    },
+    {
+      "type": "info",
+      "title": "Em números: Promptizy",
+      "items": [
+        {"label": "Plano gratuito", "value": "5 prompts por dia, sem cartão de crédito"},
+        {"label": "Plano Pro", "value": "9 dólares por mês ou 79 dólares por ano"},
+        {"label": "Personas profissionais", "value": "44 personas com frameworks reais (IRAC, Porter's Five Forces e outros)"},
+        {"label": "Ferramentas de IA suportadas", "value": "11 (ChatGPT, Claude, Gemini, Grok, Perplexity e mais)"},
+        {"label": "Biblioteca de prompts", "value": "Mais de 250 prompts curados e 130+ templates"},
+        {"label": "Extensão Chrome", "value": "Versão 2.0.0, lançada em abril de 2026"},
+        {"label": "Melhoria média de qualidade", "value": "De 4 para 9 na pontuação interna"},
+        {"label": "Redução de tokens", "value": "68% menos tokens utilizados com prompts otimizados"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Site oficial", "value": "https://www.promptizy.ai"},
+        {"label": "Extensão Chrome", "value": "https://chromewebstore.google.com/detail/promptizy-%E2%80%93-ai-prompt-opt/eljmjnkepphnnlpgjpioclnacibjabha"},
+        {"label": "Planos e preços", "value": "https://www.promptizy.ai/pricing"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuários",
+      "items": [
+        {
+          "name": "Carlos Andrade",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CarlosAndrade",
+          "text": "Comecei a usar o Promptizy para gerar briefings de marketing e a diferença na resposta do Claude foi absurda. Antes eu ficava reescrevendo o prompt várias vezes. Agora acerto de primeira."
+        },
+        {
+          "name": "Fernanda Souza",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=FernandaSouza",
+          "text": "A extensão Chrome é o que mais uso. Fico no ChatGPT mesmo, clico no ícone, melhoro o prompt ali e já insere automaticamente. Economizou bastante tempo no meu fluxo de trabalho."
+        },
+        {
+          "name": "Ricardo Melo",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RicardoMelo",
+          "text": "O Arena Mode me ajudou a entender que para análise de código o Claude entrega mais do que o ChatGPT no meu caso. Pequeno detalhe, mas faz diferença no dia a dia."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "44 personas",
+  "card1_texto": "Frameworks profissionais reais em cada prompt",
+  "card2_titulo": "11 ferramentas",
+  "card2_texto": "Compatível com ChatGPT, Claude, Gemini e mais",
+  "card3_titulo": "68% menos tokens",
+  "card3_texto": "Prompts melhores com menos custo de IA",
+  "subtitulo_capa": "Chega de prompt ruim: gere instruções profissionais para qualquer IA"
+}
