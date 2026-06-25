@@ -1,0 +1,92 @@
+{
+  "data": "2026-06-25",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-25-06-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/c5caa42b-177e-49a0-a077-d5b270e49bcc-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/c5caa42b-177e-49a0-a077-d5b270e49bcc-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a3cefbe51f95b3e1163aa44",
+      "slug": "openai-chip-ia-proprio-broadcom",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1007923255325156"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18102467801329120"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": true,
+      "id": "2070074556027445407"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7475840247176671234"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/openai-chip-ia-proprio-broadcom"
+}
