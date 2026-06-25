@@ -1,0 +1,86 @@
+{
+  "title": "Deno 2.9: o que mudou no runtime JavaScript que desafia o Node.js",
+  "slug": "deno-2-9-novidades-runtime-javascript-typescript",
+  "summary": "O Deno 2.9 chegou com melhorias de desempenho e compatibilidade. Entenda como esse runtime criado pelo pai do Node.js evoluiu e por que vale a pena conhecer em 2026.",
+  "metaTitle": "Deno 2.9: novidades do runtime JS/TS | CuritibaBlog",
+  "metaDescription": "Deno 2.9 traz melhorias de desempenho e compatibilidade com Node.js. Veja o que mudou e como comecar a usar o runtime do criador do Node.",
+  "category": "desenvolvimento",
+  "categories": ["desenvolvimento", "tecnologia"],
+  "tags": ["deno", "javascript", "typescript", "nodejs", "runtime", "backend", "desenvolvimento"],
+  "content": "<h2>O que e o Deno</h2><p>O <strong>Deno</strong> e um runtime para JavaScript e TypeScript criado por <strong>Ryan Dahl</strong>, o mesmo engenheiro que desenvolveu o Node.js. Lancado inicialmente em 2018 e com a versao 1.0 liberada em 2020, o Deno nasceu de uma reflexao de Dahl sobre os erros de design do Node.js. A proposta e oferecer um ambiente de execucao mais seguro, moderno e com menos configuracao inicial.</p><p>Com a chegada do <strong>Deno 2.0</strong> em outubro de 2024, o projeto deu um salto importante ao adicionar compatibilidade real com pacotes npm e projetos Node.js existentes. A versao 2.9, lancada em junho de 2026, continua essa trajetoria com aprimoramentos de desempenho e melhorias na toolchain integrada. E uma atualizacao que reforca a maturidade da plataforma.</p><p>O nome Deno e um anagrama de Node. A diferenca esta nas prioridades: enquanto o Node.js foi construido em cima de callbacks e depois adaptado para promises e async/await, o Deno foi desenhado desde o inicio pensando em TypeScript nativo, seguranca por permissoes e ferramentas embutidas. Menos configuracao, mais produtividade.</p><h2>Como funciona</h2><p>O Deno e construido em <strong>Rust</strong> e usa o motor <strong>V8</strong> do Chrome para executar JavaScript e TypeScript. Diferente do Node.js, ele nao depende do npm como gerenciador de pacotes padrao, embora desde o Deno 2.0 exista suporte total a pacotes npm via prefixo <code>npm:</code> nas importacoes. Isso significa que voce pode reutilizar praticamente qualquer biblioteca do ecossistema Node.js diretamente.</p><p>Por padrao, o Deno <strong>nao permite acesso ao sistema de arquivos, a rede ou as variaveis de ambiente</strong>. Para cada operacao que precise de privilegios, o desenvolvedor passa uma flag explicita como <code>--allow-read</code>, <code>--allow-net</code> ou <code>--allow-env</code>. Esse modelo de permissoes reduz o risco de dependencias maliciosas terem acesso irrestrito ao sistema do usuario.</p><p>Outra diferenca fundamental e o suporte a <strong>TypeScript nativo</strong>: nao precisa de tsconfig.json nem de compilacao separada. Voce cria o arquivo .ts e executa direto com <code>deno run arquivo.ts</code>. O Deno tambem possui um conjunto de ferramentas integradas: <code>deno fmt</code> para formatar codigo, <code>deno lint</code> para analise estatica, <code>deno test</code> para testes e <code>deno compile</code> para gerar executaveis autonomos.</p><h2>Principais recursos</h2><p>O Deno 2.x reuniu um conjunto de funcionalidades que o torna uma opcao solida para projetos novos:</p><ul><li><strong>TypeScript nativo:</strong> execucao direta de arquivos .ts sem configuracao adicional</li><li><strong>Modelo de seguranca por permissoes:</strong> acesso explicito a recursos do sistema</li><li><strong>Compatibilidade com npm:</strong> importar pacotes usando <code>npm:nome-do-pacote</code></li><li><strong>Ferramentas integradas:</strong> fmt, lint, test, compile e doc sem instalacao extra</li><li><strong>Suporte a JSX e TSX:</strong> util para projetos com o framework Fresh</li><li><strong>Deno KV:</strong> banco de dados chave-valor embutido, sem dependencia externa</li><li><strong>JSR (JavaScript Registry):</strong> repositorio de pacotes com suporte nativo a TypeScript</li></ul><p>O <strong>Deno KV</strong> e um diferencial importante para projetos que precisam de persistencia simples. E um banco de dados embutido que funciona localmente e pode ser conectado a infraestrutura do Deno Deploy. Para casos de uso simples, voce nao precisa configurar um banco externo.</p><p>Os modulos padrão do Deno estao disponiveis no <strong>jsr.io</strong> (JavaScript Registry), o repositorio de pacotes criado pela equipe do Deno. Ele suporta TypeScript de forma nativa e e compativel com outros runtimes como Node.js e Bun, o que facilita a adocao gradual.</p><h2>Como comecar: instalacao passo a passo</h2><p>Instalar o Deno e rapido. No Linux ou macOS, abra o terminal e execute: <code>curl -fsSL https://deno.land/install.sh | sh</code>. No Windows via PowerShell: <code>irm https://deno.land/install.ps1 | iex</code>. Nao e necessario instalar Node.js, npm ou nenhuma outra dependencia antes.</p><p>Apos a instalacao, verifique com <code>deno --version</code>. Voce vera a versao do Deno, do motor V8 e do TypeScript embutidos. Crie um arquivo <code>hello.ts</code> com <code>console.log("Ola, Deno!");</code> e execute com <code>deno run hello.ts</code>. Pronto: seu primeiro script TypeScript rodando sem configuracao.</p><p>Para projetos maiores, crie um arquivo <code>deno.json</code> na raiz. Ele funciona de forma similar ao package.json, com secoes para imports, tasks e configuracoes do formatter e linter. Use <code>deno task dev</code> para rodar scripts definidos ali. Para scripts que precisam de acesso a rede, adicione a permissao: <code>deno run --allow-net meu-servidor.ts</code>.</p><h2>Exemplo pratico</h2><p>Um servidor HTTP simples no Deno 2.x fica assim usando a API <code>Deno.serve</code>:</p><pre><code>const server = Deno.serve({ port: 8000 }, (req) => {
+  return new Response("Ola do Deno!", { status: 200 });
+});</code></pre><p>Execute com <code>deno run --allow-net servidor.ts</code>. Para usar um pacote npm, importe diretamente no codigo com o prefixo <code>npm:</code>: <code>import express from "npm:express@4"</code>. Isso funciona sem npm install, sem node_modules, sem package.json. O Deno baixa e cacheia o pacote na primeira execucao e nas seguintes usa o cache local.</p><p>O <code>deno compile</code> transforma o script em um executavel binario autonomo: <code>deno compile --allow-net servidor.ts</code>. O resultado e um binario que pode ser distribuido e executado em outra maquina sem instalar o Deno no destino. Para equipes que precisam distribuir ferramentas CLI internas, isso e muito util.</p><h2>Comparacao com alternativas</h2><p>As tres principais opcoes de runtime JavaScript no servidor em 2026 sao <strong>Node.js</strong>, <strong>Deno</strong> e <strong>Bun</strong>. O <strong>Node.js</strong> e o mais maduro, com o maior ecossistema. Praticamente qualquer biblioteca que voce precisar ja existe no npm. A desvantagem e o acumulo de decisoes de design antigas e a necessidade de configurar TypeScript manualmente com tsconfig e ts-node ou esbuild.</p><p>O <strong>Bun</strong> prioriza velocidade acima de tudo. E o runtime mais rapido em benchmarks de execucao pura e tem startup quase instantaneo. Porem, ainda esta amadurecendo em termos de compatibilidade total com o ecossistema Node.js e tem menos ferramentas integradas que o Deno.</p><p>O <strong>Deno</strong> se destaca pela seguranca por padrao, pelo suporte nativo a TypeScript e pela toolchain integrada. Para projetos novos onde seguranca e experiencia de desenvolvimento sao prioridades, o Deno e uma escolha solida. Para projetos legados com muito codigo Node.js, a compatibilidade do Deno 2.x facilita bastante a migracao.</p><h2>Pontos positivos e limitacoes</h2><p>Pontos positivos do Deno:</p><ul><li><strong>TypeScript sem configuracao:</strong> zero fricao para quem ja usa TypeScript</li><li><strong>Seguranca por padrao:</strong> permissoes explicitas evitam acesso indevido de dependencias</li><li><strong>Ferramentas embutidas:</strong> sem precisar de ESLint, Prettier ou Jest separados</li><li><strong>Compatibilidade npm no 2.x:</strong> reutilizar codigo existente ficou muito mais facil</li><li><strong>Executaveis standalone:</strong> deno compile simplifica a distribuicao de ferramentas</li></ul><p>Limitacoes reais que voce vai encontrar:</p><ul><li><strong>Ecossistema menor que o Node.js:</strong> alguns pacotes tem suporte parcial ou nenhum suporte ainda</li><li><strong>Curva de aprendizado nas permissoes:</strong> lembrar de adicionar flags pode gerar frustracoes iniciais</li><li><strong>Menos vagas no mercado:</strong> a maioria das ofertas de emprego ainda exige Node.js</li><li><strong>Menos material em portugues:</strong> a documentacao e tutoriais em ingles dominam</li></ul><p>O modelo de permissoes, que e o ponto forte de seguranca, pode ser frustante no inicio quando voce esquece de adicionar <code>--allow-env</code> e o script para de funcionar. Com o tempo vira habito e voce passa a valorizar o controle que ele oferece.</p><h2>Casos de uso reais</h2><p>O Deno e uma boa escolha em quatro cenarios principais. Primeiro: <strong>APIs e microsservicos novos</strong>, sem legado, onde voce pode comecar do zero com TypeScript nativo e sem instalar ferramentas extras. A produtividade inicial e alta porque tudo ja vem configurado.</p><p>Segundo: <strong>scripts de automacao e ferramentas CLI</strong>. O <code>deno compile</code> facilita muito a distribuicao de ferramentas de linha de comando feitas em TypeScript. Sem instrucoes complexas de instalacao para o usuario final. Terceiro: <strong>edge computing e serverless</strong>. O Deno Deploy permite executar JavaScript e TypeScript na borda da rede, proximo dos usuarios, concorrendo com Cloudflare Workers.</p><p>Quarto: <strong>projetos de aprendizado e ensino</strong>. Quem esta aprendendo TypeScript encontra no Deno um ambiente mais simples e direto, sem precisar configurar tsconfig, webpack ou babel. Isso reduz a quantidade de conceitos que o iniciante precisa absorver ao mesmo tempo e acelera o aprendizado pratico.</p><h2>Dicas e boas praticas</h2><p>Use <code>deno task</code> para centralizar seus comandos. No <code>deno.json</code>, defina tasks como "start", "dev", "test" e "build". Isso substitui o bloco "scripts" do package.json e funciona com <code>deno task nome</code>. Mantenha as tasks documentadas para facilitar a entrada de novos membros no time.</p><p>Sempre especifique as versoes dos modulos que voce importa. Em vez de importar a ultima versao sem fixar, use <code>@std/http@0.x.x</code> para garantir reprodutibilidade entre ambientes. Use <code>deno lint</code> e <code>deno fmt</code> antes de commitar. Considere adiciona-los em um hook de pre-commit para garantir padrao no time inteiro.</p><p>Entenda as permissoes antes de ir para producao. Use <code>--allow-all</code> apenas em desenvolvimento. Em producao, liste as permissoes minimas necessarias para o script funcionar. Erro comum de iniciantes: importar pacotes npm sem o prefixo <code>npm:</code> e esperar que funcione automaticamente. O prefixo e obrigatorio: <code>import express from "npm:express"</code>.</p><h2>Vale a pena?</h2><p>O <strong>Deno 2.9</strong> consolida uma plataforma que ja esta madura o suficiente para producao. Se voce esta iniciando um novo projeto em JavaScript ou TypeScript, vale muito a pena considerar o Deno como alternativa ao Node.js. A experiencia de desenvolvimento e mais fluida e a seguranca por padrao e um diferencial real.</p><p>Para quem tem projetos existentes em Node.js: a migracao ficou muito mais facil com o Deno 2.x, mas ainda pode exigir ajustes em dependencias especificas. Avalie caso a caso quais pacotes voce usa e teste a compatibilidade antes de comprometer uma migracao completa.</p><p>O proximo passo e acessar deno.com, ler o tutorial de primeiros passos e criar um servidor HTTP simples em menos de 10 minutos. E mais facil do que parece e a curva de aprendizado e curta para quem ja conhece JavaScript ou TypeScript.</p>",
+  "faqs": [
+    {
+      "question": "O Deno substitui o Node.js?",
+      "answer": "Nao substitui, mas e uma alternativa valida para projetos novos. O Node.js ainda tem o maior ecossistema e o maior mercado de trabalho. O Deno se destaca em seguranca, TypeScript nativo e toolchain integrada."
+    },
+    {
+      "question": "Posso usar pacotes npm no Deno?",
+      "answer": "Sim. Desde o Deno 2.0, voce importa pacotes npm com o prefixo npm: diretamente no codigo, como import express from 'npm:express'. Nao e necessario rodar npm install nem ter um node_modules."
+    },
+    {
+      "question": "O Deno e gratuito e de codigo aberto?",
+      "answer": "Sim. O Deno e gratuito e open source com licenca MIT. O Deno Deploy, a plataforma de hospedagem gerenciada, tem um plano gratuito com limites e planos pagos para uso profissional."
+    },
+    {
+      "question": "Como migrar um projeto Node.js para Deno?",
+      "answer": "Com o Deno 2.x, a migracao ficou mais simples. Comece substituindo importacoes de pacotes npm pelo prefixo npm:. Ajuste o tratamento de permissoes e substitua ferramentas como ESLint e Prettier pelos equivalentes integrados do Deno."
+    },
+    {
+      "question": "O Deno e mais rapido que o Node.js?",
+      "answer": "Depende do benchmark. Em alguns cenarios o Deno e mais rapido, em outros o Node.js ou o Bun levam vantagem. Para a maioria dos casos de uso praticos, a diferenca de desempenho nao e o fator decisivo na escolha."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: Deno",
+      "items": [
+        {"label": "Criador", "value": "Ryan Dahl (criador do Node.js)"},
+        {"label": "Versao atual", "value": "2.9 (junho de 2026)"},
+        {"label": "Linguagem interna", "value": "Rust + motor V8"},
+        {"label": "Licenca", "value": "MIT (open source)"},
+        {"label": "GitHub Stars", "value": "mais de 90 mil estrelas"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Site oficial", "value": "https://deno.com"},
+        {"label": "Documentacao oficial", "value": "https://docs.deno.com"},
+        {"label": "GitHub", "value": "https://github.com/denoland/deno"},
+        {"label": "JSR - repositorio de pacotes", "value": "https://jsr.io"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Lucas Ferreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasFerreira",
+          "text": "Migrei um microsservico de Node.js para Deno 2.x em um dia. A compatibilidade com npm ficou muito boa e o TypeScript nativo simplificou muito o setup do projeto."
+        },
+        {
+          "name": "Camila Rodrigues",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaRodrigues",
+          "text": "Uso o Deno para scripts internos de automacao da empresa. O deno compile gera um executavel que distribuo para o time sem precisar explicar como instalar dependencias."
+        },
+        {
+          "name": "Rafael Souza",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelSouza",
+          "text": "Aprendi TypeScript direto no Deno e foi muito mais facil do que tentei antes com Node.js. Sem tsconfig, sem webpack, so escrever e executar. Recomendo para quem esta comecando."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "TypeScript nativo",
+  "card1_texto": "Sem config extra, TypeScript funciona direto no Deno",
+  "card2_titulo": "Seguro por padrao",
+  "card2_texto": "Permissoes explicitas para arquivos, rede e variaveis",
+  "card3_titulo": "npm compativel",
+  "card3_texto": "Usa pacotes npm sem precisar de configuracao extra",
+  "subtitulo_capa": "O runtime criado pelo pai do Node.js evolui com seguranca e velocidade em 2026"
+}

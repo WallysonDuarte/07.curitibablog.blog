@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "Show HN: I made Google Trends for Hacker News by indexing 18 years of comments",
-      "url": "https://hackernewstrends.com",
-      "score": 352,
-      "comentarios": 88
+      "titulo": "A Herculaneum scroll has been read for the first time",
+      "url": "https://scrollprize.org/firstscroll",
+      "score": 142,
+      "comentarios": 41
     },
     {
       "fonte": "HN",
-      "titulo": "Deno 2.9",
-      "url": "https://deno.com/blog/v2.9",
-      "score": 51,
-      "comentarios": 8
+      "titulo": "IBM debuts sub-1 nanometer chip technology",
+      "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
+      "score": 73,
+      "comentarios": 29
     },
     {
       "fonte": "HN",
-      "titulo": "Ford rehires 350 engineers after AI fails to preserve expertise or train juniors",
-      "url": "https://www.bloomberg.com/news/articles/2026-06-25/ford-has-been-rehiring-quality-inspectors-after-ai-fell-short",
-      "score": 449,
-      "comentarios": 210
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Zig's New BitCast Semantics and LLVM Back End Improvements",
+      "titulo": "Zig's new bitCast semantics and LLVM back end improvements",
       "url": "https://ziglang.org/devlog/2026/#2026-06-25",
-      "score": 89,
-      "comentarios": 23
+      "score": 130,
+      "comentarios": 35
     },
     {
       "fonte": "HN",
       "titulo": "You can't unit test for taste",
       "url": "https://dev.karltryggvason.com/you-cant-unit-test-for-taste/",
-      "score": 169,
-      "comentarios": 66
+      "score": 187,
+      "comentarios": 71
     },
     {
       "fonte": "HN",
-      "titulo": "Apple increases MacBook and iPad prices by 20%",
-      "url": "https://www.ft.com/content/0f067265-2baf-4b6e-8fb2-ed56daef6f3c",
-      "score": 217,
-      "comentarios": 163
+      "titulo": "OS9Map",
+      "url": "https://yllan.org/software/OS9Map/",
+      "score": 53,
+      "comentarios": 4
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Apple raises prices of MacBooks, iPads",
+      "url": "https://www.reuters.com/world/asia-pacific/apple-raises-prices-macbooks-ipads-memory-costs-skyrocket-2026-06-25/",
+      "score": 303,
+      "comentarios": 509
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: I made Google Trends for Hacker News by indexing 18 years of comments",
+      "url": "https://hackernewstrends.com",
+      "score": 434,
+      "comentarios": 120
     },
     {
       "fonte": "HN",
       "titulo": "Half-Life 2 in a Browser",
       "url": "https://hl2.slqnt.dev/",
-      "score": 530,
-      "comentarios": 217
+      "score": 568,
+      "comentarios": 225
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Windows 10 quietly gets one more year of support and updates",
+      "url": "https://www.neowin.net/news/windows-10-quietly-gets-one-more-year-of-support-and-updates/",
+      "score": 82,
+      "comentarios": 47
     },
     {
       "fonte": "HN",
       "titulo": "Anthropic says Alibaba illicitly extracted Claude AI model capabilities",
       "url": "https://www.reuters.com/world/china/anthropic-says-alibaba-illicitly-extracted-claude-ai-model-capabilities-2026-06-24/",
-      "score": 685,
-      "comentarios": 1113
+      "score": 706,
+      "comentarios": 1147
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The disappearance of Japan's animators",
+      "url": "https://economist.com/interactive/1843/2026/06/19/the-strange-disappearance-of-japans-animators",
+      "score": 63,
+      "comentarios": 56
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Turn native language audio into flashcards and shadowing practice",
+      "url": "https://lingochunk.com/try",
+      "score": 52,
+      "comentarios": 25
     },
     {
       "fonte": "HN",
       "titulo": "LastPass notifies users of yet another data breach",
       "url": "https://9to5mac.com/2026/06/23/lastpass-notifies-users-of-yet-another-data-breach/",
-      "score": 331,
-      "comentarios": 149
+      "score": 364,
+      "comentarios": 160
     },
     {
       "fonte": "HN",
-      "titulo": "OpenAI unveils its first custom chip, built by Broadcom",
-      "url": "https://techcrunch.com/2026/06/24/openai-unveils-its-first-custom-chip-built-by-broadcom/",
-      "score": 786,
-      "comentarios": 451
+      "titulo": "Deno 2.9",
+      "url": "https://deno.com/blog/v2.9",
+      "score": 97,
+      "comentarios": 34
     },
     {
       "fonte": "HN",
-      "titulo": "Cloudflare launched self-managed OAuth for all",
-      "url": "https://blog.cloudflare.com/oauth-for-all/",
-      "score": 298,
-      "comentarios": 130
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Wikipedia Workers in Britain set global first by seeking union recognition",
-      "url": "https://utaw.tech/news/wikipedia-recognition",
-      "score": 194,
-      "comentarios": 184
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Blogging can just be stating the obvious",
-      "url": "https://blog.jim-nielsen.com/2026/blogging-stating-the-obvious/",
-      "score": 383,
-      "comentarios": 117
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Medical students are using popular research tool to pump out misleading studies",
-      "url": "https://www.science.org/content/article/medical-students-are-using-popular-research-tool-pump-out-misleading-studies",
-      "score": 133,
-      "comentarios": 72
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Bohemia Interactive: Cold War Assault Remastered Source Code on GitHub",
-      "url": "https://github.com/BohemiaInteractive/CWR",
-      "score": 167,
-      "comentarios": 42
+      "titulo": "Show HN: MiniPCs.zip – Charting the Pareto frontier of Mini PCs",
+      "url": "https://minipcs.zip",
+      "score": 63,
+      "comentarios": 26
     }
   ],
   "devto": [
@@ -187,6 +187,12 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "Ponytail: The AI Coding Skill Taking GitHub by Storm — And the One Question Nobody's Answered Yet",
+      "tags": [],
+      "reacoes": 7
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "I Forked a Dead PHP Name Parser Because It Couldn't Tell a Credential From a Surname",
       "tags": [
         "php",
@@ -194,12 +200,6 @@
         "showdev"
       ],
       "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Ponytail: The AI Coding Skill Taking GitHub by Storm — And the One Question Nobody's Answered Yet",
-      "tags": [],
-      "reacoes": 7
     },
     {
       "fonte": "Dev.to",
