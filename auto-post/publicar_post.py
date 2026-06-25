@@ -33,7 +33,7 @@ VPS_PORT = 2222
 VPS_USER = "ubuntu"
 SSH_KEY  = str(Path.home() / ".ssh" / "id_server_nopass")
 
-BLOGS = ["curitibablog", "blogdudu", "devlevelup", "dozeroaojunior", "levelupdev"]
+BLOGS = ["curitibablog", "blogdudu", "devlevelup", "dozeroaojunior", "levelupdev", "cafecomdevpai"]
 
 # IndexNow — chave de verificacao (arquivo <chave>.txt em cada blog)
 INDEXNOW_KEY = "6363e67916a04a8586c27e7c3aea3a8a"
@@ -43,6 +43,7 @@ BLOG_DOMAIN = {
     "devlevelup":     "devlevelup.com.br",
     "dozeroaojunior": "dozeroaojunior.com.br",
     "levelupdev":     "levelupdev.com.br",
+    "cafecomdevpai":  "cafecomdevpai.com.br",
 }
 
 # Paths locais (source Astro) e remotos (deploy no VPS)
@@ -52,6 +53,7 @@ BLOG_LOCAL = {
     "devlevelup":     "E:/PROJETOS/devlevelup.com.br/07.devlevelup.blog",
     "dozeroaojunior": "E:/PROJETOS/dozeroaojunior.com.br/07.dozeroaojunior.blog",
     "levelupdev":     "E:/PROJETOS/levelupdev.com.br/07.levelupdev.blog",
+    "cafecomdevpai":  "E:/PROJETOS/cafecomdevpai.com.br/07.cafecomdevpai.blog",
 }
 BLOG_REMOTE = {
     "curitibablog":   "/opt/curitibablog",
@@ -59,6 +61,7 @@ BLOG_REMOTE = {
     "devlevelup":     "/opt/devlevelup",
     "dozeroaojunior": "/opt/dozeroaojunior",
     "levelupdev":     "/opt/levelupdev",
+    "cafecomdevpai":  "/opt/cafecomdevpai",
 }
 
 CHARS_PROIBIDOS = ["—", "–", "“", "”", "‘", "’", "…"]
