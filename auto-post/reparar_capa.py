@@ -1,0 +1,173 @@
+"""
+reparar_capa.py — Gera capa, faz upload no IDrive E2 e atualiza coverImageKey/coverImageUrl
+no MongoDB para um post já existente (sem re-publicar, sem redes sociais).
+
+Uso:
+    python reparar_capa.py <slug> <titulo> <subtitulo>
+"""
+import sys
+import uuid
+import datetime
+from pathlib import Path
+
+import boto3
+from botocore.client import Config
+
+THIS_DIR = Path(__file__).parent
+LOGS_DIR = THIS_DIR / "logs"
+LOGS_DIR.mkdir(exist_ok=True)
+
+MONGO_USER   = "curitibasoftware"
+MONGO_PASS   = "Curitiba@2025+++"
+MONGO_DB     = "curitibasoftware"
+MONGO_COL    = "blogposts"
+
+IDRIVE_URL    = "https://s3.us-east-1.idrivee2.com"
+IDRIVE_KEY    = "W5HR4oX6jKc53WENnNUe"
+IDRIVE_SECRET = "vRDJCcHHBk7vYLbQ05iEvvnWVD4zw3afMXsOQX0X"
+IDRIVE_BUCKET = "curitibasoftware-blog"
+PUBLIC_BASE   = "https://api.curitibasoftware.com.br/api/blog/image"
+
+VPS_HOST = "31.97.252.45"
+VPS_PORT = 2222
+VPS_USER = "ubuntu"
+SSH_KEY  = str(Path.home() / ".ssh" / "id_server_nopass")
+
+
+def log(msg):
+    print(f"[reparar_capa] {msg}", flush=True)
+
+
+def gerar_capa(slug, titulo, subtitulo):
+    output_path = str(LOGS_DIR / f"{datetime.date.today()}-{slug}-cover.jpg")
+    log(f"Gerando capa via Flow para: {titulo}")
+    try:
+        sys.path.insert(0, str(THIS_DIR))
+        from gerar_capa_flow import gerar_capa_flow
+        result = gerar_capa_flow(titulo, output_path, subtitulo)
+        if result and Path(result).exists() and Path(result).stat().st_size > 10_000:
+            log(f"Flow OK: {result}")
+            return result
+        else:
+            log("Flow retornou vazio — tentando Pillow fallback")
+    except Exception as e:
+        log(f"Flow falhou: {e} — tentando Pillow fallback")
+
+    # Fallback Pillow
+    try:
+        from gerar_capa import gerar_capa_pillow
+        result = gerar_capa_pillow(titulo, subtitulo, output_path)
+        if result and Path(result).exists():
+            log(f"Pillow OK: {result}")
+            return result
+    except Exception as e:
+        log(f"Pillow falhou: {e}")
+
+    return None
+
+
+def upload_capa(local_path):
+    file_key = f"covers/{uuid.uuid4()}-cover.jpg"
+    s3 = boto3.client(
+        "s3",
+        endpoint_url=IDRIVE_URL,
+        aws_access_key_id=IDRIVE_KEY,
+        aws_secret_access_key=IDRIVE_SECRET,
+        config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
+        region_name="us-east-1",
+    )
+    try:
+        s3.head_bucket(Bucket=IDRIVE_BUCKET)
+    except Exception:
+        s3.create_bucket(Bucket=IDRIVE_BUCKET)
+    s3.upload_file(local_path, IDRIVE_BUCKET, file_key, ExtraArgs={"ContentType": "image/jpeg"})
+    public_url = f"{PUBLIC_BASE}/{file_key}"
+    log(f"Upload OK: {file_key}")
+    return file_key, public_url
+
+
+def atualizar_mongodb(slug, cover_key, cover_url):
+    import paramiko, threading, socket, time
+    import pymongo
+
+    LOCAL_PORT = 27020
+
+    client_ssh = paramiko.SSHClient()
+    client_ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client_ssh.connect(VPS_HOST, port=VPS_PORT, username=VPS_USER, key_filename=SSH_KEY)
+
+    transport = client_ssh.get_transport()
+    channel = transport.open_channel("direct-tcpip", ("127.0.0.1", 27017), ("127.0.0.1", LOCAL_PORT))
+
+    class TunnelServer(threading.Thread):
+        def __init__(self):
+            super().__init__(daemon=True)
+            self.server = socket.socket()
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            self.server.bind(("127.0.0.1", LOCAL_PORT))
+            self.server.listen(1)
+
+        def run(self):
+            try:
+                conn, _ = self.server.accept()
+                while True:
+                    data = conn.recv(1024)
+                    if not data:
+                        break
+                    channel.send(data)
+                    resp = channel.recv(1024)
+                    conn.send(resp)
+            except Exception:
+                pass
+
+    tunnel = TunnelServer()
+    tunnel.start()
+    time.sleep(0.5)
+
+    from urllib.parse import quote_plus
+    mongo = pymongo.MongoClient(
+        f"mongodb://{quote_plus(MONGO_USER)}:{quote_plus(MONGO_PASS)}@127.0.0.1:{LOCAL_PORT}/admin?authSource=admin&authMechanism=SCRAM-SHA-1",
+        serverSelectionTimeoutMS=10000,
+    )
+    db = mongo[MONGO_DB]
+    result = db[MONGO_COL].update_one(
+        {"slug": slug},
+        {"$set": {"coverImageKey": cover_key, "coverImageUrl": cover_url}}
+    )
+    mongo.close()
+    client_ssh.close()
+    log(f"MongoDB atualizado: matched={result.matched_count} modified={result.modified_count}")
+    return result.modified_count > 0
+
+
+def main():
+    if len(sys.argv) < 4:
+        print("Uso: python reparar_capa.py <slug> <titulo> <subtitulo>")
+        sys.exit(1)
+
+    slug     = sys.argv[1]
+    titulo   = sys.argv[2]
+    subtitulo = sys.argv[3]
+
+    # 1. Gerar capa
+    cover_path = gerar_capa(slug, titulo, subtitulo)
+    if not cover_path:
+        log("ERRO: não foi possível gerar a capa")
+        sys.exit(1)
+
+    # 2. Upload IDrive E2
+    cover_key, cover_url = upload_capa(cover_path)
+
+    # 3. Atualizar MongoDB
+    ok = atualizar_mongodb(slug, cover_key, cover_url)
+    if ok:
+        log(f"Capa atualizada com sucesso para: {slug}")
+        log(f"coverImageUrl: {cover_url}")
+        log(f"Verificar em: https://api.curitibasoftware.com.br/api/blog/cover/{slug}")
+    else:
+        log("AVISO: post não encontrado no MongoDB ou nenhum campo alterado")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
