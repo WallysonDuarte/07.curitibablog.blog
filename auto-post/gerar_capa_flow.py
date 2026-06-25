@@ -40,58 +40,18 @@ EXCLUIR_SRCS = [
     "gstatic.com/images/branding", "lh3.googleusercontent.com/a/",
 ]
 
-# Prompt profissional estilo YouTube thumbnail
+# Prompt curto (~800 chars) para evitar filtro de "atividade incomum" do Flow
 PROMPT_TEMPLATE = (
-    'Create a professional minimalist YouTube thumbnail in 16:9 format, '
-    'modern technology blog style, clean and premium visual identity. '
-    'The thumbnail must look human-designed, not AI-generated. '
-    'Use a dark futuristic background with subtle gradients, soft glow, light tech patterns, '
-    'circuit details, AI interface elements, and clean depth, but without visual clutter. '
-    'The main focus must be a large, bold, imposing title occupying most of the image, '
-    'with strong contrast, perfect readability, and professional typography. '
-    'Main title text: "{titulo}". '
-    'IMPORTANT TYPOGRAPHY RULE: Do not make the entire title white. '
-    'Use a strong color hierarchy. '
-    'Keep only secondary words in white or light gray, and highlight the most important keywords '
-    'with vibrant accent colors such as electric cyan, NVIDIA green, deep blue, purple, yellow, or orange, '
-    'depending on the theme. Use 2 to 3 colors maximum in the title. '
-    'The highlighted words must look intentional, premium, and editorial, not random. '
-    'Use color contrast to guide the viewer\'s attention immediately to the most important words. '
-    'The title must have a modern editorial composition, with selected keywords larger, bolder, or colored differently. '
-    'Use subtle text shadows, soft glow, or outline only when needed for readability. '
-    'The title must remain clean, sharp, and readable on mobile. '
-    'At the top, place a smaller header text: "Entendendo na prática". '
-    'This header can be white, light gray, or cyan, but must not compete with the main title. '
-    'On one side of the thumbnail, add a strong visual element directly related to the topic '
-    'of the post, such as an abstract AI chip, API dashboard, cloud model interface, neural network, '
-    'robot brain, code screen, or futuristic technology object. '
-    'This image must support the topic without adding too much information. '
-    'Do not use a large character on the side. '
-    'Add only a small avatar/icon in one corner of the cover, subtle and professional, '
-    'not distracting from the title. '
-    'At the bottom, create three small square cards/icons aligned horizontally, '
-    'each with a simple image or symbol only, using very short text if absolutely necessary. '
-    'The cards should represent key points of the content, but must remain minimal, clean, '
-    'and easy to understand at small size. '
-    'Use small color accents in the icons to match the highlighted keywords from the title. '
-    'In the footer, add small readable website text: '
-    '"hidra.blog • curitibablog.com.br • curitibasoftware.com.br • devlevelup.com.br • dozeroaojunior.com.br". '
-    'Keep it discreet, aligned, and professional. '
-    'The final thumbnail must be eye-catching, high retention, high click-through-rate, '
-    'clean, modern, premium, sharp, and visually clear even on mobile. '
-    'Negative prompt: '
-    'Avoid making all text white, avoid monochrome title, avoid flat typography, '
-    'avoid overloaded text, avoid long descriptions, avoid paragraphs, avoid too many icons, '
-    'avoid exaggerated neon, avoid messy composition, avoid AI-generated look, '
-    'avoid distorted typography, avoid unreadable letters, avoid random fake words, '
-    'avoid duplicated text, avoid wrong spelling, avoid excessive UI panels, '
-    'avoid cartoon character taking too much space, avoid cheap template look, '
-    'avoid blurry elements, avoid low resolution, avoid watermark, avoid clutter, '
-    'avoid crowded layout, avoid too many colors, avoid realistic person on the side, '
-    'avoid excessive details in the background, '
-    'avoid typos, avoid doubled letters, avoid misspelled words, avoid extra consonants, '
-    'avoid wrong accents, avoid missing accents in Portuguese words, '
-    'CRITICAL: spell every word in the title EXACTLY as given, character by character.'
+    'YouTube thumbnail 16:9, dark tech background, minimal and premium. '
+    'Large bold title text: "{titulo}". '
+    'IMPORTANT: do NOT make the entire title white — use color hierarchy: '
+    'key words in cyan, green or orange; secondary words in white or gray. Max 3 colors in title. '
+    'Small header at top: "Entendendo na prática" in light gray. '
+    'One tech visual element on the side (AI chip, neural network, code screen). '
+    'Footer text small: "curitibablog.com.br • devlevelup.com.br • dozeroaojunior.com.br". '
+    'Three small icon cards at bottom. '
+    'Clean, sharp, readable on mobile. No clutter, no distorted text, no monochrome title. '
+    'Spell every word in the title exactly as written.'
 )
 
 
@@ -132,12 +92,15 @@ def _abrir_chrome_com_debug(chrome_path: str):
 # ---------------------------------------------------------------------------
 
 async def _get_srcs_galeria(page) -> list:
+    # Filtra apenas imagens reais geradas (exclui ícones, avatares e cards de erro)
     return await page.evaluate("""(excluir) => {
         return Array.from(document.querySelectorAll('img'))
             .filter(img => {
                 const rect = img.getBoundingClientRect();
                 const src = img.src || '';
-                return rect.width > 80 && rect.height > 80 && src.length > 30
+                // Deve ter tamanho significativo e src com blob ou ggpht (imagens geradas)
+                const isGenerated = src.startsWith('blob:') || src.includes('ggpht') || src.includes('generated') || (src.startsWith('http') && src.length > 60);
+                return rect.width > 100 && rect.height > 80 && isGenerated
                     && !excluir.some(x => src.includes(x));
             })
             .map(img => img.src);
