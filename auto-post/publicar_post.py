@@ -828,6 +828,31 @@ def inserir_post(post: dict) -> str:
         # Signal pipeline: post already exists, caller must pick a different theme
         return (str(existing["_id"]), False)
 
+    # Check title similarity against posts from last 60 days to prevent topic duplicates
+    import re as _re, datetime as _dt
+    _cutoff = _dt.datetime.utcnow() - _dt.timedelta(days=60)
+    _STOPWORDS = {"de","da","do","para","com","em","no","na","o","a","os","as","um","uma","e","que","se","por","dos","das","ao","aos","como","ou","mais","seu","sua","seus","suas","este","esta","estes","estas","esse","essa","isso","isto","ao","la","lhe","mas","ja","nao","foi","ser","tem","teve","via","pelo","pela","pelos","pelas"}
+
+    def _keywords(title: str) -> set:
+        words = set(_re.sub(r"[^a-zA-ZÀ-ú0-9\s]", "", title.lower()).split())
+        return words - _STOPWORDS
+
+    _new_kw = _keywords(post.get("title", ""))
+    _recent = col.find({"isActive": True, "publishedAt": {"$gte": _cutoff}}, {"title": 1, "slug": 1})
+    for _r in _recent:
+        _r_kw = _keywords(_r.get("title", ""))
+        if len(_new_kw) > 0 and len(_r_kw) > 0:
+            _intersection = _new_kw & _r_kw
+            _similarity = len(_intersection) / min(len(_new_kw), len(_r_kw))
+            if _similarity >= 0.6:
+                client.close()
+                server.close()
+                ssh.close()
+                raise ValueError(
+                    f"TEMA_DUPLICADO: titulo similar a post existente '{_r['slug']}' "
+                    f"(similarity={_similarity:.0%}, palavras comuns: {_intersection})"
+                )
+
     result = col.insert_one(post)
     inserted_id = str(result.inserted_id)
     client.close()
