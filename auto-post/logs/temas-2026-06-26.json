@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 61,
-      "comentarios": 35
+      "score": 118,
+      "comentarios": 57
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
+      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
+      "score": 224,
+      "comentarios": 203
     },
     {
       "fonte": "HN",
       "titulo": "Ultrasound imaging of the brain",
       "url": "https://alephneuro.com/blog/ultrasound-brain",
-      "score": 102,
-      "comentarios": 28
+      "score": 131,
+      "comentarios": 45
     },
     {
       "fonte": "HN",
-      "titulo": "Jolla Phone (October 2026)",
-      "url": "https://commerce.jolla.com/products/jolla-phone-october-2026",
-      "score": 142,
-      "comentarios": 89
+      "titulo": "A US military exercise to launch a satellite on short notice",
+      "url": "https://arstechnica.com/space/2026/06/a-us-military-exercise-in-space-got-underway-with-barely-anyone-noticing/",
+      "score": 78,
+      "comentarios": 38
     },
     {
       "fonte": "HN",
       "titulo": "Om Malik has died",
       "url": "https://om.co/2026/06/24/1966-2026/",
-      "score": 1166,
-      "comentarios": 135
+      "score": 1196,
+      "comentarios": 140
     },
     {
       "fonte": "HN",
       "titulo": "An entire Herculaneum scroll has been read for the first time",
       "url": "https://scrollprize.org/firstscroll",
-      "score": 1528,
-      "comentarios": 331
+      "score": 1556,
+      "comentarios": 336
     },
     {
       "fonte": "HN",
       "titulo": "Springer Nature has removed two studies by Max Planck",
       "url": "https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted",
-      "score": 217,
-      "comentarios": 96
+      "score": 248,
+      "comentarios": 113
     },
     {
       "fonte": "HN",
       "titulo": "Incident CVE-2026-LGTM",
       "url": "https://nesbitt.io/2026/06/26/incident-report-cve-2026-lgtm.html",
-      "score": 348,
-      "comentarios": 61
+      "score": 390,
+      "comentarios": 68
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Jolla Phone (October 2026)",
+      "url": "https://commerce.jolla.com/products/jolla-phone-october-2026",
+      "score": 177,
+      "comentarios": 106
     },
     {
       "fonte": "HN",
       "titulo": "Libre Barcode Project",
       "url": "https://graphicore.github.io/librebarcode/",
-      "score": 247,
-      "comentarios": 40
+      "score": 251,
+      "comentarios": 41
     },
     {
       "fonte": "HN",
       "titulo": "Bipartite Matching Is in NC",
       "url": "https://scottaaronson.blog/?p=9851",
-      "score": 81,
-      "comentarios": 9
+      "score": 89,
+      "comentarios": 13
     },
     {
       "fonte": "HN",
       "titulo": "Framework's 10G Ethernet module exposes USB-C's complexity",
       "url": "https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/",
-      "score": 276,
-      "comentarios": 155
+      "score": 283,
+      "comentarios": 160
     },
     {
       "fonte": "HN",
       "titulo": "What happened after 2k people tried to hack my AI assistant",
       "url": "https://www.fernandoi.cl/posts/hackmyclaw/",
-      "score": 298,
-      "comentarios": 129
+      "score": 307,
+      "comentarios": 137
     },
     {
       "fonte": "HN",
       "titulo": "22-year-old Mozart's handwritten notebook unearthed in 'major discovery'",
       "url": "https://www.classicfm.com/composers/mozart/handwritten-notebook-discovered-major-paris/",
-      "score": 184,
-      "comentarios": 50
+      "score": 205,
+      "comentarios": 61
     },
     {
       "fonte": "HN",
-      "titulo": "A game where you're an OS and have to manage processes, memory and I/O events",
-      "url": "https://github.com/plbrault/youre-the-os",
-      "score": 309,
-      "comentarios": 67
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The 'papers, please' era of the internet will decimate your privacy",
-      "url": "https://expression.fire.org/p/the-papers-please-era-of-the-internet",
-      "score": 968,
-      "comentarios": 496
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The Garbage Collection Handbook: The Art of Automatic Memory Management (2nd Ed) (2023)",
-      "url": "https://gchandbook.org/",
-      "score": 209,
-      "comentarios": 43
+      "titulo": "Show HN: WebBase-III – dBASE III rebuilt in the browser with its own interpreter",
+      "url": "https://github.com/DDecoene/WebBaseIII",
+      "score": 55,
+      "comentarios": 13
     }
   ],
   "devto": [
@@ -139,17 +139,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "One Agent or Many? Orchestrating AI Agents Without the Mess",
-      "tags": [
-        "ai",
-        "programming",
-        "webdev",
-        "beginners"
-      ],
-      "reacoes": 35
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "1,200 Applications. 4 Offers. Here's What Actually Got Me the Product-Based Role",
       "tags": [
         "career",
@@ -158,6 +147,17 @@
         "productivity"
       ],
       "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Never forget to enter the Stern Grove lottery again!",
+      "tags": [
+        "ai",
+        "playwright",
+        "githubactions",
+        "browserautomation"
+      ],
+      "reacoes": 6
     },
     {
       "fonte": "Dev.to",
@@ -204,14 +204,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Next.js isn't the best framework. It's the most reliable bet.",
+      "titulo": "AI is not replacing developers anytime soon",
       "tags": [
-        "frontend",
-        "nextjs",
-        "architecture",
-        "webdev"
+        "ai",
+        "career",
+        "discuss",
+        "productivity"
       ],
-      "reacoes": 3
+      "reacoes": 2
     }
   ]
 }
