@@ -1,0 +1,216 @@
+{
+  "data": "2026-06-26",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "AI children's books, body horror edition",
+      "url": "https://lcamtuf.substack.com/p/ai-childrens-books-body-horror-edition",
+      "score": 96,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Om Malik has died",
+      "url": "https://om.co/2026/06/24/1966-2026/",
+      "score": 543,
+      "comentarios": 54
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Apple to skip high-end M6 Mac chips in favor of AI-focused M7 line",
+      "url": "https://www.bloomberg.com/news/articles/2026-06-25/apple-to-skip-high-end-m6-mac-chips-to-launch-m7-pro-m7-max-m7-ultra-instead?embedded-checkout=true",
+      "score": 94,
+      "comentarios": 59
+    },
+    {
+      "fonte": "HN",
+      "titulo": "An entire Herculaneum scroll has been read for the first time",
+      "url": "https://scrollprize.org/firstscroll",
+      "score": 1022,
+      "comentarios": 229
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The 'papers, please' era of the internet will decimate your privacy",
+      "url": "https://expression.fire.org/p/the-papers-please-era-of-the-internet",
+      "score": 456,
+      "comentarios": 219
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The Garbage Collection Handbook: The Art of Automatic Memory Management (2nd Ed)",
+      "url": "https://gchandbook.org/",
+      "score": 59,
+      "comentarios": 11
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A game where you're an OS and have to manage processes, memory and I/O events",
+      "url": "https://github.com/plbrault/youre-the-os",
+      "score": 112,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Un-0: Generating Images with Coupled Oscillators",
+      "url": "https://unconv.ai/blog/introducing-un-0-generating-images-with-coupled-oscillators/",
+      "score": 122,
+      "comentarios": 30
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Oxide computer 3D rack guided tour",
+      "url": "https://explorer.oxide.computer/",
+      "score": 305,
+      "comentarios": 124
+    },
+    {
+      "fonte": "HN",
+      "titulo": "IBM debuts sub-1 nanometer chip technology",
+      "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
+      "score": 273,
+      "comentarios": 154
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: OpenKnowledge – open source AI-first alternative to Obsidian/Notion",
+      "url": "https://github.com/inkeep/open-knowledge",
+      "score": 215,
+      "comentarios": 102
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Parallel Parentheses Matching",
+      "url": "https://williamdue.github.io/blog/parallel-parentheses-matching",
+      "score": 66,
+      "comentarios": 9
+    },
+    {
+      "fonte": "HN",
+      "titulo": "An oral history of Bank Python (2021)",
+      "url": "https://calpaterson.com/bank-python.html",
+      "score": 78,
+      "comentarios": 26
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The Doorman's Fallacy in action",
+      "url": "https://rozumem.xyz/posts/17",
+      "score": 69,
+      "comentarios": 99
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Chess-Inspired Roguelike",
+      "url": "https://princechazz.com",
+      "score": 227,
+      "comentarios": 75
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Thank you DEV community: the Thinking Engineer Toolkit is live",
+      "tags": [
+        "ai",
+        "softwareengineering",
+        "developer",
+        "productivity"
+      ],
+      "reacoes": 43
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "One Agent or Many? Orchestrating AI Agents Without the Mess",
+      "tags": [
+        "ai",
+        "programming",
+        "webdev",
+        "beginners"
+      ],
+      "reacoes": 19
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "On programming languages, targets, and platforms",
+      "tags": [
+        "java",
+        "futurism",
+        "python",
+        "coding"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "My app didn't go \"viral\". My AWS bill did.",
+      "tags": [
+        "aws",
+        "ai",
+        "learning",
+        "infrastructure"
+      ],
+      "reacoes": 12
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I don't trust the LLM to classify my email. So I don't let it.",
+      "tags": [
+        "ai",
+        "llm",
+        "architecture",
+        "opensource"
+      ],
+      "reacoes": 13
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Do Developers Ever Really Disconnect?",
+      "tags": [
+        "productivity",
+        "burnout",
+        "webdev"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Ponytail: The AI Coding Skill Taking GitHub by Storm — And the One Question Nobody's Answered Yet",
+      "tags": [],
+      "reacoes": 7
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Tracking-Link Bug That Only Breaks Signed URLs",
+      "tags": [
+        "laravel",
+        "php",
+        "webdev",
+        "testing"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How I built ZeroAudit — AI-powered SOC 2 compliance automation with AWS DynamoDB and Vercel",
+      "tags": [
+        "aws",
+        "vercel",
+        "nextjs",
+        "hackathon"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Three Loops, No Ship",
+      "tags": [
+        "ai",
+        "opensource",
+        "agents",
+        "localllms"
+      ],
+      "reacoes": 0
+    }
+  ]
+}
