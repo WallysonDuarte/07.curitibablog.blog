@@ -3,111 +3,122 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
-      "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 118,
-      "comentarios": 57
+      "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
+      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
+      "score": 585,
+      "comentarios": 344
     },
     {
       "fonte": "HN",
-      "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
-      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 224,
-      "comentarios": 203
+      "titulo": "U.S. government will decide who gets to use GPT-5.6",
+      "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
+      "score": 449,
+      "comentarios": 625
+    },
+    {
+      "fonte": "HN",
+      "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
+      "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
+      "score": 200,
+      "comentarios": 112
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
+      "url": "https://github.com/workweave/router",
+      "score": 105,
+      "comentarios": 68
     },
     {
       "fonte": "HN",
       "titulo": "Ultrasound imaging of the brain",
       "url": "https://alephneuro.com/blog/ultrasound-brain",
-      "score": 131,
-      "comentarios": 45
+      "score": 190,
+      "comentarios": 63
     },
     {
       "fonte": "HN",
-      "titulo": "A US military exercise to launch a satellite on short notice",
-      "url": "https://arstechnica.com/space/2026/06/a-us-military-exercise-in-space-got-underway-with-barely-anyone-noticing/",
-      "score": 78,
-      "comentarios": 38
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Om Malik has died",
-      "url": "https://om.co/2026/06/24/1966-2026/",
-      "score": 1196,
-      "comentarios": 140
-    },
-    {
-      "fonte": "HN",
-      "titulo": "An entire Herculaneum scroll has been read for the first time",
-      "url": "https://scrollprize.org/firstscroll",
-      "score": 1556,
-      "comentarios": 336
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Springer Nature has removed two studies by Max Planck",
-      "url": "https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted",
-      "score": 248,
+      "titulo": "Data centers trigger voter backlash",
+      "url": "https://www.newsweek.com/cost-me-the-election-data-centers-trigger-voter-backlash-12118327",
+      "score": 97,
       "comentarios": 113
     },
     {
       "fonte": "HN",
-      "titulo": "Incident CVE-2026-LGTM",
-      "url": "https://nesbitt.io/2026/06/26/incident-report-cve-2026-lgtm.html",
-      "score": 390,
-      "comentarios": 68
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Jolla Phone (October 2026)",
-      "url": "https://commerce.jolla.com/products/jolla-phone-october-2026",
-      "score": 177,
-      "comentarios": 106
+      "titulo": "LaTeX.wasm: LaTeX Engines in Browsers",
+      "url": "https://www.swiftlatex.com/",
+      "score": 61,
+      "comentarios": 21
     },
     {
       "fonte": "HN",
       "titulo": "Libre Barcode Project",
       "url": "https://graphicore.github.io/librebarcode/",
-      "score": 251,
-      "comentarios": 41
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Bipartite Matching Is in NC",
-      "url": "https://scottaaronson.blog/?p=9851",
-      "score": 89,
-      "comentarios": 13
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Framework's 10G Ethernet module exposes USB-C's complexity",
-      "url": "https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/",
-      "score": 283,
-      "comentarios": 160
-    },
-    {
-      "fonte": "HN",
-      "titulo": "What happened after 2k people tried to hack my AI assistant",
-      "url": "https://www.fernandoi.cl/posts/hackmyclaw/",
-      "score": 307,
-      "comentarios": 137
+      "score": 268,
+      "comentarios": 52
     },
     {
       "fonte": "HN",
       "titulo": "22-year-old Mozart's handwritten notebook unearthed in 'major discovery'",
       "url": "https://www.classicfm.com/composers/mozart/handwritten-notebook-discovered-major-paris/",
-      "score": 205,
-      "comentarios": 61
+      "score": 245,
+      "comentarios": 80
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What happened after 2k people tried to hack my AI assistant",
+      "url": "https://www.fernandoi.cl/posts/hackmyclaw/",
+      "score": 337,
+      "comentarios": 156
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Framework's 10G Ethernet module exposes USB-C's complexity",
+      "url": "https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/",
+      "score": 305,
+      "comentarios": 172
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Springer Nature has removed two studies by Max Planck",
+      "url": "https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted",
+      "score": 311,
+      "comentarios": 146
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Jolla Phone (October 2026)",
+      "url": "https://commerce.jolla.com/products/jolla-phone-october-2026",
+      "score": 254,
+      "comentarios": 137
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: WebBase-III – dBASE III rebuilt in the browser with its own interpreter",
       "url": "https://github.com/DDecoene/WebBaseIII",
-      "score": 55,
-      "comentarios": 13
+      "score": 70,
+      "comentarios": 19
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Bipartite Matching Is in NC",
+      "url": "https://scottaaronson.blog/?p=9851",
+      "score": 100,
+      "comentarios": 14
     }
   ],
   "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Never forget to enter the Stern Grove lottery again!",
+      "tags": [
+        "ai",
+        "playwright",
+        "githubactions",
+        "browserautomation"
+      ],
+      "reacoes": 15
+    },
     {
       "fonte": "Dev.to",
       "titulo": "What was your win this week!?",
@@ -115,16 +126,7 @@
         "discuss",
         "weeklyretro"
       ],
-      "reacoes": 18
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "I Almost Didn't Learn Programming Because I Was Bad at Math",
-      "tags": [
-        "discuss",
-        "developer"
-      ],
-      "reacoes": 33
+      "reacoes": 25
     },
     {
       "fonte": "Dev.to",
@@ -135,7 +137,27 @@
         "opportunities",
         "resources"
       ],
-      "reacoes": 17
+      "reacoes": 24
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Functional doesn't mean correct. That's the biggest risk with AI-generated code.",
+      "tags": [
+        "programming",
+        "ai",
+        "discuss",
+        "webdev"
+      ],
+      "reacoes": 13
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Almost Didn't Learn Programming Because I Was Bad at Math",
+      "tags": [
+        "discuss",
+        "developer"
+      ],
+      "reacoes": 35
     },
     {
       "fonte": "Dev.to",
@@ -150,25 +172,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Never forget to enter the Stern Grove lottery again!",
+      "titulo": "AI is not replacing developers anytime soon",
       "tags": [
         "ai",
-        "playwright",
-        "githubactions",
-        "browserautomation"
-      ],
-      "reacoes": 6
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Functional doesn't mean correct. That's the biggest risk with AI-generated code.",
-      "tags": [
-        "programming",
-        "ai",
+        "career",
         "discuss",
-        "webdev"
+        "productivity"
       ],
-      "reacoes": 11
+      "reacoes": 3
     },
     {
       "fonte": "Dev.to",
@@ -179,17 +190,6 @@
         "rails"
       ],
       "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Deploying a Containerized Backend to a VPS with Docker Compose + GitHub Actions (A Beginner's Runbook)",
-      "tags": [
-        "devops",
-        "programming",
-        "tutorial",
-        "automation"
-      ],
-      "reacoes": 5
     },
     {
       "fonte": "Dev.to",
@@ -204,14 +204,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "AI is not replacing developers anytime soon",
+      "titulo": "How I Built a Custom Rust Blockchain for On-Chain Ride Lifecycle",
       "tags": [
-        "ai",
-        "career",
-        "discuss",
-        "productivity"
+        "rust",
+        "blockchain",
+        "webdev",
+        "opensource"
       ],
-      "reacoes": 2
+      "reacoes": 3
     }
   ]
 }
