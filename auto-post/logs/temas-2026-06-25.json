@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "An entire Herculaneum scroll has been read for the first time",
       "url": "https://scrollprize.org/firstscroll",
-      "score": 883,
-      "comentarios": 198
+      "score": 947,
+      "comentarios": 212
     },
     {
       "fonte": "HN",
       "titulo": "The 'papers, please' era of the internet will decimate your privacy",
       "url": "https://expression.fire.org/p/the-papers-please-era-of-the-internet",
-      "score": 263,
-      "comentarios": 119
+      "score": 351,
+      "comentarios": 157
     },
     {
       "fonte": "HN",
       "titulo": "Un-0: Generating Images with Coupled Oscillators",
       "url": "https://unconv.ai/blog/introducing-un-0-generating-images-with-coupled-oscillators/",
-      "score": 89,
-      "comentarios": 17
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Oxide computer 3D rack guided tour",
-      "url": "https://explorer.oxide.computer/",
-      "score": 271,
-      "comentarios": 112
+      "score": 104,
+      "comentarios": 28
     },
     {
       "fonte": "HN",
       "titulo": "A game where you're an OS and have to manage processes, memory and I/O events",
       "url": "https://github.com/plbrault/youre-the-os",
-      "score": 59,
-      "comentarios": 15
+      "score": 85,
+      "comentarios": 19
     },
     {
       "fonte": "HN",
-      "titulo": "IBM debuts sub-1 nanometer chip technology",
-      "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
-      "score": 248,
-      "comentarios": 144
-    },
-    {
-      "fonte": "HN",
-      "titulo": "An oral history of Bank Python (2021)",
-      "url": "https://calpaterson.com/bank-python.html",
-      "score": 55,
-      "comentarios": 14
+      "titulo": "Oxide computer 3D rack guided tour",
+      "url": "https://explorer.oxide.computer/",
+      "score": 286,
+      "comentarios": 117
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: OpenKnowledge – open source AI-first alternative to Obsidian/Notion",
       "url": "https://github.com/inkeep/open-knowledge",
-      "score": 176,
-      "comentarios": 79
+      "score": 192,
+      "comentarios": 85
+    },
+    {
+      "fonte": "HN",
+      "titulo": "IBM debuts sub-1 nanometer chip technology",
+      "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
+      "score": 257,
+      "comentarios": 146
+    },
+    {
+      "fonte": "HN",
+      "titulo": "An oral history of Bank Python (2021)",
+      "url": "https://calpaterson.com/bank-python.html",
+      "score": 67,
+      "comentarios": 18
     },
     {
       "fonte": "HN",
       "titulo": "Om Malik has died",
       "url": "https://om.co/2026/06/24/1966-2026/",
-      "score": 287,
-      "comentarios": 29
+      "score": 356,
+      "comentarios": 35
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Chess-Inspired Roguelike",
       "url": "https://princechazz.com",
-      "score": 194,
-      "comentarios": 67
+      "score": 211,
+      "comentarios": 71
     },
     {
       "fonte": "HN",
       "titulo": "Zig's new bitCast semantics and LLVM back end improvements",
       "url": "https://ziglang.org/devlog/2026/#2026-06-25",
-      "score": 207,
-      "comentarios": 79
+      "score": 212,
+      "comentarios": 85
     },
     {
       "fonte": "HN",
       "titulo": "OS9Map",
       "url": "https://yllan.org/software/OS9Map/",
-      "score": 172,
-      "comentarios": 25
+      "score": 180,
+      "comentarios": 29
     },
     {
       "fonte": "HN",
       "titulo": "Apple raises prices of MacBooks, iPads",
       "url": "https://www.reuters.com/world/asia-pacific/apple-raises-prices-macbooks-ipads-memory-costs-skyrocket-2026-06-25/",
-      "score": 598,
-      "comentarios": 854
+      "score": 619,
+      "comentarios": 885
     },
     {
       "fonte": "HN",
       "titulo": "The annotated PyTorch training loop",
       "url": "https://idlemachines.co.uk/essays/pytorch-training-loop",
-      "score": 53,
-      "comentarios": 9
+      "score": 59,
+      "comentarios": 10
     },
     {
       "fonte": "HN",
       "titulo": "Military branches restore flu shot requirement after virus swept through base",
       "url": "https://arstechnica.com/health/2026/06/military-branches-restore-flu-shot-requirement-after-virus-swept-through-base/",
-      "score": 53,
-      "comentarios": 20
+      "score": 86,
+      "comentarios": 32
     }
   ],
   "devto": [

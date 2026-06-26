@@ -1,0 +1,43 @@
+{
+  "data": "2026-06-25",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-25-21-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/b68f46a5-5d7a-4bd3-8439-0c0c622a425e-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/b68f46a5-5d7a-4bd3-8439-0c0c622a425e-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a3dc1f75c4ad58f5fa2200f",
+      "slug": "orquestracao-agentes-ia-um-ou-varios",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+      }
+    },
+    "http_check": 404
+  },
+  "status": "PUBLICADO_SEM_SOCIAL",
+  "post_url": "https://curitibablog.com.br/orquestracao-agentes-ia-um-ou-varios"
+}
