@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "An entire Herculaneum scroll has been read for the first time",
       "url": "https://scrollprize.org/firstscroll",
-      "score": 611,
-      "comentarios": 148
+      "score": 883,
+      "comentarios": 198
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The 'papers, please' era of the internet will decimate your privacy",
+      "url": "https://expression.fire.org/p/the-papers-please-era-of-the-internet",
+      "score": 263,
+      "comentarios": 119
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Un-0: Generating Images with Coupled Oscillators",
+      "url": "https://unconv.ai/blog/introducing-un-0-generating-images-with-coupled-oscillators/",
+      "score": 89,
+      "comentarios": 17
     },
     {
       "fonte": "HN",
       "titulo": "Oxide computer 3D rack guided tour",
       "url": "https://explorer.oxide.computer/",
-      "score": 185,
-      "comentarios": 81
+      "score": 271,
+      "comentarios": 112
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A game where you're an OS and have to manage processes, memory and I/O events",
+      "url": "https://github.com/plbrault/youre-the-os",
+      "score": 59,
+      "comentarios": 15
     },
     {
       "fonte": "HN",
       "titulo": "IBM debuts sub-1 nanometer chip technology",
       "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
-      "score": 194,
-      "comentarios": 111
+      "score": 248,
+      "comentarios": 144
+    },
+    {
+      "fonte": "HN",
+      "titulo": "An oral history of Bank Python (2021)",
+      "url": "https://calpaterson.com/bank-python.html",
+      "score": 55,
+      "comentarios": 14
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: OpenKnowledge – open source AI-first alternative to Obsidian/Notion",
       "url": "https://github.com/inkeep/open-knowledge",
-      "score": 90,
-      "comentarios": 42
+      "score": 176,
+      "comentarios": 79
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Om Malik has died",
+      "url": "https://om.co/2026/06/24/1966-2026/",
+      "score": 287,
+      "comentarios": 29
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Chess-Inspired Roguelike",
       "url": "https://princechazz.com",
-      "score": 125,
-      "comentarios": 40
+      "score": 194,
+      "comentarios": 67
     },
     {
       "fonte": "HN",
       "titulo": "Zig's new bitCast semantics and LLVM back end improvements",
       "url": "https://ziglang.org/devlog/2026/#2026-06-25",
-      "score": 181,
-      "comentarios": 71
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Apple raises prices of MacBooks, iPads",
-      "url": "https://www.reuters.com/world/asia-pacific/apple-raises-prices-macbooks-ipads-memory-costs-skyrocket-2026-06-25/",
-      "score": 489,
-      "comentarios": 721
+      "score": 207,
+      "comentarios": 79
     },
     {
       "fonte": "HN",
       "titulo": "OS9Map",
       "url": "https://yllan.org/software/OS9Map/",
-      "score": 122,
-      "comentarios": 18
+      "score": 172,
+      "comentarios": 25
     },
     {
       "fonte": "HN",
-      "titulo": "Half-Life 2 in a Browser",
-      "url": "https://hl2.slqnt.dev/",
-      "score": 613,
-      "comentarios": 245
+      "titulo": "Apple raises prices of MacBooks, iPads",
+      "url": "https://www.reuters.com/world/asia-pacific/apple-raises-prices-macbooks-ipads-memory-costs-skyrocket-2026-06-25/",
+      "score": 598,
+      "comentarios": 854
     },
     {
       "fonte": "HN",
-      "titulo": "Early adversity leaves lasting molecular imprint across the body: primate study",
-      "url": "https://medicalxpress.com/news/2026-06-early-life-adversity-molecular-imprint.html",
-      "score": 59,
-      "comentarios": 24
+      "titulo": "The annotated PyTorch training loop",
+      "url": "https://idlemachines.co.uk/essays/pytorch-training-loop",
+      "score": 53,
+      "comentarios": 9
     },
     {
       "fonte": "HN",
-      "titulo": "You can't unit test for taste",
-      "url": "https://dev.karltryggvason.com/you-cant-unit-test-for-taste/",
-      "score": 217,
-      "comentarios": 95
-    },
-    {
-      "fonte": "HN",
-      "titulo": "I built a GPU back end for Emacs",
-      "url": "https://en.andros.dev/blog/4b707a03/how-i-built-a-gpu-backend-for-emacs/",
-      "score": 142,
-      "comentarios": 74
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: I made Google Trends for Hacker News by indexing 18 years of comments",
-      "url": "https://hackernewstrends.com",
-      "score": 554,
-      "comentarios": 137
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Advanced Nintendo Entertainment System (ANES) – NES Modded to Use 2 PPUs",
-      "url": "https://github.com/decrazyo/anes",
-      "score": 65,
+      "titulo": "Military branches restore flu shot requirement after virus swept through base",
+      "url": "https://arstechnica.com/health/2026/06/military-branches-restore-flu-shot-requirement-after-virus-swept-through-base/",
+      "score": 53,
       "comentarios": 20
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Political bias in AI: Where the AI models stand",
-      "url": "https://trakkr.ai/bias",
-      "score": 74,
-      "comentarios": 151
     }
   ],
   "devto": [
@@ -117,7 +117,7 @@
         "developer",
         "productivity"
       ],
-      "reacoes": 26
+      "reacoes": 43
     },
     {
       "fonte": "Dev.to",
@@ -129,17 +129,6 @@
         "coding"
       ],
       "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "How I Used Automated Red Teaming to Evaluate My AI Agent's Safety",
-      "tags": [
-        "agents",
-        "ai",
-        "security",
-        "aws"
-      ],
-      "reacoes": 10
     },
     {
       "fonte": "Dev.to",
@@ -161,7 +150,17 @@
         "architecture",
         "opensource"
       ],
-      "reacoes": 11
+      "reacoes": 13
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Do Developers Ever Really Disconnect?",
+      "tags": [
+        "productivity",
+        "burnout",
+        "webdev"
+      ],
+      "reacoes": 0
     },
     {
       "fonte": "Dev.to",
@@ -171,33 +170,23 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "I Forked a Dead PHP Name Parser Because It Couldn't Tell a Credential From a Surname",
+      "titulo": "How I built ZeroAudit — AI-powered SOC 2 compliance automation with AWS DynamoDB and Vercel",
       "tags": [
+        "aws",
+        "vercel",
+        "nextjs",
+        "hackathon"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Tracking-Link Bug That Only Breaks Signed URLs",
+      "tags": [
+        "laravel",
         "php",
-        "opensource",
-        "showdev"
-      ],
-      "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "I sent 419 cold B2B emails. 41% opens. 0 clicks.",
-      "tags": [
-        "agents",
-        "ai",
-        "buildinpublic",
-        "showdev"
-      ],
-      "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "We're making the Dreamweaver mistake again, on purpose this time",
-      "tags": [
-        "ai",
-        "design",
-        "frontend",
-        "webdev"
+        "webdev",
+        "testing"
       ],
       "reacoes": 2
     },
@@ -211,6 +200,17 @@
         "typescript"
       ],
       "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "One Agent or Many? Orchestrating AI Agents Without the Mess",
+      "tags": [
+        "ai",
+        "programming",
+        "webdev",
+        "beginners"
+      ],
+      "reacoes": 12
     }
   ]
 }
