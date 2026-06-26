@@ -3,111 +3,140 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "Why have papers by one of history's most famous physicists been retracted?",
-      "url": "https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted",
-      "score": 80,
-      "comentarios": 24
+      "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
+      "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
+      "score": 61,
+      "comentarios": 35
     },
     {
       "fonte": "HN",
-      "titulo": "Incident CVE-2026-LGTM",
-      "url": "https://nesbitt.io/2026/06/26/incident-report-cve-2026-lgtm.html",
-      "score": 136,
-      "comentarios": 29
+      "titulo": "Ultrasound imaging of the brain",
+      "url": "https://alephneuro.com/blog/ultrasound-brain",
+      "score": 102,
+      "comentarios": 28
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Jolla Phone (October 2026)",
+      "url": "https://commerce.jolla.com/products/jolla-phone-october-2026",
+      "score": 142,
+      "comentarios": 89
     },
     {
       "fonte": "HN",
       "titulo": "Om Malik has died",
       "url": "https://om.co/2026/06/24/1966-2026/",
-      "score": 1111,
-      "comentarios": 131
+      "score": 1166,
+      "comentarios": 135
     },
     {
       "fonte": "HN",
       "titulo": "An entire Herculaneum scroll has been read for the first time",
       "url": "https://scrollprize.org/firstscroll",
-      "score": 1477,
-      "comentarios": 316
+      "score": 1528,
+      "comentarios": 331
     },
     {
       "fonte": "HN",
-      "titulo": "Bipartite Matching Is in NC",
-      "url": "https://scottaaronson.blog/?p=9851",
-      "score": 65,
-      "comentarios": 4
+      "titulo": "Springer Nature has removed two studies by Max Planck",
+      "url": "https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted",
+      "score": 217,
+      "comentarios": 96
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Incident CVE-2026-LGTM",
+      "url": "https://nesbitt.io/2026/06/26/incident-report-cve-2026-lgtm.html",
+      "score": 348,
+      "comentarios": 61
     },
     {
       "fonte": "HN",
       "titulo": "Libre Barcode Project",
       "url": "https://graphicore.github.io/librebarcode/",
-      "score": 227,
-      "comentarios": 36
+      "score": 247,
+      "comentarios": 40
     },
     {
       "fonte": "HN",
-      "titulo": "What happened after 2k people tried to hack my AI assistant",
-      "url": "https://www.fernandoi.cl/posts/hackmyclaw/",
-      "score": 269,
-      "comentarios": 114
+      "titulo": "Bipartite Matching Is in NC",
+      "url": "https://scottaaronson.blog/?p=9851",
+      "score": 81,
+      "comentarios": 9
     },
     {
       "fonte": "HN",
       "titulo": "Framework's 10G Ethernet module exposes USB-C's complexity",
       "url": "https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/",
-      "score": 254,
-      "comentarios": 137
+      "score": 276,
+      "comentarios": 155
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What happened after 2k people tried to hack my AI assistant",
+      "url": "https://www.fernandoi.cl/posts/hackmyclaw/",
+      "score": 298,
+      "comentarios": 129
     },
     {
       "fonte": "HN",
       "titulo": "22-year-old Mozart's handwritten notebook unearthed in 'major discovery'",
       "url": "https://www.classicfm.com/composers/mozart/handwritten-notebook-discovered-major-paris/",
-      "score": 147,
-      "comentarios": 38
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The 'papers, please' era of the internet will decimate your privacy",
-      "url": "https://expression.fire.org/p/the-papers-please-era-of-the-internet",
-      "score": 909,
-      "comentarios": 447
+      "score": 184,
+      "comentarios": 50
     },
     {
       "fonte": "HN",
       "titulo": "A game where you're an OS and have to manage processes, memory and I/O events",
       "url": "https://github.com/plbrault/youre-the-os",
-      "score": 295,
-      "comentarios": 56
+      "score": 309,
+      "comentarios": 67
     },
     {
       "fonte": "HN",
-      "titulo": "We all depend on open source. We will defend it together",
-      "url": "https://akrites.org/letter/",
-      "score": 361,
-      "comentarios": 172
+      "titulo": "The 'papers, please' era of the internet will decimate your privacy",
+      "url": "https://expression.fire.org/p/the-papers-please-era-of-the-internet",
+      "score": 968,
+      "comentarios": 496
     },
     {
       "fonte": "HN",
       "titulo": "The Garbage Collection Handbook: The Art of Automatic Memory Management (2nd Ed) (2023)",
       "url": "https://gchandbook.org/",
-      "score": 193,
-      "comentarios": 39
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Oxide computer 3D rack guided tour",
-      "url": "https://explorer.oxide.computer/",
-      "score": 423,
-      "comentarios": 173
-    },
-    {
-      "fonte": "HN",
-      "titulo": "IBM debuts sub-1 nanometer chip technology",
-      "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
-      "score": 355,
-      "comentarios": 191
+      "score": 209,
+      "comentarios": 43
     }
   ],
   "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "What was your win this week!?",
+      "tags": [
+        "discuss",
+        "weeklyretro"
+      ],
+      "reacoes": 18
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Almost Didn't Learn Programming Because I Was Bad at Math",
+      "tags": [
+        "discuss",
+        "developer"
+      ],
+      "reacoes": 33
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Dev Opportunity Radar #5: A Fully Funded Trip to AWS re:Invent, Google Cloud Career Launchpad, and a $1,000 Award",
+      "tags": [
+        "discuss",
+        "community",
+        "opportunities",
+        "resources"
+      ],
+      "reacoes": 17
+    },
     {
       "fonte": "Dev.to",
       "titulo": "One Agent or Many? Orchestrating AI Agents Without the Mess",
@@ -117,7 +146,7 @@
         "webdev",
         "beginners"
       ],
-      "reacoes": 34
+      "reacoes": 35
     },
     {
       "fonte": "Dev.to",
@@ -128,25 +157,7 @@
         "programming",
         "productivity"
       ],
-      "reacoes": 9
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "What was your win this week!?",
-      "tags": [
-        "discuss",
-        "weeklyretro"
-      ],
-      "reacoes": 8
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "I Almost Didn't Learn Programming Because I Was Bad at Math",
-      "tags": [
-        "discuss",
-        "developer"
-      ],
-      "reacoes": 21
+      "reacoes": 10
     },
     {
       "fonte": "Dev.to",
@@ -157,7 +168,7 @@
         "discuss",
         "webdev"
       ],
-      "reacoes": 7
+      "reacoes": 11
     },
     {
       "fonte": "Dev.to",
@@ -182,14 +193,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "AI is not replacing developers anytime soon",
+      "titulo": "Testing Webhooks: The Pattern I Keep Reaching For",
       "tags": [
         "ai",
-        "career",
-        "discuss",
-        "productivity"
+        "api",
+        "testing",
+        "automation"
       ],
-      "reacoes": 2
+      "reacoes": 7
     },
     {
       "fonte": "Dev.to",
@@ -199,17 +210,6 @@
         "nextjs",
         "architecture",
         "webdev"
-      ],
-      "reacoes": 3
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Three dumb ways our prod got slow (and not one was a slow algorithm)",
-      "tags": [
-        "postgres",
-        "webdev",
-        "performance",
-        "supabase"
       ],
       "reacoes": 3
     }
