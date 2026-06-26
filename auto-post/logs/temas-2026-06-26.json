@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "AI children's books, body horror edition",
-      "url": "https://lcamtuf.substack.com/p/ai-childrens-books-body-horror-edition",
-      "score": 96,
-      "comentarios": 25
+      "titulo": "We All Depend on Open Source. We Will Defend It Together",
+      "url": "https://akrites.org/letter/",
+      "score": 229,
+      "comentarios": 118
     },
     {
       "fonte": "HN",
       "titulo": "Om Malik has died",
       "url": "https://om.co/2026/06/24/1966-2026/",
-      "score": 543,
-      "comentarios": 54
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Apple to skip high-end M6 Mac chips in favor of AI-focused M7 line",
-      "url": "https://www.bloomberg.com/news/articles/2026-06-25/apple-to-skip-high-end-m6-mac-chips-to-launch-m7-pro-m7-max-m7-ultra-instead?embedded-checkout=true",
-      "score": 94,
-      "comentarios": 59
+      "score": 955,
+      "comentarios": 115
     },
     {
       "fonte": "HN",
       "titulo": "An entire Herculaneum scroll has been read for the first time",
       "url": "https://scrollprize.org/firstscroll",
-      "score": 1022,
-      "comentarios": 229
+      "score": 1349,
+      "comentarios": 284
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Libre Barcode Project",
+      "url": "https://graphicore.github.io/librebarcode/",
+      "score": 182,
+      "comentarios": 28
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What happened after 2k people tried to hack my AI assistant",
+      "url": "https://www.fernandoi.cl/posts/hackmyclaw/",
+      "score": 204,
+      "comentarios": 74
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Framework's 10G Ethernet module exposes USB-C's complexity",
+      "url": "https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/",
+      "score": 203,
+      "comentarios": 104
     },
     {
       "fonte": "HN",
       "titulo": "The 'papers, please' era of the internet will decimate your privacy",
       "url": "https://expression.fire.org/p/the-papers-please-era-of-the-internet",
-      "score": 456,
-      "comentarios": 219
+      "score": 787,
+      "comentarios": 358
     },
     {
       "fonte": "HN",
-      "titulo": "The Garbage Collection Handbook: The Art of Automatic Memory Management (2nd Ed)",
+      "titulo": "The Garbage Collection Handbook: The Art of Automatic Memory Management (2nd Ed) (2023)",
       "url": "https://gchandbook.org/",
-      "score": 59,
-      "comentarios": 11
+      "score": 159,
+      "comentarios": 27
+    },
+    {
+      "fonte": "HN",
+      "titulo": "22-year-old Mozart's handwritten notebook unearthed in 'major discovery'",
+      "url": "https://www.classicfm.com/composers/mozart/handwritten-notebook-discovered-major-paris/",
+      "score": 86,
+      "comentarios": 16
     },
     {
       "fonte": "HN",
       "titulo": "A game where you're an OS and have to manage processes, memory and I/O events",
       "url": "https://github.com/plbrault/youre-the-os",
-      "score": 112,
-      "comentarios": 25
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Un-0: Generating Images with Coupled Oscillators",
-      "url": "https://unconv.ai/blog/introducing-un-0-generating-images-with-coupled-oscillators/",
-      "score": 122,
-      "comentarios": 30
+      "score": 235,
+      "comentarios": 46
     },
     {
       "fonte": "HN",
       "titulo": "Oxide computer 3D rack guided tour",
       "url": "https://explorer.oxide.computer/",
-      "score": 305,
-      "comentarios": 124
+      "score": 387,
+      "comentarios": 158
     },
     {
       "fonte": "HN",
       "titulo": "IBM debuts sub-1 nanometer chip technology",
       "url": "https://newsroom.ibm.com/2026-06-25-ibm-debuts-worlds-first-sub-1-nanometer-chip-technology",
-      "score": 273,
-      "comentarios": 154
+      "score": 331,
+      "comentarios": 178
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: OpenKnowledge – open source AI-first alternative to Obsidian/Notion",
       "url": "https://github.com/inkeep/open-knowledge",
-      "score": 215,
-      "comentarios": 102
+      "score": 290,
+      "comentarios": 147
     },
     {
       "fonte": "HN",
-      "titulo": "Parallel Parentheses Matching",
-      "url": "https://williamdue.github.io/blog/parallel-parentheses-matching",
-      "score": 66,
-      "comentarios": 9
-    },
-    {
-      "fonte": "HN",
-      "titulo": "An oral history of Bank Python (2021)",
-      "url": "https://calpaterson.com/bank-python.html",
-      "score": 78,
-      "comentarios": 26
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The Doorman's Fallacy in action",
-      "url": "https://rozumem.xyz/posts/17",
-      "score": 69,
-      "comentarios": 99
+      "titulo": "Un-0: Generating Images with Coupled Oscillators",
+      "url": "https://unconv.ai/blog/introducing-un-0-generating-images-with-coupled-oscillators/",
+      "score": 158,
+      "comentarios": 39
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Chess-Inspired Roguelike",
       "url": "https://princechazz.com",
-      "score": 227,
-      "comentarios": 75
+      "score": 326,
+      "comentarios": 109
     }
   ],
   "devto": [
@@ -117,7 +117,7 @@
         "developer",
         "productivity"
       ],
-      "reacoes": 43
+      "reacoes": 45
     },
     {
       "fonte": "Dev.to",
@@ -128,40 +128,39 @@
         "webdev",
         "beginners"
       ],
-      "reacoes": 19
+      "reacoes": 34
     },
     {
       "fonte": "Dev.to",
-      "titulo": "On programming languages, targets, and platforms",
+      "titulo": "1,200 Applications. 4 Offers. Here's What Actually Got Me the Product-Based Role",
       "tags": [
-        "java",
-        "futurism",
-        "python",
-        "coding"
-      ],
-      "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "My app didn't go \"viral\". My AWS bill did.",
-      "tags": [
-        "aws",
+        "career",
         "ai",
-        "learning",
-        "infrastructure"
+        "programming",
+        "productivity"
       ],
-      "reacoes": 12
+      "reacoes": 8
     },
     {
       "fonte": "Dev.to",
-      "titulo": "I don't trust the LLM to classify my email. So I don't let it.",
+      "titulo": "Functional doesn't mean correct. That's the biggest risk with AI-generated code.",
       "tags": [
+        "programming",
         "ai",
-        "llm",
-        "architecture",
-        "opensource"
+        "discuss",
+        "webdev"
       ],
-      "reacoes": 13
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Moving to baweaver.com",
+      "tags": [
+        "webdev",
+        "ruby",
+        "rails"
+      ],
+      "reacoes": 2
     },
     {
       "fonte": "Dev.to",
@@ -175,9 +174,36 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Ponytail: The AI Coding Skill Taking GitHub by Storm — And the One Question Nobody's Answered Yet",
-      "tags": [],
-      "reacoes": 7
+      "titulo": "Deploying a Containerized Backend to a VPS with Docker Compose + GitHub Actions (A Beginner's Runbook)",
+      "tags": [
+        "devops",
+        "programming",
+        "tutorial",
+        "automation"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI is not replacing developers anytime soon",
+      "tags": [
+        "ai",
+        "career",
+        "discuss",
+        "productivity"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Three dumb ways our prod got slow (and not one was a slow algorithm)",
+      "tags": [
+        "postgres",
+        "webdev",
+        "performance",
+        "supabase"
+      ],
+      "reacoes": 3
     },
     {
       "fonte": "Dev.to",
@@ -188,29 +214,7 @@
         "webdev",
         "testing"
       ],
-      "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "How I built ZeroAudit — AI-powered SOC 2 compliance automation with AWS DynamoDB and Vercel",
-      "tags": [
-        "aws",
-        "vercel",
-        "nextjs",
-        "hackathon"
-      ],
-      "reacoes": 0
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Three Loops, No Ship",
-      "tags": [
-        "ai",
-        "opensource",
-        "agents",
-        "localllms"
-      ],
-      "reacoes": 0
+      "reacoes": 3
     }
   ]
 }
