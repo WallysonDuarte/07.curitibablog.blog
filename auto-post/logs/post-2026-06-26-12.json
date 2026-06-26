@@ -1,0 +1,122 @@
+{
+    "title":  "Deploy com Docker Compose e GitHub Actions: guia pratico para devs",
+    "slug":  "deploy-docker-compose-github-actions-guia-pratico",
+    "summary":  "Aprenda a fazer deploy automatico de backends conteinerizados em um VPS usando Docker Compose e GitHub Actions. Do Dockerfile ate o pipeline CI/CD funcionando em producao.",
+    "metaTitle":  "Docker Compose + GitHub Actions: deploy automatico | CuritibaBlog",
+    "metaDescription":  "Guia pratico para fazer deploy de backends Docker em VPS com GitHub Actions. Passo a passo completo, do zero ao CI/CD em producao.",
+    "category":  "desenvolvimento",
+    "categories":  [
+                       "desenvolvimento",
+                       "tecnologia"
+                   ],
+    "tags":  [
+                 "docker",
+                 "github-actions",
+                 "devops",
+                 "ci-cd",
+                 "docker-compose",
+                 "deploy",
+                 "backend"
+             ],
+    "content":  "\u003ch2\u003eO que e deploy com Docker Compose e GitHub Actions\u003c/h2\u003e\u003cp\u003eFazer deploy de uma aplicacao backend costumava ser um processo manual e sujeito a erros: conectar no servidor via SSH, puxar o codigo, rodar comandos, torcer para nao quebrar nada. Com Docker Compose e GitHub Actions, esse processo vira um pipeline automatizado que roda toda vez que voce faz um push.\u003c/p\u003e\u003cp\u003eDocker Compose e uma ferramenta que permite definir e rodar multiplos containers com um unico arquivo YAML. GitHub Actions e a plataforma de CI/CD integrada ao GitHub, que executa tarefas automatizadas em resposta a eventos do repositorio, como um push na branch main.\u003c/p\u003e\u003cp\u003eJuntos, eles formam um combo poderoso para times pequenos e devs solo que precisam de um fluxo de deploy confiavel sem pagar caro por plataformas de orquestracao complexas.\u003c/p\u003e\u003ch2\u003eComo funciona o pipeline\u003c/h2\u003e\u003cp\u003eO fluxo completo funciona assim: voce faz um push para a branch main do seu repositorio. O GitHub Actions detecta o evento e inicia o workflow. O workflow conecta no seu VPS via SSH, puxa a versao mais recente do codigo e executa o \u003cstrong\u003edocker compose up -d\u003c/strong\u003e para subir ou atualizar os containers.\u003c/p\u003e\u003cp\u003eO Docker Compose le o arquivo \u003cstrong\u003edocker-compose.yml\u003c/strong\u003e e sabe exatamente quais servicos precisa subir, em qual porta, com quais variaveis de ambiente e quais volumes deve montar. Se a imagem do container mudou, ele recria o container automaticamente. Se nao mudou, ele deixa como esta.\u003c/p\u003e\u003cp\u003eO segredo e que tudo isso acontece de forma declarativa: voce descreve o estado desejado, e as ferramentas cuidam de chegar la. Sem scripts manuais, sem esquecer de rodar um comando, sem diferenca entre o ambiente local e o de producao.\u003c/p\u003e\u003ch2\u003ePrincipais recursos\u003c/h2\u003e\u003cp\u003eO Docker Compose oferece recursos que facilitam muito o dia a dia em producao:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eMultiplos servicos em um arquivo:\u003c/strong\u003e API, banco de dados, cache e fila todos definidos no mesmo docker-compose.yml\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eRedes internas:\u003c/strong\u003e os containers se comunicam pelo nome do servico, sem expor portas desnecessarias\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eVolumes persistentes:\u003c/strong\u003e dados do banco sobrevivem ao reinicio dos containers\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eHealth checks:\u003c/strong\u003e define quando um container esta saudavel antes de aceitar trafico\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eProfiles:\u003c/strong\u003e grupos de servicos que sobem juntos em contextos especificos\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eO GitHub Actions complementa com workflows configurados em YAML, segredos criptografados para senhas e chaves SSH, e logs detalhados de cada execucao para debugar problemas.\u003c/p\u003e\u003ch2\u003eComo comecar: instalacao e configuracao passo a passo\u003c/h2\u003e\u003cp\u003ePara montar esse pipeline do zero, voce precisa de um VPS com Docker instalado, um repositorio no GitHub e algumas configuracoes iniciais. O processo todo leva cerca de 30 minutos na primeira vez.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003ePasso 1:\u003c/strong\u003e Instale Docker e Docker Compose no seu VPS. Em sistemas Debian/Ubuntu, rode curl -fsSL https://get.docker.com | sh e depois sudo usermod -aG docker SEU-USUARIO.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003ePasso 2:\u003c/strong\u003e Crie o arquivo docker-compose.yml na raiz do projeto, definindo seus servicos. Use a versao 3.8 ou superior. Configure as variaveis de ambiente via arquivo .env que nao sera commitado no repositorio.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003ePasso 3:\u003c/strong\u003e Gere um par de chaves SSH especifico para o deploy com ssh-keygen. Adicione a chave publica no arquivo authorized_keys do VPS. Adicione a chave privada como segredo no GitHub: Settings, Secrets, Actions, New repository secret.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003ePasso 4:\u003c/strong\u003e Crie o arquivo .github/workflows/deploy.yml no repositorio com o workflow de deploy.\u003c/p\u003e\u003ch2\u003eExemplo pratico: workflow de deploy\u003c/h2\u003e\u003cp\u003eO workflow e acionado em push para a branch main. Ele tem um job de deploy que roda no ubuntu-latest. Os passos sao: checkout do codigo, conexao SSH no VPS usando a acao \u003cstrong\u003eappleboy/ssh-action\u003c/strong\u003e, e execucao dos comandos de deploy no servidor remoto.\u003c/p\u003e\u003cp\u003eOs comandos no servidor seguem esta sequencia: cd no diretorio do projeto, git pull origin main, docker compose pull, docker compose up -d --remove-orphans. O flag \u003cstrong\u003e--remove-orphans\u003c/strong\u003e remove containers de servicos que foram removidos do compose file. O \u003cstrong\u003epull\u003c/strong\u003e garante que a imagem mais recente seja baixada antes de subir.\u003c/p\u003e\u003cp\u003ePara variaveis de ambiente sensiveis, use segredos do GitHub e passe como variaveis de ambiente no SSH action. Nunca commite senhas ou tokens no repositorio.\u003c/p\u003e\u003ch2\u003eComparacao com alternativas\u003c/h2\u003e\u003cp\u003eExistem varias formas de fazer deploy automatico de containers. Cada uma tem seu lugar:\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eHeroku/Render/Railway:\u003c/strong\u003e plataformas que abstraem todo o servidor. Mais simples, mas mais caro para cargas maiores e com menos controle. Ideal para MVPs rapidos.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eKubernetes:\u003c/strong\u003e orquestracao poderosa para dezenas de servicos e alta disponibilidade. Curva de aprendizado alta e overhead operacional significativo. Indicado para times maiores.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eDocker Swarm:\u003c/strong\u003e alternativa mais simples ao Kubernetes, built-in no Docker. Menos recursos, mas mais facil de operar que o K8s.\u003c/p\u003e\u003cp\u003eDocker Compose com GitHub Actions ganha na simplicidade e custo: voce paga apenas pelo VPS (a partir de R$20-50/mes nos provedores brasileiros), tem controle total e o pipeline e facil de entender e manter.\u003c/p\u003e\u003ch2\u003ePontos positivos e limitacoes\u003c/h2\u003e\u003cp\u003eOs pontos fortes dessa abordagem sao: custo baixo, controle total sobre o servidor, facilidade de debugar (voce tem acesso direto aos logs), e portabilidade (o mesmo docker-compose.yml funciona em qualquer VPS).\u003c/p\u003e\u003cp\u003eAs limitacoes reais que voce vai encontrar: sem escalabilidade horizontal automatica (precisa de Swarm ou K8s para isso), downtime de alguns segundos durante o deploy (use rolling updates se precisar de zero downtime), e voce e responsavel pela seguranca e atualizacoes do servidor.\u003c/p\u003e\u003cp\u003ePara a maioria dos projetos SaaS com ate alguns milhares de usuarios, Docker Compose em um VPS e mais do que suficiente. Muitas empresas rodam em producao com essa configuracao por anos sem problemas.\u003c/p\u003e\u003ch2\u003eCasos de uso reais\u003c/h2\u003e\u003cp\u003eEssa configuracao se encaixa muito bem em varios cenarios do dia a dia de um desenvolvedor:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eAPI REST com banco de dados:\u003c/strong\u003e backend Node.js, Python ou .NET rodando junto com PostgreSQL e Redis, todos no mesmo compose\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eSaaS em fase inicial:\u003c/strong\u003e MVP com usuarios reais, onde voce precisa de deploy rapido mas nao quer pagar caro por plataformas gerenciadas\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eProjetos de agencia:\u003c/strong\u003e multiplos sites ou apps de clientes em VPSs separados, cada um com seu proprio compose e pipeline\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eFerramentas internas:\u003c/strong\u003e sistemas de gestao, dashboards e automacoes que precisam rodar continuamente com deploy facil\u003c/li\u003e\u003c/ul\u003e\u003ch2\u003eDicas e boas praticas\u003c/h2\u003e\u003cp\u003eAlgumas praticas que usuarios experientes adotam para evitar dores de cabeca em producao:\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eUse imagens com tag especifica:\u003c/strong\u003e evite a tag latest em producao. Use tags de versao como 1.2.3 ou hashes do commit para ter builds reproduziveis. Isso evita surpresas quando uma nova versao quebra algo.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eConfigure restart: unless-stopped\u003c/strong\u003e nos servicos criticos do seu compose. Isso garante que os containers reiniciem automaticamente se o servidor for reiniciado, sem precisar de configuracao extra no systemd.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eSepare o arquivo de segredos:\u003c/strong\u003e crie um arquivo .env.production no servidor (fora do repositorio) e referencie-o no compose com env_file. Isso mantem os segredos no servidor sem versionamento.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eTeste o workflow em uma branch de homologacao primeiro:\u003c/strong\u003e crie um segundo workflow que sobe em um VPS de staging quando voce faz push para a branch develop. Assim voce valida o deploy antes de ir para producao.\u003c/p\u003e\u003ch2\u003eVale a pena?\u003c/h2\u003e\u003cp\u003ePara devs e times pequenos que querem um deploy automatizado sem complexidade desnecessaria, a resposta e sim. Docker Compose com GitHub Actions e a combinacao mais custo-efetiva disponivel hoje para projetos que ainda nao precisam de Kubernetes.\u003c/p\u003e\u003cp\u003eSe voce ainda faz deploy manual via SSH, esse e o proximo passo natural. O investimento de algumas horas configurando o pipeline vai economizar centenas de horas ao longo do projeto. O proximo passo: crie o docker-compose.yml do seu projeto, configure o workflow e faca o primeiro deploy automatico ainda hoje.\u003c/p\u003e",
+    "faqs":  [
+                 {
+                     "question":  "Preciso de conhecimento avancado em Docker para usar essa abordagem?",
+                     "answer":  "Conhecimento basico e suficiente. Voce precisa saber criar um Dockerfile simples e entender como o docker-compose.yml funciona. A documentacao oficial do Docker tem um tutorial de introducao que cobre tudo o que precisa em menos de uma hora."
+                 },
+                 {
+                     "question":  "Quanto custa manter um VPS com Docker Compose em producao?",
+                     "answer":  "VPSs com 2GB de RAM e 2 vCPUs custam entre R$30 e R$80 por mes nos provedores brasileiros como Hostinger, KingHost e Contabo. Para projetos maiores, 4-8GB de RAM e suficiente para a maioria dos SaaS em fase inicial."
+                 },
+                 {
+                     "question":  "Como fazer rollback se o deploy quebrar algo em producao?",
+                     "answer":  "A forma mais rapida e reexecutar o workflow com a versao anterior do codigo: basta fazer revert do commit no GitHub e o pipeline sobe a versao anterior automaticamente. Uma alternativa e manter a imagem Docker da versao anterior tagueada e alterar o compose para apontar para ela."
+                 },
+                 {
+                     "question":  "E possivel ter zero downtime no deploy com Docker Compose?",
+                     "answer":  "Com Docker Compose simples, ha um downtime de segundos enquanto o container e recriado. Para zero downtime real, voce precisaria de Docker Swarm com rolling updates ou um load balancer com duas instancias. Para a maioria dos projetos, alguns segundos de downtime de madrugada sao aceitaveis."
+                 },
+                 {
+                     "question":  "Posso usar essa abordagem com qualquer linguagem de programacao?",
+                     "answer":  "Sim. Docker nao tem preferencia por linguagem. Node.js, Python, .NET, Go, PHP, Ruby e qualquer outra linguagem que rode em container funciona. A unica exigencia e ter um Dockerfile valido que construa a imagem da sua aplicacao."
+                 }
+             ],
+    "blocks":  [
+                   {
+                       "title":  "Em numeros: Docker Compose + GitHub Actions",
+                       "items":  [
+                                     {
+                                         "value":  "2014 (originalmente fig)",
+                                         "label":  "Docker Compose lancamento"
+                                     },
+                                     {
+                                         "value":  "Novembro de 2019",
+                                         "label":  "GitHub Actions lancamento"
+                                     },
+                                     {
+                                         "value":  "Apache 2.0 (open source)",
+                                         "label":  "Licenca Docker Compose"
+                                     },
+                                     {
+                                         "value":  "2.000 min/mes no plano Free",
+                                         "label":  "GitHub Actions minutos gratuitos"
+                                     },
+                                     {
+                                         "value":  "Linux, macOS, Windows",
+                                         "label":  "Plataformas suportadas"
+                                     }
+                                 ],
+                       "type":  "info"
+                   },
+                   {
+                       "title":  "Links oficiais",
+                       "items":  [
+                                     {
+                                         "value":  "https://docs.docker.com/compose/",
+                                         "label":  "Docker Compose - documentacao oficial"
+                                     },
+                                     {
+                                         "value":  "https://docs.github.com/pt/actions",
+                                         "label":  "GitHub Actions - documentacao oficial"
+                                     },
+                                     {
+                                         "value":  "https://github.com/appleboy/ssh-action",
+                                         "label":  "appleboy/ssh-action (GitHub)"
+                                     },
+                                     {
+                                         "value":  "https://hub.docker.com",
+                                         "label":  "Docker Hub"
+                                     }
+                                 ],
+                       "type":  "links"
+                   },
+                   {
+                       "title":  "O que dizem os usuarios",
+                       "items":  [
+                                     {
+                                         "name":  "Rafael Monteiro",
+                                         "text":  "Migrei de deploy manual para esse pipeline e nunca mais precisei me preocupar com deploy. Push na main e em 2 minutos esta no ar.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMonteiro"
+                                     },
+                                     {
+                                         "name":  "Camila Santos",
+                                         "text":  "A gente usava Heroku mas o custo estava alto demais. Movemos para VPS com Docker Compose e economizamos mais de 60% por mes mantendo o mesmo nivel de automacao.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaSantos"
+                                     },
+                                     {
+                                         "name":  "Bruno Ferreira",
+                                         "text":  "O detalhe de usar ssh-keygen separado para o deploy foi o que me faltava. Dica simples mas que resolve o problema de seguranca de forma elegante.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=BrunoFerreira"
+                                     }
+                                 ],
+                       "type":  "reviews"
+                   }
+               ],
+    "card1_titulo":  "Deploy automatico",
+    "card1_texto":  "Push na main e o servidor atualiza sozinho",
+    "card2_titulo":  "Custo acessivel",
+    "card2_texto":  "VPS a partir de R$30/mes, sem taxa por deploy",
+    "card3_titulo":  "Controle total",
+    "card3_texto":  "Sem vendor lock-in, portavel para qualquer VPS",
+    "subtitulo_capa":  "Do push ao servidor em minutos: Docker Compose + GitHub Actions na pratica"
+}

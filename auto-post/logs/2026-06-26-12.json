@@ -1,0 +1,7 @@
+{
+  "data": "2026-06-26",
+  "etapas": {},
+  "status": "ERRO",
+  "erro": "Expecting ',' delimiter: line 10 column 3408 (char 4162)",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1577, in main\n    post_data = json.load(f)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 293, in load\n    return loads(fp.read(),\n        cls=cls, object_hook=object_hook,\n        parse_float=parse_float, parse_int=parse_int,\n        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Python313\\Lib\\json\\decoder.py\", line 345, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Python313\\Lib\\json\\decoder.py\", line 361, in raw_decode\n    obj, end = self.scan_once(s, idx)\n               ~~~~~~~~~~~~~~^^^^^^^^\njson.decoder.JSONDecodeError: Expecting ',' delimiter: line 10 column 3408 (char 4162)\n"
+}
