@@ -1,7 +1,43 @@
 {
   "data": "2026-06-25",
-  "etapas": {},
-  "status": "ERRO",
-  "erro": "Extra data: line 2 column 10 (char 10)",
-  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1577, in main\n    post_data = json.load(f)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 293, in load\n    return loads(fp.read(),\n        cls=cls, object_hook=object_hook,\n        parse_float=parse_float, parse_int=parse_int,\n        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Python313\\Lib\\json\\decoder.py\", line 348, in decode\n    raise JSONDecodeError(\"Extra data\", s, end)\njson.decoder.JSONDecodeError: Extra data: line 2 column 10 (char 10)\n"
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-25-22-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/e8d2528b-790d-44fc-8ea1-6849ac49459f-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/e8d2528b-790d-44fc-8ea1-6849ac49459f-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a3dd15dc03031bd2de96a75",
+      "slug": "ibm-chip-sub-1nm-impacto-para-desenvolvedores",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+      }
+    },
+    "http_check": 404
+  },
+  "status": "PUBLICADO_SEM_SOCIAL",
+  "post_url": "https://curitibablog.com.br/ibm-chip-sub-1nm-impacto-para-desenvolvedores"
 }
