@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
       "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 869,
-      "comentarios": 528
+      "score": 927,
+      "comentarios": 563
     },
     {
       "fonte": "HN",
       "titulo": "Why does kinetic energy increase quadratically, not linearly, with speed? (2011)",
       "url": "https://physics.stackexchange.com/questions/535/why-does-kinetic-energy-increase-quadratically-not-linearly-with-speed",
-      "score": 110,
-      "comentarios": 47
+      "score": 180,
+      "comentarios": 85
+    },
+    {
+      "fonte": "HN",
+      "titulo": "U.S. allows Anthropic to release Mythos AI to ‘trusted’ US organizations",
+      "url": "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies",
+      "score": 341,
+      "comentarios": 337
     },
     {
       "fonte": "HN",
       "titulo": "AI in mathematics is forcing big questions",
       "url": "https://spectrum.ieee.org/ai-in-mathematics",
-      "score": 61,
-      "comentarios": 23
-    },
-    {
-      "fonte": "HN",
-      "titulo": "A C++ implementation of a fast hash map and hash set using hopscotch hashing",
-      "url": "https://github.com/Tessil/hopscotch-map",
-      "score": 70,
-      "comentarios": 11
+      "score": 94,
+      "comentarios": 61
     },
     {
       "fonte": "HN",
       "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 276,
-      "comentarios": 154
+      "score": 307,
+      "comentarios": 171
     },
     {
       "fonte": "HN",
       "titulo": "U.S. government will decide who gets to use GPT-5.6",
       "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
-      "score": 863,
-      "comentarios": 953
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The gap between open weights LLMs and closed source LLMs",
-      "url": "https://blog.doubleword.ai/frontier-os-llm",
-      "score": 132,
-      "comentarios": 108
-    },
-    {
-      "fonte": "HN",
-      "titulo": "We can still stop California's 3D printer surveillance scheme",
-      "url": "https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme",
-      "score": 251,
-      "comentarios": 81
+      "score": 940,
+      "comentarios": 1007
     },
     {
       "fonte": "HN",
       "titulo": "Om",
       "url": "https://daringfireball.net/2026/06/om",
-      "score": 139,
-      "comentarios": 9
+      "score": 262,
+      "comentarios": 15
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The gap between open weights LLMs and closed source LLMs",
+      "url": "https://blog.doubleword.ai/frontier-os-llm",
+      "score": 174,
+      "comentarios": 143
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A C++ implementation of a fast hash map and hash set using hopscotch hashing",
+      "url": "https://github.com/Tessil/hopscotch-map",
+      "score": 81,
+      "comentarios": 13
+    },
+    {
+      "fonte": "HN",
+      "titulo": "We can still stop California's 3D printer surveillance scheme",
+      "url": "https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme",
+      "score": 328,
+      "comentarios": 114
     },
     {
       "fonte": "HN",
       "titulo": "Ultrasound imaging of the brain",
       "url": "https://alephneuro.com/blog/ultrasound-brain",
-      "score": 244,
-      "comentarios": 99
+      "score": 261,
+      "comentarios": 109
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
       "url": "https://github.com/workweave/router",
-      "score": 152,
-      "comentarios": 90
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The \"Bizarre Headgear\" exhibit at the Sam Noble museum",
-      "url": "https://svpow.com/2026/05/15/the-bizarre-headgear-exhibit-at-the-sam-noble-museum-is-incredible/",
-      "score": 71,
-      "comentarios": 7
+      "score": 160,
+      "comentarios": 94
     },
     {
       "fonte": "HN",
       "titulo": "What Is a Nomogram and Why Would It Interest Me?",
       "url": "https://lefakkomies.github.io/pynomo-doc/introduction/introduction.html#what-is-a-nomogram-and-why-would-it-interest-me",
-      "score": 92,
+      "score": 103,
       "comentarios": 18
     },
     {
       "fonte": "HN",
       "titulo": "Long Wave radio era set to end with Droitwich switch-off",
       "url": "https://www.bbc.com/news/articles/c74yn7v7k4qo",
-      "score": 61,
-      "comentarios": 25
+      "score": 74,
+      "comentarios": 30
     },
     {
       "fonte": "HN",
-      "titulo": "Pre-Modern Armies for Worldbuilders, Part III: Paying for It",
-      "url": "https://acoup.blog/2026/06/26/collections-pre-modern-armies-for-worldbuilders-part-iii-paying-for-it/",
-      "score": 63,
-      "comentarios": 6
+      "titulo": "A human postmortem of the 1996 AOL outage",
+      "url": "https://ngrok.com/blog/aol-was-down-1996",
+      "score": 57,
+      "comentarios": 12
     }
   ],
   "devto": [
@@ -117,7 +117,7 @@
         "githubactions",
         "browserautomation"
       ],
-      "reacoes": 15
+      "reacoes": 16
     },
     {
       "fonte": "Dev.to",
@@ -128,7 +128,7 @@
         "opportunities",
         "resources"
       ],
-      "reacoes": 35
+      "reacoes": 36
     },
     {
       "fonte": "Dev.to",
@@ -146,7 +146,7 @@
         "discuss",
         "developer"
       ],
-      "reacoes": 37
+      "reacoes": 40
     },
     {
       "fonte": "Dev.to",
@@ -179,7 +179,7 @@
         "programming",
         "productivity"
       ],
-      "reacoes": 10
+      "reacoes": 15
     },
     {
       "fonte": "Dev.to",
@@ -190,17 +190,7 @@
         "firecracker",
         "aws"
       ],
-      "reacoes": 5
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Moving to baweaver.com",
-      "tags": [
-        "webdev",
-        "ruby",
-        "rails"
-      ],
-      "reacoes": 2
+      "reacoes": 6
     },
     {
       "fonte": "Dev.to",
@@ -212,6 +202,17 @@
         "automation"
       ],
       "reacoes": 8
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI Didn't Invent Slop. It Only Made It Infinite.",
+      "tags": [
+        "ai",
+        "career",
+        "discuss",
+        "codequality"
+      ],
+      "reacoes": 1
     }
   ]
 }
