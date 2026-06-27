@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
       "url": "https://github.com/bikini/exploitarium",
-      "score": 275,
-      "comentarios": 115
+      "score": 444,
+      "comentarios": 175
+    },
+    {
+      "fonte": "HN",
+      "titulo": "AI Is Designing Radio Chips That Humans Couldn't Even Imagine",
+      "url": "https://spectrum.ieee.org/ai-radio-chip-design",
+      "score": 109,
+      "comentarios": 54
     },
     {
       "fonte": "HN",
       "titulo": "OpenRA",
       "url": "https://www.openra.net/",
-      "score": 335,
-      "comentarios": 70
+      "score": 435,
+      "comentarios": 81
     },
     {
       "fonte": "HN",
       "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
       "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
-      "score": 649,
-      "comentarios": 247
+      "score": 680,
+      "comentarios": 274
     },
     {
       "fonte": "HN",
-      "titulo": "Suspicious Discontinuities (2020)",
-      "url": "https://danluu.com/discontinuities/",
-      "score": 122,
-      "comentarios": 34
+      "titulo": "Turn your site into a place people can bump into each other",
+      "url": "https://cauenapier.com/blog/townsquare_release/",
+      "score": 50,
+      "comentarios": 23
     },
     {
       "fonte": "HN",
       "titulo": "Fintech Engineering Handbook",
       "url": "https://w.pitula.me/fintech-engineering-handbook/",
-      "score": 335,
-      "comentarios": 112
+      "score": 381,
+      "comentarios": 123
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Suspicious Discontinuities (2020)",
+      "url": "https://danluu.com/discontinuities/",
+      "score": 149,
+      "comentarios": 42
     },
     {
       "fonte": "HN",
       "titulo": "Post-Mythos Cybersecurity: Keep calm and carry on",
       "url": "https://cephalosec.com/blog/cybersecurity-in-the-post-mythos-era-keep-calm-and-carry-on/",
-      "score": 65,
-      "comentarios": 19
+      "score": 93,
+      "comentarios": 30
     },
     {
       "fonte": "HN",
       "titulo": "Zuckerberg's Increasingly Bizarre War on Whistleblowers",
       "url": "https://pluralistic.net/2026/06/27/zuckerstreisand-2/",
-      "score": 306,
-      "comentarios": 117
+      "score": 438,
+      "comentarios": 171
     },
     {
       "fonte": "HN",
       "titulo": "If you can't hold it, you don't own it",
       "url": "https://dervis.de/physical/",
-      "score": 223,
-      "comentarios": 146
+      "score": 275,
+      "comentarios": 187
     },
     {
       "fonte": "HN",
-      "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
-      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 1084,
-      "comentarios": 691
+      "titulo": "One man, two kernels, and a lot of RISC-V",
+      "url": "https://www.theregister.com/software/2026/06/26/one-man-two-kernels-and-a-lot-of-risc-v/5262858",
+      "score": 52,
+      "comentarios": 4
     },
     {
       "fonte": "HN",
       "titulo": "Reducing tick density along recreational trails in Ottawa, Canada",
       "url": "https://www.sciencedirect.com/science/article/pii/S1877959X26000476",
-      "score": 55,
-      "comentarios": 18
+      "score": 81,
+      "comentarios": 44
     },
     {
       "fonte": "HN",
       "titulo": "How Many Elementary Particles Are There, Really?",
       "url": "https://www.quantamagazine.org/how-many-elementary-particles-are-there-really-20260615/",
-      "score": 75,
-      "comentarios": 62
+      "score": 98,
+      "comentarios": 84
     },
     {
       "fonte": "HN",
       "titulo": "Long Wave radio era set to end with switch-off",
       "url": "https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service",
-      "score": 130,
-      "comentarios": 118
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Beer CSS – Build material design in record time",
-      "url": "https://www.beercss.com",
-      "score": 108,
-      "comentarios": 53
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Linux on Older Hardware: The Complete Revival Guide",
-      "url": "https://www.fosslinux.com/158206/linux-on-older-hardware-revival-guide.htm",
-      "score": 157,
-      "comentarios": 89
+      "score": 142,
+      "comentarios": 141
     },
     {
       "fonte": "HN",
       "titulo": "The US Army Issued Ocarinas to Soldiers in World War II",
       "url": "https://www.flutetunes.com/articles/my-flute-goes-to-war/",
-      "score": 94,
-      "comentarios": 54
+      "score": 111,
+      "comentarios": 60
     }
   ],
   "devto": [

@@ -1,0 +1,16 @@
+{
+  "data": "2026-06-27",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-27-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/0c00bc1e-d25d-49c8-87fc-58588da44075-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/0c00bc1e-d25d-49c8-87fc-58588da44075-cover.jpg"
+    }
+  },
+  "status": "ERRO",
+  "erro": "TEMA_DUPLICADO: titulo similar a post existente 'como-aprender-go-rapido-dev-backend-senior-roadmap' (similarity=67%, palavras comuns: {'go', 'aprender', 'backend', 'rápido'})",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1706, in main\n    inserted_id, is_new_post = inserir_post(doc)\n                               ~~~~~~~~~~~~^^^^^\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 851, in inserir_post\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: TEMA_DUPLICADO: titulo similar a post existente 'como-aprender-go-rapido-dev-backend-senior-roadmap' (similarity=67%, palavras comuns: {'go', 'aprender', 'backend', 'rápido'})\n"
+}
