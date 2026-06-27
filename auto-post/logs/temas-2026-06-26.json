@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
       "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 585,
-      "comentarios": 344
+      "score": 772,
+      "comentarios": 475
+    },
+    {
+      "fonte": "HN",
+      "titulo": "US allows Anthropic to release Mythos to 'trusted partners'",
+      "url": "https://www.reuters.com/technology/us-releases-anthropic-model-mythos-some-us-companies-semafor-reports-2026-06-26/",
+      "score": 104,
+      "comentarios": 47
     },
     {
       "fonte": "HN",
       "titulo": "U.S. government will decide who gets to use GPT-5.6",
       "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
-      "score": 449,
-      "comentarios": 625
+      "score": 744,
+      "comentarios": 860
     },
     {
       "fonte": "HN",
       "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 200,
-      "comentarios": 112
+      "score": 236,
+      "comentarios": 138
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The gap between open weights LLMs and closed source LLMs",
+      "url": "https://blog.doubleword.ai/frontier-os-llm",
+      "score": 88,
+      "comentarios": 74
+    },
+    {
+      "fonte": "HN",
+      "titulo": "We can still stop California's 3D printer surveillance scheme",
+      "url": "https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme",
+      "score": 143,
+      "comentarios": 22
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The \"Bizarre Headgear\" exhibit at the Sam Noble museum",
+      "url": "https://svpow.com/2026/05/15/the-bizarre-headgear-exhibit-at-the-sam-noble-museum-is-incredible/",
+      "score": 65,
+      "comentarios": 6
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
       "url": "https://github.com/workweave/router",
-      "score": 105,
-      "comentarios": 68
+      "score": 133,
+      "comentarios": 86
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What Is a Nomogram and Why Would It Interest Me?",
+      "url": "https://lefakkomies.github.io/pynomo-doc/introduction/introduction.html#what-is-a-nomogram-and-why-would-it-interest-me",
+      "score": 71,
+      "comentarios": 14
     },
     {
       "fonte": "HN",
       "titulo": "Ultrasound imaging of the brain",
       "url": "https://alephneuro.com/blog/ultrasound-brain",
-      "score": 190,
-      "comentarios": 63
+      "score": 222,
+      "comentarios": 92
     },
     {
       "fonte": "HN",
-      "titulo": "Data centers trigger voter backlash",
-      "url": "https://www.newsweek.com/cost-me-the-election-data-centers-trigger-voter-backlash-12118327",
-      "score": 97,
-      "comentarios": 113
+      "titulo": "PlayStation Is Deleting 551 Movies from Customers' Accounts",
+      "url": "https://kotaku.com/playstation-store-movies-digital-studio-canal-terminator-2000711013",
+      "score": 125,
+      "comentarios": 70
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Gossamer: a Rust-flavoured language with real goroutines and pause-free memory",
+      "url": "https://gossamer-lang.org/",
+      "score": 62,
+      "comentarios": 50
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Modern GPU Programming for MLSys",
+      "url": "https://mlc.ai/modern-gpu-programming-for-mlsys/",
+      "score": 55,
+      "comentarios": 8
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The National Parks Were Reportedly Told to Stay Silent on Deaths",
+      "url": "https://www.outsideonline.com/outdoor-adventure/environment/nps-internal-memo-deaths/?link_source=ta_first_comment&taid=6a3dae4f4d2dce00016deef8&utm_content=trueanthem&utm_medium=social&utm_source=facebook",
+      "score": 62,
+      "comentarios": 26
     },
     {
       "fonte": "HN",
       "titulo": "LaTeX.wasm: LaTeX Engines in Browsers",
       "url": "https://www.swiftlatex.com/",
-      "score": 61,
-      "comentarios": 21
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Libre Barcode Project",
-      "url": "https://graphicore.github.io/librebarcode/",
-      "score": 268,
-      "comentarios": 52
-    },
-    {
-      "fonte": "HN",
-      "titulo": "22-year-old Mozart's handwritten notebook unearthed in 'major discovery'",
-      "url": "https://www.classicfm.com/composers/mozart/handwritten-notebook-discovered-major-paris/",
-      "score": 245,
-      "comentarios": 80
-    },
-    {
-      "fonte": "HN",
-      "titulo": "What happened after 2k people tried to hack my AI assistant",
-      "url": "https://www.fernandoi.cl/posts/hackmyclaw/",
-      "score": 337,
-      "comentarios": 156
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Framework's 10G Ethernet module exposes USB-C's complexity",
-      "url": "https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/",
-      "score": 305,
-      "comentarios": 172
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Springer Nature has removed two studies by Max Planck",
-      "url": "https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted",
-      "score": 311,
-      "comentarios": 146
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Jolla Phone (October 2026)",
-      "url": "https://commerce.jolla.com/products/jolla-phone-october-2026",
-      "score": 254,
-      "comentarios": 137
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: WebBase-III – dBASE III rebuilt in the browser with its own interpreter",
-      "url": "https://github.com/DDecoene/WebBaseIII",
-      "score": 70,
-      "comentarios": 19
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Bipartite Matching Is in NC",
-      "url": "https://scottaaronson.blog/?p=9851",
-      "score": 100,
-      "comentarios": 14
+      "score": 78,
+      "comentarios": 29
     }
   ],
   "devto": [
@@ -126,7 +126,7 @@
         "discuss",
         "weeklyretro"
       ],
-      "reacoes": 25
+      "reacoes": 28
     },
     {
       "fonte": "Dev.to",
@@ -137,7 +137,7 @@
         "opportunities",
         "resources"
       ],
-      "reacoes": 24
+      "reacoes": 26
     },
     {
       "fonte": "Dev.to",
@@ -148,7 +148,7 @@
         "discuss",
         "webdev"
       ],
-      "reacoes": 13
+      "reacoes": 16
     },
     {
       "fonte": "Dev.to",
@@ -157,7 +157,7 @@
         "discuss",
         "developer"
       ],
-      "reacoes": 35
+      "reacoes": 36
     },
     {
       "fonte": "Dev.to",
@@ -179,7 +179,7 @@
         "discuss",
         "productivity"
       ],
-      "reacoes": 3
+      "reacoes": 8
     },
     {
       "fonte": "Dev.to",
@@ -200,7 +200,7 @@
         "testing",
         "automation"
       ],
-      "reacoes": 7
+      "reacoes": 8
     },
     {
       "fonte": "Dev.to",
