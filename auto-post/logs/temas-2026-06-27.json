@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": "DeepSeek open-sources inference optimizations with 60–85% faster generation [pdf]",
+      "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
+      "score": 359,
+      "comentarios": 91
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Fintech Engineering Handbook",
+      "url": "https://w.pitula.me/fintech-engineering-handbook/",
+      "score": 76,
+      "comentarios": 21
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Long Wave radio era set to end with switch-off",
+      "url": "https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service",
+      "score": 58,
+      "comentarios": 70
+    },
+    {
+      "fonte": "HN",
       "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
       "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 986,
-      "comentarios": 614
+      "score": 1028,
+      "comentarios": 646
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Linux on Older Hardware: The Complete Revival Guide",
+      "url": "https://www.fosslinux.com/158206/linux-on-older-hardware-revival-guide.htm",
+      "score": 85,
+      "comentarios": 36
     },
     {
       "fonte": "HN",
       "titulo": "WordStar: A Writer's Word Processor (1996)",
       "url": "https://www.sfwriter.com/wordstar.htm",
-      "score": 85,
-      "comentarios": 35
+      "score": 108,
+      "comentarios": 46
     },
     {
       "fonte": "HN",
       "titulo": "Why does kinetic energy increase quadratically, not linearly, with speed? (2011)",
       "url": "https://physics.stackexchange.com/questions/535/why-does-kinetic-energy-increase-quadratically-not-linearly-with-speed",
-      "score": 228,
-      "comentarios": 108
+      "score": 263,
+      "comentarios": 123
     },
     {
       "fonte": "HN",
       "titulo": "OpenTTD 16.0-Beta1",
       "url": "https://www.openttd.org/news/2026/06/25/openttd-16-0-beta1",
-      "score": 142,
-      "comentarios": 19
+      "score": 186,
+      "comentarios": 33
     },
     {
       "fonte": "HN",
       "titulo": "U.S. allows Anthropic to release Mythos AI to ‘trusted’ US organizations",
       "url": "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies",
-      "score": 416,
-      "comentarios": 448
-    },
-    {
-      "fonte": "HN",
-      "titulo": "AI in mathematics is forcing big questions",
-      "url": "https://spectrum.ieee.org/ai-in-mathematics",
-      "score": 116,
-      "comentarios": 85
+      "score": 469,
+      "comentarios": 581
     },
     {
       "fonte": "HN",
       "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 325,
-      "comentarios": 187
+      "score": 341,
+      "comentarios": 188
     },
     {
       "fonte": "HN",
-      "titulo": "Hellishly Slow Level 13 Deflate Compression",
-      "url": "https://kirill.korins.ky/articles/hellishly-slow-level-13-deflate-compression/",
-      "score": 54,
-      "comentarios": 14
+      "titulo": "AI in mathematics is forcing big questions",
+      "url": "https://spectrum.ieee.org/ai-in-mathematics",
+      "score": 144,
+      "comentarios": 108
     },
     {
       "fonte": "HN",
       "titulo": "Fusion Programming Language",
       "url": "https://fusion-lang.org/",
-      "score": 64,
-      "comentarios": 28
+      "score": 86,
+      "comentarios": 37
     },
     {
       "fonte": "HN",
-      "titulo": "Show HN: Hacker News on a train station-style flip board",
-      "url": "https://popflame.quickish.space/hn-flipboard/",
-      "score": 68,
-      "comentarios": 13
-    },
-    {
-      "fonte": "HN",
-      "titulo": "U.S. government will decide who gets to use GPT-5.6",
-      "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
-      "score": 1009,
-      "comentarios": 1055
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Om",
-      "url": "https://daringfireball.net/2026/06/om",
-      "score": 353,
-      "comentarios": 15
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Foreign funds help make housing unaffordable: research",
-      "url": "https://news.mccombs.utexas.edu/research/foreign-funds-help-make-housing-unaffordable/",
-      "score": 73,
+      "titulo": "Hellishly Slow Level 13 Deflate Compression",
+      "url": "https://kirill.korins.ky/articles/hellishly-slow-level-13-deflate-compression/",
+      "score": 69,
       "comentarios": 20
     },
     {
       "fonte": "HN",
       "titulo": "Anatomy of a Failed (Nation-State?) Attack",
       "url": "https://grack.com/blog/2026/06/25/dissecting-a-failed-nation-state-attack/",
-      "score": 51,
-      "comentarios": 8
+      "score": 72,
+      "comentarios": 12
     },
     {
       "fonte": "HN",
-      "titulo": "We can still stop California's 3D printer surveillance scheme",
-      "url": "https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme",
-      "score": 387,
-      "comentarios": 129
+      "titulo": "U.S. government will decide who gets to use GPT-5.6",
+      "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
+      "score": 1062,
+      "comentarios": 1122
     }
   ],
   "devto": [
@@ -117,7 +117,7 @@
         "githubactions",
         "browserautomation"
       ],
-      "reacoes": 16
+      "reacoes": 21
     },
     {
       "fonte": "Dev.to",
@@ -138,15 +138,6 @@
         "weeklyretro"
       ],
       "reacoes": 28
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "I Almost Didn't Learn Programming Because I Was Bad at Math",
-      "tags": [
-        "discuss",
-        "developer"
-      ],
-      "reacoes": 40
     },
     {
       "fonte": "Dev.to",
@@ -202,6 +193,17 @@
         "opensource"
       ],
       "reacoes": 3
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How To Learn Go Fast: A Practical Roadmap For Senior Backend Developers",
+      "tags": [
+        "go",
+        "architecture",
+        "career",
+        "learn"
+      ],
+      "reacoes": 22
     },
     {
       "fonte": "Dev.to",
