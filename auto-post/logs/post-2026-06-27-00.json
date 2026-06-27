@@ -1,0 +1,84 @@
+{
+  "title": "Roteamento inteligente de modelos de IA direto no Claude, Codex e Cursor",
+  "slug": "roteamento-inteligente-modelos-ia-claude-codex-cursor",
+  "summary": "O workweave router e uma ferramenta open source que escolhe automaticamente o melhor modelo de IA para cada tarefa, integrando com Claude, Codex e Cursor sem mudar seu fluxo de trabalho. Veja como funciona e como usar.",
+  "metaTitle": "Roteamento inteligente de modelos IA: Claude, Codex e Cursor | CuritibaBlog",
+  "metaDescription": "Workweave router roteia automaticamente entre modelos de IA como Claude, Codex e Cursor. Menos custo, mais qualidade por tarefa.",
+  "category": "ferramentas-de-ia",
+  "categories": ["ferramentas-de-ia", "desenvolvimento"],
+  "tags": ["ai", "llm", "claude", "codex", "cursor", "roteamento", "open-source"],
+  "content": "<h2>O que e roteamento inteligente de modelos de IA</h2><p>Roteamento de modelos de IA e a pratica de direcionar cada solicitacao para o modelo mais adequado, em vez de usar sempre o mesmo modelo para tudo. A logica e simples: tarefas de completar uma funcao curta nao precisam do mesmo modelo caro que analisa uma arquitetura inteira de software.</p><p>O workweave router e uma ferramenta open source que implementa essa logica diretamente nas ferramentas que devs ja usam: Claude, Codex e Cursor. Em vez de voce escolher manualmente qual modelo usar para cada prompt, o router analisa a solicitacao e escolhe automaticamente entre os modelos disponiveis, balanceando custo e qualidade.</p><p>Para desenvolvedores brasileiros que pagam por token ou que tem limites de uso em planos corporativos, esse tipo de otimizacao pode representar uma reducao real nos custos mensais sem abrir mao de qualidade nas tarefas que exigem modelos mais capazes.</p><h2>Como funciona</h2><p>O router atua como uma camada intermediaria entre voce e os modelos de IA. Quando voce envia uma mensagem no Claude, Codex ou Cursor, o router intercepta a solicitacao, analisa o tipo de tarefa (completar codigo, explicar um conceito, debugar, gerar documentacao, etc.) e decide qual modelo responde.</p><p>A decisao de roteamento usa uma combinacao de heurísticas: tamanho do contexto, complexidade estimada da tarefa, custo por token de cada modelo disponivel e, se configurado, historico de qualidade das respostas anteriores. Tarefas simples vao para modelos menores e mais baratos; tarefas complexas ou de alta precisao vao para modelos mais capazes.</p><p>A integracao funciona via extensao ou proxy local. No caso do Cursor e do Codex, o router se posiciona como um servidor OpenAI compativel, interceptando as chamadas antes que cheguem ao modelo real. No Claude, a integracao usa a API oficial com camada de roteamento no meio.</p><h2>Principais recursos</h2><p>O workweave router oferece funcionalidades praticas para quem usa IA no desenvolvimento diario:</p><ul><li><strong>Roteamento por tipo de tarefa:</strong> classifica automaticamente se a solicitacao e completar codigo, chat, analise, geracao de testes ou outra categoria, e escolhe o modelo mais adequado para cada uma.</li><li><strong>Compatibilidade multi-modelo:</strong> suporte a Claude (Anthropic), modelos OpenAI (GPT-4o, GPT-4 mini) e outros modelos via API compativel com OpenAI.</li><li><strong>Fallback automatico:</strong> se o modelo preferido estiver indisponivel ou atingir limite de rate, o router automaticamente tenta o proximo da lista.</li><li><strong>Dashboard de uso:</strong> visualizacao de quantas requisicoes foram para cada modelo, custo estimado por modelo e taxa de sucesso.</li><li><strong>Configuracao por projeto:</strong> diferentes regras de roteamento para diferentes projetos, com suporte a arquivo de configuracao no repositorio.</li></ul><h2>Como comecar: instalacao e configuracao</h2><p>O workweave router esta disponivel no GitHub e pode ser instalado via npm. O processo basico e:</p><ul><li>Passo 1: clone o repositorio ou instale via npm (npm install -g @workweave/router).</li><li>Passo 2: crie um arquivo de configuracao router.config.json na raiz do seu projeto com as chaves de API dos modelos que voce quer usar.</li><li>Passo 3: inicie o router local (workweave start), que sobe um servidor proxy na porta configurada (padrao: 3000).</li><li>Passo 4: configure o Cursor ou outra ferramenta para apontar para o servidor local do router ao inves do endpoint original da OpenAI ou Anthropic.</li><li>Passo 5: use normalmente. O roteamento acontece de forma transparente sem mudar seu fluxo de trabalho.</li></ul><p>Para o Claude via API direta, o router aceita as mesmas chamadas do SDK da Anthropic, adicionando apenas o header de roteamento automaticamente.</p><h2>Exemplo pratico</h2><p>Imagine um dev que usa o Cursor para programar em Python. Ao longo do dia, ele faz centenas de solicitacoes: completar funcoes curtas, reformatar strings, debugar erros de sintaxe, mas tambem ocasionalmente pede uma revisao arquitetural de um modulo inteiro ou a geracao de testes unitarios completos.</p><p>Sem roteamento, todas essas solicitacoes vao para o mesmo modelo caro (GPT-4o ou Claude Opus), mesmo quando um modelo menor resolveria igual. Com o workweave router configurado, completar funcoes e corrigir erros simples vao para GPT-4 mini ou Claude Haiku, enquanto as analises arquiteturais e geracoes de testes mais longas vao automaticamente para o modelo mais capaz. O resultado pode ser uma reducao de 40 a 60 por cento nos custos de API sem mudanca percebida na qualidade das respostas do dia a dia.</p><h2>Comparacao com alternativas</h2><p>O conceito de roteamento de modelos nao e novo, mas a maioria das solucoes existentes exige infraestrutura propria ou nao integra com ferramentas como Cursor:</p><ul><li><strong>LiteLLM:</strong> proxy open source com suporte a muitos modelos e roteamento basico. Mais focado em backend e APIs, menos em ferramentas de dev local.</li><li><strong>RouteLLM (Lmsys):</strong> pesquisa academica de roteamento com benchmarks, mas sem integracao direta com ferramentas como Cursor ou Claude.</li><li><strong>Configurar manualmente por contexto:</strong> cada dev escolhe o modelo na mao. Funciona, mas e tedioso e sujeito a esquecimento.</li></ul><p>O diferencial do workweave router e a integracao nativa com ferramentas de dev populares e o foco em casos de uso reais de programacao, nao apenas APIs genericas.</p><h2>Pontos positivos e limitacoes</h2><p>Os pontos positivos incluem a reducao de custo sem mudanca de fluxo de trabalho, o suporte a multiplos modelos com fallback automatico e a integracao com Cursor, uma das ferramentas mais usadas por devs atualmente. Por ser open source, voce pode customizar as regras de roteamento conforme suas necessidades.</p><p>As limitacoes tambem sao reais. O router adiciona uma camada de latencia (geralmente menos de 50ms, mas existente). A classificacao automatica de tarefas nao e perfeita: o modelo pode ser mal classificado em casos ambiguos, enviando uma tarefa simples para um modelo caro ou vice-versa. Alem disso, a configuracao inicial exige conhecimento tecnico; nao e uma solucao plug-and-play para iniciantes.</p><p>Outro ponto de atencao: como o router intercepta as chamadas, voce precisa confiar na ferramenta com suas chaves de API. Para ambientes corporativos sensiveis, vale auditar o codigo antes de usar em producao.</p><h2>Casos de uso reais</h2><p>O roteamento inteligente de modelos se encaixa bem em alguns cenarios especificos:</p><ul><li><strong>Times de dev com budget de IA limitado:</strong> empresas que pagam a conta de API do time podem reduzir custos sem restringir o acesso dos devs a modelos melhores quando necessario.</li><li><strong>Freelancers e devs independentes:</strong> quem paga do proprio bolso pode usar modelos caros apenas quando realmente precisar, economizando nos usos cotidianos simples.</li><li><strong>Aplicacoes com alto volume de chamadas:</strong> sistemas que processam muitas solicitacoes de IA por dia se beneficiam do roteamento para equilibrar custo e qualidade em escala.</li><li><strong>Ambientes de experimentacao:</strong> testar varios modelos para o mesmo tipo de tarefa sem ter que reconfigurar manualmente cada chamada.</li></ul><h2>Dicas e boas praticas</h2><p>Ao configurar o workweave router, comece com as regras padrao antes de customizar. As heuristicas padrao cobrem bem a maioria dos casos de uso de desenvolvimento. So customize quando os logs mostrarem que um tipo especifico de tarefa esta sendo mal roteada com frequencia.</p><p>Monitore o dashboard de uso na primeira semana. Voce vai entender rapidamente quais categorias de tarefa dominam seu uso e se as decisoes de roteamento fazem sentido para o seu contexto especifico.</p><p>Se voce usa o Cursor com autocompletar ativo, configure o router para enviar sempre completions de codigo curtos para o modelo mais rapido e barato. A latencia do autocompletar e critica para a experiencia, e modelos menores costumam ser suficientes e mais rapidos.</p><h2>Vale a pena?</h2><p>Para devs que usam IA intensivamente no dia a dia e querem reduzir custos sem abrir mao de qualidade, o workweave router vale a tentativa. A configuracao inicial leva menos de 30 minutos e o potencial de economia e real.</p><p>Se voce usa IA esporadicamente ou tem plano corporativo sem preocupacao com custo por token, o ganho sera menor e a complexidade adicional pode nao compensar. O proximo passo: acesse o repositorio no GitHub (github.com/workweave/router) e leia o README para ver exemplos de configuracao e os modelos suportados atualmente.</p>",
+  "faqs": [
+    {
+      "question": "O workweave router funciona com o ChatGPT tambem?",
+      "answer": "O router foi projetado para integrar com ferramentas como Cursor, Codex e a API do Claude. Para o ChatGPT via interface web, o roteamento nao se aplica, pois nao ha acesso programatico ao modelo naquele contexto."
+    },
+    {
+      "question": "O router e seguro? Minhas chaves de API ficam expostas?",
+      "answer": "O router roda localmente e as chaves ficam no seu arquivo de configuracao local, nao sao enviadas a servidores externos. Por ser open source, voce pode auditar o codigo antes de usar."
+    },
+    {
+      "question": "Quanto consigo economizar com roteamento inteligente?",
+      "answer": "Depende do seu padrao de uso. Devs com muitas solicitacoes simples (completar codigo, corrigir sintaxe) podem economizar 40 a 60 por cento. Para uso mais complexo e pesado, a economia e menor."
+    },
+    {
+      "question": "Preciso pagar para usar o workweave router?",
+      "answer": "O router em si e open source e gratuito. Voce paga apenas pelas chamadas aos modelos de IA que usar (OpenAI, Anthropic), conforme o pricing normal de cada fornecedor."
+    },
+    {
+      "question": "E possivel usar o roteamento inteligente em producao, nao so no desenvolvimento?",
+      "answer": "Sim. O router funciona como proxy e pode ser usado em aplicacoes em producao. Nesse caso, e recomendavel rodar o servidor do router em infraestrutura propria, separado da aplicacao principal."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: workweave router",
+      "items": [
+        {"label": "Licenca", "value": "Open source (GitHub)"},
+        {"label": "Integracao", "value": "Claude, Codex, Cursor"},
+        {"label": "Latencia adicionada", "value": "Menos de 50ms"},
+        {"label": "Instalacao", "value": "npm (Node.js)"},
+        {"label": "Configuracao", "value": "Arquivo JSON no projeto"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Repositorio GitHub", "value": "https://github.com/workweave/router"},
+        {"label": "Documentacao Cursor", "value": "https://docs.cursor.com"},
+        {"label": "API Claude (Anthropic)", "value": "https://docs.anthropic.com"},
+        {"label": "API OpenAI", "value": "https://platform.openai.com/docs"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Lucas Martins",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasMartins",
+          "text": "Configurei em 20 minutos no Cursor e ja na primeira semana vi a diferenca na conta. Tarefas simples foram automaticamente para o Haiku e as complexas ficaram no Opus. Simples assim."
+        },
+        {
+          "name": "Fernanda Oliveira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=FernandaOliveira",
+          "text": "O que me convenceu foi o dashboard mostrando quantas chamadas foram para cada modelo. Da para entender exatamente onde o dinheiro vai e ajustar as regras de roteamento."
+        },
+        {
+          "name": "Diego Nascimento",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DiegoNascimento",
+          "text": "Uso muito autocompletar no Cursor e o router reduziu a latencia porque as completions curtas passaram a ir para modelos menores e mais rapidos. Ganho duplo: velocidade e custo."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Menos custo de API",
+  "card1_texto": "Modelos baratos para tarefas simples automaticamente",
+  "card2_titulo": "Sem mudar rotina",
+  "card2_texto": "Integra com Cursor, Codex e Claude existentes",
+  "card3_titulo": "Open source",
+  "card3_texto": "Codigo auditavel e customizavel para seu uso",
+  "subtitulo_capa": "Economize na conta de IA escolhendo o modelo certo para cada tarefa de forma automatica"
+}

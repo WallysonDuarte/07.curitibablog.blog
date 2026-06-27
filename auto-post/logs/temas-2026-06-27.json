@@ -1,0 +1,217 @@
+{
+  "data": "2026-06-27",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
+      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
+      "score": 869,
+      "comentarios": 528
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Why does kinetic energy increase quadratically, not linearly, with speed? (2011)",
+      "url": "https://physics.stackexchange.com/questions/535/why-does-kinetic-energy-increase-quadratically-not-linearly-with-speed",
+      "score": 110,
+      "comentarios": 47
+    },
+    {
+      "fonte": "HN",
+      "titulo": "AI in mathematics is forcing big questions",
+      "url": "https://spectrum.ieee.org/ai-in-mathematics",
+      "score": 61,
+      "comentarios": 23
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A C++ implementation of a fast hash map and hash set using hopscotch hashing",
+      "url": "https://github.com/Tessil/hopscotch-map",
+      "score": 70,
+      "comentarios": 11
+    },
+    {
+      "fonte": "HN",
+      "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
+      "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
+      "score": 276,
+      "comentarios": 154
+    },
+    {
+      "fonte": "HN",
+      "titulo": "U.S. government will decide who gets to use GPT-5.6",
+      "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
+      "score": 863,
+      "comentarios": 953
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The gap between open weights LLMs and closed source LLMs",
+      "url": "https://blog.doubleword.ai/frontier-os-llm",
+      "score": 132,
+      "comentarios": 108
+    },
+    {
+      "fonte": "HN",
+      "titulo": "We can still stop California's 3D printer surveillance scheme",
+      "url": "https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme",
+      "score": 251,
+      "comentarios": 81
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Om",
+      "url": "https://daringfireball.net/2026/06/om",
+      "score": 139,
+      "comentarios": 9
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ultrasound imaging of the brain",
+      "url": "https://alephneuro.com/blog/ultrasound-brain",
+      "score": 244,
+      "comentarios": 99
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
+      "url": "https://github.com/workweave/router",
+      "score": 152,
+      "comentarios": 90
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The \"Bizarre Headgear\" exhibit at the Sam Noble museum",
+      "url": "https://svpow.com/2026/05/15/the-bizarre-headgear-exhibit-at-the-sam-noble-museum-is-incredible/",
+      "score": 71,
+      "comentarios": 7
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What Is a Nomogram and Why Would It Interest Me?",
+      "url": "https://lefakkomies.github.io/pynomo-doc/introduction/introduction.html#what-is-a-nomogram-and-why-would-it-interest-me",
+      "score": 92,
+      "comentarios": 18
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Long Wave radio era set to end with Droitwich switch-off",
+      "url": "https://www.bbc.com/news/articles/c74yn7v7k4qo",
+      "score": 61,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Pre-Modern Armies for Worldbuilders, Part III: Paying for It",
+      "url": "https://acoup.blog/2026/06/26/collections-pre-modern-armies-for-worldbuilders-part-iii-paying-for-it/",
+      "score": 63,
+      "comentarios": 6
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Never forget to enter the Stern Grove lottery again!",
+      "tags": [
+        "ai",
+        "playwright",
+        "githubactions",
+        "browserautomation"
+      ],
+      "reacoes": 15
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Dev Opportunity Radar #5: A Fully Funded Trip to AWS re:Invent, Google Cloud Career Launchpad, and a $1,000 Award",
+      "tags": [
+        "discuss",
+        "community",
+        "opportunities",
+        "resources"
+      ],
+      "reacoes": 35
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What was your win this week!?",
+      "tags": [
+        "discuss",
+        "weeklyretro"
+      ],
+      "reacoes": 28
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Almost Didn't Learn Programming Because I Was Bad at Math",
+      "tags": [
+        "discuss",
+        "developer"
+      ],
+      "reacoes": 37
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Functional doesn't mean correct. That's the biggest risk with AI-generated code.",
+      "tags": [
+        "programming",
+        "ai",
+        "discuss",
+        "webdev"
+      ],
+      "reacoes": 17
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI is not replacing developers anytime soon",
+      "tags": [
+        "ai",
+        "career",
+        "discuss",
+        "productivity"
+      ],
+      "reacoes": 8
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "1,200 Applications. 4 Offers. Here's What Actually Got Me the Product-Based Role",
+      "tags": [
+        "career",
+        "ai",
+        "programming",
+        "productivity"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Built a Serverless VPN on Lambda MicroVMs — 12 Builds, 5 Dead Ends, 1 Working Architecture",
+      "tags": [
+        "lambda",
+        "microvm",
+        "firecracker",
+        "aws"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Moving to baweaver.com",
+      "tags": [
+        "webdev",
+        "ruby",
+        "rails"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Testing Webhooks: The Pattern I Keep Reaching For",
+      "tags": [
+        "ai",
+        "api",
+        "testing",
+        "automation"
+      ],
+      "reacoes": 8
+    }
+  ]
+}
