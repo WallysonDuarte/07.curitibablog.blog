@@ -1,0 +1,84 @@
+{
+  "title": "Como aprender Go rapido sendo dev backend senior",
+  "slug": "como-aprender-go-rapido-dev-backend-senior-roadmap",
+  "summary": "Um roteiro pratico para desenvolvedores backend experientes aprenderem Go sem comecar do zero. Foca no que realmente importa para quem ja conhece outras linguagens.",
+  "metaTitle": "Aprender Go rapido sendo dev backend senior | CuritibaBlog",
+  "metaDescription": "Roteiro pratico para devs backend senio aprenderem Go sem perder tempo com o basico. Foco no que importa: concorrencia, tooling e padroes reais.",
+  "category": "desenvolvimento",
+  "categories": ["desenvolvimento", "tecnologia"],
+  "tags": ["golang", "go", "backend", "linguagens", "programacao", "carreira", "aprendizado"],
+  "content": "<h2>O que e Go e por que um senior deve se importar</h2><p>Go, ou Golang, e uma linguagem de programacao criada pelo Google e lancada publicamente em 2009. Foi projetada para resolver problemas reais de desenvolvimento em larga escala: compilacao rapida, concorrencia simples, tooling integrado e deploys como binario unico.</p><p>Para desenvolvedores backend com experiencia em Java, C#, Python ou Node.js, Go representa uma mudanca de paradigma importante. Nao porque seja radicalmente diferente, mas porque e deliberadamente simples. A linguagem tem poucos recursos, e essa e exatamente a proposta: menos decisoes de design, mais foco no problema real.</p><p>Em 2026, Go esta consolidado em infraestrutura, ferramentas DevOps, APIs de alta performance e sistemas distribuidos. Docker, Kubernetes, Terraform e muitas outras ferramentas que voce provavelmente usa no dia a dia foram escritas em Go. Aprender a linguagem vai abrir contexto para entender e contribuir com esse ecossistema.</p><h2>Como funciona: o que torna Go diferente</h2><p>Go compila para binario nativo sem runtime externo. Isso significa que o deploy e um arquivo executavel, sem JVM, sem interpretador Python, sem Node.js instalado no servidor. Para devops e infraestrutura, isso e um diferencial enorme em simplicidade e previsibilidade.</p><p>A concorrencia em Go e baseada em goroutines e channels. Goroutines sao como threads ultraleves gerenciadas pelo runtime do Go, e voce pode ter milhares delas sem problema. Channels sao o mecanismo de comunicacao entre goroutines, inspirados no modelo CSP (Communicating Sequential Processes).</p><p>Go nao tem classes ou heranca. Tem structs, interfaces e composicao. Para quem vem de Java ou C#, isso parece limitante no inicio, mas na pratica leva a codigo mais simples e menos acoplado. A interface em Go e implicita: se uma struct implementa os metodos de uma interface, ela satisfaz a interface automaticamente, sem precisar declarar.</p><h2>Principais recursos da linguagem</h2><p>Go tem um conjunto pequeno mas bem pensado de recursos:</p><ul><li><strong>Goroutines e channels:</strong> concorrencia de alto nivel sem callbacks ou async/await complicados</li><li><strong>Garbage collector:</strong> gerenciamento de memoria automatico com pausas muito baixas</li><li><strong>Interface implicita:</strong> polimorfismo sem acoplamento de heranca</li><li><strong>Stdlib robusta:</strong> HTTP, JSON, criptografia, testes e muito mais sem dependencias externas</li><li><strong>go fmt:</strong> formatacao de codigo obrigatoria e padronizada, acabando com debates de estilo</li><li><strong>Compilacao cruzada:</strong> gerar binario para Linux, Mac ou Windows de qualquer sistema com um comando</li><li><strong>go modules:</strong> gerenciamento de dependencias integrado, sem npm ou maven separados</li></ul><p>O tooling integrado e um dos grandes diferenciais: <strong>go test</strong>, <strong>go vet</strong>, <strong>go build</strong> e <strong>go run</strong> fazem tudo que voce precisa sem configurar ferramentas externas.</p><h2>Como comecar: roteiro para quem ja e senior</h2><p>A vantagem de ser senior e que voce pode pular o basico e ir direto ao que importa:</p><p><strong>Passo 1 - Instale Go e leia o tour:</strong> golang.org/tour e um tutorial interativo no browser que cobre a sintaxe em menos de 2 horas. Para um senior, isso e suficiente para entender a sintaxe basica.</p><p><strong>Passo 2 - Leia Effective Go:</strong> o documento oficial que explica os padroes idomaticos da linguagem. E curto, direto e vai te poupar de escrever Go que funciona mas que parece Java traduzido.</p><p><strong>Passo 3 - Construa algo real:</strong> uma API REST com net/http da stdlib, sem frameworks. Isso forca voce a entender como Go funciona de verdade, sem a abstracao de um framework escondendo os detalhes.</p><h2>Exemplo pratico: API HTTP sem framework</h2><p>Uma das melhores formas de aprender Go como backend dev e construir uma API HTTP usando apenas a stdlib. A net/http do Go e completa o suficiente para servicos reais, e muitas empresas usam ela em producao sem Gin ou Echo.</p><p>Voce cria um http.ServeMux para roteamento, define handlers como funcoes que recebem http.ResponseWriter e *http.Request, serializa JSON com encoding/json e sobe o servidor com http.ListenAndServe. O codigo e verboso comparado ao Express.js, mas cada linha faz exatamente o que parece fazer.</p><p>Depois que voce fizer isso, vai entender por que frameworks como Gin ou Chi existem e quando vale usar cada um. A decisao de abstrair ou nao vai ser informada, nao chutada.</p><h2>Comparacao com outras linguagens backend</h2><p>Para devs com experiencia em outras linguagens, a curva de Go varia:</p><p><strong>Vindo de Python:</strong> Go vai parecer verboso no inicio. Sem list comprehensions, sem duck typing, sem decorators. A vantagem e performance e deploy trivial. A curva e de 2 a 4 semanas para se sentir produtivo.</p><p><strong>Vindo de Java/C#:</strong> A falta de classes e heranca e o maior ajuste. A orientacao a interface implicita e diferente mas poderosa. Generics foram adicionados no Go 1.18, o que reduziu uma reclamacao historica. A curva e de 1 a 2 semanas.</p><p><strong>Vindo de Node.js:</strong> A concorrencia com goroutines e mais simples de raciocinar que callbacks e Promises. A tipagem estatica vai pegar erros que em Node.js so aparecem em producao. A curva e de 1 a 3 semanas.</p><h2>Pontos positivos e limitacoes</h2><p>Go brilha em performance, simplicidade de deploy e concorrencia. Para APIs de alta demanda, microservicos e ferramentas de linha de comando, e uma das melhores opcoes disponíveis. A stdlib excelente significa que projetos pequenos e medios podem existir com dependencias minimas.</p><p>As limitacoes sao reais: Go nao tem generics ricos como Java ou C#, embora os generics do 1.18+ tenham melhorado muito. O tratamento de erros com if err != nil repetitivo incomoda muita gente. A ausencia de exceptions e uma decisao de design deliberada, mas pode parecer estranha no inicio. Ecossistema de ORMs e menor que Java ou Python.</p><h2>Casos de uso reais</h2><p>Go faz mais sentido em alguns contextos especificos:</p><ul><li><strong>Microservicos de alta performance:</strong> latencia baixa, binario pequeno, concorrencia simples</li><li><strong>Ferramentas CLI:</strong> compilacao cruzada facil, binario unico sem dependencias</li><li><strong>Infraestrutura e DevOps:</strong> proxies, balanceadores, agentes de monitoramento</li><li><strong>APIs com alto throughput:</strong> Go consegue servir muito mais requisicoes por segundo que Python ou Ruby com o mesmo hardware</li></ul><h2>Dicas e boas praticas</h2><p>Para um senior que esta aprendendo Go, algumas praticas evitam os erros mais comuns:</p><p>Nao tente traduzir padroes de outras linguagens diretamente. Go tem seus proprios idiomas. Um design de classe Java traduzido para struct em Go provavelmente vai ser mais complicado que a solucao idiomatica em Go. Leia codigo Go de projetos open source para entender os padroes.</p><p>Use o golangci-lint desde o inicio. Ele roda varios linters em conjunto e vai te avisar sobre padroes ruins antes que virem habito. E especialmente util para devs que vem de linguagens com convencoes diferentes.</p><p>Resista a tentacao de adicionar frameworks cedo. A stdlib do Go e poderosa. Entenda ela primeiro, depois avalie se um framework adiciona valor real ao seu caso de uso especifico.</p><h2>Vale a pena aprender Go sendo senior?</h2><p>Se voce trabalha com infraestrutura, microservicos ou quer contribuir com ferramentas do ecossistema cloud-native, Go e uma adicao de alto valor ao seu repertorio. A linguagem esta madura, tem mercado de trabalho crescente e o aprendizado e rapido para quem ja tem base solida de backend.</p><p>Se o seu foco e produtos de negocio, ORMs complexos ou ecossistemas muito especificos de bibliotecas, outras linguagens podem ter mais ferramentas prontas. O proximo passo e ir ao golang.org/tour, completar o tutorial em um sabado e fazer uma pequena API para sentir como e na pratica.</p>",
+  "faqs": [
+    {
+      "question": "Quanto tempo leva para um dev backend senior se sentir produtivo em Go?",
+      "answer": "Para quem vem de Java ou C#, de 1 a 2 semanas de pratica diaria ja da produtividade basica. Para quem vem de Python ou JavaScript, de 2 a 4 semanas. A curva e suave porque a linguagem e pequena."
+    },
+    {
+      "question": "Preciso saber concorrencia para comecar em Go?",
+      "answer": "Nao precisa dominar goroutines no inicio. Voce consegue construir APIs HTTP funcionais sem usar concorrencia explicita. Aprenda a sintaxe basica e a stdlib primeiro, depois se aprofunde em goroutines e channels."
+    },
+    {
+      "question": "Go tem bons frameworks web?",
+      "answer": "Sim. Gin e Echo sao os mais usados e maduros. Chi e uma opcao mais leve. Mas a stdlib net/http e poderosa o suficiente para muitos casos. Muitas APIs em producao rodam sem framework nenhum."
+    },
+    {
+      "question": "Vale usar Go para projetos pequenos ou so para escala?",
+      "answer": "Go funciona bem em qualquer tamanho. Para ferramentas CLI e utilitarios, o binario unico sem dependencias e um diferencial real mesmo em projetos pequenos. Para APIs, a simplicidade do deploy ja justifica o uso."
+    },
+    {
+      "question": "Go tem bom mercado de trabalho no Brasil?",
+      "answer": "O mercado brasileiro de Go esta crescendo, especialmente em empresas de tecnologia e fintechs. Nao e tao amplo quanto Java ou JavaScript, mas a demanda por pessoas com Go vem aumentando consistentemente."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: Go",
+      "items": [
+        {"label": "Criador", "value": "Google"},
+        {"label": "Lancamento publico", "value": "2009"},
+        {"label": "Versao atual", "value": "Go 1.22+ (2024)"},
+        {"label": "Licenca", "value": "BSD (open source)"},
+        {"label": "Uso notavel", "value": "Docker, Kubernetes, Terraform, Prometheus"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Site oficial", "value": "https://golang.org"},
+        {"label": "Tour interativo", "value": "https://go.dev/tour"},
+        {"label": "Effective Go", "value": "https://go.dev/doc/effective_go"},
+        {"label": "GitHub", "value": "https://github.com/golang/go"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Thiago Nascimento Costa",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ThiagoNascimentoCosta",
+          "text": "Vim do Java e aprendi Go em duas semanas. O que mais gostei foi o deploy: um binario, sem JVM, sem configuracao. Isso muda tudo em infraestrutura."
+        },
+        {
+          "name": "Mariana Oliveira Souza",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MarianaOliveiraSouza",
+          "text": "Depois de anos com Python, a tipagem estatica do Go me fez pegar erros que antes so apareciam em producao. A curva de aprendizado foi suave, a linguagem e pequena."
+        },
+        {
+          "name": "Felipe Augusto Pereira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=FelipeAugustoPereira",
+          "text": "Migramos um servico Node.js para Go e o throughput triplicou com o mesmo hardware. O codigo ficou mais simples de manter tambem, sem callback hell."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Curva suave",
+  "card1_texto": "Sintaxe pequena, aprendizado rapido",
+  "card2_titulo": "Deploy simples",
+  "card2_texto": "Binario unico, sem runtime externo",
+  "card3_titulo": "Alta performance",
+  "card3_texto": "Concorrencia nativa com goroutines",
+  "subtitulo_capa": "Go para devs backend senior: como aprender rapido sem comecar do zero"
+}

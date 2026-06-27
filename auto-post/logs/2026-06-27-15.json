@@ -1,0 +1,7 @@
+{
+  "data": "2026-06-27",
+  "etapas": {},
+  "status": "ERRO",
+  "erro": "Char proibido U+2014 em: '<h2>O que e Go e por que um senior deve se importar</h2><p>Go, ou Golang, e uma '",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1608, in main\n    check_post(post_data)\n    ~~~~~~~~~~^^^^^^^^^^^\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 737, in check_post\n    raise ValueError(f\"Char proibido U+{ord(c):04X} em: {f[:80]!r}\")\nValueError: Char proibido U+2014 em: '<h2>O que e Go e por que um senior deve se importar</h2><p>Go, ou Golang, e uma '\n"
+}

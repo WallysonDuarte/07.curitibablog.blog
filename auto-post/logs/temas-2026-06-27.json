@@ -5,120 +5,109 @@
       "fonte": "HN",
       "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
       "url": "https://github.com/bikini/exploitarium",
-      "score": 158,
-      "comentarios": 63
+      "score": 275,
+      "comentarios": 115
     },
     {
       "fonte": "HN",
       "titulo": "OpenRA",
       "url": "https://www.openra.net/",
-      "score": 291,
-      "comentarios": 63
+      "score": 335,
+      "comentarios": 70
     },
     {
       "fonte": "HN",
       "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
       "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
-      "score": 637,
-      "comentarios": 239
+      "score": 649,
+      "comentarios": 247
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Suspicious Discontinuities (2020)",
+      "url": "https://danluu.com/discontinuities/",
+      "score": 122,
+      "comentarios": 34
     },
     {
       "fonte": "HN",
       "titulo": "Fintech Engineering Handbook",
       "url": "https://w.pitula.me/fintech-engineering-handbook/",
-      "score": 307,
-      "comentarios": 105
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Suspicious Discontinuities",
-      "url": "https://danluu.com/discontinuities/",
-      "score": 86,
-      "comentarios": 20
+      "score": 335,
+      "comentarios": 112
     },
     {
       "fonte": "HN",
       "titulo": "Post-Mythos Cybersecurity: Keep calm and carry on",
       "url": "https://cephalosec.com/blog/cybersecurity-in-the-post-mythos-era-keep-calm-and-carry-on/",
-      "score": 52,
-      "comentarios": 14
-    },
-    {
-      "fonte": "HN",
-      "titulo": "If you can't hold it, you don't own it",
-      "url": "https://dervis.de/physical/",
-      "score": 187,
-      "comentarios": 114
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Underarm Bowling Incident of 1981",
-      "url": "https://en.wikipedia.org/wiki/Underarm_bowling_incident_of_1981",
-      "score": 90,
-      "comentarios": 57
+      "score": 65,
+      "comentarios": 19
     },
     {
       "fonte": "HN",
       "titulo": "Zuckerberg's Increasingly Bizarre War on Whistleblowers",
       "url": "https://pluralistic.net/2026/06/27/zuckerstreisand-2/",
-      "score": 214,
-      "comentarios": 81
+      "score": 306,
+      "comentarios": 117
     },
     {
       "fonte": "HN",
-      "titulo": "How Many Elementary Particles Are There, Really?",
-      "url": "https://www.quantamagazine.org/how-many-elementary-particles-are-there-really-20260615/",
-      "score": 68,
-      "comentarios": 50
+      "titulo": "If you can't hold it, you don't own it",
+      "url": "https://dervis.de/physical/",
+      "score": 223,
+      "comentarios": 146
     },
     {
       "fonte": "HN",
       "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
       "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 1075,
-      "comentarios": 684
+      "score": 1084,
+      "comentarios": 691
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Reducing tick density along recreational trails in Ottawa, Canada",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1877959X26000476",
+      "score": 55,
+      "comentarios": 18
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How Many Elementary Particles Are There, Really?",
+      "url": "https://www.quantamagazine.org/how-many-elementary-particles-are-there-really-20260615/",
+      "score": 75,
+      "comentarios": 62
     },
     {
       "fonte": "HN",
       "titulo": "Long Wave radio era set to end with switch-off",
       "url": "https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service",
-      "score": 119,
-      "comentarios": 114
+      "score": 130,
+      "comentarios": 118
     },
     {
       "fonte": "HN",
       "titulo": "Beer CSS – Build material design in record time",
       "url": "https://www.beercss.com",
-      "score": 100,
-      "comentarios": 46
+      "score": 108,
+      "comentarios": 53
     },
     {
       "fonte": "HN",
       "titulo": "Linux on Older Hardware: The Complete Revival Guide",
       "url": "https://www.fosslinux.com/158206/linux-on-older-hardware-revival-guide.htm",
-      "score": 152,
-      "comentarios": 80
+      "score": 157,
+      "comentarios": 89
     },
     {
       "fonte": "HN",
       "titulo": "The US Army Issued Ocarinas to Soldiers in World War II",
       "url": "https://www.flutetunes.com/articles/my-flute-goes-to-war/",
-      "score": 82,
-      "comentarios": 45
+      "score": 94,
+      "comentarios": 54
     }
   ],
   "devto": [
-    {
-      "fonte": "Dev.to",
-      "titulo": "Never forget to enter the Stern Grove lottery again!",
-      "tags": [
-        "ai",
-        "playwright",
-        "githubactions",
-        "browserautomation"
-      ],
-      "reacoes": 23
-    },
     {
       "fonte": "Dev.to",
       "titulo": "Weekly Dev Log 2026-W11",
@@ -143,6 +132,17 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "What I Learned About PDAs in a Week of Building on Solana",
+      "tags": [
+        "rust",
+        "solana",
+        "anchor",
+        "webdev"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "AI Didn't Invent Slop. It Only Made It Infinite.",
       "tags": [
         "ai",
@@ -154,17 +154,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "How To Learn Go Fast: A Practical Roadmap For Senior Backend Developers",
-      "tags": [
-        "go",
-        "architecture",
-        "career",
-        "learn"
-      ],
-      "reacoes": 23
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "Choreography of validation: how to make your auth form seamless and usable",
       "tags": [
         "react",
@@ -173,6 +162,17 @@
         "uxdesign"
       ],
       "reacoes": 3
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How To Learn Go Fast: A Practical Roadmap For Senior Backend Developers",
+      "tags": [
+        "go",
+        "architecture",
+        "career",
+        "learn"
+      ],
+      "reacoes": 23
     },
     {
       "fonte": "Dev.to",

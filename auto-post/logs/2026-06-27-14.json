@@ -1,7 +1,46 @@
 {
   "data": "2026-06-27",
-  "etapas": {},
-  "status": "ERRO",
-  "erro": "Char proibido U+2014 em: '<h2>O que e o Beer CSS</h2><p>Beer CSS e um framework CSS open source que implem'",
-  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1608, in main\n    check_post(post_data)\n    ~~~~~~~~~~^^^^^^^^^^^\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 737, in check_post\n    raise ValueError(f\"Char proibido U+{ord(c):04X} em: {f[:80]!r}\")\nValueError: Char proibido U+2014 em: '<h2>O que e o Beer CSS</h2><p>Beer CSS e um framework CSS open source que implem'\n"
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-27-14-cover.jpg",
+      "problemas": [
+        "Título não corresponde ao esperado 'Beer CSS: Material Design 3 no seu projeto sem uma linha de JavaScript extra'",
+        "Conteúdo completamente diferente do título esperado",
+        "Titulo esperado \"Beer CSS: Material Design 3 no seu projeto sem uma linha de JavaScript extra\" nao encontrado; lido: \"IA acelera o código, mas os projetos continuam lentos: por que isso acontece?\""
+      ]
+    },
+    "upload": {
+      "key": "covers/71e9cdec-8a27-487b-adf6-af3a17a06ac0-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/71e9cdec-8a27-487b-adf6-af3a17a06ac0-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a4003145566af52a7e098de",
+      "slug": "beer-css-framework-material-design-3-sem-dependencias",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": false,
+        "erro": "npm build falhou: try.js:22967:40\n    at async file:///E:/PROJETOS/curitibablog.com.br/07.curitibablog.blog/node_modules/rollup/dist/es/shared/node-entry.js:23961:13\n    at async buildEnvironment (file:///E:/PROJETOS/curitibablog.com.br/07.curitibablog.blog/node_modules/vite/dist/node/chunks/config.js:33547:64)\u001b[22m\n"
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 404
+  },
+  "status": "PUBLICADO_SEM_SOCIAL",
+  "post_url": "https://curitibablog.com.br/beer-css-framework-material-design-3-sem-dependencias"
 }
