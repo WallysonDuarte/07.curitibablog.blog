@@ -1,0 +1,84 @@
+{
+  "title": "IA acelera o código, mas os projetos continuam lentos: por que isso acontece?",
+  "slug": "ia-acelera-codigo-projetos-continuam-lentos-por-que",
+  "summary": "As ferramentas de IA ajudam devs a escrever código muito mais rápido. Mas por que os projetos não entregam mais rápido? Entenda o que realmente trava as equipes de desenvolvimento e o que fazer a respeito.",
+  "metaTitle": "IA acelera código mas projetos ficam lentos? Entenda | CuritibaBlog",
+  "metaDescription": "Devs usam IA e codam mais rápido, mas os projetos não aceleram. Descubra os gargalos reais nas equipes de desenvolvimento em 2026.",
+  "category": "negocios",
+  "categories": ["negocios", "tecnologia"],
+  "tags": ["ia", "produtividade", "gestao", "equipes-dev", "engenharia-de-software", "automacao", "processos"],
+  "content": "<h2>O paradoxo da IA no desenvolvimento</h2><p>Você já ouviu isso antes: <strong>IA vai triplicar a produtividade dos devs</strong>. GitHub Copilot, Claude, Cursor, v0 - as ferramentas estão por toda parte. Mas chega o final do sprint e o projeto continua atrasado do mesmo jeito.</p><p>Um debate publicado no Dev.to em junho de 2026 levantou exatamente essa questão: se a IA está acelerando tanto a escrita de código, por que os projetos não estão entregando mais rápido? A resposta incomoda bastante.</p><p>O problema não é a IA. O problema é que código é apenas uma parte pequena do que faz um projeto andar. E é justamente nas outras partes que o gargalo mora.</p><h2>Como o desenvolvimento realmente funciona</h2><p>Pense no ciclo completo de uma feature: reunião de alinhamento, refinamento, design, implementação, revisão de código, testes, homologação, aprovação, deploy. A IA toca em <strong>uma etapa apenas: a implementação</strong>.</p><p>Se implementar levava 4 horas e agora leva 1 hora com IA, você economizou 3 horas num ciclo que dura 3 semanas. O ganho proporcional é mínimo.</p><p>Isso é o que os pesquisadores chamam de <strong>Lei de Amdahl aplicada ao desenvolvimento</strong>: otimizar uma parte que não é o gargalo principal não muda a velocidade do sistema como um todo.</p><h2>Os gargalos reais que a IA não resolve</h2><p>Os obstáculos que realmente travam os projetos são outros:</p><ul><li><strong>Reuniões demais e decisões de menos:</strong> times gastam horas alinhando e minutos decidindo. A IA não entra numa sala de reunião.</li><li><strong>Revisão de código lenta:</strong> PRs ficam abertos por dias esperando aprovação. A IA escreve o código, mas quem revisa ainda é humano.</li><li><strong>Requisitos ambíguos:</strong> a IA gera código rápido para o problema errado. Retrabalho dobra o tempo.</li><li><strong>Débito técnico acumulado:</strong> quanto mais código a IA gera, mais rápido o repositório vira uma bagunça se não houver disciplina de arquitetura.</li><li><strong>Dependências externas:</strong> APIs de terceiros, aprovações de compliance, integrações com sistemas legados - nada disso acelera com IA.</li></ul><h2>Como medir se a IA está ajudando de verdade</h2><p>A métrica certa não é <strong>linhas de código por dia</strong>. É <strong>features entregues por sprint</strong> ou <strong>tempo do commit ao deploy</strong>. Se essas métricas não melhoraram depois que o time adotou IA, o gargalo está em outro lugar.</p><p>Algumas métricas práticas para acompanhar: tempo médio de abertura de PR até merge, percentual de sprints que entregam o que foi planejado, e quantidade de retrabalho causado por requisitos mal definidos.</p><p>Se você medir essas coisas antes e depois de adotar ferramentas de IA, vai ter uma visão honesta do impacto real - não só uma sensação de que está codando mais rápido.</p><h2>Como começar: mapeie o gargalo antes de adotar IA</h2><p>Antes de ampliar o uso de IA no time, descubra onde o tempo realmente vai embora. O processo é simples:</p><p><strong>Passo 1:</strong> Peça ao time para registrar por uma semana onde cada hora de trabalho foi gasta (codando, em reunião, esperando aprovação, corrigindo bugs).</p><p><strong>Passo 2:</strong> Identifique as 3 atividades que consomem mais tempo. Provavelmente você vai se surpreender com quanto tempo vai para reuniões e revisões.</p><p><strong>Passo 3:</strong> Aplique IA especificamente nessas atividades. Use IA para gerar resumos de reunião, para ajudar na revisão de código, para escrever casos de teste antes de implementar.</p><h2>Comparação: IA como ferramenta vs IA como solução mágica</h2><p>Times que conseguem extrair valor real da IA tratam as ferramentas como um <strong>multiplicador de capacidade individual</strong>, não como uma solução para problemas de processo.</p><p>Um dev que tinha dificuldade com testes agora consegue escrever testes melhores mais rápido. Um dev que demorava para escrever documentação agora documenta em tempo real. Isso é ganho real e mensurável.</p><p>O problema aparece quando o time pensa que IA vai resolver gargalos de processo, comunicação ou cultura. Uma equipe disfuncional com IA continua sendo uma equipe disfuncional - só que gerando código mais rápido para o lugar errado.</p><h2>Pontos positivos e limitações da IA no desenvolvimento</h2><p><strong>O que funciona bem:</strong> autocompletar código repetitivo, gerar testes unitários, explicar código legado, converter entre linguagens, escrever documentação técnica e criar primeiras versões de componentes de interface.</p><p><strong>O que ainda não funciona bem:</strong> entender o contexto de negócio da feature, saber quando dizer que algo não deveria ser feito, garantir que o código novo vai funcionar com o sistema legado e tomar decisões de arquitetura de longo prazo.</p><p>A IA é ótima para executar. Ruim para questionar. Times de desenvolvimento precisam das duas coisas para entregar bem.</p><h2>Casos de uso reais: quem ganha mais com IA</h2><p><strong>Devs júnior:</strong> a IA atua como mentor on-demand. Explicações de código, sugestões de padrões, geração de boilerplate - isso reduz a curva de aprendizado e libera os sêniors para revisar em vez de ensinar desde o zero.</p><p><strong>Times pequenos:</strong> startups com 2 ou 3 devs conseguem cobrir mais superfície técnica. Um dev de frontend consegue escrever código de backend aceitável com IA de apoio, o que antes exigiria contratar outra pessoa.</p><p><strong>Freelancers:</strong> o ganho é proporcional ao trabalho individual. Sem reuniões e sem fila de revisão, o freelancer absorve quase 100% do ganho de velocidade da IA.</p><p><strong>Times grandes com muito processo:</strong> o ganho é mínimo porque os gargalos estão nas reuniões, aprovações e coordenação - não no código em si.</p><h2>Dicas e boas práticas para extrair valor de verdade</h2><p>Algumas práticas que times de alta performance adotaram ao integrar IA no fluxo:</p><ul><li><strong>Pair programming com IA:</strong> em vez de aceitar cegamente o que a IA gera, trate como um par menos experiente. Revise tudo, questione escolhas de arquitetura.</li><li><strong>IA para testes primeiro:</strong> antes de implementar, peça à IA para gerar os casos de teste. Isso força clareza no requisito antes de escrever uma linha de código real.</li><li><strong>Limite o contexto:</strong> IAs funcionam melhor com contexto bem definido. Prompts vagos geram código vago e impreciso.</li><li><strong>Meça o retrabalho:</strong> se o código gerado por IA está gerando mais bugs em produção, você está trocando velocidade de implementação por custo de correção.</li></ul><h2>Vale a pena investir em IA para o seu time?</h2><p>Para devs individuais e times pequenos sem muito processo burocrático: <strong>sim, sem dúvida</strong>. O ganho de velocidade individual é real e impacta diretamente a entrega final.</p><p>Para times grandes com processos estabelecidos: vale investir, mas <strong>revise primeiro onde está o gargalo</strong>. Se o problema é revisão de código, implante ferramentas de revisão assistida por IA. Se o problema são reuniões excessivas, use IA para agendas e resumos - não só para codificar mais rápido.</p><p>O próximo passo prático: na sua próxima retrospectiva, pergunte ao time onde o tempo realmente foi embora naquele sprint. A resposta vai indicar onde IA pode ter impacto real - ou onde o problema é de processo e não de ferramenta.</p>",
+  "faqs": [
+    {
+      "question": "Por que usar IA no desenvolvimento não está acelerando meus projetos?",
+      "answer": "Porque a IA acelera principalmente a escrita de código, que normalmente representa apenas uma parte do ciclo total de uma feature. Reuniões, revisões de código, homologação e aprovações costumam ser os gargalos reais. Se essas etapas não melhoraram, a entrega final não acelera."
+    },
+    {
+      "question": "Como medir se a IA está trazendo resultado real para o meu time?",
+      "answer": "Meça features entregues por sprint e tempo médio de PR aberto até merge, não linhas de código por dia. Se essas métricas não mudaram depois de adotar IA, o gargalo está em outra etapa do processo, não na velocidade de codificação."
+    },
+    {
+      "question": "A IA pode substituir boas práticas de desenvolvimento?",
+      "answer": "Não. A IA gera código mais rápido, mas não questiona requisitos ambíguos, não detecta problemas de arquitetura de longo prazo e não resolve débito técnico. Times que abandonam boas práticas confiando na IA acumulam problemas mais rápido do que antes."
+    },
+    {
+      "question": "Quais ferramentas de IA para desenvolvimento fazem diferença de verdade?",
+      "answer": "GitHub Copilot, Cursor e Claude Code são as mais adotadas por times em 2026. O maior impacto prático aparece em autocompletar código repetitivo, gerar testes unitários, explicar código legado e escrever documentação. O diferencial está em como o time usa a ferramenta, não só em qual ferramenta escolhe."
+    },
+    {
+      "question": "Times pequenos ganham mais com IA do que times grandes?",
+      "answer": "Em geral, sim. Times pequenos têm menos processo, então o ganho individual de velocidade impacta diretamente a entrega. Times grandes têm mais etapas no processo onde a IA não atua, diluindo o ganho. Mas times grandes que reformulam o processo junto com a adoção de IA conseguem bons resultados."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: IA e produtividade em desenvolvimento",
+      "items": [
+        {"label": "Usuarios ativos do GitHub Copilot", "value": "mais de 1,8 milhao (2026)"},
+        {"label": "Ganho de velocidade em codificacao", "value": "cerca de 55% em tarefas isoladas (estudo GitHub)"},
+        {"label": "Principal gargalo relatado por times", "value": "revisao de codigo e reunioes"},
+        {"label": "Ferramentas mais usadas em 2026", "value": "Copilot, Cursor, Claude Code, v0, Gemini"},
+        {"label": "Impacto real em entregas de projeto", "value": "depende de onde esta o gargalo do time"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "GitHub Copilot", "value": "https://github.com/features/copilot"},
+        {"label": "Cursor Editor", "value": "https://www.cursor.com"},
+        {"label": "Claude Code (Anthropic)", "value": "https://www.anthropic.com/claude-code"},
+        {"label": "v0 by Vercel", "value": "https://v0.dev"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Rafael Mendonca",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMendonca",
+          "text": "Comecei a usar Copilot e minha velocidade de codificacao aumentou muito. Mas o sprint ainda atrasa porque a fila de revisao de PR continua a mesma. O gargalo mudou de lugar."
+        },
+        {
+          "name": "Camila Souza",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaSouza",
+          "text": "Como freelancer, o ganho e real. Sem reunioes e sem esperar aprovacao de ninguem, entrego features em metade do tempo que levava antes de usar IA."
+        },
+        {
+          "name": "Bruno Oliveira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=BrunoOliveira",
+          "text": "No nosso time usamos IA para gerar os testes antes de implementar. Isso forcou a equipe a definir melhor os requisitos e reduziu o retrabalho mais do que qualquer outra mudanca que fizemos."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Codigo nao e gargalo",
+  "card1_texto": "Reunioes e revisoes travam mais que a codificacao",
+  "card2_titulo": "Meca o impacto real",
+  "card2_texto": "Features entregues por sprint, nao linhas de codigo",
+  "card3_titulo": "Ganha quem mede",
+  "card3_texto": "Descubra o gargalo antes de adotar IA no time",
+  "subtitulo_capa": "IA acelera o codigo, mas reunioes e revisoes ainda travam os projetos"
+}

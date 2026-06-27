@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
-      "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
-      "score": 560,
-      "comentarios": 218
+      "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
+      "url": "https://github.com/bikini/exploitarium",
+      "score": 158,
+      "comentarios": 63
     },
     {
       "fonte": "HN",
       "titulo": "OpenRA",
       "url": "https://www.openra.net/",
-      "score": 159,
-      "comentarios": 44
+      "score": 291,
+      "comentarios": 63
+    },
+    {
+      "fonte": "HN",
+      "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
+      "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
+      "score": 637,
+      "comentarios": 239
     },
     {
       "fonte": "HN",
       "titulo": "Fintech Engineering Handbook",
       "url": "https://w.pitula.me/fintech-engineering-handbook/",
-      "score": 232,
-      "comentarios": 76
+      "score": 307,
+      "comentarios": 105
     },
     {
       "fonte": "HN",
-      "titulo": "Long Wave radio era set to end with switch-off",
-      "url": "https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service",
-      "score": 101,
-      "comentarios": 106
+      "titulo": "Suspicious Discontinuities",
+      "url": "https://danluu.com/discontinuities/",
+      "score": 86,
+      "comentarios": 20
     },
     {
       "fonte": "HN",
-      "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
-      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 1056,
-      "comentarios": 670
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Beer CSS – Build material design in record time",
-      "url": "https://www.beercss.com",
-      "score": 83,
-      "comentarios": 32
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Streaming services' obnoxiously loud ads become illegal on July 1 in California",
-      "url": "https://arstechnica.com/gadgets/2026/06/streaming-services-obnoxiously-loud-ads-become-illegal-on-july-1-in-california/",
-      "score": 65,
-      "comentarios": 9
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The US Army Issued Ocarinas to Soldiers in World War II",
-      "url": "https://www.flutetunes.com/articles/my-flute-goes-to-war/",
-      "score": 65,
-      "comentarios": 30
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Linux on Older Hardware: The Complete Revival Guide",
-      "url": "https://www.fosslinux.com/158206/linux-on-older-hardware-revival-guide.htm",
-      "score": 124,
-      "comentarios": 69
+      "titulo": "Post-Mythos Cybersecurity: Keep calm and carry on",
+      "url": "https://cephalosec.com/blog/cybersecurity-in-the-post-mythos-era-keep-calm-and-carry-on/",
+      "score": 52,
+      "comentarios": 14
     },
     {
       "fonte": "HN",
       "titulo": "If you can't hold it, you don't own it",
       "url": "https://dervis.de/physical/",
-      "score": 121,
+      "score": 187,
+      "comentarios": 114
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Underarm Bowling Incident of 1981",
+      "url": "https://en.wikipedia.org/wiki/Underarm_bowling_incident_of_1981",
+      "score": 90,
+      "comentarios": 57
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Zuckerberg's Increasingly Bizarre War on Whistleblowers",
+      "url": "https://pluralistic.net/2026/06/27/zuckerstreisand-2/",
+      "score": 214,
       "comentarios": 81
     },
     {
       "fonte": "HN",
-      "titulo": "Why does kinetic energy increase quadratically, not linearly, with speed? (2011)",
-      "url": "https://physics.stackexchange.com/questions/535/why-does-kinetic-energy-increase-quadratically-not-linearly-with-speed",
-      "score": 298,
-      "comentarios": 148
+      "titulo": "How Many Elementary Particles Are There, Really?",
+      "url": "https://www.quantamagazine.org/how-many-elementary-particles-are-there-really-20260615/",
+      "score": 68,
+      "comentarios": 50
     },
     {
       "fonte": "HN",
-      "titulo": "WordStar: A Writer's Word Processor (1996)",
-      "url": "https://www.sfwriter.com/wordstar.htm",
-      "score": 132,
-      "comentarios": 64
+      "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
+      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
+      "score": 1075,
+      "comentarios": 684
     },
     {
       "fonte": "HN",
-      "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
-      "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 354,
-      "comentarios": 193
+      "titulo": "Long Wave radio era set to end with switch-off",
+      "url": "https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service",
+      "score": 119,
+      "comentarios": 114
     },
     {
       "fonte": "HN",
-      "titulo": "Anatomy of a Failed (Nation-State?) Attack",
-      "url": "https://grack.com/blog/2026/06/25/dissecting-a-failed-nation-state-attack/",
-      "score": 98,
-      "comentarios": 22
+      "titulo": "Beer CSS – Build material design in record time",
+      "url": "https://www.beercss.com",
+      "score": 100,
+      "comentarios": 46
     },
     {
       "fonte": "HN",
-      "titulo": "U.S. allows Anthropic to release Mythos AI to ‘trusted’ US organizations",
-      "url": "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies",
-      "score": 506,
-      "comentarios": 667
+      "titulo": "Linux on Older Hardware: The Complete Revival Guide",
+      "url": "https://www.fosslinux.com/158206/linux-on-older-hardware-revival-guide.htm",
+      "score": 152,
+      "comentarios": 80
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The US Army Issued Ocarinas to Soldiers in World War II",
+      "url": "https://www.flutetunes.com/articles/my-flute-goes-to-war/",
+      "score": 82,
+      "comentarios": 45
     }
   ],
   "devto": [
@@ -117,18 +117,7 @@
         "githubactions",
         "browserautomation"
       ],
-      "reacoes": 22
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Dev Opportunity Radar #5: A Fully Funded Trip to AWS re:Invent, Google Cloud Career Launchpad, and a $1,000 Award",
-      "tags": [
-        "discuss",
-        "community",
-        "opportunities",
-        "resources"
-      ],
-      "reacoes": 41
+      "reacoes": 23
     },
     {
       "fonte": "Dev.to",
@@ -165,17 +154,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "How I Built a Custom Rust Blockchain for On-Chain Ride Lifecycle",
-      "tags": [
-        "rust",
-        "blockchain",
-        "webdev",
-        "opensource"
-      ],
-      "reacoes": 3
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "How To Learn Go Fast: A Practical Roadmap For Senior Backend Developers",
       "tags": [
         "go",
@@ -187,12 +165,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "The AI reviewer scored 23/25 and missed the point",
+      "titulo": "Choreography of validation: how to make your auth form seamless and usable",
       "tags": [
-        "ai",
-        "workflow"
+        "react",
+        "javascript",
+        "ux",
+        "uxdesign"
       ],
-      "reacoes": 7
+      "reacoes": 3
     },
     {
       "fonte": "Dev.to",
@@ -215,6 +195,28 @@
         "softwareengineering"
       ],
       "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "tgo Dev log #4: The Dread of Competition, Native Compilation, and the Relentless Grind of Hard Things",
+      "tags": [
+        "leadership",
+        "tgo",
+        "typescript",
+        "go"
+      ],
+      "reacoes": 1
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Built a Live Timeline of React Hooks (useState, useEffect, useMemo, useRef)",
+      "tags": [
+        "react",
+        "javascript",
+        "webdev",
+        "beginners"
+      ],
+      "reacoes": 2
     }
   ]
 }
