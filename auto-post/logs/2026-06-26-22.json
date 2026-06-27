@@ -1,0 +1,82 @@
+{
+  "data": "2026-06-26",
+  "etapas": {
+    "capa": "FALHOU: Flow nao gerou imagem dentro do timeout de 180s.",
+    "mongo": {
+      "id": "6a3f23d8947ca36ff841d91e",
+      "slug": "gpt-5-6-sol-openai-proximo-modelo-ia",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1009331061851042"
+      },
+      "instagram": "sem_imagem"
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "{\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n}"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7476447229642391554"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/gpt-5-6-sol-openai-proximo-modelo-ia"
+}

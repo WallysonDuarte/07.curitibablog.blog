@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
       "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 772,
-      "comentarios": 475
+      "score": 805,
+      "comentarios": 491
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Why does kinetic energy increase quadratically, not linearly, with speed? (2011)",
+      "url": "https://physics.stackexchange.com/questions/535/why-does-kinetic-energy-increase-quadratically-not-linearly-with-speed",
+      "score": 57,
+      "comentarios": 17
     },
     {
       "fonte": "HN",
       "titulo": "US allows Anthropic to release Mythos to 'trusted partners'",
       "url": "https://www.reuters.com/technology/us-releases-anthropic-model-mythos-some-us-companies-semafor-reports-2026-06-26/",
-      "score": 104,
-      "comentarios": 47
+      "score": 174,
+      "comentarios": 116
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A C++ implementation of a fast hash map and hash set using hopscotch hashing",
+      "url": "https://github.com/Tessil/hopscotch-map",
+      "score": 57,
+      "comentarios": 8
     },
     {
       "fonte": "HN",
       "titulo": "U.S. government will decide who gets to use GPT-5.6",
       "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
-      "score": 744,
-      "comentarios": 860
+      "score": 788,
+      "comentarios": 892
     },
     {
       "fonte": "HN",
       "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 236,
-      "comentarios": 138
+      "score": 255,
+      "comentarios": 143
     },
     {
       "fonte": "HN",
       "titulo": "The gap between open weights LLMs and closed source LLMs",
       "url": "https://blog.doubleword.ai/frontier-os-llm",
-      "score": 88,
-      "comentarios": 74
+      "score": 106,
+      "comentarios": 89
     },
     {
       "fonte": "HN",
       "titulo": "We can still stop California's 3D printer surveillance scheme",
       "url": "https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme",
-      "score": 143,
-      "comentarios": 22
+      "score": 190,
+      "comentarios": 52
     },
     {
       "fonte": "HN",
       "titulo": "The \"Bizarre Headgear\" exhibit at the Sam Noble museum",
       "url": "https://svpow.com/2026/05/15/the-bizarre-headgear-exhibit-at-the-sam-noble-museum-is-incredible/",
-      "score": 65,
-      "comentarios": 6
+      "score": 67,
+      "comentarios": 7
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
       "url": "https://github.com/workweave/router",
-      "score": 133,
+      "score": 138,
       "comentarios": 86
-    },
-    {
-      "fonte": "HN",
-      "titulo": "What Is a Nomogram and Why Would It Interest Me?",
-      "url": "https://lefakkomies.github.io/pynomo-doc/introduction/introduction.html#what-is-a-nomogram-and-why-would-it-interest-me",
-      "score": 71,
-      "comentarios": 14
     },
     {
       "fonte": "HN",
       "titulo": "Ultrasound imaging of the brain",
       "url": "https://alephneuro.com/blog/ultrasound-brain",
-      "score": 222,
+      "score": 231,
       "comentarios": 92
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What Is a Nomogram and Why Would It Interest Me?",
+      "url": "https://lefakkomies.github.io/pynomo-doc/introduction/introduction.html#what-is-a-nomogram-and-why-would-it-interest-me",
+      "score": 79,
+      "comentarios": 15
     },
     {
       "fonte": "HN",
       "titulo": "PlayStation Is Deleting 551 Movies from Customers' Accounts",
       "url": "https://kotaku.com/playstation-store-movies-digital-studio-canal-terminator-2000711013",
-      "score": 125,
-      "comentarios": 70
+      "score": 140,
+      "comentarios": 88
     },
     {
       "fonte": "HN",
       "titulo": "Gossamer: a Rust-flavoured language with real goroutines and pause-free memory",
       "url": "https://gossamer-lang.org/",
-      "score": 62,
-      "comentarios": 50
+      "score": 66,
+      "comentarios": 57
     },
     {
       "fonte": "HN",
       "titulo": "Modern GPU Programming for MLSys",
       "url": "https://mlc.ai/modern-gpu-programming-for-mlsys/",
-      "score": 55,
-      "comentarios": 8
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The National Parks Were Reportedly Told to Stay Silent on Deaths",
-      "url": "https://www.outsideonline.com/outdoor-adventure/environment/nps-internal-memo-deaths/?link_source=ta_first_comment&taid=6a3dae4f4d2dce00016deef8&utm_content=trueanthem&utm_medium=social&utm_source=facebook",
-      "score": 62,
-      "comentarios": 26
-    },
-    {
-      "fonte": "HN",
-      "titulo": "LaTeX.wasm: LaTeX Engines in Browsers",
-      "url": "https://www.swiftlatex.com/",
-      "score": 78,
-      "comentarios": 29
+      "score": 58,
+      "comentarios": 10
     }
   ],
   "devto": [
@@ -148,7 +148,7 @@
         "discuss",
         "webdev"
       ],
-      "reacoes": 16
+      "reacoes": 17
     },
     {
       "fonte": "Dev.to",
