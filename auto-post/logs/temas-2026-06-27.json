@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "DeepSeek open-sources inference optimizations with 60–85% faster generation [pdf]",
+      "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
       "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
-      "score": 359,
-      "comentarios": 91
+      "score": 560,
+      "comentarios": 218
+    },
+    {
+      "fonte": "HN",
+      "titulo": "OpenRA",
+      "url": "https://www.openra.net/",
+      "score": 159,
+      "comentarios": 44
     },
     {
       "fonte": "HN",
       "titulo": "Fintech Engineering Handbook",
       "url": "https://w.pitula.me/fintech-engineering-handbook/",
-      "score": 76,
-      "comentarios": 21
+      "score": 232,
+      "comentarios": 76
     },
     {
       "fonte": "HN",
       "titulo": "Long Wave radio era set to end with switch-off",
       "url": "https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service",
-      "score": 58,
-      "comentarios": 70
+      "score": 101,
+      "comentarios": 106
     },
     {
       "fonte": "HN",
       "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
       "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 1028,
-      "comentarios": 646
+      "score": 1056,
+      "comentarios": 670
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Beer CSS – Build material design in record time",
+      "url": "https://www.beercss.com",
+      "score": 83,
+      "comentarios": 32
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Streaming services' obnoxiously loud ads become illegal on July 1 in California",
+      "url": "https://arstechnica.com/gadgets/2026/06/streaming-services-obnoxiously-loud-ads-become-illegal-on-july-1-in-california/",
+      "score": 65,
+      "comentarios": 9
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The US Army Issued Ocarinas to Soldiers in World War II",
+      "url": "https://www.flutetunes.com/articles/my-flute-goes-to-war/",
+      "score": 65,
+      "comentarios": 30
     },
     {
       "fonte": "HN",
       "titulo": "Linux on Older Hardware: The Complete Revival Guide",
       "url": "https://www.fosslinux.com/158206/linux-on-older-hardware-revival-guide.htm",
-      "score": 85,
-      "comentarios": 36
+      "score": 124,
+      "comentarios": 69
     },
     {
       "fonte": "HN",
-      "titulo": "WordStar: A Writer's Word Processor (1996)",
-      "url": "https://www.sfwriter.com/wordstar.htm",
-      "score": 108,
-      "comentarios": 46
+      "titulo": "If you can't hold it, you don't own it",
+      "url": "https://dervis.de/physical/",
+      "score": 121,
+      "comentarios": 81
     },
     {
       "fonte": "HN",
       "titulo": "Why does kinetic energy increase quadratically, not linearly, with speed? (2011)",
       "url": "https://physics.stackexchange.com/questions/535/why-does-kinetic-energy-increase-quadratically-not-linearly-with-speed",
-      "score": 263,
-      "comentarios": 123
+      "score": 298,
+      "comentarios": 148
     },
     {
       "fonte": "HN",
-      "titulo": "OpenTTD 16.0-Beta1",
-      "url": "https://www.openttd.org/news/2026/06/25/openttd-16-0-beta1",
-      "score": 186,
-      "comentarios": 33
-    },
-    {
-      "fonte": "HN",
-      "titulo": "U.S. allows Anthropic to release Mythos AI to ‘trusted’ US organizations",
-      "url": "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies",
-      "score": 469,
-      "comentarios": 581
+      "titulo": "WordStar: A Writer's Word Processor (1996)",
+      "url": "https://www.sfwriter.com/wordstar.htm",
+      "score": 132,
+      "comentarios": 64
     },
     {
       "fonte": "HN",
       "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 341,
-      "comentarios": 188
-    },
-    {
-      "fonte": "HN",
-      "titulo": "AI in mathematics is forcing big questions",
-      "url": "https://spectrum.ieee.org/ai-in-mathematics",
-      "score": 144,
-      "comentarios": 108
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Fusion Programming Language",
-      "url": "https://fusion-lang.org/",
-      "score": 86,
-      "comentarios": 37
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Hellishly Slow Level 13 Deflate Compression",
-      "url": "https://kirill.korins.ky/articles/hellishly-slow-level-13-deflate-compression/",
-      "score": 69,
-      "comentarios": 20
+      "score": 354,
+      "comentarios": 193
     },
     {
       "fonte": "HN",
       "titulo": "Anatomy of a Failed (Nation-State?) Attack",
       "url": "https://grack.com/blog/2026/06/25/dissecting-a-failed-nation-state-attack/",
-      "score": 72,
-      "comentarios": 12
+      "score": 98,
+      "comentarios": 22
     },
     {
       "fonte": "HN",
-      "titulo": "U.S. government will decide who gets to use GPT-5.6",
-      "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
-      "score": 1062,
-      "comentarios": 1122
+      "titulo": "U.S. allows Anthropic to release Mythos AI to ‘trusted’ US organizations",
+      "url": "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies",
+      "score": 506,
+      "comentarios": 667
     }
   ],
   "devto": [
@@ -117,7 +117,7 @@
         "githubactions",
         "browserautomation"
       ],
-      "reacoes": 21
+      "reacoes": 22
     },
     {
       "fonte": "Dev.to",
@@ -132,15 +132,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "What was your win this week!?",
-      "tags": [
-        "discuss",
-        "weeklyretro"
-      ],
-      "reacoes": 28
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "Weekly Dev Log 2026-W11",
       "tags": [
         "beginners",
@@ -148,7 +139,7 @@
         "security",
         "swift"
       ],
-      "reacoes": 9
+      "reacoes": 10
     },
     {
       "fonte": "Dev.to",
@@ -160,17 +151,6 @@
         "aws"
       ],
       "reacoes": 7
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Testing Webhooks: The Pattern I Keep Reaching For",
-      "tags": [
-        "ai",
-        "api",
-        "testing",
-        "automation"
-      ],
-      "reacoes": 8
     },
     {
       "fonte": "Dev.to",
@@ -203,7 +183,7 @@
         "career",
         "learn"
       ],
-      "reacoes": 22
+      "reacoes": 23
     },
     {
       "fonte": "Dev.to",
@@ -213,6 +193,28 @@
         "workflow"
       ],
       "reacoes": 7
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Built a Full-Stack B2B Marketplace in 3 Days With V0, Next.js 16, and Vercel's AWS Integration — Here's What Actually Happened",
+      "tags": [
+        "h0hackathon",
+        "aws",
+        "hackathon",
+        "vercel"
+      ],
+      "reacoes": 1
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI Helps Us Write Code Faster. So Why Aren’t Projects Moving Faster?",
+      "tags": [
+        "ai",
+        "discuss",
+        "productivity",
+        "softwareengineering"
+      ],
+      "reacoes": 0
     }
   ]
 }
