@@ -1,0 +1,16 @@
+{
+  "data": "2026-06-27",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-27-06-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/e1073dfd-e6a2-457f-9cf5-55f1a0a3700b-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/e1073dfd-e6a2-457f-9cf5-55f1a0a3700b-cover.jpg"
+    }
+  },
+  "status": "ERRO",
+  "erro": "TEMA_DUPLICADO: titulo similar a post existente 'aws-lambda-microvms-sandboxes-isolados-ciclo-de-vida' (similarity=100%, palavras comuns: {'isolados', 'sandboxes', 'total', 'lambda', 'aws', 'microvms', 'ciclo', 'controle', 'vida'})",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1706, in main\n    inserted_id, is_new_post = inserir_post(doc)\n                               ~~~~~~~~~~~~^^^^^\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 851, in inserir_post\n    raise ValueError(\n    ...<2 lines>...\n    )\nValueError: TEMA_DUPLICADO: titulo similar a post existente 'aws-lambda-microvms-sandboxes-isolados-ciclo-de-vida' (similarity=100%, palavras comuns: {'isolados', 'sandboxes', 'total', 'lambda', 'aws', 'microvms', 'ciclo', 'controle', 'vida'})\n"
+}

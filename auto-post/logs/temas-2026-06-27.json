@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "Previewing GPT‑5.6 Sol: a next-generation model",
       "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
-      "score": 927,
-      "comentarios": 563
+      "score": 986,
+      "comentarios": 614
+    },
+    {
+      "fonte": "HN",
+      "titulo": "WordStar: A Writer's Word Processor (1996)",
+      "url": "https://www.sfwriter.com/wordstar.htm",
+      "score": 85,
+      "comentarios": 35
     },
     {
       "fonte": "HN",
       "titulo": "Why does kinetic energy increase quadratically, not linearly, with speed? (2011)",
       "url": "https://physics.stackexchange.com/questions/535/why-does-kinetic-energy-increase-quadratically-not-linearly-with-speed",
-      "score": 180,
-      "comentarios": 85
+      "score": 228,
+      "comentarios": 108
+    },
+    {
+      "fonte": "HN",
+      "titulo": "OpenTTD 16.0-Beta1",
+      "url": "https://www.openttd.org/news/2026/06/25/openttd-16-0-beta1",
+      "score": 142,
+      "comentarios": 19
     },
     {
       "fonte": "HN",
       "titulo": "U.S. allows Anthropic to release Mythos AI to ‘trusted’ US organizations",
       "url": "https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies",
-      "score": 341,
-      "comentarios": 337
+      "score": 416,
+      "comentarios": 448
     },
     {
       "fonte": "HN",
       "titulo": "AI in mathematics is forcing big questions",
       "url": "https://spectrum.ieee.org/ai-in-mathematics",
-      "score": 94,
-      "comentarios": 61
+      "score": 116,
+      "comentarios": 85
     },
     {
       "fonte": "HN",
       "titulo": "MicroVMs: Run isolated sandboxes with full lifecycle control",
       "url": "https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms/",
-      "score": 307,
-      "comentarios": 171
+      "score": 325,
+      "comentarios": 187
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Hellishly Slow Level 13 Deflate Compression",
+      "url": "https://kirill.korins.ky/articles/hellishly-slow-level-13-deflate-compression/",
+      "score": 54,
+      "comentarios": 14
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Fusion Programming Language",
+      "url": "https://fusion-lang.org/",
+      "score": 64,
+      "comentarios": 28
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Hacker News on a train station-style flip board",
+      "url": "https://popflame.quickish.space/hn-flipboard/",
+      "score": 68,
+      "comentarios": 13
     },
     {
       "fonte": "HN",
       "titulo": "U.S. government will decide who gets to use GPT-5.6",
       "url": "https://www.washingtonpost.com/technology/2026/06/26/openai-says-us-government-will-vet-users-its-latest-ai-model/",
-      "score": 940,
-      "comentarios": 1007
+      "score": 1009,
+      "comentarios": 1055
     },
     {
       "fonte": "HN",
       "titulo": "Om",
       "url": "https://daringfireball.net/2026/06/om",
-      "score": 262,
+      "score": 353,
       "comentarios": 15
     },
     {
       "fonte": "HN",
-      "titulo": "The gap between open weights LLMs and closed source LLMs",
-      "url": "https://blog.doubleword.ai/frontier-os-llm",
-      "score": 174,
-      "comentarios": 143
+      "titulo": "Foreign funds help make housing unaffordable: research",
+      "url": "https://news.mccombs.utexas.edu/research/foreign-funds-help-make-housing-unaffordable/",
+      "score": 73,
+      "comentarios": 20
     },
     {
       "fonte": "HN",
-      "titulo": "A C++ implementation of a fast hash map and hash set using hopscotch hashing",
-      "url": "https://github.com/Tessil/hopscotch-map",
-      "score": 81,
-      "comentarios": 13
+      "titulo": "Anatomy of a Failed (Nation-State?) Attack",
+      "url": "https://grack.com/blog/2026/06/25/dissecting-a-failed-nation-state-attack/",
+      "score": 51,
+      "comentarios": 8
     },
     {
       "fonte": "HN",
       "titulo": "We can still stop California's 3D printer surveillance scheme",
       "url": "https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme",
-      "score": 328,
-      "comentarios": 114
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Ultrasound imaging of the brain",
-      "url": "https://alephneuro.com/blog/ultrasound-brain",
-      "score": 261,
-      "comentarios": 109
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: Smart model routing directly in Claude, Codex and Cursor",
-      "url": "https://github.com/workweave/router",
-      "score": 160,
-      "comentarios": 94
-    },
-    {
-      "fonte": "HN",
-      "titulo": "What Is a Nomogram and Why Would It Interest Me?",
-      "url": "https://lefakkomies.github.io/pynomo-doc/introduction/introduction.html#what-is-a-nomogram-and-why-would-it-interest-me",
-      "score": 103,
-      "comentarios": 18
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Long Wave radio era set to end with Droitwich switch-off",
-      "url": "https://www.bbc.com/news/articles/c74yn7v7k4qo",
-      "score": 74,
-      "comentarios": 30
-    },
-    {
-      "fonte": "HN",
-      "titulo": "A human postmortem of the 1996 AOL outage",
-      "url": "https://ngrok.com/blog/aol-was-down-1996",
-      "score": 57,
-      "comentarios": 12
+      "score": 387,
+      "comentarios": 129
     }
   ],
   "devto": [
@@ -128,7 +128,7 @@
         "opportunities",
         "resources"
       ],
-      "reacoes": 36
+      "reacoes": 41
     },
     {
       "fonte": "Dev.to",
@@ -150,36 +150,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Functional doesn't mean correct. That's the biggest risk with AI-generated code.",
+      "titulo": "Weekly Dev Log 2026-W11",
       "tags": [
-        "programming",
-        "ai",
-        "discuss",
-        "webdev"
+        "beginners",
+        "devjournal",
+        "security",
+        "swift"
       ],
-      "reacoes": 17
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "AI is not replacing developers anytime soon",
-      "tags": [
-        "ai",
-        "career",
-        "discuss",
-        "productivity"
-      ],
-      "reacoes": 8
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "1,200 Applications. 4 Offers. Here's What Actually Got Me the Product-Based Role",
-      "tags": [
-        "career",
-        "ai",
-        "programming",
-        "productivity"
-      ],
-      "reacoes": 15
+      "reacoes": 9
     },
     {
       "fonte": "Dev.to",
@@ -190,7 +168,7 @@
         "firecracker",
         "aws"
       ],
-      "reacoes": 6
+      "reacoes": 7
     },
     {
       "fonte": "Dev.to",
@@ -213,6 +191,26 @@
         "codequality"
       ],
       "reacoes": 1
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "How I Built a Custom Rust Blockchain for On-Chain Ride Lifecycle",
+      "tags": [
+        "rust",
+        "blockchain",
+        "webdev",
+        "opensource"
+      ],
+      "reacoes": 3
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The AI reviewer scored 23/25 and missed the point",
+      "tags": [
+        "ai",
+        "workflow"
+      ],
+      "reacoes": 7
     }
   ]
 }
