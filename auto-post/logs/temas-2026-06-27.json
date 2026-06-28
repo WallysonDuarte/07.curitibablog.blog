@@ -5,119 +5,119 @@
       "fonte": "HN",
       "titulo": "IP Crawl: Living atlas of open webcams discovered on the public internet",
       "url": "https://ipcrawl.com/",
-      "score": 73,
-      "comentarios": 39
+      "score": 201,
+      "comentarios": 110
     },
     {
       "fonte": "HN",
       "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
       "url": "https://github.com/bikini/exploitarium",
-      "score": 506,
-      "comentarios": 199
+      "score": 617,
+      "comentarios": 241
     },
     {
       "fonte": "HN",
       "titulo": "OpenRA",
       "url": "https://www.openra.net/",
-      "score": 470,
-      "comentarios": 86
-    },
-    {
-      "fonte": "HN",
-      "titulo": "AI learns the “dark art” of RFIC design",
-      "url": "https://spectrum.ieee.org/ai-radio-chip-design",
-      "score": 138,
-      "comentarios": 77
+      "score": 551,
+      "comentarios": 102
     },
     {
       "fonte": "HN",
       "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
       "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
-      "score": 692,
-      "comentarios": 287
+      "score": 714,
+      "comentarios": 293
     },
     {
       "fonte": "HN",
-      "titulo": "Turn your site into a place people can bump into each other",
-      "url": "https://cauenapier.com/blog/townsquare_release/",
-      "score": 85,
-      "comentarios": 43
+      "titulo": "Show HN: Adrafinil – keep a lid-closed Mac awake only while agents work",
+      "url": "https://github.com/kageroumado/adrafinil",
+      "score": 71,
+      "comentarios": 38
+    },
+    {
+      "fonte": "HN",
+      "titulo": "AI learns the “dark art” of RFIC design",
+      "url": "https://spectrum.ieee.org/ai-radio-chip-design",
+      "score": 169,
+      "comentarios": 117
     },
     {
       "fonte": "HN",
       "titulo": "Fintech Engineering Handbook",
       "url": "https://w.pitula.me/fintech-engineering-handbook/",
-      "score": 399,
-      "comentarios": 136
+      "score": 450,
+      "comentarios": 154
     },
     {
       "fonte": "HN",
-      "titulo": "Suspicious Discontinuities (2020)",
-      "url": "https://danluu.com/discontinuities/",
-      "score": 171,
-      "comentarios": 43
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Post-Mythos Cybersecurity: Keep calm and carry on",
-      "url": "https://cephalosec.com/blog/cybersecurity-in-the-post-mythos-era-keep-calm-and-carry-on/",
-      "score": 107,
-      "comentarios": 33
+      "titulo": "Turn your site into a place people can bump into each other",
+      "url": "https://cauenapier.com/blog/townsquare_release/",
+      "score": 134,
+      "comentarios": 62
     },
     {
       "fonte": "HN",
       "titulo": "The case for physical media ownership",
       "url": "https://dervis.de/physical/",
-      "score": 301,
-      "comentarios": 203
+      "score": 344,
+      "comentarios": 227
     },
     {
       "fonte": "HN",
-      "titulo": "One man, two kernels, and a lot of RISC-V",
-      "url": "https://www.theregister.com/software/2026/06/26/one-man-two-kernels-and-a-lot-of-risc-v/5262858",
-      "score": 60,
-      "comentarios": 5
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Underarm bowling incident of 1981",
-      "url": "https://en.wikipedia.org/wiki/Underarm_bowling_incident_of_1981",
-      "score": 118,
-      "comentarios": 102
+      "titulo": "Suspicious Discontinuities (2020)",
+      "url": "https://danluu.com/discontinuities/",
+      "score": 199,
+      "comentarios": 54
     },
     {
       "fonte": "HN",
       "titulo": "Reducing tick density along recreational trails in Ottawa, Canada",
       "url": "https://www.sciencedirect.com/science/article/pii/S1877959X26000476",
-      "score": 99,
-      "comentarios": 56
+      "score": 139,
+      "comentarios": 74
     },
     {
       "fonte": "HN",
-      "titulo": "Zuckerberg's war on whistleblowers",
-      "url": "https://pluralistic.net/2026/06/27/zuckerstreisand-2/",
-      "score": 494,
-      "comentarios": 189
+      "titulo": "Post-Mythos Cybersecurity: Keep calm and carry on",
+      "url": "https://cephalosec.com/blog/cybersecurity-in-the-post-mythos-era-keep-calm-and-carry-on/",
+      "score": 124,
+      "comentarios": 39
     },
     {
       "fonte": "HN",
-      "titulo": "Long Wave radio era set to end with switch-off",
-      "url": "https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service",
-      "score": 146,
-      "comentarios": 144
+      "titulo": "Asian AI startups launch Mythos-like models",
+      "url": "https://techcrunch.com/2026/06/27/asian-ai-startups-launch-mythos-like-models-as-anthropics-export-ban-drags-on/",
+      "score": 111,
+      "comentarios": 106
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Michigan spent $1.8B and only created 602 jobs",
+      "url": "https://www.msn.com/en-us/money/general/michigan-spent-1-8-billion-and-only-created-602-jobs/ar-AA26Cusu",
+      "score": 63,
+      "comentarios": 27
+    },
+    {
+      "fonte": "HN",
+      "titulo": "One man, two kernels, and a lot of RISC-V",
+      "url": "https://www.theregister.com/software/2026/06/26/one-man-two-kernels-and-a-lot-of-risc-v/5262858",
+      "score": 68,
+      "comentarios": 5
     }
   ],
   "devto": [
     {
       "fonte": "Dev.to",
-      "titulo": "Weekly Dev Log 2026-W11",
+      "titulo": "Engineering a Brainrot art installation on an Orange Pi Zero 🍊",
       "tags": [
-        "beginners",
-        "devjournal",
-        "security",
-        "swift"
+        "ai",
+        "webdev",
+        "programming",
+        "javascript"
       ],
-      "reacoes": 10
+      "reacoes": 0
     },
     {
       "fonte": "Dev.to",
@@ -132,6 +132,17 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "AI Didn't Invent Slop. It Only Made It Infinite.",
+      "tags": [
+        "ai",
+        "career",
+        "discuss",
+        "codequality"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "What I Learned About PDAs in a Week of Building on Solana",
       "tags": [
         "rust",
@@ -143,17 +154,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "AI Didn't Invent Slop. It Only Made It Infinite.",
-      "tags": [
-        "ai",
-        "career",
-        "discuss",
-        "codequality"
-      ],
-      "reacoes": 1
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "Choreography of validation: how to make your auth form seamless and usable",
       "tags": [
         "react",
@@ -161,7 +161,7 @@
         "ux",
         "uxdesign"
       ],
-      "reacoes": 3
+      "reacoes": 5
     },
     {
       "fonte": "Dev.to",
@@ -176,6 +176,17 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "How I auto-generate 800+ App Store screenshots across 39 languages and 3 devices",
+      "tags": [
+        "ios",
+        "swift",
+        "automation",
+        "indiedev"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "I Built a Full-Stack B2B Marketplace in 3 Days With V0, Next.js 16, and Vercel's AWS Integration — Here's What Actually Happened",
       "tags": [
         "h0hackathon",
@@ -187,6 +198,17 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "I Built a QR Code Generator in Pure Vanilla JS — No Libraries, No Server, 202 Tests",
+      "tags": [
+        "javascript",
+        "webdev",
+        "devtools",
+        "opensource"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "AI Helps Us Write Code Faster. So Why Aren’t Projects Moving Faster?",
       "tags": [
         "ai",
@@ -195,28 +217,6 @@
         "softwareengineering"
       ],
       "reacoes": 0
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "tgo Dev log #4: The Dread of Competition, Native Compilation, and the Relentless Grind of Hard Things",
-      "tags": [
-        "leadership",
-        "tgo",
-        "typescript",
-        "go"
-      ],
-      "reacoes": 1
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "I Built a Live Timeline of React Hooks (useState, useEffect, useMemo, useRef)",
-      "tags": [
-        "react",
-        "javascript",
-        "webdev",
-        "beginners"
-      ],
-      "reacoes": 2
     }
   ]
 }
