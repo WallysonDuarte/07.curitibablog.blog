@@ -1,0 +1,82 @@
+{
+  "data": "2026-06-28",
+  "etapas": {
+    "capa": "FALHOU: Flow nao gerou imagem dentro do timeout de 180s.",
+    "mongo": {
+      "id": "6a411e8452d1bfb5ec1961ca",
+      "slug": "ai-gateway-unificar-rotear-chamadas-varios-llms",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      },
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1010584198392395"
+      },
+      "instagram": "sem_imagem"
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "{\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n}"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7476990180659425280"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/ai-gateway-unificar-rotear-chamadas-varios-llms"
+}

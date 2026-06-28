@@ -5,63 +5,63 @@
       "fonte": "HN",
       "titulo": "Marfa Public Radio Puts You to Sleep",
       "url": "https://www.marfapublicradio.org/podcast/marfa-public-radio-puts-you-to-sleep",
-      "score": 298,
-      "comentarios": 79
+      "score": 300,
+      "comentarios": 80
     },
     {
       "fonte": "HN",
       "titulo": "Bashblog – a single bash script to create blogs",
       "url": "https://github.com/cfenollosa/bashblog",
       "score": 71,
-      "comentarios": 47
+      "comentarios": 50
     },
     {
       "fonte": "HN",
       "titulo": "AMD Strix Halo RDMA Cluster Setup Guide",
       "url": "https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes/blob/main/rdma_cluster/setup_guide.md",
-      "score": 171,
+      "score": 175,
       "comentarios": 54
     },
     {
       "fonte": "HN",
       "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
       "url": "https://github.com/bikini/exploitarium",
-      "score": 860,
-      "comentarios": 333
+      "score": 862,
+      "comentarios": 334
     },
     {
       "fonte": "HN",
       "titulo": "Wayfinder Router: deterministic routing of queries between local and hosted LLM",
       "url": "https://github.com/itsthelore/wayfinder-router",
-      "score": 84,
+      "score": 86,
       "comentarios": 37
     },
     {
       "fonte": "HN",
       "titulo": "Show HN: Decomp Academy – Learn to decompile GameCube games into matching C",
       "url": "https://decomp-academy.dev",
-      "score": 150,
+      "score": 151,
       "comentarios": 58
     },
     {
       "fonte": "HN",
       "titulo": "Choosing a Public DNS Resolver",
       "url": "https://evilbit.de/dns-resolver-guide.html",
-      "score": 200,
-      "comentarios": 76
+      "score": 204,
+      "comentarios": 78
     },
     {
       "fonte": "HN",
       "titulo": "Engineering for Bounded Cognition",
       "url": "https://shapeofthesystem.com/posts/2026/02/03/bounded-cognition",
-      "score": 71,
-      "comentarios": 15
+      "score": 72,
+      "comentarios": 16
     },
     {
       "fonte": "HN",
       "titulo": "Regular expressions that work “everywhere”",
       "url": "https://www.johndcook.com/blog/2026/06/23/regex-everywhere/",
-      "score": 69,
+      "score": 71,
       "comentarios": 27
     },
     {
@@ -75,8 +75,8 @@
       "fonte": "HN",
       "titulo": "WAL-RUS: a Rust Rewrite of WAL-G for PostgreSQL Backups",
       "url": "https://clickhouse.com/blog/walrus-postgres-backups-in-rust",
-      "score": 95,
-      "comentarios": 9
+      "score": 96,
+      "comentarios": 10
     },
     {
       "fonte": "HN",
@@ -89,7 +89,7 @@
       "fonte": "HN",
       "titulo": "AI learns the “dark art” of RFIC design",
       "url": "https://spectrum.ieee.org/ai-radio-chip-design",
-      "score": 247,
+      "score": 249,
       "comentarios": 160
     },
     {
@@ -103,11 +103,22 @@
       "fonte": "HN",
       "titulo": "OpenRA",
       "url": "https://www.openra.net/",
-      "score": 755,
+      "score": 756,
       "comentarios": 141
     }
   ],
   "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "1%",
+      "tags": [
+        "ai",
+        "geopolitics",
+        "hardware",
+        "fiction"
+      ],
+      "reacoes": 21
+    },
     {
       "fonte": "Dev.to",
       "titulo": "V.E.L.O.C.I.T.Y.-OS: Kimi K2.7 and the 'Safe-Room Security' Illusion (Part 1)",
@@ -160,7 +171,7 @@
         "career",
         "programming"
       ],
-      "reacoes": 27
+      "reacoes": 28
     },
     {
       "fonte": "Dev.to",
@@ -172,17 +183,6 @@
         "uxdesign"
       ],
       "reacoes": 6
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "1%",
-      "tags": [
-        "ai",
-        "geopolitics",
-        "hardware",
-        "fiction"
-      ],
-      "reacoes": 15
     },
     {
       "fonte": "Dev.to",

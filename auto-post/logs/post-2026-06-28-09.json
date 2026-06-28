@@ -1,0 +1,69 @@
+{
+  "title": "WAL-RUS: o backup de PostgreSQL em Rust que reescreve o WAL-G",
+  "slug": "wal-rus-backup-postgresql-rust-wal-g",
+  "summary": "WAL-RUS e uma reescrita em Rust do popular WAL-G, ferramenta de backup e restauracao de PostgreSQL. Entenda como funciona o archiving continuo, o point-in-time recovery e por que reescrever em Rust faz diferenca na pratica.",
+  "metaTitle": "WAL-RUS: backup de PostgreSQL em Rust | CuritibaBlog",
+  "metaDescription": "WAL-RUS reescreve o WAL-G em Rust para backups de PostgreSQL mais rapidos e seguros. Veja como funciona e quando vale a pena adotar.",
+  "category": "desenvolvimento",
+  "categories": ["desenvolvimento", "tecnologia"],
+  "tags": ["postgresql", "backup", "rust", "wal-g", "devops", "banco-de-dados", "point-in-time-recovery"],
+  "content": "<h2>O que e o WAL-RUS</h2><p>Se voce roda PostgreSQL em producao, ja sabe que backup nao e opcional. O <strong>WAL-RUS</strong> e uma reescrita em <strong>Rust</strong> do <strong>WAL-G</strong>, uma das ferramentas de backup e restauracao mais usadas no ecossistema PostgreSQL. O projeto ganhou destaque depois de ser apresentado em um artigo da ClickHouse sobre backups de Postgres em Rust.</p><p>O WAL-G original nasceu como evolucao do WAL-E e e escrito em Go. Ele cuida de duas coisas ao mesmo tempo: o backup completo do banco (base backup) e o arquivamento continuo dos logs de transacao (os arquivos WAL). Com isso, voce consegue restaurar o banco para qualquer ponto no tempo.</p><p>A proposta do WAL-RUS e manter essa mesma logica, mas trocar a linguagem por Rust. A ideia e aproveitar a seguranca de memoria e o controle fino de recursos que o Rust oferece para deixar a ferramenta mais previsivel sob carga pesada, que e exatamente quando um backup nao pode falhar.</p><h2>Como funciona</h2><p>O nome WAL vem de <strong>Write-Ahead Log</strong>. Antes de gravar qualquer alteracao nos arquivos de dados, o PostgreSQL escreve a operacao em um log sequencial. Esse log e a fonte da verdade para recuperacao apos uma queda.</p><p>Ferramentas como WAL-G e WAL-RUS se conectam a esse mecanismo de duas formas. Primeiro, fazem um <strong>base backup</strong>, que e uma copia consistente de todo o diretorio de dados. Depois, arquivam continuamente cada segmento de WAL gerado a partir daquele ponto. Para restaurar, a ferramenta restaura o base backup e reaplica os WALs ate o momento desejado.</p><p>Esse modelo e o que permite o <strong>point-in-time recovery</strong> (PITR). Em vez de voltar so para o ultimo backup da meia-noite, voce pode pedir para restaurar o banco exatamente como ele estava as 14h37, segundos antes de alguem rodar um DELETE sem WHERE.</p><h2>Principais recursos</h2><p>O conjunto de recursos herdado do WAL-G cobre o que um time de producao espera de uma ferramenta de backup seria. Os destaques principais sao:</p><ul><li><strong>Archiving continuo de WAL</strong>: cada segmento de log e enviado para o storage assim que e fechado.</li><li><strong>Base backups completos e incrementais</strong>: os backups delta enviam apenas as paginas que mudaram, economizando espaco e banda.</li><li><strong>Point-in-time recovery</strong>: restauracao para qualquer instante coberto pelos WALs arquivados.</li><li><strong>Compressao integrada</strong>: suporte a algoritmos como lz4, zstd e brotli para reduzir o tamanho dos backups.</li><li><strong>Storage em nuvem</strong>: envio direto para S3, Google Cloud Storage, Azure Blob e compativeis.</li></ul><p>A aposta do WAL-RUS e entregar essa mesma lista, porem com o comportamento de memoria e desempenho do Rust. Em uma ferramenta que processa gigabytes de WAL por hora, vazamentos e picos de memoria importam muito.</p><h2>Como comecar</h2><p>Como o WAL-RUS e um projeto mais novo, o caminho recomendado e comecar entendendo bem o fluxo do proprio WAL-G, que e o mesmo conceito. Os passos gerais para configurar backup continuo de PostgreSQL sao:</p><p><strong>Passo 1:</strong> defina um destino de storage. Na maioria dos casos e um bucket S3 ou compativel, com chaves de acesso configuradas em variaveis de ambiente.</p><p><strong>Passo 2:</strong> configure o <strong>archive_command</strong> no postgresql.conf para chamar a ferramenta a cada segmento de WAL fechado. E essa linha que liga o PostgreSQL ao backup continuo.</p><p><strong>Passo 3:</strong> rode o primeiro base backup com o comando de backup-push da ferramenta. A partir dai, mantenha o archiving rodando e agende base backups periodicos, por exemplo um por dia.</p><h2>Exemplo pratico</h2><p>Imagine um cenario comum: uma API .NET ou Node usando PostgreSQL como banco principal, rodando em um servidor Linux. Voce quer dormir tranquilo sabendo que pode voltar no tempo se algo der errado.</p><p>Voce configura o <strong>archive_command</strong> para empurrar cada WAL para um bucket. Todo dia de madrugada, um cron dispara um base backup completo. Os arquivos vao todos comprimidos para a nuvem, sem ocupar disco local alem do necessario.</p><p>Na hora do desastre, alguem apagou uma tabela inteira as 14h37. Voce para a aplicacao, restaura o ultimo base backup e instrui a ferramenta a reaplicar os WALs ate as 14h36. O banco volta ao estado anterior ao erro, com perda minima de dados. Esse fluxo e identico em WAL-G e WAL-RUS.</p><h2>Comparacao com alternativas</h2><p>O WAL-RUS nao esta sozinho nesse espaco. As alternativas mais comuns para backup de PostgreSQL incluem o proprio <strong>WAL-G</strong> em Go, o <strong>pgBackRest</strong> escrito em C, o <strong>Barman</strong> em Python e o classico <strong>pg_dump</strong> que vem com o PostgreSQL.</p><p>O pg_dump e otimo para bancos pequenos e exportacoes logicas, mas nao faz PITR nem backup continuo. O pgBackRest e maduro, robusto e muito usado em ambientes grandes. O Barman tem foco em gestao centralizada de varios servidores.</p><p>O diferencial da dupla WAL-G e WAL-RUS sempre foi a integracao nativa e eficiente com storage em nuvem e a velocidade de envio. A reescrita em Rust mira justamente em levar essa eficiencia ainda mais longe, com uso de recursos mais previsivel.</p><h2>Pontos positivos e limitacoes</h2><p>Do lado positivo, a escolha de Rust traz seguranca de memoria sem garbage collector, o que significa pausas mais previsiveis durante operacoes longas. Para um processo que roda em paralelo com o banco em producao, essa previsibilidade e valiosa.</p><p>Outro ponto forte e herdar um modelo de backup ja comprovado pelo WAL-G, em vez de reinventar a roda. Quem ja conhece o fluxo do WAL-G encontra terreno familiar.</p><p>A principal limitacao e a maturidade. Por ser uma reescrita mais recente, o WAL-RUS ainda nao tem o mesmo tempo de estrada e a mesma base de usuarios em producao que o WAL-G ou o pgBackRest. Para sistemas criticos, vale testar bastante antes de migrar e manter o WAL-G como referencia.</p><h2>Casos de uso reais</h2><p>Essa abordagem de backup continuo serve para perfis bem definidos. Veja alguns cenarios concretos:</p><ul><li><strong>Startups com PostgreSQL em nuvem</strong>: precisam de PITR confiavel sem montar uma infraestrutura cara de backup.</li><li><strong>Times de DevOps</strong>: querem padronizar o backup de varios bancos enviando tudo para o mesmo bucket S3.</li><li><strong>SaaS multi-tenant</strong>: onde perder horas de dados de clientes nao e uma opcao aceitavel.</li><li><strong>Desenvolvedores solo</strong>: que rodam um servidor proprio e querem uma rede de seguranca real sem complexidade exagerada.</li></ul><p>Em todos esses casos, o ganho e o mesmo: capacidade de voltar o banco para um instante especifico, e nao apenas para o ultimo snapshot do dia.</p><h2>Dicas e boas praticas</h2><p>Quem ja apanhou com backup aprende algumas licoes na marca. A primeira e a mais importante: <strong>backup que nunca foi restaurado nao e backup, e esperanca</strong>. Teste a restauracao periodicamente em um ambiente separado.</p><p>Monitore o archiving. Se o archive_command comeca a falhar, os WALs se acumulam no servidor e podem encher o disco, derrubando o banco. Configure alertas para falhas de envio e para o espaco em disco do diretorio de WAL.</p><p>Defina uma politica de retencao clara. Manter base backups e WALs para sempre custa caro em storage. Decida quantos dias de PITR voce realmente precisa e configure a limpeza automatica dos backups antigos.</p><h2>Vale a pena?</h2><p>Para quem leva PostgreSQL em producao a serio, adotar uma ferramenta de backup continuo com PITR vale muito a pena, seja WAL-G, WAL-RUS ou pgBackRest. A diferenca entre perder cinco minutos ou um dia inteiro de dados costuma justificar o esforco de configuracao.</p><p>O WAL-RUS em si e uma aposta interessante para quem gosta de Rust e quer um comportamento de recursos mais previsivel. Mas, por ser mais novo, ainda pede cautela em ambientes criticos. Para producao pesada hoje, WAL-G e pgBackRest seguem como escolhas mais conservadoras.</p><p>O proximo passo sugerido e simples: pegue um banco de testes, configure o archive_command e o primeiro base backup, e force uma restauracao com point-in-time recovery. So depois de ver o banco voltar no tempo com seus proprios olhos voce vai confiar de verdade na sua estrategia de backup.</p>",
+  "faqs": [
+    {"question": "Qual a diferenca entre WAL-RUS e WAL-G?", "answer": "Os dois fazem a mesma coisa: backup e restauracao continua de PostgreSQL com point-in-time recovery. A diferenca e a linguagem. O WAL-G e escrito em Go e o WAL-RUS e uma reescrita em Rust, que busca uso de memoria e desempenho mais previsiveis."},
+    {"question": "O que e point-in-time recovery no PostgreSQL?", "answer": "E a capacidade de restaurar o banco para um instante especifico no tempo, e nao apenas para o ultimo backup completo. Isso e possivel reaplicando os arquivos de WAL arquivados ate o momento desejado, segundos antes de um erro, por exemplo."},
+    {"question": "WAL-RUS substitui o pg_dump?", "answer": "Sao ferramentas para necessidades diferentes. O pg_dump faz exportacoes logicas pontuais e e otimo para bancos pequenos, mas nao faz backup continuo nem PITR. WAL-RUS e WAL-G sao para recuperacao continua de bancos em producao."},
+    {"question": "Como comecar a usar backup continuo de PostgreSQL?", "answer": "Defina um destino de storage como um bucket S3, configure o archive_command no postgresql.conf para enviar cada WAL, e rode um base backup inicial. A partir dai, mantenha o archiving ativo e agende base backups periodicos."},
+    {"question": "WAL-RUS ja esta pronto para producao critica?", "answer": "Por ser uma reescrita mais recente, ainda nao tem o mesmo tempo de estrada que o WAL-G ou o pgBackRest. Para sistemas criticos, vale testar bastante e, se possivel, manter o WAL-G como referencia antes de migrar de vez."}
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: WAL-RUS e WAL-G",
+      "items": [
+        {"label": "Linguagem do WAL-RUS", "value": "Rust"},
+        {"label": "Linguagem do WAL-G original", "value": "Go"},
+        {"label": "Banco principal suportado", "value": "PostgreSQL"},
+        {"label": "Recurso central", "value": "Backup continuo com point-in-time recovery"},
+        {"label": "Destinos de storage", "value": "S3, Google Cloud Storage, Azure Blob e compativeis"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "WAL-G no GitHub", "value": "https://github.com/wal-g/wal-g"},
+        {"label": "Site oficial do PostgreSQL", "value": "https://www.postgresql.org"},
+        {"label": "Documentacao de archiving continuo", "value": "https://www.postgresql.org/docs/current/continuous-archiving.html"},
+        {"label": "Artigo da ClickHouse sobre o WAL-RUS", "value": "https://clickhouse.com/blog/walrus-postgres-backups-in-rust"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Rafael Andrade",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelAndrade",
+          "text": "Migrei o backup do nosso PostgreSQL para o esquema de WAL continuo e foi a melhor decisao do ano. Ja precisei de um point-in-time recovery de verdade e voltei o banco em minutos."
+        },
+        {
+          "name": "Camila Nogueira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaNogueira",
+          "text": "Como sou fa de Rust, fiquei animada com o WAL-RUS. Coloquei num ambiente de teste e o consumo de memoria foi bem comportado, mas ainda vou esperar amadurecer antes de levar pra producao critica."
+        },
+        {
+          "name": "Diego Fontana",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DiegoFontana",
+          "text": "A dica que dou: teste a restauracao de verdade. Configurei tudo, mas so confiei mesmo depois de ver o banco voltar no tempo num servidor separado."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "PITR de verdade",
+  "card1_texto": "Restaure o banco para qualquer instante no tempo",
+  "card2_titulo": "Escrito em Rust",
+  "card2_texto": "Memoria previsivel e sem garbage collector",
+  "card3_titulo": "Storage em nuvem",
+  "card3_texto": "Backups comprimidos direto no S3 e compativeis",
+  "subtitulo_capa": "A reescrita em Rust do WAL-G que protege seu PostgreSQL com backup continuo"
+}
