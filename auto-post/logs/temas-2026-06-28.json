@@ -1,0 +1,221 @@
+{
+  "data": "2026-06-28",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "Marfa Public Radio Puts You to Sleep",
+      "url": "https://www.marfapublicradio.org/podcast/marfa-public-radio-puts-you-to-sleep",
+      "score": 298,
+      "comentarios": 79
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Bashblog – a single bash script to create blogs",
+      "url": "https://github.com/cfenollosa/bashblog",
+      "score": 71,
+      "comentarios": 47
+    },
+    {
+      "fonte": "HN",
+      "titulo": "AMD Strix Halo RDMA Cluster Setup Guide",
+      "url": "https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes/blob/main/rdma_cluster/setup_guide.md",
+      "score": 171,
+      "comentarios": 54
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
+      "url": "https://github.com/bikini/exploitarium",
+      "score": 860,
+      "comentarios": 333
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Wayfinder Router: deterministic routing of queries between local and hosted LLM",
+      "url": "https://github.com/itsthelore/wayfinder-router",
+      "score": 84,
+      "comentarios": 37
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Decomp Academy – Learn to decompile GameCube games into matching C",
+      "url": "https://decomp-academy.dev",
+      "score": 150,
+      "comentarios": 58
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Choosing a Public DNS Resolver",
+      "url": "https://evilbit.de/dns-resolver-guide.html",
+      "score": 200,
+      "comentarios": 76
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Engineering for Bounded Cognition",
+      "url": "https://shapeofthesystem.com/posts/2026/02/03/bounded-cognition",
+      "score": 71,
+      "comentarios": 15
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Regular expressions that work “everywhere”",
+      "url": "https://www.johndcook.com/blog/2026/06/23/regex-everywhere/",
+      "score": 69,
+      "comentarios": 27
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Space Shuttle Endeavour's 20-story vertical display",
+      "url": "https://californiasciencecenter.org/about-us/samuel-oschin-air-and-space-center/go-for-stack",
+      "score": 73,
+      "comentarios": 13
+    },
+    {
+      "fonte": "HN",
+      "titulo": "WAL-RUS: a Rust Rewrite of WAL-G for PostgreSQL Backups",
+      "url": "https://clickhouse.com/blog/walrus-postgres-backups-in-rust",
+      "score": 95,
+      "comentarios": 9
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Turn your site into a place people can bump into each other",
+      "url": "https://cauenapier.com/blog/townsquare_release/",
+      "score": 263,
+      "comentarios": 114
+    },
+    {
+      "fonte": "HN",
+      "titulo": "AI learns the “dark art” of RFIC design",
+      "url": "https://spectrum.ieee.org/ai-radio-chip-design",
+      "score": 247,
+      "comentarios": 160
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The case for physical media ownership",
+      "url": "https://dervis.de/physical/",
+      "score": 457,
+      "comentarios": 312
+    },
+    {
+      "fonte": "HN",
+      "titulo": "OpenRA",
+      "url": "https://www.openra.net/",
+      "score": 755,
+      "comentarios": 141
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: Kimi K2.7 and the 'Safe-Room Security' Illusion (Part 1)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "security"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Engineering a Brainrot art installation on an Orange Pi Zero 🍊",
+      "tags": [
+        "ai",
+        "webdev",
+        "programming",
+        "javascript"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Got Tired of Rewriting AI API Wrappers, So I Built a Gateway",
+      "tags": [
+        "ai",
+        "api",
+        "llm",
+        "showdev"
+      ],
+      "reacoes": 20
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "A Rogue Registry in My Own Backyard: Anatomy of a Two-Line Supply Chain Attack",
+      "tags": [
+        "npm",
+        "security",
+        "supplychain"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "VP of Nothing: The CEO's Nephew Took Over My AI Platform. The Client Walked Within a Month.",
+      "tags": [
+        "ai",
+        "discuss",
+        "career",
+        "programming"
+      ],
+      "reacoes": 27
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Choreography of validation: how to make your auth form seamless and usable",
+      "tags": [
+        "react",
+        "javascript",
+        "ux",
+        "uxdesign"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "1%",
+      "tags": [
+        "ai",
+        "geopolitics",
+        "hardware",
+        "fiction"
+      ],
+      "reacoes": 15
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Adding io::ErrorKind::TooManyOpenFiles to Rust",
+      "tags": [
+        "rust",
+        "systems",
+        "opensource",
+        "programming"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What I Learned About PDAs in a Week of Building on Solana",
+      "tags": [
+        "rust",
+        "solana",
+        "anchor",
+        "webdev"
+      ],
+      "reacoes": 1
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Built a QR Code Generator in Pure Vanilla JS — No Libraries, No Server, 202 Tests",
+      "tags": [
+        "javascript",
+        "webdev",
+        "devtools",
+        "opensource"
+      ],
+      "reacoes": 2
+    }
+  ]
+}

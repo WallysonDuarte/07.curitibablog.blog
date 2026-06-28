@@ -1,0 +1,122 @@
+{
+  "title": "AI Gateway: como unificar e rotear chamadas a varios LLMs",
+  "slug": "ai-gateway-unificar-rotear-chamadas-varios-llms",
+  "summary": "Entenda o que e um AI Gateway, a camada que conecta sua aplicacao a varios provedores de LLM com uma interface unica. Veja como funciona, exemplo de codigo e quando vale a pena adotar.",
+  "metaTitle": "AI Gateway: rotear varios LLMs | CuritibaBlog",
+  "metaDescription": "O que e um AI Gateway, como unificar OpenAI, Anthropic e modelos locais com fallback, cache e controle de custo. Guia pratico com exemplo de codigo.",
+  "category": "ferramentas-de-ia",
+  "categories": [
+    "ferramentas-de-ia",
+    "tecnologia"
+  ],
+  "tags": [
+    "ai gateway",
+    "llm",
+    "litellm",
+    "portkey",
+    "openai",
+    "inteligencia artificial",
+    "arquitetura"
+  ],
+  "content": "<h2>O que e um AI Gateway</h2><p>Um <strong>AI Gateway</strong> (ou gateway de IA) e uma camada que fica entre a sua aplicacao e os varios provedores de modelos de linguagem, como OpenAI, Anthropic, Google e modelos locais. Em vez de o seu codigo falar direto com cada API, ele fala com o gateway, e o gateway cuida do resto.</p><p>A ideia nasceu de uma dor muito comum: cada provedor de LLM tem um formato de requisicao diferente, um jeito proprio de autenticar e limites distintos. Quem ja precisou trocar de modelo no meio de um projeto sabe o trabalho de reescrever wrappers para cada um. O gateway resolve isso com uma interface unica.</p><p>O conceito ganhou forca em 2024 e 2025, quando ficou normal usar mais de um modelo no mesmo produto. Projetos open source como o <strong>LiteLLM</strong> e o <strong>Portkey Gateway</strong>, alem de servicos como o Cloudflare AI Gateway, popularizaram o padrao. Hoje ele e quase obrigatorio em qualquer aplicacao seria que usa IA.</p><h2>Como funciona</h2><p>Na pratica, o gateway expoe um unico endpoint que costuma ser compativel com o formato da API da OpenAI. Voce manda a requisicao para ele informando qual modelo quer usar, e ele traduz aquilo para o formato do provedor certo antes de encaminhar.</p><p>Pense nele como um porteiro inteligente de um predio com varias empresas. Voce entrega a carta para uma unica recepcao, diz o destinatario, e ela sabe em qual andar entregar. Voce nao precisa conhecer o caminho ate cada sala.</p><p>Alem de traduzir, o gateway intercepta cada chamada para aplicar regras: tentar de novo quando da erro, cair para um modelo alternativo quando o principal esta fora, contar tokens, registrar logs e bloquear abusos. Tudo isso acontece sem a sua aplicacao precisar saber dos detalhes.</p><h2>Principais recursos</h2><p>Os recursos variam de ferramenta para ferramenta, mas existe um conjunto que aparece na maioria delas. Vale conhecer cada um para saber o que esperar.</p><ul><li><strong>Interface unica:</strong> um so formato de requisicao para dezenas de provedores diferentes.</li><li><strong>Fallback automatico:</strong> se um modelo falha ou fica indisponivel, o gateway tenta outro na hora.</li><li><strong>Roteamento e balanceamento:</strong> distribui as chamadas entre chaves ou modelos conforme custo, latencia ou carga.</li><li><strong>Cache de respostas:</strong> guarda respostas de perguntas repetidas para economizar tokens e tempo.</li><li><strong>Observabilidade:</strong> logs, metricas de custo e de latencia centralizados em um lugar so.</li><li><strong>Controle de gastos:</strong> limites por chave, por usuario ou por projeto para evitar surpresas na fatura.</li></ul><p>O grande diferencial em relacao a chamar as APIs direto e justamente concentrar essas preocupacoes operacionais fora do codigo de negocio. Sua aplicacao foca em resolver o problema, e o gateway cuida da resiliencia.</p><h2>Como comecar: instalacao ou acesso passo a passo</h2><p>Da para usar um gateway de duas formas: rodando um open source no seu proprio servidor ou assinando um servico gerenciado. Vamos pelo caminho open source, que e o mais didatico.</p><p><strong>Passo 1:</strong> escolha a ferramenta. O LiteLLM e uma das mais usadas e roda como um proxy em Python. O Portkey Gateway e escrito em TypeScript e tambem pode ser auto-hospedado.</p><p><strong>Passo 2:</strong> instale e suba o proxy. No caso do LiteLLM, voce instala via pip e inicia o servidor apontando para um arquivo de configuracao com seus modelos e chaves. <strong>Passo 3:</strong> configure as chaves de API de cada provedor como variaveis de ambiente, nunca direto no codigo. <strong>Passo 4:</strong> aponte sua aplicacao para a URL do gateway em vez da URL original do provedor.</p><h2>Exemplo pratico</h2><p>Imagine que voce ja usa a biblioteca da OpenAI no seu projeto Python. Para passar a usar o gateway, na maioria dos casos voce so muda a <strong>base_url</strong> para o endereco do proxy. O resto do codigo continua igual.</p><p>Veja como fica uma chamada simples apontando para um gateway local rodando na porta 4000:</p><pre><code>from openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"http://localhost:4000\",\n    api_key=\"sua-chave-do-gateway\"\n)\n\nresposta = client.chat.completions.create(\n    model=\"claude-3-5-sonnet\",\n    messages=[{\"role\": \"user\", \"content\": \"Explique o que e um AI Gateway\"}]\n)\n\nprint(resposta.choices[0].message.content)</code></pre><p>Repare que o modelo pedido foi um Claude, mas o codigo usa a biblioteca da OpenAI. O gateway faz a ponte. Se amanha voce quiser trocar para um modelo do Google ou para um modelo local, basta mudar o nome em <strong>model</strong>, sem tocar no resto.</p><h2>Comparacao com alternativas</h2><p>A alternativa mais obvia e nao usar gateway nenhum e chamar cada API direto. Funciona para um prototipo, mas vira um problema quando o produto cresce e voce precisa de fallback, controle de custo e logs.</p><p>Entre os gateways, a escolha costuma ser entre auto-hospedar um open source ou usar um servico gerenciado. <strong>LiteLLM</strong> e otimo para quem quer controle total e ja vive no ecossistema Python. <strong>Portkey</strong> oferece versao open source e versao paga com painel pronto. <strong>Cloudflare AI Gateway</strong> entra bem para quem ja usa a Cloudflare e quer cache e analise sem gerenciar servidor.</p><p>Existe ainda o <strong>OpenRouter</strong>, que e mais um agregador de modelos do que um gateway que voce controla, util quando voce quer acesso rapido a muitos modelos por uma unica fatura. A regra geral: para controle e privacidade, auto-hospede; para velocidade de implementacao, va de gerenciado.</p><h2>Pontos positivos e limitacoes</h2><p>Do lado bom, o gateway reduz drasticamente o acoplamento entre sua aplicacao e um provedor especifico. Trocar de modelo deixa de ser um refactor e vira uma mudanca de configuracao. Voce ainda ganha resiliencia e visibilidade de custo de graca.</p><p>Por outro lado, ele adiciona mais uma peca na sua arquitetura. Se o gateway cai, todas as chamadas de IA caem junto, entao ele precisa ser tratado como componente critico, com monitoramento e redundancia.</p><p>Outra limitacao e a latencia extra de mais um salto na rede, geralmente pequena, mas existente. E nem todo recurso novo de um provedor chega ao gateway no mesmo dia: as vezes voce espera a ferramenta dar suporte a uma funcionalidade recem-lancada.</p><h2>Casos de uso reais</h2><p>O gateway nao serve para todo mundo da mesma forma. Veja alguns perfis que tiram bastante proveito dele.</p><ul><li><strong>Startup com produto de IA:</strong> precisa de fallback entre provedores para nao deixar o usuario na mao quando uma API fica instavel.</li><li><strong>Empresa com varios times:</strong> quer controlar quanto cada time gasta com IA e ter um relatorio unico de custo.</li><li><strong>Dev solo experimentando modelos:</strong> testa varios LLMs sem reescrever codigo, so trocando o nome do modelo.</li><li><strong>Aplicacao que mistura nuvem e local:</strong> roteia perguntas simples para um modelo local barato e as complexas para um modelo de ponta na nuvem.</li></ul><p>Esse ultimo caso e um dos mais interessantes para quem se preocupa com custo. Boa parte das perguntas de um produto e simples e nao precisa do modelo mais caro. O gateway permite essa economia de forma transparente.</p><h2>Dicas e boas praticas</h2><p>Quem ja roda gateway em producao aprende alguns cuidados na pratica. O primeiro e nunca colocar chaves de API no codigo: use variaveis de ambiente ou um cofre de segredos. O gateway centraliza as chaves, entao ele vira um alvo valioso e precisa estar bem protegido.</p><p>O segundo e configurar limites de gasto desde o comeco. E muito facil um loop com bug disparar milhares de chamadas e gerar uma fatura assustadora. Limites por chave e alertas de custo evitam esse susto.</p><p>Um erro comum de iniciante e tratar o gateway como caixa preta e nao olhar os logs. A observabilidade so ajuda se voce de fato acompanha as metricas. Reserve um tempo para configurar cache nas rotas certas e para revisar quais modelos estao consumindo mais. Comece simples, com um provedor, e adicione fallback e roteamento conforme a necessidade aparece.</p><h2>Vale a pena?</h2><p>Para quem esta fazendo um prototipo rapido com um unico modelo, o gateway pode ser exagero no comeco. Chamar a API direto resolve e voce adiciona a camada depois, quando sentir a dor.</p><p>Agora, para qualquer produto que vai a producao usando IA, a resposta e um sim claro. Os ganhos de resiliencia, controle de custo e liberdade de trocar de modelo compensam de longe a complexidade extra. E o tipo de decisao que voce agradece ter tomado cedo.</p><p>Se quiser comecar, o caminho mais didatico e subir um LiteLLM local, apontar um projeto seu para ele e ver na pratica como fica facil trocar de modelo. A partir dai, voce vai entender quais recursos do gateway fazem sentido para o seu caso.</p>",
+  "faqs": [
+    {
+      "question": "Preciso de um AI Gateway para usar LLM na minha aplicacao?",
+      "answer": "Nao para um prototipo simples com um unico modelo. Mas para producao, o gateway traz fallback, controle de custo e logs que valem muito a pena. Da para comecar sem ele e adicionar quando a necessidade aparecer."
+    },
+    {
+      "question": "Qual a diferenca entre AI Gateway e API Gateway comum?",
+      "answer": "Um API Gateway tradicional roteia requisicoes HTTP genericas. O AI Gateway e especializado em chamadas para modelos de linguagem, com recursos como contagem de tokens, fallback entre modelos e cache de respostas de IA."
+    },
+    {
+      "question": "AI Gateway e pago?",
+      "answer": "Depende. Ferramentas como LiteLLM e Portkey Gateway sao open source e gratuitas para auto-hospedar. Servicos gerenciados podem cobrar por uso ou por recursos extras como painel e suporte."
+    },
+    {
+      "question": "Como comeco a usar um AI Gateway?",
+      "answer": "O jeito mais simples e subir um LiteLLM local, configurar as chaves dos provedores como variaveis de ambiente e mudar a base_url da sua aplicacao para o endereco do proxy. O resto do codigo costuma ficar igual."
+    },
+    {
+      "question": "O gateway adiciona muita latencia?",
+      "answer": "Adiciona um salto extra na rede, geralmente pequeno. Em troca, voce ganha cache que pode deixar respostas repetidas ate mais rapidas. Para a maioria dos casos, o ganho operacional compensa a latencia minima."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: AI Gateway",
+      "items": [
+        {
+          "label": "O que e",
+          "value": "Camada entre a aplicacao e varios provedores de LLM"
+        },
+        {
+          "label": "Exemplos open source",
+          "value": "LiteLLM e Portkey Gateway"
+        },
+        {
+          "label": "Servico gerenciado",
+          "value": "Cloudflare AI Gateway, Portkey, OpenRouter"
+        },
+        {
+          "label": "Recursos chave",
+          "value": "Fallback, cache, roteamento e controle de custo"
+        },
+        {
+          "label": "Compatibilidade comum",
+          "value": "Endpoint no formato da API da OpenAI"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "LiteLLM (site oficial)",
+          "value": "https://www.litellm.ai"
+        },
+        {
+          "label": "LiteLLM (GitHub)",
+          "value": "https://github.com/BerriAI/litellm"
+        },
+        {
+          "label": "Portkey Gateway (GitHub)",
+          "value": "https://github.com/Portkey-AI/gateway"
+        },
+        {
+          "label": "Cloudflare AI Gateway (docs)",
+          "value": "https://developers.cloudflare.com/ai-gateway/"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Rafael Moreira",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMoreira",
+          "text": "Coloquei um LiteLLM na frente do nosso produto e parei de me preocupar quando uma API cai. O fallback salva o dia toda semana."
+        },
+        {
+          "name": "Juliana Castro",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JulianaCastro",
+          "text": "O melhor foi o controle de custo. Cada time tem sua chave e eu vejo num painel so quanto cada um gasta com IA por mes."
+        },
+        {
+          "name": "Bruno Tavares",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=BrunoTavares",
+          "text": "Testo modelo novo so trocando o nome em uma linha. Antes eu reescrevia wrapper pra cada provedor, era um saco."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Interface unica",
+  "card1_texto": "Um so formato para dezenas de provedores de LLM",
+  "card2_titulo": "Fallback automatico",
+  "card2_texto": "Troca de modelo na hora quando um falha",
+  "card3_titulo": "Controle de custo",
+  "card3_texto": "Limites e logs de gasto centralizados",
+  "subtitulo_capa": "A camada que conecta sua aplicacao a varios LLMs com uma interface unica"
+}
