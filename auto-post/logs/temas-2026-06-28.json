@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "A way to exclude sensitive files issue still open for OpenAI Codex",
-      "url": "https://github.com/openai/codex/issues/2847",
-      "score": 78,
-      "comentarios": 56
+      "titulo": "5k Restaurant Menus, Years 1880-1920",
+      "url": "https://pudding.cool/2026/06/menu-collection/",
+      "score": 123,
+      "comentarios": 29
     },
     {
       "fonte": "HN",
-      "titulo": "The curious case of the disappearing Polish S",
+      "titulo": "The curious case of the disappearing Polish S (2015)",
       "url": "https://aresluna.org/the-curious-case-of-the-disappearing-polish-s/",
-      "score": 56,
-      "comentarios": 18
+      "score": 145,
+      "comentarios": 32
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A way to exclude sensitive files issue still open for OpenAI Codex",
+      "url": "https://github.com/openai/codex/issues/2847",
+      "score": 119,
+      "comentarios": 83
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Flock cameras track more than your license plate, and they're spreading fast",
+      "url": "https://www.engadget.com/2203000/flock-cameras-recording-license-plate/",
+      "score": 208,
+      "comentarios": 118
+    },
+    {
+      "fonte": "HN",
+      "titulo": "EU to legislate about Chat Control behind closed doors",
+      "url": "https://www.patrick-breyer.de/en/double-threat-to-private-communications-undemocratic-chat-control-backroom-deals-and-imminent-concessions-spark-relaunch-of-fightchatcontrol-eu/",
+      "score": 262,
+      "comentarios": 157
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Michigan bill would bar employers from requiring after-hours coms with workers",
+      "url": "https://www.cbsnews.com/detroit/news/workplace-boundaries-act-employees-after-hours/",
+      "score": 93,
+      "comentarios": 49
     },
     {
       "fonte": "HN",
       "titulo": "Marfa Public Radio Puts You to Sleep",
       "url": "https://www.marfapublicradio.org/podcast/marfa-public-radio-puts-you-to-sleep",
-      "score": 330,
-      "comentarios": 92
+      "score": 354,
+      "comentarios": 104
     },
     {
       "fonte": "HN",
       "titulo": "DLL that was not present in memory despite not being formally unloaded",
       "url": "https://devblogs.microsoft.com/oldnewthing/20260625-00/?p=112467",
-      "score": 64,
-      "comentarios": 26
+      "score": 89,
+      "comentarios": 34
     },
     {
       "fonte": "HN",
-      "titulo": "AMD Strix Halo RDMA Cluster Setup Guide",
-      "url": "https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes/blob/main/rdma_cluster/setup_guide.md",
-      "score": 192,
-      "comentarios": 59
+      "titulo": "Google limits Meta's use of its Gemini AI models",
+      "url": "https://www.cnbc.com/2026/06/28/google-limits-metas-use-of-its-gemini-ai-models-ft-reports.html",
+      "score": 96,
+      "comentarios": 43
+    },
+    {
+      "fonte": "HN",
+      "titulo": "EU Open Sources Ten-Year Network Development Planning Tools",
+      "url": "https://github.com/open-energy-transition/open-tyndp",
+      "score": 144,
+      "comentarios": 34
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The origins of the school system aimed to produce independent, critical thinkers (2024)",
+      "url": "https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093",
+      "score": 72,
+      "comentarios": 31
     },
     {
       "fonte": "HN",
       "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
       "url": "https://github.com/bikini/exploitarium",
-      "score": 888,
-      "comentarios": 347
+      "score": 904,
+      "comentarios": 355
     },
     {
       "fonte": "HN",
-      "titulo": "Bashblog – a single bash script to create blogs",
-      "url": "https://github.com/cfenollosa/bashblog",
-      "score": 78,
-      "comentarios": 59
+      "titulo": "AMD Strix Halo RDMA Cluster Setup Guide",
+      "url": "https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes/blob/main/rdma_cluster/setup_guide.md",
+      "score": 208,
+      "comentarios": 62
     },
     {
       "fonte": "HN",
       "titulo": "Choosing a Public DNS Resolver",
       "url": "https://evilbit.de/dns-resolver-guide.html",
-      "score": 224,
-      "comentarios": 98
+      "score": 245,
+      "comentarios": 105
     },
     {
       "fonte": "HN",
       "titulo": "Wayfinder Router: deterministic routing of queries between local and hosted LLM",
       "url": "https://github.com/itsthelore/wayfinder-router",
-      "score": 91,
-      "comentarios": 47
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: Decomp Academy – Learn to decompile GameCube games into matching C",
-      "url": "https://decomp-academy.dev",
-      "score": 160,
-      "comentarios": 65
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Engineering for Bounded Cognition",
-      "url": "https://shapeofthesystem.com/posts/2026/02/03/bounded-cognition",
-      "score": 85,
-      "comentarios": 20
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Space Shuttle Endeavour's 20-story vertical display",
-      "url": "https://californiasciencecenter.org/about-us/samuel-oschin-air-and-space-center/go-for-stack",
-      "score": 87,
-      "comentarios": 15
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Regular expressions that work “everywhere”",
-      "url": "https://www.johndcook.com/blog/2026/06/23/regex-everywhere/",
-      "score": 79,
-      "comentarios": 31
-    },
-    {
-      "fonte": "HN",
-      "titulo": "WAL-RUS: a Rust Rewrite of WAL-G for PostgreSQL Backups",
-      "url": "https://clickhouse.com/blog/walrus-postgres-backups-in-rust",
-      "score": 109,
-      "comentarios": 12
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Turn your site into a place people can bump into each other",
-      "url": "https://cauenapier.com/blog/townsquare_release/",
-      "score": 275,
-      "comentarios": 121
+      "score": 100,
+      "comentarios": 49
     }
   ],
   "devto": [
@@ -117,7 +117,18 @@
         "hardware",
         "fiction"
       ],
-      "reacoes": 21
+      "reacoes": 27
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Engineering a Brainrot art installation on an Orange Pi Zero 🍊",
+      "tags": [
+        "ai",
+        "webdev",
+        "programming",
+        "javascript"
+      ],
+      "reacoes": 1
     },
     {
       "fonte": "Dev.to",
@@ -132,14 +143,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Engineering a Brainrot art installation on an Orange Pi Zero 🍊",
+      "titulo": "VP of Nothing: The CEO's Nephew Took Over My AI Platform. The Client Walked Within a Month.",
       "tags": [
         "ai",
-        "webdev",
-        "programming",
-        "javascript"
+        "discuss",
+        "career",
+        "programming"
       ],
-      "reacoes": 0
+      "reacoes": 34
     },
     {
       "fonte": "Dev.to",
@@ -160,18 +171,7 @@
         "security",
         "supplychain"
       ],
-      "reacoes": 0
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "VP of Nothing: The CEO's Nephew Took Over My AI Platform. The Client Walked Within a Month.",
-      "tags": [
-        "ai",
-        "discuss",
-        "career",
-        "programming"
-      ],
-      "reacoes": 30
+      "reacoes": 1
     },
     {
       "fonte": "Dev.to",
@@ -182,16 +182,16 @@
         "opensource",
         "programming"
       ],
-      "reacoes": 5
+      "reacoes": 6
     },
     {
       "fonte": "Dev.to",
-      "titulo": "What I Learned About PDAs in a Week of Building on Solana",
+      "titulo": "I built CarvePHP: finding service boundaries in Laravel monoliths",
       "tags": [
-        "rust",
-        "solana",
-        "anchor",
-        "webdev"
+        "laravel",
+        "php",
+        "opensource",
+        "microservices"
       ],
       "reacoes": 1
     },
@@ -208,12 +208,12 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Debugging Mobile Drag & CSS Specificity in a Real-Time PDF Diff Tool",
+      "titulo": "The 60% Trap: Why E-Commerce Giants Are Laundering Discounts (And How to Protect Yourself)",
       "tags": [
-        "css",
-        "javascript",
+        "opensource",
         "webdev",
-        "ux"
+        "security",
+        "javascript"
       ],
       "reacoes": 2
     }

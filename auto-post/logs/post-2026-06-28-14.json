@@ -1,0 +1,122 @@
+{
+  "title": "Plausible Analytics: a alternativa ao Google Analytics focada em privacidade",
+  "slug": "plausible-analytics-alternativa-google-analytics-privacidade",
+  "summary": "O Plausible Analytics e uma ferramenta de web analytics open source, leve e sem cookies. Veja como funciona, como instalar na nuvem ou self-hosted e por que virou a principal alternativa ao Google Analytics para quem leva privacidade a serio.",
+  "metaTitle": "Plausible Analytics: alternativa ao GA | CuritibaBlog",
+  "metaDescription": "Conheca o Plausible Analytics, a ferramenta open source de web analytics sem cookies, leve e que respeita a privacidade dos visitantes do seu site.",
+  "category": "negocios",
+  "categories": [
+    "negocios",
+    "tecnologia"
+  ],
+  "tags": [
+    "plausible analytics",
+    "web analytics",
+    "alternativa google analytics",
+    "privacidade",
+    "open source",
+    "lgpd",
+    "sem cookies"
+  ],
+  "content": "<h2>O que e o Plausible Analytics</h2><div class=\"highlight-card\"><strong>TL;DR</strong> - O Plausible e uma ferramenta de web analytics open source, leve e sem cookies. Ele mostra de onde vem seus visitantes e o que eles fazem no site, sem coletar dados pessoais nem exigir banner de consentimento.</div><p>O <strong>Plausible Analytics</strong> e uma ferramenta de analise de trafego web criada para ser uma alternativa simples e privada ao Google Analytics. Ele foi lancado em 2019 pelos desenvolvedores Uku Taht e Marko Saric, com uma ideia clara: medir o que importa em um site sem espionar quem o visita.</p><p>A proposta nasceu de um incomodo real. O Google Analytics e gratuito, mas cobra um preco escondido: ele coleta dados detalhados dos seus visitantes e os usa dentro do ecossistema de anuncios do Google. O Plausible inverte essa logica e nao coleta nenhum dado pessoal.</p><p>Por isso a ferramenta ganhou tracao justamente agora, em um momento em que leis como a LGPD no Brasil e o GDPR na Europa tornaram o uso de cookies de rastreamento um problema juridico. Com o Plausible, voce simplesmente nao precisa pedir consentimento para cookies de analise, porque nao existem cookies.</p><h2>Como funciona</h2><p>O Plausible funciona com um pequeno trecho de codigo que voce adiciona ao seu site, do mesmo jeito que faria com o Google Analytics. A diferenca esta no tamanho e no comportamento desse script.</p><p>O script do Plausible pesa <strong>menos de 1 KB</strong>, enquanto o do Google Analytics passa de 45 KB. Isso significa que sua pagina carrega mais rapido e consome menos dados do visitante, o que ajuda inclusive no SEO e na experiencia em conexoes moveis.</p><p>Por baixo dos panos, o Plausible e escrito em <strong>Elixir</strong> e usa o banco de dados <strong>ClickHouse</strong>, otimizado para analisar grandes volumes de eventos rapidamente. Em vez de identificar pessoas com cookies, ele conta as visitas de forma agregada e anonima, sem guardar dados pessoais que permitam reconhecer um usuario individualmente.</p><h2>Principais recursos</h2><p>Apesar de simples, o Plausible cobre o que a maioria dos sites realmente precisa. Tudo cabe em um unico painel, sem aquela floresta de menus e relatorios que ninguem abre.</p><ul><li><strong>Painel unico e em tempo real:</strong> visitantes, visualizacoes, taxa de rejeicao e duracao da visita em uma so tela.</li><li><strong>Origem do trafego:</strong> veja se as visitas vem de busca, redes sociais, links diretos ou campanhas.</li><li><strong>Paginas mais acessadas:</strong> descubra qual conteudo realmente atrai gente.</li><li><strong>Metas e eventos:</strong> acompanhe cliques, downloads, cadastros e outras acoes importantes.</li><li><strong>Relatorios por email:</strong> receba um resumo semanal ou mensal sem precisar abrir o painel.</li></ul><p>O grande diferencial nao e ter mais recursos que o concorrente, e sim ter menos ruido. Voce bate o olho e entende o desempenho do site em segundos.</p><p>Ele tambem oferece links de painel publicos, otimos para quem quer mostrar os numeros de forma transparente para clientes ou para a comunidade.</p><h2>Como comecar: nuvem ou self-hosted</h2><p>Existem dois caminhos para usar o Plausible, e a escolha depende de quanto controle voce quer ter.</p><p>O caminho mais simples e a <strong>versao em nuvem</strong>. Funciona assim:</p><ul><li><strong>Passo 1:</strong> crie uma conta em plausible.io e inicie o teste gratuito, sem precisar de cartao de credito.</li><li><strong>Passo 2:</strong> adicione o dominio do seu site no painel.</li><li><strong>Passo 3:</strong> copie a tag de script gerada e cole dentro da secao head do seu site.</li><li><strong>Passo 4:</strong> publique e veja os dados aparecerem em tempo real.</li></ul><p>O segundo caminho e o <strong>self-hosted</strong>, ou seja, rodar o Plausible no seu proprio servidor. A Community Edition e gratuita e open source, e a instalacao recomendada e via Docker. Esse caminho exige conhecimento de Linux e servidores, mas em troca voce fica dono de 100% dos seus dados e nao paga mensalidade.</p><h2>Exemplo pratico</h2><p>Imagine que voce tem um blog e quer saber se vale a pena continuar postando no LinkedIn. Com o Google Analytics, isso daria uma navegacao cansativa por varios relatorios.</p><p>No Plausible, voce abre o painel, filtra por origem de trafego e em segundos ve quantos visitantes chegaram pelo LinkedIn naquela semana. Se o numero for baixo, a resposta esta dada.</p><p>Para medir algo mais especifico, como cliques no botao de contato, voce cria uma meta de evento. No site, adiciona um atributo ao link, por exemplo <strong>plausible-event-name=Contato</strong>, e a partir dai cada clique vira um numero no painel. E o tipo de medicao que normalmente exige configuracao complicada e que aqui leva poucos minutos.</p><h2>Comparacao com alternativas</h2><p>O Plausible nao esta sozinho nesse mercado. As alternativas mais comuns sao o proprio Google Analytics, o Matomo e o Fathom Analytics.</p><p>O <strong>Google Analytics 4</strong> e o mais poderoso e gratuito, mas e complexo, pesado e levanta questoes de privacidade. O <strong>Matomo</strong> e open source e completo, porem mais robusto e complicado de manter. O <strong>Fathom</strong> e bem parecido com o Plausible na filosofia, mas e fechado e focado no modelo em nuvem.</p><p>O ponto forte unico do Plausible e o equilibrio: ele e leve e simples como o Fathom, mas open source e self-hostable como o Matomo. Para quem quer privacidade sem dor de cabeca, ele costuma ser a escolha mais direta.</p><h2>Pontos positivos e limitacoes</h2><p>O Plausible brilha na simplicidade, no respeito a privacidade e no desempenho. O script leve, a ausencia de cookies e o painel limpo resolvem o dia a dia de blogs, sites institucionais e pequenas lojas com folga.</p><p>Mas e importante ser honesto sobre os limites. O Plausible <strong>nao</strong> oferece a profundidade de analise do Google Analytics. Nao ha relatorios de funil avancado, segmentacao infinita ou integracao nativa com o ecossistema de anuncios do Google.</p><p>A versao em nuvem e paga, o que pode pesar para quem esta comecando do zero. E o self-hosted, apesar de gratuito, transfere para voce a responsabilidade de manter o servidor, fazer backups e aplicar atualizacoes.</p><h2>Casos de uso reais</h2><p>O Plausible nao e para todo mundo, mas se encaixa muito bem em alguns perfis especificos.</p><ul><li><strong>Criador de conteudo:</strong> um blogueiro que so quer saber quais posts performam, sem virar analista de dados.</li><li><strong>Pequena empresa:</strong> um negocio local que precisa cumprir a LGPD e quer evitar o banner de cookies que afasta visitantes.</li><li><strong>Desenvolvedor freelancer:</strong> quem entrega sites para clientes e quer oferecer um painel de metricas simples e transparente.</li><li><strong>Startup focada em privacidade:</strong> empresas que fazem da protecao de dados parte da propria marca.</li></ul><p>Em todos esses casos, o que pesa nao e ter mil metricas, e sim ter as metricas certas sem comprometer a confianca do usuario.</p><h2>Dicas e boas praticas</h2><p>Quem usa o Plausible ha mais tempo costuma seguir alguns habitos que extraem o maximo da ferramenta.</p><p>O primeiro e definir <strong>metas desde o comeco</strong>. De nada adianta acompanhar visitas se voce nao sabe qual acao representa sucesso no seu site, seja um cadastro, uma venda ou um clique no WhatsApp.</p><p>O segundo e usar a <strong>API de estatisticas</strong> para integrar os numeros a um painel proprio ou a um relatorio automatico. Um erro comum de iniciantes e esquecer de configurar o proxy do script quando bloqueadores de anuncios atrapalham a contagem, algo que a documentacao oficial explica passo a passo.</p><p>Por fim, se for usar o self-hosted, trate o servidor como producao de verdade: backups automaticos do ClickHouse e atualizacoes regulares evitam dor de cabeca la na frente.</p><h2>Vale a pena?</h2><p>Para a maioria dos sites brasileiros, a resposta e sim. Se voce tem um blog, um site institucional, um portfolio ou uma loja pequena, o Plausible entrega exatamente o que voce precisa sem comprometer a privacidade de quem te visita.</p><p>Ele nao vale a pena para quem depende de analise de marketing muito avancada, com funis complexos e integracao profunda com anuncios. Nesse caso, o Google Analytics ainda e dificil de substituir.</p><p>Se a privacidade e a simplicidade falam mais alto para voce, o proximo passo e facil: comece pelo teste gratuito na nuvem para sentir a ferramenta e, se gostar e tiver perfil tecnico, migre para a versao self-hosted depois. Em poucos minutos voce troca a complexidade por clareza.</p>",
+  "faqs": [
+    {
+      "question": "O Plausible Analytics e realmente gratuito?",
+      "answer": "A versao self-hosted, que voce roda no seu proprio servidor, e gratuita e open source. Ja a versao em nuvem e paga, com planos a partir de cerca de US$ 9 por mes e um periodo de teste gratuito sem cartao."
+    },
+    {
+      "question": "Preciso de banner de cookies usando o Plausible?",
+      "answer": "Nao. Como o Plausible nao usa cookies nem coleta dados pessoais, voce nao precisa do banner de consentimento de cookies para a analise de trafego, o que simplifica a conformidade com a LGPD."
+    },
+    {
+      "question": "O Plausible substitui o Google Analytics?",
+      "answer": "Para a maioria dos sites, sim. Ele cobre as metricas essenciais com folga. Mas se voce depende de relatorios de marketing muito avancados e integracao com anuncios do Google, o GA4 ainda leva vantagem."
+    },
+    {
+      "question": "Como instalo o Plausible no meu site?",
+      "answer": "Na versao em nuvem, basta criar a conta, adicionar seu dominio e colar a tag de script no head do site. Na versao self-hosted, a instalacao e feita via Docker no seu proprio servidor."
+    },
+    {
+      "question": "Para quem o Plausible e mais indicado?",
+      "answer": "Ele e ideal para criadores de conteudo, pequenas empresas, freelancers que entregam sites e startups que valorizam privacidade. Em resumo, para quem quer metricas claras sem rastrear visitantes."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: Plausible Analytics",
+      "items": [
+        {
+          "label": "Lancamento",
+          "value": "2019"
+        },
+        {
+          "label": "Tecnologia",
+          "value": "Elixir (Phoenix) + ClickHouse"
+        },
+        {
+          "label": "Licenca",
+          "value": "AGPL-3.0 (Community Edition)"
+        },
+        {
+          "label": "Planos",
+          "value": "Self-hosted gratuito; nuvem a partir de cerca de US$ 9/mes"
+        },
+        {
+          "label": "GitHub",
+          "value": "Mais de 20 mil estrelas"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "Site oficial",
+          "value": "https://plausible.io"
+        },
+        {
+          "label": "Documentacao oficial",
+          "value": "https://plausible.io/docs"
+        },
+        {
+          "label": "GitHub",
+          "value": "https://github.com/plausible/analytics"
+        },
+        {
+          "label": "Guia de self-hosting",
+          "value": "https://plausible.io/docs/self-hosting"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Rafael Moraes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMoraes",
+          "text": "Troquei o Google Analytics pelo Plausible no meu blog e nao senti falta de nada. O painel e tao limpo que finalmente eu olho os numeros toda semana."
+        },
+        {
+          "name": "Juliana Prado",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JulianaPrado",
+          "text": "Na agencia, a gente subiu o Plausible self-hosted e passou a entregar metricas para os clientes sem precisar de banner de cookies. Resolveu a parte da LGPD de vez."
+        },
+        {
+          "name": "Diego Fernandes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DiegoFernandes",
+          "text": "O script ser leve fez diferenca real no PageSpeed do site da loja. Para quem cuida de performance, ja vale por isso."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Sem cookies",
+  "card1_texto": "Nao usa cookies nem coleta dados pessoais",
+  "card2_titulo": "Script leve",
+  "card2_texto": "Menos de 1 KB: nao deixa seu site mais lento",
+  "card3_titulo": "Open source",
+  "card3_texto": "Pode rodar de graca no seu proprio servidor",
+  "subtitulo_capa": "Web analytics open source, sem cookies e que respeita a privacidade dos seus visitantes"
+}
