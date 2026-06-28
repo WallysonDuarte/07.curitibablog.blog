@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "5k Restaurant Menus, Years 1880-1920",
       "url": "https://pudding.cool/2026/06/menu-collection/",
-      "score": 123,
-      "comentarios": 29
+      "score": 188,
+      "comentarios": 43
+    },
+    {
+      "fonte": "HN",
+      "titulo": "I used Claude Code to get a second opinion on my MRI",
+      "url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
+      "score": 74,
+      "comentarios": 88
     },
     {
       "fonte": "HN",
       "titulo": "The curious case of the disappearing Polish S (2015)",
       "url": "https://aresluna.org/the-curious-case-of-the-disappearing-polish-s/",
-      "score": 145,
-      "comentarios": 32
+      "score": 170,
+      "comentarios": 38
     },
     {
       "fonte": "HN",
       "titulo": "A way to exclude sensitive files issue still open for OpenAI Codex",
       "url": "https://github.com/openai/codex/issues/2847",
-      "score": 119,
-      "comentarios": 83
+      "score": 132,
+      "comentarios": 90
     },
     {
       "fonte": "HN",
       "titulo": "Flock cameras track more than your license plate, and they're spreading fast",
       "url": "https://www.engadget.com/2203000/flock-cameras-recording-license-plate/",
-      "score": 208,
-      "comentarios": 118
-    },
-    {
-      "fonte": "HN",
-      "titulo": "EU to legislate about Chat Control behind closed doors",
-      "url": "https://www.patrick-breyer.de/en/double-threat-to-private-communications-undemocratic-chat-control-backroom-deals-and-imminent-concessions-spark-relaunch-of-fightchatcontrol-eu/",
-      "score": 262,
-      "comentarios": 157
+      "score": 254,
+      "comentarios": 161
     },
     {
       "fonte": "HN",
       "titulo": "Michigan bill would bar employers from requiring after-hours coms with workers",
       "url": "https://www.cbsnews.com/detroit/news/workplace-boundaries-act-employees-after-hours/",
-      "score": 93,
-      "comentarios": 49
+      "score": 132,
+      "comentarios": 69
+    },
+    {
+      "fonte": "HN",
+      "titulo": "EU to legislate about Chat Control behind closed doors",
+      "url": "https://www.patrick-breyer.de/en/double-threat-to-private-communications-undemocratic-chat-control-backroom-deals-and-imminent-concessions-spark-relaunch-of-fightchatcontrol-eu/",
+      "score": 330,
+      "comentarios": 193
     },
     {
       "fonte": "HN",
       "titulo": "Marfa Public Radio Puts You to Sleep",
       "url": "https://www.marfapublicradio.org/podcast/marfa-public-radio-puts-you-to-sleep",
-      "score": 354,
-      "comentarios": 104
+      "score": 359,
+      "comentarios": 108
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Do Babies Dream of Baby Sheep?",
+      "url": "https://devz.cl/posts/do-babies-dream-of-electric-sheep/",
+      "score": 85,
+      "comentarios": 23
+    },
+    {
+      "fonte": "HN",
+      "titulo": "California legislature agrees to upload driver's licenses to national database",
+      "url": "https://papersplease.org/wp/2026/06/27/california-legislature-agrees-to-upload-drivers-licenses-to-national-database/",
+      "score": 62,
+      "comentarios": 25
     },
     {
       "fonte": "HN",
       "titulo": "DLL that was not present in memory despite not being formally unloaded",
       "url": "https://devblogs.microsoft.com/oldnewthing/20260625-00/?p=112467",
-      "score": 89,
+      "score": 98,
       "comentarios": 34
     },
     {
       "fonte": "HN",
       "titulo": "Google limits Meta's use of its Gemini AI models",
       "url": "https://www.cnbc.com/2026/06/28/google-limits-metas-use-of-its-gemini-ai-models-ft-reports.html",
-      "score": 96,
-      "comentarios": 43
-    },
-    {
-      "fonte": "HN",
-      "titulo": "EU Open Sources Ten-Year Network Development Planning Tools",
-      "url": "https://github.com/open-energy-transition/open-tyndp",
-      "score": 144,
-      "comentarios": 34
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The origins of the school system aimed to produce independent, critical thinkers (2024)",
-      "url": "https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093",
-      "score": 72,
-      "comentarios": 31
+      "score": 113,
+      "comentarios": 50
     },
     {
       "fonte": "HN",
       "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
       "url": "https://github.com/bikini/exploitarium",
-      "score": 904,
-      "comentarios": 355
+      "score": 912,
+      "comentarios": 360
     },
     {
       "fonte": "HN",
       "titulo": "AMD Strix Halo RDMA Cluster Setup Guide",
       "url": "https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes/blob/main/rdma_cluster/setup_guide.md",
-      "score": 208,
-      "comentarios": 62
+      "score": 211,
+      "comentarios": 63
     },
     {
       "fonte": "HN",
-      "titulo": "Choosing a Public DNS Resolver",
-      "url": "https://evilbit.de/dns-resolver-guide.html",
-      "score": 245,
-      "comentarios": 105
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Wayfinder Router: deterministic routing of queries between local and hosted LLM",
-      "url": "https://github.com/itsthelore/wayfinder-router",
-      "score": 100,
-      "comentarios": 49
+      "titulo": "EU Open Sources Ten-Year Network Development Planning Tools",
+      "url": "https://github.com/open-energy-transition/open-tyndp",
+      "score": 149,
+      "comentarios": 36
     }
   ],
   "devto": [
@@ -117,7 +117,7 @@
         "hardware",
         "fiction"
       ],
-      "reacoes": 27
+      "reacoes": 28
     },
     {
       "fonte": "Dev.to",
@@ -154,17 +154,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "I Got Tired of Rewriting AI API Wrappers, So I Built a Gateway",
-      "tags": [
-        "ai",
-        "api",
-        "llm",
-        "showdev"
-      ],
-      "reacoes": 20
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "A Rogue Registry in My Own Backyard: Anatomy of a Two-Line Supply Chain Attack",
       "tags": [
         "npm",
@@ -175,14 +164,14 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Adding io::ErrorKind::TooManyOpenFiles to Rust",
+      "titulo": "I Got Tired of Rewriting AI API Wrappers, So I Built a Gateway",
       "tags": [
-        "rust",
-        "systems",
-        "opensource",
-        "programming"
+        "ai",
+        "api",
+        "llm",
+        "showdev"
       ],
-      "reacoes": 6
+      "reacoes": 20
     },
     {
       "fonte": "Dev.to",
@@ -197,6 +186,16 @@
     },
     {
       "fonte": "Dev.to",
+      "titulo": "Choosing the Right Database Abstraction",
+      "tags": [
+        "database",
+        "dbi",
+        "dbixclass"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
       "titulo": "I Built a QR Code Generator in Pure Vanilla JS — No Libraries, No Server, 202 Tests",
       "tags": [
         "javascript",
@@ -208,12 +207,12 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "The 60% Trap: Why E-Commerce Giants Are Laundering Discounts (And How to Protect Yourself)",
+      "titulo": "I Built an AI Agent That Gets Curious On Its Own",
       "tags": [
-        "opensource",
-        "webdev",
-        "security",
-        "javascript"
+        "ai",
+        "machinelearning",
+        "llm",
+        "python"
       ],
       "reacoes": 2
     }

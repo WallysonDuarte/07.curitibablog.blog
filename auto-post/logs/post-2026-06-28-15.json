@@ -1,0 +1,68 @@
+{
+  "title": "Drizzle ORM: o ORM TypeScript que parece SQL e roda ate na borda",
+  "slug": "drizzle-orm-typescript-sql-like-serverless-edge",
+  "summary": "Conheca o Drizzle ORM, o ORM TypeScript leve que escreve consultas parecidas com SQL e funciona bem em serverless e edge. Veja recursos, instalacao, comparacao com o Prisma e dicas praticas.",
+  "metaTitle": "Drizzle ORM: ORM TypeScript SQL-like | CuritibaBlog",
+  "metaDescription": "Drizzle ORM e o ORM TypeScript leve e SQL-like que roda em serverless e edge. Recursos, instalacao, comparacao com Prisma e dicas praticas.",
+  "category": "desenvolvimento",
+  "categories": ["desenvolvimento", "tecnologia"],
+  "tags": ["drizzle-orm", "typescript", "orm", "banco-de-dados", "serverless", "postgresql", "node-js"],
+  "content": "<h2>O que e o Drizzle ORM</h2><p>O <strong>Drizzle ORM</strong> e um ORM moderno para <strong>TypeScript</strong> e JavaScript que se tornou um dos queridinhos da comunidade de desenvolvimento. A proposta dele e simples e ousada ao mesmo tempo: te deixar escrever consultas que se parecem muito com SQL, mas com toda a seguranca de tipos que o TypeScript oferece.</p><p>Ele foi criado pela equipe da <strong>Drizzle Team</strong> e cresceu rapido por resolver uma dor antiga de quem trabalha com banco de dados em Node.js. A maioria dos ORMs esconde o SQL atras de camadas de abstracao. O Drizzle faz o contrario: deixa o SQL visivel, mas tipado e seguro.</p><p>A razao de estar em alta agora tem a ver com a explosao de aplicacoes <strong>serverless</strong> e <strong>edge</strong>. Nesses ambientes, cada milissegundo e cada quilobyte importam, e o Drizzle foi pensado para ser leve o suficiente para rodar nesses cenarios sem peso extra.</p><h2>Como funciona</h2><p>O Drizzle funciona como uma camada fina entre o seu codigo e o banco. Voce descreve o schema do banco em TypeScript, com tabelas e colunas tipadas, e o Drizzle usa essas definicoes para gerar consultas seguras em tempo de compilacao.</p><p>A grande sacada e que ele nao depende de um passo de geracao de codigo em tempo de execucao. O schema e o proprio TypeScript, entao o autocomplete do seu editor ja conhece todas as tabelas, colunas e relacoes. Se voce errar o nome de uma coluna, o erro aparece antes de rodar a aplicacao.</p><p>Ele oferece duas formas de consultar os dados. Uma e o <strong>query builder</strong> no estilo SQL, em que voce monta selects, joins e filtros parecidos com a linguagem original. A outra e a <strong>relational queries API</strong>, mais alto nivel, ideal para buscar dados relacionados sem escrever joins na mao.</p><h2>Principais recursos</h2><p>O Drizzle reune um conjunto de recursos pensados para produtividade sem abrir mao do controle. Os destaques sao:</p><ul><li><strong>Seguranca de tipos completa</strong>: todo o schema e tipado, do select ao insert.</li><li><strong>Query builder SQL-like</strong>: a sintaxe lembra SQL de verdade, sem curva de aprendizado exotica.</li><li><strong>Drizzle Kit</strong>: ferramenta de linha de comando para gerar e aplicar migracoes.</li><li><strong>Suporte multi-banco</strong>: funciona com PostgreSQL, MySQL e SQLite.</li><li><strong>Drivers serverless</strong>: integra com plataformas como Neon, PlanetScale e Turso.</li></ul><p>Um diferencial importante e o tamanho reduzido. Por ser leve e sem dependencias pesadas, ele cabe bem em funcoes serverless e em ambientes edge, onde bibliotecas grandes costumam atrapalhar o tempo de inicializacao.</p><p>Alem disso, ele nao esconde o que esta acontecendo. Voce consegue inspecionar o SQL gerado a qualquer momento, o que ajuda muito na hora de otimizar consultas ou entender um problema de performance.</p><h2>Como comecar: instalacao passo a passo</h2><p>Comecar com o Drizzle e direto, especialmente se voce ja tem um projeto Node.js com TypeScript configurado. O fluxo basico envolve poucos passos.</p><p><strong>Passo 1:</strong> instale o pacote principal e o driver do seu banco. Com PostgreSQL, por exemplo, voce instala o drizzle-orm junto com um cliente como o pg ou o postgres.</p><p><strong>Passo 2:</strong> instale o Drizzle Kit como dependencia de desenvolvimento. Ele cuida da parte de migracoes e da geracao do schema a partir do banco existente, se for o caso.</p><p><strong>Passo 3:</strong> defina o schema em um arquivo TypeScript, descrevendo cada tabela e coluna. <strong>Passo 4:</strong> crie a conexao passando o driver e o schema para o Drizzle. A partir dai voce ja consegue fazer consultas tipadas. Os unicos requisitos sao ter Node.js instalado e um banco de dados acessivel.</p><h2>Exemplo pratico</h2><p>Imagine uma tabela de usuarios. No Drizzle, voce define essa tabela em TypeScript com colunas como id, nome e email, cada uma com seu tipo. Esse arquivo de schema vira a fonte unica de verdade do seu banco.</p><p>Para buscar todos os usuarios, voce usa uma consulta parecida com um select. Para filtrar, adiciona uma condicao com o operador adequado, por exemplo buscar usuarios cujo email contenha um dominio especifico. O autocomplete sugere os campos disponiveis enquanto voce digita.</p><p>Na hora de inserir um registro, voce passa um objeto com os campos da tabela. Se faltar um campo obrigatorio ou o tipo estiver errado, o TypeScript reclama na hora. Esse ciclo de feedback rapido e o que torna a experiencia tao agradavel para quem ja sofreu com erros de banco que so apareciam em producao.</p><h2>Comparacao com alternativas</h2><p>O Drizzle nao esta sozinho nesse mercado. As principais alternativas no mundo TypeScript sao o <strong>Prisma</strong>, o <strong>TypeORM</strong>, o <strong>Kysely</strong> e o <strong>Sequelize</strong>.</p><p>O Prisma e o concorrente mais conhecido. Ele aposta em uma linguagem propria de schema e em um cliente gerado, com uma experiencia muito polida. O Drizzle, por outro lado, mantem tudo dentro do TypeScript e fica mais proximo do SQL, o que agrada quem quer controle fino sobre as consultas.</p><p>Comparado ao Kysely, que tambem e SQL-like e tipado, o Drizzle agrega a parte de schema e migracoes de forma mais integrada. Ja em relacao ao TypeORM e ao Sequelize, que sao mais antigos, o ponto forte do Drizzle e ser mais leve e mais adequado a ambientes serverless e edge.</p><h2>Pontos positivos e limitacoes</h2><p>Entre os pontos positivos, o mais citado e a combinacao de SQL visivel com seguranca de tipos. Quem gosta de saber exatamente qual consulta esta sendo enviada ao banco se sente em casa. O tamanho reduzido e o bom desempenho em serverless completam a lista.</p><p>A documentacao tambem evoluiu bastante e a comunidade e ativa, o que facilita encontrar respostas. Para projetos novos que ja nascem em TypeScript, a adocao costuma ser tranquila.</p><p>Por outro lado, existem limitacoes. Por ser mais proximo do SQL, ele exige que voce entenda bem o banco, o que pode pesar para quem prefere uma abstracao total. Alguns recursos mais avancados ainda amadurecem com o tempo, e quem vem de ORMs muito automaticos pode estranhar ter que pensar mais nas consultas.</p><h2>Casos de uso reais</h2><p>O Drizzle se encaixa bem em varios perfis. Veja alguns cenarios concretos:</p><ul><li><strong>Desenvolvedor solo de SaaS</strong>: quer um ORM leve para uma API em serverless, com deploy rapido e baixo custo.</li><li><strong>Time de startup</strong>: precisa de produtividade com TypeScript e quer evitar surpresas de tipo em producao.</li><li><strong>Aplicacao edge</strong>: roda em funcoes de borda e precisa de uma biblioteca pequena que inicialize rapido.</li><li><strong>Projeto que valoriza SQL</strong>: a equipe domina SQL e nao quer que o ORM esconda as consultas.</li></ul><p>Em todos esses casos, o equilibrio entre controle e produtividade e o que faz a diferenca. Quem ja tem familiaridade com bancos relacionais costuma se adaptar em poucas horas.</p><p>Tambem e uma escolha comum em projetos que usam bancos serverless modernos, justamente pela integracao direta com os drivers dessas plataformas.</p><h2>Dicas e boas praticas</h2><p>Usuarios experientes costumam manter o schema bem organizado, separando as tabelas em arquivos quando o projeto cresce. Isso facilita a manutencao e evita um unico arquivo gigante e dificil de navegar.</p><p>Outra boa pratica e usar o Drizzle Kit para versionar as migracoes desde o inicio, em vez de aplicar mudancas manuais no banco. Assim o historico de evolucao do schema fica claro e reproduzivel em todos os ambientes.</p><p>Um erro comum de iniciantes e tratar o Drizzle como um ORM totalmente automatico e esquecer de pensar nas consultas. Como ele e SQL-like, vale aproveitar essa transparencia para inspecionar o SQL gerado e otimizar onde fizer sentido. Outra dica e aproveitar a relational queries API para evitar joins repetitivos no codigo.</p><h2>Vale a pena?</h2><p>Para quem trabalha com TypeScript e gosta de ter controle sobre o banco, o Drizzle vale muito a pena. Ele entrega seguranca de tipos sem esconder o SQL, e brilha em serverless e edge, onde leveza e desempenho sao essenciais.</p><p>Para quem prefere uma abstracao total e nao quer pensar em SQL, talvez um ORM mais automatico como o Prisma se encaixe melhor. Nao existe escolha errada aqui, e sim a que combina com o seu jeito de trabalhar e com o perfil do projeto.</p><p>O proximo passo sugerido e criar um projeto pequeno de teste, definir uma ou duas tabelas e fazer algumas consultas. Em pouco tempo voce sente na pratica se o estilo SQL-like do Drizzle combina com voce. A documentacao oficial e um otimo ponto de partida.</p>",
+  "faqs": [
+    {"question": "O Drizzle ORM e gratuito e open source?", "answer": "Sim. O Drizzle ORM e um projeto open source e gratuito, distribuido sob a licenca Apache 2.0. Voce pode usar em projetos pessoais e comerciais sem custo de licenca."},
+    {"question": "Quais bancos de dados o Drizzle suporta?", "answer": "Ele suporta os principais bancos relacionais: PostgreSQL, MySQL e SQLite. Tambem integra com drivers serverless de plataformas como Neon, PlanetScale e Turso."},
+    {"question": "Drizzle ou Prisma: qual escolher?", "answer": "Depende do estilo. O Drizzle e SQL-like e leve, ideal para quem quer controle e ambientes serverless. O Prisma oferece uma abstracao mais alta e um cliente gerado, com uma experiencia bem polida."},
+    {"question": "Como faco migracoes no Drizzle?", "answer": "As migracoes sao feitas com o Drizzle Kit, a ferramenta de linha de comando do projeto. Ela gera e aplica as mudancas de schema de forma versionada e reproduzivel."},
+    {"question": "Drizzle funciona bem em serverless e edge?", "answer": "Sim, esse e um dos pontos fortes dele. Por ser leve e sem dependencias pesadas, ele inicializa rapido e se encaixa bem em funcoes serverless e ambientes edge."}
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: Drizzle ORM",
+      "items": [
+        {"label": "Tipo", "value": "ORM para TypeScript e JavaScript"},
+        {"label": "Licenca", "value": "Apache 2.0 (open source)"},
+        {"label": "Bancos suportados", "value": "PostgreSQL, MySQL e SQLite"},
+        {"label": "Migracoes", "value": "Drizzle Kit (CLI oficial)"},
+        {"label": "Foco", "value": "Leveza e desempenho em serverless e edge"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Site oficial", "value": "https://orm.drizzle.team"},
+        {"label": "Documentacao oficial", "value": "https://orm.drizzle.team/docs/overview"},
+        {"label": "GitHub", "value": "https://github.com/drizzle-team/drizzle-orm"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Rafael Andrade",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelAndrade",
+          "text": "Migrei a API da minha startup para o Drizzle e a sensacao de ver o SQL real, mas tipado, e libertadora. O autocomplete acerta tudo e parei de errar nome de coluna."
+        },
+        {
+          "name": "JulianaMendes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JulianaMendes",
+          "text": "Uso o Drizzle em funcoes serverless e a diferenca de tempo de inicializacao foi visivel. Por ser leve, ele combina muito bem com edge."
+        },
+        {
+          "name": "Bruno Carvalho",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=BrunoCarvalho",
+          "text": "Como gosto de SQL, me adaptei rapido. A dica que dou e versionar tudo com o Drizzle Kit desde o primeiro dia, evita dor de cabeca depois."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "SQL-like e tipado",
+  "card1_texto": "Consultas parecidas com SQL com seguranca de tipos",
+  "card2_titulo": "Leve e veloz",
+  "card2_texto": "Ideal para serverless e ambientes edge",
+  "card3_titulo": "Multi-banco",
+  "card3_texto": "PostgreSQL, MySQL e SQLite com um so ORM",
+  "subtitulo_capa": "O ORM TypeScript que mostra o SQL, com seguranca de tipos e leveza para rodar na borda"
+}
