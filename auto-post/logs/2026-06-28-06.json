@@ -1,10 +1,17 @@
 {
   "data": "2026-06-28",
   "etapas": {
-    "capa": "FALHOU: Flow nao gerou imagem dentro do timeout de 180s.",
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-28-06-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/8508c753-d503-408f-8878-58bc0ab624fb-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/8508c753-d503-408f-8878-58bc0ab624fb-cover.jpg"
+    },
     "mongo": {
-      "id": "6a411e8452d1bfb5ec1961ca",
-      "slug": "ai-gateway-unificar-rotear-chamadas-varios-llms",
+      "id": "6a418ef1348ab633d010ce22",
+      "slug": "yagni-principio-voce-nao-vai-precisar-disso",
       "is_new": true
     },
     "rebuild": {
@@ -29,15 +36,7 @@
     },
     "http_check": 200,
     "indexnow": {
-      "cafecomdevpai": {
-        "ok": true,
-        "status": 200
-      },
-      "curitibablog": {
-        "ok": true,
-        "status": 200
-      },
-      "dozeroaojunior": {
+      "blogdudu": {
         "ok": true,
         "status": 200
       },
@@ -45,11 +44,19 @@
         "ok": true,
         "status": 200
       },
-      "blogdudu": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
         "ok": true,
         "status": 200
       },
       "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
         "ok": true,
         "status": 200
       }
@@ -57,9 +64,12 @@
     "social": {
       "facebook": {
         "ok": true,
-        "id": "103132212436476_1010584198392395"
+        "id": "103132212436476_1010883535029128"
       },
-      "instagram": "sem_imagem"
+      "instagram": {
+        "ok": true,
+        "id": "17860890585646862"
+      }
     },
     "whatsapp": {
       "ok": true
@@ -74,9 +84,9 @@
     },
     "linkedin": {
       "ok": true,
-      "id": "urn:li:share:7476990180659425280"
+      "id": "urn:li:share:7477111219930320897"
     }
   },
   "status": "CONCLUIDO",
-  "post_url": "https://curitibablog.com.br/ai-gateway-unificar-rotear-chamadas-varios-llms"
+  "post_url": "https://curitibablog.com.br/yagni-principio-voce-nao-vai-precisar-disso"
 }

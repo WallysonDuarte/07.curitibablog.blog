@@ -1586,6 +1586,10 @@ def validar_capa_claude(capa_path: str, titulo_esperado: str) -> tuple:
 
 
 def main(json_path: str):
+    # Horario silencioso: nao publicar entre 00:00 e 05:59 (horario local Brasilia)
+    if datetime.datetime.now().hour < 6:
+        log(f"HORARIO SILENCIOSO ({datetime.datetime.now().hour:02d}h): publicacao bloqueada entre 00:00 e 06:00 — abortando sem publicar.")
+        sys.exit(0)
     hoje = datetime.date.today().isoformat()
     # Derive slot from json_path stem (e.g. "post-2026-06-23-06" -> "06")
     import pathlib as _pathlib

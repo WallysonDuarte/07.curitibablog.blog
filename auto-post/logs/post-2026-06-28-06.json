@@ -1,0 +1,122 @@
+{
+  "title": "YAGNI na prática: por que não escrever código que você ainda não precisa",
+  "slug": "yagni-principio-voce-nao-vai-precisar-disso",
+  "summary": "YAGNI significa \"você não vai precisar disso\". É um princípio do Extreme Programming que evita escrever código para necessidades futuras imaginárias. Veja como ele reduz desperdício, quando aplicar e quando o conselho não vale.",
+  "metaTitle": "YAGNI: você não vai precisar disso | CuritibaBlog",
+  "metaDescription": "Entenda o princípio YAGNI (você não vai precisar disso), por que ele economiza tempo e como aplicar no seu código sem cair no extremo oposto.",
+  "category": "desenvolvimento",
+  "categories": [
+    "desenvolvimento",
+    "tecnologia"
+  ],
+  "tags": [
+    "yagni",
+    "boas praticas",
+    "extreme programming",
+    "codigo limpo",
+    "kent beck",
+    "engenharia de software",
+    "simplicidade"
+  ],
+  "content": "<h2>O que é o princípio YAGNI</h2><p><strong>YAGNI</strong> é a sigla de <strong>You Aren't Gonna Need It</strong>, que em portugues significa algo como \"você não vai precisar disso\". É uma das frases mais repetidas entre desenvolvedores experientes, e também uma das mais ignoradas na prática do dia a dia.</p><p>A ideia nasceu dentro do <strong>Extreme Programming (XP)</strong>, a metodologia ágil popularizada por Kent Beck e Ron Jeffries no final dos anos 1990. O conselho central é simples: não escreva código para resolver uma necessidade que você apenas imagina que vai existir no futuro. Escreva apenas o que o problema atual exige.</p><p>O princípio voltou ao centro das discussões porque, com times cada vez menores e prazos mais curtos, cada hora gasta construindo algo que ninguém pediu é uma hora a menos para entregar o que realmente importa. YAGNI não é preguiça: é foco.</p><h2>Como funciona o raciocinio por trás do YAGNI</h2><p>A lógica do YAGNI parte de uma constatação incômoda: somos péssimos em prever o futuro de um software. Aquela funcionalidade \"que com certeza vamos precisar\" muitas vezes nunca chega, ou chega de um jeito completamente diferente do que você imaginou.</p><p>Quando você constrói algo por antecipação, paga vários custos de uma vez. Há o custo de <strong>construir</strong> a feature agora, o custo de <strong>carregar</strong> esse código extra (que precisa ser lido, testado e mantido mesmo sem ser usado) e o custo de <strong>consertar</strong> quando a suposição se mostra errada e tudo precisa ser refeito.</p><p>YAGNI propoe adiar a decisão ate o momento em que você tem informação de verdade. Decidir mais tarde quase sempre significa decidir melhor, porque aí você conhece o problema real, e não a sua suposição sobre ele.</p><h2>As ideias centrais que o YAGNI defende</h2><p>O YAGNI não é uma regra isolada, e um conjunto de atitudes em relacao a como você gasta seu tempo de desenvolvimento. Os pontos mais importantes sao:</p><ul><li><strong>Resolva o problema de hoje:</strong> implemente exatamente o que a tarefa atual exige, nem mais, nem menos.</li><li><strong>Evite abstração especulativa:</strong> não crie camadas, interfaces ou parâmetros de configuração para casos que ainda não existem.</li><li><strong>Prefira mudar depois a adivinhar agora:</strong> código simples e fácil de mudar quando a necessidade real aparecer.</li><li><strong>Menos código, menos bug:</strong> cada linha que você não escreve é uma linha que não pode quebrar.</li></ul><p>Repare que nada disso diz para escrever código ruim ou sem cuidado. YAGNI anda de maos dadas com bom design: o objetivo é um código simples e limpo o suficiente para ser fácil de evoluir quando a hora chegar.</p><p>É justamente essa combinação que separa o YAGNI de simplesmente \"fazer o mínimo\". A meta é clareza, não gambiarra.</p><h2>Como começar a aplicar o YAGNI no seu código</h2><p>Adotar o YAGNI é mais uma mudança de hábito do que de ferramenta. Da para começar hoje, em qualquer linguagem ou framework, seguindo alguns passos praticos.</p><p><strong>Passo 1:</strong> antes de escrever qualquer abstração, pergunte \"alguma tarefa atual realmente precisa disso?\". Se a resposta for \"talvez no futuro\", pare.</p><p><strong>Passo 2:</strong> escreva a solução mais direta que resolve o caso de uso atual. Sem opções configuraveis que ninguem pediu, sem suporte a cenários hipoteticos.</p><p><strong>Passo 3:</strong> garanta bons testes para o que existe. Isso da a segurança de refatorar depois, quando a necessidade real surgir.</p><p><strong>Passo 4:</strong> quando a nova exigência chegar de verdade, refatore com calma. Como o código atual é simples e testado, evoluir tende a ser mais barato do que você imagina.</p><h2>Exemplo prático: o parâmetro que nunca foi usado</h2><p>Imagine que você precisa de uma função para calcular o frete de um pedido. A regra atual é única: frete fixo por região. Um código guiado por YAGNI fica assim:</p><pre><code>function calcularFrete(regiao) {\n  const tabela = { sul: 15, sudeste: 12, norte: 25 };\n  return tabela[regiao] ?? 30;\n}</code></pre><p>Agora veja a versão \"preparada para o futuro\", cheia de suposições que ninguem pediu: peso, dimensões, transportadora, cupom, prazo. Tudo isso sem nenhuma regra de negócio real exigindo:</p><pre><code>function calcularFrete(regiao, peso, dimensoes, transportadora, cupom, prazo, opcoes) {\n  // dezenas de linhas tratando casos que ainda nao existem\n}</code></pre><p>A segunda versão parece mais robusta, mas é uma armadilha. Ninguem usa esses parâmetros, eles precisam ser testados e mantidos, e quando a regra real de peso finalmente chegar, ela provavelmente sera diferente do que você chutou. YAGNI manda começar pela primeira versão e evoluir só quando o negócio pedir.</p><h2>YAGNI, KISS, DRY e o Big Design Up Front</h2><p>O YAGNI faz parte de uma família de princípios que valorizam a simplicidade. Vale entender como ele se relaciona com os vizinhos mais conhecidos.</p><p><strong>KISS</strong> (Keep It Simple, Stupid) prega manter a solução simples; o YAGNI é mais específico e diz <em>quando</em> não construir algo: quando ainda não há necessidade. <strong>DRY</strong> (Don't Repeat Yourself) combate duplicação, mas pode entrar em tensão com o YAGNI quando você cria uma abstração cedo demais só para evitar repetir código que talvez nunca se repita.</p><p>Do lado oposto está o <strong>Big Design Up Front</strong>, a ideia de desenhar todo o sistema em detalhes antes de escrever a primeira linha. O YAGNI é a resposta ágil a esse modelo: projete o suficiente para começar, aprenda com o código rodando e ajuste o rumo com base em fatos.</p><h2>Pontos positivos e limitações</h2><p>Como todo princípio, o YAGNI tem forca e também armadilhas. Aplica-lo no automatico, sem pensar, pode ser tao prejudicial quanto ignora-lo.</p><p>Entre os <strong>pontos positivos</strong>: menos código morto, entregas mais rápidas, base de código mais fácil de entender e menos tempo perdido com features que ninguem usa. Times que respeitam o YAGNI costumam ter menos dívida técnica acumulada por especulacao.</p><p>Entre as <strong>limitações</strong>: existem decisões que sao caras de mudar depois, como escolha de banco de dados, contratos de API pública ou pontos de segurança. Nesses casos, um mínimo de planejamento antecipado é saudável. YAGNI vale mais para detalhes internos e features de negócio do que para decisões estruturais difíceis de reverter.</p><h2>Casos de uso reais: para quem o YAGNI faz diferença</h2><p>O princípio ajuda perfis bem diferentes de quem escreve software. Alguns exemplos concretos:</p><p><strong>O desenvolvedor de startup:</strong> precisa validar uma ideia rápido, com poucos recursos. Construir só o necessário para o MVP funcionar é a diferença entre lançar e ficar preso em código que ninguem vai usar.</p><p><strong>O dev que mantem sistema legado:</strong> ao mexer em código antigo, resistir a adicionar \"melhorias preventivas\" evita introduzir novos riscos em algo que já é frágil.</p><p><strong>O time de produto:</strong> ao priorizar o backlog, o YAGNI vira aliado para cortar funcionalidades especulativas e focar no que gera valor medido por uso real, e não por achismo.</p><p><strong>O iniciante:</strong> aprender a não se perder em abstrações prematuras acelera muito a curva de aprendizado e ajuda a entregar código funcionando mais cedo.</p><h2>Dicas e boas práticas para aplicar sem exagerar</h2><p>O segredo do YAGNI é o equilíbrio. Desenvolvedores experientes seguem alguns padrões para não cair no extremo de nunca planejar nada.</p><ul><li><strong>Diferencie \"fácil de mudar\" de \"caro de mudar\":</strong> seja agressivo com o YAGNI no que é barato reverter e mais cauteloso no que é estrutural.</li><li><strong>Use testes como rede de segurança:</strong> eles dao confiança para começar simples e refatorar quando a necessidade real chegar.</li><li><strong>Documente decisões adiadas:</strong> registre que você escolheu não tratar um caso ainda, para o time saber que foi proposital, e não esquecimento.</li><li><strong>Cuidado com o YAGNI usado como desculpa:</strong> ele não justifica pular tratamento de erro, segurança ou acessibilidade que já sao necessários hoje.</li></ul><p>O erro mais comum de iniciantes é confundir YAGNI com escrever menos do que o problema atual exige. O princípio fala de necessidades <em>futuras imaginárias</em>, não das reais e presentes.</p><h2>Vale a pena adotar o YAGNI?</h2><p>Para a grande maioria dos projetos, sim. O YAGNI é um dos conselhos com melhor relacao entre esforço e retorno: não custa nada adotar e economiza horas de trabalho desperdiçado em código que ninguem pede.</p><p>Ele faz mais sentido ainda em times pequenos, startups e produtos em evolução rapida, onde cada hora conta e os requisitos mudam o tempo todo. Em sistemas com decisões estruturais de alto custo, use com bom senso e combine com um mínimo de planejamento.</p><p>O próximo passo é simples: na sua proxima tarefa, antes de criar aquela abstração \"para o futuro\", pergunte se alguma necessidade real de hoje justifica. Se a resposta for não, você acabou de aplicar YAGNI, e seu código vai agradecer.</p>",
+  "faqs": [
+    {
+      "question": "O que significa YAGNI na programação?",
+      "answer": "YAGNI é a sigla de You Aren't Gonna Need It, ou \"você não vai precisar disso\". É um princípio do Extreme Programming que recomenda não escrever código para necessidades que você apenas imagina que vao existir no futuro, focando só no que o problema atual exige."
+    },
+    {
+      "question": "YAGNI quer dizer para escrever código de qualquer jeito?",
+      "answer": "Não. YAGNI fala em não antecipar features e abstrações desnecessárias, mas o código do caso atual deve ser bem feito, limpo e testado. A meta é simplicidade com qualidade, não gambiarra."
+    },
+    {
+      "question": "Qual a diferença entre YAGNI, KISS e DRY?",
+      "answer": "KISS prega manter tudo simples, YAGNI diz especificamente para não construir o que ainda não é necessário, e DRY combate duplicação de código. Eles se complementam, mas DRY pode conflitar com YAGNI quando você cria uma abstração cedo demais."
+    },
+    {
+      "question": "Quando NÃO devo seguir o YAGNI?",
+      "answer": "Em decisões caras de reverter, como escolha de banco de dados, contratos de API pública e pontos de segurança. Nesses casos vale um mínimo de planejamento antecipado. YAGNI brilha mais em detalhes internos e features de negócio."
+    },
+    {
+      "question": "Como começar a aplicar YAGNI no dia a dia?",
+      "answer": "Antes de criar uma abstração, pergunte se alguma tarefa atual realmente precisa dela. Se a resposta for \"talvez no futuro\", implemente apenas a solução direta do problema de hoje e refatore depois, quando a necessidade real aparecer."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: YAGNI",
+      "items": [
+        {
+          "label": "Sigla",
+          "value": "You Aren't Gonna Need It"
+        },
+        {
+          "label": "Origem",
+          "value": "Extreme Programming (XP)"
+        },
+        {
+          "label": "Associado a",
+          "value": "Kent Beck e Ron Jeffries"
+        },
+        {
+          "label": "Decada",
+          "value": "Final dos anos 1990"
+        },
+        {
+          "label": "Princípios irmaos",
+          "value": "KISS, DRY, Simple Design"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "Artigo de Martin Fowler sobre Yagni",
+          "value": "https://martinfowler.com/bliki/Yagni.html"
+        },
+        {
+          "label": "Wikipedia: You aren't gonna need it",
+          "value": "https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it"
+        },
+        {
+          "label": "C2 Wiki: YouArentGonnaNeedIt",
+          "value": "https://wiki.c2.com/?YouArentGonnaNeedIt"
+        },
+        {
+          "label": "Newsletter de Kent Beck",
+          "value": "https://newsletter.kentbeck.com/"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os desenvolvedores",
+      "items": [
+        {
+          "name": "Rafael Almeida",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelAlmeida",
+          "text": "Depois que comecei a aplicar YAGNI no time, paramos de construir features que ninguem usava. Entregamos mais rápido e o código ficou bem mais fácil de entender."
+        },
+        {
+          "name": "Juliana Costa",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JulianaCosta",
+          "text": "No comeco achei que era preguiça, mas entendi que é foco. Hoje só crio abstração quando a necessidade aparece de verdade, e quase nunca me arrependo."
+        },
+        {
+          "name": "Marcos Tavares",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MarcosTavares",
+          "text": "Minha dica: combine YAGNI com bons testes. Da segurança para começar simples e refatorar depois sem medo de quebrar tudo."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Menos desperdício",
+  "card1_texto": "Não escreva código para um futuro que talvez não venha",
+  "card2_titulo": "Decisão mais tarde",
+  "card2_texto": "Adie escolhas ate ter informação real para decidir",
+  "card3_titulo": "Código mais simples",
+  "card3_texto": "Menos abstração especulativa, menos bug e manutenção",
+  "subtitulo_capa": "O princípio que diz para não construir o que você ainda não precisa"
+}
