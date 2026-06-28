@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "5k Restaurant Menus, Years 1880-1920",
-      "url": "https://pudding.cool/2026/06/menu-collection/",
-      "score": 188,
-      "comentarios": 43
+      "titulo": "5k menus from the New York Public Library’s Buttolph Collection (1880-1920)",
+      "url": "https://pudding.cool/2026/06/menu-story/",
+      "score": 287,
+      "comentarios": 74
     },
     {
       "fonte": "HN",
       "titulo": "I used Claude Code to get a second opinion on my MRI",
       "url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
-      "score": 74,
-      "comentarios": 88
+      "score": 220,
+      "comentarios": 319
     },
     {
       "fonte": "HN",
-      "titulo": "The curious case of the disappearing Polish S (2015)",
-      "url": "https://aresluna.org/the-curious-case-of-the-disappearing-polish-s/",
-      "score": 170,
+      "titulo": "GLM 5.2 beats Claude in our benchmarks",
+      "url": "https://semgrep.dev/blog/2026/we-have-mythos-at-home-glm-52-beats-claude-in-our-cyber-benchmarks/",
+      "score": 69,
+      "comentarios": 23
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Librepods: AirPods liberated",
+      "url": "https://github.com/librepods-org/librepods",
+      "score": 146,
       "comentarios": 38
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The Boeing 747 begins its final descent",
+      "url": "https://www.theatlantic.com/magazine/2026/07/boeing-747-retirement/687304/",
+      "score": 87,
+      "comentarios": 86
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Working around dragons with the Lemote Yeeloong laptop and OpenBSD",
+      "url": "http://oldvcr.blogspot.com/2026/06/working-around-dragons-with-lemote.html",
+      "score": 66,
+      "comentarios": 12
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Tokenmaxxing is dead, long live tokenmaxxing",
+      "url": "https://12gramsofcarbon.com/p/agentics-tech-things-tokenmaxxing",
+      "score": 73,
+      "comentarios": 93
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ford rehires 'gray beard' engineers after AI falls short",
+      "url": "https://techcrunch.com/2026/06/28/ford-rehires-gray-beard-engineers-after-ai-falls-short/",
+      "score": 102,
+      "comentarios": 35
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Zanagrams",
+      "url": "https://zanagrams.com/",
+      "score": 111,
+      "comentarios": 39
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Daisugi, the Japanese technique of growing trees out of other trees (2020)",
+      "url": "https://www.openculture.com/2020/10/daisugi.html",
+      "score": 75,
+      "comentarios": 23
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The cost YAGNI was never about",
+      "url": "https://newsletter.kentbeck.com/p/the-cost-yagni-was-never-about",
+      "score": 72,
+      "comentarios": 47
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Examining circuit boards from the Space Shuttle's I/O Processor",
+      "url": "https://www.righto.com/2026/06/space-shuttle-io-processor-boards.html",
+      "score": 61,
+      "comentarios": 12
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The US Used to Demand the Best Tech. Now We Ban It",
+      "url": "https://www.pcmag.com/opinions/the-us-used-to-demand-the-best-tech-now-we-ban-it",
+      "score": 52,
+      "comentarios": 34
     },
     {
       "fonte": "HN",
       "titulo": "A way to exclude sensitive files issue still open for OpenAI Codex",
       "url": "https://github.com/openai/codex/issues/2847",
-      "score": 132,
-      "comentarios": 90
+      "score": 163,
+      "comentarios": 109
     },
     {
       "fonte": "HN",
-      "titulo": "Flock cameras track more than your license plate, and they're spreading fast",
-      "url": "https://www.engadget.com/2203000/flock-cameras-recording-license-plate/",
-      "score": 254,
-      "comentarios": 161
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Michigan bill would bar employers from requiring after-hours coms with workers",
-      "url": "https://www.cbsnews.com/detroit/news/workplace-boundaries-act-employees-after-hours/",
-      "score": 132,
-      "comentarios": 69
-    },
-    {
-      "fonte": "HN",
-      "titulo": "EU to legislate about Chat Control behind closed doors",
-      "url": "https://www.patrick-breyer.de/en/double-threat-to-private-communications-undemocratic-chat-control-backroom-deals-and-imminent-concessions-spark-relaunch-of-fightchatcontrol-eu/",
-      "score": 330,
-      "comentarios": 193
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Marfa Public Radio Puts You to Sleep",
-      "url": "https://www.marfapublicradio.org/podcast/marfa-public-radio-puts-you-to-sleep",
-      "score": 359,
-      "comentarios": 108
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Do Babies Dream of Baby Sheep?",
-      "url": "https://devz.cl/posts/do-babies-dream-of-electric-sheep/",
-      "score": 85,
-      "comentarios": 23
-    },
-    {
-      "fonte": "HN",
-      "titulo": "California legislature agrees to upload driver's licenses to national database",
-      "url": "https://papersplease.org/wp/2026/06/27/california-legislature-agrees-to-upload-drivers-licenses-to-national-database/",
-      "score": 62,
-      "comentarios": 25
-    },
-    {
-      "fonte": "HN",
-      "titulo": "DLL that was not present in memory despite not being formally unloaded",
-      "url": "https://devblogs.microsoft.com/oldnewthing/20260625-00/?p=112467",
-      "score": 98,
-      "comentarios": 34
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Google limits Meta's use of its Gemini AI models",
-      "url": "https://www.cnbc.com/2026/06/28/google-limits-metas-use-of-its-gemini-ai-models-ft-reports.html",
-      "score": 113,
-      "comentarios": 50
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
-      "url": "https://github.com/bikini/exploitarium",
-      "score": 912,
-      "comentarios": 360
-    },
-    {
-      "fonte": "HN",
-      "titulo": "AMD Strix Halo RDMA Cluster Setup Guide",
-      "url": "https://github.com/kyuz0/amd-strix-halo-vllm-toolboxes/blob/main/rdma_cluster/setup_guide.md",
-      "score": 211,
-      "comentarios": 63
-    },
-    {
-      "fonte": "HN",
-      "titulo": "EU Open Sources Ten-Year Network Development Planning Tools",
-      "url": "https://github.com/open-energy-transition/open-tyndp",
-      "score": 149,
-      "comentarios": 36
+      "titulo": "The curious case of the disappearing Polish S (2015)",
+      "url": "https://aresluna.org/the-curious-case-of-the-disappearing-polish-s/",
+      "score": 188,
+      "comentarios": 60
     }
   ],
   "devto": [
@@ -117,18 +117,7 @@
         "hardware",
         "fiction"
       ],
-      "reacoes": 28
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Engineering a Brainrot art installation on an Orange Pi Zero 🍊",
-      "tags": [
-        "ai",
-        "webdev",
-        "programming",
-        "javascript"
-      ],
-      "reacoes": 1
+      "reacoes": 32
     },
     {
       "fonte": "Dev.to",
@@ -150,7 +139,7 @@
         "career",
         "programming"
       ],
-      "reacoes": 34
+      "reacoes": 36
     },
     {
       "fonte": "Dev.to",
@@ -164,25 +153,25 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "I Got Tired of Rewriting AI API Wrappers, So I Built a Gateway",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: Ditching the Web Stack & The 30MB Standalone IDE (Part 3)",
       "tags": [
-        "ai",
-        "api",
-        "llm",
-        "showdev"
+        "showdev",
+        "coding",
+        "compilers",
+        "performance"
       ],
-      "reacoes": 20
+      "reacoes": 2
     },
     {
       "fonte": "Dev.to",
-      "titulo": "I built CarvePHP: finding service boundaries in Laravel monoliths",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: The Self-Healing Kernel & LLM Terminal Handover (Part 12)",
       "tags": [
-        "laravel",
-        "php",
-        "opensource",
-        "microservices"
+        "showdev",
+        "coding",
+        "compilers",
+        "systems"
       ],
-      "reacoes": 1
+      "reacoes": 2
     },
     {
       "fonte": "Dev.to",
@@ -196,23 +185,34 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "I Built a QR Code Generator in Pure Vanilla JS — No Libraries, No Server, 202 Tests",
+      "titulo": "Making of Tiny RPG Studio",
       "tags": [
-        "javascript",
         "webdev",
-        "devtools",
-        "opensource"
+        "gamedev",
+        "rpg",
+        "programming"
       ],
-      "reacoes": 2
+      "reacoes": 6
     },
     {
       "fonte": "Dev.to",
-      "titulo": "I Built an AI Agent That Gets Curious On Its Own",
+      "titulo": "The Agent Told Me It Was Done. The Tests Said Otherwise.",
       "tags": [
         "ai",
-        "machinelearning",
-        "llm",
-        "python"
+        "codingagents",
+        "testing",
+        "specdrivendevelopment"
+      ],
+      "reacoes": 0
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Codebase Is the Prompt",
+      "tags": [
+        "codequality",
+        "contextrot",
+        "legacy",
+        "ai"
       ],
       "reacoes": 2
     }
