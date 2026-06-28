@@ -1,0 +1,69 @@
+{
+  "title": "Shodan: o buscador que encontra câmeras e dispositivos expostos na internet",
+  "slug": "shodan-buscador-dispositivos-expostos-internet-seguranca",
+  "summary": "Entenda o que é o Shodan, o motor de busca que indexa dispositivos conectados à internet. Veja como ele encontra câmeras, servidores e IoT expostos e aprenda a proteger os seus equipamentos.",
+  "metaTitle": "Shodan: dispositivos expostos na internet | CuritibaBlog",
+  "metaDescription": "Entenda como o Shodan encontra câmeras, servidores e dispositivos IoT expostos na internet e veja como proteger os seus equipamentos.",
+  "category": "tecnologia",
+  "categories": ["tecnologia", "seguranca"],
+  "tags": ["shodan", "seguranca", "dispositivos expostos", "iot", "cameras ip", "redes", "ciberseguranca"],
+  "content": "<h2>O que é o Shodan</h2><p>O <strong>Shodan</strong> é um motor de busca diferente do Google. Em vez de indexar páginas e textos, ele indexa <strong>dispositivos conectados à internet</strong>: servidores, roteadores, câmeras IP, sistemas industriais, bancos de dados e qualquer aparelho que responda em um endereço público.</p><p>Ele foi criado por <strong>John Matherly</strong> e lançado em 2009. O nome é uma referência à inteligência artificial vilã do jogo System Shock. A ideia inicial era simples: mapear o que realmente está ligado e acessível na internet, muito além dos sites que visitamos no dia a dia.</p><p>O motivo de estar sempre em alta é incômodo. A cada ano, mais dispositivos vão para a rede sem configuração de segurança adequada. O Shodan tornou visível um problema que antes era invisível: milhões de equipamentos respondendo na internet pública, muitos deles sem senha ou com senha padrão de fábrica.</p><h2>Como funciona</h2><p>O Shodan trabalha com uma técnica chamada <strong>banner grabbing</strong>. Ele varre continuamente faixas de endereços IP da internet inteira e, em cada porta aberta que encontra, registra a resposta que o serviço devolve. Esse texto de resposta é o banner.</p><p>Um banner costuma revelar bastante coisa: qual software está rodando, qual versão, qual sistema operacional e às vezes até detalhes de configuração. Com isso, o Shodan monta um índice pesquisável de tudo que está exposto, organizado por porta, país, organização e tipo de serviço.</p><p>A diferença para um buscador comum é o foco na <strong>camada de rede</strong>, e não no conteúdo. Enquanto o Google pergunta o que esta página diz, o Shodan pergunta o que este dispositivo é e o que ele está deixando aberto para o mundo.</p><h2>Principais recursos</h2><p>O Shodan vai muito além de uma caixa de busca. Ele oferece um conjunto de ferramentas voltadas para entender a superfície de exposição de redes e dispositivos.</p><ul><li><strong>Busca com filtros:</strong> é possível filtrar por porta, país, cidade, organização, sistema operacional e produto específico.</li><li><strong>Mapas e visualizações:</strong> mostra a distribuição geográfica dos dispositivos encontrados.</li><li><strong>Monitoramento de IPs:</strong> permite acompanhar os endereços da sua própria rede e receber alertas quando algo novo fica exposto.</li><li><strong>API e linha de comando:</strong> integra os dados a scripts e ferramentas de segurança.</li></ul><p>Esses recursos transformam o Shodan em uma peça comum no kit de quem trabalha com segurança defensiva, inventário de ativos e resposta a incidentes.</p><h2>Como começar: acesso passo a passo</h2><p>Começar a usar o Shodan é direto, mas vale separar o uso casual do uso profissional.</p><ul><li><strong>Passo 1:</strong> acesse o site oficial e crie uma conta gratuita. Ela já permite buscas básicas com filtros limitados.</li><li><strong>Passo 2:</strong> no painel da conta, copie a sua API key, que é a chave usada pelas integrações.</li><li><strong>Passo 3:</strong> para uso técnico, instale a ferramenta de linha de comando com o comando pip install shodan.</li><li><strong>Passo 4:</strong> rode shodan init e cole a sua API key para autenticar o ambiente.</li></ul><p>A conta gratuita resolve curiosidade e testes. Para uso contínuo, monitoramento de redes e acesso completo aos filtros, o Shodan oferece <strong>planos pagos</strong> voltados a profissionais e empresas.</p><p>Vale o lembrete ético e legal: usar o Shodan para mapear a sua própria infraestrutura é prática saudável. Usar para invadir dispositivos de terceiros é crime. A ferramenta apenas mostra o que já está aberto; o que você faz com isso é responsabilidade sua.</p><h2>Exemplo prático</h2><p>O uso mais útil e seguro do Shodan é olhar para a sua própria casa digital. Imagine que você quer saber o que a sua conexão expõe para a internet.</p><p>No terminal, depois de configurar a ferramenta, você pode consultar um endereço IP específico com o comando <strong>shodan host SEU_IP_PUBLICO</strong>. O retorno lista as portas abertas, os serviços identificados e as versões detectadas naquele endereço.</p><p>O resultado costuma surpreender. Muita gente descobre que o roteador, uma câmera de segurança ou um painel de administração estão respondendo publicamente sem necessidade. A partir daí, a ação correta é fechar a porta, ativar autenticação forte ou colocar o serviço atrás de uma VPN. Esse é o ciclo defensivo que a ferramenta habilita: enxergar para corrigir.</p><h2>Comparação com alternativas</h2><p>O Shodan não está sozinho nesse mercado. Existem outros motores de busca de dispositivos, cada um com um foco.</p><p>O <strong>Censys</strong> é a alternativa mais citada e tem forte presença acadêmica e corporativa, com ênfase em certificados e visão de superfície de ataque. O <strong>BinaryEdge</strong> também varre a internet e oferece dados de exposição, com planos voltados a equipes de segurança.</p><p>O ponto forte do Shodan continua sendo a maturidade e o volume de dados acumulados desde 2009, além de uma comunidade grande e muita documentação. Para quem está começando em segurança defensiva, ele costuma ser o primeiro nome a aprender, justamente pela facilidade de uso e pela quantidade de material disponível.</p><h2>Pontos positivos e limitações</h2><p>O maior valor do Shodan é tornar concreto um risco abstrato. Ver o seu próprio dispositivo listado muda a forma como você pensa em configuração e exposição.</p><p>Entre os pontos fortes estão a riqueza dos filtros, a API bem documentada, o histórico de dados e a utilidade real para inventário de ativos e auditoria. É uma ferramenta que economiza muito tempo de reconhecimento defensivo.</p><p>Como limitações, os dados nem sempre estão em tempo real, já que a varredura da internet leva tempo e um dispositivo pode ter mudado desde a última coleta. Os recursos avançados ficam atrás de planos pagos, e a curva inicial dos filtros exige estudo. Há também o lado ético: a mesma visibilidade que ajuda defensores pode ser usada por atacantes, o que reforça a importância de configurar bem os seus sistemas.</p><h2>Casos de uso reais</h2><p>O Shodan atende perfis bem diferentes, sempre no campo da observação e da defesa.</p><ul><li><strong>Times de segurança:</strong> mapeiam a superfície de exposição da empresa e encontram serviços esquecidos antes que um invasor encontre.</li><li><strong>Administradores de rede:</strong> verificam se firewalls e regras estão realmente bloqueando o que deveriam.</li><li><strong>Pesquisadores:</strong> estudam tendências de exposição, como a quantidade de bancos de dados abertos por país ou região.</li><li><strong>Curiosos e estudantes:</strong> aprendem na prática como a internet funciona por baixo dos sites, sempre olhando os próprios recursos.</li></ul><p>Em todos esses cenários, o denominador comum é o mesmo: entender o que está aberto para então decidir o que fechar.</p><h2>Dicas e boas práticas</h2><p>Quem usa o Shodan com responsabilidade segue alguns princípios simples que fazem diferença.</p><p>O primeiro é começar olhando para dentro. Antes de explorar a internet inteira, consulte os IPs da sua própria empresa ou da sua casa. O retorno quase sempre revela algo para corrigir e ensina a interpretar os resultados.</p><p>O segundo é tratar o que você encontra com cuidado. Encontrar um dispositivo exposto de terceiros não dá direito de acessá-lo. O caminho correto é, no máximo, notificar o responsável. E o erro mais comum de iniciantes é achar que a ferramenta serve para invadir; ela serve para enxergar. A melhor prática de todas continua sendo aplicar o básico: trocar senhas padrão, fechar portas desnecessárias e usar VPN para serviços internos.</p><h2>Vale a pena?</h2><p>Para qualquer pessoa que trabalha ou estuda segurança, redes e infraestrutura, conhecer o Shodan vale muito a pena. Ele transforma a teoria de exposição em algo que você vê com os próprios olhos, e isso muda a postura diante de configuração.</p><p>Para o usuário comum, vale ao menos entender o conceito. Saber que dispositivos mal configurados ficam visíveis ajuda a tomar decisões melhores em casa, como não deixar câmeras e roteadores com senha de fábrica.</p><p>O próximo passo sugerido é simples e seguro: crie uma conta gratuita, instale a ferramenta de linha de comando e consulte o IP público da sua própria conexão. O que você descobrir provavelmente vai te motivar a fechar algumas portas hoje mesmo.</p>",
+  "faqs": [
+    {"question": "O Shodan é uma ferramenta de hacker?", "answer": "Não. O Shodan é um motor de busca de dispositivos conectados à internet, muito usado por profissionais de segurança defensiva. Ele apenas mostra o que já está exposto publicamente. O uso para invadir sistemas de terceiros é crime, independentemente da ferramenta."},
+    {"question": "O Shodan é gratuito?", "answer": "Existe uma conta gratuita que permite buscas básicas com filtros limitados. Para monitoramento contínuo de redes, filtros avançados e acesso completo à API, o Shodan oferece planos pagos voltados a profissionais e empresas."},
+    {"question": "Como sei se os meus dispositivos estão expostos?", "answer": "Depois de criar uma conta e configurar a ferramenta, você pode usar o comando shodan host seguido do seu IP público. O retorno mostra as portas abertas e os serviços visíveis naquele endereço, ajudando você a fechar o que não deveria estar aberto."},
+    {"question": "Quais são as alternativas ao Shodan?", "answer": "As principais alternativas são o Censys, com forte foco acadêmico e corporativo, e o BinaryEdge, voltado a equipes de segurança. O Shodan se destaca pela maturidade, pelo volume de dados desde 2009 e pela grande quantidade de documentação."},
+    {"question": "Preciso saber programar para usar o Shodan?", "answer": "Não para o uso básico pelo site. Para aproveitar a linha de comando e a API, noções de terminal e de redes ajudam bastante. Mas a primeira consulta, olhando o próprio IP, é simples e acessível mesmo para quem está começando."}
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em números: Shodan",
+      "items": [
+        {"label": "Lançamento", "value": "2009"},
+        {"label": "Criador", "value": "John Matherly"},
+        {"label": "Tipo", "value": "Motor de busca de dispositivos conectados à internet"},
+        {"label": "Acesso", "value": "Conta gratuita limitada + planos pagos"},
+        {"label": "Integração", "value": "API REST e CLI em Python (pip install shodan)"}
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {"label": "Site oficial", "value": "https://www.shodan.io"},
+        {"label": "Documentação oficial", "value": "https://help.shodan.io"},
+        {"label": "API para desenvolvedores", "value": "https://developer.shodan.io"},
+        {"label": "GitHub (biblioteca Python)", "value": "https://github.com/achillean/shodan-python"}
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuários",
+      "items": [
+        {
+          "name": "Rafael Antunes",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelAntunes",
+          "text": "Usei o Shodan para auditar a rede da empresa e encontrei um painel de admin exposto que ninguém lembrava. Fechamos no mesmo dia. Ferramenta essencial para quem cuida de infraestrutura."
+        },
+        {
+          "name": "Juliana Prado",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JulianaPrado",
+          "text": "Como estudante de segurança, consultar o meu próprio IP foi um choque de realidade. Aprendi mais sobre portas e serviços em uma tarde do que em semanas de teoria."
+        },
+        {
+          "name": "Marcelo Figueiredo",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MarceloFigueiredo",
+          "text": "Dica que dou sempre: comece olhando para dentro, monitore os seus IPs e configure alertas. O Shodan é ótimo para defesa, não só para reconhecimento."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Visão de exposição",
+  "card1_texto": "Descubra quais dispositivos seus respondem na internet",
+  "card2_titulo": "Uso defensivo",
+  "card2_texto": "Mapeie portas abertas e feche o que não deveria estar",
+  "card3_titulo": "Comece pelo seu IP",
+  "card3_texto": "Consulte o próprio endereço antes de explorar a rede",
+  "subtitulo_capa": "O motor de busca que revela câmeras, servidores e dispositivos expostos na internet"
+}

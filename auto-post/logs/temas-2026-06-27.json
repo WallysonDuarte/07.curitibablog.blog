@@ -5,105 +5,105 @@
       "fonte": "HN",
       "titulo": "IP Crawl: Living atlas of open webcams discovered on the public internet",
       "url": "https://ipcrawl.com/",
-      "score": 201,
-      "comentarios": 110
+      "score": 234,
+      "comentarios": 117
     },
     {
       "fonte": "HN",
       "titulo": "Anonymous GitHub account mass-dropping undisclosed 0-days",
       "url": "https://github.com/bikini/exploitarium",
-      "score": 617,
-      "comentarios": 241
+      "score": 646,
+      "comentarios": 250
     },
     {
       "fonte": "HN",
       "titulo": "OpenRA",
       "url": "https://www.openra.net/",
-      "score": 551,
-      "comentarios": 102
-    },
-    {
-      "fonte": "HN",
-      "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
-      "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
-      "score": 714,
-      "comentarios": 293
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: Adrafinil – keep a lid-closed Mac awake only while agents work",
-      "url": "https://github.com/kageroumado/adrafinil",
-      "score": 71,
-      "comentarios": 38
+      "score": 565,
+      "comentarios": 109
     },
     {
       "fonte": "HN",
       "titulo": "AI learns the “dark art” of RFIC design",
       "url": "https://spectrum.ieee.org/ai-radio-chip-design",
-      "score": 169,
-      "comentarios": 117
+      "score": 179,
+      "comentarios": 118
     },
     {
       "fonte": "HN",
       "titulo": "Fintech Engineering Handbook",
       "url": "https://w.pitula.me/fintech-engineering-handbook/",
-      "score": 450,
-      "comentarios": 154
+      "score": 467,
+      "comentarios": 158
     },
     {
       "fonte": "HN",
       "titulo": "Turn your site into a place people can bump into each other",
       "url": "https://cauenapier.com/blog/townsquare_release/",
-      "score": 134,
-      "comentarios": 62
+      "score": 151,
+      "comentarios": 67
     },
     {
       "fonte": "HN",
       "titulo": "The case for physical media ownership",
       "url": "https://dervis.de/physical/",
-      "score": 344,
-      "comentarios": 227
+      "score": 362,
+      "comentarios": 233
     },
     {
       "fonte": "HN",
       "titulo": "Suspicious Discontinuities (2020)",
       "url": "https://danluu.com/discontinuities/",
-      "score": 199,
-      "comentarios": 54
+      "score": 210,
+      "comentarios": 58
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Adrafinil – keep a lid-closed Mac awake only while agents work",
+      "url": "https://github.com/kageroumado/adrafinil",
+      "score": 77,
+      "comentarios": 48
     },
     {
       "fonte": "HN",
       "titulo": "Reducing tick density along recreational trails in Ottawa, Canada",
       "url": "https://www.sciencedirect.com/science/article/pii/S1877959X26000476",
-      "score": 139,
-      "comentarios": 74
+      "score": 153,
+      "comentarios": 76
     },
     {
       "fonte": "HN",
       "titulo": "Post-Mythos Cybersecurity: Keep calm and carry on",
       "url": "https://cephalosec.com/blog/cybersecurity-in-the-post-mythos-era-keep-calm-and-carry-on/",
-      "score": 124,
+      "score": 129,
       "comentarios": 39
     },
     {
       "fonte": "HN",
       "titulo": "Asian AI startups launch Mythos-like models",
       "url": "https://techcrunch.com/2026/06/27/asian-ai-startups-launch-mythos-like-models-as-anthropics-export-ban-drags-on/",
-      "score": 111,
-      "comentarios": 106
+      "score": 127,
+      "comentarios": 121
+    },
+    {
+      "fonte": "HN",
+      "titulo": "DSpark: Speculative decoding accelerates LLM inference [pdf]",
+      "url": "https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf",
+      "score": 719,
+      "comentarios": 296
     },
     {
       "fonte": "HN",
       "titulo": "Michigan spent $1.8B and only created 602 jobs",
       "url": "https://www.msn.com/en-us/money/general/michigan-spent-1-8-billion-and-only-created-602-jobs/ar-AA26Cusu",
-      "score": 63,
-      "comentarios": 27
+      "score": 93,
+      "comentarios": 37
     },
     {
       "fonte": "HN",
       "titulo": "One man, two kernels, and a lot of RISC-V",
       "url": "https://www.theregister.com/software/2026/06/26/one-man-two-kernels-and-a-lot-of-risc-v/5262858",
-      "score": 68,
+      "score": 76,
       "comentarios": 5
     }
   ],
