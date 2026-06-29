@@ -1,0 +1,221 @@
+{
+  "data": "2026-06-29",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "HackerRank open sourced its ATS. My resume scored 90/100. Oh wait 74. No – 88",
+      "url": "https://danunparsed.com/p/hackerrank-open-source-ats",
+      "score": 373,
+      "comentarios": 127
+    },
+    {
+      "fonte": "HN",
+      "titulo": "GLM 5.2 beats Claude in our benchmarks",
+      "url": "https://semgrep.dev/blog/2026/we-have-mythos-at-home-glm-52-beats-claude-in-our-cyber-benchmarks/",
+      "score": 817,
+      "comentarios": 379
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Dissecting Apple's Sparse Image Format (ASIF)",
+      "url": "https://schamper.dev/dissecting-apples-sparse-image-format-asif/",
+      "score": 65,
+      "comentarios": 2
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Age verification is just a precursor to automated attribution of speech",
+      "url": "https://nonogra.ph/age-verification-is-just-a-precursor-to-attribution-of-speech-06-29-2026",
+      "score": 416,
+      "comentarios": 224
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Herdr: Agent multiplexer that lives in your terminal",
+      "url": "https://github.com/ogulcancelik/herdr",
+      "score": 57,
+      "comentarios": 21
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Historical memory prices 1960-2026",
+      "url": "https://dam.stanford.edu/memory-prices.html",
+      "score": 294,
+      "comentarios": 106
+    },
+    {
+      "fonte": "HN",
+      "titulo": "5k menus from the New York Public Library’s Buttolph Collection (1880-1920)",
+      "url": "https://pudding.cool/2026/06/menu-story/",
+      "score": 364,
+      "comentarios": 95
+    },
+    {
+      "fonte": "HN",
+      "titulo": "I used Claude Code to get a second opinion on my MRI",
+      "url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
+      "score": 425,
+      "comentarios": 557
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Knowledge Distillation of Black-Box Large Language Models (2024)",
+      "url": "https://arxiv.org/abs/2401.07013",
+      "score": 97,
+      "comentarios": 15
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Deciphering basmala",
+      "url": "https://blog.plover.com/lang/bismillah.html",
+      "score": 59,
+      "comentarios": 18
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Zanagrams",
+      "url": "https://zanagrams.com/",
+      "score": 277,
+      "comentarios": 62
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Tokenmaxxing is dead, long live tokenmaxxing",
+      "url": "https://12gramsofcarbon.com/p/agentics-tech-things-tokenmaxxing",
+      "score": 149,
+      "comentarios": 189
+    },
+    {
+      "fonte": "HN",
+      "titulo": "TOP500 at ISC’26: We have a New Number 1 Supercomputer",
+      "url": "https://chipsandcheese.com/p/top500-at-isc26-we-have-a-new-number",
+      "score": 109,
+      "comentarios": 67
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The KIDS Act would require age checks to get online",
+      "url": "https://www.eff.org/deeplinks/2026/06/kids-act-would-require-age-checks-get-online",
+      "score": 473,
+      "comentarios": 369
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Professor denounces mass AI fraud on an exam at Brown",
+      "url": "https://english.elpais.com/education/2026-06-28/ai-fraud-at-brown-university-academic-integrity-is-at-risk.html",
+      "score": 400,
+      "comentarios": 528
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "1%",
+      "tags": [
+        "ai",
+        "geopolitics",
+        "hardware",
+        "fiction"
+      ],
+      "reacoes": 36
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What's Next for AI?",
+      "tags": [
+        "ai",
+        "llm",
+        "webdev"
+      ],
+      "reacoes": 22
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: Kimi K2.7 and the 'Safe-Room Security' Illusion (Part 1)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "security"
+      ],
+      "reacoes": 9
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The German Tank Problem: Why You Need UUIDs",
+      "tags": [
+        "backend",
+        "api",
+        "webdev",
+        "programming"
+      ],
+      "reacoes": 8
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Making of Tiny RPG Studio",
+      "tags": [
+        "webdev",
+        "gamedev",
+        "rpg",
+        "programming"
+      ],
+      "reacoes": 11
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: The Self-Healing Kernel & LLM Terminal Handover (Part 12)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "systems"
+      ],
+      "reacoes": 3
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: Writing Bare-Metal Drivers – PCI, NVMe & FAT32 (Part 9)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "rust"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: Ditching the Web Stack & The 30MB Standalone IDE (Part 3)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "performance"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: Reclaiming Ring 0 – UEFI Bootloader & GDT/IDT (Part 8)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "osdev"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: The JIT Compiler Core – From AST to Native Closures (Part 4)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "rust"
+      ],
+      "reacoes": 2
+    }
+  ]
+}

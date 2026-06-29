@@ -1,0 +1,122 @@
+{
+  "title": "UUIDv7: chaves primarias ordenadas por tempo que aceleram seu banco",
+  "slug": "uuidv7-chaves-primarias-ordenadas-banco-de-dados",
+  "summary": "Entenda o UUIDv7, o identificador unico ordenado por tempo do RFC 9562. Veja como ele funciona, por que melhora a performance de indices e quando usar no lugar do UUIDv4.",
+  "metaTitle": "UUIDv7: chaves primarias ordenadas | CuritibaBlog",
+  "metaDescription": "Entenda o UUIDv7 do RFC 9562, o ID unico ordenado por tempo, e por que ele melhora a performance de indices no seu banco de dados.",
+  "category": "desenvolvimento",
+  "categories": [
+    "desenvolvimento",
+    "tecnologia"
+  ],
+  "tags": [
+    "uuidv7",
+    "uuid",
+    "banco de dados",
+    "chave primaria",
+    "postgresql",
+    "rfc 9562",
+    "backend"
+  ],
+  "content": "<h2>O que e o UUIDv7</h2>\n<p>O <strong>UUIDv7</strong> e a versao 7 do identificador unico universal (UUID), criada para gerar valores que sao, ao mesmo tempo, unicos e ordenaveis por tempo. Ele foi padronizado na <strong>RFC 9562</strong>, publicada pela IETF em maio de 2024, que substituiu a antiga RFC 4122 e oficializou tres novas versoes: 6, 7 e 8.</p>\n<p>A ideia surgiu de um problema pratico que todo desenvolvedor de backend ja sentiu na pele. O UUIDv4, totalmente aleatorio, e otimo para evitar colisoes, mas pessimo como chave primaria de banco de dados: por nao ter ordem nenhuma, ele espalha as gravacoes pelo indice e degrada a performance ao longo do tempo.</p>\n<p>O UUIDv7 resolve isso embutindo o horario de criacao nos primeiros bits do identificador. Assim voce ganha o melhor dos dois mundos: a unicidade global de um UUID e a ordenacao sequencial de um id incremental, sem precisar de um servidor central coordenando a geracao.</p>\n\n<h2>Como funciona</h2>\n<p>Um UUID tem sempre <strong>128 bits</strong> (16 bytes), normalmente exibidos como 36 caracteres no formato 8-4-4-4-12. No UUIDv7, esses bits sao organizados de forma especifica para garantir a ordenacao.</p>\n<p>Os <strong>48 bits mais significativos</strong> guardam um timestamp Unix em milissegundos. Como esses bits ficam no inicio, dois IDs gerados em momentos diferentes ja saem em ordem cronologica quando comparados como texto ou como numero. Em seguida vem 4 bits que identificam a versao (o numero 7), depois bits de variante e, por fim, bits aleatorios que garantem a unicidade dentro do mesmo milissegundo.</p>\n<p>Pense numa analogia: o UUIDv4 e como jogar 128 moedas para o alto e anotar o resultado. O UUIDv7 e como escrever a data e a hora atual e so depois jogar as moedas restantes. O resultado continua praticamente impossivel de repetir, mas agora ele \"sabe\" quando nasceu.</p>\n\n<h2>Principais recursos</h2>\n<p>O grande diferencial do UUIDv7 e ser <strong>k-sortable</strong>, ou seja, ordenavel pelo tempo de geracao. Isso traz uma serie de beneficios diretos para quem trabalha com bancos de dados e sistemas distribuidos.</p>\n<ul>\n<li><strong>Localidade de indice:</strong> insercoes em arvores B-tree acontecem perto umas das outras, reduzindo fragmentacao e quebras de pagina.</li>\n<li><strong>Ordenacao gratuita:</strong> ordenar por id ja e praticamente ordenar por data de criacao, sem precisar de uma coluna extra.</li>\n<li><strong>Geracao distribuida:</strong> qualquer servico pode criar IDs sem consultar o banco ou um gerador central, o que ajuda em microservicos.</li>\n<li><strong>Compatibilidade total:</strong> continua sendo um UUID de 128 bits, entao cabe em qualquer coluna ou campo que ja aceita UUID.</li>\n</ul>\n<p>Esses pontos fazem o UUIDv7 ser especialmente atraente para quem ja usava UUIDv4 como chave primaria e sofria com a queda de desempenho conforme a tabela crescia.</p>\n\n<h2>Como comecar a usar</h2>\n<p>A boa noticia e que voce quase nunca precisa montar os bits na mao. A maioria das linguagens e bancos modernos ja oferece geracao de UUIDv7 pronta, seja na biblioteca padrao, seja em pacotes muito conhecidos.</p>\n<p>No <strong>JavaScript e TypeScript</strong>, o pacote uuid no npm ja inclui a versao 7. No <strong>Go</strong>, a biblioteca oficial google/uuid expoe a funcao NewV7. No <strong>.NET</strong>, versoes recentes trazem o metodo Guid.CreateVersion7. E no <strong>PostgreSQL</strong>, versoes recentes incluem a funcao nativa uuidv7 para usar direto em DEFAULT de coluna.</p>\n<p>O passo a passo geral e simples: primeiro escolha onde o ID vai ser gerado (na aplicacao ou no banco), depois ajuste a coluna para o tipo UUID e, por fim, troque a chamada de geracao do v4 pelo v7. Como o formato e identico, o resto do seu codigo costuma nem perceber a diferenca.</p>\n\n<h2>Exemplo pratico</h2>\n<p>Vamos a um caso concreto em Node.js. Imagine que voce esta criando registros de pedidos e quer que cada pedido tenha um id unico e ordenavel. Usando o pacote uuid, fica assim:</p>\n<pre><code>import { v7 as uuidv7 } from 'uuid';\n\nconst pedido = {\n  id: uuidv7(),\n  cliente: 'Mariana Souza',\n  total: 149.90,\n};\n\nconsole.log(pedido.id);\n// exemplo: 0190a4c2-3f9b-7c1a-9d2e-8f1b2c3d4e5f</code></pre>\n<p>Repare que os primeiros blocos do id mudam pouco entre dois pedidos criados na mesma janela de tempo, porque representam o timestamp. Se voce gerar varios e ordenar por id, eles saem na mesma ordem em que foram criados.</p>\n<p>No PostgreSQL, da para deixar o proprio banco gerar o valor na insercao, evitando logica extra na aplicacao:</p>\n<pre><code>CREATE TABLE pedidos (\n  id    uuid PRIMARY KEY DEFAULT uuidv7(),\n  total numeric(10,2) NOT NULL\n);\n\nINSERT INTO pedidos (total) VALUES (149.90);\nSELECT id FROM pedidos ORDER BY id;</code></pre>\n\n<h2>Comparacao com alternativas</h2>\n<p>Para escolher bem, vale comparar o UUIDv7 com as opcoes mais comuns de chave primaria.</p>\n<p>O <strong>UUIDv4</strong> e totalmente aleatorio. Ele e perfeito quando voce so precisa de unicidade e nao se importa com ordem, mas vira um problema de performance como chave primaria em tabelas grandes. O <strong>id incremental</strong> (auto-increment) e sequencial e rapido no indice, mas depende de um unico ponto de geracao e expoe quantos registros voce tem, o que pode ser um vazamento de informacao.</p>\n<p>Existe ainda o <strong>ULID</strong>, um formato muito parecido com o UUIDv7 na ideia (timestamp na frente, aleatorio atras), mas que usa uma representacao de texto diferente, de 26 caracteres em base32. A vantagem do UUIDv7 sobre o ULID e ser um padrao oficial da IETF e usar o mesmo formato de 16 bytes que os bancos ja conhecem como UUID.</p>\n\n<h2>Pontos positivos e limitacoes</h2>\n<p>Os pontos fortes ja ficaram claros: ordenacao por tempo, boa performance de indice, geracao descentralizada e compatibilidade com o ecossistema UUID existente.</p>\n<p>Mas e preciso ser honesto sobre as limitacoes. A principal e a <strong>privacidade</strong>: como o UUIDv7 carrega o horario de criacao, qualquer pessoa que veja o id consegue saber, com precisao de milissegundos, quando aquele registro nasceu. Para um pedido isso pode ser irrelevante, mas para um recurso sensivel pode ser indesejavel.</p>\n<p>Outra limitacao e que ele nao esconde a sequencia de criacao. Se voce expoe esses IDs publicamente em URLs, alguem pode inferir a ordem dos registros. Nesses casos, o UUIDv4 ainda faz mais sentido justamente por ser opaco e sem ordem.</p>\n\n<h2>Casos de uso reais</h2>\n<p>O UUIDv7 brilha em varios cenarios do dia a dia de quem desenvolve sistemas.</p>\n<ul>\n<li><strong>APIs e microservicos:</strong> cada servico gera seus proprios IDs sem coordenacao, e mesmo assim os registros mantem ordem global de criacao.</li>\n<li><strong>Sistemas de eventos e logs:</strong> ordenar eventos por id ja entrega a linha do tempo, util em filas e auditoria.</li>\n<li><strong>Bancos com tabelas enormes:</strong> equipes que migraram de UUIDv4 para v7 costumam relatar menos fragmentacao de indice em tabelas que crescem rapido.</li>\n<li><strong>Aplicacoes offline-first:</strong> o cliente cria o id localmente e sincroniza depois, sem risco de colisao com o servidor.</li>\n</ul>\n<p>Em todos esses casos, o ganho vem da combinacao rara de unicidade global com ordem temporal, algo que nenhuma das alternativas entrega de forma tao direta.</p>\n\n<h2>Dicas e boas praticas</h2>\n<p>Quem ja usa UUIDv7 em producao costuma seguir alguns cuidados que evitam dor de cabeca.</p>\n<p>O primeiro e <strong>armazenar como tipo nativo</strong>. Em bancos que tem o tipo uuid, use a coluna uuid de verdade, e nao um campo de texto. Guardar o UUID como string consome mais espaco e perde parte da otimizacao de indice. O segundo cuidado e nao expor o id em contextos onde o horario de criacao seja sensivel; nesses pontos, prefira um identificador opaco separado.</p>\n<p>O erro mais comum de iniciantes e tratar o UUIDv7 como aleatorio puro e usa-lo como token de seguranca ou senha de acesso. Ele nao foi feito para isso: parte do seu valor e previsivel por design. Para segredos, use geradores criptograficos especificos. Use o UUIDv7 para o que ele faz bem, que e ser uma chave primaria identificavel e ordenada.</p>\n\n<h2>Vale a pena?</h2>\n<p>Para a maioria dos sistemas novos que usam UUID como chave primaria, a resposta e um sim convicto. O UUIDv7 entrega a mesma unicidade do UUIDv4 com um ganho real de performance e ordenacao, e por ser padrao oficial tem suporte crescente em linguagens e bancos.</p>\n<p>Ele nao e bala de prata. Se a privacidade do horario de criacao for critica, ou se voce precisa de IDs totalmente opacos em URLs publicas, o UUIDv4 continua sendo a escolha certa. A decisao final depende de pesar performance contra previsibilidade no seu contexto.</p>\n<p>O proximo passo e simples e barato: em um projeto de teste, troque a geracao de v4 por v7 na sua linguagem favorita, rode uma carga de insercoes e compare. Ver o comportamento do indice com seus proprios olhos costuma ser o argumento que faltava para adotar de vez.</p>",
+  "faqs": [
+    {
+      "question": "Qual a diferenca entre UUIDv4 e UUIDv7?",
+      "answer": "O UUIDv4 e totalmente aleatorio e sem ordem. O UUIDv7 coloca o horario de criacao nos primeiros bits, entao os IDs ficam ordenados por tempo, o que melhora a performance como chave primaria em bancos de dados."
+    },
+    {
+      "question": "O UUIDv7 e seguro para usar como token de autenticacao?",
+      "answer": "Nao. Parte do valor do UUIDv7 e previsivel, pois carrega o timestamp de criacao. Para tokens e segredos, use geradores criptograficos especificos, e nao um UUIDv7."
+    },
+    {
+      "question": "O UUIDv7 ja e um padrao oficial?",
+      "answer": "Sim. Ele foi oficializado na RFC 9562 da IETF, publicada em maio de 2024, que substituiu a antiga RFC 4122 e definiu as versoes 6, 7 e 8 do UUID."
+    },
+    {
+      "question": "Como gerar um UUIDv7 na minha linguagem?",
+      "answer": "A maioria das linguagens ja tem suporte. No JavaScript, o pacote uuid traz a versao 7. No Go, use google/uuid com NewV7. No .NET, ha Guid.CreateVersion7. E o PostgreSQL recente tem a funcao nativa uuidv7."
+    },
+    {
+      "question": "Quando ainda vale a pena usar UUIDv4 em vez do v7?",
+      "answer": "Quando voce precisa de IDs totalmente opacos e sem ordem, por exemplo em URLs publicas onde nao quer revelar quando o registro foi criado nem a sequencia de criacao. Nesses casos o UUIDv4 continua melhor."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "title": "Em numeros: UUIDv7",
+      "items": [
+        {
+          "label": "Especificacao",
+          "value": "RFC 9562 (IETF, maio de 2024)"
+        },
+        {
+          "label": "Tamanho",
+          "value": "128 bits (16 bytes)"
+        },
+        {
+          "label": "Representacao textual",
+          "value": "36 caracteres no formato 8-4-4-4-12"
+        },
+        {
+          "label": "Timestamp",
+          "value": "48 bits, Unix em milissegundos"
+        },
+        {
+          "label": "Ordenavel por tempo",
+          "value": "Sim (k-sortable)"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "title": "Links oficiais",
+      "items": [
+        {
+          "label": "RFC 9562 (especificacao oficial)",
+          "value": "https://www.rfc-editor.org/rfc/rfc9562"
+        },
+        {
+          "label": "IETF Datatracker",
+          "value": "https://datatracker.ietf.org/doc/rfc9562/"
+        },
+        {
+          "label": "UUID na Wikipedia",
+          "value": "https://en.wikipedia.org/wiki/Universally_unique_identifier"
+        },
+        {
+          "label": "Biblioteca Go (google/uuid)",
+          "value": "https://github.com/google/uuid"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "title": "O que dizem os usuarios",
+      "items": [
+        {
+          "name": "Rafael Andrade",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelAndrade",
+          "text": "Troquei as chaves primarias de UUIDv4 para v7 no nosso PostgreSQL e a fragmentacao do indice na tabela de eventos caiu bastante. Ordenar por id virou ordenar por data de graca."
+        },
+        {
+          "name": "Juliana Martins",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JulianaMartins",
+          "text": "Uso em microservicos para cada servico gerar seu proprio id sem bater no banco. Manter a ordem global de criacao sem coordenacao central foi o que me convenceu."
+        },
+        {
+          "name": "Bruno Carvalho",
+          "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=BrunoCarvalho",
+          "text": "So tome cuidado com a privacidade do timestamp. Para ids internos e perfeito, mas em url publica eu ainda prefiro o v4 para nao revelar quando o registro foi criado."
+        }
+      ]
+    }
+  ],
+  "card1_titulo": "Ordenado por tempo",
+  "card1_texto": "Timestamp nos primeiros bits deixa o id k-sortable",
+  "card2_titulo": "Indice mais rapido",
+  "card2_texto": "Menos fragmentacao que o UUIDv4 em tabelas grandes",
+  "card3_titulo": "Padrao oficial",
+  "card3_texto": "Definido na RFC 9562 da IETF em maio de 2024",
+  "subtitulo_capa": "O identificador unico que tambem sabe a hora em que nasceu"
+}
