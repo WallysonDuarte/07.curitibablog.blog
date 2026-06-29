@@ -828,30 +828,49 @@ def inserir_post(post: dict) -> str:
         # Signal pipeline: post already exists, caller must pick a different theme
         return (str(existing["_id"]), False)
 
-    # Check title similarity against posts from last 60 days to prevent topic duplicates
-    import re as _re, datetime as _dt
+    # Dedup por tema (janela 60 dias): stem de slug + similaridade de titulo.
+    # Normaliza acentos (NFD) para "nao"=="não"; duplicata -> (id, False) = fluxo SLUG_JA_EXISTE
+    # (deleta JSON + agente escolhe outro tema), evitando replay do JSON.
+    import re as _re, datetime as _dt, unicodedata as _ud
     _cutoff = _dt.datetime.utcnow() - _dt.timedelta(days=60)
-    _STOPWORDS = {"de","da","do","para","com","em","no","na","o","a","os","as","um","uma","e","que","se","por","dos","das","ao","aos","como","ou","mais","seu","sua","seus","suas","este","esta","estes","estas","esse","essa","isso","isto","ao","la","lhe","mas","ja","nao","foi","ser","tem","teve","via","pelo","pela","pelos","pelas"}
+    _STOPWORDS = {"de","da","do","para","com","em","no","na","o","a","os","as","um","uma","e","que","se","por","dos","das","ao","aos","como","ou","mais","seu","sua","seus","suas","este","esta","estes","estas","esse","essa","isso","isto","la","lhe","mas","ja","nao","foi","ser","tem","teve","via","pelo","pela","pelos","pelas","voce","vai","ainda","sobre","quando","porque","sem","pra","tudo","todo","toda","sua"}
+    _SLUG_GENERIC = _STOPWORDS | {"usar","guia","tutorial","completo","passo","dicas","melhores","melhor","qual","quais","oque","fazer","novo","nova"}
+
+    def _norm(_s: str) -> str:
+        _s = _ud.normalize("NFD", (_s or "").lower())
+        return "".join(_c for _c in _s if _ud.category(_c) != "Mn")
 
     def _keywords(title: str) -> set:
-        words = set(_re.sub(r"[^a-zA-ZÀ-ú0-9\s]", "", title.lower()).split())
+        words = set(_re.sub(r"[^a-z0-9\s]", " ", _norm(title)).split())
         return words - _STOPWORDS
 
+    def _slug_stem(_s: str, _n: int = 2) -> str:
+        toks = [t for t in _norm(_s).split("-") if t and t not in _SLUG_GENERIC]
+        return "-".join(toks[:_n])
+
     _new_kw = _keywords(post.get("title", ""))
+    _new_stem = _slug_stem(slug)
     _recent = col.find({"isActive": True, "publishedAt": {"$gte": _cutoff}}, {"title": 1, "slug": 1})
     for _r in _recent:
+        _r_id = str(_r["_id"])
+        # 1) Stem de slug identico (2 primeiros tokens significativos) = mesmo tema
+        if _new_stem and _slug_stem(_r.get("slug", "")) == _new_stem:
+            client.close()
+            server.close()
+            ssh.close()
+            log(f"TEMA_DUPLICADO: stem de slug '{_new_stem}' ja existe em '{_r.get('slug')}' — escolher outro tema")
+            return (_r_id, False)
+        # 2) Similaridade de titulo >= 45% (rede secundaria)
         _r_kw = _keywords(_r.get("title", ""))
         if len(_new_kw) > 0 and len(_r_kw) > 0:
             _intersection = _new_kw & _r_kw
             _similarity = len(_intersection) / min(len(_new_kw), len(_r_kw))
-            if _similarity >= 0.6:
+            if _similarity >= 0.45:
                 client.close()
                 server.close()
                 ssh.close()
-                raise ValueError(
-                    f"TEMA_DUPLICADO: titulo similar a post existente '{_r['slug']}' "
-                    f"(similarity={_similarity:.0%}, palavras comuns: {_intersection})"
-                )
+                log(f"TEMA_DUPLICADO: titulo {_similarity:.0%} similar a '{_r.get('slug')}' (comuns={_intersection}) — escolher outro tema")
+                return (_r_id, False)
 
     result = col.insert_one(post)
     inserted_id = str(result.inserted_id)
