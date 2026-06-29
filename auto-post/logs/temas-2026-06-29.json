@@ -3,121 +3,121 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": "Rocketlab acquires Iridium",
+      "url": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-acquire-iridium-historic-deal-creating-fully",
+      "score": 152,
+      "comentarios": 83
+    },
+    {
+      "fonte": "HN",
+      "titulo": "WATaBoy: JIT-Ing Game Boy Instructions to WASM Beats a Native Interpreter",
+      "url": "https://humphri.es/blog/WATaBoy/",
+      "score": 73,
+      "comentarios": 8
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What happens when you run a CUDA kernel?",
+      "url": "https://fergusfinn.com/blog/what-happens-when-you-run-a-gpu-kernel/",
+      "score": 106,
+      "comentarios": 7
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Building Principia for Windows XP",
+      "url": "https://voxelmanip.se/2026/06/28/building-principia-for-windows-xp/",
+      "score": 79,
+      "comentarios": 16
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Sandia National Labs SA3000 8085 CPU",
+      "url": "https://www.cpushack.com/2026/06/03/sandia-national-labs-sa3000-8085-cpu/",
+      "score": 112,
+      "comentarios": 30
+    },
+    {
+      "fonte": "HN",
       "titulo": "HackerRank open sourced its ATS. My resume scored 90/100. Oh wait 74. No – 88",
       "url": "https://danunparsed.com/p/hackerrank-open-source-ats",
-      "score": 373,
-      "comentarios": 127
+      "score": 828,
+      "comentarios": 354
     },
     {
       "fonte": "HN",
-      "titulo": "GLM 5.2 beats Claude in our benchmarks",
-      "url": "https://semgrep.dev/blog/2026/we-have-mythos-at-home-glm-52-beats-claude-in-our-cyber-benchmarks/",
-      "score": 817,
-      "comentarios": 379
+      "titulo": "European ISPs Want Rightsholders Held Accountable for Overblocking Damage",
+      "url": "https://torrentfreak.com/european-isps-want-rightsholders-held-accountable-for-overblocking-damage/",
+      "score": 50,
+      "comentarios": 6
     },
     {
       "fonte": "HN",
-      "titulo": "Dissecting Apple's Sparse Image Format (ASIF)",
-      "url": "https://schamper.dev/dissecting-apples-sparse-image-format-asif/",
+      "titulo": "Mag 7 starting to underperform [pdf]",
+      "url": "https://www.apollo.com/content/dam/apolloaem/pdf/daily-spark/2026/jun/28/062826-Mag7.pdf",
+      "score": 134,
+      "comentarios": 100
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Tidal AI Policy",
+      "url": "https://tidal.com/ai-policy",
+      "score": 202,
+      "comentarios": 231
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Instagram is incorporating users' photos in ads for Meta Glasses",
+      "url": "https://twitter.com/i/status/2071277885646868536",
+      "score": 177,
+      "comentarios": 74
+    },
+    {
+      "fonte": "HN",
+      "titulo": "CachyOS June 2026 Release",
+      "url": "https://cachyos.org/blog/2606-june-release/",
       "score": 65,
-      "comentarios": 2
+      "comentarios": 37
     },
     {
       "fonte": "HN",
-      "titulo": "Age verification is just a precursor to automated attribution of speech",
-      "url": "https://nonogra.ph/age-verification-is-just-a-precursor-to-attribution-of-speech-06-29-2026",
-      "score": 416,
-      "comentarios": 224
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Herdr: Agent multiplexer that lives in your terminal",
-      "url": "https://github.com/ogulcancelik/herdr",
-      "score": 57,
-      "comentarios": 21
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Historical memory prices 1960-2026",
-      "url": "https://dam.stanford.edu/memory-prices.html",
-      "score": 294,
-      "comentarios": 106
-    },
-    {
-      "fonte": "HN",
-      "titulo": "5k menus from the New York Public Library’s Buttolph Collection (1880-1920)",
-      "url": "https://pudding.cool/2026/06/menu-story/",
-      "score": 364,
+      "titulo": "Pollen tried to remove my article and Google is assisting with it",
+      "url": "https://blog.pragmaticengineer.com/pollen-tried-to-remove-my-article-about-callum-negus-fancey-and-google-is-assisting-to-it/",
+      "score": 700,
       "comentarios": 95
     },
     {
       "fonte": "HN",
-      "titulo": "I used Claude Code to get a second opinion on my MRI",
-      "url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
-      "score": 425,
-      "comentarios": 557
+      "titulo": "Samsung, SK Hynix, Micron Sued in US over Memory Price Fixing",
+      "url": "https://en.sedaily.com/international/2026/06/29/samsung-sk-hynix-micron-sued-in-us-over-memory-price-fixing",
+      "score": 165,
+      "comentarios": 86
     },
     {
       "fonte": "HN",
-      "titulo": "Knowledge Distillation of Black-Box Large Language Models (2024)",
-      "url": "https://arxiv.org/abs/2401.07013",
-      "score": 97,
-      "comentarios": 15
+      "titulo": "The CEO of Mullvad is the main financer of the Swedish Örebro party",
+      "url": "https://det.social/@lostgen/116820546568940358",
+      "score": 155,
+      "comentarios": 445
     },
     {
       "fonte": "HN",
-      "titulo": "Deciphering basmala",
-      "url": "https://blog.plover.com/lang/bismillah.html",
-      "score": 59,
-      "comentarios": 18
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: Zanagrams",
-      "url": "https://zanagrams.com/",
-      "score": 277,
-      "comentarios": 62
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Tokenmaxxing is dead, long live tokenmaxxing",
-      "url": "https://12gramsofcarbon.com/p/agentics-tech-things-tokenmaxxing",
-      "score": 149,
-      "comentarios": 189
-    },
-    {
-      "fonte": "HN",
-      "titulo": "TOP500 at ISC’26: We have a New Number 1 Supercomputer",
-      "url": "https://chipsandcheese.com/p/top500-at-isc26-we-have-a-new-number",
-      "score": 109,
-      "comentarios": 67
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The KIDS Act would require age checks to get online",
-      "url": "https://www.eff.org/deeplinks/2026/06/kids-act-would-require-age-checks-get-online",
-      "score": 473,
-      "comentarios": 369
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Professor denounces mass AI fraud on an exam at Brown",
-      "url": "https://english.elpais.com/education/2026-06-28/ai-fraud-at-brown-university-academic-integrity-is-at-risk.html",
-      "score": 400,
-      "comentarios": 528
+      "titulo": "Halvar's Guide to Entrepreneurship",
+      "url": "https://thomasdullien.github.io/guides/entrepreneurship/",
+      "score": 123,
+      "comentarios": 37
     }
   ],
   "devto": [
     {
       "fonte": "Dev.to",
-      "titulo": "1%",
+      "titulo": "Welcome to AI Engineer World’s Fair 2026",
       "tags": [
+        "aie",
         "ai",
-        "geopolitics",
-        "hardware",
-        "fiction"
+        "techtalks",
+        "softwareengineering"
       ],
-      "reacoes": 36
+      "reacoes": 40
     },
     {
       "fonte": "Dev.to",
@@ -127,18 +127,83 @@
         "llm",
         "webdev"
       ],
-      "reacoes": 22
+      "reacoes": 70
     },
     {
       "fonte": "Dev.to",
-      "titulo": "V.E.L.O.C.I.T.Y.-OS: Kimi K2.7 and the 'Safe-Room Security' Illusion (Part 1)",
+      "titulo": "My commit message said \"You've hit your session limit\"",
       "tags": [
-        "showdev",
-        "coding",
-        "compilers",
-        "security"
+        "genai",
+        "ollama",
+        "learning",
+        "llm"
       ],
-      "reacoes": 9
+      "reacoes": 18
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Model Does Not Need Memory. The Situation Does.",
+      "tags": [
+        "ai",
+        "rag",
+        "mcp",
+        "llm"
+      ],
+      "reacoes": 20
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "🗓️ Monthly Dev Report: June 2026",
+      "tags": [
+        "discuss",
+        "community",
+        "programming",
+        "devjournal"
+      ],
+      "reacoes": 25
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "You’re not really that far behind.",
+      "tags": [
+        "aie",
+        "ai",
+        "learning"
+      ],
+      "reacoes": 10
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Pragmatism in an Age of Infinite Code and Unavoidable Bottlenecks",
+      "tags": [
+        "ai",
+        "aie",
+        "productivity",
+        "leadership"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What Actually Happens When You Call an LLM API",
+      "tags": [
+        "ai",
+        "webdev",
+        "beginners",
+        "discuss"
+      ],
+      "reacoes": 14
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "TanStack Query style caching, the Angular-native way",
+      "tags": [
+        "angular",
+        "typescript",
+        "webdev",
+        "opensource"
+      ],
+      "reacoes": 26
     },
     {
       "fonte": "Dev.to",
@@ -149,73 +214,7 @@
         "webdev",
         "programming"
       ],
-      "reacoes": 8
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Making of Tiny RPG Studio",
-      "tags": [
-        "webdev",
-        "gamedev",
-        "rpg",
-        "programming"
-      ],
-      "reacoes": 11
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "V.E.L.O.C.I.T.Y.-OS: The Self-Healing Kernel & LLM Terminal Handover (Part 12)",
-      "tags": [
-        "showdev",
-        "coding",
-        "compilers",
-        "systems"
-      ],
-      "reacoes": 3
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "V.E.L.O.C.I.T.Y.-OS: Writing Bare-Metal Drivers – PCI, NVMe & FAT32 (Part 9)",
-      "tags": [
-        "showdev",
-        "coding",
-        "compilers",
-        "rust"
-      ],
-      "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "V.E.L.O.C.I.T.Y.-OS: Ditching the Web Stack & The 30MB Standalone IDE (Part 3)",
-      "tags": [
-        "showdev",
-        "coding",
-        "compilers",
-        "performance"
-      ],
-      "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "V.E.L.O.C.I.T.Y.-OS: Reclaiming Ring 0 – UEFI Bootloader & GDT/IDT (Part 8)",
-      "tags": [
-        "showdev",
-        "coding",
-        "compilers",
-        "osdev"
-      ],
-      "reacoes": 2
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "V.E.L.O.C.I.T.Y.-OS: The JIT Compiler Core – From AST to Native Closures (Part 4)",
-      "tags": [
-        "showdev",
-        "coding",
-        "compilers",
-        "rust"
-      ],
-      "reacoes": 2
+      "reacoes": 13
     }
   ]
 }
