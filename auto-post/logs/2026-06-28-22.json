@@ -1,0 +1,92 @@
+{
+  "data": "2026-06-28",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-28-22-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/59638d61-586e-4e7a-812a-206e12cd04e0-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/59638d61-586e-4e7a-812a-206e12cd04e0-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a41c50cdc7f43c84d59bae2",
+      "slug": "glm-5-2-zhipu-ia-open-weight-supera-claude-benchmark",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1010997115017770"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18345010141174115"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "{\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n}"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7477169499927076864"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/glm-5-2-zhipu-ia-open-weight-supera-claude-benchmark"
+}

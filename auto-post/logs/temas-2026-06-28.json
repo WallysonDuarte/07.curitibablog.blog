@@ -5,106 +5,106 @@
       "fonte": "HN",
       "titulo": "GLM 5.2 beats Claude in our benchmarks",
       "url": "https://semgrep.dev/blog/2026/we-have-mythos-at-home-glm-52-beats-claude-in-our-cyber-benchmarks/",
-      "score": 127,
-      "comentarios": 39
-    },
-    {
-      "fonte": "HN",
-      "titulo": "I used Claude Code to get a second opinion on my MRI",
-      "url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
-      "score": 241,
-      "comentarios": 351
-    },
-    {
-      "fonte": "HN",
-      "titulo": "5k menus from the New York Public Library’s Buttolph Collection (1880-1920)",
-      "url": "https://pudding.cool/2026/06/menu-story/",
-      "score": 288,
-      "comentarios": 77
+      "score": 397,
+      "comentarios": 187
     },
     {
       "fonte": "HN",
       "titulo": "Historical memory prices 1960-2026",
       "url": "https://dam.stanford.edu/memory-prices.html",
-      "score": 61,
-      "comentarios": 17
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Librepods: AirPods liberated",
-      "url": "https://github.com/librepods-org/librepods",
-      "score": 164,
-      "comentarios": 49
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The Boeing 747 begins its final descent",
-      "url": "https://www.theatlantic.com/magazine/2026/07/boeing-747-retirement/687304/",
-      "score": 96,
-      "comentarios": 94
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Working around dragons with the Lemote Yeeloong laptop and OpenBSD",
-      "url": "http://oldvcr.blogspot.com/2026/06/working-around-dragons-with-lemote.html",
-      "score": 71,
-      "comentarios": 13
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Tokenmaxxing is dead, long live tokenmaxxing",
-      "url": "https://12gramsofcarbon.com/p/agentics-tech-things-tokenmaxxing",
-      "score": 79,
-      "comentarios": 98
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Show HN: Zanagrams",
-      "url": "https://zanagrams.com/",
-      "score": 116,
-      "comentarios": 41
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Daisugi, the Japanese technique of growing trees out of other trees (2020)",
-      "url": "https://www.openculture.com/2020/10/daisugi.html",
-      "score": 81,
-      "comentarios": 25
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Examining circuit boards from the Space Shuttle's I/O Processor",
-      "url": "https://www.righto.com/2026/06/space-shuttle-io-processor-boards.html",
-      "score": 67,
-      "comentarios": 13
+      "score": 146,
+      "comentarios": 55
     },
     {
       "fonte": "HN",
       "titulo": "Professor denounces mass AI fraud on an exam at Brown",
       "url": "https://english.elpais.com/education/2026-06-28/ai-fraud-at-brown-university-academic-integrity-is-at-risk.html",
-      "score": 51,
-      "comentarios": 44
+      "score": 208,
+      "comentarios": 292
     },
     {
       "fonte": "HN",
-      "titulo": "A way to exclude sensitive files issue still open for OpenAI Codex",
-      "url": "https://github.com/openai/codex/issues/2847",
+      "titulo": "5k menus from the New York Public Library’s Buttolph Collection (1880-1920)",
+      "url": "https://pudding.cool/2026/06/menu-story/",
+      "score": 318,
+      "comentarios": 85
+    },
+    {
+      "fonte": "HN",
+      "titulo": "I used Claude Code to get a second opinion on my MRI",
+      "url": "https://antoine.fi/mri-analysis-using-claude-code-opus",
+      "score": 327,
+      "comentarios": 435
+    },
+    {
+      "fonte": "HN",
+      "titulo": "TOP500 at ISC’26: We have a New Number 1 Supercomputer",
+      "url": "https://chipsandcheese.com/p/top500-at-isc26-we-have-a-new-number",
+      "score": 64,
+      "comentarios": 34
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The Boeing 747 begins its final descent",
+      "url": "https://www.theatlantic.com/magazine/2026/07/boeing-747-retirement/687304/",
+      "score": 133,
+      "comentarios": 169
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Librepods: AirPods liberated",
+      "url": "https://github.com/librepods-org/librepods",
+      "score": 266,
+      "comentarios": 79
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Xonaly – Canada's Independent Search Engine",
+      "url": "https://xonaly.com/",
+      "score": 53,
+      "comentarios": 32
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Working around dragons with the Lemote Yeeloong laptop and OpenBSD",
+      "url": "http://oldvcr.blogspot.com/2026/06/working-around-dragons-with-lemote.html",
+      "score": 92,
+      "comentarios": 18
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: Zanagrams",
+      "url": "https://zanagrams.com/",
       "score": 165,
-      "comentarios": 110
+      "comentarios": 49
     },
     {
       "fonte": "HN",
-      "titulo": "The US Used to Demand the Best Tech. Now We Ban It",
-      "url": "https://www.pcmag.com/opinions/the-us-used-to-demand-the-best-tech-now-we-ban-it",
-      "score": 65,
-      "comentarios": 53
+      "titulo": "Daisugi, the Japanese technique of growing trees out of other trees (2020)",
+      "url": "https://www.openculture.com/2020/10/daisugi.html",
+      "score": 106,
+      "comentarios": 34
     },
     {
       "fonte": "HN",
-      "titulo": "The curious case of the disappearing Polish S (2015)",
-      "url": "https://aresluna.org/the-curious-case-of-the-disappearing-polish-s/",
-      "score": 190,
-      "comentarios": 61
+      "titulo": "Tokenmaxxing is dead, long live tokenmaxxing",
+      "url": "https://12gramsofcarbon.com/p/agentics-tech-things-tokenmaxxing",
+      "score": 106,
+      "comentarios": 133
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Show HN: DRM-Free Books",
+      "url": "https://frequal.com/Perspectives/DrmFreeAuthors.html",
+      "score": 64,
+      "comentarios": 31
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Examining circuit boards from the Space Shuttle's I/O Processor",
+      "url": "https://www.righto.com/2026/06/space-shuttle-io-processor-boards.html",
+      "score": 82,
+      "comentarios": 16
     }
   ],
   "devto": [
@@ -143,16 +143,6 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "A Rogue Registry in My Own Backyard: Anatomy of a Two-Line Supply Chain Attack",
-      "tags": [
-        "npm",
-        "security",
-        "supplychain"
-      ],
-      "reacoes": 1
-    },
-    {
-      "fonte": "Dev.to",
       "titulo": "V.E.L.O.C.I.T.Y.-OS: The Self-Healing Kernel & LLM Terminal Handover (Part 12)",
       "tags": [
         "showdev",
@@ -170,6 +160,17 @@
         "coding",
         "compilers",
         "performance"
+      ],
+      "reacoes": 2
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "V.E.L.O.C.I.T.Y.-OS: The Synaptic Canvas GUI & V-NCE GPU (Part 10)",
+      "tags": [
+        "showdev",
+        "coding",
+        "compilers",
+        "graphics"
       ],
       "reacoes": 2
     },
@@ -207,11 +208,12 @@
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Building a KVM Virtual Machine in Rust: Running a binary",
+      "titulo": "Can retrieval agents like ChatGPT and Perplexity read your website? Agentis Lux sees what they see.",
       "tags": [
-        "kvm",
-        "qemu",
-        "rust"
+        "ai",
+        "webdev",
+        "aws",
+        "showdev"
       ],
       "reacoes": 1
     }
