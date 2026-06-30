@@ -366,9 +366,11 @@ const searchIndex = JSON.stringify(
     return searchPosts!;
   }
 
-  const catBlockEls = document.querySelectorAll<HTMLElement>('.category-block');
-  const resultsEl   = document.getElementById('search-results') as HTMLElement;
-  const API         = 'https://api.curitibasoftware.com.br';
+  const catBlockEls  = document.querySelectorAll<HTMLElement>('.category-block');
+  const resultsEl    = document.getElementById('search-results') as HTMLElement;
+  const carouselSec  = document.querySelector<HTMLElement>('.main-carousel-section');
+  const filterSec    = document.querySelector<HTMLElement>('.filter-bar')?.closest('section') as HTMLElement | null;
+  const API          = 'https://api.curitibasoftware.com.br';
 
   function esc(s: string): string {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -379,12 +381,16 @@ const searchIndex = JSON.stringify(
       catBlockEls.forEach(b => { b.style.display = ''; });
       if (resultsEl) resultsEl.style.display = 'none';
       if (noRes) noRes.style.display = 'none';
+      if (carouselSec) { carouselSec.style.display = ''; carouselSec.style.opacity = ''; }
+      if (filterSec) filterSec.style.display = '';
       return;
     }
     const matches = getIndex().filter(p =>
       fuzzyMatch(q, [p.title, p.summary, ...(p.tags || []), ...(p.categories || [])].join(' '))
     );
     catBlockEls.forEach(b => { b.style.display = 'none'; });
+    if (carouselSec) { carouselSec.style.display = 'none'; }
+    if (filterSec) filterSec.style.display = 'none';
     if (matches.length === 0) {
       if (resultsEl) resultsEl.style.display = 'none';
       if (noRes) noRes.style.display = 'block';
