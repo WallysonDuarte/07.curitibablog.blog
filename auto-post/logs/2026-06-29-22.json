@@ -1,7 +1,92 @@
 {
   "data": "2026-06-29",
-  "etapas": {},
-  "status": "ERRO",
-  "erro": "Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)",
-  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1625, in main\n    post_data = json.load(f)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 293, in load\n    return loads(fp.read(),\n        cls=cls, object_hook=object_hook,\n        parse_float=parse_float, parse_int=parse_int,\n        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 335, in loads\n    raise JSONDecodeError(\"Unexpected UTF-8 BOM (decode using utf-8-sig)\",\n                          s, 0)\njson.decoder.JSONDecodeError: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)\n"
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-29-22-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/0893d13a-e7da-4593-b256-ed69e2c485bc-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/0893d13a-e7da-4593-b256-ed69e2c485bc-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a4316a5a6cf9e4f697be018",
+      "slug": "qwen-36-27b-modelo-ia-local-desenvolvimento",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1011866811597467"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18044481560597656"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "{\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n}"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7477532098027872256"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/qwen-36-27b-modelo-ia-local-desenvolvimento"
 }
