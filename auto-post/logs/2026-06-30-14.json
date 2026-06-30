@@ -6,42 +6,87 @@
       "problemas": []
     },
     "upload": {
-      "key": "covers/c438dce8-31bb-4499-bd00-93bcd6df0fec-cover.jpg",
-      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/c438dce8-31bb-4499-bd00-93bcd6df0fec-cover.jpg"
+      "key": "covers/b0fc71cb-3b25-4cc4-9412-90df3e85f93b-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/b0fc71cb-3b25-4cc4-9412-90df3e85f93b-cover.jpg"
     },
     "mongo": {
-      "id": "6a43f919a0f18feeca7e56f4",
-      "slug": "zluda-6-cuda-amd-intel-gpu-sem-nvidia",
+      "id": "6a443d45c1fc792716ed7bb5",
+      "slug": "postgres-19-novidades-recursos-lancamento-2026",
       "is_new": true
     },
     "rebuild": {
       "curitibablog": {
-        "ok": false,
-        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+        "ok": true
       },
       "blogdudu": {
-        "ok": false,
-        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+        "ok": true
       },
       "devlevelup": {
-        "ok": false,
-        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+        "ok": true
       },
       "dozeroaojunior": {
-        "ok": false,
-        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+        "ok": true
       },
       "levelupdev": {
-        "ok": false,
-        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+        "ok": true
       },
       "cafecomdevpai": {
-        "ok": false,
-        "erro": "npm build falhou: :11)\n    at defaultResolve (node:internal/modules/esm/resolve:1056:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:603:25)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:242:38)\n    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)\u001b[22m\n"
+        "ok": true
       }
     },
-    "http_check": 404
+    "http_check": 200,
+    "indexnow": {
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1012626364854845"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18124057624679985"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "{\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n}"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7477848903435087872"
+    }
   },
-  "status": "PUBLICADO_SEM_SOCIAL",
-  "post_url": "https://curitibablog.com.br/zluda-6-cuda-amd-intel-gpu-sem-nvidia"
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/postgres-19-novidades-recursos-lancamento-2026"
 }
