@@ -1,0 +1,92 @@
+{
+  "data": "2026-06-30",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-30-06-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/bc80a7dc-d13a-451d-8c85-7e74aa0151ef-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/bc80a7dc-d13a-451d-8c85-7e74aa0151ef-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a438a0dceba9a5d273ccf47",
+      "slug": "self-tld-dominio-auto-hospedagem-self-hosting",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      },
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1012148658235949"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18101187731329757"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "{\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n}"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7477655489338732544"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/self-tld-dominio-auto-hospedagem-self-hosting"
+}

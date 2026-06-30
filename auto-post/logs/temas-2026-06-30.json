@@ -1,0 +1,218 @@
+{
+  "data": "2026-06-30",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "Open Source Low Tech",
+      "url": "https://opensourcelowtech.org/",
+      "score": 149,
+      "comentarios": 29
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Qwen 3.6 27B is the sweet spot for local development",
+      "url": "https://quesma.com/blog/qwen-36-is-awesome/",
+      "score": 900,
+      "comentarios": 607
+    },
+    {
+      "fonte": "HN",
+      "titulo": ".self: A new top-level domain designed to support self-hosting",
+      "url": "https://hccf.onmy.cloud/2026/06/21/reclaiming-our-digital-selves-hccfs-vision-for-a-human-centered-top-level-domain/",
+      "score": 501,
+      "comentarios": 283
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Free the Icons",
+      "url": "https://weblog.rogueamoeba.com/2026/06/26/free-the-icons/",
+      "score": 443,
+      "comentarios": 125
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Memory Safe Context Switching",
+      "url": "https://fil-c.org/context_switches",
+      "score": 124,
+      "comentarios": 24
+    },
+    {
+      "fonte": "HN",
+      "titulo": "LongCat-2.0, a large-scale MoE model with 1.6T total and 48B Active",
+      "url": "https://longcat.chat/blog/longcat-2.0/",
+      "score": 138,
+      "comentarios": 38
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Exploring PDP-1 Lisp (1960)",
+      "url": "https://obsolescence.dev/pdp1-lisp-introduction.html",
+      "score": 69,
+      "comentarios": 17
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Rocketlab acquires Iridium",
+      "url": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-acquire-iridium-historic-deal-creating-fully",
+      "score": 409,
+      "comentarios": 270
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Old Computer Challenge",
+      "url": "http://occ.sdf.org/",
+      "score": 59,
+      "comentarios": 22
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Linux for the Sega MegaDrive",
+      "url": "https://github.com/LinuxMD/linuxmd",
+      "score": 102,
+      "comentarios": 14
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ornith-1.0: self-improving open-source models for agentic coding",
+      "url": "https://github.com/deepreinforce-ai/Ornith-1",
+      "score": 209,
+      "comentarios": 39
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Popping the GPU Bubble",
+      "url": "https://moondream.ai/blog/popping-the-gpu-bubble",
+      "score": 120,
+      "comentarios": 25
+    },
+    {
+      "fonte": "HN",
+      "titulo": "One million passports leaked online",
+      "url": "https://www.theverge.com/tech/947157/passports-data-breach-cannabis-club-systems-nefos-puffpal",
+      "score": 260,
+      "comentarios": 140
+    },
+    {
+      "fonte": "HN",
+      "titulo": "US Supreme Court rules geofence warrants require constitutional protections",
+      "url": "https://www.theguardian.com/us-news/2026/jun/29/supreme-court-geofence-warrants-case-decision",
+      "score": 522,
+      "comentarios": 245
+    },
+    {
+      "fonte": "HN",
+      "titulo": "US Supreme Court Just Blew Up EU-US Data Transfers",
+      "url": "https://noyb.eu/en/us-supreme-court-just-blew-eu-us-data-transfers",
+      "score": 156,
+      "comentarios": 106
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "Welcome to AI Engineer World’s Fair 2026",
+      "tags": [
+        "aie",
+        "ai",
+        "techtalks",
+        "softwareengineering"
+      ],
+      "reacoes": 68
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Need a break? Play today's game from The Daily Context.",
+      "tags": [
+        "aie",
+        "gamedev",
+        "ai",
+        "gemini"
+      ],
+      "reacoes": 68
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "You’re not really that far behind.",
+      "tags": [
+        "aie",
+        "ai",
+        "learning"
+      ],
+      "reacoes": 40
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "My commit message said \"You've hit your session limit\"",
+      "tags": [
+        "genai",
+        "ollama",
+        "learning",
+        "llm"
+      ],
+      "reacoes": 35
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Pragmatism in an Age of Infinite Code and Unavoidable Bottlenecks",
+      "tags": [
+        "ai",
+        "aie",
+        "productivity",
+        "leadership"
+      ],
+      "reacoes": 38
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Model Does Not Need Memory. The Situation Does.",
+      "tags": [
+        "ai",
+        "rag",
+        "mcp",
+        "llm"
+      ],
+      "reacoes": 43
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "🗓️ Monthly Dev Report: June 2026",
+      "tags": [
+        "discuss",
+        "community",
+        "programming",
+        "devjournal"
+      ],
+      "reacoes": 52
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What are your goals for the week? #185",
+      "tags": [
+        "discuss",
+        "motivation"
+      ],
+      "reacoes": 12
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Coding Agents Play Favorites With Your Dependencies",
+      "tags": [
+        "agents",
+        "aie",
+        "tooling"
+      ],
+      "reacoes": 29
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Need Career Guidance After Leaving My First Job – Feeling Lost",
+      "tags": [
+        "career",
+        "anonymous",
+        "beginners",
+        "discuss"
+      ],
+      "reacoes": 6
+    }
+  ]
+}
