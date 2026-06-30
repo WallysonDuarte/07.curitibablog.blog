@@ -1686,7 +1686,12 @@ def main(json_path: str):
                 log(f"AVISO: capa gerada com problemas apos {_MAX_TENTATIVAS_CAPA} tentativas — usando melhor disponivel: {_problemas_finais}")
             run_log["etapas"]["capa"] = {"path": capa_path, "problemas": _problemas_finais}
 
-            # 5. Upload IDrive E2 (so se capa foi gerada)
+            # 5. Converter para 1200x630 com blurred background (Facebook OG)
+            from converter_fb import converter_para_fb
+            capa_path = converter_para_fb(capa_path)
+            log(f"Capa convertida para 1200x630 FB: {capa_path}")
+
+            # 5b. Upload IDrive E2 (so se capa foi gerada)
             cover_key, cover_url = upload_capa(capa_path)
             run_log["etapas"]["upload"] = {"key": cover_key, "url": cover_url}
         except Exception as e_flow:
