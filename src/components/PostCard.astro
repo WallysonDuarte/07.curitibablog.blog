@@ -41,7 +41,7 @@ const postUrl = `/${slug}`;
     <div class="post-card-image" aria-hidden="true">
       <picture>
         <source type="image/webp" srcset={imgWebP} />
-        <img src={imgFallback} alt={title} width="600" height="315" loading="lazy" decoding="async" />
+        <img src={imgFallback} alt={title} width="600" height="600" loading="lazy" decoding="async" />
       </picture>
       {displayCat && <span class="card-category">{displayCat}</span>}
       {ratings && <span class="card-rating" style={`background:${ratingColor(ratings.media)}`}>{ratings.media.toFixed(1)}</span>}
