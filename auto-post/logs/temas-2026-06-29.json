@@ -3,108 +3,108 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": ".self: A new top-level domain designed to support self-hosting",
+      "url": "https://hccf.onmy.cloud/2026/06/21/reclaiming-our-digital-selves-hccfs-vision-for-a-human-centered-top-level-domain/",
+      "score": 293,
+      "comentarios": 170
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Qwen 3.6 27B is the sweet spot for local development",
+      "url": "https://quesma.com/blog/qwen-36-is-awesome/",
+      "score": 578,
+      "comentarios": 498
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Free the Icons",
+      "url": "https://weblog.rogueamoeba.com/2026/06/26/free-the-icons/",
+      "score": 171,
+      "comentarios": 41
+    },
+    {
+      "fonte": "HN",
       "titulo": "Rocketlab acquires Iridium",
       "url": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-acquire-iridium-historic-deal-creating-fully",
-      "score": 152,
-      "comentarios": 83
+      "score": 355,
+      "comentarios": 221
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ornith-1.0: self-improving open-source models for agentic coding",
+      "url": "https://github.com/deepreinforce-ai/Ornith-1",
+      "score": 144,
+      "comentarios": 32
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A native graphical shell for SSH",
+      "url": "https://probablymarcus.com/blocks/2026/06/28/native-graphical-shell-for-SSH.html",
+      "score": 235,
+      "comentarios": 108
+    },
+    {
+      "fonte": "HN",
+      "titulo": "South Korea to spend $1T on more memory chip production and humanoid robots",
+      "url": "https://arstechnica.com/ai/2026/06/south-korea-to-spend-1t-on-more-memory-chip-production-and-humanoid-robots/",
+      "score": 92,
+      "comentarios": 46
+    },
+    {
+      "fonte": "HN",
+      "titulo": "US Supreme Court rules geofence warrants require constitutional protections",
+      "url": "https://www.theguardian.com/us-news/2026/jun/29/supreme-court-geofence-warrants-case-decision",
+      "score": 417,
+      "comentarios": 195
     },
     {
       "fonte": "HN",
       "titulo": "WATaBoy: JIT-Ing Game Boy Instructions to WASM Beats a Native Interpreter",
       "url": "https://humphri.es/blog/WATaBoy/",
-      "score": 73,
-      "comentarios": 8
+      "score": 173,
+      "comentarios": 28
     },
     {
       "fonte": "HN",
-      "titulo": "What happens when you run a CUDA kernel?",
-      "url": "https://fergusfinn.com/blog/what-happens-when-you-run-a-gpu-kernel/",
+      "titulo": "30-year sentence for transporting zines is a five-alarm fire for free speech",
+      "url": "https://theintercept.com/2026/06/26/daniel-sanchez-estrada-zines-prairieland-free-speech/",
+      "score": 264,
+      "comentarios": 142
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Apple Neural Engine: Architecture, Programming, and Performance",
+      "url": "https://arxiv.org/abs/2606.22283",
       "score": 106,
-      "comentarios": 7
+      "comentarios": 14
     },
     {
       "fonte": "HN",
-      "titulo": "Building Principia for Windows XP",
-      "url": "https://voxelmanip.se/2026/06/28/building-principia-for-windows-xp/",
-      "score": 79,
-      "comentarios": 16
+      "titulo": "JumpServer: Open-Source Privileged Access Management",
+      "url": "https://github.com/jumpserver/jumpserver",
+      "score": 52,
+      "comentarios": 22
     },
     {
       "fonte": "HN",
-      "titulo": "Sandia National Labs SA3000 8085 CPU",
-      "url": "https://www.cpushack.com/2026/06/03/sandia-national-labs-sa3000-8085-cpu/",
-      "score": 112,
-      "comentarios": 30
+      "titulo": "Wallace the 6 inch f/2.8 telescope, building it, and hiking with it",
+      "url": "https://lucassifoni.info/blog/hiking-with-wallace/",
+      "score": 106,
+      "comentarios": 19
     },
     {
       "fonte": "HN",
-      "titulo": "HackerRank open sourced its ATS. My resume scored 90/100. Oh wait 74. No – 88",
-      "url": "https://danunparsed.com/p/hackerrank-open-source-ats",
-      "score": 828,
-      "comentarios": 354
-    },
-    {
-      "fonte": "HN",
-      "titulo": "European ISPs Want Rightsholders Held Accountable for Overblocking Damage",
-      "url": "https://torrentfreak.com/european-isps-want-rightsholders-held-accountable-for-overblocking-damage/",
-      "score": 50,
-      "comentarios": 6
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Mag 7 starting to underperform [pdf]",
-      "url": "https://www.apollo.com/content/dam/apolloaem/pdf/daily-spark/2026/jun/28/062826-Mag7.pdf",
-      "score": 134,
-      "comentarios": 100
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Tidal AI Policy",
-      "url": "https://tidal.com/ai-policy",
-      "score": 202,
-      "comentarios": 231
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Instagram is incorporating users' photos in ads for Meta Glasses",
-      "url": "https://twitter.com/i/status/2071277885646868536",
-      "score": 177,
-      "comentarios": 74
-    },
-    {
-      "fonte": "HN",
-      "titulo": "CachyOS June 2026 Release",
-      "url": "https://cachyos.org/blog/2606-june-release/",
-      "score": 65,
-      "comentarios": 37
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Pollen tried to remove my article and Google is assisting with it",
-      "url": "https://blog.pragmaticengineer.com/pollen-tried-to-remove-my-article-about-callum-negus-fancey-and-google-is-assisting-to-it/",
-      "score": 700,
-      "comentarios": 95
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Samsung, SK Hynix, Micron Sued in US over Memory Price Fixing",
-      "url": "https://en.sedaily.com/international/2026/06/29/samsung-sk-hynix-micron-sued-in-us-over-memory-price-fixing",
-      "score": 165,
-      "comentarios": 86
-    },
-    {
-      "fonte": "HN",
-      "titulo": "The CEO of Mullvad is the main financer of the Swedish Örebro party",
-      "url": "https://det.social/@lostgen/116820546568940358",
-      "score": 155,
-      "comentarios": 445
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Halvar's Guide to Entrepreneurship",
-      "url": "https://thomasdullien.github.io/guides/entrepreneurship/",
+      "titulo": "One million passports leaked online",
+      "url": "https://cambridgeanalytica.org/data-breaches-scandals/passports-driver-licenses-exposed-public-internet-2026-51096/",
       "score": 123,
-      "comentarios": 37
+      "comentarios": 75
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Working With AI: A concrete example",
+      "url": "https://htmx.org/essays/working-with-ai/",
+      "score": 81,
+      "comentarios": 29
     }
   ],
   "devto": [
@@ -117,7 +117,18 @@
         "techtalks",
         "softwareengineering"
       ],
-      "reacoes": 40
+      "reacoes": 55
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Need a break? Play today's game from The Daily Context.",
+      "tags": [
+        "aie",
+        "gamedev",
+        "ai",
+        "gemini"
+      ],
+      "reacoes": 42
     },
     {
       "fonte": "Dev.to",
@@ -127,7 +138,7 @@
         "llm",
         "webdev"
       ],
-      "reacoes": 70
+      "reacoes": 83
     },
     {
       "fonte": "Dev.to",
@@ -138,29 +149,7 @@
         "learning",
         "llm"
       ],
-      "reacoes": 18
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "The Model Does Not Need Memory. The Situation Does.",
-      "tags": [
-        "ai",
-        "rag",
-        "mcp",
-        "llm"
-      ],
-      "reacoes": 20
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "🗓️ Monthly Dev Report: June 2026",
-      "tags": [
-        "discuss",
-        "community",
-        "programming",
-        "devjournal"
-      ],
-      "reacoes": 25
+      "reacoes": 35
     },
     {
       "fonte": "Dev.to",
@@ -170,18 +159,7 @@
         "ai",
         "learning"
       ],
-      "reacoes": 10
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Pragmatism in an Age of Infinite Code and Unavoidable Bottlenecks",
-      "tags": [
-        "ai",
-        "aie",
-        "productivity",
-        "leadership"
-      ],
-      "reacoes": 5
+      "reacoes": 36
     },
     {
       "fonte": "Dev.to",
@@ -192,29 +170,49 @@
         "beginners",
         "discuss"
       ],
-      "reacoes": 14
+      "reacoes": 30
     },
     {
       "fonte": "Dev.to",
-      "titulo": "TanStack Query style caching, the Angular-native way",
+      "titulo": "The Model Does Not Need Memory. The Situation Does.",
       "tags": [
-        "angular",
-        "typescript",
-        "webdev",
-        "opensource"
+        "ai",
+        "rag",
+        "mcp",
+        "llm"
       ],
-      "reacoes": 26
+      "reacoes": 39
     },
     {
       "fonte": "Dev.to",
-      "titulo": "The German Tank Problem: Why You Need UUIDs",
+      "titulo": "Pragmatism in an Age of Infinite Code and Unavoidable Bottlenecks",
       "tags": [
-        "backend",
-        "api",
-        "webdev",
-        "programming"
+        "ai",
+        "aie",
+        "productivity",
+        "leadership"
       ],
-      "reacoes": 13
+      "reacoes": 30
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "🗓️ Monthly Dev Report: June 2026",
+      "tags": [
+        "discuss",
+        "community",
+        "programming",
+        "devjournal"
+      ],
+      "reacoes": 38
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "What are your goals for the week? #185",
+      "tags": [
+        "discuss",
+        "motivation"
+      ],
+      "reacoes": 10
     }
   ]
 }
