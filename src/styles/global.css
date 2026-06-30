@@ -351,6 +351,7 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 .post-card-image {
   overflow: hidden; position: relative;
   background: var(--bg-light);
+  aspect-ratio: 40 / 21;
 }
 .post-card-image img { width: 100%; height: auto; display: block; transition: transform .4s; }
 .post-card:hover .post-card-image img { transform: scale(1.05); }
@@ -611,6 +612,9 @@ hr { border: none; border-top: 2px solid var(--border); margin: 3rem 0; }
 .share-telegram  { background: #0088cc; }
 .share-copy      { background: var(--text-dark); }
 .share-copy.copied { background: var(--primary-dark); }
+
+/* ── MGID widget — reserva de espaço para evitar CLS ─ */
+#mgid-widget-wrapper { min-height: 320px; }
 
 /* ── Inline Ad ─────────────────────────────────── */
 .ad-inline {

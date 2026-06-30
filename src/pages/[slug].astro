@@ -77,6 +77,7 @@ const faqSideAd = faqSideAds[0] ?? null;
 ---
 
 <BaseLayout title={`${metaTitle} | CuritibaBlog`} description={metaDesc} slug={post.slug} lang="pt" canonicalSlug={post.slug}>
+  <link rel="preload" as="image" href={postCoverWebP} type="image/webp" fetchpriority="high" slot="head" />
   <SEO
     slot="head"
     title={metaTitle}
