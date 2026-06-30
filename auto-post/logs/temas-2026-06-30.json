@@ -3,122 +3,111 @@
   "hn": [
     {
       "fonte": "HN",
+      "titulo": "Claude Code Is Steganographically Marking Requests",
+      "url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+      "score": 327,
+      "comentarios": 106
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The labor share of income in the US is at its lowest post-war level",
+      "url": "https://libertystreeteconomics.newyorkfed.org/2026/06/the-post-covid-decline-in-the-labor-share/",
+      "score": 299,
+      "comentarios": 250
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Looking Ahead to Postgres 19",
+      "url": "https://www.snowflake.com/en/blog/engineering/postgresql-19-features-beta/",
+      "score": 126,
+      "comentarios": 79
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Memoirs of Extraordinary Popular Delusions and the Madness of Crowds (1852)",
+      "url": "https://www.gutenberg.org/ebooks/24518",
+      "score": 108,
+      "comentarios": 29
+    },
+    {
+      "fonte": "HN",
+      "titulo": "We moved our Bluesky data to Eurosky",
+      "url": "https://waag.org/en/article/why-we-moved-our-bluesky-data-eurosky/",
+      "score": 63,
+      "comentarios": 49
+    },
+    {
+      "fonte": "HN",
+      "titulo": "County with 37 Data Centers Asks Schools to 'Conserve Electricity'",
+      "url": "https://www.404media.co/henrico-virginia-datacenter-energy-cost-email/",
+      "score": 81,
+      "comentarios": 35
+    },
+    {
+      "fonte": "HN",
+      "titulo": "EU commissioners shut down air conditioning for employees, leave theirs on",
+      "url": "https://www.politico.eu/article/eu-commission-heatwave-hq-forced-shut-down-air-conditioning-europe/",
+      "score": 81,
+      "comentarios": 44
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Building a custom octocopter from scratch with no prior hardware experience",
+      "url": "https://karolina.mgdubiel.com/drone/",
+      "score": 241,
+      "comentarios": 53
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Knoppix",
+      "url": "https://www.knopper.net/knoppix/index-en.html",
+      "score": 96,
+      "comentarios": 51
+    },
+    {
+      "fonte": "HN",
       "titulo": "Open Source Low Tech",
       "url": "https://opensourcelowtech.org/",
-      "score": 149,
-      "comentarios": 29
+      "score": 504,
+      "comentarios": 108
+    },
+    {
+      "fonte": "HN",
+      "titulo": "European digital ID wallets rely on safety services of Google and Apple",
+      "url": "https://waag.org/en/article/european-digital-id-wallets-are-gift-google-and-apple/",
+      "score": 590,
+      "comentarios": 248
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Zluda 6 release (run unmodified CUDA applications on non-Nvidia GPUs)",
+      "url": "https://vosen.github.io/ZLUDA/blog/zluda-update-q1q2-2026/",
+      "score": 90,
+      "comentarios": 8
     },
     {
       "fonte": "HN",
       "titulo": "Qwen 3.6 27B is the sweet spot for local development",
       "url": "https://quesma.com/blog/qwen-36-is-awesome/",
-      "score": 900,
-      "comentarios": 607
+      "score": 1078,
+      "comentarios": 691
     },
     {
       "fonte": "HN",
       "titulo": ".self: A new top-level domain designed to support self-hosting",
       "url": "https://hccf.onmy.cloud/2026/06/21/reclaiming-our-digital-selves-hccfs-vision-for-a-human-centered-top-level-domain/",
-      "score": 501,
-      "comentarios": 283
+      "score": 614,
+      "comentarios": 351
     },
     {
       "fonte": "HN",
       "titulo": "Free the Icons",
       "url": "https://weblog.rogueamoeba.com/2026/06/26/free-the-icons/",
-      "score": 443,
-      "comentarios": 125
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Memory Safe Context Switching",
-      "url": "https://fil-c.org/context_switches",
-      "score": 124,
-      "comentarios": 24
-    },
-    {
-      "fonte": "HN",
-      "titulo": "LongCat-2.0, a large-scale MoE model with 1.6T total and 48B Active",
-      "url": "https://longcat.chat/blog/longcat-2.0/",
-      "score": 138,
-      "comentarios": 38
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Exploring PDP-1 Lisp (1960)",
-      "url": "https://obsolescence.dev/pdp1-lisp-introduction.html",
-      "score": 69,
-      "comentarios": 17
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Rocketlab acquires Iridium",
-      "url": "https://investors.rocketlabcorp.com/news-releases/news-release-details/rocket-lab-acquire-iridium-historic-deal-creating-fully",
-      "score": 409,
-      "comentarios": 270
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Old Computer Challenge",
-      "url": "http://occ.sdf.org/",
-      "score": 59,
-      "comentarios": 22
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Linux for the Sega MegaDrive",
-      "url": "https://github.com/LinuxMD/linuxmd",
-      "score": 102,
-      "comentarios": 14
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Ornith-1.0: self-improving open-source models for agentic coding",
-      "url": "https://github.com/deepreinforce-ai/Ornith-1",
-      "score": 209,
-      "comentarios": 39
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Popping the GPU Bubble",
-      "url": "https://moondream.ai/blog/popping-the-gpu-bubble",
-      "score": 120,
-      "comentarios": 25
-    },
-    {
-      "fonte": "HN",
-      "titulo": "One million passports leaked online",
-      "url": "https://www.theverge.com/tech/947157/passports-data-breach-cannabis-club-systems-nefos-puffpal",
-      "score": 260,
-      "comentarios": 140
-    },
-    {
-      "fonte": "HN",
-      "titulo": "US Supreme Court rules geofence warrants require constitutional protections",
-      "url": "https://www.theguardian.com/us-news/2026/jun/29/supreme-court-geofence-warrants-case-decision",
-      "score": 522,
-      "comentarios": 245
-    },
-    {
-      "fonte": "HN",
-      "titulo": "US Supreme Court Just Blew Up EU-US Data Transfers",
-      "url": "https://noyb.eu/en/us-supreme-court-just-blew-eu-us-data-transfers",
-      "score": 156,
-      "comentarios": 106
+      "score": 610,
+      "comentarios": 223
     }
   ],
   "devto": [
-    {
-      "fonte": "Dev.to",
-      "titulo": "Welcome to AI Engineer World’s Fair 2026",
-      "tags": [
-        "aie",
-        "ai",
-        "techtalks",
-        "softwareengineering"
-      ],
-      "reacoes": 68
-    },
     {
       "fonte": "Dev.to",
       "titulo": "Need a break? Play today's game from The Daily Context.",
@@ -128,91 +117,96 @@
         "ai",
         "gemini"
       ],
-      "reacoes": 68
+      "reacoes": 76
     },
     {
       "fonte": "Dev.to",
-      "titulo": "You’re not really that far behind.",
+      "titulo": "AI Engineer Meets AI Engineer",
       "tags": [
         "aie",
-        "ai",
-        "learning"
+        "ai"
       ],
-      "reacoes": 40
+      "reacoes": 22
     },
     {
       "fonte": "Dev.to",
-      "titulo": "My commit message said \"You've hit your session limit\"",
-      "tags": [
-        "genai",
-        "ollama",
-        "learning",
-        "llm"
-      ],
-      "reacoes": 35
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Pragmatism in an Age of Infinite Code and Unavoidable Bottlenecks",
+      "titulo": "Someone Else Pays for Your AI Access",
       "tags": [
         "ai",
-        "aie",
-        "productivity",
-        "leadership"
-      ],
-      "reacoes": 38
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "The Model Does Not Need Memory. The Situation Does.",
-      "tags": [
-        "ai",
-        "rag",
-        "mcp",
-        "llm"
-      ],
-      "reacoes": 43
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "🗓️ Monthly Dev Report: June 2026",
-      "tags": [
-        "discuss",
-        "community",
-        "programming",
-        "devjournal"
-      ],
-      "reacoes": 52
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "What are your goals for the week? #185",
-      "tags": [
-        "discuss",
-        "motivation"
-      ],
-      "reacoes": 12
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Coding Agents Play Favorites With Your Dependencies",
-      "tags": [
-        "agents",
-        "aie",
-        "tooling"
-      ],
-      "reacoes": 29
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Need Career Guidance After Leaving My First Job – Feeling Lost",
-      "tags": [
-        "career",
-        "anonymous",
-        "beginners",
+        "webdev",
+        "security",
         "discuss"
       ],
-      "reacoes": 6
+      "reacoes": 37
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "This Is Software’s iPhone Moment",
+      "tags": [
+        "ai",
+        "aie",
+        "devrel"
+      ],
+      "reacoes": 34
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Future Of AI Is Local And Open",
+      "tags": [
+        "aie",
+        "gemma",
+        "ai"
+      ],
+      "reacoes": 24
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Hackathon Winners Scoop $35,000 In Cash And Credits",
+      "tags": [
+        "aie",
+        "hackathon",
+        "ai"
+      ],
+      "reacoes": 30
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Top 7 Featured DEV Posts of the Week",
+      "tags": [
+        "top7",
+        "discuss"
+      ],
+      "reacoes": 32
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Developers Urged To Reach Out And Touch Someone",
+      "tags": [
+        "aie",
+        "ai",
+        "networking"
+      ],
+      "reacoes": 31
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "You Don’t Always Need The Frontier",
+      "tags": [
+        "aie",
+        "ai"
+      ],
+      "reacoes": 20
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Gemma, the Epstein Files, and sandboxing cause a stir at the World's Fair",
+      "tags": [
+        "aie",
+        "ai",
+        "database",
+        "gemma"
+      ],
+      "reacoes": 26
     }
   ]
 }
