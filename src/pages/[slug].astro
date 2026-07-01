@@ -82,7 +82,7 @@ const faqSideAd = faqSideAds[0] ?? null;
     slot="head"
     title={metaTitle}
     description={metaDesc}
-    image={postCoverSrc ?? undefined}
+    image={postCoverSrc ? `${postCoverSrc}?format=og` : undefined}
     type="article"
     publishedAt={new Date(publishDate)}
     updatedAt={new Date(post.updatedAt)}
