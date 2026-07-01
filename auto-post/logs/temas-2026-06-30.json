@@ -3,121 +3,130 @@
   "hn": [
     {
       "fonte": "HN",
-      "titulo": "Claude Code Is Steganographically Marking Requests",
+      "titulo": "Claude Sonnet 5",
+      "url": "https://www.anthropic.com/news/claude-sonnet-5",
+      "score": 855,
+      "comentarios": 486
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Claude Code is steganographically marking requests",
       "url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
-      "score": 327,
-      "comentarios": 106
+      "score": 1391,
+      "comentarios": 397
     },
     {
       "fonte": "HN",
-      "titulo": "The labor share of income in the US is at its lowest post-war level",
-      "url": "https://libertystreeteconomics.newyorkfed.org/2026/06/the-post-covid-decline-in-the-labor-share/",
-      "score": 299,
-      "comentarios": 250
+      "titulo": "Department of Commerce has lifted export controls on Claude Fable 5 and Mythos 5",
+      "url": "https://twitter.com/AnthropicAI/status/2072106151890809341",
+      "score": 150,
+      "comentarios": 53
     },
     {
       "fonte": "HN",
-      "titulo": "Looking Ahead to Postgres 19",
-      "url": "https://www.snowflake.com/en/blog/engineering/postgresql-19-features-beta/",
-      "score": 126,
-      "comentarios": 79
+      "titulo": "From brain waves to words: a new path to communication without surgery",
+      "url": "https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/?_fb_noscript=1",
+      "score": 102,
+      "comentarios": 54
     },
     {
       "fonte": "HN",
-      "titulo": "Memoirs of Extraordinary Popular Delusions and the Madness of Crowds (1852)",
-      "url": "https://www.gutenberg.org/ebooks/24518",
-      "score": 108,
-      "comentarios": 29
+      "titulo": "Claude Science",
+      "url": "https://claude.com/product/claude-science",
+      "score": 355,
+      "comentarios": 120
     },
     {
       "fonte": "HN",
-      "titulo": "We moved our Bluesky data to Eurosky",
-      "url": "https://waag.org/en/article/why-we-moved-our-bluesky-data-eurosky/",
-      "score": 63,
+      "titulo": "Nano Banana 2 Lite",
+      "url": "https://deepmind.google/models/gemini-image/flash-lite/",
+      "score": 298,
+      "comentarios": 117
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Leanstral 1.5",
+      "url": "https://docs.mistral.ai/models/model-cards/leanstral-1-5-26-06",
+      "score": 90,
+      "comentarios": 18
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How does a pull-back car work? Illustrated teardown",
+      "url": "https://mechanical-pencil.com/products/car",
+      "score": 98,
+      "comentarios": 26
+    },
+    {
+      "fonte": "HN",
+      "titulo": "I ported Kubernetes to the browser",
+      "url": "https://ngrok.com/blog/i-ported-kubernetes-to-the-browser",
+      "score": 151,
       "comentarios": 49
     },
     {
       "fonte": "HN",
-      "titulo": "County with 37 Data Centers Asks Schools to 'Conserve Electricity'",
-      "url": "https://www.404media.co/henrico-virginia-datacenter-energy-cost-email/",
-      "score": 81,
-      "comentarios": 35
+      "titulo": "I built a mmWave material classification radar (2025)",
+      "url": "https://gauthier-lechevalier.com/radar",
+      "score": 140,
+      "comentarios": 36
     },
     {
       "fonte": "HN",
-      "titulo": "EU commissioners shut down air conditioning for employees, leave theirs on",
-      "url": "https://www.politico.eu/article/eu-commission-heatwave-hq-forced-shut-down-air-conditioning-europe/",
-      "score": 81,
-      "comentarios": 44
+      "titulo": "CERN bids farewell to the LHC and enters Long Shutdown 3",
+      "url": "https://home.cern/cern-bids-farewell-to-the-lhc-and-enters-long-shutdown-3/",
+      "score": 111,
+      "comentarios": 30
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Tokyo has only two barley tea makers, we visited one to see how mugicha is made",
+      "url": "https://soranews24.com/2026/06/30/tokyo-has-only-two-barley-tea-makers-and-we-visited-one-to-see-how-mugicha-is-made/",
+      "score": 62,
+      "comentarios": 10
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Long Island's decommissioned nuclear power plant",
+      "url": "https://nickcarr.com/scouting-a-decommissioned-nuclear-power-plant/",
+      "score": 69,
+      "comentarios": 9
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Claude Fable 5 export control lifted",
+      "url": "https://twitter.com/synthwavedd/status/2072103052635451559",
+      "score": 58,
+      "comentarios": 9
     },
     {
       "fonte": "HN",
       "titulo": "Building a custom octocopter from scratch with no prior hardware experience",
       "url": "https://karolina.mgdubiel.com/drone/",
-      "score": 241,
-      "comentarios": 53
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Knoppix",
-      "url": "https://www.knopper.net/knoppix/index-en.html",
-      "score": 96,
-      "comentarios": 51
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Open Source Low Tech",
-      "url": "https://opensourcelowtech.org/",
-      "score": 504,
-      "comentarios": 108
-    },
-    {
-      "fonte": "HN",
-      "titulo": "European digital ID wallets rely on safety services of Google and Apple",
-      "url": "https://waag.org/en/article/european-digital-id-wallets-are-gift-google-and-apple/",
-      "score": 590,
-      "comentarios": 248
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Zluda 6 release (run unmodified CUDA applications on non-Nvidia GPUs)",
-      "url": "https://vosen.github.io/ZLUDA/blog/zluda-update-q1q2-2026/",
-      "score": 90,
-      "comentarios": 8
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Qwen 3.6 27B is the sweet spot for local development",
-      "url": "https://quesma.com/blog/qwen-36-is-awesome/",
-      "score": 1078,
-      "comentarios": 691
-    },
-    {
-      "fonte": "HN",
-      "titulo": ".self: A new top-level domain designed to support self-hosting",
-      "url": "https://hccf.onmy.cloud/2026/06/21/reclaiming-our-digital-selves-hccfs-vision-for-a-human-centered-top-level-domain/",
-      "score": 614,
-      "comentarios": 351
-    },
-    {
-      "fonte": "HN",
-      "titulo": "Free the Icons",
-      "url": "https://weblog.rogueamoeba.com/2026/06/26/free-the-icons/",
-      "score": 610,
-      "comentarios": 223
+      "score": 327,
+      "comentarios": 69
     }
   ],
   "devto": [
     {
       "fonte": "Dev.to",
-      "titulo": "Need a break? Play today's game from The Daily Context.",
+      "titulo": "The Future Of AI Is Local And Open",
       "tags": [
         "aie",
-        "gamedev",
-        "ai",
-        "gemini"
+        "gemma",
+        "ai"
       ],
-      "reacoes": 76
+      "reacoes": 39
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "This Is Software’s iPhone Moment",
+      "tags": [
+        "ai",
+        "aie",
+        "devrel"
+      ],
+      "reacoes": 46
     },
     {
       "fonte": "Dev.to",
@@ -126,7 +135,17 @@
         "aie",
         "ai"
       ],
-      "reacoes": 22
+      "reacoes": 30
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Log Is the Agent",
+      "tags": [
+        "aie",
+        "agents",
+        "ai"
+      ],
+      "reacoes": 32
     },
     {
       "fonte": "Dev.to",
@@ -137,37 +156,7 @@
         "security",
         "discuss"
       ],
-      "reacoes": 37
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "This Is Software’s iPhone Moment",
-      "tags": [
-        "ai",
-        "aie",
-        "devrel"
-      ],
-      "reacoes": 34
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "The Future Of AI Is Local And Open",
-      "tags": [
-        "aie",
-        "gemma",
-        "ai"
-      ],
-      "reacoes": 24
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Hackathon Winners Scoop $35,000 In Cash And Credits",
-      "tags": [
-        "aie",
-        "hackathon",
-        "ai"
-      ],
-      "reacoes": 30
+      "reacoes": 44
     },
     {
       "fonte": "Dev.to",
@@ -176,17 +165,7 @@
         "top7",
         "discuss"
       ],
-      "reacoes": 32
-    },
-    {
-      "fonte": "Dev.to",
-      "titulo": "Developers Urged To Reach Out And Touch Someone",
-      "tags": [
-        "aie",
-        "ai",
-        "networking"
-      ],
-      "reacoes": 31
+      "reacoes": 33
     },
     {
       "fonte": "Dev.to",
@@ -195,18 +174,39 @@
         "aie",
         "ai"
       ],
+      "reacoes": 26
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Evolution & Role of Context Engineering in AI Today",
+      "tags": [
+        "aie",
+        "ai",
+        "agents"
+      ],
+      "reacoes": 19
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Reading Anthropic's \"When AI Builds Itself\" Changed How I Think About AI and Software Engineering",
+      "tags": [
+        "discuss",
+        "ai",
+        "developers",
+        "softwareengineering"
+      ],
       "reacoes": 20
     },
     {
       "fonte": "Dev.to",
-      "titulo": "Gemma, the Epstein Files, and sandboxing cause a stir at the World's Fair",
+      "titulo": "Gemma and sandboxing cause a stir at the World's Fair",
       "tags": [
         "aie",
         "ai",
         "database",
         "gemma"
       ],
-      "reacoes": 26
+      "reacoes": 30
     }
   ]
 }

@@ -1,0 +1,94 @@
+{
+  "data": "2026-06-30",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-06-30-22-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/9a10849b-0f45-412e-bab8-5c09a422e365-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/9a10849b-0f45-412e-bab8-5c09a422e365-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a446a3b33df2b8c80113f03",
+      "slug": "gemini-image-flash-lite-google-modelo-visao-ia",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1012729411511207"
+      },
+      "instagram": {
+        "ok": false,
+        "erro": "HTTPSConnectionPool(host='graph.facebook.com', port=443): Read timed out. (read timeout=20)"
+      }
+    },
+    "whatsapp": {
+      "ok": false,
+      "erro": "[WinError 10053] Uma conexão estabelecida foi anulada pelo software no computador host"
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "HTTPSConnectionPool(host='api.twitter.com', port=443): Max retries exceeded with url: /2/tweets (Caused by NameResolutionError(\"HTTPSConnection(host='api.twitter.com', port=443): Failed to resolve 'api.twitter.com' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": false,
+      "erro": "HTTPSConnectionPool(host='api.linkedin.com', port=443): Max retries exceeded with url: /v2/ugcPosts (Caused by NameResolutionError(\"HTTPSConnection(host='api.linkedin.com', port=443): Failed to resolve 'api.linkedin.com' ([Errno 11001] getaddrinfo failed)\"))"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/gemini-image-flash-lite-google-modelo-visao-ia"
+}
