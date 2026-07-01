@@ -137,12 +137,7 @@ def main():
         log("ERRO: não foi possível gerar a capa")
         sys.exit(1)
 
-    # 1b. Converter para 1200x630 com blurred background (Facebook OG)
-    from converter_fb import converter_para_fb
-    cover_path = converter_para_fb(cover_path)
-    log(f"Convertida para 1200x630 FB: {cover_path}")
-
-    # 2. Upload IDrive E2
+    # 2. Upload IDrive E2 — imagem QUADRADA original (nao converter para 1200x630)
     cover_key, cover_url = upload_capa(cover_path)
 
     # 3. Atualizar MongoDB
