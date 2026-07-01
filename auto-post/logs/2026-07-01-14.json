@@ -1,0 +1,44 @@
+{
+  "data": "2026-07-01",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-07-01-14-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/541198b2-79ba-4481-9b4e-cc2b6227174a-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/541198b2-79ba-4481-9b4e-cc2b6227174a-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a45498b8ecff529227f252f",
+      "slug": "google-copybara-mover-codigo-entre-repositorios",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": false,
+        "erro": "npm build falhou: :11)\n    at defaultResolve (node:internal/modules/esm/resolve:1056:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:603:25)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:242:38)\n    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)\u001b[22m\n"
+      },
+      "blogdudu": {
+        "ok": false,
+        "erro": "npm build falhou: :11)\n    at defaultResolve (node:internal/modules/esm/resolve:1056:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:603:25)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:242:38)\n    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)\u001b[22m\n"
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": false,
+        "erro": "npm build falhou: :11)\n    at defaultResolve (node:internal/modules/esm/resolve:1056:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:603:25)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:242:38)\n    at TracingChannel.tracePromise (node:diagnostics_channel:344:14)\u001b[22m\n"
+      }
+    },
+    "http_check": 404
+  },
+  "status": "PUBLICADO_SEM_SOCIAL",
+  "post_url": "https://curitibablog.com.br/google-copybara-mover-codigo-entre-repositorios"
+}

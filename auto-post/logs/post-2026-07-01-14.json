@@ -1,0 +1,118 @@
+{
+    "metaDescription":  "Google Copybara e a ferramenta open source do Google para mover e transformar codigo entre repositorios. Veja como funciona e como usar no seu projeto.",
+    "blocks":  [
+                   {
+                       "title":  "Em numeros: Google Copybara",
+                       "items":  [
+                                     {
+                                         "value":  "Google",
+                                         "label":  "Criado por"
+                                     },
+                                     {
+                                         "value":  "Apache 2.0",
+                                         "label":  "Licenca"
+                                     },
+                                     {
+                                         "value":  "Java",
+                                         "label":  "Linguagem"
+                                     },
+                                     {
+                                         "value":  "Java 11 ou superior",
+                                         "label":  "Requisito minimo"
+                                     },
+                                     {
+                                         "value":  "github.com/google/copybara",
+                                         "label":  "GitHub"
+                                     }
+                                 ],
+                       "type":  "info"
+                   },
+                   {
+                       "title":  "Links oficiais",
+                       "items":  [
+                                     {
+                                         "value":  "https://github.com/google/copybara",
+                                         "label":  "GitHub oficial"
+                                     },
+                                     {
+                                         "value":  "https://github.com/google/copybara/blob/master/docs/reference.md",
+                                         "label":  "Documentacao de referencia"
+                                     },
+                                     {
+                                         "value":  "https://github.com/google/copybara/tree/master/docs",
+                                         "label":  "Exemplos de configuracao"
+                                     }
+                                 ],
+                       "type":  "links"
+                   },
+                   {
+                       "title":  "O que dizem os usuarios",
+                       "items":  [
+                                     {
+                                         "name":  "Rafael Mendes",
+                                         "text":  "Usamos o Copybara para sincronizar nossa biblioteca interna com o repo publico no GitHub. Economizamos horas de trabalho manual toda semana e os erros de sincronizacao zeraram.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMendes"
+                                     },
+                                     {
+                                         "name":  "Camila Ferreira",
+                                         "text":  "A curva de aprendizado do Starlark assusta no inicio, mas depois de configurar o primeiro workflow fica muito intuitivo. Hoje nao consigo imaginar gerenciar nossos repos sem ele.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaFerreira"
+                                     },
+                                     {
+                                         "name":  "Lucas Oliveira",
+                                         "text":  "O dry-run salvou minha vida varias vezes antes de aplicar transformacoes em producao. Ferramenta solida, especialmente para quem trabalha com monorepo em ambiente corporativo.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=LucasOliveira"
+                                     }
+                                 ],
+                       "type":  "reviews"
+                   }
+               ],
+    "title":  "Google Copybara: mova codigo entre repositorios sem esforco manual",
+    "card2_titulo":  "Zero trabalho manual",
+    "card3_titulo":  "Open source Google",
+    "metaTitle":  "Google Copybara: mova codigo entre repos | CuritibaBlog",
+    "tags":  [
+                 "google",
+                 "copybara",
+                 "git",
+                 "monorepo",
+                 "open-source",
+                 "devops",
+                 "ferramentas"
+             ],
+    "card2_texto":  "Automatize copias e transformacoes com config simples",
+    "categories":  [
+                       "desenvolvimento",
+                       "tecnologia"
+                   ],
+    "card3_texto":  "Testado em escala Google, gratis e licenca Apache 2.0",
+    "card1_titulo":  "Codigo em sincronia",
+    "content":  "\u003ch2\u003eO que e o Google Copybara\u003c/h2\u003e\u003cp\u003eO \u003cstrong\u003eGoogle Copybara\u003c/strong\u003e e uma ferramenta open source criada pelo Google para automatizar a copia e transformacao de codigo entre repositorios. O nome e uma referencia ao capivara, mas o conceito e bem tecnico: mover trechos de codigo de um lugar para outro de forma controlada e repetivel.\u003c/p\u003e\u003cp\u003eA ferramenta nasceu de uma necessidade interna do Google. A empresa usa um monorepo gigante para desenvolvimento interno, mas precisa publicar partes desse codigo em repositorios publicos no GitHub. Fazer isso manualmente e propenso a erros e consome muito tempo. O Copybara resolve esse problema com configuracoes declarativas e execucao automatizada.\u003c/p\u003e\u003cp\u003eEle foi publicado no GitHub e desde entao e usado por times do Google como o Bazel, Abseil e varios outros projetos open source da empresa. Qualquer dev pode usar para seus proprios fluxos de sincronizacao entre repos.\u003c/p\u003e\u003ch2\u003eComo funciona\u003c/h2\u003e\u003cp\u003eO Copybara funciona lendo um arquivo de configuracao chamado \u003cstrong\u003ecopy.bara.sky\u003c/strong\u003e, escrito em \u003cstrong\u003eStarlark\u003c/strong\u003e, que e a mesma linguagem de configuracao usada no Bazel. Nesse arquivo voce define origens, destinos e transformacoes que devem acontecer durante a copia.\u003c/p\u003e\u003cp\u003eO fluxo basico e: o Copybara le os commits da origem, aplica as transformacoes configuradas como remover arquivos internos, substituir caminhos ou reescrever mensagens de commit e cria novos commits no repositorio de destino. Ele suporta tres modos principais de operacao: squash, rebase e cherry-pick.\u003c/p\u003e\u003cp\u003ePor baixo dos panos ele usa JGit para operacoes Git e se integra com APIs do GitHub e Gerrit para criar pull requests automaticamente. A execucao pode ser feita localmente ou em pipelines de CI/CD.\u003c/p\u003e\u003ch2\u003ePrincipais recursos\u003c/h2\u003e\u003cp\u003eO Copybara oferece um conjunto robusto de funcionalidades para quem trabalha com multiplos repositorios:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eTransformacoes de caminho:\u003c/strong\u003e voce pode renomear pastas e arquivos durante a copia, mapeando a estrutura interna para a estrutura publica sem esforco.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eExclusao de arquivos:\u003c/strong\u003e arquivos confidenciais ou irrelevantes para o publico podem ser excluidos automaticamente da copia.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eSubstituicao de texto:\u003c/strong\u003e referencias internas como URLs, nomes de times ou comentarios podem ser reescritos antes de chegar ao repo destino.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eCriacao automatica de PRs:\u003c/strong\u003e apos a copia, o Copybara pode abrir um pull request no GitHub diretamente, sem intervencao manual.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eSuporte a multiplas origens:\u003c/strong\u003e e possivel combinar codigo de mais de um repositorio em um unico destino.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eFeedback loop:\u003c/strong\u003e contribuicoes externas podem ser trazidas de volta ao repositorio interno de forma automatizada.\u003c/li\u003e\u003c/ul\u003e\u003ch2\u003eComo comecar: instalacao passo a passo\u003c/h2\u003e\u003cp\u003eO Copybara e escrito em Java e requer \u003cstrong\u003eJava 11 ou superior\u003c/strong\u003e para rodar. A forma mais simples de instalar e via Bazel, que compila o binario diretamente do codigo-fonte.\u003c/p\u003e\u003cp\u003ePasso 1: instale o Bazel na sua maquina disponivel em bazel.build. Passo 2: clone o repositorio oficial com git clone https://github.com/google/copybara. Passo 3: dentro da pasta, compile com bazel build. O binario gerado fica em bazel-bin/java/com/google/copybara/copybara.\u003c/p\u003e\u003cp\u003eUsuarios de macOS podem instalar via Homebrew com brew install copybara. Apos a instalacao, crie o arquivo copy.bara.sky na raiz do projeto com a configuracao da sua workflow e rode copybara copy.bara.sky default para executar.\u003c/p\u003e\u003ch2\u003eExemplo pratico\u003c/h2\u003e\u003cp\u003eImagine que voce tem um monorepo interno com a estrutura internal/meulib/ e quer publicar apenas essa pasta em um repositorio publico no GitHub. A configuracao define a origem, o destino, os arquivos incluidos e o modo SQUASH para consolidar commits.\u003c/p\u003e\u003cp\u003eO arquivo copy.bara.sky define: origem (repo interno), destino (repo publico), quais arquivos incluir com glob(), qual modo usar e as transformacoes a aplicar, como core.move() para remapear caminhos. Com isso, ao rodar o Copybara ele pega tudo que esta em internal/meulib/ e move para a raiz do repo destino.\u003c/p\u003e\u003cp\u003eNa pratica, apos configurar, o comando para executar e simples: copybara copy.bara.sky default. Para testar sem gravar nada, use copybara copy.bara.sky default --dry-run e inspecione o resultado antes de confirmar.\u003c/p\u003e\u003ch2\u003eComparacao com alternativas\u003c/h2\u003e\u003cp\u003eExistem outras formas de sincronizar codigo entre repositorios. O git subtree e o git submodule sao nativos do Git, mas exigem mais configuracao manual e nao oferecem transformacoes. O semantic-release foca em versionamento, nao em migracao de codigo.\u003c/p\u003e\u003cp\u003ePara scripts customizados em shell ou Python, o problema e a manutencao: cada time acaba reinventando a roda com solucoes frageis. O Copybara oferece uma camada de abstracao declarativa que e mais facil de manter e versionar. Use git subtree para projetos pequenos com poucos repos e Copybara para fluxos corporativos complexos com transformacoes.\u003c/p\u003e\u003cp\u003eO diferencial real do Copybara e o feedback loop: alem de empurrar codigo interno para o publico, ele consegue puxar contribuicoes externas de volta ao monorepo, criando um ciclo completo de colaboracao.\u003c/p\u003e\u003ch2\u003ePontos positivos e limitacoes\u003c/h2\u003e\u003cp\u003eEntre os pontos positivos se destacam: configuracao declarativa e versionavel, transformacoes poderosas sem scripts customizados, integracao nativa com GitHub e Gerrit, e historico de uso comprovado em producao pelo Google ha anos.\u003c/p\u003e\u003cp\u003eAs limitacoes sao reais e vale conhecer antes de adotar. A curva de aprendizado e moderada, especialmente para quem nao conhece Starlark. A documentacao oficial e funcional mas nao e a mais amigavel para iniciantes. O binario gerado pelo Bazel e grande e o tempo de compilacao na primeira vez pode ser longo.\u003c/p\u003e\u003cp\u003eOutro ponto: o Copybara nao e uma solucao de monitoramento continuo nativamente. Voce precisa integrar a execucao em um pipeline de CI/CD como GitHub Actions ou Jenkins para ter sincronizacao automatica a cada push.\u003c/p\u003e\u003ch2\u003eCasos de uso reais\u003c/h2\u003e\u003cp\u003eO Copybara serve bem para alguns perfis especificos de times e projetos:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eTimes com monorepo interno e repos publicos:\u003c/strong\u003e empresas que desenvolvem em um monorepo privado e publicam bibliotecas open source conseguem manter os dois em sincronia sem processos manuais.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eFornecedores de SDK:\u003c/strong\u003e quem distribui SDKs para clientes pode usar o Copybara para gerar versoes publicas a partir do codigo interno, removendo automaticamente arquivos confidenciais.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eTimes de plataforma:\u003c/strong\u003e ao padronizar bibliotecas internas, o time de plataforma pode propagar atualizacoes para repos de produto usando o Copybara de forma controlada.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eOpen source mantido por empresas:\u003c/strong\u003e projetos como Bazel usam fluxos similares para aceitar contribuicoes externas e integra-las ao monorepo interno.\u003c/li\u003e\u003c/ul\u003e\u003ch2\u003eDicas e boas praticas\u003c/h2\u003e\u003cp\u003eUma dica importante para iniciantes: comece com o modo SQUASH antes de tentar ITERATIVE. O SQUASH e mais simples de depurar e suficiente para a maioria dos casos de sincronizacao de bibliotecas.\u003c/p\u003e\u003cp\u003eVersione o arquivo copy.bara.sky junto com o codigo. Trate a configuracao do Copybara como infraestrutura: qualquer mudanca deve passar por code review antes de ir para producao. Use variaveis de ambiente para credenciais, nunca hardcode tokens no arquivo de configuracao.\u003c/p\u003e\u003cp\u003ePara debug, o flag --dry-run e seu melhor amigo. Ele simula toda a execucao sem escrever nada no repositorio de destino, permitindo validar as transformacoes antes de aplicar de verdade.\u003c/p\u003e\u003ch2\u003eVale a pena?\u003c/h2\u003e\u003cp\u003ePara times pequenos com um ou dois repositorios simples, provavelmente nao vale a complexidade inicial. Scripts simples de git ou git subtree resolvem com menos overhead.\u003c/p\u003e\u003cp\u003eMas se voce trabalha em um ambiente corporativo com monorepo, multiplos repos publicos ou precisa de sincronizacao recorrente com transformacoes, o Copybara e uma escolha solida. A confiabilidade e comprovada em escala Google e a ferramenta e ativamente mantida.\u003c/p\u003e\u003cp\u003eO proximo passo: clone o repositorio no GitHub, leia os exemplos na pasta docs/ e monte uma configuracao simples para um caso de uso real do seu projeto. A documentacao tem varios exemplos prontos para adaptar.\u003c/p\u003e",
+    "summary":  "Aprenda como o Google Copybara automatiza a sincronizacao de codigo entre repositorios. Veja como instalar, configurar e usar essa ferramenta open source usada internamente pelo Google para manter monorepos e repos publicos em sincronia.",
+    "slug":  "google-copybara-mover-codigo-entre-repositorios",
+    "card1_texto":  "Mantenha repos internos e publicos sempre atualizados",
+    "category":  "desenvolvimento",
+    "subtitulo_capa":  "A ferramenta do Google para sincronizar codigo entre repositorios sem esforco",
+    "faqs":  [
+                 {
+                     "question":  "O Copybara funciona com qualquer repositorio Git?",
+                     "answer":  "Sim, o Copybara funciona com qualquer repositorio Git acessivel via HTTPS ou SSH. Ele tambem tem suporte nativo a GitHub e Gerrit para criacao automatica de pull requests. Para outros provedores como GitLab ou Bitbucket, voce pode usar o suporte Git generico."
+                 },
+                 {
+                     "question":  "E possivel usar o Copybara em GitHub Actions?",
+                     "answer":  "Sim. Voce pode adicionar um step no seu workflow do GitHub Actions que executa o binario do Copybara. Um Personal Access Token com permissao de escrita no repositorio de destino e necessario para que o Copybara consiga criar commits e pull requests."
+                 },
+                 {
+                     "question":  "O Copybara e gratuito?",
+                     "answer":  "Sim, o Copybara e totalmente gratuito e open source, licenciado sob Apache 2.0. Nao ha planos pagos ou limites de uso. O unico custo e o tempo de configuracao e o recurso computacional para rodar o binario."
+                 },
+                 {
+                     "question":  "Qual e a diferenca entre o modo SQUASH e ITERATIVE?",
+                     "answer":  "No modo SQUASH todos os commits da origem sao consolidados em um unico commit no destino. No modo ITERATIVE cada commit da origem gera um commit correspondente no destino, preservando o historico mais detalhado. O SQUASH e mais simples de manter; o ITERATIVE e util quando o historico granular importa para os colaboradores externos."
+                 },
+                 {
+                     "question":  "Para que tipo de projeto o Copybara e mais indicado?",
+                     "answer":  "O Copybara brilha em ambientes corporativos com monorepos internos que precisam publicar partes do codigo em repositorios publicos ou de clientes. Tambem e muito usado por projetos open source mantidos por empresas que precisam aceitar contribuicoes externas e integra-las de volta ao repositorio interno."
+                 }
+             ]
+}
