@@ -1,0 +1,213 @@
+{
+  "data": "2026-07-01",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "Claude Code is steganographically marking requests",
+      "url": "https://thereallo.dev/blog/claude-code-prompt-steganography",
+      "score": 1948,
+      "comentarios": 568
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The first early human eggs from stem cells",
+      "url": "https://www.conception.bio/science-and-updates/the-first-early-human-eggs-from-stem-cells",
+      "score": 102,
+      "comentarios": 50
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Claude Sonnet 5",
+      "url": "https://www.anthropic.com/news/claude-sonnet-5",
+      "score": 1111,
+      "comentarios": 651
+    },
+    {
+      "fonte": "HN",
+      "titulo": "ArXiv's Next Chapter",
+      "url": "https://blog.arxiv.org/2026/06/30/arxivs-next-chapter/",
+      "score": 97,
+      "comentarios": 35
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Google copybara: moving code between repositories",
+      "url": "https://github.com/google/copybara",
+      "score": 202,
+      "comentarios": 32
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Godot will no longer accept AI-authored code contributions",
+      "url": "https://www.pcgamer.com/gaming-industry/open-source-game-engine-godot-will-no-longer-accept-ai-authored-code-contributions-we-cant-trust-heavy-users-of-ai-to-understand-their-code-enough-to-fix-it/",
+      "score": 56,
+      "comentarios": 35
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Claude Science",
+      "url": "https://claude.com/product/claude-science",
+      "score": 483,
+      "comentarios": 144
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Department of Commerce has lifted export controls on Claude Fable 5 and Mythos 5",
+      "url": "https://twitter.com/AnthropicAI/status/2072106151890809341",
+      "score": 662,
+      "comentarios": 376
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Nano Banana 2 Lite",
+      "url": "https://deepmind.google/models/gemini-image/flash-lite/",
+      "score": 372,
+      "comentarios": 149
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Leanstral 1.5",
+      "url": "https://docs.mistral.ai/models/model-cards/leanstral-1-5-26-06",
+      "score": 212,
+      "comentarios": 64
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How does a pull-back car work? Illustrated teardown",
+      "url": "https://mechanical-pencil.com/products/car",
+      "score": 180,
+      "comentarios": 37
+    },
+    {
+      "fonte": "HN",
+      "titulo": "CERN bids farewell to the LHC and enters Long Shutdown 3",
+      "url": "https://home.cern/cern-bids-farewell-to-the-lhc-and-enters-long-shutdown-3/",
+      "score": 223,
+      "comentarios": 59
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Forestiere Underground Gardens",
+      "url": "https://en.wikipedia.org/wiki/Forestiere_Underground_Gardens",
+      "score": 64,
+      "comentarios": 14
+    },
+    {
+      "fonte": "HN",
+      "titulo": "I ported Kubernetes to the browser",
+      "url": "https://ngrok.com/blog/i-ported-kubernetes-to-the-browser",
+      "score": 256,
+      "comentarios": 78
+    },
+    {
+      "fonte": "HN",
+      "titulo": "From brain waves to words: a new path to communication without surgery",
+      "url": "https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/?_fb_noscript=1",
+      "score": 156,
+      "comentarios": 81
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Future Of AI Is Local And Open",
+      "tags": [
+        "aie",
+        "gemma",
+        "ai"
+      ],
+      "reacoes": 42
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI Engineer Meets AI Engineer",
+      "tags": [
+        "aie",
+        "ai"
+      ],
+      "reacoes": 32
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Log Is the Agent",
+      "tags": [
+        "aie",
+        "agents",
+        "ai"
+      ],
+      "reacoes": 35
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Play today’s game from Issue #2 of The Daily Context!",
+      "tags": [
+        "aie",
+        "ai",
+        "gamedev",
+        "gemini"
+      ],
+      "reacoes": 16
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Reading Anthropic's \"When AI Builds Itself\" Changed How I Think About AI and Software Engineering",
+      "tags": [
+        "discuss",
+        "ai",
+        "developers",
+        "softwareengineering"
+      ],
+      "reacoes": 34
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Top 7 Featured DEV Posts of the Week",
+      "tags": [
+        "top7",
+        "discuss"
+      ],
+      "reacoes": 35
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "The Evolution & Role of Context Engineering in AI Today",
+      "tags": [
+        "aie",
+        "ai",
+        "agents"
+      ],
+      "reacoes": 21
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "You Don’t Always Need The Frontier",
+      "tags": [
+        "aie",
+        "ai"
+      ],
+      "reacoes": 27
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Gemma and sandboxing cause a stir at the World's Fair",
+      "tags": [
+        "aie",
+        "ai",
+        "database",
+        "gemma"
+      ],
+      "reacoes": 30
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Loop Engineering: Do Frontend and Fullstack Devs Actually Need It?",
+      "tags": [
+        "ai",
+        "webdev",
+        "productivity",
+        "programming"
+      ],
+      "reacoes": 27
+    }
+  ]
+}
