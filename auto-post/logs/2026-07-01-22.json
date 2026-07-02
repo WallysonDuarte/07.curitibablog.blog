@@ -1,7 +1,92 @@
 {
   "data": "2026-07-01",
-  "etapas": {},
-  "status": "ERRO",
-  "erro": "Expecting ',' delimiter: line 10 column 4711 (char 5579)",
-  "traceback": "Traceback (most recent call last):\n  File \"E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\publicar_post.py\", line 1625, in main\n    post_data = json.load(f)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 293, in load\n    return loads(fp.read(),\n        cls=cls, object_hook=object_hook,\n        parse_float=parse_float, parse_int=parse_int,\n        parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)\n  File \"C:\\Python313\\Lib\\json\\__init__.py\", line 346, in loads\n    return _default_decoder.decode(s)\n           ~~~~~~~~~~~~~~~~~~~~~~~^^^\n  File \"C:\\Python313\\Lib\\json\\decoder.py\", line 345, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Python313\\Lib\\json\\decoder.py\", line 361, in raw_decode\n    obj, end = self.scan_once(s, idx)\n               ~~~~~~~~~~~~~~^^^^^^^^\njson.decoder.JSONDecodeError: Expecting ',' delimiter: line 10 column 4711 (char 5579)\n"
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-07-01-22-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/a7140c84-b493-42e8-aeb0-7e6812ff6dc4-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/a7140c84-b493-42e8-aeb0-7e6812ff6dc4-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a45bb8e37982ddb671fab4d",
+      "slug": "webmcp-agentes-web-model-context-protocol-playwright",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": true
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 200,
+    "indexnow": {
+      "levelupdev": {
+        "ok": true,
+        "status": 200
+      },
+      "dozeroaojunior": {
+        "ok": true,
+        "status": 200
+      },
+      "blogdudu": {
+        "ok": true,
+        "status": 200
+      },
+      "devlevelup": {
+        "ok": true,
+        "status": 200
+      },
+      "curitibablog": {
+        "ok": true,
+        "status": 200
+      },
+      "cafecomdevpai": {
+        "ok": true,
+        "status": 200
+      }
+    },
+    "social": {
+      "facebook": {
+        "ok": true,
+        "id": "103132212436476_1013584041425744"
+      },
+      "instagram": {
+        "ok": true,
+        "id": "18130309654617436"
+      }
+    },
+    "whatsapp": {
+      "ok": true
+    },
+    "x_twitter": {
+      "ok": false,
+      "erro": "{\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n}"
+    },
+    "reddit": {
+      "ok": false,
+      "erro": "credenciais_incompletas"
+    },
+    "linkedin": {
+      "ok": true,
+      "id": "urn:li:share:7478259775407939585"
+    }
+  },
+  "status": "CONCLUIDO",
+  "post_url": "https://curitibablog.com.br/webmcp-agentes-web-model-context-protocol-playwright"
 }
