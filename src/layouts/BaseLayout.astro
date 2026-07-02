@@ -13,7 +13,7 @@ interface Props {
   canonicalSlug?: string; // slug base PT-BR para hreflang
 }
 
-const { title, description, slug, lang = 'pt', canonicalSlug } = Astro.props;
+const { title, description, slug, lang = 'pt', canonicalSlug, categories } = Astro.props;
 const siteUrl = 'https://curitibablog.com.br';
 const hreflangSlug = canonicalSlug || slug;
 ---
@@ -63,7 +63,7 @@ const hreflangSlug = canonicalSlug || slug;
   </script>
 </head>
 <body>
-  <Header slug={slug} lang={lang} />
+  <Header slug={slug} lang={lang} categories={categories} />
   <main>
     <slot />
   </main>

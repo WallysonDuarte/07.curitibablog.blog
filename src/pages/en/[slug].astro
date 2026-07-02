@@ -13,14 +13,14 @@ import { fetchAllPosts, fetchCategories, fetchAds, fetchRelatedPosts } from '../
 import { formatDate, buildSections, getPostCategories, toSlug } from '../../lib/utils';
 
 export async function getStaticPaths() {
-  const posts = await fetchAllPosts();
+  const [posts, categories] = await Promise.all([fetchAllPosts(), fetchCategories()]);
   return posts.map(post => ({
     params: { slug: post.slug },
-    props: { post, allPosts: posts },
+    props: { post, allPosts: posts, categories },
   }));
 }
 
-const { post, allPosts } = Astro.props;
+const { post, allPosts, categories: propCategories } = Astro.props;
 
 // EN translation with PT-BR fallback
 const tr = post.translations?.en;
@@ -32,13 +32,13 @@ const metaDesc  = tr?.metaDescription || post.metaDescription || summary;
 const faqs = tr?.faqs || post.faqs;
 const tags = tr?.tags || post.tags;
 
-const [categories, inlineAds, sidebarAds, faqSideAds, relatedPosts] = await Promise.all([
-  fetchCategories(),
+const [inlineAds, sidebarAds, faqSideAds, relatedPosts] = await Promise.all([
   fetchAds('inline'),
   fetchAds('sidebar'),
   fetchAds('faq-side'),
   fetchRelatedPosts(post.id),
 ]);
+const categories = propCategories;
 
 const postCats = getPostCategories(post);
 const breadcrumbCats = postCats.map(s => {
@@ -83,7 +83,7 @@ const sidebarAd = sidebarAds[0] ?? null;
 const faqSideAd = faqSideAds[0] ?? null;
 ---
 
-<BaseLayout title={`${metaTitle} | CuritibaBlog`} description={metaDesc} slug={post.slug} lang="en" canonicalSlug={post.slug}>
+<BaseLayout title={`${metaTitle} | CuritibaBlog`} description={metaDesc} slug={post.slug} lang="en" canonicalSlug={post.slug} categories={categories}>
   <SEO
     slot="head"
     title={metaTitle}

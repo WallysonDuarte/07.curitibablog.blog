@@ -1,14 +1,16 @@
 ---
 import { fetchCategories } from '../lib/api';
 import LanguageSelector from './LanguageSelector.astro';
+import type { BlogCategory } from '../lib/types';
 
 interface Props {
   slug?: string;
   lang?: string;
+  categories?: BlogCategory[];
 }
-const { slug, lang = 'pt' } = Astro.props;
+const { slug, lang = 'pt', categories: propCats } = Astro.props;
 
-const categories = await fetchCategories();
+const categories = propCats ?? await fetchCategories();
 const topCats = categories.slice(0, 6);
 ---
 
