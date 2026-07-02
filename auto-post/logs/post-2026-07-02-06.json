@@ -1,0 +1,122 @@
+{
+    "metaDescription":  "ZCode e o assistente de codigo baseado em GLM-5.2 da Zhipu AI. Veja como funciona, recursos, comparacoes e dicas praticas para devs brasileiros.",
+    "blocks":  [
+                   {
+                       "title":  "Em numeros: ZCode + GLM-5.2",
+                       "items":  [
+                                     {
+                                         "value":  "Zhipu AI (China)",
+                                         "label":  "Empresa criadora"
+                                     },
+                                     {
+                                         "value":  "GLM-5.2 (General Language Model)",
+                                         "label":  "Modelo base"
+                                     },
+                                     {
+                                         "value":  "Web em zcode.z.ai",
+                                         "label":  "Acesso"
+                                     },
+                                     {
+                                         "value":  "Codificacao e raciocinio tecnico",
+                                         "label":  "Foco principal"
+                                     },
+                                     {
+                                         "value":  "Disponivel com limites de uso",
+                                         "label":  "Plano gratuito"
+                                     }
+                                 ],
+                       "type":  "info"
+                   },
+                   {
+                       "title":  "Links oficiais",
+                       "items":  [
+                                     {
+                                         "value":  "https://zcode.z.ai/en",
+                                         "label":  "ZCode (plataforma)"
+                                     },
+                                     {
+                                         "value":  "https://www.zhipuai.cn",
+                                         "label":  "Zhipu AI (site oficial)"
+                                     },
+                                     {
+                                         "value":  "https://open.bigmodel.cn",
+                                         "label":  "API Developers"
+                                     },
+                                     {
+                                         "value":  "https://github.com/THUDM",
+                                         "label":  "GitHub Zhipu AI"
+                                     }
+                                 ],
+                       "type":  "links"
+                   },
+                   {
+                       "title":  "O que dizem os usuarios",
+                       "items":  [
+                                     {
+                                         "name":  "Rafael Mendonca",
+                                         "text":  "Usei o ZCode para entender um trecho de codigo legado em Go que ninguem na equipe sabia explicar. Em dois minutos eu tinha a explicacao completa. Surpreendente.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=RafaelMendonca"
+                                     },
+                                     {
+                                         "name":  "Camila Rocha",
+                                         "text":  "Trabalho como freelancer e nao quero instalar plugin diferente para cada cliente. O ZCode via browser resolveu isso. Nao substitui o Copilot, mas como complemento e otimo.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=CamilaRocha"
+                                     },
+                                     {
+                                         "name":  "Diego Figueiredo",
+                                         "text":  "Estava cetico com mais um assistente de codigo, mas o GLM-5.2 me impressionou no debug de um problema de concorrencia em Python. Vale testar antes de julgar.",
+                                         "avatar":  "https://api.dicebear.com/7.x/avataaars/svg?seed=DiegoFigueiredo"
+                                     }
+                                 ],
+                       "type":  "reviews"
+                   }
+               ],
+    "title":  "ZCode com GLM-5.2: o assistente de codigo da Zhipu AI que virou hype no HN",
+    "card2_titulo":  "GLM-5.2 focado",
+    "card3_titulo":  "Multi-linguagem",
+    "metaTitle":  "ZCode e GLM-5.2: assistente de codigo da Zhipu AI | CuritibaBlog",
+    "tags":  [
+                 "zcode",
+                 "glm",
+                 "zhipu-ai",
+                 "assistente-de-codigo",
+                 "ia",
+                 "llm",
+                 "ferramentas-dev"
+             ],
+    "card2_texto":  "Modelo treinado especificamente para codigo",
+    "categories":  [
+                       "ferramentas-de-ia",
+                       "desenvolvimento"
+                   ],
+    "card3_texto":  "Python, JS, Go, Rust e mais linguagens suportadas",
+    "card1_titulo":  "Sem instalacao",
+    "content":  "\u003ch2\u003eO que e o ZCode\u003c/h2\u003e\u003cp\u003eZCode e o ambiente de codificacao da \u003cstrong\u003eZhipu AI\u003c/strong\u003e, empresa chinesa de inteligencia artificial conhecida pela familia de modelos \u003cstrong\u003eGLM (General Language Model)\u003c/strong\u003e. A versao atual e alimentada pelo GLM-5.2, um modelo focado em tarefas de programacao e raciocinio tecnico.\u003c/p\u003e\u003cp\u003eA ferramenta ficou em destaque no Hacker News em julho de 2026, acumulando mais de 280 comentarios e mais de 380 pontos - sinal de que a comunidade de devs esta de olho no que vem de fora do ecossistema OpenAI e Anthropic.\u003c/p\u003e\u003cp\u003eA proposta do ZCode e ser um harness - um ambiente completo de suporte ao desenvolvimento - que vai alem de um simples autocomplete. Ele entende contexto, gera codigo, explica erros e ajuda no debug de forma integrada.\u003c/p\u003e\u003ch2\u003eComo funciona\u003c/h2\u003e\u003cp\u003eO GLM-5.2 por baixo do ZCode e um modelo de linguagem treinado com enfase em codigo e raciocinio encadeado. Ao contrario de modelos generalistas adaptados para codigo, o GLM-5.2 foi desenhado com esse foco desde o treinamento.\u003c/p\u003e\u003cp\u003eO ZCode funciona como uma interface web onde voce cola ou escreve codigo, descreve o problema e recebe sugestoes, correcoes e explicacoes. Ele tambem aceita perguntas em linguagem natural sobre o codigo fornecido.\u003c/p\u003e\u003cp\u003eA arquitetura de harness significa que o modelo tem acesso a ferramentas de analise que vao alem da geracao de texto - ele consegue simular execucao, identificar dependencias e propor refatoracoes estruturadas.\u003c/p\u003e\u003ch2\u003ePrincipais recursos\u003c/h2\u003e\u003cp\u003eO ZCode oferece um conjunto relevante de funcionalidades para desenvolvedores:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGeracao de codigo multi-linguagem:\u003c/strong\u003e Python, JavaScript, TypeScript, Go, Rust, Java e outras linguagens populares.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eExplicacao de codigo:\u003c/strong\u003e cole qualquer trecho e receba uma explicacao linha a linha em linguagem acessivel.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eDebug assistido:\u003c/strong\u003e descreva o erro e o modelo sugere a causa e a correcao.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eRefatoracao:\u003c/strong\u003e o modelo identifica padroes que podem ser simplificados ou melhorados.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eTestes unitarios:\u003c/strong\u003e gera casos de teste para funcoes fornecidas.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eO diferencial em relacao a ferramentas como Copilot ou Cursor e que o ZCode e acessivel via web sem precisar instalar nada no editor, util para consultas rapidas ou ambientes restritos.\u003c/p\u003e\u003ch2\u003eComo comecar: acesso passo a passo\u003c/h2\u003e\u003cp\u003eComecar com o ZCode e direto ao ponto:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003ePasso 1:\u003c/strong\u003e acesse zcode.z.ai pelo navegador. A interface esta em ingles.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePasso 2:\u003c/strong\u003e crie uma conta gratuita com email ou continue como visitante nas versoes de teste.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePasso 3:\u003c/strong\u003e selecione a linguagem de programacao desejada no painel lateral.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePasso 4:\u003c/strong\u003e cole seu codigo ou descricao do problema na area principal e pressione Enter.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePasso 5:\u003c/strong\u003e leia a resposta e refine com perguntas de acompanhamento se precisar.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eNao ha instalacao de plugin nem configuracao de API key para o uso basico via web. Para integracao com IDEs, a Zhipu AI disponibiliza documentacao de API no portal de desenvolvedores.\u003c/p\u003e\u003ch2\u003eExemplo pratico\u003c/h2\u003e\u003cp\u003eImagine que voce tem uma funcao Python que deveria retornar a media de uma lista, mas esta quebrando com lista vazia. Voce cola o codigo no ZCode e descreve: essa funcao retorna erro com lista vazia, como corrigir?\u003c/p\u003e\u003cp\u003eO modelo identifica que a divisao por zero e o problema, sugere adicionar uma verificacao antes do calculo, e explica por que o ZeroDivisionError ocorre. Tudo em portugues se a pergunta for feita em portugues.\u003c/p\u003e\u003cp\u003eEm um cenario mais avancado, voce pode pedir: refatora essa classe para usar o padrao Repository e adiciona injecao de dependencia. O GLM-5.2 entende o contexto e gera a versao refatorada com comentarios explicando cada mudanca.\u003c/p\u003e\u003ch2\u003eComparacao com alternativas\u003c/h2\u003e\u003cp\u003eO mercado de assistentes de codigo esta cheio de opcoes. Veja como o ZCode se posiciona:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGitHub Copilot:\u003c/strong\u003e integrado ao editor, sugestoes em tempo real, plano pago. ZCode e voltado para consultas pontuais via web.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eChatGPT e Claude:\u003c/strong\u003e otimos para explicacoes e geracao, mas sem foco especifico em codigo. ZCode tem um harness mais especializado.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eCursor:\u003c/strong\u003e IDE completo com IA integrada, mais poderoso para projetos grandes. ZCode e mais leve e acessivel sem instalacao.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eCodeium e Supermaven:\u003c/strong\u003e plugins gratuitos para editors. ZCode compete via web sem instalacao.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eO ZCode brilha especialmente quando voce quer uma segunda opiniao rapida sobre um trecho de codigo ou esta em um ambiente onde nao pode instalar extensoes no editor.\u003c/p\u003e\u003ch2\u003ePontos positivos e limitacoes\u003c/h2\u003e\u003cp\u003e\u003cstrong\u003ePontos positivos:\u003c/strong\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003eAcesso web sem instalacao ou configuracao\u003c/li\u003e\u003cli\u003eModelo GLM-5.2 com bom desempenho em raciocinio de codigo\u003c/li\u003e\u003cli\u003eSuporte a multiplas linguagens\u003c/li\u003e\u003cli\u003eInterface limpa e objetiva\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003cstrong\u003eLimitacoes reais:\u003c/strong\u003e\u003c/p\u003e\u003cul\u003e\u003cli\u003eInterface apenas em ingles - sem suporte nativo ao portugues na UI\u003c/li\u003e\u003cli\u003ePara projetos grandes com multiplos arquivos, Cursor ou Copilot levam vantagem na integracao com o editor\u003c/li\u003e\u003cli\u003eDocumentacao em portugues praticamente inexistente\u003c/li\u003e\u003cli\u003eLimites de uso no plano gratuito - para uso intenso pode ser necessario plano pago\u003c/li\u003e\u003c/ul\u003e\u003ch2\u003eCasos de uso reais\u003c/h2\u003e\u003cp\u003eO ZCode serve bem para diferentes perfis de desenvolvedor:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eDev junior aprendendo:\u003c/strong\u003e excelente para entender codigo legado. Colar um trecho complicado e pedir explicacao linha a linha acelera o aprendizado.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eDev backend em revisao de codigo:\u003c/strong\u003e usar o ZCode para uma segunda opiniao antes de aprovar um PR ajuda a pegar erros de seguranca ou logica.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eDev full stack em debugging rapido:\u003c/strong\u003e quando voce esta num ambiente de homologacao sem acesso ao editor completo, o ZCode via browser resolve.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eFreelancer em multiplos projetos:\u003c/strong\u003e alternar entre stacks diferentes e mais facil com um assistente que nao precisa de configuracao por projeto.\u003c/li\u003e\u003c/ul\u003e\u003ch2\u003eDicas e boas praticas\u003c/h2\u003e\u003cp\u003ePara tirar mais proveito do ZCode:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eSeja especifico:\u003c/strong\u003e inclua o codigo, o erro completo e o que esperava de resultado. Quanto mais contexto, melhor a resposta.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eRefine em turnos:\u003c/strong\u003e se a primeira resposta nao foi exata, faca uma pergunta de acompanhamento. O GLM-5.2 fica melhor com mais contexto na conversa.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eValide o codigo gerado:\u003c/strong\u003e nunca cole codigo gerado por IA direto em producao sem revisar. Use o ZCode como ponto de partida.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eCombine com testes:\u003c/strong\u003e peca para gerar casos de teste e rode-os localmente para validar o codigo sugerido.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eGuarde as respostas uteis:\u003c/strong\u003e se o modelo gerou um trecho especialmente bom, salve num snippet para reutilizar.\u003c/li\u003e\u003c/ul\u003e\u003ch2\u003eVale a pena?\u003c/h2\u003e\u003cp\u003eO ZCode vale a pena testar se voce quer explorar alternativas alem do ecossistema OpenAI e Microsoft. O GLM-5.2 mostrou desempenho competitivo em benchmarks de codigo, e a interface web e um diferencial real para consultas rapidas sem instalar nada.\u003c/p\u003e\u003cp\u003ePara uso profissional intenso em projetos grandes, ele ainda nao substitui um Copilot ou Cursor integrado ao editor. Mas como ferramenta complementar de consulta pontual, e uma adicao util ao arsenal de qualquer dev.\u003c/p\u003e\u003cp\u003eO proximo passo e simples: acesse zcode.z.ai, crie uma conta gratuita e teste com um trecho de codigo do seu projeto atual. Em cinco minutos voce ja tem uma opiniao formada sobre se ele serve para o seu fluxo de trabalho.\u003c/p\u003e",
+    "summary":  "ZCode e o ambiente de codificacao da Zhipu AI alimentado pelo modelo GLM-5.2. Descubra como ele funciona, o que o diferencia dos concorrentes e se vale a pena testar para seu fluxo de desenvolvimento.",
+    "slug":  "zcode-assistente-codigo-glm-52-zhipu-ai",
+    "card1_texto":  "Acesse pelo browser, sem plugins nem configuracao",
+    "category":  "ferramentas-de-ia",
+    "subtitulo_capa":  "O assistente de codigo da Zhipu AI com GLM-5.2 que virou hype no Hacker News",
+    "faqs":  [
+                 {
+                     "question":  "O ZCode e gratuito?",
+                     "answer":  "O ZCode oferece um plano gratuito com limite de uso. Para uso intenso ou acesso a recursos avancados, existem planos pagos. Consulte o site oficial em zcode.z.ai para os valores atuais."
+                 },
+                 {
+                     "question":  "O ZCode funciona em portugues?",
+                     "answer":  "Voce pode fazer perguntas em portugues e o modelo geralmente responde na mesma lingua. A interface do site e em ingles, mas o conteudo das respostas aceita portugues razoavelmente bem."
+                 },
+                 {
+                     "question":  "Qual a diferenca entre ZCode e GitHub Copilot?",
+                     "answer":  "O Copilot e integrado ao editor e oferece autocomplete em tempo real. O ZCode e uma ferramenta web para consultas pontuais sem instalacao. Sao complementares, nao concorrentes diretos."
+                 },
+                 {
+                     "question":  "Posso usar o ZCode com qualquer linguagem de programacao?",
+                     "answer":  "Sim, o GLM-5.2 suporta Python, JavaScript, TypeScript, Java, Go, Rust, C++ e outras. Python e JavaScript costumam ter resultados melhores por terem mais dados de treinamento."
+                 },
+                 {
+                     "question":  "O ZCode e seguro para colar codigo de trabalho?",
+                     "answer":  "Antes de usar qualquer ferramenta de IA com codigo proprietario, verifique a politica de privacidade. Evite colar segredos, chaves de API ou dados sensiveis. Para codigo critico, prefira rodar modelos locais."
+                 }
+             ]
+}

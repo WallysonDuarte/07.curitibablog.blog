@@ -1,0 +1,42 @@
+{
+  "data": "2026-07-02",
+  "etapas": {
+    "capa": {
+      "path": "E:\\PROJETOS\\curitibablog.com.br\\07.curitibablog.blog\\auto-post\\logs\\2026-07-02-06-cover.jpg",
+      "problemas": []
+    },
+    "upload": {
+      "key": "covers/301d061b-aef2-4521-b29f-fd61189df535-cover.jpg",
+      "url": "https://api.curitibasoftware.com.br/api/blog/image/covers/301d061b-aef2-4521-b29f-fd61189df535-cover.jpg"
+    },
+    "mongo": {
+      "id": "6a462ac0fb6859a68dbda01b",
+      "slug": "zcode-assistente-codigo-glm-52-zhipu-ai",
+      "is_new": true
+    },
+    "rebuild": {
+      "curitibablog": {
+        "ok": false,
+        "erro": "Command '['npm.cmd', 'run', 'build']' timed out after 300 seconds"
+      },
+      "blogdudu": {
+        "ok": true
+      },
+      "devlevelup": {
+        "ok": true
+      },
+      "dozeroaojunior": {
+        "ok": true
+      },
+      "levelupdev": {
+        "ok": true
+      },
+      "cafecomdevpai": {
+        "ok": true
+      }
+    },
+    "http_check": 404
+  },
+  "status": "PUBLICADO_SEM_SOCIAL",
+  "post_url": "https://curitibablog.com.br/zcode-assistente-codigo-glm-52-zhipu-ai"
+}

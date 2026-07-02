@@ -1,0 +1,220 @@
+{
+  "data": "2026-07-02",
+  "hn": [
+    {
+      "fonte": "HN",
+      "titulo": "Kimi K2.7 Code is generally available in GitHub Copilot",
+      "url": "https://github.blog/changelog/2026-07-01-kimi-k2-7-is-now-available-in-github-copilot/",
+      "score": 129,
+      "comentarios": 42
+    },
+    {
+      "fonte": "HN",
+      "titulo": "A new Android malware from Google",
+      "url": "https://f-droid.org/2026/07/01/adv-malware.html",
+      "score": 336,
+      "comentarios": 154
+    },
+    {
+      "fonte": "HN",
+      "titulo": "ZCode – Harness for GLM-5.2",
+      "url": "https://zcode.z.ai/en",
+      "score": 386,
+      "comentarios": 287
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Oomwoo, an open-source robot vacuum you build yourself",
+      "url": "https://makerspet.com/blog/building-an-open-source-robot-vacuum-meet-oomwoo/",
+      "score": 275,
+      "comentarios": 50
+    },
+    {
+      "fonte": "HN",
+      "titulo": "CursorBench 3.1",
+      "url": "https://cursor.com/evals",
+      "score": 54,
+      "comentarios": 35
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Bring back crappy forums",
+      "url": "https://tedium.co/2026/07/01/online-web-forums-retrospective/",
+      "score": 244,
+      "comentarios": 144
+    },
+    {
+      "fonte": "HN",
+      "titulo": "What to learn to be a graphics programmer",
+      "url": "https://blog.demofox.org/2026/07/01/what-to-learn-to-be-a-graphics-programmer/",
+      "score": 332,
+      "comentarios": 175
+    },
+    {
+      "fonte": "HN",
+      "titulo": "FFmpeg 9.1's new AAC encoder",
+      "url": "https://hydrogenaudio.org/index.php/topic,129691.0.html",
+      "score": 371,
+      "comentarios": 113
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Opening up 'Zero-Knowledge Proof' technology to promote privacy in age assurance",
+      "url": "https://blog.google/innovation-and-ai/technology/safety-security/opening-up-zero-knowledge-proof-technology-to-promote-privacy-in-age-assurance/",
+      "score": 152,
+      "comentarios": 142
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Ask HN: Who is hiring? (July 2026)",
+      "url": "",
+      "score": 197,
+      "comentarios": 209
+    },
+    {
+      "fonte": "HN",
+      "titulo": "How do wombats poop cubes?",
+      "url": "https://www.science.org/content/article/how-do-wombats-poop-cubes-scientists-get-bottom-mystery",
+      "score": 112,
+      "comentarios": 51
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Learn Vim motions with an ice-cream van",
+      "url": "https://thisismodest.com/vimscoops/",
+      "score": 65,
+      "comentarios": 12
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Weave Robotics launches Isaac 1, a $7,999 home robot with Fall 2026 deliveries",
+      "url": "https://www.weaverobotics.com/isaac-1",
+      "score": 175,
+      "comentarios": 242
+    },
+    {
+      "fonte": "HN",
+      "titulo": "The Underhanded C Contest",
+      "url": "https://underhanded-c.org/",
+      "score": 90,
+      "comentarios": 11
+    },
+    {
+      "fonte": "HN",
+      "titulo": "Qualcomm Linux 2.0",
+      "url": "https://www.qualcomm.com/developer/blog/2026/06/qualcomm-linux-2-now-available",
+      "score": 100,
+      "comentarios": 42
+    }
+  ],
+  "devto": [
+    {
+      "fonte": "Dev.to",
+      "titulo": "My First Year at DEV Recap",
+      "tags": [
+        "community",
+        "learning",
+        "productivity",
+        "writing"
+      ],
+      "reacoes": 49
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "From Harness Engineering to Evals: What’s Trending at AI Engineer",
+      "tags": [
+        "aie",
+        "ai",
+        "agents",
+        "security"
+      ],
+      "reacoes": 39
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "I Tried to Escape LeetCode for 2 Years (But Here We Are)",
+      "tags": [
+        "webdev",
+        "beginners",
+        "dsa",
+        "coding"
+      ],
+      "reacoes": 32
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "It’s Time To Put Humans Back In The Software",
+      "tags": [
+        "aie",
+        "software",
+        "ai",
+        "agents"
+      ],
+      "reacoes": 15
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "DevRel in the Age of AI Is A Search for Meaning",
+      "tags": [
+        "aie",
+        "ai",
+        "devrel"
+      ],
+      "reacoes": 6
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Token Town",
+      "tags": [
+        "aie",
+        "ai",
+        "agents"
+      ],
+      "reacoes": 8
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI Made Code Free. So Why Are the Giants Still Winning? (And where solo devs actually beat them)",
+      "tags": [
+        "ai",
+        "opensource",
+        "career",
+        "productivity"
+      ],
+      "reacoes": 5
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Optimizing for Agents with llms.txt",
+      "tags": [
+        "aie",
+        "agents",
+        "ai",
+        "machinelearning"
+      ],
+      "reacoes": 9
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "Stratagems #4: P Walked Into an AI Monitoring POC. P Didn't Run a Single Test.",
+      "tags": [
+        "ai",
+        "discuss",
+        "career",
+        "programming"
+      ],
+      "reacoes": 38
+    },
+    {
+      "fonte": "Dev.to",
+      "titulo": "AI is going loopy, but in a good way",
+      "tags": [
+        "aie",
+        "ai",
+        "security",
+        "machinelearning"
+      ],
+      "reacoes": 7
+    }
+  ]
+}
