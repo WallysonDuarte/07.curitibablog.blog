@@ -27,7 +27,8 @@ const {
   categories, tags, coverImageUrl, coverImageKey, views, compact = false, ratings,
 } = Astro.props;
 
-const imgSrc = `${API_BASE}/api/blog/cover/${slug}`;
+const baseSlug = slug.replace(/^(?:en|es)\//, '');
+const imgSrc = `${API_BASE}/api/blog/cover/${baseSlug}`;
 const imgWebP = `${imgSrc}?format=webp&w=600`;
 const imgFallback = `${imgSrc}?w=600`;
 
